@@ -1,19 +1,17 @@
-<div class="panel-group">
+<div class="panel-group done-action">
   <div class="panel panel-default">
-    <div class="panel-body">
-      <%= l order.created_at, format: :short_date %>
-      <div class="col-md-1">
-        <div class="order-status-<%= order.id %>">
-          <%= status_order order %>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="order-status-<%= order.id %> orders">
+          <input type="hidden" value=<%= order.id %>>
+          <span id="status-<%=order.id%>" value="<%= order.status %>"><%= status_order order %></span>
+          <span><b><%= order.user.name %></b></span>
+          <span class="pull-right"><%= l order.created_at, format: :short_date %></span>
         </div>
       </div>
-      <%= link_to t("accept_all"),
-        dashboard_shop_order_path(@shop.id, order.id),
-        class: "btn btn-info pull-right", method: :put %>
     </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-body">
+    <div class="panel-body orders-hidden" id="order-<%= order.id %>" >
+      <input type="hidden" value=<%= order.id %> >
       <%= render "order_products", order_products: order.order_products %>
       <div class="pull-right">
         <h4>

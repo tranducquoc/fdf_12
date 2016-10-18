@@ -5,7 +5,12 @@ class Dashboard::OrderProductsController < BaseDashboardController
     if @order_product.update_attributes order_product_params
       OrderMailer.shop_confirmation(@order_product).deliver_later
       flash[:success] = t "flash.success.update_order"
-     else
+      respond_to do |format|
+        format.json do
+          render json: {status: @order_product.status}
+        end
+      end
+    else
       render :back
     end
   end

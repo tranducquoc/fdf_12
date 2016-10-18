@@ -19,48 +19,12 @@
             <%= t "order_open_present" if @orders.present? %>
           </b>
         </div>
-        <%= simple_form_for @order, method: "PATCH" do |f| %>
-          <div class="row">
-            <table class="table table-bordered">
-              <tbody>
-                <% @orders.each_with_index do |order, index| %>
-                  <tr>
-                    <td>
-                      <%= index + 1 %>
-                    </td>
-                    <td><%= l order.created_at, format: :short_date %></td>
-                    <td><%= order.user_name %></td>
-                    <td><%= order.notes %></td>
-                    <td>
-                      <div class="order-status-<%= order.id %>">
-                        <%= status_order order %>
-                      </div>
-                    </td>
-                    <td class="text-center">
-                      <%= link_to dashboard_shop_order_path(@shop.id, order) do %>
-                        <i class="text-primary glyphicon glyphicon-eye-open"> </i>
-                      <% end %>
-                    </td>
-                    <td><%= radio_button_tag :id, order.id %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <%= f.submit t("add_order"), data: {confirm: t("confirm")},
-                class: "btn btn-primary" %>
-                <%= hidden_field_tag :shop_id, @shop.id %>
-              <% end %>
-            </div>
-          <!-- <div class="col-md-4">
-            <%= simple_form_for @order do |f| %>
-              <%= f.submit t("create_order"), data: {confirm: t("confirm")},
-                class: "btn btn-primary" %>
-              <%= hidden_field_tag :shop_id, @shop.id %>
-            <% end %>
-          </div> -->
+        <div class="col-md-4">
+          <%= simple_form_for @order do |f| %>
+            <%= f.submit t("create_order"), data: {confirm: t("confirm")},
+              class: "btn btn-primary" %>
+            <%= hidden_field_tag :shop_id, @shop.id %>
+          <% end %>
         </div>
       </div>
     </div>

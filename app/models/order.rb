@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   has_many :products, through: :order_products
   has_many :events , as: :eventable
 
-  enum status: {pending: 0, open: 1, closed: 2}
+  enum status: {pending: 0, accepted: 1, rejected: 2, done: 3}
   delegate :name, to: :shop, prefix: :shop
   delegate :name, to: :user, prefix: :user, allow_nil: true
   delegate :name, to: :coupon, prefix: :coupon, allow_nil: true
@@ -17,6 +17,7 @@ class Order < ApplicationRecord
   after_update :build_order_products
   after_create :build_order_products
   after_create_commit :send_notification
+  after_create :check_status_order
 
 
   scope :by_date_newest, ->{order created_at: :desc}
@@ -48,6 +49,12 @@ class Order < ApplicationRecord
   scope :group_year , -> {group "EXTRACT(year FROM created_at)"}
   scope :group_month, -> {group "EXTRACT(month FROM created_at)"}
   scope :group_day, -> {group "EXTRACT(day FROM created_at)"}
+
+  scope :statistic_products, -> do
+    joins(:order_product, :product)
+      .select("order_products.product_id, sum(order_products.quantity) as total")
+      .group("order_products.product_id")
+  end
 
   def build_order_products
     unless self.change_status
@@ -105,5 +112,24 @@ class Order < ApplicationRecord
   def send_notification
     Event.create message: "",
       user_id: self.shop.owner_id, eventable_id: id, eventable_type: Order.name
+  end
+
+  def update_new_status_order
+    if self.pending?
+      self.update_attributes(status: :rejected, change_status: true)
+    send_reject_notification_order
+    end
+  end
+
+  def send_reject_notification_order
+    Event.create message: :rejected,
+      user_id: user_id, eventable_id: id, eventable_type: Order.name
+  end
+
+  private
+
+  def check_status_order
+    delay(run_at: Settings.delay_check_order.minutes.from_now)
+      .update_new_status_order
   end
 end

@@ -22,6 +22,12 @@
       error: t(".product_price_error"), class: "form-control" %>
   </div>
   <div class="form-group">
+    <%= f.label :start_hour %>
+    <%= f.time_select :start_hour,  minute_step: 5 %>
+    <%= f.label :end_hour %>
+    <%= f.time_select :end_hour,  minute_step: 5 %>
+  </div>
+  <div class="form-group">
     <%= f.label :status %>
     <%= f.select :status,
       Product.statuses.keys.map{|status| [status.titleize, status]}, {},

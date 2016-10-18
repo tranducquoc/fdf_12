@@ -25,3 +25,5 @@ admin:
 rate: "rate"
 notification:
   number_unread_not_display: 0
+delay_check_order: 1
+time_format: "%H:%M"

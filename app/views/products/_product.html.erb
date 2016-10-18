@@ -1,8 +1,15 @@
 <div class="product_item_wrapper">
   <div class="product_content_area">
-    <%= link_to product do %>
-      <%= image_tag product.image.url, class: "img-responsive" %>
-    <% end %>
+    <div class="image_product">
+      <%= link_to product do %>
+        <%= image_tag product.image.url, class: "img-responsive" %>
+      <% end %>
+      <% if product.check_time_btn_add_cart? %>
+        <h3> <%= t "cart.order_time_text" %>
+          <%= product.start_hour.strftime(Settings.time_format) + "-" +
+            product.end_hour.strftime(Settings.time_format) %> </h3>
+      <% end %>
+    </div>
   </div>
   <div class="description_area row">
     <div class="col-md-2">
@@ -25,11 +32,12 @@
     </div>
   </div>
   <div class="interaction_area">
-    <%= link_to cart_path(product.id), remote: true,
-      method: :put, class: "btn btn_add_to_cart" do %>
-        <span class="glyphicon glyphicon-shopping-cart"></span>
-        <%= t "cart.add_to_card" %>
-      <% end %>
+       <%= link_to cart_path(product.id), remote: true,
+        method: :put, class: "btn btn_add_to_cart",
+        disabled: product.check_time_btn_add_cart? do %>
+          <span class="glyphicon glyphicon-shopping-cart"></span>
+          <%= t "cart.add_to_card" %>
+        <% end %>
     <%= link_to product, class: "btn btn-default btn_add_favorite" do %>
       <span class="glyphicon glyphicon-eye-open"></span>
       <%= t "common.view_button" %>

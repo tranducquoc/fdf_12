@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="dropdown action">
+      <button class="list btn btn-primary btn-action btnPrev" id="tab-2">Back
+      </button>
+      <button id="id_btn_done" class="list btn btn-success btn-action pull-right">
+        Done
+      </button>
+    </div>
+  </div>
+</div>
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th><%= t "order_statistics.id" %></th>
+            <th><%= t "order_statistics.name" %></th>
+            <th><%= t "order_statistics.quantity" %></th>
+            <th><%= t "order_statistics.price" %></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "product", collection: @products %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @orders = @shop.orders.open
+    @orders = @shop.orders.accepted
     @order = @shop.orders.new
     @cart_shop = load_cart_shop
   end

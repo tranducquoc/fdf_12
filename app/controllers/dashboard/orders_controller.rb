@@ -6,8 +6,10 @@ class Dashboard::OrdersController < BaseDashboardController
     @order = Order.new
     if @shop
       @q = @shop.orders.includes(:user).ransack params[:q]
-      @orders = @q.result.by_date_newest
+      @orders = @q.result.includes(:order_products).by_date_newest
         .page(params[:page]).per Settings.common.per_page
+      @products = Product.includes(:accepted_order_products)
+        .order_products_not_nil
     end
   end
 
@@ -23,14 +25,29 @@ class Dashboard::OrdersController < BaseDashboardController
       if @shop
         @order = @shop.orders.find_by id: params[:id]
         if @order.update_attributes order_params
-          flash[:success] = t "flash.success.update_order"
+          respond_to do |format|
+            format.json do
+              render json: {status: @order.status}
+            end
+          end
+        end
+      else
+        render :back
+      end
+    else
+      order = Order.find_by id: params[:id]
+      if @shop
+        @order = @shop.orders.find_by id: params[:id]
+        if @order.update_attributes order_params
+          respond_to do |format|
+            format.json do
+              render json: {status: @order.status}
+            end
+          end
         else
           render :back
         end
       end
-    else
-      order = Order.find_by id: params[:id]
-      order.order_products.update_all status: :accepted
       send_mail_to_user order.order_products
       flash[:success] = t "flash.success.update_order"
       redirect_to edit_dashboard_shop_order_path(@shop.id, order.id)

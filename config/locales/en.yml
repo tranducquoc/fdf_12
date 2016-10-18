@@ -357,6 +357,7 @@ en:
     not_product: "Your Cart have't product, Please order product !"
     view_product: "View products at here "
     btn_view_product: "View product"
+    order_time_text: "order time:"
 
   status:
     shops:
@@ -452,3 +453,10 @@ en:
     index: "Your Notification"
     product: "has a comment"
     order: "has new order"
+  order_statistics:
+    id: "ID"
+    name: "Productname"
+    quantity: "Quantity"
+    price: "Total price"
+    detail: "Detail"
+  error_message_time: "Start date should be before end date"

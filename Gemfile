@@ -33,6 +33,8 @@ gem "bootstrap-tagsinput-rails"
 gem "social-share-button"
 gem "chartkick"
 gem "ransack"
+gem "delayed_job"
+gem "delayed_job_active_record"
 source "https://rails-assets.org" do
   gem "rails-assets-datetimepicker"
   gem "rails-assets-growl"

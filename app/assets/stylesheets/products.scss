@@ -232,3 +232,14 @@ img {
 .share-product{
   margin-top: 5px;
 }
+
+.image_product {
+   position: relative;
+   h3 {
+     position: absolute;
+     top: 50px;
+     left: 10px;
+     color: #e74c3c;
+     background-color:#ecf0f1;
+  }
+}

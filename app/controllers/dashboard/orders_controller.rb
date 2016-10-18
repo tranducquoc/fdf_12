@@ -23,14 +23,29 @@ class Dashboard::OrdersController < BaseDashboardController
       if @shop
         @order = @shop.orders.find_by id: params[:id]
         if @order.update_attributes order_params
-          flash[:success] = t "flash.success.update_order"
+          respond_to do |format|
+            format.json do
+              render json: {status: @order.status}
+            end
+          end
+        end
+      else
+        render :back
+      end
+    else
+      order = Order.find_by id: params[:id]
+      if @shop
+        @order = @shop.orders.find_by id: params[:id]
+        if @order.update_attributes order_params
+          respond_to do |format|
+            format.json do
+              render json: {status: @order.status}
+            end
+          end
         else
           render :back
         end
       end
-    else
-      order = Order.find_by id: params[:id]
-      order.order_products.update_all status: :accepted
       send_mail_to_user order.order_products
       flash[:success] = t "flash.success.update_order"
       redirect_to edit_dashboard_shop_order_path(@shop.id, order.id)

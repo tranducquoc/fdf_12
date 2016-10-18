@@ -1,92 +1,16 @@
-<div class="content-page-admin">
-  <h2 class="text-center"><%= t "dashboard.order.title" %></h2>
-  <div class="flash-massage"></div>
-  <div class="col-lg-10">
-    <%= search_form_for @q, url: dashboard_shop_orders_path(@shop),
-      html: { method: :get } do |f| %>
-      <div class="col-md-2">
-        <%= f.text_field :created_at_date_equals,
-          data: {date_format: Settings.date_format},
-          class: "form-control datetimepicker",
-          placeholder: Settings.date_format %>
-      </div>
-      <div class="col-lg-4">
-        <%= f.search_field :user_name_cont, class: "form-control" %><br>
-      </div>
-      <div class="col-lg-2">
-        <%= f.button type: "submit",
-          class: "btn btn-default pull-right max-width" do %>
-          <span class="glyphicon glyphicon-search">
-          </span>
-          <%= t "dashboard.order.btn_search" %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <span class="counter pull-right"></span>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th><%= t "dashboard.order.id" %></th>
-        <th><%= t "dashboard.order.created_at" %></th>
-        <th><%= t "dashboard.order.user_name" %></th>
-        <th><%= t "dashboard.order.total_pay" %></th>
-        <th><%= t ".note" %></th>
-        <th><%= t "dashboard.order.status" %></th>
-        <th><%= t "dashboard.order.confirm" %></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @orders.each_with_index do |order, index| %>
-        <tr>
-          <td>
-            <%= index + 1 %>
-          </td>
-          <td><%= l order.created_at, format: :short_date %></td>
-          <td><%= order.user_name %></td>
-          <td><%= order.total_pay %> <%= t "cart.vnd" %> </td>
-          <td><%= order.notes %></td>
-          <td>
-            <div class="order-status-<%= order.id %>">
-              <%= status_order order %>
+<h2 class="text-center"><%= t "dashboard.order.title" %></h2>
+  <div class="page-content">
+    <div class="container">
+      <div class="row">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="dropdown action">
+              <input type="hidden" value = "<%= @shop.id %>" id="shop-id">
+              <%= check_box_tag "orders[]", @orders.ids, false, class: "checkbox", id: "checkbox" %>
             </div>
-          </td>
-          <td class="col-md-2">
-            <select  class="form-control status-order">
-              <% @shop.orders.statuses.keys.each do |status| %>
-                <%= option_status status, order %>
-              <% end %>
-            </select>
-          </td>
-          <td class="text-center">
-            <%= link_to edit_dashboard_shop_order_path(@shop.id, order) do %>
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to dashboard_shop_order_path(@shop.id, order) do %>
-              <i class="fa fa-eye" aria-hidden="true"></i>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= paginate @orders, theme: "twitter-bootstrap-3" %>
-  <button class="btn btn-info pull-right" id="create_order" >
-    <%= t".order" %>
-  </button>
-</div>
-
-<div class="create_order display_hide">
-  <div class="panel panel-success">
-    <div class="panel-heading text-center">
-      <%= t ".order" %>
-    </div>
-    <div class="panel-body">
-      <%= render "form" %>
+          </div>
+        </div>
+        <%= render @orders %>
+      </div>
     </div>
   </div>
-</div>

@@ -20,6 +20,7 @@ class Admin::UsersController < AdminController
       flash[:danger] = t "flash.danger.admin.updated_user"
       render :edit
     end
+    binding.pry
   end
 
   def destroy

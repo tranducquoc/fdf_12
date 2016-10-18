@@ -30,7 +30,14 @@ class Dashboard::OrdersController < BaseDashboardController
       end
     else
       order = Order.find_by id: params[:id]
-      order.order_products.update_all status: :accepted
+      if @shop
+        @order = @shop.orders.find_by id: params[:id]
+        if @order.update_attributes order_params
+          flash[:success] = t "flash.success.update_order"
+        else
+          render :back
+        end
+      end
       send_mail_to_user order.order_products
       flash[:success] = t "flash.success.update_order"
       redirect_to edit_dashboard_shop_order_path(@shop.id, order.id)

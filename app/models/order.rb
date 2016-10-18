@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   has_many :products, through: :order_products
   has_many :events , as: :eventable
 
-  enum status: {pending: 0, open: 1, closed: 2}
+  enum status: {pending: 0, accepted: 1, rejected: 2, done: 3}
   delegate :name, to: :shop, prefix: :shop
   delegate :name, to: :user, prefix: :user, allow_nil: true
   delegate :name, to: :coupon, prefix: :coupon, allow_nil: true

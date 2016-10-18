@@ -5,7 +5,7 @@ class OrderProduct < ApplicationRecord
   belongs_to :product
   belongs_to :coupon
 
-  enum status: {pending: 0, accepted: 1, rejected: 2}
+  enum status: {pending: 0, accepted: 1, rejected: 2, done: 3}
   delegate :name, to: :user, prefix: true, allow_nil: true
   delegate :name, to: :product, prefix: true
 

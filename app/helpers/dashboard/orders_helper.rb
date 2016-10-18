@@ -1,10 +1,12 @@
 module Dashboard::OrdersHelper
   def status_order order
     case
-    when order.open?
+    when order.accepted?
       change_status order, "label-warning"
-    when order.closed?
+    when order.rejected?
       change_status order, "label-danger"
+    when order.done?
+      change_status order, "label-success"
     else
       change_status order, "label-info"
     end
@@ -16,6 +18,8 @@ module Dashboard::OrdersHelper
       change_status order_product, "label-warning"
     when order_product.rejected?
       change_status order_product, "label-danger"
+    when order_product.done?
+      change_status order_product, "label-success"
     else
       change_status order_product, "label-info"
     end

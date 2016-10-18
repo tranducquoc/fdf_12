@@ -23,5 +23,6 @@ module Fdf12
     # -- all .rb files in that directory are automatically loaded.
     config.autoload_paths << Rails.root.join("lib/cart")
     config.autoload_paths << Rails.root.join("lib/statistics")
+    config.active_job.queue_adapter = :delayed_job
   end
 end

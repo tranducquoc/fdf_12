@@ -1,7 +1,6 @@
 ready = ->
   $('body').on 'change', '.status-order', ->
     url = $(this).val()
-    console.log(url)
     $.update url
 
   $.update = (url, data, callback, type) ->

@@ -4,8 +4,8 @@
       <div class="col-md-1">
         <div class="order-status-<%= order.id %> orders">
           <input type="hidden" value=<%= order.id %>>
-           <input type="checkbox" name="vehicle" class="checkbox-abc"/>
-          <span style="display: inline"><%= status_order order %></span>
+           <%= check_box_tag "orders[]", @orders.ids, false, class: "checkbox-abc", id: "checkbox" %>
+          <span style="display: inline" id="status-<%=order.id%>"><%= status_order order %></span>
           <span style="display: inline"><%= l order.created_at, format: :short_date %></span>
         </div>
       </div>

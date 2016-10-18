@@ -3,7 +3,8 @@
   <div class="container">
     <div class="row">
       <div class="dropdown action">
-        <input type="checkbox" name="vehicle" id="checkbox"/>
+      <input type="hidden" value = "<%= @shop.id %>" id="shop-id">
+       <%= check_box_tag "orders[]", @orders.ids, false, class: "checkbox", id: "checkbox" %>
       </div>
       <%= render @orders %>
     </div>

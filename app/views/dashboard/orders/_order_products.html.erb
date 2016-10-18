@@ -31,7 +31,7 @@
         <td class="text-center">
           <strong><%= item.total_price %> <%= t"cart.vnd" %> </strong></td>
         <td class="col-md-1">
-          <select  class="form-control status-order">
+          <select  class="form-control status-order" id="status-order-<%= item.id %>">
             <% OrderProduct.statuses.keys.each do |status| %>
               <%= option_status_items status, item %>
             <% end %>

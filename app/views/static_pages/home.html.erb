@@ -1,11 +1,11 @@
 <div class="col-sm-12 top_home">
   <div class="col-sm-3">
-    <div class="block-item-list block">
-      <h3 class="title">
+    <div class="block-item-list block padding-0">
+      <h3 class="title padding-left-10">
         <span><%= t "common.categories" %></span>
       </h3>
       <div class="clearfix body">
-        <div class="category-list">
+        <div class="category-list padding-top-0">
           <% if @catogories.size < Settings.max_content_scroll %>
             <%= link_to products_path,
               class: "btn btn-default col-lg-6 col-md-12 active" do %>
@@ -103,7 +103,7 @@
       </a>
       <a class="right carousel-control" href="#id_top_products" role="button"
          data-slide="next">
-        <span class="fa fa-angle-right" aria-hidden="true"></span>
+        <span class="fa fa-angle-right left-55" aria-hidden="true"></span>
         <span class="sr-only"><%= t "common.next" %></span>
       </a>
     </div>
@@ -140,5 +140,5 @@
   <div class="btn_view_all_wrapper pull-center">
     <%= link_to t("common.btn_view_all"), products_path,
       class: "btn btn_view_all btn-warning top_shop" %>
-   </div>
+  </div>
 </div>

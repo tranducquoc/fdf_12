@@ -391,8 +391,8 @@ $color_celeste_approx: #ccc;
 }
 
 .image-shop {
-  width: 273.75px;
-  height: 273.75px
+  width: 100%;
+  height: auto;
 }
 
 .raty-cancel {
@@ -469,9 +469,6 @@ a {
 .padding_product {
   padding: 0;
 }
-.custom-avatar-shop {
-  position: absolute;
-  top: 110px;
-  left: 0px;
-  width: 95% !important;
+.height-27375 {
+  height: 273.75px !important;
 }

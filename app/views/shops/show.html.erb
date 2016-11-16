@@ -1,6 +1,8 @@
 <div class="block-shop-header clearfix">
   <div class="shop-cover">
-    <h2 class="section_title"><%= @shop.name %></h2>
+    <h2 class="row_h2">
+      <%= @shop.name %>
+    </h2>
     <div>
       <%= image_tag @shop.cover_image.url, class: "image-shop" %>
     </div>
@@ -61,7 +63,7 @@
   <h2 class="section_title">
     <%= @products.any? ? t(".products") : t(".no_product") %>
   </h2>
-  <div class="col-md-12" id="id_products_list">
+  <div class="col-md-12">
     <%= render @products %>
   </div>
   <%= paginate @products %>

@@ -45,4 +45,22 @@ class ApplicationController < ActionController::Base
     I18n.locale = session[:locale] || I18n.default_locale
     session[:locale] = I18n.locale
   end
+
+  def params_create_order cart_shop, shop_order
+    {user: current_user, total_pay: cart_shop.total_price,
+      cart: cart_shop, shop: shop_order}
+  end
+
+  def delete_cart_item_shop cart, shop
+    items = cart["items"].select{|item| item["shop_id"] == shop.id}
+    if items.present?
+      create_cart
+      cart["items"] = cart["items"] - items
+    end
+  end
+
+  def load_cart_shop shop_order
+    cart_shop = @cart_group.detect {|shop| shop[:shop_id] == shop_order.id}
+    Cart.new cart_shop[:items] if cart_shop.present?
+  end
 end

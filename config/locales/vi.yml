@@ -2,26 +2,26 @@ vi:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: Khoảng 1 giờ
-        other: Khoảng %{count} giờ
+        one: khoảng 1 giờ
+        other: khoảng %{count} giờ
       about_x_months:
-        one: Khoảng 1 tháng
-        other: Khoảng %{count} tháng
+        one: khoảng 1 tháng
+        other: khoảng %{count} tháng
       about_x_years:
-        one: Khoảng 1 năm
-        other: Khoảng %{count} năm
+        one: khoảng 1 năm
+        other: khoảng %{count} năm
       almost_x_years:
-        one: Gần 1 năm
-        other: Gần %{count} năm
+        one: gần 1 năm
+        other: gần %{count} năm
       half_a_minute: 30 giây
       less_than_x_minutes:
-        one: Chưa tới 1 phút
-        other: Chưa tới %{count} phút
+        one: chưa tới 1 phút
+        other: chưa tới %{count} phút
       less_than_x_seconds:
-        one: Chưa tới 1 giây
-        other: Chưa tới %{count} giây
+        one: chưa tới 1 giây
+        other: chưa tới %{count} giây
       over_x_years:
-        one: Hơn 1 năm
+        one: hơn 1 năm
         other: hơn %{count} năm
       x_days:
         one: 1 ngày
@@ -41,8 +41,18 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  description: "Mô tả"
   current_week: "Tuần hiện tại"
   btn_search: "Tìm kiếm"
+  deleted: "đã xóa"
+  shop_name: "Tên cửa hàng: "
+  cancel: "Hủy"
+  continue: "Tiếp tục"
+  choose_picture: "Bạn cần chọn một ảnh để đổi ảnh đại diện cho của hàng"
+  minutes: " (phút)"
+  time_auto_reject: "Thời gian hủy tự động: "
+  number_product: "Số lượng sản phẩm: "
+  change-avatar: "Đổi ảnh"
   have_no_order: "Không tìm thấy kết quả nào!"
   current_month: "Tháng hiện tại"
   current_year: "Năm hiện tại"
@@ -62,7 +72,7 @@ vi:
     base_title: "Framgia Food And Drink Order"
     admin_title: "Quản trị"
     home: "Trang chủ"
-    number: "Số lượng"
+    number: "Numbers"
     delete_confirm: "Bạn chắc chứ?"
     top_products: "Sản phẩm nổi bật"
     top_shops: "Cửa hàng nổi bật"
@@ -175,7 +185,7 @@ vi:
         end_at: "Kết thúc lúc"
         created_at: "Tạo lúc"
         view: "Xem"
-        close: "Đóng"
+        close: "Đongs"
     shop_requests:
       index:
         page_title: "Quản lý yêu cầu tạo cửa hàng"
@@ -217,8 +227,8 @@ vi:
         avatar: "Ảnh đại diện"
         description: "Mô tả"
         show_avatar: "Hiện ảnh"
-        blocked: "Đã khóa"
-        active: "Kích hoạt"
+        blocked: "đã khóa"
+        active: "kích hoạt"
       edit:
         title: "Chỉnh sửa"
         user: "Thông tin người dùng"
@@ -377,7 +387,7 @@ vi:
       status: "Trạng thái"
       confirm: "Xác nhận"
       detail_order: "Chi tiết"
-      view_order_list: “Danh sách đặt hàng"
+      view_order_list: "Danh sách đặt hàng"
       view_history_orders: "Lịch sử"
       btn_search: "Tìm kiếm"
       Date: "Ngày"
@@ -392,15 +402,15 @@ vi:
         avatar: "Ảnh đại diện"
         description: "Mô tả"
         show_avatar: "Hiển thị ảnh đại diện"
-        blocked: "Khóa"
-        active: "Kích hoạt"
+        blocked: "khóa"
+        active: "kích hoạt"
     orders:
       form:
         end_date: "Ngày kết thúc"
         note: "Ghi chú"
         end_at_note: "Thiết lập thời gian tự động đóng đơn hàng"
       index:
-        new_order: "Tạo Đơn hàng"
+        new_order: "tạo Đơn hàng"
         end_date: "Ngày kết thúc"
         note: "Ghi chú"
         order: "Tạo đơn hàng"
@@ -430,11 +440,11 @@ vi:
 
   status:
     shops:
-      pending: "Đang chờ"
-      active: "Đã kích hoạt"
-      closed: "Đã đóng"
-      rejected: "Đã từ chối"
-      blocked: "Đã khóa"
+      pending: "đang chờ"
+      active: "đã kích hoạt"
+      closed: "đã đóng"
+      rejected: "đã từ chối"
+      blocked: "đã khóa"
   user_mailer:
     shop_request:
       subject: "Yêu cầu tạo cửa hàng: \"%{name}\""
@@ -443,7 +453,7 @@ vi:
       status_message: "Bạn vừa gửi một yêu cầu tạo cửa hàng: \"%{shop_name}\""
     shop_confirmation:
       subject: "Trạng thái cửa hàng: \"%{name}\" vừa được thay đổi"
-      hello: "Thân gửi %{name},"
+      hello: "Dear %{name},"
       status_message: "Your shop: \"%{shop_name}\" has been:"
   admin_mailer:
     shop_request:
@@ -460,7 +470,8 @@ vi:
     title: "Xem trạng thái sản phẩm vừa được đặt hàng "
   oder:
     success: "Đặt hàng thành công !"
-    btn_oder: "Đặt hàng ngay"
+    btn_oder: "Đặt đơn hàng này"
+    add-all: "Đặt tất cả"
     id: "id"
     category: "Thể loại"
     name: "Tên"
@@ -472,6 +483,12 @@ vi:
     confirm: "Bạn chắc chứ ?"
     not_oder: "Không có đơn hàng nào"
     not_product_in_cart: "Không có sản phẩm nào trong giỏ hàng"
+    something_deleted: "Có một số sản phẩm của bạn đã bị xóa vì quá thời gian đặt"
+    continue: ", bạn có muốn tiếp tục không?"
+    allthing_deleted: "Tất cả sản phẩm của bạn đã bị xóa vì quá thời gian đặt"
+    has_order_deleted: "Có "
+    all_product_will_be_order: "Tất cả sản phẩm của bạn sẽ được gửi đi, bạn có muốn tiếp tục không?"
+    product_deleted: " sản phẩm của bạn bị xóa vì quá thời gian đặt, bạn có muốn tiếp tục không?"
     status: "Trạng thái:"
     btn_cancel_oder: "Hủy"
     btn_confirm_oder: "Xác nhận đơn hàng"
@@ -485,8 +502,8 @@ vi:
   shared:
     comments:
       comment_box: "Khung bình luận"
-      can_comment_text: "Bình luận bên dưới"
-      cant_comment_text: "Vui lòng đăng nhập để bình luận"
+      can_comment_text: "BÌNH LUẬN BÊN DƯỚI"
+      cant_comment_text: "VUI LÒNG ĐĂNG NHẬP ĐỂ BÌNH LUẬN"
       comment_placeholder_text: "Bình luận ở đây..."
       comment_button: "Bình luận"
   date_format: "%d/%m/%Y"
@@ -517,12 +534,12 @@ vi:
     remove: "Hủy"
     owner: "Chủ"
   notification:
-    ago: "Trước"
-    shop: "Vừa thay đổi trạng thái"
+    ago: "trước"
+    shop: "vừa thay đổi trạng thái"
     index: "Thông báo của bạn"
-    product: "Có một bình luận"
-    order: "Trạng thái"
-    status: "Vừa"
+    product: "có một bình luận"
+    order: "trạng thái"
+    status: "vừa"
     read_all: "Đánh dấu tất cả đã đọc"
   order_statistics:
     id: "ID"
@@ -530,8 +547,8 @@ vi:
     quantity: "Số lượng"
     price: "Đơn giá"
     detail: "Chi tiết"
-    accept: "Chấp nhận"
-    reject: "Từ chối"
+    accept: "chấp nhận"
+    reject: "từ chối"
     back: "Quay lại"
     done: "Hoàn thành"
     step1: "Bước 1: Kiểm tra đơn hàng"

@@ -9,3 +9,7 @@ $(document).ready ->
   $('.datepicker').datetimepicker
     timepicker: false,
     format: 'm/d/Y'
+
+  $('.datepicker2').datetimepicker
+    timepicker: false,
+    format: 'Y/m/d'

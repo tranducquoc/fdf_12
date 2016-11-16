@@ -9,7 +9,7 @@
     <div class="shop-info-wrapper col-md-12">
       <div class="shop-avatar-wrapper row">
         <div class="col-sm-3 col-xs-3 shop-avatar">
-        <%= image_tag @shop.avatar.url %>
+        <%= image_tag @shop.avatar.url, class: "img-200" %>
         </div>
       </div>
     </div>
@@ -42,10 +42,21 @@
       </div>
     </div>
   </div>
-  <div class="col-md-12 description-wrapper">
-    <div class="quote">
-      <%= t @shop.description %>
-    </div>
+  <div class="col-md-12 description-wrapper style_coffee">
+    <table class="table table-striped table-inverse padding-1022">
+      <tr>
+        <td class="for-td">
+          <strong><%= t "shop_name" %></strong><%= @shop.name %>
+        </td>
+        <td class="for-td">
+          <strong><%= t "time_auto_reject" %></strong><%= l @shop.time_auto_reject, format: :short_time %>
+          <%= t "minutes" %>
+        </td>
+        <td class="for-td">
+          <strong><%= t "number_product" %></strong><%= @shop.products.size %>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>
 
@@ -58,7 +69,6 @@
     <% end %>
   </ul>
 </div>
-
 <div class="row">
   <h2 class="section_title">
     <%= @products.any? ? t(".products") : t(".no_product") %>

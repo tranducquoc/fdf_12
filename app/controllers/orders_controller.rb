@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :load_shop, except: [:edit, :index]
   before_action :load_order, only: [:destroy, :show]
   before_action :load_order_update, only: :update
+  before_action :check_before_order, only: :create
 
   def index
     if params[:start_date].present? && params[:end_date].present?
@@ -12,22 +13,20 @@ class OrdersController < ApplicationController
       @orders = current_user.orders.on_today.by_date_newest.page(params[:page])
         .per Settings.common.per_page
     end
-    params[:status] ||= Settings.filter_status_order.all
-    @orders = current_user.orders.send params[:status]
     @order_days = @orders.group_by{|t| t.created_at.beginning_of_day}
   end
 
   def new
     @orders = @shop.orders.accepted
     @order = @shop.orders.new
-    @cart_shop = load_cart_shop
+    @cart_shop = load_cart_shop @shop
   end
 
   def show
   end
 
   def update
-    @cart_shop = load_cart_shop
+    @cart_shop = load_cart_shop @shop
     if @cart_shop.present?
       if @order.update_attributes order_params @cart_shop
         delete_cart_item_shop session["cart"], @shop
@@ -45,9 +44,9 @@ class OrdersController < ApplicationController
 
 
   def create
-    @cart_shop = load_cart_shop
+    @cart_shop = load_cart_shop @shop
     if @cart_shop.present?
-      @order = Order.new params_create_order @cart_shop
+      @order = Order.new params_create_order @cart_shop, @shop
       if @order.save
         delete_cart_item_shop session["cart"], @shop
         check_order @order, @cart_shop, @shop
@@ -76,11 +75,6 @@ class OrdersController < ApplicationController
     {cart: cart_shop, shop: @shop, user: current_user}
   end
 
-  def params_create_order cart_shop
-    {user: current_user, total_pay: cart_shop.total_price,
-      cart: cart_shop, shop: @shop}
-  end
-
   def load_shop
     @shop = Shop.find_by id: params[:shop_id]
     unless @shop
@@ -105,19 +99,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def load_cart_shop
-    cart_shop = @cart_group.detect {|shop| shop[:shop_id] == @shop.id}
-    Cart.new cart_shop[:items] if cart_shop.present?
-  end
-
-  def delete_cart_item_shop cart, shop
-    items = cart["items"].select{|item| item["shop_id"] == shop.id}
-    if items.present?
-      create_cart
-      cart["items"] = cart["items"] - items
-    end
-  end
-
   def check_order order, cart_shop, shop
     if order.products.size == Settings.count_tag
       order.destroy
@@ -129,6 +110,28 @@ class OrdersController < ApplicationController
     else
       flash[:success] = t "oder.success"
       redirect_to order_path order, shop_id: shop.id
+    end
+  end
+
+  def check_before_order
+    @cart_shop = load_cart_shop @shop
+    @count_exit_order = Settings.count_tag
+    @products_deleted = []
+    @cart_shop.items.each do |cart|
+      product = Product.find_by id: cart.product_id
+      if Time.now.is_between_short_time?(product.start_hour, product.end_hour)
+        @count_exit_order += Settings.order_increase
+        @products_deleted << product
+      end
+    end
+    if @count_exit_order > Settings.count_tag
+      if @count_exit_order == @cart_shop.items.size
+        redirect_to carts_path
+        flash[:danger] = t "oder.allthing_deleted"
+      else
+        @have_order_deleted = t("oder.has_order_deleted") + @count_exit_order.to_s + t("oder.product_deleted")
+        redirect_to new_cart_path @have_order_deleted, @products_deleted
+      end
     end
   end
 end

@@ -1,10 +1,11 @@
-<footer>
+<footer class="fixed">
   <div id="footer_content">
     <h3>
       <%= t "common.base_title" %>
       <span class="pull-right"><%= t "language" %>
         <%= link_to_unless I18n.locale == :en, t("english"), set_language_update_path(locale: :en) %> |
-        <%= link_to_unless I18n.locale == :vi, t("vietnam"), set_language_update_path(locale: :vi) %>
+        <%= link_to_unless I18n.locale == :vi, t("vietnam"), set_language_update_path(locale: :vi) %> |
+        <%= link_to_unless I18n.locale == :jp, t("Janpanese"), set_language_update_path(locale: :jp) %>
       </span>
     </h3>
   </div>

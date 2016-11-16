@@ -13,14 +13,18 @@
     </div>
   </div>
   <div class="description_area row">
-    <div class="col-md-2">
+    <div class="col-md-4">
       <%= link_to product do %>
         <span class="shop-avatar">
-          <%= image_tag product.shop_avatar.url %>
+          <% if product.shop_avatar.nil? %>
+            <%= image_tag "default_shop_avatar" %>
+          <% else %>
+            <%= image_tag product.shop_avatar.url %>
+          <% end %>
         </span>
       <% end %>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-8">
       <div>
         <strong><%= link_to product.shop_name, product.shop %></strong>
       </div>

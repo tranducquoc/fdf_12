@@ -415,7 +415,7 @@ vi:
         btn_search: "Lọc"
   cart:
     view_cart_all: "Xem tất cả"
-    add_to_card: "Thêm vào giỏ hàng"
+    add_to_card: "Thêm"
     quantity: "Số lượng"
     price: "Đơn giá"
     sub: "Bớt"
@@ -426,7 +426,7 @@ vi:
     not_product: "Giỏ hàng trống. Vui lòng đặt hàng !"
     view_product: "Xem sản phẩm tại đây "
     btn_view_product: "Xem sản phẩm"
-    order_time_text: "Thời gian đặt hàng:"
+    order_time_text: "Thời gian:"
 
   status:
     shops:

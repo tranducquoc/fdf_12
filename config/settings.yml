@@ -31,3 +31,9 @@ count_tag: 0
 order_increase: 1
 minute_constant: 60
 minute_step: 5
+filter_status_order:
+  pending: "pending"
+  accepted: "accepted"
+  done: "done"
+  rejected: "rejected"
+  all: "all"

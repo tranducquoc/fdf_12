@@ -2,26 +2,26 @@ vi:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: khoảng 1 giờ
-        other: khoảng %{count} giờ
+        one: Khoảng 1 giờ
+        other: Khoảng %{count} giờ
       about_x_months:
-        one: khoảng 1 tháng
-        other: khoảng %{count} tháng
+        one: Khoảng 1 tháng
+        other: Khoảng %{count} tháng
       about_x_years:
-        one: khoảng 1 năm
-        other: khoảng %{count} năm
+        one: Khoảng 1 năm
+        other: Khoảng %{count} năm
       almost_x_years:
-        one: gần 1 năm
-        other: gần %{count} năm
+        one: Gần 1 năm
+        other: Gần %{count} năm
       half_a_minute: 30 giây
       less_than_x_minutes:
-        one: chưa tới 1 phút
-        other: chưa tới %{count} phút
+        one: Chưa tới 1 phút
+        other: Chưa tới %{count} phút
       less_than_x_seconds:
-        one: chưa tới 1 giây
-        other: chưa tới %{count} giây
+        one: Chưa tới 1 giây
+        other: Chưa tới %{count} giây
       over_x_years:
-        one: hơn 1 năm
+        one: Hơn 1 năm
         other: hơn %{count} năm
       x_days:
         one: 1 ngày
@@ -62,7 +62,7 @@ vi:
     base_title: "Framgia Food And Drink Order"
     admin_title: "Quản trị"
     home: "Trang chủ"
-    number: "Numbers"
+    number: "Số lượng"
     delete_confirm: "Bạn chắc chứ?"
     top_products: "Sản phẩm nổi bật"
     top_shops: "Cửa hàng nổi bật"
@@ -175,7 +175,7 @@ vi:
         end_at: "Kết thúc lúc"
         created_at: "Tạo lúc"
         view: "Xem"
-        close: "Đongs"
+        close: "Đóng"
     shop_requests:
       index:
         page_title: "Quản lý yêu cầu tạo cửa hàng"
@@ -217,8 +217,8 @@ vi:
         avatar: "Ảnh đại diện"
         description: "Mô tả"
         show_avatar: "Hiện ảnh"
-        blocked: "đã khóa"
-        active: "kích hoạt"
+        blocked: "Đã khóa"
+        active: "Kích hoạt"
       edit:
         title: "Chỉnh sửa"
         user: "Thông tin người dùng"
@@ -392,15 +392,15 @@ vi:
         avatar: "Ảnh đại diện"
         description: "Mô tả"
         show_avatar: "Hiển thị ảnh đại diện"
-        blocked: "khóa"
-        active: "kích hoạt"
+        blocked: "Khóa"
+        active: "Kích hoạt"
     orders:
       form:
         end_date: "Ngày kết thúc"
         note: "Ghi chú"
         end_at_note: "Thiết lập thời gian tự động đóng đơn hàng"
       index:
-        new_order: "tạo Đơn hàng"
+        new_order: "Tạo Đơn hàng"
         end_date: "Ngày kết thúc"
         note: "Ghi chú"
         order: "Tạo đơn hàng"
@@ -430,11 +430,11 @@ vi:
 
   status:
     shops:
-      pending: "đang chờ"
-      active: "đã kích hoạt"
-      closed: "đã đóng"
-      rejected: "đã từ chối"
-      blocked: "đã khóa"
+      pending: "Đang chờ"
+      active: "Đã kích hoạt"
+      closed: "Đã đóng"
+      rejected: "Đã từ chối"
+      blocked: "Đã khóa"
   user_mailer:
     shop_request:
       subject: "Yêu cầu tạo cửa hàng: \"%{name}\""
@@ -443,7 +443,7 @@ vi:
       status_message: "Bạn vừa gửi một yêu cầu tạo cửa hàng: \"%{shop_name}\""
     shop_confirmation:
       subject: "Trạng thái cửa hàng: \"%{name}\" vừa được thay đổi"
-      hello: "Dear %{name},"
+      hello: "Thân gửi %{name},"
       status_message: "Your shop: \"%{shop_name}\" has been:"
   admin_mailer:
     shop_request:
@@ -485,8 +485,8 @@ vi:
   shared:
     comments:
       comment_box: "Khung bình luận"
-      can_comment_text: "BÌNH LUẬN BÊN DƯỚI"
-      cant_comment_text: "VUI LÒNG ĐĂNG NHẬP ĐỂ BÌNH LUẬN"
+      can_comment_text: "Bình luận bên dưới"
+      cant_comment_text: "Vui lòng đăng nhập để bình luận"
       comment_placeholder_text: "Bình luận ở đây..."
       comment_button: "Bình luận"
   date_format: "%d/%m/%Y"
@@ -517,12 +517,12 @@ vi:
     remove: "Hủy"
     owner: "Chủ"
   notification:
-    ago: "trước"
-    shop: "vừa thay đổi trạng thái"
+    ago: "Trước"
+    shop: "Vừa thay đổi trạng thái"
     index: "Thông báo của bạn"
-    product: "có một bình luận"
-    order: "trạng thái"
-    status: "vừa"
+    product: "Có một bình luận"
+    order: "Trạng thái"
+    status: "Vừa"
     read_all: "Đánh dấu tất cả đã đọc"
   order_statistics:
     id: "ID"
@@ -530,8 +530,8 @@ vi:
     quantity: "Số lượng"
     price: "Đơn giá"
     detail: "Chi tiết"
-    accept: "chấp nhận"
-    reject: "từ chối"
+    accept: "Chấp nhận"
+    reject: "Từ chối"
     back: "Quay lại"
     done: "Hoàn thành"
     step1: "Bước 1: Kiểm tra đơn hàng"

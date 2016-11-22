@@ -63,14 +63,14 @@
               <td>
                 <button class="btn btn-success width-80" data-toggle="modal"
                   onclick="updateShopRequest(this,
-                    '<%= t ".approve_confirm", user: shop.owner_name, shop: shop.name %>', '<%= shop.id %>')">
+                    '<%= t ".approve_confirm", user: shop.owner_name, shop: shop.name %>', '<%= shop.id %>', 1)">
                   <%= t ".approve" %>
                 </button>
               </td>
               <td>
                 <button class="btn btn-danger width-80" data-toggle="modal"
                   onclick="updateShopRequest(this,
-                    '<%= t ".reject_confirm", user: shop.owner_name, shop: shop.name %>', '<%= shop.id %>')">
+                    '<%= t ".reject_confirm", user: shop.owner_name, shop: shop.name %>', '<%= shop.id %>', 3)">
                   <%= t ".reject" %>
                 </button>
               </td>

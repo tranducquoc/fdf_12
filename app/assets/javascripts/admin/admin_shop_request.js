@@ -1,19 +1,18 @@
-function updateShopRequest(button, message, shop_id){
+function updateShopRequest(button, message, shop_id, click_status){
   $('.modal-message').html(message);
   var button_press = {approve: 'Approve', reject: 'Reject'};
   var shop_status = {active: 1, reject: 3};
   var status;
   var alertClass;
-  if(button_press.approve === $(button).html().trim()){
+  if(click_status === 1){
     status = shop_status.active;
     alertClass = 'alert-success';
   }
-  else if(button_press.reject === $(button).html().trim()){
+  else if(click_status === 3){
     status = shop_status.reject;
     alertClass = 'alert-warning';
-  } else {
-    status = null;
   }
+  // status = shop_status.active;
   $('.shop-request-modal').modal('show');
   $('.modal-backdrop').css('z-index', -1);
   $('.btn-ok').on('click', function(){

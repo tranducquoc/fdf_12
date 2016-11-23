@@ -58,7 +58,6 @@
         <% end %>
       </div>
       <div class="row">
-        <hr>
         <div class="pull-right">
           <h3 class="total-cart text-success h3_cart">
             <b><%= t ".total" %>:</b> <%= format_price detail_price cart[:items]%>
@@ -70,6 +69,7 @@
           <% end %>
         </div>
       </div>
+      <hr>
     </div>
   <% end %>
   <% if @cart.blank? %>

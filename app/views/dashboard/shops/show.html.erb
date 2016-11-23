@@ -2,8 +2,6 @@
   <div class="shop-cover">
     <h2 class="row_h2">
       <%= @shop.name %>
-      <%= link_to t(".edit"), edit_dashboard_shop_path(@shop),
-        class: "btn btn-success pull-right margin_right_10px" %>
     </h2>
     <%= image_tag @shop.cover_image.url %>
     <div class="shop-info-wrapper col-md-12">
@@ -56,6 +54,8 @@
   <div class="col-md-12 description-wrapper style_coffee">
     <div class="quote">
       <%= t @shop.description %>
+      <%= link_to t(".edit"), edit_dashboard_shop_path(@shop),
+        class: "btn btn-success pull-right margin_right_10px" %>
     </div>
   </div>
 </div>

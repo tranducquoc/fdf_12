@@ -32,7 +32,7 @@ en:
     top_shops: "Top shops"
     previous: "Previous"
     next: "Next"
-    btn_view_all: "VIEW ALL"
+    btn_view_all: "View all"
     btn_order_now: "Order now"
     btn_add_to_favorite: "Add to Favorite"
     toggle_navigation: "Toggle navigation"
@@ -75,7 +75,7 @@ en:
     shop_statistic: "Shop statistics"
     report_abuse: "Report (comming soon)"
     settings: "Settings"
-    logout: "Logout"
+    logout: "Sign out"
     sign_in: "Sign in"
     sign_in_fb: "Sign in with Facebook"
     sign_up: "Sign up"
@@ -181,8 +181,8 @@ en:
         avatar: "Avatar"
         description: "Description"
         show_avatar: "Show avatar"
-        blocked: "blocked"
-        active: "active"
+        blocked: "Blocked"
+        active: "Active"
       edit:
         title: "Edit user"
         user: "User's information"
@@ -356,15 +356,15 @@ en:
         avatar: "Avatar"
         description: "Description"
         show_avatar: "Show avatar"
-        blocked: "blocked"
-        active: "active"
+        blocked: "Blocked"
+        active: "Cctive"
     orders:
       form:
         end_date: "End date"
         note: "Note"
         end_at_note: "Set end time for auto close order"
       index:
-        new_order: "create Order"
+        new_order: "Create Order"
         end_date: "End date"
         note: "Note"
         order: "Create order"
@@ -394,11 +394,11 @@ en:
 
   status:
     shops:
-      pending: "pending"
-      active: "actived"
-      closed: "closed"
-      rejected: "rejected"
-      blocked: "blocked"
+      pending: "Pending"
+      active: "Actived"
+      closed: "Closed"
+      rejected: "Rejected"
+      blocked: "Blocked"
   user_mailer:
     shop_request:
       subject: "Shop requested: \"%{name}\""
@@ -483,12 +483,12 @@ en:
     remove: "Remove"
     owner: "Owner"
   notification:
-    ago: "ago"
-    shop: "has just changed status"
+    ago: "Ago"
+    shop: "Has just changed status"
     index: "Your Notification"
-    product: "has a comment"
-    order: "status"
-    status: "has just"
+    product: "Has a comment"
+    order: "Status"
+    status: "Has just"
     read_all: "Mark all as read"
   order_statistics:
     id: "ID"
@@ -496,8 +496,8 @@ en:
     quantity: "Quantity"
     price: "Price"
     detail: "Detail"
-    accept: "accept"
-    reject: "reject"
+    accept: "Accept"
+    reject: "Reject"
     back: "Back"
     done: "Done"
     step1: "Step 1: Check Order"

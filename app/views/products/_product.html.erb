@@ -29,7 +29,7 @@
         <div>
           <strong><%= link_to product.shop_name, product.shop %></strong>
         </div>
-        <div class="product_text">
+        <div class="product_text height-50">
           <strong><%= product.name %></strong>
         </div>
         <div class="product_text">
@@ -38,12 +38,12 @@
       </div>
     </div>
     <div class="interaction_area">
-         <%= link_to cart_path(product.id), remote: true,
-          method: :put, class: "btn btn_add_to_cart btn-add",
+      <%= link_to cart_path(product.id), remote: true,
+        method: :put, class: "btn btn_add_to_cart btn-add",
           disabled: Time.now.is_between_short_time?(product.start_hour, product.end_hour) do %>
-            <span class="glyphicon glyphicon-shopping-cart"></span>
-            <%= t "cart.add_to_card" %>
-          <% end %>
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        <%= t "cart.add_to_card" %>
+      <% end %>
       <%= link_to product, class: "btn btn-default btn_add_favorite" do %>
         <span class="glyphicon glyphicon-eye-open"></span>
         <%= t "common.view_button" %>

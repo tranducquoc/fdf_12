@@ -15,19 +15,36 @@ $(document).ready(function() {
           "<button class='list btn btn-primary btn-action btnPrev step1'"+
           "id='tab-2' href='#step1' data-toggle='tab'>Back</button>"+
           "<a class='list btn btn-success btn-action pull-right'"+
-          "href='/dashboard/shops/1/order_products'>Done</a></div></div></div>"+
+          "href='/dashboard/shops/" + shopId +
+          "/order_products'>Done</a></div></div></div>"+
           "<table class='table table-bordered' <thead><tr> <th>ID" +
-          "</th> <th>Productname</th> <th>Quantity</th> <th>Price</th></tr>" +
+          "</th> <th>Productname</th> <th>Quantity</th> <th>Price (VND)</th></tr>" +
           "</thead> <tbody>";
+        var total = 0, price = 0;
         for (var i = 0; i < data.length; i++) {
+          total += parseFloat(data[i].price)
+          price = parseFloat(data[i].price).toFixed(2).replace(/./g, function(c, i, a) {
+            return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+          })
           var row = "<tr><td>" + data[i].id + " </td> <td> <a href=" +
             "/dashboard/shops/" + shopId + "/products/" + data[i].product_id +
             "?order_product_id="+
             data[i].id+">" + data[i].name  + "</a></td><td>" + data[i].quantity
             + "</td><td>" +
-            data[i].price +"</td></tr>"
+            price +"</td></tr>"
           content += row;
         }
+        total = total.toFixed(2).replace(/./g, function(c, i, a) {
+          return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+        })
+        var total2 = "Total: " + total.toString() + " VND";
+        var row = "<tr><td>" + "" + " </td> <td> <a href=" +
+          "/dashboard/shops/" + "" + "/products/" + "" +
+          "?order_product_id="+
+          ""+">" + ""  + "</a></td><td>" + ""
+          + "</td><td><strong class='tdtd'>" +
+          total2 +"</strong></td></tr>"
+        content += row;
         content += '</tbody></table>'
         $('#step2').html(content);
       },

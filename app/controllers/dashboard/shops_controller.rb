@@ -41,12 +41,18 @@ class Dashboard::ShopsController < BaseDashboardController
   end
 
   def update
-    if @shop.update_attributes shop_params
-      flash[:success] = t "flash.success.dashboard.updated_shop"
-      redirect_to dashboard_shop_path(@shop)
+    # binding.pry
+    if !params[:shop].present?
+      flash[:danger] = t "choose_picture"
+      redirect_to dashboard_shop_path
     else
-      flash[:danger] = t "flash.danger.dashboard.updated_shop"
-      render :edit
+      if @shop.update_attributes shop_params
+        flash[:success] = t "flash.success.dashboard.updated_shop"
+        redirect_to dashboard_shop_path(@shop)
+      else
+        flash[:danger] = t "flash.danger.dashboard.updated_shop"
+        render :edit
+      end
     end
   end
 

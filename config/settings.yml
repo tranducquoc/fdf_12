@@ -12,7 +12,7 @@ pictures:
 mailer:
   default_mail: "no-reply@fdf-12.herokuapp.com"
 index:
-  max_shops: 4
+  max_shops: 6
   max_products: 8
 comment:
   num_posts: 2
@@ -37,3 +37,5 @@ filter_status_order:
   done: "done"
   rejected: "rejected"
   all: "all"
+check_order: 2
+start_count_order: 0

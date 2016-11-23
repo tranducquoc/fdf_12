@@ -9,6 +9,8 @@ class Order < ApplicationRecord
   has_many :products, through: :order_products
   has_many :events , as: :eventable
 
+  validates :shop, presence: true
+
   enum status: {pending: 0, accepted: 1, rejected: 2, done: 3}
   delegate :name, to: :shop, prefix: :shop
   delegate :name, to: :user, prefix: :user, allow_nil: true
@@ -109,8 +111,10 @@ class Order < ApplicationRecord
   end
 
   def send_notification
+    if self.products.size != Settings.count_tag
     Event.create message: "new",
       user_id: self.shop.owner_id, eventable_id: shop.id, eventable_type: Order.name
+    end
   end
 
   def send_done_notification
@@ -139,6 +143,6 @@ class Order < ApplicationRecord
   end
 
   def time_auto_reject_order
-    shop.time_auto_reject.hour * Settings.minute_constant + shop.time_auto_reject.min
+    self.shop.time_auto_reject.hour * Settings.minute_constant + self.shop.time_auto_reject.min
   end
 end

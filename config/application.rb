@@ -25,6 +25,6 @@ module Fdf12
     config.autoload_paths << Rails.root.join("lib/statistics")
     config.active_job.queue_adapter = :delayed_job
     config.i18n.default_locale = :vi
-    config.i18n.available_locales = [:vi, :en]
+    config.i18n.available_locales = [:vi, :en, :jp]
   end
 end

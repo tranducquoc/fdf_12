@@ -4,7 +4,7 @@
       <div class="col-md-12">
         <% cart[:items].each do |item| %>
           <div class="col-md-3">
-            <%= image_tag item.product.image.url, class: "image-shop" %>
+            <%= image_tag item.product.image.url, class: "image-shop cart_view" %>
             <h4 class="media-heading margin_top_cart">
               <%= item.product.name %>
             </h4>
@@ -58,6 +58,7 @@
         <% end %>
       </div>
       <div class="row">
+        <hr>
         <div class="pull-right">
           <h3 class="total-cart text-success h3_cart">
             <b><%= t ".total" %>:</b> <%= format_price detail_price cart[:items]%>
@@ -69,7 +70,6 @@
           <% end %>
         </div>
       </div>
-      <hr>
     </div>
   <% end %>
   <% if @cart.blank? %>
@@ -77,4 +77,3 @@
     <%= link_to t("cart.btn_view_product"), products_path, class: "btn btn-primary" %>
   <% end %>
 </div>
-

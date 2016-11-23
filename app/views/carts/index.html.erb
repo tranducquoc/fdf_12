@@ -1,7 +1,12 @@
 <div class="page-content">
-  <div class="container">
-    <div class="row">
-      <%= render "list" %>
+  <% if @cart_group.present? %>
+    <div class="container">
+      <div class="row">
+        <%= render "list" %>
+      </div>
+      <div class="pull-left padding-top-20 margin_cart">
+        <%= link_to t("oder.add-all"), new_cart_path, class: "btn btn-primary for-order-all" %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>

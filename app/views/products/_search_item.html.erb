@@ -9,7 +9,7 @@
         <%= link_to product.name, product %>
       </h3>
       <p class="text-right">
-        <%= number_to_currency product.price %>
+        <%= format_price product.price %>
       </p>
       <p><%= product.description %></p>
       <ul class="list-inline list-unstyled">
@@ -38,5 +38,11 @@
         </li>
       </ul>
     </div>
+    <%= link_to cart_path(product.id), remote: true,
+      method: :put, class: "btn btn_add_to_cart btn-add",
+      disabled: Time.now.is_between_short_time?(product.start_hour, product.end_hour) do %>
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        <%= t "cart.add_to_card" %>
+    <% end %>
   </div>
 </div>

@@ -15,17 +15,16 @@
     <%= f.time_select :time_auto_reject, minute_step: Settings.minute_step %>
   </div>
   <div class="form-group">
-    <%= image_tag @shop.avatar.url, class: "imagewh" %>
     <%= f.label :avatar %>
+    <%= image_tag @shop.avatar.url, class: "avatar padding_top_10px defaut-size" %>
     <%= f.file_field :avatar, accept: Settings.pictures.accepted_files,
       class: "upload_img" %>
-    <%= image_tag @shop.avatar.url, class: "avatar padding_top_10px" %>
   </div>
   <div class="form-group">
     <%= f.label :cover_image %>
+    <%= image_tag @shop.cover_image.url, class: "avatar_cover padding_top_10px defaut-cover-size" %>
     <%= f.file_field :cover_image, accept: Settings.pictures.accepted_files,
       class: "upload_img_cover" %>
-    <%= image_tag @shop.cover_image.url, class: "avatar_cover padding_top_10px" %>
   </div>
   <%= link_to t("common.back_button"), :back, class: "btn btn-warning" %>
   <%= f.submit yield(:submit_button),

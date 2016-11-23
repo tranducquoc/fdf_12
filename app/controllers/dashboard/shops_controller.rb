@@ -41,7 +41,6 @@ class Dashboard::ShopsController < BaseDashboardController
   end
 
   def update
-    # binding.pry
     if !params[:shop].present?
       flash[:danger] = t "choose_picture"
       redirect_to dashboard_shop_path

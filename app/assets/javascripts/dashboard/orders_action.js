@@ -2,7 +2,6 @@ $(document).ready(function() {
   $('#checkbox').on('click', function(){
     $('input:checkbox').not(this).prop('checked', this.checked);
   });
-
   $('.btnNext').on('click', function() {
     var shopId = $('#shop-id').val();
     $.ajax({

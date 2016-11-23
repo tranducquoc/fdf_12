@@ -17,6 +17,14 @@ class Dashboard::OrderManagersController < ApplicationController
       @order_products_reject = @order_products_reject
         .select {|key| key == Time.now.strftime(t "time.formats.short_date")}
     end
+    respond_to do |format|
+      format.html
+      format.xls
+      format.csv do
+        headers["Content-Disposition"] = "attachment; filename=\"orders-list #{Time.now().to_s}\""
+        headers["Content-Type"] ||= "csv"
+      end
+    end
   end
 
   private

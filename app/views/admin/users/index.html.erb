@@ -35,10 +35,13 @@
                   edit_admin_user_path(user), class: "btn btn-primary" %>
                 <%= link_to t("common.delete_button"), admin_user_path(user),
                   method: :delete, class: "btn btn-danger" %>
-                <input type="button"
-                  value="<%= user.active? ? t(".blocked") : t(".active") %>"
-                  class="<%= user.active? ? "btn btn-danger btn_block" :
-                  "btn btn-primary btn_block" %>">
+                <% if user.status == "wait" %>
+                  <%= link_to t(".active"), admin_user_path(user.id, status: "active"), method: :put,
+                    class: "btn btn-primary btn_block" %>
+                <% else %>
+                  <%= link_to t(".wait"), admin_user_path(user.id, status: "wait"), method: :put,
+                    class: "btn btn-danger btn_block" %>
+                <% end %>
               </td>
             </tr>
           <% end %>

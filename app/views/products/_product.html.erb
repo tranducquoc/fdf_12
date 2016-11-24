@@ -38,15 +38,17 @@
       </div>
     </div>
     <div class="interaction_area">
-      <%= link_to cart_path(product.id), remote: true,
-        method: :put, class: "btn btn_add_to_cart btn-add",
-          disabled: Time.now.is_between_short_time?(product.start_hour, product.end_hour) do %>
-        <span class="glyphicon glyphicon-shopping-cart"></span>
-        <%= t "cart.add_to_card" %>
-      <% end %>
-      <%= link_to product, class: "btn btn-default btn_add_favorite" do %>
-        <span class="glyphicon glyphicon-eye-open"></span>
-        <%= t "common.view_button" %>
+      <% if (user_signed_in?) && (current_user.active?) %>
+        <%= link_to cart_path(product.id), remote: true,
+          method: :put, class: "btn btn_add_to_cart btn-add",
+            disabled: Time.now.is_between_short_time?(product.start_hour, product.end_hour) do %>
+          <span class="glyphicon glyphicon-shopping-cart"></span>
+          <%= t "cart.add_to_card" %>
+        <% end %>
+        <%= link_to product, class: "btn btn-default btn_add_favorite" do %>
+          <span class="glyphicon glyphicon-eye-open"></span>
+          <%= t "common.view_button" %>
+        <% end %>
       <% end %>
     </div>
   </div>

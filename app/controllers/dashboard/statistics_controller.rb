@@ -1,4 +1,6 @@
 class Dashboard::StatisticsController < ApplicationController
+  before_action :check_user_status_for_action
+
   def index
     @shops = current_user.shops
     @current_user_shops = current_user.shops.by_shop params[:current_shop_id]

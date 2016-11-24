@@ -32,7 +32,7 @@ vi:
       updated_not_active: Mật khẩu đã được đổi thành công.
     registrations:
       destroyed: Tạm biệt! Tài khoản của bạn đã được xóa. Chúng tôi hy vọng sẽ sớm gặp lại bạn.
-      signed_up: Xin chào! Bạn đã đăng ký thành công.
+      signed_up: Xin chào! Vui lòng chờ admin chấp nhận yêu cầu tạo tài khoản của bạn để mua-bán hàng.
       signed_up_but_inactive: Bạn đã đăng ký thành công. Tuy nhiên, bạn cần phải kích hoạt tài khoản trước khi có thể đăng nhập được.
       signed_up_but_locked: Bạn đã đăng ký thành công. Tuy nhiên tài khoản của bạn đã bị khóa nên không thể đăng nhập được.
       signed_up_but_unconfirmed: Một email chứa đường dẫn xác nhận tài khoản đã được gửi cho bạn. Bạn vui lòng kiểm tra email.

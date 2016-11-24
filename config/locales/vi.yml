@@ -230,8 +230,8 @@ vi:
         avatar: "Ảnh đại diện"
         description: "Mô tả"
         show_avatar: "Hiện ảnh"
-        blocked: "đã khóa"
-        active: "kích hoạt"
+        wait: "Khóa"
+        active: "Kích hoạt"
       edit:
         title: "Chỉnh sửa"
         user: "Thông tin người dùng"

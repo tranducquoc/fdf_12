@@ -24,7 +24,7 @@ class User < ApplicationRecord
   has_many :coupons
   has_many :events
 
-  enum status: {active: 0, blocked: 1}
+  enum status: {wait: 0, active: 1, blocked: 2}
   mount_uploader :avatar, UserAvatarUploader
 
   validates :name, presence: true
@@ -47,7 +47,6 @@ class User < ApplicationRecord
   def should_generate_new_friendly_id?
     slug.blank? || name_changed? || super
   end
-
   private
   def image_size
     max_size = Settings.pictures.max_size

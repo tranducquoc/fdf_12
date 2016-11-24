@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   before_action :load_order, only: [:destroy, :show]
   before_action :load_order_update, only: :update
   before_action :check_before_order, only: :create
+  before_action :check_user_status_for_action
 
   def index
     if params[:start_date].present? && params[:end_date].present?

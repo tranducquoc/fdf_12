@@ -14,7 +14,6 @@ RSpec.describe Category, type: :model do
         subject.name = ""
         is_expected.to_not be_valid
       end
-      
       it "validates uniqueness of name" do
         expect(create(:category)).to validate_uniqueness_of(:name)
       end

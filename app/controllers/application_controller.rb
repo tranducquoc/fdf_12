@@ -63,4 +63,10 @@ class ApplicationController < ActionController::Base
     cart_shop = @cart_group.detect {|shop| shop[:shop_id] == shop_order.id}
     Cart.new cart_shop[:items] if cart_shop.present?
   end
+
+  def check_user_status_for_action
+    if current_user.wait?
+      redirect_to root_path
+    end
+  end
 end

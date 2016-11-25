@@ -197,8 +197,8 @@ en:
         avatar: "Avatar"
         description: "Description"
         show_avatar: "Show avatar"
-        blocked: "blocked"
-        active: "active"
+        wait: "Wait"
+        active: "Actice"
       edit:
         title: "Edit user"
         user: "User's information"

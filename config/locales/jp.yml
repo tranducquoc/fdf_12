@@ -195,7 +195,7 @@ jp:
         avatar: "アバター"
         description: "説明"
         show_avatar: "アバター お表示"
-        blocked: "ロック"
+        wait: "ロック"
         active: "活性化した"
       edit:
         title: "編集"

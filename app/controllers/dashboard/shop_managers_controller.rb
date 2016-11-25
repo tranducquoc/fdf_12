@@ -1,6 +1,7 @@
 class Dashboard::ShopManagersController < BaseDashboardController
   before_action :load_shop
   before_action :load_shop_manager, only: :destroy
+  before_action :check_user_status_for_action
 
   def index
     @managers = @shop.users

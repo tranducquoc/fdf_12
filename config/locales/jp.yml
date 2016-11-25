@@ -5,6 +5,7 @@ jp:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  information: "アカウントがアクティブにされる必要があります"
   download: "ダウンロードしをています: "
   csv: "CSV"
   excel: "Excel"

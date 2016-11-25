@@ -5,6 +5,7 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  information: "You have to be the active user to do anything"
   download: "Download: "
   csv: "CSV"
   excel: "Excel"

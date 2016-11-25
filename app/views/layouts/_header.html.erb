@@ -31,72 +31,70 @@
           <% end %>
         <% end %>
         <ul class="nav navbar-nav navbar-right">
-          <% if (user_signed_in?) && (current_user.active?) %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                role="button" aria-expanded="false">
-                <span class="glyphicon glyphicon-shopping-cart"></span>
-                <span class="items-count"><%= @cart.count %></span>
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu dropdown-cart" role="menu">
-                <%= render "shared/cart" %>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to t("cart.view_cart_all"), carts_path, class: "text-center hightline" %>
-                </li>
-              </ul>
-            </li>
-            <li class="navbar-orders">
-              <%= link_to orders_path do %>
-                <i class="fa fa-list-ol"></i>
-                <span><%= t "common.your_orders" %></span>
-              <% end %>
-            </li>
-            <li class="block-notification-dropdown dropdown event ">
-              <a href="#" id="notifications-dropdown" class="dropdown-toggle"
-                data-toggle="dropdown">
-                <div>
-                  <div class="icon-notification">
-                    <i class="fa fa-bell fa-lg"></i>
-                    <% if user_signed_in? %>
-                      <span class="items-count-noti">
-                        <%= render "events/counter", counter: count_notification_unread %>
-                      </span>
-                    <% end %>
-                  </div>
-                </div>
-              </a>
-              <ul class="dropdown-menu dropdown-noti width_dropdown" role="menu"
-                aria-labelledby="notifications-dropdown">
-                <div class="dropdown-notification">
-                  <li class="header clearfix">
-                    <h4 class="title">
-                      <span><%= t "common.notifications" %></span>
-                    </h4>
-                    <h6><%= link_to t("notification.read_all"), read_all_events_path,
-                      method: :post, remote: true, class: "pull-right read-all" %></h6>
-                  </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+              role="button" aria-expanded="false">
+              <span class="glyphicon glyphicon-shopping-cart"></span>
+              <span class="items-count"><%= @cart.count %></span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-cart" role="menu">
+              <%= render "shared/cart" %>
+              <li class="divider"></li>
+              <li>
+                <%= link_to t("cart.view_cart_all"), carts_path, class: "text-center hightline" %>
+              </li>
+            </ul>
+          </li>
+          <li class="navbar-orders">
+            <%= link_to orders_path do %>
+              <i class="fa fa-list-ol"></i>
+              <span><%= t "common.your_orders" %></span>
+            <% end %>
+          </li>
+          <li class="block-notification-dropdown dropdown event ">
+            <a href="#" id="notifications-dropdown" class="dropdown-toggle"
+              data-toggle="dropdown">
+              <div>
+                <div class="icon-notification">
+                  <i class="fa fa-bell fa-lg"></i>
                   <% if user_signed_in? %>
-                    <div id="events">
-                      <%= render "events/list_events" %>
-                    </div>
-                    <% else %>
-                      <li>
-                        <p class="no-notification">
-                          <span><%= t "common.no_notifications" %></span>
-                        </p>
-                      </li>
+                    <span class="items-count-noti">
+                      <%= render "events/counter", counter: count_notification_unread %>
+                    </span>
                   <% end %>
                 </div>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to t("cart.view_cart_all"),events_path ,
-                    class: "text-center hightline" %>
+              </div>
+            </a>
+            <ul class="dropdown-menu dropdown-noti width_dropdown" role="menu"
+              aria-labelledby="notifications-dropdown">
+              <div class="dropdown-notification">
+                <li class="header clearfix">
+                  <h4 class="title">
+                    <span><%= t "common.notifications" %></span>
+                  </h4>
+                  <h6><%= link_to t("notification.read_all"), read_all_events_path,
+                    method: :post, remote: true, class: "pull-right read-all" %></h6>
                 </li>
-              </ul>
-            </li>
-          <% end %>
+                <% if user_signed_in? %>
+                  <div id="events">
+                    <%= render "events/list_events" %>
+                  </div>
+                  <% else %>
+                    <li>
+                      <p class="no-notification">
+                        <span><%= t "common.no_notifications" %></span>
+                      </p>
+                    </li>
+                <% end %>
+              </div>
+              <li class="divider"></li>
+              <li>
+                <%= link_to t("cart.view_cart_all"),events_path ,
+                  class: "text-center hightline" %>
+              </li>
+            </ul>
+          </li>
           <% if user_signed_in? %>
             <li class="navbar-user dropdown">
               <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
@@ -118,39 +116,37 @@
                     <span><%= t "header.account" %></span>
                   <% end %>
                 </li>
-                <% if (user_signed_in?) && (current_user.active?) %>
-                  <li role="separator" class="divider"></li>
-                  <li role="separator" class="divider"></li>
-                  <li role="presentation" class="">
-                    <%= link_to dashboard_shops_path do %>
-                      <i class="fa fa-flag-o"></i>
-                      <span><%= t "header.shop_manager" %></span>
-                    <% end %>
-                  </li>
-                    <% if current_user.shops.any? %>
-                      <li role="separator" class="divider"></li>
-                      <li role="presentation" class="">
-                        <%= link_to dashboard_path do %>
-                          <i class="fa fa-bar-chart"></i>
-                          <span><%= t "header.shop_statistic" %></span>
-                        <% end %>
-                      </li>
-                    <% end %>
-                  <li role="separator" class="divider"></li>
-                  <li role="presentation" class="">
-                    <a role="menuitem" href="#" tabindex="-1">
-                      <i class="fa fa-ticket"></i>
-                      <span><%= t "header.report_abuse" %></span>
-                    </a>
-                  </li>
-                  <li role="separator" class="divider"></li>
-                  <li role="presentation" class="">
-                    <%= link_to edit_user_registration_path do %>
-                      <i class="fa fa-cog"></i>
-                      <span><%= t "header.settings" %></span>
-                    <% end %>
-                  </li>
-                <% end %>
+                <li role="separator" class="divider"></li>
+                <li role="separator" class="divider"></li>
+                <li role="presentation" class="">
+                  <%= link_to dashboard_shops_path do %>
+                    <i class="fa fa-flag-o"></i>
+                    <span><%= t "header.shop_manager" %></span>
+                  <% end %>
+                </li>
+                  <% if current_user.shops.any? %>
+                    <li role="separator" class="divider"></li>
+                    <li role="presentation" class="">
+                      <%= link_to dashboard_path do %>
+                        <i class="fa fa-bar-chart"></i>
+                        <span><%= t "header.shop_statistic" %></span>
+                      <% end %>
+                    </li>
+                  <% end %>
+                <li role="separator" class="divider"></li>
+                <li role="presentation" class="">
+                  <a role="menuitem" href="#" tabindex="-1">
+                    <i class="fa fa-ticket"></i>
+                    <span><%= t "header.report_abuse" %></span>
+                  </a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li role="presentation" class="">
+                  <%= link_to edit_user_registration_path do %>
+                    <i class="fa fa-cog"></i>
+                    <span><%= t "header.settings" %></span>
+                  <% end %>
+                </li>
                 <li role="presentation" class="">
                   <%= link_to destroy_user_session_path, method: :delete do %>
                     <i class="fa fa-sign-out"></i>

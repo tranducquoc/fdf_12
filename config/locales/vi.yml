@@ -41,6 +41,7 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  information: "Bạn cần được kích hoạt tài khoản trước khi làm bất cứ điều gì"
   csv: "CSV"
   excel: "Excel"
   download: "Tải về: "

@@ -1,7 +1,8 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!, except: [:update, :index]
   before_action :load_product, only: :update
   before_action :check_before_order, only: :new
-  before_action :check_user_status_for_action
+  before_action :check_user_status_for_action, except: [:update, :index]
 
   def index
     if @cart.blank?

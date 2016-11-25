@@ -524,5 +524,6 @@ jp:
     done: "達成"
   order_day: "デイ注文"
   language: "語: "
-  english: "英語"
-  vietnam: "ベトナム語"
+  english: "English"
+  vietnam: "Tiếng Việt"
+  Janpanese: "日本語"

@@ -46,6 +46,11 @@
         <div class="panel-group">
           <% if @order_products_done.present? %>
             <%= render "order_product", order_products: @order_products_done %>
+            <p>
+              <%= t("download") %>
+              <%= link_to t("csv"), dashboard_shop_order_managers_path(@shop.id, format: "csv") %> |
+              <%= link_to t("excel"), dashboard_shop_order_managers_path(@shop.id, format: "xls") %>
+            </p>
           <% else %>
             <span class="text-danger"><%= t ".not_products" %></span>
           <% end %>

@@ -5,6 +5,9 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  download: "Download: "
+  csv: "CSV"
+  excel: "Excel"
   description: "Description"
   shop_name: "Shop name: "
   cancel: "Cancel"
@@ -438,7 +441,7 @@ en:
   oder:
     success: "Order successfully !"
     btn_oder: "Order this cart"
-    id: "id"
+    id: "ID"
     category: "Category"
     name: "Name"
     image: "Image"

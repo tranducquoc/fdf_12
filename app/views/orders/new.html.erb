@@ -6,8 +6,9 @@
         <div class="pull-left">
           <div class="col-md-4">
             <%= simple_form_for @order do |f| %>
+              <%= link_to t("order_statistics.back"), carts_path, class: "btn btn-primary defaut-position" %>
               <%= f.submit t("create_order"), data: {confirm: t("confirm")},
-                class: "btn btn-primary margin_order" %>
+                class: "btn btn-danger margin_order" %>
               <%= hidden_field_tag :shop_id, @shop.id %>
             <% end %>
           </div>

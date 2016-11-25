@@ -11,6 +11,6 @@ $(document).ready(function() {
     }
   }
   $(".upload_img_cover").change(function(){
-    readURL(this, "avatar_cover");
+    load_img(this, "avatar_cover");
   });
 });

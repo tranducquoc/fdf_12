@@ -16,15 +16,21 @@
           <Cell><Data ss:Type="String"><%= t "oder.quantity" %></Data></Cell>
           <Cell><Data ss:Type="String"><%= t "oder.price" %></Data></Cell>
         </Row>
-      <% order = hash_orders.last %>
-      <% order.each_with_index do |order_product, index| %>
+        <% order = hash_orders.last %>
+        <% total = 0 %>
+        <% order.each_with_index do |order_product, index| %>
+          <Row>
+            <Cell><Data ss:Type="Number"><%= increase_one index %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= order_product.name %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= order_product.quantity %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= format_price order_product.price %></Data></Cell>
+          </Row>
+          <% total += order_product.price %>
+        <% end %>
         <Row>
-          <Cell><Data ss:Type="Number"><%= increase_one index %></Data></Cell>
-          <Cell><Data ss:Type="String"><%= order_product.name %></Data></Cell>
-          <Cell><Data ss:Type="Number"><%= order_product.quantity %></Data></Cell>
-          <Cell><Data ss:Type="Number"><%= format_price order_product.price * order_product.quantity %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= t "oder.total" %></Data></Cell>
+          <Cell><Data ss:Type="Number"><%= total %></Data></Cell>
         </Row>
-      <% end %>
       </Table>
     <% end %>
   </Worksheet>

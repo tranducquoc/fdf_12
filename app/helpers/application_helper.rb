@@ -62,4 +62,8 @@ module ApplicationHelper
     end
     @cart_price
   end
+
+  def selected_lang
+    session[:locale]
+  end
 end

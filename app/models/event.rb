@@ -13,24 +13,34 @@ class Event < ApplicationRecord
     case eventable_type
     when Shop.name
       "#{eventable.name} #{eventable_type} #{I18n.t "notification.shop"}
-        :#{message.upcase},\n #{time_ago_in_words(created_at)}
-        #{I18n.t "notification.ago"}"
+        :#{message.upcase}"
     when Product.name
       "#{eventable.name} #{eventable_type} #{I18n.t "notification.product"}
-        :#{message.upcase} \n #{time_ago_in_words(created_at)}
-        #{I18n.t "notification.ago"}"
+        :#{message.upcase}"
     when Order.name
       "#{I18n.t "order"} #{I18n.t "notification.order"}
-        :#{message.upcase} \n #{time_ago_in_words(created_at)}
-        #{I18n.t "notification.ago"}"
+        :#{message.upcase}"
     when OrderProduct.name
       "#{I18n.t "order_product"} #{I18n.t "notification.status"}
-        :#{message.upcase} \n #{time_ago_in_words(created_at)}
-        #{I18n.t "notification.ago"}"
+        :#{message.upcase}"
     when User.name
       "#{I18n.t "shop_accept"} #{I18n.t "notification.order"}
-        :#{message.upcase} \n #{time_ago_in_words(created_at)}
-        #{I18n.t "notification.ago"}"
+        :#{message.upcase}"
+    end
+  end
+
+  def load_message_time
+    case eventable_type
+    when Shop.name
+      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
+    when Product.name
+      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
+    when Order.name
+      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
+    when OrderProduct.name
+      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
+    when User.name
+      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
     end
   end
 
@@ -40,6 +50,12 @@ class Event < ApplicationRecord
       eventable.avatar.url
     when Product.name
       eventable.image.url
+    when Order.name
+      Settings.image_url.cart
+    when OrderProduct.name
+      "#{message}.png"
+    when User.name
+      Settings.image_url.systemdone
     end
   end
 

@@ -1,13 +1,13 @@
 <div class="cart-item scrollable-menu">
   <% @cart.items.each do |item| %>
-    <li id="item-<%= item.product_id %>">
+    <li id="item-<%= item.product_id %>", class="cart-item-default">
       <span class="item">
         <span class="item-left product-thumbnail">
           <%= image_tag item.product.image.url %>
-          <%= item.product.name %>
+          <strong><%= item.product.name %></strong>
         </span>
         <span class="item-left item-infor">
-          <table class="table">
+          <table class="table min-size">
             <thead>
               <tr>
                 <th><%= t "cart.quantity" %></th>
@@ -19,19 +19,19 @@
               <tr>
                 <td><span><%= item.quantity %></span></td>
                 <td><span><%= format_price item.total_price %></span></td>
-                <td class="pull-right">
+                <td>
                   <%= link_to cart_path(item.product_id),
-                    method: :delete, remote: true, class: "pull-right" do %>
+                    method: :delete, remote: true do %>
                     <span class="glyphicon glyphicon-trash text-danger
                       action-padding"></span>
                   <% end %>
                   <%= link_to edit_cart_path(item.product_id),
-                    remote: true, class: "pull-right" do %>
+                    remote: true do %>
                     <span class="glyphicon glyphicon-minus-sign
                       text-primary action-padding"></span>
                   <% end %>
                   <%= link_to cart_path(item.product_id), remote: true,
-                    method: :put, class: "pull-right" do %>
+                    method: :put do %>
                     <span class="glyphicon glyphicon-plus-sign text-success
                       action-padding"></span>
                   <% end %>

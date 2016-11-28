@@ -13,4 +13,8 @@ $(document).ready(function() {
   $(".upload_img_cover").change(function(){
     load_img(this, "avatar_cover");
   });
+
+  $(".change-picture").change(function(){
+    load_img(this, "avatar");
+  });
 });

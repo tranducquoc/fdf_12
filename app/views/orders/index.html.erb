@@ -4,7 +4,7 @@
       <%= form_tag orders_path, method: :get do |f| %>
         <div class="col-md-1 margin my-margin">
           <span class="label-span">
-            <%= t ".start_date" %>
+            <%= t("start") %>
           </span>
         </div>
         <div class="col-md-2">
@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-1 margin my-margin">
           <span class="label-span">
-          <%= t ".end_date" %>
+            <%= t("end") %>
           </span>
         </div>
         <div class="col-md-2">
@@ -22,11 +22,10 @@
             class: "form-control datepicker2",
             placeholder: t("time.formats.date_format") %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 margin5">
           <% Settings.filter_status_order.each do |key, value| %>
             <%= label_tag value, class: "radio-inline" do %>
-              <%= radio_button_tag :status, value,
-                checked = params[:status] == value || params[:status].blank? %>
+              <%= radio_button_tag :status, value, params[:status].blank? %>
               <%= value.titleize %>
             <% end %>
           <% end %>

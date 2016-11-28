@@ -10,10 +10,10 @@ class Dashboard::ShopsController < BaseDashboardController
   def create
     @shop = current_user.own_shops.build shop_params
     if @shop.save
-      flash[:success] = t "flash.success.dashboard.created_shop"
-      redirect_to shops_path
+      flash[:success] = t "flash.success.dashboard.updated_shop"
+      redirect_to dashboard_shops_path
     else
-      flash[:danger] = t "flash.danger.dashboard.created_shop"
+      flash[:danger] = t "flash.danger.dashboard.updated_shop"
       render :new
     end
   end

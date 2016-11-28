@@ -116,6 +116,12 @@ $(document).ready(function() {
           $(klass).text(action);
           var currentClass = $(klass).attr('class').split(' ')[1];
           $(klass).removeClass(currentClass).addClass(classes[actions.indexOf(action)]);
+          if (action == 'rejected') {
+            $('.step2-new').hide();
+          }
+          else{
+            $('.step2-new').show();
+          }
         },
         error: function(error_message) {
           alert('error ' + error_message);

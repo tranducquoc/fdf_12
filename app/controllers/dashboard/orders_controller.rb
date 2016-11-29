@@ -4,6 +4,7 @@ class Dashboard::OrdersController < BaseDashboardController
 
   def index
     @order = Order.new
+    @order_all_reject = @shop.orders.is_rejected.on_today
     if @shop
       @q = @shop.orders.includes(:user).ransack params[:q]
       @orders = @q.result.includes(:order_products).unfinished.on_today

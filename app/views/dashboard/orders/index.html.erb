@@ -30,10 +30,14 @@
             <button class="list btn btn-danger btn-action button" value="rejected">
               <%= t "order_statistics.reject"%>
             </button>
-            <button class="list btn btn-success pull-right btnNext step2"
-              id="tab-1" href="#step2" data-toggle="tab">
-              <%= t "order_statistics.continue"%>
-            </button>
+            <% if @order_all_reject.any? %>
+              <button class="list btn btn-success pull-right btnNext step2 step2-new"
+                id="tab-1" href="#step2" data-toggle="tab">
+                <%= t "order_statistics.continue" %>
+              </button>
+            <% else %>
+              <p></p>
+            <% end %>
           </div>
         </div>
       </div>

@@ -24,6 +24,7 @@ class Order < ApplicationRecord
   scope :by_date_newest, ->{order created_at: :desc}
   scope :unfinished, ->{where.not status: Order.statuses[:done]}
   scope :on_today, ->{where "date(orders.created_at) = date(now())"}
+  scope :is_rejected, -> {where.not status: Order.statuses[:rejected]}
 
   ransacker :created_at do
     Arel.sql("date(created_at)")

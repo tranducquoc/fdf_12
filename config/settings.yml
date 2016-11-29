@@ -1,5 +1,5 @@
 common:
-  per_page: 5
+  per_page: 6
   products_per_page: 12
 orders:
   status: {open: "open", deliver: "deliver", close: "close"}
@@ -43,3 +43,6 @@ languages:
   vietnamese: {name: "TiengViet", image: "vi.png", type: "vi"}
   english: {name: "English", image: "en.png", type: "en"}
   japanese: {name: "日本語", image: "ja.png", type: "jp"}
+image_url:
+  cart: "cart.png"
+  systemdone: "systemaccepted.jpg"

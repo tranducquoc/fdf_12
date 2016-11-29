@@ -38,7 +38,7 @@
               <span class="items-count"><%= @cart.count %></span>
               <span class="caret"></span>
             </a>
-            <ul class="dropdown-menu dropdown-cart" role="menu">
+            <ul class="dropdown-menu min-width-cart" role="menu">
               <%= render "shared/cart" %>
               <li class="divider"></li>
               <li>
@@ -66,7 +66,7 @@
                 </div>
               </div>
             </a>
-            <ul class="dropdown-menu dropdown-noti width_dropdown" role="menu"
+            <ul class="dropdown-menu dropdown-noti width_dropdown for-notifi" role="menu"
               aria-labelledby="notifications-dropdown">
               <div class="dropdown-notification">
                 <li class="header clearfix">
@@ -193,25 +193,22 @@
               <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
                 class="dropdown-toggle user-avatar" role="button">
                 <%= image_tag Settings.languages.vietnamese.image, class: "image-flag" %>
-                <%= Settings.languages.vietnamese.name %>
                 <b class="caret"></b>
               </a>
             <% elsif selected_lang.to_s == Settings.languages.japanese.type %>
               <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
                 class="dropdown-toggle user-avatar" role="button">
                 <%= image_tag Settings.languages.japanese.image, class: "image-flag" %>
-                <%= Settings.languages.japanese.name %>
                 <b class="caret"></b>
               </a>
             <% else %>
               <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
                 class="dropdown-toggle user-avatar" role="button">
                 <%= image_tag Settings.languages.english.image, class: "image-flag" %>
-                <%= Settings.languages.english.name %>
                 <b class="caret"></b>
               </a>
             <% end %>
-            <ul class="dropdown-menu languages" role="menu"
+            <ul class="dropdown-menu languages select-default" role="menu"
               aria-labelledby="basic-nav-dropdown">
               <% Settings.languages.each do|key, value| %>
                 <li role="presentation" class="" data-lang="<%= value.type %>">

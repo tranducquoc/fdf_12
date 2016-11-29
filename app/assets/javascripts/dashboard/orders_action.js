@@ -25,7 +25,8 @@ $(document).ready(function() {
           price = parseFloat(data[i].price).toFixed(2).replace(/./g, function(c, i, a) {
             return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
           })
-          var row = "<tr><td>" + data[i].id + " </td> <td> <a href=" +
+          var index = i + 1;
+          var row = "<tr><td>" + index + " </td> <td> <a href=" +
             "/dashboard/shops/" + shopId + "/products/" + data[i].product_id +
             "?order_product_id="+
             data[i].id+">" + data[i].name  + "</a></td><td>" + data[i].quantity

@@ -15,6 +15,49 @@
       </div>
       <%= yield %>
     </div>
-    <%= render "layouts/footer" %>
+    <div class="row margin-to">
+      <div class="col-sm-4 text-default margin-duong">
+        <h2 class="com-name"><%= t("company") %></h2>
+        <h5><strong class="text-default">
+          <%= link_to t("home"), root_path %>
+        </strong></h5>
+        <h5 class="text-default"><%= t "com-infor" %></h5>
+      </div>
+      <div class="col-sm-4 margin-am">
+        <h5><table class="text-default">
+          <tr>
+            <td>
+              <i class="fa fa-map-marker fa-2x default-icon"></i>
+            </td>
+            <td>
+              <%= t "com-add" %>
+            </td>
+          </tr>
+        </table></h5>
+        <h5><table class="text-default">
+          <tr>
+            <td><i class="fa fa-phone fa-2x default-icon"></i><%= t("phone-num") %></td>
+          </tr>
+        </table></h5>
+        <h5><table class="text-default">
+          <tr>
+            <td>
+              <i class="fa fa-envelope default-icon" aria-hidden="true"></i>
+            </td>
+            <td class="co-blue">
+              <strong><%= t "com-email" %></strong>
+            </td>
+          </tr>
+        </table></h5>
+      </div>
+      <div class="col-sm-4 margin-am">
+        <h5><strong class="text-default">
+          <%= t "about_label" %>
+        </strong></h5>
+        <p class="text-small">
+          <%= t "com-detail" %>
+        </p>
+      </div>
+    </div>
   </body>
 </html>

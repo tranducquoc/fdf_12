@@ -236,8 +236,6 @@ $orange_main: #ff5722;
     }
 
     .product_content_area {
-      border-bottom: 1px solid #d2d2d2;
-
       .book_cover {
         width: 100%;
         height: auto;
@@ -375,7 +373,6 @@ $orange_main: #ff5722;
 
 .padding-10 {
   padding: 10px;
-  border: 1px solid #ddd;
 }
 
 .margin-top-5-bot-5 {
@@ -418,6 +415,10 @@ $orange_main: #ff5722;
   height: 420px !important;
 }
 
+.width-1140 {
+  width: 1140px !important;
+}
+
 .defaut-cover-size {
   width: 508px !important;
   height: 220px !important;
@@ -434,4 +435,76 @@ $orange_main: #ff5722;
 .defaut-top {
   margin-top: -23px !important;
   margin-left: 16px;
+}
+ .select-language {
+  margin-top: 13px !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.item-select {
+  background: url(big-star.png);
+}
+
+.for-notifi {
+  width: 303px !important;
+}
+
+.avatar-show-user {
+  width: 251px;
+  height: 225px;
+}
+
+.min-size {
+  margin-bottom: -15px
+}
+
+.min-width-cart {
+  width: 344px !important;
+}
+
+.margin-to {
+  margin-top: 580px;
+  background: url(header_bg.png) #a99f9f;
+  height: 200px;
+}
+
+.text-default {
+  font-size: 18px;
+}
+
+text-small {
+  font-size: 18px;
+}
+
+.com-name {
+  color: #ec5405;
+  margin-top: 1px;
+}
+
+.default-icon {
+  margin-right: 7px;
+}
+
+.margin-am {
+  margin-left: -13px;
+  margin-top: 43px;
+}
+
+.margin-duong {
+  margin-left: 26px;
+  margin-top: 43px;
+}
+
+.co-blue {
+  color: blue;
+}
+
+.height-full {
+  height: 600px;
+}
+
+.image-home {
+  width: 47.91px !important;
+  height: 40px !important;
 }

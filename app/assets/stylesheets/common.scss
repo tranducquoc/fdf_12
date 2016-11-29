@@ -7,9 +7,18 @@
 
 .magin {
   margin-top: 10px;
-  margin-left: 60px;
+  margin-left: -3px;
 }
 
+.max-width {
+  width: 1288px !important;
+}
+
+.div-item {
+  width: 380px !important;
+  margin-right: 19px !important;
+  border: 1px solid #ddd;
+}
 .common {
   .title {
     font-family: 'Open Sans', sans-serif;

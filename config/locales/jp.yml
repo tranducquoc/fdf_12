@@ -5,6 +5,22 @@ jp:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  com-infor: "Copyright 2016 Framgia, Inc. All rights reserved."
+  com-email: "hr_team@framgia.com"
+  company: "Framgia Vietnam"
+  phone-num: "84-4-3795-5417"
+  home: "ホームページ"
+  blog: "ブログ"
+  about: "詳しい"
+  faq: "Faq"
+  contact: "通信"
+  com-add: "13フロアのKeangnam, E6の小包, Pham Hung 砂糖,Tu Liem Nam, Ha Noi, Viet Nam"
+  com-detail: "ベトナムのFramgiaは日本では100％を投資されています. 電話アプリケーション、
+    ゲーム、ソーシャルアプリケーションやWebベースのアプリケーションを構築に特化."
+  about_label: "会社情報"
+  home: "ホーム"
+  start: "から"
+  end: "まで"
   information: "アカウントがアクティブにされる必要があります"
   download: "ダウンロードしをています: "
   csv: "CSV"
@@ -277,15 +293,15 @@ jp:
   dashboard:
     order_managers:
       index:
-        start_date: "開始日"
-        end_date: "完了日"
+        start_date: から"
+        end_date: "まで"
     statistics:
       index:
         tittle: "統計注文"
       search_between:
         btn_search: "サーチ"
-        start_date: "開始日"
-        end_date: "完了日"
+        start_date: "から"
+        end_date: "まで"
       search_current:
         btn_search: "サーチ"
       shop:

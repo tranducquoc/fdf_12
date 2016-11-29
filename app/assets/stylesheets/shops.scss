@@ -232,8 +232,6 @@ $orange_main: #ff5722;
     }
 
     .product_content_area {
-      border-bottom: 1px solid #d2d2d2;
-
       .book_cover {
         width: 100%;
         height: auto;
@@ -462,8 +460,7 @@ a {
 }
 
 .slide_bottom {
-  width: 96% !important;
-  left: 18px !important;
+  width: 100% !important;
 }
 
 .padding_product {
@@ -507,4 +504,65 @@ a {
 .img-200 {
   width: 245px !important;
   height: 200px !important
+}
+
+.block-shop-feed-item2 {
+  .thumbnail {
+    border-radius: 2px;
+    padding: 4px;
+
+  }
+
+  .content {
+    h3 {
+      margin-top: 10px;
+      margin-bottom: 3px;
+      display: table;
+
+      a {
+        color: #66757f;
+      }
+    }
+
+    .category {
+      .nav {
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+      }
+
+      ul li {
+        float: left;
+
+        a {
+          padding: 2px 8px;
+          margin-right: 5px;
+          color: #66757f;
+          background-color: #eff1f5;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+}
+.image-shop-show {
+  width: 109px;
+  height: 117px !important;
+}
+
+.padding-l {
+  padding-left: 1px !important;
+}
+
+.time-output {
+  position: absolute;
+  text-align: center;
+  margin-left: 4px;
+  margin-top: 90px;
+  color: #0a0a0a;
+  background-color: rgba(255, 138, 102, 0.62);
+}
+
+.margin5 {
+  margin-top: 5px;
 }

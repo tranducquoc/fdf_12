@@ -88,7 +88,7 @@
       <div class="carousel-inner" role="listbox">
         <% @shops.each_with_index do |shop, index| %>
           <div class="<%= index == 0 ? 'item active' : 'item' %>">
-            <%= image_tag shop.cover_image.url, alt: shop.name %>
+            <%= image_tag shop.cover_image.url, alt: shop.name, class: "defaut-pic-cover" %>
             <div class="carousel-caption slide_bottom">
               <h3><%= shop.name %></h3>
               <p><%= shop.description %></p>

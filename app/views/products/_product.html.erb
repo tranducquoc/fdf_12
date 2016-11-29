@@ -20,7 +20,7 @@
             <% if product.shop_avatar.nil? %>
               <%= image_tag "default_shop_avatar" %>
             <% else %>
-              <%= image_tag product.shop_avatar.url %>
+              <%= image_tag product.shop_avatar.url, class:"image-home" %>
             <% end %>
           </span>
         <% end %>

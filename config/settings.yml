@@ -39,3 +39,7 @@ filter_status_order:
   all: "all"
 check_order: 2
 start_count_order: 0
+languages:
+  vietnamese: {name: "TiengViet", image: "vi.png", type: "vi"}
+  english: {name: "English", image: "en.png", type: "en"}
+  japanese: {name: "日本語", image: "ja.png", type: "jp"}

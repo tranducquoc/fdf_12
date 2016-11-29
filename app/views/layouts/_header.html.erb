@@ -188,6 +188,39 @@
               </ul>
             </li>
           <% end %>
+          <li class="navbar-user dropdown">
+            <% if selected_lang.to_s == Settings.languages.vietnamese.type %>
+              <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
+                class="dropdown-toggle user-avatar" role="button">
+                <%= image_tag Settings.languages.vietnamese.image, class: "image-flag" %>
+                <%= Settings.languages.vietnamese.name %>
+                <b class="caret"></b>
+              </a>
+            <% elsif selected_lang.to_s == Settings.languages.japanese.type %>
+              <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
+                class="dropdown-toggle user-avatar" role="button">
+                <%= image_tag Settings.languages.japanese.image, class: "image-flag" %>
+                <%= Settings.languages.japanese.name %>
+                <b class="caret"></b>
+              </a>
+            <% else %>
+              <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
+                class="dropdown-toggle user-avatar" role="button">
+                <%= image_tag Settings.languages.english.image, class: "image-flag" %>
+                <%= Settings.languages.english.name %>
+                <b class="caret"></b>
+              </a>
+            <% end %>
+            <ul class="dropdown-menu languages" role="menu"
+              aria-labelledby="basic-nav-dropdown">
+              <% Settings.languages.each do|key, value| %>
+                <li role="presentation" class="" data-lang="<%= value.type %>">
+                <%= image_tag value.image, class: "image-flag" %>
+                <p><%= value.name %></p> </li>
+                <div class="clearfix"></div>
+              <% end %>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>

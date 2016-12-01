@@ -133,6 +133,7 @@ en:
         created_shop: "Requested creating shop successfully!"
         updated_user: "Update user's information successfully!"
         deleted_user: "Delete user successfully!"
+        created_user: "Created user successfully!"
       dashboard:
         create_product: "Created product successfully!"
         edit_product: "Edit product successfully!"
@@ -149,6 +150,7 @@ en:
         created_shop: "Requested creating shop failed!"
         updated_user: "Update user's information failed!"
         deleted_user: "Delete user failed!"
+        existing_users_shops: "Current users are contained shops"
       load_shop: "Cannot find shop!"
       dashboard:
         create_product: "Created product failed!"
@@ -222,6 +224,8 @@ en:
         user: "User's information"
       form:
         show_avatar: "Hover me to show avatar"
+      new:
+        created_user: "Create"
     shops:
       index:
         title: "All Shops"

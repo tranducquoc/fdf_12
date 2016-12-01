@@ -41,6 +41,9 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  sent_order: "Gửi đơn hàng thành công"
+  price_message: "Tổng giá đơn hàng của bạn: "
+  all: "Tất cả: "
   com-infor: "Copyright 2016 Framgia, Inc. All rights reserved."
   com-email: "hr_team@framgia.com"
   company: "Framgia Vietnam"
@@ -92,7 +95,7 @@ vi:
   google_oauth2: "Google"
   add_order: "Thêm đơn hàng"
   accept_all: "Xác nhận tất cả"
-  create_order: "Tạo đơn hàng mới"
+  create_order: "Gửi đi"
   common:
     base_title: "Framgia Food And Drink Order"
     admin_title: "Quản trị"

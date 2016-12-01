@@ -7,6 +7,11 @@
       <div class="pull-left padding-top-20 margin_cart">
         <%= link_to t("oder.add-all"), new_cart_path, class: "btn btn-primary for-order-all defaut-btn" %>
       </div>
+      <div class="pull-right">
+        <h3 class="total_pay">
+          <b><%= t "all" %></b> <%= format_price @cart_group_price%>
+        </h3>
+      </div>
     </div>
   <% end %>
 </div>

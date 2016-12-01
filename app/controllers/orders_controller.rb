@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
         .per Settings.common.per_page
     end
     params[:status] ||= Settings.filter_status_order.all
-    @orders = current_user.orders.send params[:status]
+    @orders = @orders.send params[:status]
     @order_days = @orders.group_by{|t| t.created_at.beginning_of_day}
   end
 

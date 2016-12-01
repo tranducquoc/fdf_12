@@ -51,7 +51,7 @@ class Event < ApplicationRecord
     when Product.name
       eventable.image.url
     when Order.name
-      Settings.image_url.cart
+      "#{message}.png"
     when OrderProduct.name
       "#{message}.png"
     when User.name
@@ -66,7 +66,11 @@ class Event < ApplicationRecord
     when Product.name
       "/products/#{eventable_id}"
     when Order.name
-      "/dashboard/shops/#{eventable_id}/orders"
+      if message == Settings.notification_new
+        "/dashboard/shops/#{eventable_id}/orders"
+      else
+        "/orders"
+      end
     when OrderProduct.name
       "/orders"
     when User.name

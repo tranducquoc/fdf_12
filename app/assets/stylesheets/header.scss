@@ -267,5 +267,9 @@ $orange_main: #ff5722;
 }
 
 .select-default {
-  width: 50px !important;
+  min-width: 100px !important;
+}
+.select-default::before {
+  top: -6px !important;
+  right: 0px !important;
 }

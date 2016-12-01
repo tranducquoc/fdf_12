@@ -1,4 +1,5 @@
 <div class="fade in well">
+  <h3><%= t "price_message" %><%= format_price @cart_group_price %></h3>
   <% if @count_exit_order == Settings.count_tag %>
     <h3><%= @all_order_deleted %></h3>
   <% else %>

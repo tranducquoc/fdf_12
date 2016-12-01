@@ -46,3 +46,4 @@ languages:
 image_url:
   cart: "cart.png"
   systemdone: "systemaccepted.jpg"
+notification_new: "new"

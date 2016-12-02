@@ -170,6 +170,7 @@ vi:
         created_shop: "Yêu cầu tạo cửa hàng thành công!"
         updated_user: "Cập nhật thành công!"
         deleted_user: "Đã xóa người dùng!"
+        created_user: "Thêm thành công !"
       dashboard:
         create_product: "Sản phẩm đã được thêm!"
         edit_product: "Sản phẩm cập nhật thành công!"
@@ -186,6 +187,7 @@ vi:
         created_shop: "Yêu cầu tạo cửa hàng thất bại!"
         updated_user: "Cập nhật thất bại!"
         deleted_user: "Xóa không thành công!"
+        existing_users_shops: "Người dùng bạn xóa hiện tại đang chứa shops"
       load_shop: "Không tìm thấy cửa hàng!"
       dashboard:
         create_product: "Tạo mới thất bại. Vui lòng thử lại!"

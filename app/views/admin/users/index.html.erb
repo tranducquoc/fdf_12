@@ -1,5 +1,7 @@
 <% provide :title, t(".title") %>
 <div class="row">
+  <%= link_to t("common.create"), new_admin_user_path,
+    class: "btn btn-block btn-success btn-sm btn-create-user" %>
   <div class="col-md-12">
     <div class="panel panel-success">
       <table class="table table-striped table-hover table-bordered">
@@ -32,8 +34,8 @@
               <td>
                 <input type="hidden" value="<%= user.id %>" class="user_id">
                 <%= link_to t("common.edit_button"),
-                  edit_admin_user_path(user), class: "btn btn-primary" %>
-                <%= link_to t("common.delete_button"), admin_user_path(user),
+                  edit_admin_user_path(user.id), class: "btn btn-primary" %>
+                <%= link_to t("common.delete_button"), admin_user_path(user.id),
                   method: :delete, class: "btn btn-danger" %>
                 <% if user.status == "wait" %>
                   <%= link_to t(".active"), admin_user_path(user.id, status: "active"), method: :put,

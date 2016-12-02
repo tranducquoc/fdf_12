@@ -9,7 +9,7 @@ class Dashboard::OrderProductsController < BaseDashboardController
     if (@order_products.update_all status: :done) &&
       (@orders.update_all status: :done)
       updated_orders.each do |order|
-        order.send_done_notification
+        order.create_event_done
       end
       flash[:success] = t "flash.success.update_order"
       redirect_to dashboard_shop_order_managers_path

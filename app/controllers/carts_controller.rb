@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!, except: [:update, :index]
   before_action :load_product, only: :update
-  before_action :check_before_order, only: :new
+  before_action :check_before_order, only: [:new, :index]
   before_action :check_user_status_for_action, except: [:update, :index]
 
   def index
@@ -86,11 +86,13 @@ class CartsController < ApplicationController
   end
 
   def check_before_order
+    @cart_group_price = Settings.start_count_order
     @count_exit_order = Settings.start_count_order
     @products_deleted = []
     @cart_group.each do |cart_group|
       cart_group[:items].each do |cart|
         product = Product.find_by id: cart.product_id.to_i
+        @cart_group_price += total_price product.price, cart.quantity
         if Time.now.is_between_short_time?(product.start_hour, product.end_hour)
           @count_exit_order += Settings.order_increase
           @products_deleted << product

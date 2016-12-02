@@ -18,7 +18,8 @@ class Order < ApplicationRecord
 
   after_update :build_order_products
   after_create :build_order_products
-  after_create_commit :send_notification
+  after_create :create_event_order
+  after_create_commit :create_notification
   after_create :check_status_order, if: -> {self.pending?}
 
   scope :by_date_newest, ->{order created_at: :desc}
@@ -31,8 +32,7 @@ class Order < ApplicationRecord
   end
 
   scope :between_date, -> begin_date, end_date do
-    where("date(created_at) BETWEEN ? AND ?", begin_date, end_date).
-      group_year.group_month.group_day
+    where("date(created_at) >= ? AND date(created_at) <= ?", begin_date, end_date)
   end
 
   scope :group_day_this_week, -> do
@@ -111,22 +111,27 @@ class Order < ApplicationRecord
       .inject(0){|sum, item| sum + item.total_price}
   end
 
-  def send_notification
+  def create_notification
     if self.products.size != Settings.count_tag
-    Event.create message: "new",
+    Event.create message: Settings.notification_new,
       user_id: self.shop.owner_id, eventable_id: shop.id, eventable_type: Order.name
     end
   end
 
-  def send_done_notification
+  def create_event_done
     Event.create message: :done,
       user_id: self.user.id, eventable_id: shop.id, eventable_type: OrderProduct.name
     Event.create message: :done,
       user_id: shop.owner_id, eventable_id: shop.id, eventable_type: User.name
   end
 
-  def send_reject_notification_order
+  def create_event_reject
     Event.create message: :rejected,
+      user_id: user_id, eventable_id: id, eventable_type: Order.name
+  end
+
+  def create_event_order
+    Event.create message: :sent_order,
       user_id: user_id, eventable_id: id, eventable_type: Order.name
   end
 
@@ -136,7 +141,7 @@ class Order < ApplicationRecord
     if self.pending?
       self.update_attributes(status: :rejected, change_status: true)
       self.order_products.update_all status: :rejected
-      send_reject_notification_order
+      create_event_reject
     end
   end
 

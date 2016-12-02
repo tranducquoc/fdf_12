@@ -17,11 +17,15 @@ class Dashboard::OrderManagersController < ApplicationController
       @order_products_reject = @order_products_reject
         .select {|key| key == Time.now.strftime(t "time.formats.short_date")}
     end
+    file_name = I18n.l(DateTime.now, format: :short_date).to_s
     respond_to do |format|
       format.html
-      format.xls
+      format.xls do
+        headers["Content-Disposition"] = "attachment; filename=\"#{file_name}.xls\""
+        headers["Content-Type"] ||= "xls"
+      end
       format.csv do
-        headers["Content-Disposition"] = "attachment; filename=\"orders-list #{Time.now().to_s}\""
+        headers["Content-Disposition"] = "attachment; filename=\"#{file_name}.csv\""
         headers["Content-Type"] ||= "csv"
       end
     end

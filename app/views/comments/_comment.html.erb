@@ -2,7 +2,7 @@
   <div class="commenterImage">
     <%= image_tag comment.user_avatar.url, alt: comment.user_name %>
   </div>
-  <span class="commentText">
+  <span class="commentText" id="<%= comment.id %>">
     <p class=""><%= comment.content %></p>
     <span class="sub-text">
       <%= link_to comment.user_name, "#" %>

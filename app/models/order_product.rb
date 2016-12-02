@@ -55,9 +55,11 @@ class OrderProduct < ApplicationRecord
   private
   def send_notification
     if self.rejected?
-      self.events.create message: :rejected, user_id: self.user.id
+      self.events.create message: :rejected, user_id: self.user.id,
+        eventitem_id: self.id
     else
-      self.events.create message: :accepted, user_id: self.user.id
+      self.events.create message: :accepted, user_id: self.user.id,
+        eventitem_id: self.id
     end
   end
 end

@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :statistics
   end
 
-  resources :shops, only: [:index, :show]
+  resources :shops, only: [:index, :show, :update]
   resources :products, only: [:index, :show, :new] do
     resources :comments, only: :create
   end

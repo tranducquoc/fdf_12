@@ -45,14 +45,13 @@
               <%= t "common.shop_managers" %>
             </div>
             <div class="panel-body">
-              <% @shop.users.each do |user| %>
-                <%= link_to user, class: "user-item-image" do %>
-                  <%= image_tag user.avatar.url, alt: user.name %>
-                <% end %>
+              <%= link_to user_path(@user.id), class: "user-item-image" do %>
+                <%= image_tag @user.avatar.url, alt: @user.name %>
+                <p><strong><%= t "shop_owner"%></strong><%= @user.name %></p>
               <% end %>
             </div>
             <div class="panel-footer">
-              <%= link_to t("common.btn_view_all"),
+              <%= link_to t("change_shop_owner"),
                 dashboard_shop_shop_managers_path(@shop),
                 class: "btn btn-default btn-block" %>
             </div>

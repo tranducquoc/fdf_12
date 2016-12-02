@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_action :load_shop, only: :show
+  before_action :load_shop, only: [:show, :update]
 
   def index
     @shops = Shop.active.page(params[:page])
@@ -10,6 +10,18 @@ class ShopsController < ApplicationController
     @products = @shop.products.active.page(params[:page])
       .per Settings.common.products_per_page
     @shop = @shop.decorate
+  end
+
+  def update
+    user = User.find_by email: params[:email]
+    if user
+      @shop.update_attributes owner_id: user.id
+      flash[:success] = t "change_shop"
+      redirect_to root_path
+    else
+      flash[:danger] = t "cant_not_find_shop"
+      redirect_to :back
+    end
   end
 
   private

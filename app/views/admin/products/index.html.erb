@@ -24,7 +24,7 @@
                 </div>
               </td>
               <td><%= product.description %></td>
-              <td><%= product.price %></td>
+              <td><%= format_price product.price %></td>
               <td><%= product.shop.name %></td>
             </tr>
           <% end %>

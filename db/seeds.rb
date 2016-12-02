@@ -7,13 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create!(
   name: "User",
-  email: "user@gmail.com",
+  email: "tran.duc.quoc@framgia.com",
   password: "123456",
   password_confirmation: "123456"
 )
 
 Admin.create!(
-  email: "admin@gmail.com",
+  email: "forder.info@gmail.com",
   password: "123456",
   password_confirmation: "123456"
 
@@ -21,21 +21,21 @@ Admin.create!(
 
 User.create!(
   name: "Faker1",
-  email: "faker1@gmail.com",
+  email: "do.thi.diem.thao@framgia.com",
   password: "123456",
   password_confirmation: "123456"
 )
 
 User.create!(
   name: "Faker2",
-  email: "faker2@gmail.com",
+  email: "nguyen.van.tran.anh@framgia.com",
   password: "123456",
   password_confirmation: "123456"
 )
 
 User.create!(
   name: "Faker3",
-  email: "faker3@gmail.com",
+  email: "pham.van.chien@framgia.com",
   password: "123456",
   password_confirmation: "123456"
 )
@@ -90,6 +90,14 @@ Shop.create!(
   owner_id: 4
 )
 
+Shop.create!(
+  name: "Nếp Cẩm",
+  description: "Nếp Cẩm",
+  status: 0,
+  cover_image: "image",
+  avatar: File.open(Rails.root + "public/images/quansinhto.jpg"),
+  owner_id: 1
+)
 #shop_manangers
 
 ShopManager.create!(
@@ -141,6 +149,10 @@ Category.create!(
 
 Category.create!(
   name: "Dừa"
+)
+
+Category.create!(
+  name: "Nếp Cẩm"
 )
 
 Product.create!(
@@ -908,4 +920,121 @@ Product.create!(
   start_hour: "08:00:00",
   end_hour: "20:00:00",
   image: File.open(Rails.root + "public/images/miquangcaloc.jpg")
+)
+
+Product.create!(
+  category_id: 6,
+  status: 0,
+  shop_id: 6,
+  user_id: 1,
+  name: "Sữa chua-15",
+  price: 15000,
+  description: "Sữa chua-15",
+  start_hour: "08:00:00",
+  end_hour: "20:00:00",
+  image: File.open(Rails.root + "public/images/suachua.jpg")
+)
+
+Product.create!(
+  category_id: 6,
+  status: 0,
+  shop_id: 6,
+  user_id: 1,
+  name: "Sữa chua-20",
+  price: 20000,
+  description: "Sữa chua-20",
+  start_hour: "08:00:00",
+  end_hour: "20:00:00",
+  image: File.open(Rails.root + "public/images/suachua.jpg")
+)
+
+Product.create!(
+  category_id: 6,
+  status: 0,
+  shop_id: 6,
+  user_id: 1,
+  name: "Nước sấu-15",
+  price: 15000,
+  description: "Nước sấu-15",
+  start_hour: "08:00:00",
+  end_hour: "20:00:00",
+  image: File.open(Rails.root + "public/images/nuocsau.jpg")
+)
+
+Product.create!(
+  category_id: 6,
+  status: 0,
+  shop_id: 6,
+  user_id: 1,
+  name: "Nếp cẩm-20",
+  price: 20000,
+  description: "Nếp cẩm-20",
+  start_hour: "08:00:00",
+  end_hour: "20:00:00",
+  image: File.open(Rails.root + "public/images/nepcam.jpg")
+)
+
+Product.create!(
+  category_id: 6,
+  status: 0,
+  shop_id: 6,
+  user_id: 1,
+  name: "Nếp cẩm-15",
+  price: 15000,
+  description: "Nếp cẩm-15",
+  start_hour: "08:00:00",
+  end_hour: "20:00:00",
+  image: File.open(Rails.root + "public/images/nepcam.jpg")
+)
+
+Product.create!(
+  category_id: 6,
+  status: 0,
+  shop_id: 6,
+  user_id: 1,
+  name: "Khoai lang tẩm mật ong chiên",
+  price: 30000,
+  description: "Khoai lang tẩm mật ong chiên",
+  start_hour: "08:00:00",
+  end_hour: "20:00:00",
+  image: File.open(Rails.root + "public/images/khoailang.jpg")
+)
+
+Product.create!(
+  category_id: 6,
+  status: 0,
+  shop_id: 6,
+  user_id: 1,
+  name: "Nem chua rán nhỏ",
+  price: 30000,
+  description: "Nem chua rán nhỏ",
+  start_hour: "08:00:00",
+  end_hour: "20:00:00",
+  image: File.open(Rails.root + "public/images/nemchua.jpg")
+)
+
+Product.create!(
+  category_id: 6,
+  status: 0,
+  shop_id: 6,
+  user_id: 1,
+  name: "Nem chua rán lớn",
+  price: 50000,
+  description: "Nem chua rán lớn",
+  start_hour: "08:00:00",
+  end_hour: "20:00:00",
+  image: File.open(Rails.root + "public/images/nemchua.jpg")
+)
+
+Product.create!(
+  category_id: 6,
+  status: 0,
+  shop_id: 6,
+  user_id: 1,
+  name: "Nước mơ",
+  price: 15000,
+  description: "Nước mơ",
+  start_hour: "08:00:00",
+  end_hour: "20:00:00",
+  image: File.open(Rails.root + "public/images/nuocmo.jpg")
 )

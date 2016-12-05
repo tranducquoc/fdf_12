@@ -64,17 +64,17 @@ class Event < ApplicationRecord
     when Shop.name
       "/dashboard/shops/#{eventable_id}"
     when Product.name
-      "/products/#{eventable_id}"
+      "/products/#{eventable_id}/##{eventitem_id}"
     when Order.name
       if message == Settings.notification_new
-        "/dashboard/shops/#{eventable_id}/orders"
+        "/dashboard/shops/#{eventable_id}/orders/##{eventitem_id}"
       else
-        "/orders"
+        "/orders/##{eventitem_id}"
       end
     when OrderProduct.name
-      "/orders"
+      "/orders##{eventitem_id}"
     when User.name
-      "/dashboard/shops/#{eventable_id}/order_managers"
+      "/dashboard/shops/#{eventable_id}/order_managers/##{eventitem_id}"
     end
   end
 

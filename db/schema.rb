@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20161111074859) do
     t.string   "message"
     t.string   "eventable_type"
     t.integer  "eventable_id"
+    t.string   "eventitem_id"
     t.boolean  "read",           default: false
     t.integer  "user_id"
     t.datetime "created_at",                     null: false

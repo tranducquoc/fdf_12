@@ -113,16 +113,19 @@ class Order < ApplicationRecord
 
   def create_notification
     if self.products.size != Settings.count_tag
-    Event.create message: Settings.notification_new,
-      user_id: self.shop.owner_id, eventable_id: shop.id, eventable_type: Order.name
+      Event.create message: Settings.notification_new,
+        user_id: self.shop.owner_id, eventable_id: shop.id,
+          eventable_type: Order.name, eventitem_id: self.id
     end
   end
 
   def create_event_done
     Event.create message: :done,
-      user_id: self.user.id, eventable_id: shop.id, eventable_type: OrderProduct.name
+      user_id: self.user.id, eventable_id: shop.id, eventable_type: OrderProduct.name,
+        eventitem_id: self.id
     Event.create message: :done,
-      user_id: shop.owner_id, eventable_id: shop.id, eventable_type: User.name
+      user_id: shop.owner_id, eventable_id: shop.id, eventable_type: User.name,
+        eventitem_id: self.id
   end
 
   def create_event_reject

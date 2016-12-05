@@ -67,41 +67,41 @@
         <% end %>
       </div>
       <div class="a-divider--hidden"></div>
-      <div class="m-panel">
-        <div class="row">
-          <div class="col-md-2">
-            <span class="shop-thumbnail">
-              <%= image_tag @product.shop_avatar.url %>
-            </span>
-          </div>
-          <div class="col-md-10">
-            <h3>
-              <%= link_to @product.shop_name, @product.shop,
-                class: "capcase lead mar-bottom-20" %>
-            </h3>
-            <p class="smallcaps mar-right-10">
-              <%= t "common.product_number",
-                number: @product.shop.products.size %>
-            </p>
-          </div>
+    </div>
+    <div class="m-panel m-panel-item">
+      <div class="row">
+        <div class="col-md-2">
+          <span class="shop-thumbnail">
+            <%= image_tag @product.shop_avatar.url %>
+          </span>
         </div>
-        <div class="m-panel__content">
-          <div class="line">
-            <% @product.shop.products.each do |product| %>
-              <div class="unit3">
-                <%= link_to product do %>
-                  <span class="product-thumbnail">
-                    <%= image_tag product.image.url, alt: product.name %>
-                  </span>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-          <div class="a-divider--fit"></div>
-          <div class="unit">
-            <%= link_to t("common.btn_view_all"), @product.shop,
-              class: "btn btn-success btn-block" %>
-          </div>
+        <div class="col-md-10">
+          <h3>
+            <%= link_to @product.shop_name, @product.shop,
+              class: "capcase lead mar-bottom-20" %>
+          </h3>
+          <p class="smallcaps mar-right-10">
+            <%= t "common.product_number",
+              number: @product.shop.products.size %>
+          </p>
+        </div>
+      </div>
+      <div class="m-panel__content">
+        <div class="line">
+          <% @product.shop.products.each do |product| %>
+            <div class="unit3">
+              <%= link_to product do %>
+                <span class="product-thumbnail">
+                  <%= image_tag product.image.url, alt: product.name %>
+                </span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="a-divider--fit"></div>
+        <div class="unit">
+          <%= link_to t("common.btn_view_all"), @product.shop,
+            class: "btn btn-success btn-block" %>
         </div>
       </div>
     </div>

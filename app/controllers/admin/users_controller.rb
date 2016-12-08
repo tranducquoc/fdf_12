@@ -3,6 +3,11 @@ class Admin::UsersController < AdminController
   before_action :load_user, only: [:update, :destroy]
 
   def index
+    @users = User.all
+      respond_to do |format|
+      format.html
+      format.xls
+    end
   end
 
   def edit

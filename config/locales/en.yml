@@ -213,6 +213,7 @@ en:
     users:
       index:
         title: "All users"
+        id: "ID"
         name: "User's name"
         email: "Email"
         chatwork: "Chatwork id"

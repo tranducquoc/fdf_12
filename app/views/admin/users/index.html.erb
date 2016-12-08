@@ -1,7 +1,13 @@
 <% provide :title, t(".title") %>
-<div class="row">
+<div>
   <%= link_to t("common.create"), new_admin_user_path,
     class: "btn btn-block btn-success btn-sm btn-create-user" %>
+  <p>
+    <%= t("download") %>
+    <%= link_to t("excel"), admin_users_path(format: "xls") %>
+  </p>
+</div>
+<div class="row">
   <div class="col-md-12">
     <div class="panel panel-success">
       <table class="table table-striped table-hover table-bordered">

@@ -107,7 +107,7 @@
         <ul class="users-list clearfix">
           <% @users.each do |user| %>
             <li>
-              <%= image_tag user.avatar.url, class: "user-image" %>
+              <%= image_tag user.avatar.url, class: "user-image admin-pic" %>
               <%= link_to user.name, user, class: "users-list-name" %>
               <span class="users-list-date">
                 <%= time_ago_in_words user.created_at %>
@@ -139,7 +139,7 @@
         <ul class="users-list clearfix">
           <% @shops.each do |shop| %>
             <li>
-              <%= image_tag shop.avatar.url, class: "user-image" %>
+              <%= image_tag shop.avatar.url, class: "user-image admin-pic" %>
               <%= link_to shop.name, shop, class: "users-list-name" %>
               <span class="users-list-date">
                 <%= time_ago_in_words shop.created_at %>
@@ -171,7 +171,7 @@
         <ul class="users-list clearfix">
           <% @products.each do |product| %>
             <li>
-              <%= image_tag product.image.url, class: "user-image" %>
+              <%= image_tag product.image.url, class: "user-image admin-pic" %>
               <%= link_to product.name, product, class: "users-list-name" %>
               <span class="users-list-date">
                 <%= time_ago_in_words product.created_at %>
@@ -181,7 +181,7 @@
         </ul>
       </div>
       <div class="box-footer text-center">
-        <%= link_to t(".all_products"), products_path, class: "uppercase" %>
+        <%= link_to t(".all_products"), admin_products_path, class: "uppercase" %>
       </div>
     </div>
   </div>

@@ -12,12 +12,8 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-sm-4">
-                  <%= f.file_field :avatar,
+                  <%= f.file_field :avatar, onchange: "this.form.submit();",
                     class: "glyphicon glyphicon-camera wh change-picture" %>
-                </div>
-                <div class="col-sm-4">
-                  <%= link_to t("change-avatar"), "#",
-                    onclick: "$('#form_id').submit()", class: "mg-65" %>
                 </div>
               </div>
             </div>

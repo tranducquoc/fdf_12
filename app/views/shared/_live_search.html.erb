@@ -6,7 +6,7 @@
     <% end %>
   </li>
 <% else %>
-  <div class="scrollable-menu">
+  <div class="scrollable-menu width400">
     <% items.each do |item| %>
       <% if item.is_a? Product %>
         <%= render "products/live_search_item", product: item %>

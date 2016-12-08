@@ -39,6 +39,10 @@ filter_status_order:
   all: "all"
 check_order: 2
 start_count_order: 0
+row_header: 1
+row_user_start: 2
+start_count: 0
+user_increase: 1
 languages:
   vietnamese: {name: "Tiếng Việt", image: "vi.png", type: "vi"}
   english: {name: "English", image: "en.png", type: "en"}
@@ -47,3 +51,7 @@ image_url:
   cart: "cart.png"
   systemdone: "systemaccepted.jpg"
 notification_new: "new"
+file_xls: ".xls"
+file_xlsx: ".xlsx"
+xls: "xls"
+xlsx: "xlsx"

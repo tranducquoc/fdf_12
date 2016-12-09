@@ -19,6 +19,7 @@ class Dashboard::OrderProductsController < BaseDashboardController
   def update
     if @order_product.update_attributes order_product_params
       OrderMailer.shop_confirmation(@order_product).deliver_later
+      @order_product.send_notification_order
       flash[:success] = t "flash.success.update_order"
       respond_to do |format|
         format.json do

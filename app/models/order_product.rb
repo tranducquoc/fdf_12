@@ -13,8 +13,6 @@ class OrderProduct < ApplicationRecord
   delegate :name, to: :product, prefix: true
   delegate :email, to: :user, prefix: true
 
-  after_update_commit :send_notification
-
   def total_price
     product.price * quantity
   end
@@ -52,8 +50,7 @@ class OrderProduct < ApplicationRecord
       .group("order_products.product_id")
   end
 
-  private
-  def send_notification
+  def send_notification_order
     if self.rejected?
       self.events.create message: :rejected, user_id: self.user.id,
         eventitem_id: self.id

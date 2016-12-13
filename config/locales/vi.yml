@@ -41,6 +41,10 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  failed_to_read_file: "Không thể đọc được file tài khoản"
+  import: "Thêm"
+  many_user: " tài khoản thêm không thành công và "
+  import_success: " tài khoản thêm thành công "
   sent_order: "Gửi đơn hàng thành công"
   price_message: "Tổng giá đơn hàng của bạn: "
   all: "Tất cả: "
@@ -214,7 +218,7 @@ vi:
         end_at: "Kết thúc lúc"
         created_at: "Tạo lúc"
         view: "Xem"
-        close: "Đongs"
+        close: "Đóng"
     shop_requests:
       index:
         page_title: "Quản lý yêu cầu tạo cửa hàng"

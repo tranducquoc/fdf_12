@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :shop_requests, only: [:index, :update]
     resources :categories
     resources :users
+    resources :products, only: :index
+    resources :set_user, only: :create
     resources :shops, except: [:new, :create, :show]
   end
 

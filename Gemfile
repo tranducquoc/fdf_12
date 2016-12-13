@@ -35,6 +35,8 @@ gem "chartkick"
 gem "ransack"
 gem "daemons"
 gem "delayed_job"
+gem "roo"
+gem "roo-xls"
 gem "delayed_job_active_record"
 source "https://rails-assets.org" do
   gem "rails-assets-datetimepicker"

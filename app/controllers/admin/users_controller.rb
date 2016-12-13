@@ -3,7 +3,7 @@ class Admin::UsersController < AdminController
   before_action :load_user, only: [:update, :destroy]
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per Settings.common.per_page
       respond_to do |format|
       format.html
       format.xls
@@ -59,7 +59,7 @@ class Admin::UsersController < AdminController
   private
   def user_params
     params.require(:user).permit :name, :email, :chatwork_id, :avatar,
-      :description, :status
+    :description, :status
   end
 
   def load_user

@@ -16,6 +16,8 @@ class SetUserService
       user.password = (0...8).map {(65 + rand(26)).chr}.join
       user.password_confirmation = user.password
       if user.save
+        password = user.password
+        ContactRequestMailer.delay.to_user(user, password)
         user_success += Settings.user_increase
       else
         user_failed += Settings.user_increase

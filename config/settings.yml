@@ -11,6 +11,7 @@ pictures:
   avatar_small_size: "24"
 mailer:
   default_mail: "no-reply@fdf-12.herokuapp.com"
+  sent_mail: "forder.info@gmail.com"
 index:
   max_shops: 6
   max_products: 8

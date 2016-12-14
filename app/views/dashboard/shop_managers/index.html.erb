@@ -1,22 +1,16 @@
-<% provide :title, t(".title") %>
+<% provide :title, t("devise.user.update_info") %>
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <%= form_tag dashboard_shop_shop_managers_path, method: :get,
-      class: "dropdown", id: "users_search_form" do |f| %>
+    <%= form_tag shop_path(@shop), method: :put do %>
+      <%= render "shared/error_messages", object: @shop %>
       <div class="form-group">
-        <%= text_field_tag :search, params[:search], autocomplete: :off,
-          placeholder: t("livesearch.user_search_placeholder"),
-          required: true, id: "users-search-form",
-          class: "form-control dropdown-toggle" %>
-        <%= hidden_field_tag :shop_id, @shop.id, id: "shop_id" %>
-        <ul class="dropdown-menu">
-          <div id="users_search_dom"></div>
-          <div id="livesearch_loading"></div>
-        </ul>
+        <%= label_tag(:email, t("enter_email")) %>
       </div>
+      <div class="form-group">
+        <%= email_field_tag :email, nil, class: "form-control"%>
+      </div>
+      <%= link_to t("common.back_button"), :back, class: "btn btn-warning" %>
+      <%= submit_tag  t("devise.user.update_info"), class: "btn btn-primary space-top-submit" %>
     <% end %>
   </div>
-</div>
-<div class="row">
-  <%= render "shop_managers" %>
 </div>

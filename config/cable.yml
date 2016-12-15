@@ -7,4 +7,8 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: <%= ENV["FORDER_REDIS_URL"] %>
+
+staging:
+  adapter: redis
+  url: <%= ENV["FORDER_REDIS_URL"] %>

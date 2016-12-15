@@ -88,7 +88,7 @@ Rails.application.configure do
   # SMTP settings for gmail
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = {host: Settings.mailer.host}
+  config.action_mailer.default_url_options = {host: ENV["FORDER_MAILER_HOST"]}
   config.action_mailer.smtp_settings = {
     address: ENV["FORDER_EMAIL_ADDRESS"],
     port: 587,

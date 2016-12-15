@@ -55,16 +55,16 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_mailer.raise_delivery_errors = true
   # SMTP settings for gmail
-
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = {host: Settings.mailer.host}
+  config.action_mailer.default_url_options = {host: "localhost:3000"}
   config.action_mailer.smtp_settings = {
-    address: ENV["gmail_address"],
+    address: ENV["FORDER_EMAIL_ADDRESS"],
     port: 587,
-    domain: ENV["gmail_domain"],
-    user_name: ENV["gmail_username"],
-    password: ENV["gmail_password"],
-    authentication: ENV["gmail_authentication"]
+    domain: ENV["FORDER_EMAIL_DOMAIN"],
+    user_name: ENV["FORDER_EMAIL_USERNAME"],
+    password: ENV["FORDER_EMAIL_PASSWORD"],
+    authentication: ENV["FORDER_EMAIL_AUTHENTICAION"],
+    enable_starttls_auto: true
   }
 end

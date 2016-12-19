@@ -102,7 +102,7 @@ class Order < ApplicationRecord
   end
 
   def total_pay_user user
-    order_products.by_user(user)
+    order_products.done.by_user(user)
       .inject(0){|sum, item| sum + item.total_price}
   end
 

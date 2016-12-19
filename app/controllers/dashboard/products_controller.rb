@@ -17,7 +17,7 @@ class Dashboard::ProductsController < BaseDashboardController
     if @order_item
       case
       when @order_item.done?
-        @order_products = @product.order_products.doned
+        @order_products = @product.order_products.done
       when @order_item.rejected?
         @order_products = @product.order_products.rejected
       else

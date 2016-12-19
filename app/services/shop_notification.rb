@@ -12,9 +12,9 @@ class ShopNotification
   end
 
   def send_when_confirmed
-    UserMailer.shop_confirmation(@shop.owner, @shop).deliver
+    UserMailer.delay.shop_confirmation(@shop.owner, @shop)
     @admins.each do |admin|
-      AdminMailer.shop_confirmation(admin, @shop).deliver
+      AdminMailer.delay.shop_confirmation(admin, @shop)
     end
   end
 end

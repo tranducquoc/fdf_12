@@ -18,7 +18,7 @@ class OrderProduct < ApplicationRecord
   end
 
   scope :accepted, ->{where status: OrderProduct.statuses[:accepted]}
-  scope :doned, ->{where status: OrderProduct.statuses[:done]}
+  scope :done, ->{where status: OrderProduct.statuses[:done]}
   scope :rejected, ->{where status: OrderProduct.statuses[:rejected]}
   scope :on_today, ->{where "date(order_products.created_at) = date(now())"}
   scope :by_user, ->user {where user: user}

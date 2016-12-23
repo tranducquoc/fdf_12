@@ -19,7 +19,10 @@
       <div class="col-sm-4 text-default margin-duong">
         <h2 class="com-name"><%= t("company") %></h2>
         <h5><strong class="text-default">
-          <%= link_to t("home"), root_path %>
+          <%= link_to t("home"), root_path %><br>
+          <%= link_to t("document"),
+            "https://drive.google.com/file/d/0Bw0Y2BhwI-7xXzBFOU0tWjlQSjg/view",
+            target: "_blank" %>
         </strong></h5>
         <h5 class="text-default"><%= t "com-infor" %></h5>
       </div>
@@ -45,7 +48,7 @@
               <i class="fa fa-envelope default-icon" aria-hidden="true"></i>
             </td>
             <td class="co-blue">
-              <%= t "com-email" %>
+              <strong><%= mail_to t "com-email" %></strong>
             </td>
           </tr>
         </table></h5>
@@ -56,6 +59,12 @@
         </strong></h5>
         <p class="text-small">
           <%= t "com-detail" %>
+        </p>
+        <p class="co-blue">
+          <strong>
+            <%= t "feed_back" %><br>
+            <%= mail_to "forder.info@gmail.com" %>
+          </strong>
         </p>
       </div>
     </div>

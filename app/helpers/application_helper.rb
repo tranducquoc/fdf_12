@@ -46,7 +46,7 @@ module ApplicationHelper
   end
 
   def format_price price
-    price.to_i.to_s + t("cart.vnd")
+    number_with_delimiter(price.to_i).to_s + t("cart.vnd")
   end
 
   def bg_unread event

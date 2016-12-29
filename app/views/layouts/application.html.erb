@@ -15,13 +15,13 @@
       </div>
       <%= yield %>
     </div>
-    <div class="row margin-to">
+    <div class="row margin-to co-black">
       <div class="col-sm-4 text-default margin-duong">
         <h2 class="com-name"><%= t("company") %></h2>
         <h5><strong class="text-default">
           <%= link_to t("home"), root_path %><br>
           <%= link_to t("document"),
-            "https://drive.google.com/file/d/0Bw0Y2BhwI-7xXzBFOU0tWjlQSjg/view",
+            "https://drive.google.com/file/d/0Bw0Y2BhwI-7xQjdPWjdzSFRoMVk/view?usp=sharing",
             target: "_blank" %>
         </strong></h5>
         <h5 class="text-default"><%= t "com-infor" %></h5>
@@ -62,8 +62,9 @@
         </p>
         <p class="co-blue">
           <strong>
-            <%= t "feed_back" %><br>
-            <%= mail_to "forder.info@gmail.com" %>
+            <%= link_to t("feed_back"),
+            "https://docs.google.com/forms/d/e/1FAIpQLSeWye6zJ8U7epz5W3G5MDZTT8YE5rWELbHDpyRtD4drC0QrGw/viewform",
+            target: "_blank", class: "text-default" %>
           </strong>
         </p>
       </div>

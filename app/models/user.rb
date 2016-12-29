@@ -23,6 +23,8 @@ class User < ApplicationRecord
   has_many :order_products
   has_many :coupons
   has_many :events
+  has_many :user_domains
+  has_many :domains, through: :user_domains
 
   enum status: {wait: 0, active: 1, blocked: 2}
   mount_uploader :avatar, UserAvatarUploader
@@ -31,6 +33,7 @@ class User < ApplicationRecord
   validate :image_size
 
   scope :by_date_newest, ->{order created_at: :desc}
+  scope :by_active, ->{where status: active}
 
   class << self
     def from_omniauth auth

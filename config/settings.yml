@@ -44,6 +44,8 @@ row_header: 1
 row_user_start: 2
 start_count: 0
 user_increase: 1
+increase_one: 1
+not_find: "not_find"
 languages:
   vietnamese: {name: "Tiếng Việt", image: "vi.png", type: "vi"}
   english: {name: "English", image: "en.png", type: "en"}

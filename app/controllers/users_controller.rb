@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_domain
 
   def show
     if User.friendly.exists? params[:id]

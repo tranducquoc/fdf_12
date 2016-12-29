@@ -1,8 +1,13 @@
 class ShopsController < ApplicationController
   before_action :load_shop, only: [:show, :update]
+  before_action :load_domain, only: [:index, :show]
 
   def index
-    @shops = Shop.active.page(params[:page])
+    @shops = if @domain.present?
+      @domain.shops
+    else
+      Shop.all
+    end.active.page(params[:page])
       .per(Settings.common.per_page).decorate
   end
 

@@ -1,6 +1,12 @@
 class ProductsController < ApplicationController
+  before_action :load_domain, only: [:index, :show]
+
   def index
-    @products = Product.active.page(params[:page])
+    @products = if @domain.present?
+      @domain.products
+    else
+      Product.all
+    end.active.page(params[:page])
       .per Settings.common.products_per_page
   end
 

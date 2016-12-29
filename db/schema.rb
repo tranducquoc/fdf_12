@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111074859) do
+ActiveRecord::Schema.define(version: 20170103032025) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -97,6 +97,16 @@ ActiveRecord::Schema.define(version: 20161111074859) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
   end
 
+  create_table "domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "slug"
+    t.integer  "status"
+    t.integer  "owner"
+    t.index ["slug"], name: "index_domains_on_slug", using: :btree
+  end
+
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "message"
     t.string   "eventable_type"
@@ -167,6 +177,15 @@ ActiveRecord::Schema.define(version: 20161111074859) do
     t.datetime "updated_at"
   end
 
+  create_table "product_domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_id"
+    t.integer  "domain_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["domain_id"], name: "index_product_domains_on_domain_id", using: :btree
+    t.index ["product_id"], name: "index_product_domains_on_product_id", using: :btree
+  end
+
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.text     "description", limit: 65535
@@ -227,6 +246,15 @@ ActiveRecord::Schema.define(version: 20161111074859) do
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
+  create_table "shop_domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "domain_id"
+    t.integer  "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["domain_id"], name: "index_shop_domains_on_domain_id", using: :btree
+    t.index ["shop_id"], name: "index_shop_domains_on_shop_id", using: :btree
+  end
+
   create_table "shop_managers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "shop_id"
@@ -283,6 +311,15 @@ ActiveRecord::Schema.define(version: 20161111074859) do
     t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
 
+  create_table "user_domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "domain_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["domain_id"], name: "index_user_domains_on_domain_id", using: :btree
+    t.index ["user_id"], name: "index_user_domains_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "avatar"
@@ -323,10 +360,16 @@ ActiveRecord::Schema.define(version: 20161111074859) do
   add_foreign_key "orders", "coupons"
   add_foreign_key "orders", "shops"
   add_foreign_key "orders", "users"
+  add_foreign_key "product_domains", "domains"
+  add_foreign_key "product_domains", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "shops"
   add_foreign_key "products", "users"
   add_foreign_key "reviews", "users"
+  add_foreign_key "shop_domains", "domains"
+  add_foreign_key "shop_domains", "shops"
   add_foreign_key "shop_managers", "shops"
   add_foreign_key "shop_managers", "users"
+  add_foreign_key "user_domains", "domains"
+  add_foreign_key "user_domains", "users"
 end

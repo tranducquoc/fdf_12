@@ -66,4 +66,8 @@ module ApplicationHelper
   def selected_lang
     session[:locale]
   end
+
+  def check_domain_status domain
+    domain.professed?
+  end
 end

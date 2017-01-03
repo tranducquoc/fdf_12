@@ -24,6 +24,8 @@ class Shop < ApplicationRecord
   has_many :products
   has_many :tags, through: :products
   has_many :events , as: :eventable
+  has_many :shop_domains
+  has_many :domains, through: :shop_domains
 
   enum status: {pending: 0, active: 1, closed: 2, rejected: 3, blocked: 4}
 

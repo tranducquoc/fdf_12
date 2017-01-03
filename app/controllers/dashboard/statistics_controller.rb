@@ -1,5 +1,6 @@
 class Dashboard::StatisticsController < ApplicationController
   before_action :check_user_status_for_action
+  before_action :load_domain
 
   def index
     @shops = current_user.shops

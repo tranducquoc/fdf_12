@@ -70,4 +70,41 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def load_domain
+    if params[:domain_id] == Settings.not_find
+      @domain = nil
+    else
+      @domain = if params[:domain_id]
+        Domain.friendly.find params[:domain_id]
+      elsif params[:id]
+        Domain.friendly.find params[:id]
+      else
+        @domain = nil
+      end
+    end
+  end
+
+  def redirect_to_root_domain
+    if (!user_signed_in?) || (!current_user.domains.include? @domain)
+      redirect_to root_path
+    end
+  end
+
+  def auto_add_pulbic_domain_for_user
+    if user_signed_in? && !current_user.domains.present?
+      domain = Domain.first
+      create_data_for_domain current_user, domain
+    end
+  end
+
+  def create_data_for_domain user, domain
+    user_domain = UserDomain.new user_id: user.id, domain_id: domain.id
+    if user_domain.save
+      flash[:success] = t "save_domain_successfully"
+    else
+      flash[:danger] = t "can_not_add_account"
+    end
+  end
+
 end

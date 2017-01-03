@@ -1,8 +1,14 @@
 <div class="product_item_wrapper col-md-3 margin-top-5-bot-5 item-produc-shop">
   <div class="product_content_area">
     <div class="image_product">
-      <%= link_to product do %>
-        <%= image_tag product.image.url, class: "image-shop height-27375" %>
+      <% if @domain.present? %>
+        <%= link_to domain_product_path(@domain, product) do %>
+          <%= image_tag product.image.url, class: "image-shop height-27375" %>
+        <% end %>
+      <% else %>
+        <%= link_to product_path(product, domain_id: "not_find") do %>
+          <%= image_tag product.image.url, class: "image-shop height-27375" %>
+        <% end %>
       <% end %>
       <h3>
         <%= t "cart.order_time_text" %>
@@ -44,9 +50,16 @@
         <span class="glyphicon glyphicon-shopping-cart"></span>
         <%= t "cart.add_to_card" %>
       <% end %>
-      <%= link_to product, class: "btn btn-default btn_add_favorite" do %>
-        <span class="glyphicon glyphicon-eye-open"></span>
-        <%= t "common.view_button" %>
+      <% if @domain.present? %>
+        <%= link_to domain_product_path(@domain, product), class: "btn btn-default btn_add_favorite" do %>
+          <span class="glyphicon glyphicon-eye-open"></span>
+          <%= t "common.view_button" %>
+        <% end %>
+      <% else %>
+        <%= link_to product_path(product, domain_id: "not_find"), class: "btn btn-default btn_add_favorite" do %>
+          <span class="glyphicon glyphicon-eye-open"></span>
+          <%= t "common.view_button" %>
+        <% end %>
       <% end %>
     </div>
   </div>

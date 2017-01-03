@@ -90,18 +90,31 @@
         <div class="line">
           <% @product.shop.products.each do |product| %>
             <div class="unit3">
-              <%= link_to product do %>
-                <span class="product-thumbnail">
-                  <%= image_tag product.image.url, alt: product.name, class: "product-show" %>
-                </span>
+              <% if @domain.present? %>
+                <%= link_to domain_product_path(@domain, product) do %>
+                  <span class="product-thumbnail">
+                    <%= image_tag product.image.url, alt: product.name, class: "product-show" %>
+                  </span>
+                <% end %>
+              <% else %>
+                <%= link_to product_path(product, domain_id: "not_find") do %>
+                  <span class="product-thumbnail">
+                    <%= image_tag product.image.url, alt: product.name, class: "product-show" %>
+                  </span>
+                <% end %>
               <% end %>
             </div>
           <% end %>
         </div>
         <div class="a-divider--fit"></div>
         <div class="unit">
-          <%= link_to t("common.btn_view_all"), @product.shop,
-            class: "btn btn-success btn-block" %>
+          <% if @domain.present? %>
+            <%= link_to t("common.btn_view_all"), domain_shop_path(@domain, @product.shop),
+              class: "btn btn-success btn-block" %>
+          <% else %>
+            <%= link_to t("common.btn_view_all"), domain_shop_path(@product.shop, domain_id: "not_find"),
+              class: "btn btn-success btn-block" %>
+          <% end %>
         </div>
       </div>
     </div>

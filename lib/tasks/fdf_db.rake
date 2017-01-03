@@ -1,34 +1,38 @@
 namespace :fdf_db do
-  task create_all: [:create_user, :create_admin, :create_shop, :create_category,
-   :create_shop_manager, :create_coupon, :create_product] do
+  task create_all: [:create_user, :create_admin, :create_shop,
+    :create_category, :create_coupon, :create_product] do
   end
   task create_user: :environment do
     User.create!(
       name: "Tran Duc Quoc",
       email: "tran.duc.quoc@framgia.com",
       password: "123456",
-      password_confirmation: "123456"
+      password_confirmation: "123456",
+      status: 1
     )
 
     User.create!(
       name: "Do Thi Diem Thao",
       email: "do.thi.diem.thao@framgia.com",
       password: "123456",
-      password_confirmation: "123456"
+      password_confirmation: "123456",
+      status: 1
     )
 
     User.create!(
       name: "Nguyen Van Tran Anh",
       email: "nguyen.van.tran.anh@framgia.com",
       password: "123456",
-      password_confirmation: "123456"
+      password_confirmation: "123456",
+      status: 1
     )
 
     User.create!(
       name: "Pham Van Chien",
       email: "pham.van.chien@framgia.com",
       password: "123456",
-      password_confirmation: "123456"
+      password_confirmation: "123456",
+      status: 1
     )
   end
 
@@ -37,6 +41,14 @@ namespace :fdf_db do
       email: "forder.info@gmail.com",
       password: "123456",
       password_confirmation: "123456"
+    )
+  end
+
+  task create_domain: :environment do
+    Domain.create!(
+      name: "World",
+      status: 1,
+      role: 1
     )
   end
 
@@ -54,7 +66,7 @@ namespace :fdf_db do
     Shop.create!(
       name: "Sinh Tố",
       description: "Sinh Tố",
-      status: 0,
+      status: 1,
       cover_image: "image",
       avatar: File.open(Rails.root + "public/images/quansinhto.jpg"),
       owner_id: 2
@@ -63,7 +75,7 @@ namespace :fdf_db do
     Shop.create!(
       name: "Chè Thái",
       description: "Chè Thái",
-      status: 0,
+      status: 1,
       cover_image: "image",
       avatar: File.open(Rails.root + "public/images/quanchethai.jpg"),
       owner_id: 3
@@ -72,7 +84,7 @@ namespace :fdf_db do
     Shop.create!(
       name: "Dừa Bến Tre",
       description: "Dừa Bến Tre",
-      status: 0,
+      status: 1,
       cover_image: "image",
       avatar: File.open(Rails.root + "public/images/quandua.jpg"),
       owner_id: 4
@@ -81,19 +93,19 @@ namespace :fdf_db do
     Shop.create!(
       name: "Mì Quảng",
       description: "Mì Quảng",
-      status: 0,
       cover_image: "image",
       avatar: File.open(Rails.root + "public/images/quanmiquang.jpg"),
-      owner_id: 4
+      owner_id: 4,
+      status: 1
     )
 
     Shop.create!(
       name: "Nếp Cẩm",
       description: "Nếp Cẩm",
-      status: 0,
       cover_image: "image",
       avatar: File.open(Rails.root + "public/images/quansinhto.jpg"),
-      owner_id: 1
+      owner_id: 1,
+      status: 1
     )
   end
 
@@ -120,26 +132,6 @@ namespace :fdf_db do
 
     Category.create!(
       name: "Nếp Cẩm"
-    )
-  end
-
-  task create_shop_manager: :environment do
-    ShopManager.create!(
-      user_id: 2,
-      shop_id: 1,
-      role: 1,
-    )
-
-    ShopManager.create!(
-      user_id: 3,
-      shop_id: 3,
-      role: 1,
-    )
-
-    ShopManager.create!(
-      user_id: 4,
-      shop_id: 4,
-      role: 1,
     )
   end
 

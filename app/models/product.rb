@@ -40,6 +40,7 @@ class Product < ApplicationRecord
   scope :top_products, -> do
     by_active.by_date_newest.limit Settings.index.max_products
   end
+  scope :by_category, -> category{where category_id: category}
 
   private
   def image_size

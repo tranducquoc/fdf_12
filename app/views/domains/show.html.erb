@@ -11,16 +11,18 @@
           <% else %>
             <div class="scroll">
           <% end %>
-          <%= link_to products_path(@domain.id),
+          <%= link_to domain_products_path(@domain),
             class: "btn btn-default col-lg-6 col-md-12 active" do %>
             <span><%= t "common.category.all" %></span>
           <% end %>
           <% @categories.each do |category| %>
             <% cache category do %>
-              <%= link_to category_path(category),
-                class: "btn btn-default col-lg-6 col-md-12 active" do %>
-                <span><%= category.name %></span>
-                <span class="badge"><%= category.products.size %></span>
+              <% if @domain.products.by_category(category.id).present? %>
+                <%= link_to domain_products_path(@domain, category_id: category.id),
+                  class: "btn btn-default col-lg-6 col-md-12 active" do %>
+                  <span><%= category.name %></span>
+                  <span class="badge"><%= @domain.products.by_category(category.id).size %></span>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>

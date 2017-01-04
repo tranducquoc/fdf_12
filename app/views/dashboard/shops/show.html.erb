@@ -12,6 +12,9 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-sm-4">
+                  <% if @domain.present? %>
+                    <%= f.hidden_field :domain_id, value: @domain.id %>
+                  <% end %>
                   <%= f.file_field :avatar, onchange: "this.form.submit();",
                     class: "glyphicon glyphicon-camera wh change-picture" %>
                 </div>
@@ -85,9 +88,15 @@
 <div class="row">
   <h2 class="section_title margin_right_15px row_h2">
     <div class="btn_view_all_wrapper pull-right">
-      <%= link_to t("common.create_button"),
-        new_dashboard_shop_product_path(@shop),
-        class: "btn btn_view_all btn-warning" %>
+      <% if @domain.present? %>
+        <%= link_to t("common.create_button"),
+          new_dashboard_shop_product_path(@shop, domain_id: @domain.id),
+          class: "btn btn_view_all btn-warning" %>
+      <% else %>
+        <%= link_to t("common.create_button"),
+          new_dashboard_shop_product_path(@shop),
+          class: "btn btn_view_all btn-warning" %>
+      <% end %>
     </div>
     <% if @products.any? %>
       <%= t ".has_products" %>

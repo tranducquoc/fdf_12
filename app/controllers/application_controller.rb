@@ -106,5 +106,4 @@ class ApplicationController < ActionController::Base
       flash[:danger] = t "can_not_add_account"
     end
   end
-
 end

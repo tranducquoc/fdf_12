@@ -26,6 +26,9 @@
     <%= f.file_field :cover_image, accept: Settings.pictures.accepted_files,
       class: "upload_img_cover" %>
   </div>
+  <% if @domain.present? %>
+    <%= f.hidden_field :domain_id, value: @domain.id %>
+  <% end %>
   <%= link_to t("common.back_button"), :back, class: "btn btn-warning" %>
   <%= f.submit yield(:submit_button),
     class: "btn btn-primary space-top-submit" %>

@@ -44,12 +44,14 @@ Rails.application.routes.draw do
     end
     resources :statistics
   end
-  # scope module: 'domains' do
   resources :domains do
     resources :products
     resources :shops
     resources :orders
     resources :carts
+    namespace :dashboard do
+      resources :shops
+    end
   end
   resources :user_domains
 

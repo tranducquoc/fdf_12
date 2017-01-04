@@ -3,7 +3,6 @@ class UserDomain < ApplicationRecord
   belongs_to :domain
 
   after_destroy :destroy_data
-
   def destroy_data
     self.user.products.each do |product|
       ProductDomain.destroy_all domain_id: self.domain.id, product_id: product.id

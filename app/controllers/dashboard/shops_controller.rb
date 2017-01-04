@@ -2,7 +2,7 @@ class Dashboard::ShopsController < BaseDashboardController
   before_action :load_shop, only: [:show, :edit, :update]
   before_action :load_params_update, only: :show
   before_action :check_user_status_for_action
-  before_action :load_domain, only: :index
+  before_action :load_domain, only: [:index, :new, :show]
 
   def new
     @shop = current_user.own_shops.build
@@ -11,8 +11,11 @@ class Dashboard::ShopsController < BaseDashboardController
   def create
     @shop = current_user.own_shops.build shop_params
     if @shop.save
-      flash[:success] = t "flash.success.dashboard.updated_shop"
-      redirect_to dashboard_shops_path
+      if check_domain_present?
+        save_shop_domain
+      else
+        redirect_to dashboard_shops_path
+      end
     else
       flash[:danger] = t "flash.danger.dashboard.updated_shop"
       render :new
@@ -50,7 +53,7 @@ class Dashboard::ShopsController < BaseDashboardController
     else
       if @shop.update_attributes shop_params
         flash[:success] = t "flash.success.dashboard.updated_shop"
-        redirect_to dashboard_shop_path(@shop)
+        redirect_by_domain
       else
         flash[:danger] = t "flash.danger.dashboard.updated_shop"
         render :edit
@@ -75,6 +78,30 @@ class Dashboard::ShopsController < BaseDashboardController
     else
       flash[:danger] = t "flash.danger.load_shop"
       redirect_to root_path
+    end
+  end
+
+  def check_domain_present?
+    @domain = Domain.find_by id: params[:shop][:domain_id]
+    @domain.present?
+  end
+
+  def save_shop_domain
+    shop_domain = ShopDomain.new shop_id: @shop.id, domain_id: @domain.id
+    if shop_domain.save
+      flash[:success] = t "flash.success.dashboard.updated_shop"
+    else
+      flash[:danger] = t "flash.danger.dashboard.updated_shop"
+    end
+
+    redirect_to dashboard_shops_path(domain_id: @domain.id)
+  end
+
+  def redirect_by_domain
+    if check_domain_present?
+      redirect_to dashboard_shop_path(@shop, domain_id: @domain.id)
+    else
+      redirect_to dashboard_shop_path(@shop, domain_id: Settings.not_find)
     end
   end
 end

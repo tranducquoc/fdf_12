@@ -8,7 +8,11 @@
     <%= action_cable_meta_tag %>
   </head>
   <body>
-    <%= render "layouts/header" %>
+    <% if user_signed_in? %>
+      <%= render "layouts/header" %>
+    <% else %>
+      <%= render "layouts/header_index" %>
+    <% end %>
     <div class="container home-body">
       <div class="flash-messages">
         <%= render "layouts/messages" %>

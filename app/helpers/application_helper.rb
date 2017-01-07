@@ -70,4 +70,15 @@ module ApplicationHelper
   def check_domain_status domain
     domain.professed?
   end
+
+  def select_lang
+    case selected_lang.to_s
+    when Settings.languages.vietnamese.type
+      Settings.languages.vietnamese.image
+    when Settings.languages.japanese.type
+      Settings.languages.japanese.image
+    else
+      Settings.languages.english.image
+    end
+  end
 end

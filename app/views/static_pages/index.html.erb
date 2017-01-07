@@ -1,0 +1,73 @@
+<div class="index">
+  <div class="intro-message">
+    <div><%= image_tag "logo.png", class: "displayed" %></div>
+    <div class="text-center"> <h2><%= t "common.base_title" %></h2></div> 
+  </div>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li>
+            <%= link_to t("header.sign_in"), new_user_session_path,
+             class: "btn btn-warning" %>
+          </li>
+        </ul>
+      </div>       
+    </div>
+  </nav>
+  <div class="row">
+    <div class="">
+      <div class=" text-center">
+        <%= image_tag "drink_3.png", class: "img-responsive img-full displayed" %>
+      </div>
+    </div>  
+  </div>
+  <div class="content-section-a">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-sm-6">
+          <div class="clearfix"></div>
+          <h1 class="section-heading">
+            <strong><%= t "index.intro_food.title" %></strong>
+          </h1>
+          <p class="lead"><%= t "index.intro_food.context" %></p>
+        </div>
+        <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+          <%= image_tag "draft/food_1.png", class: "img-responsive" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-section-b">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+          <div class="clearfix"></div>
+          <h1 class="section-heading">
+            <strong><%= t "index.intro_drink.title" %></strong>
+          </h1>
+          <p class="lead"><%= t "index.intro_drink.context" %></p>
+        </div>
+        <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+          <%= image_tag "draft/drink_2.png", class: "img-responsive" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-section-a">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-sm-6">
+          <div class="clearfix"></div>
+          <h1 class="section-heading">
+            <strong><%= t "index.intro_shop.title" %></strong>
+          </h1>
+          <p class="lead"><%= t "index.intro_shop.context" %></p>
+        </div>         
+        <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+          <%= image_tag "draft/food_2.png", class: "img-responsive" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

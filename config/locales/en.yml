@@ -604,3 +604,15 @@ en:
   english: "English"
   vietnam: "Tiếng Việt"
   Janpanese: "日本語"
+  index:
+    intro_food:
+      title: "Tasty and cheap food"
+      context: "Come with us to enjoy the fresh food,
+        ensure quality with good prices, you will have a quick  and convenient meal "
+    intro_drink:
+      title: "Drinks varied and hygiene"
+      context: "Let's order for yourself nutritive glasses of smoothie as well as amazing snackfood. 
+        All are availble in F-order"
+    intro_shop:
+      title: "Opportunities to promote your shop" 
+      context: "F-order will be the perfect place to introduce your products to everyone ..."

@@ -1,12 +1,15 @@
 class StaticPagesController < ApplicationController
   before_action :load_data, only: :home
 
+  def index
+    redirect_to root_path if user_signed_in?
+  end
+  
   def home
     if user_signed_in?
       load_data_for_user
     else
-      @shops = Shop.top_shops.decorate
-      @products = Product.top_products
+      redirect_to index_path
     end
   end
 

@@ -597,3 +597,13 @@ jp:
   english: "English"
   vietnam: "Tiếng Việt"
   Janpanese: "日本語"
+  index:
+    intro_food:
+      title: "料理 は 安くて、良いです"
+      context: "生鮮食品の品質を楽しむために、私たちと一緒に来て、あなたは簡単なお食事と利便性を持っています"
+    intro_drink:
+      title: "飲物  は 多様性と衛生"
+      context: "魅力的なスナック,栄養のフラッペのコップを呼び出します,すべてが F-order にあります"
+    intro_shop:
+      title: "あなたのお店を促進するための機会" 
+      context: "F-order は、すべての人にあなたの製品を持参するのに理想的な場所になります"

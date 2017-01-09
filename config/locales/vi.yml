@@ -105,7 +105,7 @@ vi:
     dựng những ứng dụng trên điện thoại, game, các ứng dụng xã hội và các ứng
     dụng trên nền Web."
   about_label: "Về công ty Framgia Việt Nam"
-  home: "Home"
+  home: "Trang chủ"
   start: "Từ ngày"
   end: "Đến ngày"
   information: "Bạn cần được kích hoạt tài khoản trước khi làm bất cứ điều gì"
@@ -637,3 +637,15 @@ vi:
   english: "English"
   vietnam: "Tiếng Việt"
   Janpanese: "日本語"
+  index:
+    intro_food:
+      title: "Những món ăn ngon bổ rẻ"
+      context: "Hãy đến với chúng tôi để được thưởng thức những món ăn tươi ngon, 
+        đảm bảo chất lượng với giá cả phải chăng,  bạn sẽ có ngay bữa ăn một cách nhanh chóng và tiện lợi"
+    intro_drink:
+      title: "Thức uống đa dạng, hợp vệ sinh"
+      context: " Hãy gọi cho mình những li sinh tố bổ dưỡng, 
+        những món ăn vặt hấp dẫn, mọi thứ đều có ở F-order"
+    intro_shop:
+      title: "Cơ hội để quảng bá cho cửa hàng của bạn" 
+      context: "F-order sẽ là nơi lý tưởng để đưa các sản phẩm của bạn đến với tất cả mọi người..."

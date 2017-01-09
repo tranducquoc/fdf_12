@@ -230,6 +230,7 @@ vi:
     danger:
       load_order: "Không thể tìm thấy đơn hàng. Vui lòng chọn lại! "
       load_items: "Không tìm thấy sản phẩm"
+      create_domain: "Bạn phải tạo một miền"
       admin:
         created_category: "Tạo mới thất bại. Vui lòng thử lại!"
         updated_category: "Cập nhật thất bại. Vui lòng thử lại!"
@@ -655,3 +656,7 @@ vi:
     search: "Tìm kiếm sản phẩm"
     order: "Đặt hàng"
     shop: "Tạo và quản lí cửa hàng"
+  save_shop_domain_successfully: "Miền của cửa hàng được lưu thành công"
+  can_not_add_shop: "Không thể thêm cửa hàng này vào miền"
+  save_product_domain_successfully: "Miền của sản phẩm được lưu thành công"
+  can_not_add_product: "Không thể thêm sản phẩm này vào miền"

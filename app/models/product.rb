@@ -42,6 +42,10 @@ class Product < ApplicationRecord
   end
   scope :by_category, -> category{where category_id: category}
 
+  scope :by_category, ->category do
+    where category_id: category.id
+  end
+
   private
   def image_size
     max_size = Settings.pictures.max_size

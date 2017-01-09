@@ -189,6 +189,7 @@ jp:
     danger:
       load_order: "ラインを見つけることができません。選択しなおしてください。"
       load_items: "製品が見つけることができません。"
+      create_domain: "あなたはドメインを作成してください"
       admin:
         created_category: "失敗。もう一度やり直してください。"
         updated_category: "失敗。もう一度やり直してください。"
@@ -613,3 +614,7 @@ jp:
     search: "プロダクトが検索"
     order: "オーダー"
     shop: "店を作成と舗管理"
+  save_shop_domain_successfully: "正常に保存"
+  can_not_add_shop: "ドメインにこのストアを追加することができません。"
+  save_product_domain_successfully: " 正常に保存"
+  can_not_add_product: "ドメインにこの製品を追加することができません。"

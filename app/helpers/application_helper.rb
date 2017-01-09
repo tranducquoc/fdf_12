@@ -81,4 +81,13 @@ module ApplicationHelper
       Settings.languages.english.image
     end
   end
+
+  def number_product_in_category_by_domain category, domain
+    products = if @domain.present?
+      domain.products.by_category category
+    else
+      category.products
+    end
+    products.size
+  end
 end

@@ -85,7 +85,6 @@
   }
 
   @media screen and (min-width:768px) {
-
     .img-left {
       float: left;
       margin-right: 25px;
@@ -120,6 +119,20 @@
       table-layout: fixed;
       font-size: 20px;
     }
+  }
+
+  .carousel-inner img {
+    height: 500px;
+    width: 600px;
+    display: block;
+  }
+
+  .intro-message {
+    padding-bottom: 200px;
+  }
+
+  .logo {
+    padding-top: 150px;
   }
 }
 

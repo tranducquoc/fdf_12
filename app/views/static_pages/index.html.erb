@@ -1,7 +1,9 @@
 <div class="index">
   <div class="intro-message">
+    <div class="logo">
     <div><%= image_tag "logo.png", class: "displayed" %></div>
     <div class="text-center"> <h2><%= t "common.base_title" %></h2></div> 
+    </div>
   </div>
   <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -15,12 +17,39 @@
       </div>       
     </div>
   </nav>
-  <div class="row">
-    <div class="">
-      <div class=" text-center">
-        <%= image_tag "drink_3.png", class: "img-responsive img-full displayed" %>
+  <div id="index-carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#index-carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#index-carousel" data-slide-to="1"></li>
+      <li data-target="#index-carousel" data-slide-to="2"></li>
+      <li data-target="#index-carousel" data-slide-to="3"></li>
+      <li data-target="#index-carousel" data-slide-to="4"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <%= image_tag Settings.index.slide_1, class: "displayed" %>
       </div>
-    </div>  
+      <div class="item">
+        <%= image_tag Settings.index.slide_2, class: "displayed" %>
+      </div>
+      <div class="item">
+        <%= image_tag Settings.index.slide_3, class: "displayed" %>
+      </div>
+      <div class="item">
+        <%= image_tag Settings.index.slide_4, class: "displayed" %>
+      </div>
+      <div class="item">
+        <%= image_tag Settings.index.slide_5, class: "displayed" %>
+      </div>
+    </div>
+    <a class="left carousel-control" href="#index-carousel" 
+      role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 
+    </a>
+    <a class="right carousel-control" href="#index-carousel" 
+      role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    </a>
   </div>
   <div class="content-section-a">
     <div class="container">

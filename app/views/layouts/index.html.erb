@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title yield :title %></title>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track": true %>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+  </head>
+  <body>
+    <%= render "layouts/header_index" %>
+    <%= yield %>
+    <div class="row margin-to co-black">
+      <div class="col-sm-4 text-default margin-duong">
+        <h2 class="com-name"><%= t("company") %></h2>
+        <h5>
+          <strong class="text-default">
+            <%= link_to t("home"), root_path %><br>
+            <%= link_to t("document"),
+              "https://drive.google.com/
+              file/d/0Bw0Y2BhwI-7xQjdPWjdzSFRoMVk/view?usp=sharing",
+              target: "_blank" %>
+          </strong>
+        </h5>
+        <h5 class="text-default"><%= t "com-infor" %></h5>
+      </div>
+      <div class="col-sm-4 margin-am">
+        <h5>
+          <table class="text-default">
+            <tr>
+              <td>
+                <i class="fa fa-map-marker fa-2x default-icon address-icon"></i>
+              </td>
+              <td>
+                <%= t "com-add" %>
+              </td>
+            </tr>
+          </table>
+        </h5>
+        <h5>
+          <table class="text-default">
+            <tr>
+              <td><i class="fa fa-mobile fa-2x default-icon"></i>
+                <%= t "phone-num" %>
+              </td>
+            </tr>
+          </table>
+        </h5>
+        <h5>
+          <table class="text-default">
+            <tr>
+              <td>
+                <i class="fa fa-envelope default-icon" aria-hidden="true"></i>
+              </td>
+              <td class="co-blue">
+                <strong><%= mail_to t "com-email" %></strong>
+              </td>
+            </tr>
+          </table>
+        </h5>
+      </div>
+      <div class="col-sm-4 margin-am">
+        <h5>
+          <strong class="text-default">
+            <%= t "about_label" %>
+          </strong>
+        </h5>
+        <p class="text-small">
+          <%= t "com-detail" %>
+        </p>
+        <p class="co-blue">
+          <strong>
+            <%= link_to t("feed_back"), "https://docs.google.com/
+              forms/d/e/1FAIpQLSeWye6zJ8U7epz5W3G5MDZTT8YE5rWELbHDpyRtD4drC0QrGw/
+              viewform", target: "_blank", class: "text-default" %>
+          </strong>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

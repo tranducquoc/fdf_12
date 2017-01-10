@@ -638,14 +638,18 @@ vi:
   vietnam: "Tiếng Việt"
   Janpanese: "日本語"
   index:
-    intro_food:
-      title: "Những món ăn ngon bổ rẻ"
-      context: "Hãy đến với chúng tôi để được thưởng thức những món ăn tươi ngon, 
-        đảm bảo chất lượng với giá cả phải chăng,  bạn sẽ có ngay bữa ăn một cách nhanh chóng và tiện lợi"
-    intro_drink:
-      title: "Thức uống đa dạng, hợp vệ sinh"
-      context: " Hãy gọi cho mình những li sinh tố bổ dưỡng, 
-        những món ăn vặt hấp dẫn, mọi thứ đều có ở F-order"
+    intro_search:
+      title: "Tìm kiếm dễ dàng"
+      context: "Với F-order, bạn có thể dễ dàng tìm kiếm những món ăn, đồ uống ngon, chất lượng theo từng miền"
+    intro_order:
+      title: "Đặt hàng thuận tiện, nhanh chóng"
+      context: "Bạn có thể đặt cho mình các sản phẩm một cách dễ dàng, luôn nhận được thông báo mỗi khi đơn hàng có sự thay đổi"
     intro_shop:
-      title: "Cơ hội để quảng bá cho cửa hàng của bạn" 
-      context: "F-order sẽ là nơi lý tưởng để đưa các sản phẩm của bạn đến với tất cả mọi người..."
+      title: "Tạo và quản lý shop dễ dàng" 
+      context: "F-order sẽ là nơi lý tưởng để đưa các sản phẩm của bạn đến với tất cả mọi người,
+        chỉ một vài bước đơn giản là bạn đã có thể làm chủ một cửa hàng của riêng mình"
+  feature: 
+    title: "Tính năng"
+    search: "Tìm kiếm sản phẩm"
+    order: "Đặt hàng"
+    shop: "Tạo và quản lí cửa hàng"

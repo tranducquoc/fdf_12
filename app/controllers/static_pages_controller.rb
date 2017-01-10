@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   before_action :load_data, only: :home
+  layout "index", only: :index
 
   def index
     redirect_to root_path if user_signed_in?

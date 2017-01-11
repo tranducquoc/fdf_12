@@ -26,6 +26,27 @@
         class="rating-loading star-rating" data-size="sm"
         value=<%= shop.averate_rating %> >
       <div class="description quote"><p><%= shop.description %></p></div>
+      <% if @domain.present? %>
+        <div><h4><%= t "request_shop.domain" %><%= @domain.name %></h4></div>
+        <% if shop.in_domain? @domain %>
+          <div><h3><%= t "request_shop.already" %></h3></div>
+        <% else %>
+          <div class="request-status">
+            <% if shop.requested? @domain %>
+              <span class="btn btn-warning">
+                <%= shop.request_status @domain %>
+              </span>
+            <% else %>
+              <%= form_for @request do |f| %>
+                <%= f.hidden_field :domain_id, value: @domain.id %>
+                <%= f.hidden_field :shop_id, value: shop.id %>
+                <%=  f.submit t("request_shop.request_to_domain"), 
+                  class: "btn btn-primary btn-info refresh" %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

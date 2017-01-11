@@ -191,6 +191,7 @@ en:
         update_product: "Update product successfully!"
         updated_shop: "Update shop successfully!"
         delete_product: "Delete product successfully!"
+        create_request: "Created request successfully!"
     danger:
       load_order: "Cannot find order. plz choose order! "
       load_items: "Cannot find order items"
@@ -212,6 +213,7 @@ en:
         delete_product: "Delete product failed!"
         order_product: "Product was ordered"
         add_product_failed: "Can not add this product into domain"
+        create_request: "Created request failed!"
     warning:
       admin:
         deleted_category: "Cannot delete because this category has products!"
@@ -628,3 +630,19 @@ en:
   can_not_add_shop: "Can not add this shop to domain"
   save_product_domain_successfully: "Product domain is saved successfully"
   can_not_add_product: "Can not add this product to domain"
+  request_shop:
+    lb: "request shops"
+    shop_name: "Shop name"
+    user_name: "Shop's owner name"
+    approve: "Approve"
+    reject: "Reject"
+    pending: "Pending"
+    request_to_domain: "Request"
+    success: "Handle request successfully!"
+    faild: "Handle request failed!"
+    can_not_find_request: "Can not find request"
+    status: "Status"
+    domain: "Domain: "
+    already: "Already in domain"
+    title: "Request to domain"
+    domain_name: "Domain name"

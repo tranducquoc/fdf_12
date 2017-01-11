@@ -227,6 +227,7 @@ vi:
         update_product: "Sản phẩm cập nhật thành công!"
         updated_shop: "Lưu cửa hàng thành công"
         delete_product: "Sản phẩm đã được xóa!"
+        create_request: "Yêu cầu đã được thêm!"
     danger:
       load_order: "Không thể tìm thấy đơn hàng. Vui lòng chọn lại! "
       load_items: "Không tìm thấy sản phẩm"
@@ -248,6 +249,7 @@ vi:
         delete_product: "Xóa không thành công!"
         order_product: "Sản phẩm đã được đặt hàng"
         add_product_failed: "Không thể thêm sản phẩm vào miền này"
+        create_request: "Yêu cầu thất bại!"
     warning:
       admin:
         deleted_category: "Có sản phẩm bên trong. Không thể xóa!"
@@ -660,3 +662,19 @@ vi:
   can_not_add_shop: "Không thể thêm cửa hàng này vào miền"
   save_product_domain_successfully: "Miền của sản phẩm được lưu thành công"
   can_not_add_product: "Không thể thêm sản phẩm này vào miền"
+  request_shop:
+    lb: "Thêm cửa hàng"
+    shop_name: "Tên cửa hàng"
+    user_name: "Tên chủ cửa hàng"
+    approve: "Chấp nhận"
+    reject: "Từ chối"
+    pending: "Đang chờ"
+    request_to_domain: "Yêu cầu"
+    success: "Xác nhận yêu cầu thành công!"
+    faild: "Xác nhận yêu cầu thất bại!"
+    can_not_find_request: "Không tìm thấy yêu cầu"
+    status: "Trạng thái"
+    domain: "Miền: "
+    already: "Đã thuộc miền"
+    title: "Yêu cầu vào miền"
+    domain_name: "Tên miền"

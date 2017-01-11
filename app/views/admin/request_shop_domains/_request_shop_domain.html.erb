@@ -1,0 +1,20 @@
+<tr>
+  <td><strong><%= request_shop_domain.shop.name %></strong></td>
+  <td><strong><%= request_shop_domain.shop.owner.name %></strong></td>
+  <td><strong><%= request_shop_domain.domain.name %></strong></td>
+  <td><%= request_shop_domain.status %></td>
+  <td>
+    <%= form_for request_shop_domain do |f| %>
+      <%= f.hidden_field :status, value: Settings.request_status.approved %>
+      <%= f.submit t("request_shop.approve"), 
+        class: "btn btn-primary btn-success refresh" %>
+    <% end %>
+  </td>
+  <td> 
+    <%= form_for request_shop_domain do |f| %>
+      <%= f.hidden_field :status, value: Settings.request_status.rejected %>
+      <%=  f.submit t("request_shop.reject"), 
+        class: "btn btn-primary btn-danger refresh" %>
+    <% end %>
+  </td>
+</tr>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103032025) do
+ActiveRecord::Schema.define(version: 20170112033638) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -232,6 +232,16 @@ ActiveRecord::Schema.define(version: 20170103032025) do
     t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
   end
 
+  create_table "request_shop_domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "status",     default: 0
+    t.integer  "shop_id"
+    t.integer  "domain_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["domain_id"], name: "index_request_shop_domains_on_domain_id", using: :btree
+    t.index ["shop_id"], name: "index_request_shop_domains_on_shop_id", using: :btree
+  end
+
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.float    "rating",          limit: 24
     t.string   "review"
@@ -370,6 +380,8 @@ ActiveRecord::Schema.define(version: 20170103032025) do
   add_foreign_key "shop_domains", "shops"
   add_foreign_key "shop_managers", "shops"
   add_foreign_key "shop_managers", "users"
+  add_foreign_key "request_shop_domains", "domains"
+  add_foreign_key "request_shop_domains", "shops"
   add_foreign_key "user_domains", "domains"
   add_foreign_key "user_domains", "users"
 end

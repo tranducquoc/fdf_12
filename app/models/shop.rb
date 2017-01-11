@@ -26,6 +26,7 @@ class Shop < ApplicationRecord
   has_many :events , as: :eventable
   has_many :shop_domains
   has_many :domains, through: :shop_domains
+  has_many :request_shop_domains
 
   enum status: {pending: 0, active: 1, closed: 2, rejected: 3, blocked: 4}
 
@@ -51,6 +52,8 @@ class Shop < ApplicationRecord
   scope :by_active, ->{where status: :active}
   scope :by_shop, -> shop_id {where id: shop_id if shop_id.present?}
 
+  scope :of_ids, -> ids {where id: ids}
+
   def is_owner? user
     owner == user
   end
@@ -61,6 +64,18 @@ class Shop < ApplicationRecord
 
   def get_shop_manager_by user
     shop_managers.by_user(user).first
+  end
+
+  def requested? domain
+    Shop.of_ids(RequestShopDomain.shop_ids_by_domain(domain.id)).include? self  
+  end
+
+  def in_domain? domain
+    self.domains.include? domain
+  end
+
+  def request_status domain
+    self.request_shop_domains.by_domain(domain).first.status
   end
 
   private

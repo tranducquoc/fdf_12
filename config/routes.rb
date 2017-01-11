@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :products, only: :index
     resources :set_user, only: :create
     resources :shops, except: [:new, :create, :show]
+    resources :request_shop_domains
   end
 
   namespace :dashboard do
@@ -72,4 +73,6 @@ Rails.application.routes.draw do
   end
   resources :tags, only: :show
   get "search(/:search)", to: "searches#index", as: :search
+
+  resources :request_shop_domains
 end

@@ -98,12 +98,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def create_data_for_domain user, domain
-    user_domain = UserDomain.new user_id: user.id, domain_id: domain.id
-    if user_domain.save
-      flash[:success] = t "save_domain_successfully"
-    else
-      flash[:danger] = t "can_not_add_account"
+  def check_user_have_domains
+    if user_signed_in? && !current_user.domains.any? 
+      flash[:danger] = t "flash.danger.create_domain"
+      redirect_to new_domain_path
     end
   end
 end

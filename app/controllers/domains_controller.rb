@@ -21,14 +21,9 @@ class DomainsController < ApplicationController
 
   def create
     @domain = Domain.new domain_params
-    if @domain.save
-      flash[:success] = t "save_domain_successfully"
-      create_data_for_domain current_user, @domain
-      redirect_to new_user_domain_path(id: @domain.id)
-    else
-      flash[:danger] = t "save_domain_not_successfully"
-      redirect_to :back
-    end
+    save_domain = SaveDomainService.new(@domain, current_user).save
+    flash[:success] = save_domain
+    redirect_to new_user_domain_path(id: @domain.id)
   end
 
   def update

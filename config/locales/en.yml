@@ -194,6 +194,7 @@ en:
     danger:
       load_order: "Cannot find order. plz choose order! "
       load_items: "Cannot find order items"
+      create_domain: "You need to create a domain"
       admin:
         created_category: "Created category failed!"
         updated_category: "Updated category failed!"
@@ -623,3 +624,7 @@ en:
     search: "Search foods and drinks"
     order: "Order foods and drinks"
     shop: "Create and manager your Shop"
+  save_shop_domain_successfully: "Shop domain is saved successfully"
+  can_not_add_shop: "Can not add this shop to domain"
+  save_product_domain_successfully: "Product domain is saved successfully"
+  can_not_add_product: "Can not add this product to domain"

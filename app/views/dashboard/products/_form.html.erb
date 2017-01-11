@@ -43,6 +43,9 @@
       class: "upload_img" %>
     <%= image_tag @product.image.url, class: "avatar padding_top_10px" %>
   </div>
+  <% if @domain.present? %>
+    <%= f.hidden_field :domain_id, value: @domain.id %>
+  <% end %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= link_to t("common.back_button"), :back, class: "btn btn-warning" %>
   <%= f.submit yield(:submit_button),

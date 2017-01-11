@@ -2,6 +2,7 @@ class DomainsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_domain, only: [:show, :update]
   before_action :redirect_to_root_domain, only: :show
+  before_action :check_user_status_for_action, only: :index
 
   def index
     @domains = current_user.domains.by_creator current_user.id

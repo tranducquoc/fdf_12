@@ -5,6 +5,7 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  add_product_failed: "Can not add this product into domain"
   professed: "Professed"
   secret: "Secret"
   can_not_load_domain: "Can not load domain"
@@ -209,6 +210,7 @@ en:
         updated_shop: "Update shop failed!"
         delete_product: "Delete product failed!"
         order_product: "Product was ordered"
+        add_product_failed: "Can not add this product into domain"
     warning:
       admin:
         deleted_category: "Cannot delete because this category has products!"

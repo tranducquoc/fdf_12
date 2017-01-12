@@ -650,10 +650,10 @@ vi:
       title: "Đặt hàng thuận tiện, nhanh chóng"
       context: "Bạn có thể đặt cho mình các sản phẩm một cách dễ dàng, luôn nhận được thông báo mỗi khi đơn hàng có sự thay đổi"
     intro_shop:
-      title: "Tạo và quản lý shop dễ dàng" 
+      title: "Tạo và quản lý shop dễ dàng"
       context: "F-order sẽ là nơi lý tưởng để đưa các sản phẩm của bạn đến với tất cả mọi người,
         chỉ một vài bước đơn giản là bạn đã có thể làm chủ một cửa hàng của riêng mình"
-  feature: 
+  feature:
     title: "Tính năng"
     search: "Tìm kiếm sản phẩm"
     order: "Đặt hàng"
@@ -676,5 +676,6 @@ vi:
     status: "Trạng thái"
     domain: "Miền: "
     already: "Đã thuộc miền"
-    title: "Yêu cầu vào miền"
+    title: "Danh sách yêu cầu"
     domain_name: "Tên miền"
+    page_title: "Quản lý yêu cầu thêm cửa hàng vào miền"

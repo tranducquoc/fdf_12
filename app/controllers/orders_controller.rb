@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   before_action :load_order_update, only: :update
   before_action :check_before_order, only: :create
   before_action :check_user_status_for_action
+  before_action :load_domain, except: [:destroy, :update, :edit]
 
   def index
     if params[:start_date].present? && params[:end_date].present?
@@ -109,10 +110,10 @@ class OrdersController < ApplicationController
       redirect_to :back
     elsif cart_shop.items.size > order.products.size
       flash[:warning] = t "oder.something_deleted"
-      redirect_to order_path @order, shop_id: shop.id
+      redirect_to domain_order_path @domain, @order, shop_id: shop.id
     else
       flash[:success] = t "oder.success"
-      redirect_to order_path order, shop_id: shop.id
+      redirect_to domain_order_path @domain, order, shop_id: shop.id
     end
   end
 

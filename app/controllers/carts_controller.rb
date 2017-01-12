@@ -3,6 +3,7 @@ class CartsController < ApplicationController
   before_action :load_product, only: :update
   before_action :check_before_order, only: [:new, :index]
   before_action :check_user_status_for_action, except: [:update, :index]
+  before_action :load_domain, only: [:index, :new, :create]
 
   def index
     if @cart.blank?
@@ -107,10 +108,10 @@ class CartsController < ApplicationController
       redirect_to :back
     elsif count_exit_order > Settings.start_count_order
       flash[:warning] = t("oder.has_order_deleted") + count_exit_order.to_s + t("oder.product_deleted")
-      redirect_to orders_path
+      redirect_to domain_orders_path @domain
     else
       flash[:success] = t "oder.success"
-      redirect_to orders_path
+      redirect_to domain_orders_path @domain
     end
   end
 

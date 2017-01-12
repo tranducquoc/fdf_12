@@ -37,7 +37,7 @@
   <td>
     <% if @domain.present? %>
       <%= link_to t("common.edit_button"),
-        edit_dashboard_shop_product_path(product.shop, product, domain_id: @domain.id),
+         edit_domain_dashboard_shop_product_path(@domain, product.shop, product),
         class: "btn btn-sm btn-primary" %>
       <%= link_to t("common.delete_button"),
         dashboard_shop_product_path(product.shop, product, domain_id: @domain.id),

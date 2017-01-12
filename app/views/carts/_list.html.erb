@@ -66,7 +66,12 @@
         </div>
         <div class="defaut-top">
           <% if cart.present? %>
-            <%= link_to t("oder.btn_oder"), new_order_path(shop_id: cart[:shop_id]), class: "btn btn-primary" %>
+            <% if @domain.present? %>
+              <%= link_to t("oder.btn_oder"), new_domain_order_path(@domain, shop_id: cart[:shop_id]),
+                class: "btn btn-primary" %>
+            <% else %>
+              <%= link_to t("oder.btn_oder"), new_order_path(shop_id: cart[:shop_id]), class: "btn btn-primary" %>
+            <% end %>
           <% end %>
         </div>
         <hr>

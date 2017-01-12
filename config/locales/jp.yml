@@ -634,5 +634,6 @@ jp:
     status: "状態"
     domain: "ドメイン "
     already: "ドメインが属しました"
-    title: "ドメインへのリクエスト"
+    title: "リストのリクエスト"
     domain_name: "ドメインの名前"
+    page_title: "要件を管理"

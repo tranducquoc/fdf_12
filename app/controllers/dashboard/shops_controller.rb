@@ -39,9 +39,8 @@ class Dashboard::ShopsController < BaseDashboardController
   end
 
   def index
-    @shops = current_user.own_shops.page(params[:page])
-      .per(Settings.common.per_page).decorate
-    @request = @domain.request_shop_domains.build if @domain.present? 
+    @request = @domain.request_shop_domains.build if @domain.present?
+    @shops = current_user.own_shops.page(params[:page]).per(Settings.common.per_page).decorate
   end
 
   def edit
@@ -94,8 +93,7 @@ class Dashboard::ShopsController < BaseDashboardController
     else
       flash[:danger] = t "flash.danger.dashboard.updated_shop"
     end
-
-    redirect_to dashboard_shops_path(domain_id: @domain.id)
+    redirect_to domain_dashboard_shops_path @domain
   end
 
   def redirect_by_domain

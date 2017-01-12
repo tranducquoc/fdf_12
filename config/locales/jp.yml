@@ -186,6 +186,7 @@ jp:
         update_product: "更新に成功。"
         updated_shop: "変更が保存された。"
         delete_product: "製品は削除されました。"
+        create_request: "成功"
     danger:
       load_order: "ラインを見つけることができません。選択しなおしてください。"
       load_items: "製品が見つけることができません。"
@@ -205,7 +206,8 @@ jp:
         updated_shop: "エラー"
         delete_product: "失敗。"
         order_product: "製品が発注されている。"
-        add_product_failed: "Can not add this product into domain"
+        add_product_failed: "失敗"
+        create_request: "失敗"
     warning:
       admin:
         deleted_category: "削除できません。"
@@ -618,3 +620,19 @@ jp:
   can_not_add_shop: "ドメインにこのストアを追加することができません。"
   save_product_domain_successfully: " 正常に保存"
   can_not_add_product: "ドメインにこの製品を追加することができません。"
+  request_shop:
+    lb: "ショップお追加する"
+    shop_name: "ショップの名"
+    user_name: "店のオーナーの名前"
+    approve: "受け入れる"
+    reject: "断りる"
+    pending: "ペンディング"
+    request_to_domain: "リクエスト"
+    success: "成功"
+    faild: "失敗"
+    can_not_find_request: "リクエストが見つかりません"
+    status: "状態"
+    domain: "ドメイン "
+    already: "ドメインが属しました"
+    title: "ドメインへのリクエスト"
+    domain_name: "ドメインの名前"

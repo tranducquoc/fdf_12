@@ -41,6 +41,7 @@ class Dashboard::ShopsController < BaseDashboardController
   def index
     @shops = current_user.own_shops.page(params[:page])
       .per(Settings.common.per_page).decorate
+    @request = @domain.request_shop_domains.build if @domain.present? 
   end
 
   def edit

@@ -85,6 +85,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  RAILS_ENV = production bin/delayed_job start
+
   # SMTP settings for gmail
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp

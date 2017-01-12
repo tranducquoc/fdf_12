@@ -236,8 +236,8 @@ ActiveRecord::Schema.define(version: 20170112033638) do
     t.integer  "status",     default: 0
     t.integer  "shop_id"
     t.integer  "domain_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.index ["domain_id"], name: "index_request_shop_domains_on_domain_id", using: :btree
     t.index ["shop_id"], name: "index_request_shop_domains_on_shop_id", using: :btree
   end
@@ -375,13 +375,13 @@ ActiveRecord::Schema.define(version: 20170112033638) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "shops"
   add_foreign_key "products", "users"
+  add_foreign_key "request_shop_domains", "domains"
+  add_foreign_key "request_shop_domains", "shops"
   add_foreign_key "reviews", "users"
   add_foreign_key "shop_domains", "domains"
   add_foreign_key "shop_domains", "shops"
   add_foreign_key "shop_managers", "shops"
   add_foreign_key "shop_managers", "users"
-  add_foreign_key "request_shop_domains", "domains"
-  add_foreign_key "request_shop_domains", "shops"
   add_foreign_key "user_domains", "domains"
   add_foreign_key "user_domains", "users"
 end

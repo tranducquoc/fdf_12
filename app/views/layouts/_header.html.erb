@@ -202,7 +202,7 @@
                   <li role="separator" class="divider"></li>
                   <li role="presentation" class="">
                     <% if @domain.present? %>
-                      <%= link_to dashboard_path(domain_id: @domain.id) do %>
+                      <%= link_to domain_dashboard_path(@domain) do %>
                         <i class="fa fa-bar-chart"></i>
                         <span><%= t "header.shop_statistic" %></span>
                       <% end %>

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   devise_for :admins, path: "admin",
     controllers: {sessions: "admin/sessions"}
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
-  
+
   get "index" => "static_pages#index"
   root "static_pages#home"
   mount ActionCable.server => "/cable"
@@ -51,7 +51,10 @@ Rails.application.routes.draw do
     resources :orders
     resources :carts
     namespace :dashboard do
-      resources :shops
+      root "statistics#index", path: "/"
+      resources :shops do
+        resources :products
+      end
     end
   end
   resources :user_domains

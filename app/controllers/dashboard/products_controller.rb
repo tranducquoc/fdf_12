@@ -58,7 +58,7 @@ class Dashboard::ProductsController < BaseDashboardController
         end
         format.html do
           if check_domain_present?
-            redirect_to dashboard_shop_path(@shop, domain_id: @domain.id)
+            redirect_to domain_dashboard_shop_path @domain, @shop
           else
             redirect_to dashboard_shop_path(@shop, domain_id: Settings.not_find)
           end
@@ -79,7 +79,7 @@ class Dashboard::ProductsController < BaseDashboardController
       flash[:danger] = t "flash.danger.dashboard.delete_product"
     end
     if @domain.present?
-      redirect_to dashboard_shop_path(@shop, domain_id: @domain.id)
+      redirect_to domain_dashboard_shop_path @domain, @shop
     else
       redirect_to dashboard_shop_path(@shop, domain_id: Settings.not_find)
     end
@@ -128,7 +128,8 @@ class Dashboard::ProductsController < BaseDashboardController
     unless product_domain.save
       flash[:danger] = t "flash.danger.dashboard.add_product_failed"
       redirect_to :back
+    else
+     redirect_to domain_dashboard_shop_path @domain, @shop
     end
-    redirect_to dashboard_shop_path(@shop, domain_id: @domain.id)
   end
 end

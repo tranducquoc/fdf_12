@@ -50,6 +50,7 @@ class Shop < ApplicationRecord
   scope :top_shops, ->{active.by_date_newest.limit Settings.index.max_shops}
 
   scope :by_active, ->{where status: :active}
+  scope :of_owner, -> owner_id {where owner_id: owner_id}
   scope :by_shop, -> shop_id {where id: shop_id if shop_id.present?}
 
   scope :of_ids, -> ids {where id: ids}

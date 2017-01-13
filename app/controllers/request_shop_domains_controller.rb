@@ -17,7 +17,7 @@ class RequestShopDomainsController < ApplicationController
     flash[:success] = status
     redirect_to request.referrer
   end
-  
+
   private
   def request_params
     params.require(:request_shop_domain).permit :domain_id, :shop_id

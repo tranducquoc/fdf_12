@@ -3,7 +3,7 @@
     <div class="panel panel-success">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <%= form_tag user_domains_path(domain_id: @domain.id), method: :post do %>
+          <%= form_tag new_user_domain_path(id: @domain.id), method: :post do %>
             <div class="form-group">
               <%= label_tag(:email, t("enter_user_email")) %>
             </div>

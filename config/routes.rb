@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     resources :shops
     resources :orders
     resources :carts
+    resources :shop_domains
     namespace :dashboard do
       root "statistics#index", path: "/"
       resources :shops do
@@ -58,6 +59,7 @@ Rails.application.routes.draw do
     end
   end
   resources :user_domains
+  resources :shop_domains
 
   resources :shops, only: [:index, :show, :update]
   resources :products, only: [:index, :show, :new] do

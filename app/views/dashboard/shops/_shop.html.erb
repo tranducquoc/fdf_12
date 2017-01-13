@@ -27,23 +27,35 @@
         value=<%= shop.averate_rating %> >
       <div class="description quote"><p><%= shop.description %></p></div>
       <% if @domain.present? %>
-        <% if shop.in_domain? @domain %>
-          <div class="already"><h4><%= t "request_shop.already" %></h4></div>
+        <% if params[:add_shop] == Settings.add_shop || params[:add_shop] == Settings.edit_shop %>
+          <% if !@domain.shops.include? shop %>
+            <%= link_to t("add"), shop_domains_path(shop_id: shop.id, domain_id: @domain.id, status: :active),
+              method: :post, class: "btn btn-primary button-action" %>
+          <% else %>
+            <% shop_domain = ShopDomain.find_by shop_id: shop.id, domain_id: @domain.id %>
+            <%= link_to t("delete"), shop_domain_path(shop_domain, shop_id: shop.id, domain_id: @domain.id),
+              method: :delete, class: "btn btn-danger btn_block button-action" %>
+          <% end %>
         <% else %>
-          <div class="request-status">
-            <% if shop.requested? @domain %>
-              <span class="btn btn-warning btn-sm">
-                <%= shop.request_status @domain %>
-              </span>
-            <% else %>
-              <%= form_for @request do |f| %>
-                <%= f.hidden_field :domain_id, value: @domain.id %>
-                <%= f.hidden_field :shop_id, value: shop.id %>
-                <%=  f.submit t("request_shop.request_to_domain"),
-                  class: "btn btn-primary btn-info btn-sm refresh" %>
+          <% unless shop.in_domain? @domain %>
+            <div class="request-status">
+              <% if @domain.shops.include? shop %>
+                <span class="btn btn-warning btn-sm">
+                  <%= shop.request_status @domain %>
+                </span>
+              <% else %>
+                <% if @domain.owner == current_user.id %>
+                  <%= link_to t("request_shop.request_to_domain"),
+                    shop_domains_path(shop_id: shop.id, domain_id: @domain.id, status: :active),
+                    method: :post, class: "btn btn-primary btn-info btn-sm refresh" %>
+                <% else %>
+                  <%= link_to t("request_shop.request_to_domain"),
+                    shop_domains_path(shop_id: shop.id, domain_id: @domain.id, status: :wait),
+                    method: :post, class: "btn btn-primary btn-info btn-sm refresh" %>
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>

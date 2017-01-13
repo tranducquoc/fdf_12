@@ -27,7 +27,7 @@ class DomainsController < ApplicationController
     @domain = Domain.new domain_params
     save_domain = SaveDomainService.new(@domain, current_user).save
     flash[:success] = save_domain
-    redirect_to new_user_domain_path(id: @domain.id)
+    redirect_to domain_dashboard_shops_path(@domain, add_shop: Settings.add_shop)
   end
 
   def update

@@ -1,17 +1,24 @@
 <div class="row">
-  <h2 class="row_h2">
-    <%= t "common.your_shops" %>
-    <div class="btn_view_all_wrapper pull-right">
-      <% if @domain.present? %>
-        <%= link_to t("common.btn_request"),
-         new_domain_dashboard_shop_path(@domain),
+  <% if params[:add_shop].present? && params[:add_shop] == Settings.add_shop %>
+    <%= link_to t("continue"), new_user_domain_path(id: @domain.id),
+      class: "btn btn-warning button-done" %>
+  <% elsif params[:add_shop] == Settings.edit_shop %>
+    <%= link_to t("done"), domains_path, class: "btn btn-warning button-done" %>
+  <% else %>
+    <h2 class="row_h2">
+      <%= t "common.your_shops" %>
+      <div class="btn_view_all_wrapper pull-right">
+        <% if @domain.present? %>
+          <%= link_to t("common.btn_request"),
+           new_domain_dashboard_shop_path(domain_id: @domain.id),
+            class: "btn btn_view_all btn-warning" %>
+        <% else %>
+          <%= link_to t("common.btn_request"), new_dashboard_shop_path,
           class: "btn btn_view_all btn-warning" %>
-      <% else %>
-        <%= link_to t("common.btn_request"), new_dashboard_shop_path,
-        class: "btn btn_view_all btn-warning" %>
-      <% end %>
-    </div>
-  </h2>
+        <% end %>
+      </div>
+    </h2>
+  <% end %>
 </div>
 <div class="col-md-12 magin text-center max-width" id="id_shops_list">
   <%= render @shops %>

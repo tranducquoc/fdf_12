@@ -36,10 +36,22 @@
     </ul>
   </td>
   <td><%= domain.users.size %></td>
-  <td><%= domain.shops.size %></td>
+  <td><%= domain.shop_domains.actived.size %></td>
   <td><%= domain.products.size %></td>
   <td>
-    <strong><%= link_to t("edit_member"), new_user_domain_path(id: domain.id),
-      method: :get %></strong>
+    <strong>
+      <%= link_to t("edit_member"), new_user_domain_path(id: domain.id),
+        method: :get %>
+    </strong><br>
+    <strong>
+      <%= link_to t("edit_shop"),
+        domain_dashboard_shops_path(domain, add_shop: Settings.edit_shop) %>
+    </strong><br>
+    <strong>
+      <%= link_to shop_domains_path(id: domain.id) do %>
+        <%= t("shop_request") %>
+        <%= domain.shop_domains.waiting.size %>
+      <% end %>
+    </strong>
   </td>
 </tr>

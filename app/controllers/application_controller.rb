@@ -99,7 +99,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_user_have_domains
-    if user_signed_in? && !current_user.domains.any? 
+    if user_signed_in? && !current_user.domains.any? && current_user.active?
       flash[:danger] = t "flash.danger.create_domain"
       redirect_to new_domain_path
     end

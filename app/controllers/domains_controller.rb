@@ -3,6 +3,7 @@ class DomainsController < ApplicationController
   before_action :load_domain, only: [:show, :update]
   before_action :redirect_to_root_domain, only: :show
   before_action :check_user_status_for_action, only: :index
+  before_action :active_account, only: :create
 
   def index
     @domains = current_user.domains.by_creator current_user.id
@@ -38,5 +39,12 @@ class DomainsController < ApplicationController
   private
   def domain_params
     params.require(:domain).permit(:name, :status).merge! owner: current_user.id
+  end
+
+  def active_account
+    unless current_user.active?
+      flash[:danger] = t "information"
+      redirect_to :back
+    end
   end
 end

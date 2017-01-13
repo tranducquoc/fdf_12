@@ -39,7 +39,7 @@
               <%= form_for @request do |f| %>
                 <%= f.hidden_field :domain_id, value: @domain.id %>
                 <%= f.hidden_field :shop_id, value: shop.id %>
-                <%=  f.submit t("request_shop.request_to_domain"), 
+                <%=  f.submit t("request_shop.request_to_domain"),
                   class: "btn btn-primary btn-info btn-sm refresh" %>
               <% end %>
             <% end %>

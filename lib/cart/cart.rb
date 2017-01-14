@@ -1,21 +1,16 @@
 class Cart
   attr_reader :items
+  attr_reader :domain_id
 
-  class << self
-    def build_from_hash hash
-      items = if hash
-        hash["items"].map do |item_data|
-          CartItem.new item_data["product_id"], item_data["shop_id"], item_data["quantity"]
-        end
-      else
-        Array.new
+  def initialize domain_id, items = []
+    @items = if items 
+      items.map do |item_data|
+        CartItem.new item_data["product_id"], item_data["shop_id"], item_data["quantity"]
       end
-      new items
-    end
-  end
-
-  def initialize items = []
-    @items = items
+    else
+      Array.new
+    end  
+    @domain_id = domain_id
   end
 
   def add_item product_id, shop_id
@@ -43,10 +38,16 @@ class Cart
     items = @items.map do |item|
       {product_id: item.product_id, quantity: item.quantity, shop_id: item.product.shop.id}
     end
-    {items: items}
+    {items: items, domain_id: domain_id}
   end
 
   def total_price
     @items.inject(0){|sum, item| sum + item.total_price}
   end
+
+  def delete_item items_by_shop
+    items_by_shop.each do |item|
+      items.delete item
+    end
+  end 
 end

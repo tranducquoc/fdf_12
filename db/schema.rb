@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112033638) do
+ActiveRecord::Schema.define(version: 20170115131053) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -162,8 +162,10 @@ ActiveRecord::Schema.define(version: 20170112033638) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.float    "total_pay",  limit: 24
+    t.integer  "domain_id"
     t.index ["coupon_id"], name: "index_orders_on_coupon_id", using: :btree
     t.index ["deleted_at"], name: "index_orders_on_deleted_at", using: :btree
+    t.index ["domain_id"], name: "index_orders_on_domain_id", using: :btree
     t.index ["shop_id", "user_id"], name: "index_orders_on_shop_id_and_user_id", using: :btree
     t.index ["shop_id"], name: "index_orders_on_shop_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
@@ -368,6 +370,7 @@ ActiveRecord::Schema.define(version: 20170112033638) do
   add_foreign_key "order_products", "products"
   add_foreign_key "order_products", "users"
   add_foreign_key "orders", "coupons"
+  add_foreign_key "orders", "domains"
   add_foreign_key "orders", "shops"
   add_foreign_key "orders", "users"
   add_foreign_key "product_domains", "domains"

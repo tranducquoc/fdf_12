@@ -6,6 +6,7 @@ class Domain < ApplicationRecord
   has_many :shops, through: :shop_domains
   has_many :products, through: :product_domains
   has_many :request_shop_domains
+  has_many :orders
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]

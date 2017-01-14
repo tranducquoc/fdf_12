@@ -8,11 +8,11 @@ class OrdersController < ApplicationController
   before_action :load_domain, except: [:destroy, :update, :edit]
 
   def index
-    if params[:start_date].present? && params[:end_date].present?
-      @orders = current_user.orders.between_date params[:start_date],
-        params[:end_date]
+    tmp_orders = current_user.orders.by_domain(session[:domain_id])
+    @orders = if params[:start_date].present? && params[:end_date].present?
+      tmp_orders.between_date params[:start_date], params[:end_date]
     else
-      @orders = current_user.orders.on_today.by_date_newest.page(params[:page])
+      tmp_orders.on_today.by_date_newest.page(params[:page])
         .per Settings.common.per_page
     end
     params[:status] ||= Settings.filter_status_order.all
@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
     @cart_shop = load_cart_shop @shop
     if @cart_shop.present?
       if @order.update_attributes order_params @cart_shop
-        delete_cart_item_shop session["cart"], @shop
+        delete_cart_item_shop @shop
         flash[:success] = t "oder.success"
         redirect_to order_path @order, shop_id: @shop.id
       else
@@ -52,7 +52,7 @@ class OrdersController < ApplicationController
     if @cart_shop.present?
       @order = Order.new params_create_order @cart_shop, @shop
       if @order.save
-        delete_cart_item_shop session["cart"], @shop
+        delete_cart_item_shop @shop
         check_order @order, @cart_shop, @shop
       else
         flash[:danger] = t "oder.not_oder"

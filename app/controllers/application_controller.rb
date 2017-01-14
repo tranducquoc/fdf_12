@@ -20,10 +20,22 @@ class ApplicationController < ActionController::Base
 
   private
   def create_cart
-    @cart = Cart.build_from_hash session[:cart]
+    domain_id = session[:domain_id]
+    @cart_domain = CartDomain.build_from_hash session[:cart_domain]
+    if domain_id.present?
+      @cart = @cart_domain.carts.find{|cart| cart.domain_id == domain_id}
+      unless @cart 
+        @cart = Cart.new domain_id
+        @cart_domain.carts << @cart
+      end
+    else
+      @cart = Cart.new Settings.not_find
+      @cart_domain.carts << @cart
+    end
     @cart_group = @cart.items.group_by(&:shop_id).map  do |q|
       {shop_id: q.first, items: q.second.each.map { |qn| qn }}
     end
+
   end
 
   def load_events
@@ -48,20 +60,25 @@ class ApplicationController < ActionController::Base
 
   def params_create_order cart_shop, shop_order
     {user: current_user, total_pay: cart_shop.total_price,
-      cart: cart_shop, shop: shop_order}
+      cart: cart_shop, shop: shop_order, domain: @domain}
   end
 
-  def delete_cart_item_shop cart, shop
-    items = cart["items"].select{|item| item["shop_id"] == shop.id}
-    if items.present?
-      create_cart
-      cart["items"] = cart["items"] - items
+  def delete_cart_item_shop shop
+    items_by_shop = @cart.items.select{|item| item.shop_id. == shop.id}
+    if items_by_shop.present?
+      @cart.delete_item items_by_shop
+      @cart_domain.add_cart @cart.sort, session[:domain_id]
+      session[:cart_domain] = @cart_domain.update_cart
     end
   end
 
   def load_cart_shop shop_order
     cart_shop = @cart_group.detect {|shop| shop[:shop_id] == shop_order.id}
-    Cart.new cart_shop[:items] if cart_shop.present?
+    items = []
+    cart_shop[:items].each do |item|
+      items << item.to_hash
+    end
+    Cart.new(session[:domain_id], items) if cart_shop.present?
   end
 
   def check_user_status_for_action
@@ -83,6 +100,7 @@ class ApplicationController < ActionController::Base
         @domain = nil
       end
     end
+    session[:domain_id] = @domain.id if @domain.present?
   end
 
   def redirect_to_root_domain

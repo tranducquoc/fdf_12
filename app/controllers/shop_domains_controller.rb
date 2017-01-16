@@ -58,8 +58,10 @@ class ShopDomainsController < ApplicationController
   end
 
   def check_save_shop_domain shop_domain
-    if shop_domain.save && shop_domain.active?
-      AddShopProductToDomainService.new(@shop, @domain).add
+    if shop_domain.save
+      if shop_domain.active?
+        AddShopProductToDomainService.new(@shop, @domain).add
+      end
     else
       flash[:danger] = t "can_not_add_shop"
     end

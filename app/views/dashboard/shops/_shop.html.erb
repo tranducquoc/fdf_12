@@ -37,20 +37,21 @@
               method: :delete, class: "btn btn-danger btn_block button-action" %>
           <% end %>
         <% else %>
-          <% unless shop.in_domain? @domain %>
+          <% shop_domain = ShopDomain.find_by shop_id: shop.id, domain_id: @domain.id %>
+          <% if shop.in_domain? @domain %>
             <div class="request-status">
-              <% if @domain.shops.include? shop %>
-                <span class="btn btn-warning btn-sm">
-                  <%= shop.request_status @domain %>
-                </span>
-              <% else %>
+              <strong class="btn btn-warning btn-info btn-sm refresh"><%= shop_domain.status %></strong>
+            </div>
+          <% else %>
+            <div class="request-status">
+              <% unless @domain.shops.include? shop %>
                 <% if @domain.owner == current_user.id %>
                   <%= link_to t("request_shop.request_to_domain"),
                     shop_domains_path(shop_id: shop.id, domain_id: @domain.id, status: :active),
                     method: :post, class: "btn btn-primary btn-info btn-sm refresh" %>
                 <% else %>
                   <%= link_to t("request_shop.request_to_domain"),
-                    shop_domains_path(shop_id: shop.id, domain_id: @domain.id, status: :wait),
+                    shop_domains_path(shop_id: shop.id, domain_id: @domain.id, status: :waiting),
                     method: :post, class: "btn btn-primary btn-info btn-sm refresh" %>
                 <% end %>
               <% end %>

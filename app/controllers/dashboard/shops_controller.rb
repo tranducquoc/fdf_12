@@ -2,7 +2,7 @@ class Dashboard::ShopsController < BaseDashboardController
   before_action :load_shop, only: [:show, :edit, :update]
   before_action :load_params_update, only: :show
   before_action :check_user_status_for_action
-  before_action :load_domain
+  before_action :load_domain_in_session
 
   def new
     @shop = current_user.own_shops.build

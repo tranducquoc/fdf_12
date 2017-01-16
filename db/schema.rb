@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170115131053) do
+=======
+ActiveRecord::Schema.define(version: 20170114041958) do
+>>>>>>> add shop domain
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -263,6 +267,7 @@ ActiveRecord::Schema.define(version: 20170115131053) do
     t.integer  "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "status"
     t.index ["domain_id"], name: "index_shop_domains_on_domain_id", using: :btree
     t.index ["shop_id"], name: "index_shop_domains_on_shop_id", using: :btree
   end

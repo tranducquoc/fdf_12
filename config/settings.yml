@@ -46,6 +46,9 @@ start_count: 0
 user_increase: 1
 increase_one: 1
 not_find: "not_find"
+add_shop: "add_shop"
+edit_shop: "edit_shop"
+active: "active"
 languages:
   vietnamese: {name: "Tiếng Việt", image: "vi.png", type: "vi"}
   english: {name: "English", image: "en.png", type: "en"}

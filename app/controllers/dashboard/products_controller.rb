@@ -36,7 +36,7 @@ class Dashboard::ProductsController < BaseDashboardController
   def create
     @product = @shop.products.new product_params
     if @product.save
-      if check_domain_present?
+      if check_domain_present? && check_shop_of_domain?
         save_product_domain
       else
         flash[:success] = t "flash.success.dashboard.create_product"
@@ -120,6 +120,11 @@ class Dashboard::ProductsController < BaseDashboardController
   def check_domain_present?
     @domain = Domain.find_by id: params[:product][:domain_id]
     @domain.present?
+  end
+
+  def check_shop_of_domain?
+    shop_domain = ShopDomain.find_by shop_id: @shop.id, domain_id: @domain.id
+    shop_domain.active?
   end
 
   def save_product_domain

@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     @cart_domain = CartDomain.build_from_hash session[:cart_domain]
     if domain_id.present?
       @cart = @cart_domain.carts.find{|cart| cart.domain_id == domain_id}
-      unless @cart 
+      unless @cart
         @cart = Cart.new domain_id
         @cart_domain.carts << @cart
       end
@@ -104,7 +104,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_root_domain
-    if (!user_signed_in?) || (!current_user.domains.include? @domain)
+    if (@domain.secret?) && ((!user_signed_in?) || (!current_user.domains.include? @domain))
       redirect_to root_path
     end
   end

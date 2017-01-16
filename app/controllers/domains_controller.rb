@@ -16,16 +16,17 @@ class DomainsController < ApplicationController
     @domains = Domain.professed
     @categories = Category.all
     @tags = ActsAsTaggableOn::Tag.all
-    @shops = @domain.shops.top_shops.decorate
+    @shops = Shop.shop_in_domain(@domain.id).top_shops.decorate
     @products = @domain.products.top_products
     session[:domain_id] = @domain.id
     create_cart
-    session[:cart_domain] = @cart_domain  
+    session[:cart_domain] = @cart_domain
   end
 
   def create
     @domain = Domain.new domain_params
     save_domain = SaveDomainService.new(@domain, current_user).save
+    session[:domain_id] = @domain.id
     flash[:success] = save_domain
     redirect_to domain_dashboard_shops_path(@domain, add_shop: Settings.add_shop)
   end

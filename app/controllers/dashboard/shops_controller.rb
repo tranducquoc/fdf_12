@@ -92,7 +92,7 @@ class Dashboard::ShopsController < BaseDashboardController
         status: :active
     else
       ShopDomain.new shop_id: @shop.id, domain_id: @domain.id,
-        status: :wait
+        status: :waiting
     end
     if shop_domain.save
       flash[:success] = t "flash.success.dashboard.updated_shop"

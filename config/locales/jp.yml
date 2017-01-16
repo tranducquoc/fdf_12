@@ -5,6 +5,7 @@ jp:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  join_domain: "ドメインに参加する"
   shop_request: "ショップリクエスト"
   add_shop_domain_success: "ドメインへのショップの受け入れに成功しました"
   can_not_load_shop: "店を見つけることができません"

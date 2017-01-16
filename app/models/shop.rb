@@ -54,6 +54,12 @@ class Shop < ApplicationRecord
   scope :by_shop, -> shop_id {where id: shop_id if shop_id.present?}
 
   scope :of_ids, -> ids {where id: ids}
+  scope :shop_in_domain, -> domain_id do
+    joins(:shop_domains)
+      .where "shop_domains.domain_id = ? and shop_domains.status = ?", domain_id,
+      ShopDomain.statuses[:active]
+  end
+
 
   def is_owner? user
     owner == user
@@ -68,7 +74,7 @@ class Shop < ApplicationRecord
   end
 
   def requested? domain
-    Shop.of_ids(RequestShopDomain.shop_ids_by_domain(domain.id)).include? self  
+    Shop.of_ids(RequestShopDomain.shop_ids_by_domain(domain.id)).include? self
   end
 
   def in_domain? domain

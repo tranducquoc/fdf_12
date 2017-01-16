@@ -122,4 +122,12 @@ class ApplicationController < ActionController::Base
       redirect_to new_domain_path
     end
   end
+
+  def load_domain_in_session
+    domain_id = session[:domain_id]
+    @domain = nil
+    if domain_id.present?
+      @domain = Domain.find_by id: domain_id
+    end
+  end
 end

@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_user_status_for_action
+  before_action :load_domain_in_session
 
   def index
   end

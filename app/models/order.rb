@@ -4,6 +4,7 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :shop
   belongs_to :coupon
+  belongs_to :domain
 
   has_many :order_products, dependent: :destroy
   has_many :products, through: :order_products
@@ -26,6 +27,7 @@ class Order < ApplicationRecord
   scope :unfinished, ->{where.not status: Order.statuses[:done]}
   scope :on_today, ->{where "date(orders.created_at) = date(now())"}
   scope :is_rejected, -> {where.not status: Order.statuses[:rejected]}
+  scope :by_domain, -> domain_id {where domain_id: domain_id}
 
   ransacker :created_at do
     Arel.sql("date(created_at)")

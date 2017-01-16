@@ -18,6 +18,9 @@ class DomainsController < ApplicationController
     @tags = ActsAsTaggableOn::Tag.all
     @shops = @domain.shops.top_shops.decorate
     @products = @domain.products.top_products
+    session[:domain_id] = @domain.id
+    create_cart
+    session[:cart_domain] = @cart_domain  
   end
 
   def create

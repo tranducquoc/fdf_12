@@ -13,7 +13,7 @@ class CartsController < ApplicationController
 
   def update
     @cart.add_item params[:id], @product.shop.id
-    session["cart"] = @cart.sort
+    update_session
   end
 
   def new
@@ -21,7 +21,7 @@ class CartsController < ApplicationController
     @all_order_deleted = t("oder.all_product_will_be_order")
   end
 
-  def create
+  def create 
     @order_delete_num = Settings.start_count_order
     @count_exit_order = Settings.start_count_order
     @cart_group.each do |cart_group|
@@ -39,7 +39,10 @@ class CartsController < ApplicationController
         flash[:danger] = t "oder.not_product_in_cart"
         redirect_to carts_path
       end
-    end
+    end   
+    @cart_domain.carts.delete @cart
+    @cart = Cart.new session[:domain_id] 
+    session[:cart_domain] = @cart_domain.update_cart 
     checkout_order @order_delete_num, @count_exit_order
   end
 
@@ -47,7 +50,7 @@ class CartsController < ApplicationController
     item = @cart.find_item params[:id]
     if item.quantity > 1
       item.decrement
-      session["cart"] = @cart.sort
+      update_session
       respond_to do |format|
         format.js {render :update}
       end
@@ -55,11 +58,10 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    cart = session["cart"]
-    item = cart["items"].find{|item| item["product_id"] == params[:id]}
+    item = @cart.items.find{|item| item.product_id == params[:id]}
     if item
-      cart["items"].delete item
-      create_cart
+      @cart.items.delete item
+      update_session
     end
     respond_to do |format|
       format.js {render :update}
@@ -116,10 +118,14 @@ class CartsController < ApplicationController
   end
 
   def delete_cart_after_save cart_shop, shop, order
-    delete_cart_item_shop session["cart"], shop
     @order_delete_num += check_order order, cart_shop
     if check_order(order, cart_shop) == Settings.order_increase
       @count_exit_order += cart_shop.items.size - order.products.size
     end
+  end
+
+  def update_session
+    @cart_domain.add_cart @cart.sort, session[:domain_id]
+    session[:cart_domain] = @cart_domain.update_cart
   end
 end

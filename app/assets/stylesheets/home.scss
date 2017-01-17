@@ -403,7 +403,7 @@ $orange_main: #ff5722;
 
 .defaut-size {
   width: 207px !important;
-    height: 227px !important;
+  height: 227px !important;
 }
 
 .impor {
@@ -436,7 +436,7 @@ $orange_main: #ff5722;
   margin-top: -23px !important;
   margin-left: 16px;
 }
- .select-language {
+.select-language {
   margin-top: 13px !important;
   color: #fff !important;
   border: none !important;
@@ -465,11 +465,11 @@ $orange_main: #ff5722;
 
 .margin-to {
   background: url(header_bg.png) #a99f9f;
-  height: 200px;
+  height: 100%;
 }
 
 .text-default {
-  font-size: 18px;
+  font-size: 25px;
 }
 
 text-small {
@@ -479,6 +479,7 @@ text-small {
 .com-name {
   color: #ec5405;
   margin-top: 1px;
+  font-size: 40px;
 }
 
 .default-icon {
@@ -490,9 +491,8 @@ text-small {
   margin-top: 43px;
 }
 
-.margin-duong {
-  margin-left: 26px;
-  margin-top: 43px;
+.padding-duong {
+  padding: 35px 40px 20px 40px;
 }
 
 .co-blue {
@@ -527,7 +527,7 @@ text-small {
 }
 
 .co-black {
-  color: black !important;
+  color: white !important;
 }
 
 .join {

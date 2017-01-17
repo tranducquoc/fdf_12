@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
   namespace :domain do
-    get 'user_domains/new'
+    get "user_domains/new"
   end
 
   namespace :domain do
-    get 'domain_users/new'
+    get "domain_users/new"
   end
 
   namespace :domain do
-    get 'domains/new'
+    get "domains/new"
   end
 
   get "set_language/update"
@@ -81,4 +81,5 @@ Rails.application.routes.draw do
 
   resources :request_shop_domains
   resources :set_carts
+  resources :pdf_readers, only: :index
 end

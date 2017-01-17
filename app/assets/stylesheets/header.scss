@@ -47,7 +47,7 @@ $orange_main: #ff5722;
           left: auto;
           width: 0;
           height: 0;
-          border-style: solid;
+          border-style: none;
           border-width: 0 8px 8px;
           border-color: transparent transparent #fff;
         }
@@ -259,7 +259,18 @@ $orange_main: #ff5722;
   width: 25px;
   height: 15px !important;
   margin-top: 5px;
-  margin-right: 3px;
+  padding-left: 3px;
+  left: 50%;
+  margin-right: -50%;
+}
+
+.image-flag-be {
+  margin-left: 5px;
+  float: left;
+  width: 25px;
+  height: 15px !important;
+  margin-top: 5px;
+  padding-left: 3px;
 }
 
 .languages p {
@@ -291,4 +302,32 @@ $orange_main: #ff5722;
 .choose-domain {
   padding-top: 12px;
   color: white;
+}
+
+.padding-l {
+  padding: 70px 0px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .padding-l {
+    padding-left: 0px;
+  }
+}
+
+.navbar-default .navbar-nav > li > a:link,
+.navbar-default .navbar-nav > li > a:focus {
+  background-color: cornsilk;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar-default .navbar-nav > li > a:link,
+  .navbar-default .navbar-nav > li > a:focus {
+    background: #f8f8f8
+  }
+}
+
+.logo-size-fixed{
+  height: 70px;
+  width: 150px;
 }

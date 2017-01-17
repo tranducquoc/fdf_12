@@ -41,6 +41,7 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  request_have_been_delete: "Yêu cầu đã bị xóa"
   add_domain_manager: "vừa cho bạn trở thành người quản lí của miền:"
   remote_domain_manager: "vừa xóa bạn ra khỏi danh sách quản lí của miền:"
   a_order: "Một đơn hàng"

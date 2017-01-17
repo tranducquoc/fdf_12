@@ -139,7 +139,8 @@ class Event < ApplicationRecord
   def shop_event_name_message
     if eventable_type == User.name
       order_shop_event = Order.find_by id: eventitem_id
-      "#{I18n.t "order_of"} #{order_shop_event.user.name} #{I18n.t "shop_order_products"}"
+      "#{I18n.t "order_of"} #{order_shop_event.user.name}
+        #{I18n.t "shop_order_products"}"
     end
   end
 
@@ -147,12 +148,15 @@ class Event < ApplicationRecord
     if shop_domain.present?
       case true
       when shop_domain.pending?
-        "#{I18n.t "shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
+        "#{I18n.t "shop_request"}#{shop_domain.shop.name}
+          #{I18n.t "to_domain"}#{domain.name}"
       when shop_domain.approved?
-        if domain.owner? user_id
-          "#{I18n.t "owner_active_shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
+        if user_id == domain.owner
+          "#{I18n.t "owner_active_shop_request"}#{shop_domain.shop.name}
+            #{I18n.t "to_domain"}#{domain.name}"
         else
-          "#{I18n.t "active_shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
+          "#{I18n.t "active_shop_request"}#{shop_domain.shop.name}
+            #{I18n.t "to_domain"}#{domain.name}"
         end
       else
         "#{I18n.t "blocked_shop_request"}#{domain.name}"
@@ -168,13 +172,13 @@ class Event < ApplicationRecord
       when shop_domain.pending?
         "/shop_domains?domain_id=#{domain.id}"
       when shop_domain.approved?
-        if domain.owner? user_id
+        if user_id == domain.owner
           "/domains?domain_id=#{eventitem_id}"
         else
           "/domains/#{domain.slug}/dashboard/shops"
         end
       else
-        "#{I18n.t "active_shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
+        "/domains/#{domain.slug}/dashboard/shops"
       end
     else
       "#"
@@ -184,9 +188,9 @@ class Event < ApplicationRecord
   def check_link_user_domain
     domain = Domain.find_by id: eventable_id
     user = User.find_by id: eventitem_id
-    if domain.owner? user_id
+    if user_id == domain.owner
       "/domains?domain_id=#{domain.id}"
-    elsif user.is_user? user_id
+    elsif user_id == user.id
       "/domains/#{domain.slug}"
     end
   end
@@ -206,10 +210,14 @@ class Event < ApplicationRecord
     domain = Domain.find_by id: eventable_id
     domain_owner = User.find_by id: domain.owner
     user_domain = UserDomain.find_by id: eventitem_id
-    if user_domain.manager?
-      "#{domain_owner.name} #{I18n.t "add_domain_manager"} #{domain.name}"
+    if user_domain.present?
+      if user_domain.manager?
+        "#{domain_owner.name} #{I18n.t "add_domain_manager"} #{domain.name}"
+      else
+        "#{domain_owner.name} #{I18n.t "remote_domain_manager"} #{domain.name}"
+      end
     else
-      "#{domain_owner.name} #{I18n.t "remote_domain_manager"} #{domain.name}"
+      "#{I18n.t "request_have_been_delete"}"
     end
   end
 

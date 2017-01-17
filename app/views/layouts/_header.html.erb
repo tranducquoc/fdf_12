@@ -11,14 +11,15 @@
             <img src="/assets/logo.png" alt="<%= t "common.base_title" %>">
           </a>
         <% end %>
-        <button type="button" class="navbar-toggle collapsed">
+        <button type="button" class="navbar-toggle" data-toggle="collapse"
+          data-target="#Navbar-header-page">
           <span class="sr-only"><%= t "common.toggle_navigation" %></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
       </div>
-      <div class="navbar-collapse collapse">
+      <div class="collapse navbar-collapse" id="Navbar-header-pager">
         <%= form_tag search_path, method: :get,
           class: "search-form navbar-form navbar-left dropdown" do %>
           <div class="form-group">
@@ -36,11 +37,11 @@
             <i class="fa fa-search"></i>
           <% end %>
         <% end %>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav">
           <% if user_signed_in? && current_user.domains.present? %>
-            <li>
-              <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
-                class="dropdown-toggle" role="button">
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown"
+              class="dropdown-toggle">
                 <div>
                   <i class="<%= domain_icon @domain %>"></i>
                   <span class="user-title"><%= @domain.name %>
@@ -48,17 +49,15 @@
                   </span>
                 </div>
               </a>
-              <ul class="dropdown-menu" role="menu"
-                aria-labelledby="basic-nav-dropdown">
+              <ul class="dropdown-menu">
                 <% current_user.domains.each do |domain| %>
                   <% unless domain == @domain %>
-                    <li role="presentation">
-                      <%= link_to domain_path(domain) do %> 
-                        <i class="<%= domain_icon domain %>"></i> 
+                    <li>
+                      <%= link_to domain_path(domain) do %>
+                        <i class="<%= domain_icon domain %>"></i>
                         <span><%= domain.name %></span>
                       <% end %>
                     </li>
-                    <li role="separator" class="divider"></li>
                     <li role="separator" class="divider"></li>
                   <% end %>
                 <% end %>
@@ -67,7 +66,7 @@
           <% end %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-              role="button" aria-expanded="false">
+            role="button" aria-expanded="false">
               <span class="glyphicon glyphicon-shopping-cart"></span>
               <span class="items-count"><%= @cart.count %></span>
               <span class="caret"></span>
@@ -77,9 +76,12 @@
               <li class="divider"></li>
               <li>
                 <% if @domain.present? %>
-                  <%= link_to t("cart.view_cart_all"), domain_carts_path(@domain), class: "text-center hightline" %>
+                  <%= link_to t("cart.view_cart_all"),
+                    domain_carts_path(@domain),
+                    class: "text-center hightline" %>
                 <% else %>
-                  <%= link_to t("cart.view_cart_all"), carts_path, class: "text-center hightline" %>
+                  <%= link_to t("cart.view_cart_all"), carts_path,
+                    class: "text-center hightline" %>
                 <% end %>
               </li>
             </ul>
@@ -99,38 +101,42 @@
           </li>
           <li class="block-notification-dropdown dropdown event ">
             <a href="#" id="notifications-dropdown" class="dropdown-toggle"
-              data-toggle="dropdown">
+            data-toggle="dropdown">
               <div>
                 <div class="icon-notification">
                   <i class="fa fa-bell fa-lg"></i>
                   <% if user_signed_in? %>
                     <span class="items-count-noti">
-                      <%= render "events/counter", counter: count_notification_unread %>
+                      <%= render "events/counter",
+                        counter: count_notification_unread %>
                     </span>
                   <% end %>
                 </div>
               </div>
             </a>
-            <ul class="dropdown-menu dropdown-noti width_dropdown for-notifi" role="menu"
+            </br>
+            <ul class="dropdown-menu dropdown-noti width_dropdown for-notifi"
+              role="menu"
               aria-labelledby="notifications-dropdown">
               <div class="dropdown-notification">
                 <li class="header clearfix">
                   <h4 class="title">
                     <span><%= t "common.notifications" %></span>
                   </h4>
-                  <h6><%= link_to t("notification.read_all"), read_all_events_path,
-                    method: :post, remote: true, class: "pull-right read-all" %></h6>
+                  <h6><%= link_to t("notification.read_all"),
+                    read_all_events_path, method: :post,
+                    remote: true, class: "pull-right read-all" %></h6>
                 </li>
                 <% if user_signed_in? %>
                   <div id="events">
                     <%= render "events/list_events" %>
                   </div>
-                  <% else %>
-                    <li>
-                      <p class="no-notification">
-                        <span><%= t "common.no_notifications" %></span>
-                      </p>
-                    </li>
+                <% else %>
+                  <li>
+                    <p class="no-notification">
+                      <span><%= t "common.no_notifications" %></span>
+                    </p>
+                  </li>
                 <% end %>
               </div>
               <li class="divider"></li>
@@ -141,9 +147,9 @@
             </ul>
           </li>
           <% if user_signed_in? %>
-            <li class="navbar-user dropdown">
+            <li class="nav navbar-user dropdown">
               <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
-                class="dropdown-toggle" role="button">
+              class="dropdown-toggle" role="button">
                 <div>
                   <span class="user-avatar">
                     <%= image_tag current_user.avatar.url %>
@@ -154,15 +160,17 @@
                 </div>
               </a>
               <ul class="dropdown-menu" role="menu"
-                aria-labelledby="basic-nav-dropdown">
+              aria-labelledby="basic-nav-dropdown">
                 <li role="presentation" class="">
                   <% if @domain.present? %>
-                    <%= link_to user_path(current_user, domain_id: @domain.id) do %>
+                    <%= link_to user_path(current_user,
+                      domain_id: @domain.id) do %>
                       <i class="fa fa-user"></i>
                       <span><%= t "header.account" %></span>
                     <% end %>
                   <% else %>
-                    <%= link_to user_path(current_user, domain_id: Settings.not_find) do %>
+                    <%= link_to user_path(current_user,
+                      domain_id: Settings.not_find) do %>
                       <i class="fa fa-user"></i>
                       <span><%= t "header.account" %></span>
                     <% end %>
@@ -242,65 +250,36 @@
                 </li>
               </ul>
             </li>
-          <% else %>
-            <li class="navbar-user dropdown">
-              <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
-                class="dropdown-toggle user-avatar" role="button">
-                <span class="glyphicon glyphicon-user"></span>
-                <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu" role="menu"
-                aria-labelledby="basic-nav-dropdown">
-                <li role="presentation" class="">
-                  <%= link_to new_user_session_path do %>
-                    <i class="fa fa-sign-in"></i>
-                    <span><%= t "header.sign_in" %></span>
-                  <% end %>
-                </li>
-                <!-- <li role="separator" class="divider"></li>
-                <li role="presentation" class="">
-                  <%= link_to user_facebook_omniauth_authorize_path do %>
-                    <i class="fa fa-facebook-official primarys"></i>
-                    <span><%= t "header.sign_in_fb" %></span>
-                  <% end %>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li role="separator" class="divider"></li>
-                <li role="presentation" class="">
-                  <%= link_to new_user_registration_path do %>
-                    <i class="fa fa-plus-square"></i>
-                    <span><%= t "header.sign_up" %></span>
-                  <% end %>
-                </li> -->
-              </ul>
-            </li>
           <% end %>
-          <li class="navbar-user dropdown">
+          <li class="nav navbar-user dropdown">
             <% if selected_lang.to_s == Settings.languages.vietnamese.type %>
               <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
-                class="dropdown-toggle user-avatar" role="button">
-                <%= image_tag Settings.languages.vietnamese.image, class: "image-flag" %>
+              class="dropdown-toggle user-avatar" role="button">
+                <%= image_tag Settings.languages.vietnamese.image,
+                  class: "image-flag-be" %>
                 <b class="caret"></b>
               </a>
             <% elsif selected_lang.to_s == Settings.languages.japanese.type %>
               <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
-                class="dropdown-toggle user-avatar" role="button">
-                <%= image_tag Settings.languages.japanese.image, class: "image-flag" %>
+              class="dropdown-toggle user-avatar" role="button">
+                <%= image_tag Settings.languages.japanese.image,
+                  class: "image-flag-be" %>
                 <b class="caret"></b>
               </a>
             <% else %>
               <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
-                class="dropdown-toggle user-avatar" role="button">
-                <%= image_tag Settings.languages.english.image, class: "image-flag" %>
+              class="dropdown-toggle user-avatar" role="button">
+                <%= image_tag Settings.languages.english.image,
+                  class: "image-flag-be" %>
                 <b class="caret"></b>
               </a>
             <% end %>
             <ul class="dropdown-menu languages select-default" role="menu"
-              aria-labelledby="basic-nav-dropdown" style="cursor:pointer">
+            aria-labelledby="basic-nav-dropdown" style="cursor:pointer">
               <% Settings.languages.each do|key, value| %>
-                <li role="presentation" class="" data-lang="<%= value.type %>">
-                <%= image_tag value.image, class: "image-flag" %>
-                <p><%= value.name %></p> </li>
+                <li class="basic-nav-dropdown" data-lang="<%= value.type %>">
+                  <%= image_tag value.image, class: "image-flag-be" %>
+                  <p><%= value.name %></p> </li>
                 <div class="clearfix"></div>
               <% end %>
             </ul>

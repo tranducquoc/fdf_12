@@ -7,9 +7,11 @@
           <div class="col-md-4">
             <%= simple_form_for @order do |f| %>
               <% if @domain.present? %>
-                <%= link_to t("order_statistics.back"), domain_carts_path(@domain),
+                <%= link_to t("order_statistics.back"),
+                  domain_carts_path(@domain),
                   class: "btn btn-primary defaut-position" %>
-                <%= link_to t("create_order"), domain_orders_path(@domain, shop_id: @shop.id),
+                <%= link_to t("create_order"),
+                  domain_orders_path(@domain, shop_id: @shop.id),
                   method: :post, class: "btn btn-danger margin_order" %>
               <% else %>
                 <%= link_to t("order_statistics.back"), carts_path,
@@ -25,7 +27,7 @@
           <h4 class="style_price">
             <b><%= t "oder.total" %></b>
             <%= format_price @cart_shop.total_price %>
-            </h4>
+          </h4>
         </div>
       </div>
     </div>

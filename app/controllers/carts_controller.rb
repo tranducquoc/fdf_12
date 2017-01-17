@@ -3,7 +3,6 @@ class CartsController < ApplicationController
   before_action :load_product, only: :update
   before_action :check_before_order, only: [:new, :index]
   before_action :check_user_status_for_action, except: [:update, :index]
-  before_action :load_shop, only: :new
 
   def index
     if @cart.blank?
@@ -17,8 +16,7 @@ class CartsController < ApplicationController
   end
 
   def new
-    @have_order_deleted = t("oder.has_order_deleted") + @count_exit_order.to_s + t("oder.product_deleted")
-    @all_order_deleted = t("oder.all_product_will_be_order")
+    order_delete_find_shop
   end
 
   def create
@@ -95,10 +93,11 @@ class CartsController < ApplicationController
     @cart_group.each do |cart_group|
       cart_group[:items].each do |cart|
         product = Product.find_by id: cart.product_id.to_i
-        @cart_group_price += total_price product.price, cart.quantity
         if Time.now.is_between_short_time?(product.start_hour, product.end_hour)
           @count_exit_order += Settings.order_increase
           @products_deleted << product
+        else
+          @cart_group_price += total_price product.price, cart.quantity
         end
       end
     end
@@ -109,7 +108,8 @@ class CartsController < ApplicationController
       flash[:danger] = t "oder.allthing_deleted"
       redirect_to domain_path @domain
     elsif count_exit_order > Settings.start_count_order
-      flash[:warning] = t("oder.has_order_deleted") + count_exit_order.to_s + t("oder.product_deleted")
+      flash[:warning] = t("oder.has_order_deleted") + count_exit_order.to_s +
+        t("oder.product_deleted")
       redirect_to domain_orders_path @domain
     else
       flash[:success] = t "oder.success"
@@ -129,11 +129,10 @@ class CartsController < ApplicationController
     session[:cart_domain] = @cart_domain.update_cart
   end
 
-  def load_shop
+  def order_delete_find_shop
+    @order_price = params[:order_price]
+    @order_deleted = params[:products_deleted]
     @shop = Shop.find_by id: params[:shop_id]
-    unless @shop.present?
-      redirect_to :back
-      flash[:danger] = t "can_not_load_shop"
-    end
   end
+
 end

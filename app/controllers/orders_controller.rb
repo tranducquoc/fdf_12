@@ -125,6 +125,7 @@ class OrdersController < ApplicationController
       if Time.now.is_between_short_time?(product.start_hour, product.end_hour)
         @count_exit_order += Settings.order_increase
         @products_deleted << product
+        @cart_shop.items.delete cart
       end
     end
     if @count_exit_order > Settings.count_tag

@@ -121,12 +121,12 @@ class Order < ApplicationRecord
     end
   end
 
-  def create_event_done
+  def create_event_done products_done, products_rejected
     Event.create message: :done,
       user_id: self.user.id, eventable_id: shop.id, eventable_type: OrderProduct.name,
         eventitem_id: self.id
     Event.create message: :done,
-      user_id: shop.owner_id, eventable_id: shop.id, eventable_type: User.name,
+      user_id: self.shop.owner_id, eventable_id: shop.id, eventable_type: User.name,
         eventitem_id: self.id
   end
 
@@ -139,7 +139,6 @@ class Order < ApplicationRecord
     Event.create message: :sent_order,
       user_id: user_id, eventable_id: id, eventable_type: Order.name
   end
-
   private
 
   def update_new_status_order

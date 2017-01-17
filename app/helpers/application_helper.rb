@@ -90,4 +90,8 @@ module ApplicationHelper
     end
     products.size
   end
+
+  def domain_icon domain
+    domain.professed? ? Settings.domain.professed : Settings.domain.secret
+  end
 end

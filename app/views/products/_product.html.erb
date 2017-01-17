@@ -21,7 +21,7 @@
   <div class="padding-10">
     <div class="description_area row">
       <div class="col-md-4">
-        <%= link_to product do %>
+        <%= link_to domain_product_path(@domain, product) do %>
           <span class="shop-avatar">
             <% if product.shop_avatar.nil? %>
               <%= image_tag "default_shop_avatar" %>
@@ -33,7 +33,9 @@
       </div>
       <div class="col-md-8">
         <div>
-          <strong><%= link_to product.shop_name, product.shop %></strong>
+          <strong><%= link_to product.shop_name, 
+            domain_shop_path(@domain, product.shop) %>
+          </strong>
         </div>
         <div class="product_text height-50">
           <strong><%= product.name %></strong>

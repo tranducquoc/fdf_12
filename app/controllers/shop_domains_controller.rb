@@ -1,5 +1,4 @@
 class ShopDomainsController < ApplicationController
-  before_action :load_domain, except: [:new, :update]
   before_action :load_shop, only: [:create, :destroy]
   before_action :load_shop_domain, only: :update
 

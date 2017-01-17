@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :load_domain, only: [:index, :show]
-
+  
   def index
     @products = if params[:category_id].present?
       @domain.products.by_category params[:category_id]

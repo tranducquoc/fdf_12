@@ -44,10 +44,6 @@
         method: :get %>
     </strong><br>
     <strong>
-      <%= link_to t("edit_shop"),
-        domain_dashboard_shops_path(domain, add_shop: Settings.edit_shop) %>
-    </strong><br>
-    <strong>
       <%= link_to shop_domains_path(id: domain.id) do %>
         <%= t("shop_request") %>
         <%= domain.shop_domains.waiting.size %>

@@ -42,7 +42,8 @@
               <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
                 class="dropdown-toggle" role="button">
                 <div>
-                  <span class="user-title"><%= t "choose_domain" %>
+                  <i class="<%= domain_icon @domain %>"></i>
+                  <span class="user-title"><%= @domain.name %>
                     <b class="caret"></b>
                   </span>
                 </div>
@@ -50,18 +51,16 @@
               <ul class="dropdown-menu" role="menu"
                 aria-labelledby="basic-nav-dropdown">
                 <% current_user.domains.each do |domain| %>
-                  <li role="presentation" class="">
-                    <%= link_to domain_path(domain) do %>
-                      <% if domain.professed? %>
-                        <i class="glyphicon glyphicon-globe"></i>
-                      <% else %>
-                        <i class="glyphicon glyphicon-lock"></i>
+                  <% unless domain == @domain %>
+                    <li role="presentation">
+                      <%= link_to domain_path(domain) do %> 
+                        <i class="<%= domain_icon domain %>"></i> 
+                        <span><%= domain.name %></span>
                       <% end %>
-                      <span><%= domain.name %></span>
-                    <% end %>
-                  </li>
-                  <li role="separator" class="divider"></li>
-                  <li role="separator" class="divider"></li>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li role="separator" class="divider"></li>
+                  <% end %>
                 <% end %>
               </ul>
             </li>

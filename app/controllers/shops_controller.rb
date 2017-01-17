@@ -1,6 +1,5 @@
 class ShopsController < ApplicationController
   before_action :load_shop, only: [:show, :update]
-  before_action :load_domain, only: [:index, :show]
 
   def index
     @shops = if @domain.present?

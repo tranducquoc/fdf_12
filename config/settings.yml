@@ -66,3 +66,6 @@ request_status:
   pending: "pending"
   approved: "approved"
   rejected: "rejected"
+domain:
+  professed: "glyphicon glyphicon-globe"
+  secret: "glyphicon glyphicon-lock"

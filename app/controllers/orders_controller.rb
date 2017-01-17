@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
   before_action :load_order_update, only: :update
   before_action :check_before_order, only: :create
   before_action :check_user_status_for_action
-  before_action :load_domain_in_session
 
   def index
     tmp_orders = current_user.orders.by_domain(session[:domain_id])

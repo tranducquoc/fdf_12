@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-  before_action :load_domain, only: [:index, :show]
 
   def show
     if Category.exists? params[:id]

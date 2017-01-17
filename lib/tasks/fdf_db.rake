@@ -1,6 +1,6 @@
 namespace :fdf_db do
-  task create_all: [:create_user, :create_admin, :create_shop,
-    :create_category, :create_coupon, :create_product] do
+  task create_all: [:create_user, :create_admin, :create_shop, :create_category,
+    :create_coupon, :create_product, :create_domain, :create_user_domain] do
   end
   task create_user: :environment do
     User.create!(
@@ -46,9 +46,37 @@ namespace :fdf_db do
 
   task create_domain: :environment do
     Domain.create!(
-      name: "World",
-      status: 1,
-      role: 1
+      name: "FramgiaDanang",
+      status: 2,
+      owner: 1
+    )
+
+    Domain.create!(
+      name: "FramgiaHanoi",
+      status: 2,
+      owner: 1
+    )
+  end
+
+  task create_user_domain: :environment do
+    UserDomain.create!(
+      user_id: 1,
+      domain_id: 1
+    )
+
+    UserDomain.create!(
+      user_id: 2,
+      domain_id: 1
+    )
+
+    UserDomain.create!(
+      user_id: 3,
+      domain_id: 1
+    )
+
+    UserDomain.create!(
+      user_id: 4,
+      domain_id: 1
     )
   end
 
@@ -107,6 +135,15 @@ namespace :fdf_db do
       owner_id: 1,
       status: 1
     )
+
+    Shop.create!(
+      name: "Highland",
+      description: "Highland",
+      cover_image: "image",
+      avatar: File.open(Rails.root + "public/images/quansinhto.jpg"),
+      owner_id: 1,
+      status: 1
+    )
   end
 
   task create_category: :environment do
@@ -132,6 +169,10 @@ namespace :fdf_db do
 
     Category.create!(
       name: "Nếp Cẩm"
+    )
+
+    Category.create!(
+      name: "Highland"
     )
   end
 
@@ -1030,6 +1071,98 @@ namespace :fdf_db do
       name: "Nước mơ",
       price: 15000,
       description: "Nước mơ",
+      start_hour: "08:00:00",
+      end_hour: "20:00:00",
+      image: File.open(Rails.root + "public/images/nuocmo.jpg")
+    )
+
+
+    Product.create!(
+      category_id: 7,
+      status: 0,
+      shop_id: 7,
+      user_id: 1,
+      name: "Phin Sữa Đá",
+      price: 29000,
+      description: "Phin Sữa Đá",
+      start_hour: "08:00:00",
+      end_hour: "20:00:00",
+      image: File.open(Rails.root + "public/images/nuocmo.jpg")
+    )
+
+    Product.create!(
+      category_id: 7,
+      status: 0,
+      shop_id: 7,
+      user_id: 1,
+      name: "Cacao Nóng",
+      price: 54000,
+      description: "Cacao Nóng",
+      start_hour: "08:00:00",
+      end_hour: "20:00:00",
+      image: File.open(Rails.root + "public/images/nuocmo.jpg")
+    )
+
+    Product.create!(
+      category_id: 7,
+      status: 0,
+      shop_id: 7,
+      user_id: 1,
+      name: "Trà Sen Vàng",
+      price: 49000,
+      description: "Trà Sen Vàng",
+      start_hour: "08:00:00",
+      end_hour: "20:00:00",
+      image: File.open(Rails.root + "public/images/nuocmo.jpg")
+    )
+
+    Product.create!(
+      category_id: 7,
+      status: 0,
+      shop_id: 7,
+      user_id: 1,
+      name: "Trà Thanh Đào",
+      price: 49000,
+      description: "Trà Thanh Đào",
+      start_hour: "08:00:00",
+      end_hour: "20:00:00",
+      image: File.open(Rails.root + "public/images/nuocmo.jpg")
+    )
+
+    Product.create!(
+      category_id: 7,
+      status: 0,
+      shop_id: 7,
+      user_id: 1,
+      name: "Nâu nóng",
+      price: 29000,
+      description: "Nâu nóng",
+      start_hour: "08:00:00",
+      end_hour: "20:00:00",
+      image: File.open(Rails.root + "public/images/nuocmo.jpg")
+    )
+
+    Product.create!(
+      category_id: 7,
+      status: 0,
+      shop_id: 7,
+      user_id: 1,
+      name: "Freeze Matcha",
+      price: 59000,
+      description: "Freeze Matcha",
+      start_hour: "08:00:00",
+      end_hour: "20:00:00",
+      image: File.open(Rails.root + "public/images/nuocmo.jpg")
+    )
+
+    Product.create!(
+      category_id: 7,
+      status: 0,
+      shop_id: 7,
+      user_id: 1,
+      name: "Trà Thạch Đào",
+      price: 49000,
+      description: "Trà Thạch Đào",
       start_hour: "08:00:00",
       end_hour: "20:00:00",
       image: File.open(Rails.root + "public/images/nuocmo.jpg")

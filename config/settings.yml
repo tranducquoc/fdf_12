@@ -49,6 +49,10 @@ not_find: "not_find"
 add_shop: "add_shop"
 edit_shop: "edit_shop"
 active: "active"
+blocked: "blocked"
+waiting: "waiting"
+pending: "pending"
+new: "new"
 languages:
   vietnamese: {name: "Tiếng Việt", image: "vi.png", type: "vi"}
   english: {name: "English", image: "en.png", type: "en"}

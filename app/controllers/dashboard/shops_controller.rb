@@ -96,6 +96,7 @@ class Dashboard::ShopsController < BaseDashboardController
     end
     if shop_domain.save
       flash[:success] = t "flash.success.dashboard.updated_shop"
+      check_status_notification shop_domain
     else
       flash[:danger] = t "flash.danger.dashboard.updated_shop"
     end
@@ -107,6 +108,15 @@ class Dashboard::ShopsController < BaseDashboardController
       redirect_to dashboard_shop_path(@shop, domain_id: @domain.id)
     else
       redirect_to dashboard_shop_path(@shop, domain_id: Settings.not_find)
+    end
+  end
+
+  def check_status_notification shop_domain
+    if shop_domain.pending?
+      shop_domain.create_event_request_shop @domain.owner, shop_domain
+    elsif shop_domain.approved?
+      shop_domain.create_event_request_shop shop_domain.shop.owner_id.id,
+        shop_domain
     end
   end
 end

@@ -1,3 +1,4 @@
+
 <tr>
   <td><%= link_to shop.name, shop %></td>
   <td>
@@ -17,9 +18,9 @@
   <td class="text-center">
     <div>
       <% if @domain.owner == current_user.id && !@domain.shops.include?(shop) %>
-        <%= link_to t("add"), shop_domains_path(shop_id: shop.id, 
+        <%= link_to t("add"), shop_domains_path(shop_id: shop.id,
           domain_id: @domain.id, status: :approved),
-          method: :post, class: "btn btn-primary" 
+          method: :post, class: "btn btn-primary"
         %>
       <% end %>
     </div>

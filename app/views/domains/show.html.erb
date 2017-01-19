@@ -16,16 +16,14 @@
             <span><%= t "common.category.all" %></span>
           <% end %>
           <% @categories.each do |category| %>
-            <% cache category do %>
-              <% if number_product_in_category_by_domain(category, @domain) >
-                Settings.min_product_in_category %>
-                <%= link_to category_path(category, domain_id: @domain.id),
-                  class: "btn btn-default col-lg-6 col-md-12 active" do %>
-                  <span><%= category.name %></span>
-                  <span class="badge">
-                    <%= number_product_in_category_by_domain category, @domain %>
-                  </span>
-                <% end %>
+            <% if number_product_in_category_by_domain(category, @domain) >
+              Settings.min_product_in_category %>
+              <%= link_to category_path(category, domain_id: @domain.id),
+                class: "btn btn-default col-lg-6 col-md-12 active" do %>
+                <span><%= category.name %></span>
+                <span class="badge">
+                  <%= number_product_in_category_by_domain category, @domain %>
+                </span>
               <% end %>
             <% end %>
           <% end %>

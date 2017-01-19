@@ -19,6 +19,10 @@ class Domain < ApplicationRecord
     slug.blank? || name_changed? || super
   end
 
+  def belong_to? user
+    self.owner == user.id
+  end
+
   enum status: {professed: 1, secret: 2}
   scope :by_creator, -> user_id{where owner: user_id}
 end

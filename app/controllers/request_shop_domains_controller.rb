@@ -1,5 +1,10 @@
 class RequestShopDomainsController < ApplicationController
   before_action :load_request, only: :update
+  before_action :load_shop, only: :index
+  
+  def index
+    @user_domains = current_user.domains
+  end
 
   def create
     @request = RequestShopDomain.new request_params
@@ -31,6 +36,14 @@ class RequestShopDomainsController < ApplicationController
     @request_shop_domain = RequestShopDomain.find_by id: params[:id]
     unless @request_shop_domain
       flash[:danger] = t "request_shop.can_not_find_request"
+      redirect_to request.referrer
+    end
+  end
+
+  def load_shop
+    @shop = Shop.find_by id: params[:shop_id]
+    unless @shop
+      flash[:danger] = t "request_shop.can_not_find_shop"
       redirect_to request.referrer
     end
   end

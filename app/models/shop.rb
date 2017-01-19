@@ -57,9 +57,8 @@ class Shop < ApplicationRecord
   scope :shop_in_domain, -> domain_id do
     joins(:shop_domains)
       .where "shop_domains.domain_id = ? and shop_domains.status = ?", domain_id,
-      ShopDomain.statuses[:active]
+      ShopDomain.statuses[:approved]
   end
-
 
   def is_owner? user
     owner == user
@@ -82,7 +81,7 @@ class Shop < ApplicationRecord
   end
 
   def request_status domain
-    self.request_shop_domains.by_domain(domain).first.status
+    self.shop_domains.by_domain(domain).first
   end
 
   private

@@ -131,4 +131,14 @@ class ApplicationController < ActionController::Base
       @domain = Domain.find_by id: domain_id
     end
   end
+
+  def load_domain_by_param
+    if params[:domain_id].present?
+      @choosen_domain = Domain.find_by id: params[:domain_id]
+      unless @choosen_domain.present?
+        redirect_to :back
+        flash[:danger] = t "can_not_load_domain"
+      end
+    end
+  end
 end

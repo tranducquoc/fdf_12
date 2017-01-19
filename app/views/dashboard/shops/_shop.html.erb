@@ -3,7 +3,9 @@
   <td><%= link_to shop.name, domain_dashboard_shop_path(@domain, shop) %></td>
   <td>
     <div class="image-shop-show">
-      <%= image_tag shop.avatar.url, class: "thumbnail" %>
+      <%= link_to domain_dashboard_shop_path(@domain, shop) do %>
+        <%= image_tag shop.avatar.url, class: "thumbnail" %>
+      <% end %>
     </div>
   </td>
   <td>
@@ -17,14 +19,14 @@
   </td>
   <td class="text-center">
     <div>
-      <% if @domain.owner?(current_user) && !@domain.shops.include?(shop) %>
-        <%= link_to t("add"), shop_domains_path(shop_id: shop.id, 
+      <% if @domain.owner?(current_user.id) && !@domain.shops.include?(shop) %>
+        <%= link_to t("add"), shop_domains_path(shop_id: shop.id,
           domain_id: @domain.id, status: :approved),
           method: :post, class: "btn btn-primary"
         %>
       <% end %>
     </div>
-    <%= link_to t("manage_domain.view_all_domains"), 
+    <%= link_to t("manage_domain.view_all_domains"),
       request_shop_domains_path(shop_id: shop.id) %>
   </td>
 </tr>

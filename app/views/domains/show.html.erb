@@ -24,7 +24,7 @@
                 <span class="badge">
                   <%= number_product_in_category_by_domain category, @domain %>
                 </span>
-              <% end %> 
+              <% end %>
             <% end %>
           <% end %>
           </div>
@@ -88,7 +88,7 @@
   <% if (@domain.professed?) && (!current_user.domains.include? @domain) %>
     <strong>
       <%= link_to t("join_domain"), user_domains_path(user_id: current_user.id, domain_id: @domain.id),
-        method: :post, class: "join" %>
+        method: :post, class: "join btn btn_view_all btn-warning top_shop" %>
     </strong>
   <% end %>
   <div class="col-md-12 row-title">

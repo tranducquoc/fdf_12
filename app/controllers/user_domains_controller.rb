@@ -3,7 +3,7 @@ class UserDomainsController < ApplicationController
   before_action :load_domain_by_param
   before_action :load_user_domain, only: :update
 
-  def index 
+  def index
     @users = @choosen_domain.users
   end
 
@@ -17,7 +17,7 @@ class UserDomainsController < ApplicationController
 
   def create
     if @user
-      user_domain = UserDomain.new user_id: @user.id, 
+      user_domain = UserDomain.new user_id: @user.id,
         domain_id: @choosen_domain.id, role: :member
       save_user_domain user_domain
     else
@@ -59,6 +59,11 @@ class UserDomainsController < ApplicationController
 
   def save_user_domain user_domain
     if user_domain.save
+      if @domain.owner? current_user.id
+        user_domain.create_event_add_user_domain @user.id
+      elsif current_user.is_user? @user.id
+        user_domain.create_event_add_user_domain @domain.owner
+      end
       flash[:success] = t "add_domain"
     else
       flash[:danger] = t "can_not_add_account"

@@ -50,10 +50,14 @@ class User < ApplicationRecord
     end
   end
 
+  def is_user? user_id
+    id == user_id
+  end
+
   def should_generate_new_friendly_id?
     slug.blank? || name_changed? || super
   end
-  
+
   private
   def image_size
     max_size = Settings.pictures.max_size

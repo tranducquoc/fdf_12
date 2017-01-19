@@ -29,7 +29,7 @@ class Event < ApplicationRecord
     when ShopDomain.name
       domain = Domain.find_by id: eventable_id
       shop_domain = ShopDomain.find_by id: eventitem_id
-      check_message domain, shop_domain
+      check_message domain, shop_domain if shop_domain.present?
     end
   end
 
@@ -86,7 +86,7 @@ class Event < ApplicationRecord
     when ShopDomain.name
       domain = Domain.find_by id: eventable_id
       shop_domain = ShopDomain.find_by id: eventitem_id
-      check_message_for_link shop_domain, domain
+      check_message_for_link shop_domain, domain if shop_domain.present?
     end
   end
 

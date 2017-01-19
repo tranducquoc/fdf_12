@@ -46,13 +46,13 @@ namespace :fdf_db do
 
   task create_domain: :environment do
     Domain.create!(
-      name: "FramgiaDanang",
+      name: "Danang",
       status: 2,
       owner: 1
     )
 
     Domain.create!(
-      name: "FramgiaHanoi",
+      name: "Hanoi",
       status: 2,
       owner: 1
     )

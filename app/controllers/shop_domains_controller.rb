@@ -30,13 +30,22 @@ class ShopDomainsController < ApplicationController
 
   def update
     if @shop_domain.update_attributes status: params[:status]
-      if @shop_domain.approved?    
+      if @shop_domain.approved?
         shop = @shop_domain.shop
         domain = @shop_domain.domain
         AddShopProductToDomainService.new(shop, domain).add
       end
       redirect_to :back
       flash[:success] = t "add_shop_domain_success"
+    end
+    if params[:status] == ShopDomain.statuses.key(1)
+      @shop = @shop_domain.shop
+      @domain = @shop_domain.domain
+      AddShopProductToDomainService.new(@shop, @domain).add
+      @shop_domain.create_event_request_shop @domain.owner, @shop_domain
+      @shop_domain.create_event_request_shop @shop_domain.shop.owner_id, @shop_domain
+    elsif params[:status] == ShopDomain.statuses.key(2)
+      @shop_domain.create_event_request_shop @shop_domain.shop.owner_id, @shop_domain
     end
   end
 
@@ -59,8 +68,9 @@ class ShopDomainsController < ApplicationController
 
   def check_save_shop_domain shop_domain
     if shop_domain.save
+        shop_domain.create_event_request_shop @domain.owner, shop_domain
       if shop_domain.approved?
-        AddShopProductToDomainService.new(@shop, @choosen_domain).add
+        AddShopProductToDomainService.new(@shop, @domain).add
       end
     else
       flash[:danger] = t "can_not_add_shop"

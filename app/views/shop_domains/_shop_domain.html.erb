@@ -9,14 +9,14 @@
     <% end %>
   </td>
   <td><%= shop_domain.shop.products.size %></td>
-  <td>
+  <td class="text-center">
     <strong>
       <%= link_to t("accept"),
-        shop_domain_path(shop_domain, status: :active), method: :put %>
+        shop_domain_path(shop_domain, status: :approved), method: :put %>
     </strong><br>
     <strong>
       <%= link_to t("delete"),
-        shop_domain_path(shop_domain, status: :blocked), method: :put %>
+        shop_domain_path(shop_domain, status: :rejected), method: :put %>
     </strong>
   </td>
 </tr>

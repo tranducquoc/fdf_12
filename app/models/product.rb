@@ -46,6 +46,11 @@ class Product < ApplicationRecord
     where category_id: category.id
   end
 
+  scope :in_domain, -> domain_id do
+    joins(:product_domains)
+      .where "product_domains.domain_id = ?", domain_id
+  end
+
   private
   def image_size
     max_size = Settings.pictures.max_size

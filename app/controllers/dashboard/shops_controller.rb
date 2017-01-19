@@ -89,10 +89,10 @@ class Dashboard::ShopsController < BaseDashboardController
   def save_shop_domain
     shop_domain = if @domain.owner == current_user.id
       ShopDomain.new shop_id: @shop.id, domain_id: @domain.id,
-        status: :active
+        status: :approved
     else
       ShopDomain.new shop_id: @shop.id, domain_id: @domain.id,
-        status: :waiting
+        status: :pending
     end
     if shop_domain.save
       flash[:success] = t "flash.success.dashboard.updated_shop"

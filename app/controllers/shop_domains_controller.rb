@@ -1,9 +1,10 @@
 class ShopDomainsController < ApplicationController
   before_action :load_shop, only: [:create, :destroy]
   before_action :load_shop_domain, only: :update
+  before_action :load_domain_by_param
 
   def index
-    @shop_domains = @domain.shop_domains.waiting
+    @shop_domains = @choosen_domain.shop_domains.pending
   end
 
   def new
@@ -13,29 +14,29 @@ class ShopDomainsController < ApplicationController
   def create
     if params[:status].present?
       shop_domain = ShopDomain.new shop_id: @shop.id,
-        domain_id: @domain.id, status: params[:status]
+        domain_id: @choosen_domain.id, status: params[:status]
     else
-      shop_domain = ShopDomain.new shop_id: @shop.id, domain_id: @domain.id
+      shop_domain = ShopDomain.new shop_id: @shop.id, domain_id: @choosen_domain.id
     end
     check_save_shop_domain shop_domain
     redirect_to :back
   end
 
   def destroy
-    ShopDomain.destroy_all domain_id: @domain.id, shop_id: @shop.id
-    AddShopProductToDomainService.new(@shop, @domain).delete
+    ShopDomain.destroy_all domain_id: params[:domain_id], shop_id: @shop.id
+    AddShopProductToDomainService.new(@shop, @choosen_domain).delete
     redirect_to :back
   end
 
   def update
     if @shop_domain.update_attributes status: params[:status]
+      if @shop_domain.approved?    
+        shop = @shop_domain.shop
+        domain = @shop_domain.domain
+        AddShopProductToDomainService.new(shop, domain).add
+      end
       redirect_to :back
       flash[:success] = t "add_shop_domain_success"
-    end
-    if params[:status] == Settings.active
-      @shop = @shop_domain.shop
-      @domain = @shop_domain.domain
-      AddShopProductToDomainService.new(@shop, @domain).add
     end
   end
 
@@ -58,8 +59,8 @@ class ShopDomainsController < ApplicationController
 
   def check_save_shop_domain shop_domain
     if shop_domain.save
-      if shop_domain.active?
-        AddShopProductToDomainService.new(@shop, @domain).add
+      if shop_domain.approved?
+        AddShopProductToDomainService.new(@shop, @choosen_domain).add
       end
     else
       flash[:danger] = t "can_not_add_shop"

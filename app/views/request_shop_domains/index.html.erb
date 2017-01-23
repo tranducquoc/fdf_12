@@ -34,7 +34,7 @@
                   domain_id: domain.id %>
                 <% if !domain.shops.include?(@shop) || 
                   @shop.request_status(domain).rejected? %>
-                  <% if domain.belong_to? current_user %>
+                  <% if domain.owner? current_user %>
                     <%= link_to t("request_shop.request_to_domain"),
                       shop_domains_path(shop_id: @shop.id, 
                       domain_id: domain.id, status: :approved), method: :post,

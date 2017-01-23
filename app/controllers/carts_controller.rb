@@ -106,7 +106,7 @@ class CartsController < ApplicationController
   def checkout_order recheck, count_exit_order
     if recheck == Settings.start_count_order
       flash[:danger] = t "oder.allthing_deleted"
-      redirect_to :back
+      redirect_to domain_path @domain
     elsif count_exit_order > Settings.start_count_order
       flash[:warning] = t("oder.has_order_deleted") + count_exit_order.to_s + t("oder.product_deleted")
       redirect_to domain_orders_path @domain

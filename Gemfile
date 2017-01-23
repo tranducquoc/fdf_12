@@ -38,6 +38,7 @@ gem "delayed_job"
 gem "roo"
 gem "roo-xls"
 gem "delayed_job_active_record"
+gem "rails-i18n", "~> 5.0.0"
 source "https://rails-assets.org" do
   gem "rails-assets-datetimepicker"
   gem "rails-assets-growl"

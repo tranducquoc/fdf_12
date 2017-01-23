@@ -38,7 +38,7 @@
     <%= f.label :image %>
     <%= f.file_field :image, accept: Settings.pictures.accepted_files,
       class: "upload_img" %>
-    <%= image_tag @product.image.url, class: "avatar padding_top_10px" %>
+    <%= image_tag @product.image.url, class: "avatar padding_top_10px defaut-size" %>
   </div>
   <% if @domain.present? %>
     <%= f.hidden_field :domain_id, value: @domain.id %>

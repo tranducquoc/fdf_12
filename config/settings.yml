@@ -56,7 +56,7 @@ new: "new"
 languages:
   vietnamese: {name: "Tiếng Việt", image: "vi.png", type: "vi"}
   english: {name: "English", image: "en.png", type: "en"}
-  japanese: {name: "日本語", image: "ja.png", type: "jp"}
+  japanese: {name: "日本語", image: "ja.png", type: "ja"}
 image_url:
   cart: "cart.png"
   systemdone: "systemaccepted.jpg"

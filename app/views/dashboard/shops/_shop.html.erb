@@ -1,6 +1,6 @@
 
 <tr>
-  <td><%= link_to shop.name, shop %></td>
+  <td><%= link_to shop.name, domain_dashboard_shop_path(@domain, shop) %></td>
   <td>
     <div class="image-shop-show">
       <%= image_tag shop.avatar.url, class: "thumbnail" %>

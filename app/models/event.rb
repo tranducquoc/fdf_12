@@ -8,7 +8,6 @@ class Event < ApplicationRecord
 
   scope :by_date, -> {order created_at: :desc}
   scope :unread, -> {where read: false}
-
   def load_message
     case eventable_type
     when Shop.name
@@ -18,18 +17,18 @@ class Event < ApplicationRecord
       "#{eventable.name} #{eventable_type} #{I18n.t "notification.product"}
         :#{message.upcase}"
     when Order.name
-      "#{I18n.t "order"} #{I18n.t "notification.order"}
-        :#{message.upcase}"
+      order_shop_event_user
     when OrderProduct.name
-      "#{I18n.t "order_product"} #{I18n.t "notification.status"}
-        :#{message.upcase}"
+      order_product_event
     when User.name
-      "#{I18n.t "shop_accept"} #{I18n.t "notification.order"}
-        :#{message.upcase}"
+      order_shop_event = Order.find_by id: eventitem_id
+      "#{I18n.t "order_of"} #{order_shop_event.user.name}
+      #{I18n.t "shop_order_products"}"
     when ShopDomain.name
+      shop_event_name_message
       domain = Domain.find_by id: eventable_id
       shop_domain = ShopDomain.find_by id: eventitem_id
-      check_message domain, shop_domain if shop_domain.present?
+      check_message domain, shop_domain
     end
   end
 
@@ -94,20 +93,6 @@ class Event < ApplicationRecord
     EventBroadcastJob.perform_now Event.unread.count, self
   end
 
-  def check_message domain, shop_domain
-    if shop_domain.pending?
-      "#{I18n.t "shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
-    elsif shop_domain.approved?
-      if user_id == domain.id
-        "#{I18n.t "owner_active_shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
-      else
-        "#{I18n.t "active_shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
-      end
-    else
-      "#{I18n.t "blocked_shop_request"}#{domain.name}"
-    end
-  end
-
   def check_message_for_link shop_domain, domain
     if shop_domain.pending?
       "/shop_domains/##{eventitem_id}"
@@ -119,6 +104,54 @@ class Event < ApplicationRecord
       end
     else
       "/domains/#{domain.slug}/dashboard/shops"
+    end
+  end
+  def order_shop_event_user
+    if message == Settings.notification_new
+      order_shop_event = Order.find_by id: eventitem_id
+      if order_shop_event.present?
+        "#{I18n.t "order_of"} #{order_shop_event.user.name} #{I18n.t "notification.order"}"
+      else
+        "#{I18n.t "a_order"} #{I18n.t "order_deleted"}"
+      end
+    else
+      order_shop_event = Order.find_by id: eventable_id
+      if order_shop_event.present?
+        "#{I18n.t "user_order_products"}"
+      else
+        "#{I18n.t "deleted_user_order_shop"}"
+      end
+    end
+  end
+
+  def order_product_event
+    order = Order.find_by id: eventitem_id
+    done_products = order.order_products.done.size
+    rejected_products = order.order_products.rejected.size
+    "#{I18n.t "order_product"} #{done_products} #{I18n.t "done_products"},
+      #{rejected_products} #{I18n.t "rejected_products"}"
+  end
+
+  def shop_event_name_message
+    if eventable_type == User.name
+      order_shop_event = Order.find_by id: eventitem_id
+      "#{I18n.t "order_of"} #{order_shop_event.user.name} #{I18n.t "shop_order_products"}"
+    end
+  end
+
+  def check_message
+    domain = Domain.find_by id: eventable_id
+    shop_domain = ShopDomain.find_by id: eventitem_id
+    if shop_domain.pending?
+      "#{I18n.t "shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
+    elsif shop_domain.approved?
+      if user_id == domain.id
+        "#{I18n.t "owner_active_shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
+      else
+        "#{I18n.t "active_shop_request"}#{shop_domain.shop.name} #{I18n.t "to_domain"}#{domain.name}"
+      end
+    else
+      "#{I18n.t "blocked_shop_request"}#{domain.name}"
     end
   end
 end

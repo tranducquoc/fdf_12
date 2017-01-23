@@ -32,7 +32,8 @@ class UserDomainsController < ApplicationController
     else
       flash[:danger] = t "manage_domain.add_manager_faild"
     end
-     redirect_to :back
+    @user_domain.create_event_add_manager_domain @user_domain.user_id
+    redirect_to :back
   end
 
   def destroy

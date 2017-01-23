@@ -31,6 +31,8 @@ class Event < ApplicationRecord
       check_message domain, shop_domain
     when UserDomain.name
       check_message_user_domain
+    when Domain.name
+      check_message_domain
     end
   end
 
@@ -49,6 +51,8 @@ class Event < ApplicationRecord
     when ShopDomain.name
       "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
     when UserDomain.name
+      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
+    when Domain.name
       "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
     end
   end
@@ -70,6 +74,8 @@ class Event < ApplicationRecord
     when UserDomain.name
       user = User.find_by id: eventitem_id
       user.avatar.url
+    when Domain.name
+      self.user.avatar.url
     end
   end
 
@@ -95,6 +101,8 @@ class Event < ApplicationRecord
       check_message_for_link shop_domain, domain
     when UserDomain.name
       check_link_user_domain
+    when Domain.name
+      get_domain_link
     end
   end
 
@@ -192,5 +200,21 @@ class Event < ApplicationRecord
       domain_owner = User.find_by id: domain.owner
       "#{I18n.t "add_join_domain"}#{domain.name}#{I18n.t "by"}#{domain_owner.name}"
     end
+  end
+
+  def check_message_domain
+    domain = Domain.find_by id: eventable_id
+    domain_owner = User.find_by id: domain.owner
+    user_domain = UserDomain.find_by id: eventitem_id
+    if user_domain.manager?
+      "#{domain_owner.name} #{I18n.t "add_domain_manager"} #{domain.name}"
+    else
+      "#{domain_owner.name} #{I18n.t "remote_domain_manager"} #{domain.name}"
+    end
+  end
+
+  def get_domain_link
+    domain = Domain.find_by id: eventable_id
+    "/domains?domain_id=#{domain.id}"
   end
 end

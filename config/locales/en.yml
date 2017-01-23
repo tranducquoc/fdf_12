@@ -5,6 +5,8 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  add_domain_manager: "have made you become the manager of domain:"
+  remote_domain_manager: "have remote you from the list manager of domain:"
   a_order: "A order"
   order_deleted: "have been deleted"
   order_of: "Order's"

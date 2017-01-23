@@ -10,7 +10,7 @@
   </td>
   <td><%= shop_domain.shop.products.size %></td>
   <td class="text-center">
-    <% if shop_domain.domain.owner?(current_user) ||
+    <% if shop_domain.domain.owner?(current_user.id) ||
       shop_domain.domain.manage_by?(current_user) %>
       <% if !shop_domain.approved? %>
         <strong>
@@ -22,10 +22,10 @@
             shop_domain_path(shop_domain, status: :rejected), method: :put %>
         </strong>
       <% else %>
-        <%= link_to t("manage_domain.delete_shop"), 
-          shop_domain_path(shop_domain, 
-          domain_id: shop_domain.domain.id, shop_id: shop_domain.shop.id), 
-          method: :delete, 
+        <%= link_to t("manage_domain.delete_shop"),
+          shop_domain_path(shop_domain,
+          domain_id: shop_domain.domain.id, shop_id: shop_domain.shop.id),
+          method: :delete,
           class: "btn btn-danger btn_block"
         %>
       <% end %>

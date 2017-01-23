@@ -19,4 +19,9 @@ class UserDomain < ApplicationRecord
     end
   end
 
+  def create_event_add_user_domain user_id
+    Event.create message: :join_domain,
+      user_id: user_id, eventable_id: self.domain.id, eventable_type: UserDomain.name,
+      eventitem_id: self.user.id
+  end
 end

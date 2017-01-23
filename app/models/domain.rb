@@ -20,7 +20,7 @@ class Domain < ApplicationRecord
   end
 
   def owner? user
-    self.owner == user.id
+    self.owner == user
   end
 
   def manage_by? user
@@ -29,7 +29,7 @@ class Domain < ApplicationRecord
   end
 
   enum status: {professed: 1, secret: 2, default: 3}
-  
+
   scope :by_creator, -> user_id{where owner: user_id}
   scope :member, -> user_id{where.not owner: user_id}
 end

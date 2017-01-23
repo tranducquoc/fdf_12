@@ -36,20 +36,20 @@
     </ul>
   </td>
   <td>
-    <%= link_to t("manage_domain.edit_member", num: domain.users.size), 
+    <%= link_to t("manage_domain.edit_member", num: domain.users.size),
       user_domains_path(domain_id: domain.id, approved: :true) %>
   </td>
   <td>
     <%= link_to t("manage_domain.edit_shop",
-      num: domain.shop_domains.approved.size), 
+      num: domain.shop_domains.approved.size),
       shop_domains_path(domain_id: domain.id, approved: :true) %>
   </td>
   <td><%= domain.products.size %></td>
   <td>
     <% unless domain.default? %>
-      <% if domain.owner?(current_user) || domain.manage_by?(current_user) %>
+      <% if domain.owner?(current_user.id) || domain.manage_by?(current_user) %>
         <strong>
-          <%= link_to t("edit_member"), 
+          <%= link_to t("edit_member"),
             new_user_domain_path(domain_id: domain.id), method: :get %>
         </strong><br>
         <strong>
@@ -59,10 +59,10 @@
           <% end %>
         </strong>
       <% else %>
-        <% user_domain = UserDomain.find_by user_id: current_user.id, 
+        <% user_domain = UserDomain.find_by user_id: current_user.id,
           domain_id: domain.id %>
         <%= link_to t("manage_domain.leave"),
-          user_domain,
+          user_domain_path(user_domain, domain_id: domain.id, user_id: current_user.id),
           method: :delete, class: "btn btn-danger btn_block" %>
       <% end %>
     <% end %>

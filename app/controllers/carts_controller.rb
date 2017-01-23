@@ -3,6 +3,7 @@ class CartsController < ApplicationController
   before_action :load_product, only: :update
   before_action :check_before_order, only: [:new, :index]
   before_action :check_user_status_for_action, except: [:update, :index]
+  before_action :load_shop, only: :new
 
   def index
     if @cart.blank?
@@ -20,7 +21,7 @@ class CartsController < ApplicationController
     @all_order_deleted = t("oder.all_product_will_be_order")
   end
 
-  def create 
+  def create
     @order_delete_num = Settings.start_count_order
     @count_exit_order = Settings.start_count_order
     @cart_group.each do |cart_group|
@@ -38,10 +39,10 @@ class CartsController < ApplicationController
         flash[:danger] = t "oder.not_product_in_cart"
         redirect_to carts_path
       end
-    end   
+    end
     @cart_domain.carts.delete @cart
-    @cart = Cart.new session[:domain_id] 
-    session[:cart_domain] = @cart_domain.update_cart 
+    @cart = Cart.new session[:domain_id]
+    session[:cart_domain] = @cart_domain.update_cart
     checkout_order @order_delete_num, @count_exit_order
   end
 
@@ -126,5 +127,13 @@ class CartsController < ApplicationController
   def update_session
     @cart_domain.add_cart @cart.sort, session[:domain_id]
     session[:cart_domain] = @cart_domain.update_cart
+  end
+
+  def load_shop
+    @shop = Shop.find_by id: params[:shop_id]
+    unless @shop.present?
+      redirect_to :back
+      flash[:danger] = t "can_not_load_shop"
+    end
   end
 end

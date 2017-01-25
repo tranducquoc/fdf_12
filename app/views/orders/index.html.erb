@@ -1,4 +1,4 @@
-<div class="panel panel-default width_box_search height_search_box">
+<div class="panel panel-default">
   <div class="search_between margin_top_15px">
     <div class="row">
       <%= form_tag orders_path, method: :get do |f| %>
@@ -43,7 +43,8 @@
     <% if @order_days.any? %>
       <div class="row margin_top_-30px">
         <% @order_days.sort.each do |day, orders|  %>
-          <h3><dt><%= t "order_day" %>: <%= I18n.localize day, format: :short_date %></dt></h3>
+          <h3><dt><%= t "order_day" %>: <%= I18n.localize day,
+            format: :short_date %></dt></h3>
           <% orders.each do |order| %>
             <%= render "list", order: order %>
           <% end %>

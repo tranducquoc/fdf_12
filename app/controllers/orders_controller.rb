@@ -119,12 +119,14 @@ class OrdersController < ApplicationController
     @cart_shop = load_cart_shop @shop
     @count_exit_order = Settings.count_tag
     @products_deleted = []
+    @order_price = Settings.count_tag
     @cart_shop.items.each do |cart|
       product = Product.find_by id: cart.product_id
       if Time.now.is_between_short_time?(product.start_hour, product.end_hour)
         @count_exit_order += Settings.order_increase
         @products_deleted << product
-        @cart_shop.items.delete cart
+      else
+        @order_price += total_price product.price, cart.quantity
       end
     end
     if @count_exit_order > Settings.count_tag
@@ -132,8 +134,11 @@ class OrdersController < ApplicationController
         redirect_to carts_path
         flash[:danger] = t "oder.allthing_deleted"
       else
-        @have_order_deleted = t("oder.has_order_deleted") + @count_exit_order.to_s + t("oder.product_deleted")
-        redirect_to new_cart_path @have_order_deleted, @products_deleted, shop_id: @shop.id
+        @have_order_deleted = t("oder.has_order_deleted") +
+          @count_exit_order.to_s + t("oder.product_deleted")
+        redirect_to new_cart_path @have_order_deleted,
+          products_deleted: @products_deleted,
+          order_price: @order_price, shop_id: @shop.id
       end
     end
   end

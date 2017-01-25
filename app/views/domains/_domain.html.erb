@@ -2,9 +2,9 @@
   <td><%= domain.id %></td>
   <td>
     <% if check_domain_status domain %>
-      <i class="glyphicon glyphicon-globe">
+      <i class="glyphicon glyphicon-globe"></i>
     <% else %>
-      <i class="glyphicon glyphicon-lock">
+      <i class="glyphicon glyphicon-lock"></i>
     <% end %>
     <%= link_to domain.name, domain_path(domain) %>
     <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
@@ -15,8 +15,7 @@
         </span>
       </div>
     </a>
-    <ul class="dropdown-menu" role="menu"
-      aria-labelledby="basic-nav-dropdown">
+    <ul class="dropdown-menu" role="menu" aria-labelledby="basic-nav-dropdown">
       <% Domain.statuses.each do |key, value| %>
         <li role="presentation">
           <%= link_to domain_path(domain, status: key), method: :put do %>
@@ -62,8 +61,9 @@
         <% user_domain = UserDomain.find_by user_id: current_user.id,
           domain_id: domain.id %>
         <%= link_to t("manage_domain.leave"),
-          user_domain_path(user_domain, domain_id: domain.id, user_id: current_user.id),
-          method: :delete, class: "btn btn-danger btn_block" %>
+          user_domain_path(user_domain, domain_id: domain.id,
+          user_id: current_user.id), method: :delete,
+          class: "btn btn-danger btn_block" %>
       <% end %>
     <% end %>
   </td>

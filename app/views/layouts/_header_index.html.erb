@@ -2,13 +2,13 @@
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
-        <%= link_to root_path, class: "navbar-brand" do %>
+        <%= link_to root_path, class: "navbar-brand logo-size-fixed" do %>
           <%= image_tag "framgia.png" %>
-        <% end %>        
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to content_tag(:strong, t("home")), root_path %></li>
-        <li><div class="language"><strong><%= t "language" %></strong></li>
+        <li><%= link_to content_tag(:strong, t("home")), root_path, class: "padding-l" %></li>
+        <li><div class="language"><strong><%= t "language" %></strong></div></li>
         <li class="navbar-user dropdown">
           <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
             class="dropdown-toggle user-avatar" role="button">

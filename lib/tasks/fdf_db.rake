@@ -1,6 +1,6 @@
 namespace :fdf_db do
   task create_all: [:create_user, :create_admin, :create_shop, :create_category,
-    :create_coupon, :create_product] do
+    :create_coupon, :create_product, :create_domain, :create_user_domain] do
   end
   task create_user: :environment do
     User.create!(
@@ -46,37 +46,83 @@ namespace :fdf_db do
 
   task create_domain: :environment do
     Domain.create!(
-      name: "Danang",
+      name: "FramgiaDN",
       status: 2,
       owner: 1
     )
 
     Domain.create!(
-      name: "Hanoi",
+      name: "FramgiaHN",
       status: 2,
-      owner: 1
+      owner: 2
+    )
+
+    Domain.create!(
+      name: "FramgiaHCM",
+      status: 2,
+      owner: 3
     )
   end
 
   task create_user_domain: :environment do
     UserDomain.create!(
       user_id: 1,
-      domain_id: 1
+      domain_id: 5
+    )
+
+    UserDomain.create!(
+      user_id: 1,
+      domain_id: 6
+    )
+
+    UserDomain.create!(
+      user_id: 1,
+      domain_id: 7
     )
 
     UserDomain.create!(
       user_id: 2,
-      domain_id: 1
+      domain_id: 5
+    )
+
+    UserDomain.create!(
+      user_id: 2,
+      domain_id: 6
+    )
+
+    UserDomain.create!(
+      user_id: 2,
+      domain_id: 7
     )
 
     UserDomain.create!(
       user_id: 3,
-      domain_id: 1
+      domain_id: 5
+    )
+
+    UserDomain.create!(
+      user_id: 3,
+      domain_id: 6
+    )
+
+    UserDomain.create!(
+      user_id: 3,
+      domain_id: 7
     )
 
     UserDomain.create!(
       user_id: 4,
-      domain_id: 1
+      domain_id: 5
+    )
+
+    UserDomain.create!(
+      user_id: 4,
+      domain_id: 6
+    )
+
+    UserDomain.create!(
+      user_id: 4,
+      domain_id: 7
     )
   end
 

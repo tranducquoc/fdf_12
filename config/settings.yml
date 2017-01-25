@@ -53,6 +53,7 @@ blocked: "blocked"
 waiting: "waiting"
 pending: "pending"
 new: "new"
+account_password: "123456"
 languages:
   vietnamese: {name: "Tiếng Việt", image: "vi.png", type: "vi"}
   english: {name: "English", image: "en.png", type: "en"}

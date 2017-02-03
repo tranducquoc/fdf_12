@@ -331,3 +331,15 @@ $orange_main: #ff5722;
   height: 70px;
   width: 150px;
 }
+
+@media screen and (max-width: 1200px) {
+  .media-margin-header-bar {
+    padding-left: 200px;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .media-margin-header-bar {
+    padding-left: 100px;
+  }
+}

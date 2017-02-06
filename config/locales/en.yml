@@ -5,6 +5,9 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  warning_firefox: "The site does not display well on Firefox Browser.
+    Please use Chrome to get the best experience.
+    Sorry for the inconvenience!"
   request_have_been_delete: "The request have been deleted"
   add_domain_manager: "have made you become the manager of domain:"
   remote_domain_manager: "have remote you from the list manager of domain:"

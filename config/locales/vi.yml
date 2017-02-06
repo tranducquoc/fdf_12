@@ -41,6 +41,9 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  warning_firefox: "Trang web không hiển thị tốt trên Trình duyệt Firefox.
+    Vui lòng sử dụng Chrome để có trải nghiệm tốt nhất.
+    Xin lỗi vì sự bất tiện này!"
   request_have_been_delete: "Yêu cầu đã bị xóa"
   add_domain_manager: "vừa cho bạn trở thành người quản lí của miền:"
   remote_domain_manager: "vừa xóa bạn ra khỏi danh sách quản lí của miền:"

@@ -1,6 +1,6 @@
 <div class="home-header">
   <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
+    <div class="container media-margin-header-bar">
       <div class="navbar-header">
         <% if @domain.present? %>
           <%= link_to domain_path(@domain), class: "navbar-brand" do %>
@@ -19,7 +19,7 @@
           <span class="icon-bar"></span>
         </button>
       </div>
-      <div class="collapse navbar-collapse" id="Navbar-header-pager">
+      <div class="collapse navbar-collapse" id="Navbar-header-page">
         <%= form_tag search_path, method: :get,
           class: "search-form navbar-form navbar-left dropdown" do %>
           <div class="form-group">

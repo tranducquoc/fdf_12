@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="col-md-8 shop_text">
-    <div class="row">
+    <div class="row shop-manager-margin-left-right">
       <h3>
         <% if shop.domains.present? && @domain.present? %>
           <%= link_to shop.name, domain_dashboard_shop_path(@domain, shop) %>

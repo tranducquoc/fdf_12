@@ -532,3 +532,25 @@ text-small {
   margin-left: 289px;
   font-size: 20px;
 }
+
+#domain-table {
+  table {
+    width: 716px;
+  }
+
+  tbody, thead tr { display: block; }
+
+  tbody {
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  tbody td, thead th {
+    width: 140px;
+  }
+
+  thead th:last-child {
+    width: 156px;
+  }
+}

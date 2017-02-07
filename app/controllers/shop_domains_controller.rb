@@ -40,11 +40,11 @@ class ShopDomainsController < ApplicationController
         AddShopProductToDomainService.new(shop, domain).add
         @shop_domain.create_event_request_shop @domain.owner, @shop_domain
         @shop_domain.create_event_request_shop @shop_domain.shop.owner_id, @shop_domain
+        flash[:success] = t "add_shop_domain_success"
       elsif params[:status] == ShopDomain.statuses.key(2)
         @shop_domain.create_event_request_shop @shop_domain.shop.owner_id, @shop_domain
       end
       redirect_to :back
-      flash[:success] = t "add_shop_domain_success"
     end
   end
 

@@ -14,7 +14,7 @@
       shop_domain.domain.manage_by?(current_user) %>
       <% if !shop_domain.approved? %>
         <strong>
-          <%= link_to t("accept"),
+          <%= link_to t("order_statistics.accept"),
             shop_domain_path(shop_domain, status: :approved), method: :put %>
         </strong><br>
         <strong>

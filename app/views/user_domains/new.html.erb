@@ -1,16 +1,19 @@
+<h1 class="text-center"><%= @choosen_domain.name %></h1>  
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-success">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <%= form_tag new_user_domain_path(id: @domain.id), method: :post do %>
+          <%= form_tag user_domains_path(domain_id: @choosen_domain.id), 
+            method: :post do %>
             <div class="form-group">
               <%= label_tag(:email, t("enter_user_email")) %>
             </div>
             <div class="form-group">
               <%= email_field_tag :email, nil, class: "form-control"%>
             </div>
-            <%= link_to t("continue"), domain_dashboard_shops_path(@domain), class: "btn btn-warning" %>
+            <%= link_to t("continue"), domain_dashboard_shops_path(@domain), 
+              class: "btn btn-warning" %>
             <%= submit_tag  t("add"), class: "btn btn-primary space-top-submit" %>
           <% end %>
         </div>

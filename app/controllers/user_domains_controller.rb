@@ -64,6 +64,7 @@ class UserDomainsController < ApplicationController
         user_domain.create_event_add_user_domain @user.id
       elsif current_user.is_user? @user.id
         user_domain.create_event_add_user_domain @domain.owner
+        sent_notification_domain_manager @domain
       end
       flash[:success] = t "add_domain"
     else
@@ -76,6 +77,14 @@ class UserDomainsController < ApplicationController
     unless @user_domain.present?
       redirect_to :back
       flash[:danger] = t "can_not_load_user"
+    end
+  end
+
+  def sent_notification_domain_manager domain
+    domain.user_domains.each do |usr_domain|
+      if usr_domain.manager?
+        usr_domain.create_event_add_user_domain usr_domain.user_id
+      end
     end
   end
 end

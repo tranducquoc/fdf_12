@@ -49,6 +49,7 @@ vi:
   next_btn_domain_help: "Kế tiếp"
   congrat_domain_help: "Bạn đã sẵng sàng sử dụng Forder!"
   back_btn_domain_help: "Quay về"
+  domain_manager_notification: "Có một thành viên vừa tham gia vào miền "
   warning_firefox: "Trang web không hiển thị tốt trên Trình duyệt Firefox.
     Vui lòng sử dụng Chrome để có trải nghiệm tốt nhất.
     Xin lỗi vì sự bất tiện này!"
@@ -77,12 +78,12 @@ vi:
   dada_not_found: "Người dùng đã hủy yêu cầu"
   to_domain: "vào miền: "
   you: "Bạn"
-  by: " bởi "
+  by: " của "
   request_join_domain: " vừa tham gia vào miền: "
   add_join_domain: "Bạn vừa được thêm vào miền: "
   join_domain: "Tham gia"
   shop_request: "Bạn có một yêu cầu cửa hàng: "
-  owner_active_shop_request: "Bạn vừa thêm một cửa hàng: "
+  owner_active_shop_request: "Vừa thêm một cửa hàng: "
   active_shop_request: "Một cửa hàng của bạn vừa được đồng ý: "
   blocked_shop_request: "Yêu cầu cửa hàng vào miền của bạn vừa bị loại khỏi: "
   add_shop_domain_success: "Thêm cửa hàng vào miền thành công"

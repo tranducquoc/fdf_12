@@ -151,7 +151,9 @@ class Event < ApplicationRecord
         "#{I18n.t "shop_request"}#{shop_domain.shop.name}
           #{I18n.t "to_domain"}#{domain.name}"
       when shop_domain.approved?
-        if user_id == domain.owner
+        user_domain = UserDomain.find_by user_id: user_id, domain_id: domain.id,
+          role: :manager
+        if user_id == domain.owner || user_domain.present?
           "#{I18n.t "owner_active_shop_request"}#{shop_domain.shop.name}
             #{I18n.t "to_domain"}#{domain.name}"
         else
@@ -172,7 +174,9 @@ class Event < ApplicationRecord
       when shop_domain.pending?
         "/shop_domains?domain_id=#{domain.id}"
       when shop_domain.approved?
-        if user_id == domain.owner
+        user_domain = UserDomain.find_by user_id: user_id, domain_id: domain.id,
+          role: :manager
+        if user_id == domain.owner || user_domain.present?
           "/domains?domain_id=#{eventitem_id}"
         else
           "/domains/#{domain.slug}/dashboard/shops"
@@ -188,7 +192,9 @@ class Event < ApplicationRecord
   def check_link_user_domain
     domain = Domain.find_by id: eventable_id
     user = User.find_by id: eventitem_id
-    if user_id == domain.owner
+    user_domain = UserDomain.find_by user_id: user_id, domain_id: domain.id,
+      role: :manager
+    if (domain.owner? user_id) || user_domain.present?
       "/domains?domain_id=#{domain.id}"
     elsif user_id == user.id
       "/domains/#{domain.slug}"
@@ -198,8 +204,12 @@ class Event < ApplicationRecord
   def check_message_user_domain
     domain = Domain.find_by id: eventable_id
     user = User.find_by id: eventitem_id
+    user_domain = UserDomain.find_by user_id: user_id, domain_id: domain.id,
+      role: :manager
     if domain.owner? user_id
       "#{user.name}#{I18n.t "request_join_domain"}#{domain.name}"
+    elsif user_domain.present?
+      "#{I18n.t "domain_manager_notification"}#{domain.name}"
     elsif user.is_user? user_id
       domain_owner = User.find_by id: domain.owner
       "#{I18n.t "add_join_domain"}#{domain.name}#{I18n.t "by"}#{domain_owner.name}"

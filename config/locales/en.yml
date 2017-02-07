@@ -5,6 +5,14 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  introduce_domain_help: "Introduce"
+  step_one_domain_help: "Step 1"
+  step_two_domain_help: "Step 2"
+  step_three_domain_help: "Step 3"
+  finished_domain_help: "Finished!"
+  next_btn_domain_help: "Next"
+  congrat_domain_help: "You are ready to use Forder!"
+  back_btn_domain_help: "Back"
   warning_firefox: "The site does not display well on Firefox Browser.
     Please use Chrome to get the best experience.
     Sorry for the inconvenience!"

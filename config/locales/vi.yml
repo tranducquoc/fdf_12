@@ -41,6 +41,14 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  introduce_domain_help: "Giới thiệu"
+  step_one_domain_help: "Bước 1"
+  step_two_domain_help: "Bước 2"
+  step_three_domain_help: "Bước 3"
+  finished_domain_help: "Kết thúc!"
+  next_btn_domain_help: "Kế tiếp"
+  congrat_domain_help: "Bạn đã sẵng sàng sử dụng Forder!"
+  back_btn_domain_help: "Quay về"
   warning_firefox: "Trang web không hiển thị tốt trên Trình duyệt Firefox.
     Vui lòng sử dụng Chrome để có trải nghiệm tốt nhất.
     Xin lỗi vì sự bất tiện này!"

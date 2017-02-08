@@ -76,3 +76,4 @@ domain:
   secret: "glyphicon glyphicon-lock"
 feedback: "https://docs.google.com/
   forms/d/e/1FAIpQLSeWye6zJ8U7epz5W3G5MDZTT8YE5rWELbHDpyRtD4drC0QrGw/viewform"
+max_user_name: 8

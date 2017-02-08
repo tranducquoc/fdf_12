@@ -35,15 +35,15 @@
                 <td></td>
                 <td>
                   <span class="item-right">
-                      <%= link_to cart_path(item.product_id), method: :delete,
-                        remote: true, class: "pull-right" do %>
-                        <span class="glyphicon glyphicon-trash text-danger
-                          action-padding">
-                        </span>
-                      <% end %>
+                    <%= link_to set_cart_path(item.product_id), method: :delete,
+                      class: "pull-right" do %>
+                      <span class="glyphicon glyphicon-trash text-danger
+                        action-padding">
+                      </span>
+                    <% end %>
                   </span>
-                  <%= link_to set_cart_path(item.product_id, id: item.product_id),
-                    method: :put, remote: true, class: "pull-right" do %>
+                  <%= link_to edit_cart_path(id: item.product_id),
+                    method: :get, remote: true, class: "pull-right" do %>
                   <span class="glyphicon glyphicon-minus-sign
                     text-primary action-padding"></span>
                   <% end %>

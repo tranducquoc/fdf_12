@@ -2,7 +2,7 @@
   <% @cart.items.each do |item| %>
     <li id="item-<%= item.product_id %>", class="cart-item-default">
       <span class="item">
-        <span class="item-left product-thumbnail">
+        <span class="item-left item-product-thumbnail">
           <%= image_tag item.product.image.url %>
           <strong><%= item.product.name %></strong>
         </span>

@@ -1,3 +1,4 @@
+$orange_main: #ff5722;
 IMG.displayed {
   display: block;
   margin-left: auto;
@@ -39,29 +40,36 @@ IMG.displayed {
   }
 
   .logo {
-    padding-top: 350px;
+    padding-top: 375px;
   }
 }
 
 .header-index {
+  .navbar {
+    background: url(header_bg.png) $orange_main;
+    border: 0;
+    border-radius: 0;
+  }
+
   .navbar-brand {
-    height: 42px;
-    padding: 3px 15px;
+    height: 40px;
+    padding: 3px 10px;
     float: left;
     font-size: 18px;
     line-height: 20px;
 
     img {
-      height: 50px;
-      width: 150px;
+      height: 35px;
       display: block;
+      padding-top: 5px;
+      padding-left: 20px;
     }
   }
 
   .language {
     padding-top: 15px;
     text-align: center;
-    color: #777
+    color: white;
   }
 
   li ul {
@@ -120,4 +128,8 @@ IMG.displayed {
   margin-left: auto;
   margin-right: auto;
   width: 280px;
+}
+
+.sign-in-btn {
+  padding-top: 30px;
 }

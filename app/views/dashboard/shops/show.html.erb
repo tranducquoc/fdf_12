@@ -6,8 +6,9 @@
     <%= image_tag @shop.cover_image.url, class: "defaut-pic-cover" %>
     <div class="shop-info-wrapper">
       <div class="shop-avatar-wrapper row">
-        <div class="col-sm-3 col-xs-3 shop-avatar">
-          <%= image_tag @shop.avatar.url, class: "avatar igm245", id: "img-avatar" %>
+        <div class="col-sm-3 col-xs-3 show-shop-avatar">
+          <%= image_tag @shop.avatar.url, class: "avatar igm245", 
+            id: "img-avatar" %>
           <%= simple_form_for [:dashboard, @shop], html: {id: "form_id"} do |f| %>
             <div class="container">
               <div class="row">

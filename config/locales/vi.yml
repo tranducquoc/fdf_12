@@ -82,7 +82,7 @@ vi:
   request_join_domain: " vừa tham gia vào miền: "
   add_join_domain: "Bạn vừa được thêm vào miền: "
   join_domain: "Tham gia"
-  shop_request: "Bạn có một yêu cầu cửa hàng: "
+  shop_request: "Danh sách yêu cầu cửa hàng: "
   owner_active_shop_request: "Vừa thêm một cửa hàng: "
   active_shop_request: "Một cửa hàng của bạn vừa được đồng ý: "
   blocked_shop_request: "Yêu cầu cửa hàng vào miền của bạn vừa bị loại khỏi: "

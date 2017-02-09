@@ -314,6 +314,17 @@ $orange_main: #ff5722;
   }
 }
 
+.event-product-thumbnail {
+  display: block;
+  float: left;
+  padding: 10px 5px;
+  img {
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+  }
+}
+
 .login {
   color: orange;
 }

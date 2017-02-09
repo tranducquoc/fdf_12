@@ -273,6 +273,14 @@ $orange_main: #ff5722;
   padding-left: 3px;
 }
 
+.image-flag-choose {
+  margin-left: 5px;
+  float: left;
+  width: 25px;
+  height: 15px !important;
+  margin-right: 5px;
+}
+
 .languages p {
   padding-top: 5px;
 }
@@ -341,5 +349,16 @@ $orange_main: #ff5722;
 @media screen and (max-width: 990px) {
   .media-margin-header-bar {
     padding-left: 100px;
+  }
+}
+
+.item-product-thumbnail {
+  display: block;
+  float: left;
+  padding-top: 15px;
+  padding-left: 30px;
+  img {
+    height: 50px;
+    border-radius: 25px;
   }
 }

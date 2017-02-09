@@ -145,7 +145,7 @@ class Order < ApplicationRecord
     if self.pending?
       self.update_attributes(status: :rejected, change_status: true)
       self.order_products.update_all status: :rejected
-      create_event_reject
+      self.create_event_reject
     end
   end
 

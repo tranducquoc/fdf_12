@@ -34,6 +34,110 @@ namespace :fdf_db do
       password_confirmation: "123456",
       status: 1
     )
+
+    User.create!(
+      name: "Ta Duy Anh",
+      email: "ta.duy.anh@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1
+    )
+
+    User.create!(
+      name: "Hoang Nhac Trung",
+      email: "hoang.nhac.trung@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1
+    )
+
+    User.create!(
+      name: "Yushi Fukagawa",
+      email: "yushi.fukagawa@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1
+    )
+
+    User.create!(
+      name: "Vu Xuan Dung",
+      email: "vu.xuan.dung@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1
+    )
+
+    User.create!(
+      name: "Nguyen Xuan Son",
+      email: "nguyen.xuan.son@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1
+    )
+
+    User.create!(
+      name: "Nguyen Ngoc Tuan",
+      email: "nguyen.ngoc.tuan@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1
+    )
+
+    User.create!(
+      name: "Nguyen Thi Minh Ngoc",
+      email: "nguyen.thi.minh.ngoc@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1
+    )
+
+    User.create!(
+      name: "Tran Van Tan",
+      email: "tran.van.tan@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1
+    )
+
+    User.create!(
+      name: "Dao Tri Vu",
+      email: "dao.tri.vu@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1
+    )
+
+    User.create!(
+      name: "Ta Minh Thanh",
+      email: "ta.minh.thanh@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1
+    )
+
+    User.create!(
+      name: "Chu Anh Tuan",
+      email: "chu.anh.tuan@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1
+    )
+
+    User.create!(
+      name: "Nguyen Huu Thai Binh",
+      email: "nguyen.huu.thai.binh@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1
+    )
+
+    User.create!(
+      name: "Hiroaki Ishida",
+      email: "hiroaki.ishida@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1
+    )
   end
 
   task create_admin: :environment do
@@ -48,81 +152,237 @@ namespace :fdf_db do
     Domain.create!(
       name: "FramgiaDN",
       status: 2,
-      owner: 1
+      owner: 6
     )
 
     Domain.create!(
       name: "FramgiaHN",
       status: 2,
-      owner: 2
+      owner: 15
     )
 
     Domain.create!(
       name: "FramgiaHCM",
       status: 2,
-      owner: 3
+      owner: 15
     )
   end
 
   task create_user_domain: :environment do
     UserDomain.create!(
-      user_id: 1,
-      domain_id: 5
+      user_id: 6,
+      domain_id: 18,
+      role: 0
     )
 
     UserDomain.create!(
-      user_id: 1,
-      domain_id: 6
+      user_id: 7,
+      domain_id: 18,
+      role: 1
     )
 
     UserDomain.create!(
-      user_id: 1,
-      domain_id: 7
+      user_id: 8,
+      domain_id: 18,
+      role: 1
     )
 
     UserDomain.create!(
-      user_id: 2,
-      domain_id: 5
+      user_id: 9,
+      domain_id: 18,
+      role: 1
     )
 
     UserDomain.create!(
-      user_id: 2,
-      domain_id: 6
+      user_id: 10,
+      domain_id: 18,
+      role: 1
     )
 
     UserDomain.create!(
-      user_id: 2,
-      domain_id: 7
+      user_id: 11,
+      domain_id: 18,
+      role: 1
     )
 
     UserDomain.create!(
-      user_id: 3,
-      domain_id: 5
+      user_id: 12,
+      domain_id: 18,
+      role: 1
     )
 
     UserDomain.create!(
-      user_id: 3,
-      domain_id: 6
+      user_id: 13,
+      domain_id: 18,
+      role: 1
     )
 
     UserDomain.create!(
-      user_id: 3,
-      domain_id: 7
+      user_id: 14,
+      domain_id: 18,
+      role: 1
     )
 
     UserDomain.create!(
-      user_id: 4,
-      domain_id: 5
+      user_id: 15,
+      domain_id: 18,
+      role: 1
     )
 
     UserDomain.create!(
-      user_id: 4,
-      domain_id: 6
+      user_id: 16,
+      domain_id: 18,
+      role: 1
     )
 
     UserDomain.create!(
-      user_id: 4,
-      domain_id: 7
+      user_id: 17,
+      domain_id: 18,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 15,
+      domain_id: 19,
+      role: 0
+    )
+
+    UserDomain.create!(
+      user_id: 6,
+      domain_id: 19,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 7,
+      domain_id: 19,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 8,
+      domain_id: 19,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 9,
+      domain_id: 19,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 10,
+      domain_id: 19,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 11,
+      domain_id: 19,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 12,
+      domain_id: 19,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 13,
+      domain_id: 19,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 14,
+      domain_id: 19,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 16,
+      domain_id: 19,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 17,
+      domain_id: 19,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 15,
+      domain_id: 20,
+      role: 0
+    )
+
+    UserDomain.create!(
+      user_id: 6,
+      domain_id: 20,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 7,
+      domain_id: 20,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 8,
+      domain_id: 20,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 9,
+      domain_id: 20,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 10,
+      domain_id: 20,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 11,
+      domain_id: 20,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 12,
+      domain_id: 20,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 13,
+      domain_id: 20,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 14,
+      domain_id: 20,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 16,
+      domain_id: 20,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 17,
+      domain_id: 20,
+      role: 1
     )
   end
 
@@ -187,7 +447,7 @@ namespace :fdf_db do
       description: "Highland",
       cover_image: "image",
       avatar: File.open(Rails.root + "public/images/quansinhto.jpg"),
-      owner_id: 1,
+      owner_id: 5,
       status: 1
     )
   end
@@ -1127,7 +1387,7 @@ namespace :fdf_db do
       category_id: 7,
       status: 0,
       shop_id: 7,
-      user_id: 1,
+      user_id: 5,
       name: "Phin Sữa Đá",
       price: 29000,
       description: "Phin Sữa Đá",
@@ -1140,7 +1400,7 @@ namespace :fdf_db do
       category_id: 7,
       status: 0,
       shop_id: 7,
-      user_id: 1,
+      user_id: 5,
       name: "Cacao Nóng",
       price: 54000,
       description: "Cacao Nóng",
@@ -1153,7 +1413,7 @@ namespace :fdf_db do
       category_id: 7,
       status: 0,
       shop_id: 7,
-      user_id: 1,
+      user_id: 5,
       name: "Trà Sen Vàng",
       price: 49000,
       description: "Trà Sen Vàng",
@@ -1166,7 +1426,7 @@ namespace :fdf_db do
       category_id: 7,
       status: 0,
       shop_id: 7,
-      user_id: 1,
+      user_id: 5,
       name: "Trà Thanh Đào",
       price: 49000,
       description: "Trà Thanh Đào",
@@ -1179,7 +1439,7 @@ namespace :fdf_db do
       category_id: 7,
       status: 0,
       shop_id: 7,
-      user_id: 1,
+      user_id: 5,
       name: "Nâu nóng",
       price: 29000,
       description: "Nâu nóng",
@@ -1192,7 +1452,7 @@ namespace :fdf_db do
       category_id: 7,
       status: 0,
       shop_id: 7,
-      user_id: 1,
+      user_id: 5,
       name: "Freeze Matcha",
       price: 59000,
       description: "Freeze Matcha",
@@ -1205,7 +1465,7 @@ namespace :fdf_db do
       category_id: 7,
       status: 0,
       shop_id: 7,
-      user_id: 1,
+      user_id: 5,
       name: "Trà Thạch Đào",
       price: 49000,
       description: "Trà Thạch Đào",

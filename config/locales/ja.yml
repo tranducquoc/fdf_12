@@ -13,6 +13,7 @@ ja:
   next_btn_domain_help: "Kế tiếp"
   congrat_domain_help: "Bạn đã sẵng sàng sử dụng Forder!"
   back_btn_domain_help: "Quay về"
+  domain_manager_notification: "There are the new member to domain "
   warning_firefox: "The site does not display well on Firefox Browser.
     Please use Chrome to get the best experience.
     Sorry for the inconvenience!"

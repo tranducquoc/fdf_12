@@ -67,12 +67,21 @@ class ShopDomainsController < ApplicationController
 
   def check_save_shop_domain shop_domain
     if shop_domain.save
-        shop_domain.create_event_request_shop @domain.owner, shop_domain
+      shop_domain.create_event_request_shop @choosen_domain.owner, shop_domain
+      sent_notification_domain_manager @choosen_domain, shop_domain
       if shop_domain.approved?
         AddShopProductToDomainService.new(@shop, @choosen_domain).add
       end
     else
       flash[:danger] = t "can_not_add_shop"
+    end
+  end
+
+  def sent_notification_domain_manager domain, shop_domain
+    domain.user_domains.each do |user_domain|
+      if user_domain.manager?
+        shop_domain.create_event_request_shop user_domain.user_id, shop_domain
+      end
     end
   end
 end

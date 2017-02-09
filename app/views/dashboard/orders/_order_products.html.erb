@@ -20,7 +20,7 @@
         <td><%= item.product_name %></td>
         <td>
           <span class="product-thumbnail">
-            <%= image_tag item.product.image.url %>
+            <%= image_tag item.product.image.url, class: "image-order-size" %>
           </span>
         </td>
         <td class="text-center"><%= item.quantity %></td>

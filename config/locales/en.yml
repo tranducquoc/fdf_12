@@ -13,6 +13,7 @@ en:
   next_btn_domain_help: "Next"
   congrat_domain_help: "You are ready to use Forder!"
   back_btn_domain_help: "Back"
+  domain_manager_notification: "There are the new member to domain "
   warning_firefox: "The site does not display well on Firefox Browser.
     Please use Chrome to get the best experience.
     Sorry for the inconvenience!"
@@ -37,12 +38,12 @@ en:
   rejected_products: "products rejected"
   dada_not_found: "User deleted request"
   you: "You"
-  by: " by "
+  by: " of "
   request_join_domain: " already joined the domain: "
   add_join_domain: " have been added to domain: "
   join_domain: "Join in domain"
   shop_request: "You have a shop request: "
-  owner_active_shop_request: "You have added the shop: "
+  owner_active_shop_request: "Have added the shop: "
   active_shop_request: "Your shop request have been accepted to join: "
   blocked_shop_request: "Your shop request into domain have been blocked from: "
   add_shop_domain_success: "Accepting shop to domain successfully"

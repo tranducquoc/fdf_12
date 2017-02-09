@@ -318,6 +318,17 @@ img {
         height: auto;
       }
     }
+
+    .show-shop-avatar {
+      z-index: 2;
+      padding: 15px;
+      position: relative;
+      img {
+        border: 2px solid $color_mercury_approx;
+        width: 100%;
+        height: auto;
+      }
+    }
   }
   .shop-nav-wrapper .shop-basic-info .status.opening i {
     color: $color_apple_approx;

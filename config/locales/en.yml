@@ -42,7 +42,7 @@ en:
   request_join_domain: " already joined the domain: "
   add_join_domain: " have been added to domain: "
   join_domain: "Join in domain"
-  shop_request: "You have a shop request: "
+  shop_request: "List request shop: "
   owner_active_shop_request: "Have added the shop: "
   active_shop_request: "Your shop request have been accepted to join: "
   blocked_shop_request: "Your shop request into domain have been blocked from: "

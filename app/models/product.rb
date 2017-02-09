@@ -31,6 +31,8 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validate :image_size
   validate :start_hour_before_end_hour
+  validates :price, presence: true, 
+    :numericality => {:greater_than => Settings.min_price}
 
   delegate :name, to: :shop, prefix: :shop, allow_nil: true
   delegate :avatar, to: :shop, prefix: :shop

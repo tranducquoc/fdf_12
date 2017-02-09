@@ -1,9 +1,9 @@
 <div class="header-index">
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
         <%= link_to root_path, class: "navbar-brand logo-size-fixed" do %>
-          <%= image_tag "framgia.png" %>
+          <%= image_tag "logo.png" %>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -20,7 +20,7 @@
             <% Settings.languages.each do|key, value| %>
               <li data-lang="<%= value.type %>">
                 <%= link_to "#" do %>
-                  <%= image_tag value.image, class: "image-flag-be" %>
+                  <%= image_tag value.image, class: "image-flag-choose" %>
                   <span><%= value.name %></span>
                 <% end %>
               </li>

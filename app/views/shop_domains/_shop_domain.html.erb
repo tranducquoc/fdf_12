@@ -9,7 +9,7 @@
     <% end %>
   </td>
   <td><%= shop_domain.shop.products.size %></td>
-  <td class="text-center">
+  <td>
     <% if shop_domain.domain.owner?(current_user.id) ||
       shop_domain.domain.manage_by?(current_user) %>
       <% if !shop_domain.approved? %>

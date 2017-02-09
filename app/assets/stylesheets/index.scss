@@ -87,8 +87,9 @@ IMG.displayed {
     display: block;
   }
 
-  h3 {
-    padding-right: 50px;
+  .feature-heading {
+    padding-left: 0px;
+    padding-bottom: 30px;
   }
 }
 
@@ -128,8 +129,26 @@ IMG.displayed {
   margin-left: auto;
   margin-right: auto;
   width: 280px;
+
+  h3 {
+    padding-left: 0px;
+  }
 }
 
 .sign-in-btn {
   padding-top: 30px;
+}
+
+.btn-create-domain  {
+  display: block;
+  width: 12% !important;
+  float: left;
+  margin-bottom: 5px !important;
+  z-index: 1200;
+}
+
+@media screen and (max-width: 768px) {
+  .scroll-horizontal {
+    overflow-x: auto;
+  }
 }

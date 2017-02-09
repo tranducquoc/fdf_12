@@ -8,7 +8,7 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
   </head>
-  <body>
+  <body class="scroll-horizontal">
     <% if user_signed_in? %>
       <%= render "layouts/header" %>
     <% else %>

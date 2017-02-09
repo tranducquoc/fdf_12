@@ -115,7 +115,7 @@ class Dashboard::ShopsController < BaseDashboardController
     if shop_domain.pending?
       shop_domain.create_event_request_shop @domain.owner, shop_domain
     elsif shop_domain.approved?
-      shop_domain.create_event_request_shop shop_domain.shop.owner_id.id,
+      shop_domain.create_event_request_shop shop_domain.shop.owner_id,
         shop_domain
     end
   end

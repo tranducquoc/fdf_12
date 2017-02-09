@@ -37,24 +37,7 @@ class Event < ApplicationRecord
   end
 
   def load_message_time
-    case eventable_type
-    when Shop.name
-      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
-    when Product.name
-      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
-    when Order.name
-      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
-    when OrderProduct.name
-      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
-    when User.name
-      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
-    when ShopDomain.name
-      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
-    when UserDomain.name
-      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
-    when Domain.name
-      "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
-    end
+    "#{time_ago_in_words(created_at)} #{I18n.t "notification.ago"}"
   end
 
   def get_link_img
@@ -120,20 +103,22 @@ class Event < ApplicationRecord
       end
     else
       order_shop_event = Order.find_by id: eventable_id
-      if order_shop_event.present?
-        "#{I18n.t "user_order_products"}"
-      else
+      if message == Settings.filter_status_order.rejected
         "#{I18n.t "deleted_user_order_shop"}"
+      elsif order_shop_event.present?
+        "#{I18n.t "user_order_products"}"
       end
     end
   end
 
   def order_product_event
     order = Order.find_by id: eventitem_id
-    done_products = order.order_products.done.size
-    rejected_products = order.order_products.rejected.size
-    "#{I18n.t "order_product"} #{done_products} #{I18n.t "done_products"},
-      #{rejected_products} #{I18n.t "rejected_products"}"
+    if order.present?
+      done_products = order.order_products.done.size
+      rejected_products = order.order_products.rejected.size
+      "#{I18n.t "order_product"} #{done_products} #{I18n.t "done_products"},
+        #{rejected_products} #{I18n.t "rejected_products"}"
+    end
   end
 
   def shop_event_name_message

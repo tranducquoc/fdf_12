@@ -1,0 +1,40 @@
+<h1 class="text-center"><%= @choosen_domain.name %></h1>  
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-success">
+      <div class="row">
+        <div class="search-user-form">
+          <div class="search_users col-md-6 col-md-offset-3">
+            <%= form_tag user_searchs_path, method: :get do %>
+              <%= hidden_field_tag :domain_id, @choosen_domain.id %>
+              <div class="form-group">
+                <%= text_field_tag :user_search, params[:user_search],
+                  placeholder: "search", class: "form-control" %> 
+              </div>
+            <% end %>
+          </div>
+          <%= link_to t("continue"), domain_dashboard_shops_path(@domain), 
+            class: "btn btn-warning" %>
+        </div>
+      </div>
+      <div class="add-user-table">
+        <table class="table table-striped table-hover table-bordered">
+          <thead class="">
+            <tr>
+              <th><%= t "common.number" %></th>
+              <th><%= t "admin.users.index.name" %></th>
+              <th><%= t "admin.users.index.email" %></th>
+              <th><%= t "admin.users.index.chatwork" %></th>
+              <th><%= t "admin.users.index.avatar" %></th>
+              <th><%= t "admin.users.index.description" %></th>
+              <th><%= t "admin.users.index.actions" %></th>
+            </tr>
+          </thead>
+          <tbody id="list_users">
+            <%= render "users/user" %>
+          </tbody>
+        </table> 
+      </div>
+    </div>
+  </div>
+</div>

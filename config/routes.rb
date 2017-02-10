@@ -82,4 +82,5 @@ Rails.application.routes.draw do
   resources :request_shop_domains
   resources :set_carts
   resources :pdf_readers, only: :index
+  resources :user_searchs
 end

@@ -1,34 +1,35 @@
-<tr>
-  <td><%= shop_domain.id %></td>
-  <td>
-    <%= shop_domain.shop.name %>
-  </td>
-  <td>
-    <% shop_domain.shop.users.each do |user| %>
-      <%= user.name %><br>
-    <% end %>
-  </td>
-  <td><%= shop_domain.shop.products.size %></td>
-  <td>
-    <% if shop_domain.domain.owner?(current_user.id) ||
-      shop_domain.domain.manage_by?(current_user) %>
-      <% if !shop_domain.approved? %>
-        <strong>
-          <%= link_to t("order_statistics.accept"),
-            shop_domain_path(shop_domain, status: :approved), method: :put %>
-        </strong><br>
-        <strong>
-          <%= link_to t("delete"),
-            shop_domain_path(shop_domain, status: :rejected), method: :put %>
-        </strong>
-      <% else %>
-        <%= link_to t("manage_domain.delete_shop"),
-          shop_domain_path(shop_domain,
-          domain_id: shop_domain.domain.id, shop_id: shop_domain.shop.id),
-          method: :delete,
-          class: "btn btn-danger btn_block"
-        %>
+<% @shop_domains.each_with_index do |shop_domain, index| %>
+  <tr>
+    <td><%= increase_one index %></td>
+    <td>
+      <%= shop_domain.shop.name %>
+    </td>
+    <td>
+      <% shop_domain.shop.users.each do |user| %>
+        <%= user.name %><br>
       <% end %>
-    <% end %>
-  </td>
-</tr>
+    </td>
+    <td><%= shop_domain.shop.products.size %></td>
+    <td>
+      <% if shop_domain.domain.owner?(current_user.id) ||
+        shop_domain.domain.manage_by?(current_user) %>
+        <% if !shop_domain.approved? %>
+          <strong>
+            <%= link_to t("order_statistics.accept"),
+              shop_domain_path(shop_domain, status: :approved), method: :put %>
+          </strong><br>
+          <strong>
+            <%= link_to t("delete"),
+              shop_domain_path(shop_domain, status: :rejected), method: :put %>
+          </strong>
+        <% else %>
+          <%= link_to t("manage_domain.delete_shop"),
+            shop_domain_path(shop_domain,
+            domain_id: shop_domain.domain.id, shop_id: shop_domain.shop.id),
+            method: :delete, class: "btn btn-danger btn_block"
+          %>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

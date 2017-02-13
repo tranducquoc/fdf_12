@@ -80,6 +80,7 @@
                     <%= link_to t("request_shop.cancel"),
                       shop_domain_path(shop_domain,
                       domain_id: domain.id, shop_id: shop.id), method: :delete,
+                      data: {confirm: t("common.delete_confirm")},
                       class: "btn btn-danger btn_block" %>
                   <% end %>
                 <% end %>

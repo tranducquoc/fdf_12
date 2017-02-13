@@ -54,7 +54,8 @@
           domain_id: domain.id %>
         <%= link_to t("manage_domain.leave"),
           user_domain_path(user_domain, domain_id: domain.id,
-          user_id: current_user.id), method: :delete,
+          user_id: current_user.id), method: :delete, 
+          data: {confirm: t("common.delete_confirm")},
           class: "btn btn-danger btn_block" %>
       <% end %>
     <% end %>

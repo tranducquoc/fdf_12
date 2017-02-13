@@ -133,7 +133,7 @@ vi:
   account_created: "Tài khoản của bạn ở ứng dụng Framgia order vừa được tạo"
   you_can: "Bạn có thể sử dụng email và mật khẩu dưới đâu để đăng nhập"
   email: "email: "
-  password: "password: "
+  password: "mật khẩu: "
   failed_to_read_file: "Không thể đọc được file tài khoản"
   import: "Thêm"
   many_user: " tài khoản thêm không thành công và "
@@ -747,9 +747,20 @@ vi:
     remove: "Hủy quản lý"
     manage: "Quản lý"
     personal: "Cá nhân"
+    shop: "Quản lý cửa hàng"
   views:
     pagination:
       first: "Đầu tiên"
       previous: "Trước"
       next: "Tiếp theo"
       last: "Cuối"
+  your_shop: "Cửa hàng của bạn"
+  edit_user:
+    password: "Mật khẩu"
+    password_confirm: "Lặp lại mật khẩu"
+    name: "Tên"
+    description: "Mô tả"
+    current_password: "Mật khẩu hiện tại"
+    avatar: "Ảnh đại diện"
+    update: "Cập nhật"
+

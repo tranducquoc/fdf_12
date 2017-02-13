@@ -711,3 +711,19 @@ en:
     remove: "Remove Manager"
     manage: "Set Manager"
     personal: "Personal"
+    shop: "Manage shops"
+  views:
+    pagination:
+      first: "First"
+      previous: "Previous"
+      next: "Next"
+      last: "Last"
+  your_shop: "Your Shops"
+  edit_user:
+    password: "Password"
+    password_confirm: "Password confirmation"
+    name: "Name"
+    description: "Description"
+    current_password: "Current password"
+    avatar: "Avatar"
+    update: "Update"

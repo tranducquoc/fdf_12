@@ -20,7 +20,7 @@
         <% end %>
 
         <div class="field">
-          <%= f.label :password %> <i></i><br />
+          <%= f.label t "edit_user.password" %> <i></i><br/>
           <%= f.password_field :password, autocomplete: "off",
             class: "form-control" %>
           <% if @minimum_password_length %>
@@ -29,12 +29,12 @@
         </div>
 
         <div class="field">
-          <%= f.label :password_confirmation %><br />
+          <%= f.label t "edit_user.password_confirm" %><br/>
           <%= f.password_field :password_confirmation, autocomplete: "off",
             class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :name %>
+          <%= f.label t "edit_user.name" %>
           <%= f.text_field :name, class: "form-control" %>
         </div>
         <div class="form-group">
@@ -42,23 +42,24 @@
           <%= f.text_field :chatwork_id, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :description %>
+          <%= f.label t "edit_user.description" %>
           <%= f.text_area :description, class: "form-control" %>
         </div>
         <div class="field">
-          <%= f.label :current_password, class: "impor" %>
+          <%= f.label t "edit_user.current_password", class: "impor" %>
           <i class="impor"></i><br />
           <%= f.password_field :current_password, autocomplete: "off",
             class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :avatar %>
+          <%= f.label t "edit_user.avatar" %>
           <%= image_tag @user.avatar.url, class: "avatar padding_top_10px defaut-size" %>
           <%= f.file_field :avatar, accept: Settings.pictures.accepted_files,
             class: "upload_img" %>
         </div>
         <div class="actions text-center margin-top-10">
-          <%= f.submit "Update", class: "btn btn-info btn-sign color-white" %>
+          <%= f.submit t "edit_user.update", 
+            class: "btn btn-info btn-sign color-white" %>
         </div>
       <% end %>
       <%= link_to t("common.back_button"), :back %>

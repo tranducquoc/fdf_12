@@ -18,7 +18,7 @@ $(document).ready(function() {
         btn.val(statusChange);
       },
       error: function(error_message) {
-        alert('error ' + error_message);
+        Console.log('error: ' + error_message);
       }
     });
   });

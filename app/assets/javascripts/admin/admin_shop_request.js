@@ -41,7 +41,7 @@ function updateShopRequest(button, message, shop_id, click_status){
         }
       },
       error: function(error_message){
-        alert('error ' + error_message);
+        Console.log('error: ' + error_message);
       }
     });
   });

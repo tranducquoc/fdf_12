@@ -14,17 +14,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
-  has_many :shop_managers
-  has_many :shops, through: :shop_managers
+  has_many :shop_managers, dependent: :destroy
+  has_many :shops, dependent: :destroy, through: :shop_managers
   has_many :own_shops, class_name: "Shop", foreign_key: :owner_id
-  has_many :comments
-  has_many :products
-  has_many :orders
+  has_many :comments, dependent: :destroy
+  has_many :products, dependent: :destroy
+  has_many :orders, dependent: :destroy
   has_many :order_products
-  has_many :coupons
-  has_many :events
-  has_many :user_domains
-  has_many :domains, through: :user_domains
+  has_many :coupons, dependent: :destroy
+  has_many :events, dependent: :destroy
+  has_many :user_domains, dependent: :destroy
+  has_many :domains, through: :user_domains, dependent: :destroy
 
   enum status: {wait: 0, active: 1, blocked: 2}
   mount_uploader :avatar, UserAvatarUploader

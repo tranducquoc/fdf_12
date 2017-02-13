@@ -49,7 +49,7 @@ $(document).ready(function() {
         $('#step2').html(content);
       },
       error: function(error_message) {
-        alert(error);
+        Console.log('error: ' + error_message);
       }
     });
   });
@@ -76,7 +76,7 @@ $(document).ready(function() {
         $(klass).removeClass(currentClass).addClass(classes[actions.indexOf(selectedValue)]);
       },
       error: function(error_message) {
-        alert(error);
+        Console.log('error: ' + error_message);
       }
     });
   });
@@ -125,7 +125,7 @@ $(document).ready(function() {
           }
         },
         error: function(error_message) {
-          alert('error ' + error_message);
+          Console.log('error: ' + error_message);
         }
       });
     });
@@ -146,7 +146,7 @@ $(document).ready(function() {
           $(klass).removeClass(currentClass).addClass(classes[actions.indexOf(action)]);
         },
         error: function(error_message) {
-          alert('error');
+          Console.log('error: ' + error_message);
         }
       });
     });
@@ -176,7 +176,7 @@ $(document).ready(function() {
         $(klass).removeClass(currentClass).addClass(classes[actions.indexOf(action)]);
       },
       error: function(error_message) {
-        alert('error ' + error_message);
+        Console.log('error: ' + error_message);
       }
     });
   });

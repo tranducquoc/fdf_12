@@ -450,6 +450,33 @@ namespace :fdf_db do
       owner_id: 5,
       status: 1
     )
+
+    Shop.create!(
+      name: "Mì Que",
+      description: "Mì Que",
+      status: 1,
+      cover_image: "image",
+      avatar: File.open(Rails.root + "public/images/cuahangmyque.jpg"),
+      owner_id: 1
+    )
+
+    Shop.create!(
+      name: "Tàu hủ",
+      description: "Tàu hủ",
+      status: 1,
+      cover_image: "image",
+      avatar: File.open(Rails.root + "public/images/cuahangtauhu.jpg"),
+      owner_id: 1
+    )
+
+    Shop.create!(
+      name: "Bún thịt nướng",
+      description: "Bún thịt nướng",
+      status: 1,
+      cover_image: "image",
+      avatar: File.open(Rails.root + "public/images/cuahangbunthitnuong.jpg"),
+      owner_id: 1
+    )
   end
 
   task create_category: :environment do
@@ -479,6 +506,18 @@ namespace :fdf_db do
 
     Category.create!(
       name: "Highland"
+    )
+
+    Category.create!(
+      name: "Mì que"
+    )
+
+    Category.create!(
+      name: "Tàu hủ"
+    )
+
+    Category.create!(
+      name: "Bún thịt nướng"
     )
   end
 
@@ -1472,6 +1511,45 @@ namespace :fdf_db do
       start_hour: "08:00:00",
       end_hour: "20:00:00",
       image: File.open(Rails.root + "public/images/trathachdao.jpg")
+    )
+
+    Product.create!(
+      category_id: 8,
+      status: 0,
+      shop_id: 8,
+      user_id: 1,
+      name: "Mì que",
+      price: 7000,
+      description: "Mì que",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/banhmyque.jpg")
+    )
+
+    Product.create!(
+      category_id: 9,
+      status: 0,
+      shop_id: 9,
+      user_id: 1,
+      name: "Tàu hủ rau câu",
+      price: 12000,
+      description: "Tàu hủ rau câu",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
+      image: File.open(Rails.root + "public/images/tauhu.jpg")
+    )
+
+    Product.create!(
+      category_id: 10,
+      status: 0,
+      shop_id: 10,
+      user_id: 1,
+      name: "Bún thịt nướng",
+      price: 25000,
+      description: "Bún thịt nướng",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
+      image: File.open(Rails.root + "public/images/bunthitnuong.jpg")
     )
   end
 end

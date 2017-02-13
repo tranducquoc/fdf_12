@@ -747,3 +747,9 @@ vi:
     remove: "Hủy quản lý"
     manage: "Quản lý"
     personal: "Cá nhân"
+  views:
+    pagination:
+      first: "Đầu tiên"
+      previous: "Trước"
+      next: "Tiếp theo"
+      last: "Cuối"

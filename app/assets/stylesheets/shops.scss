@@ -441,7 +441,7 @@ a {
 }
 
 .width_btn {
-  width: 29%;
+  width: auto;
 }
 
 .top_shop {
@@ -617,4 +617,11 @@ a {
   .media-margin-shop-top {
     margin-top: 0px;
   }
+}
+
+.shop_user-own {
+  padding-bottom: 0px;
+  padding-top: 10px;
+  padding-left: 15px;
+  height: 70px;
 }

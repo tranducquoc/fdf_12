@@ -700,9 +700,18 @@ ja:
     remove: "キャンセル管理"
     manage: "管理します"
     personal: "パーソナル"
+    shop: "Quản lý cửa hàng"
   views:
     pagination:
       first: "Đầu tiên"
       previous: "Trước"
       next: "Tiếp theo"
       last: "Cuối"
+  edit_user:
+    password: "Mật khẩu"
+    password_confirm: "Lặp lại mật khẩu"
+    name: "Tên"
+    description: "Mô tả"
+    current_password: "Mật khẩu hiện tại"
+    avatar: "Ảnh đại diện"
+    update: "Cập nhật"

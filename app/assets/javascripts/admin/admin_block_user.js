@@ -22,7 +22,7 @@ $(document).ready(function() {
         btn.closest('tr').find('.status').text(statusNow);
       },
       error: function(error_message) {
-        alert('error ' + error_message);
+        Console.log('error: ' + error_message);
       }
     });
   });

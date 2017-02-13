@@ -8,6 +8,8 @@ class Domain < ApplicationRecord
   has_many :request_shop_domains
   has_many :orders
 
+  validates :name, presence: true
+
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
 

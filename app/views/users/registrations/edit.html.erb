@@ -1,7 +1,7 @@
 <% provide :title, t("devise.user.update_info") %>
 <div class="devise">
   <div class="row">
-    <h2 class="text-center title">Edit <%= resource_name.to_s.humanize %></h2>
+    <h2 class="text-center title"><%= t "devise.user.update_info" %></h2>
   </div>
 
   <div class="row">
@@ -12,7 +12,7 @@
 
         <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+          <%= f.email_field :email, disabled: true, class: "form-control" %>
         </div>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

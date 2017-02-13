@@ -700,3 +700,9 @@ ja:
     remove: "キャンセル管理"
     manage: "管理します"
     personal: "パーソナル"
+  views:
+    pagination:
+      first: "Đầu tiên"
+      previous: "Trước"
+      next: "Tiếp theo"
+      last: "Cuối"

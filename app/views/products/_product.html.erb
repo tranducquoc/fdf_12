@@ -36,8 +36,11 @@
       <% if @domain.present? %>
         <div class="col-md-8">
           <div>
-            <strong><%= link_to product.shop_name,
-              domain_shop_path(@domain, product.shop) %>
+            <strong>
+              <%= link_to truncate(product.shop.name,
+                length: Settings.max_shop_name),
+                domain_shop_path(@domain, product.shop),
+                class: "tooltips", title: product.shop.name %>
             </strong>
           </div>
           <div class="product_text height-50">

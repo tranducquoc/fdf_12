@@ -46,7 +46,7 @@
           <%= f.text_area :description, class: "form-control" %>
         </div>
         <div class="field">
-          <%= f.label t "edit_user.current_password", class: "impor" %>
+          <%= f.label t("edit_user.current_password"), class: "impor" %>
           <i class="impor"></i><br />
           <%= f.password_field :current_password, autocomplete: "off",
             class: "form-control" %>
@@ -58,7 +58,7 @@
             class: "upload_img" %>
         </div>
         <div class="actions text-center margin-top-10">
-          <%= f.submit t "edit_user.update", 
+          <%= f.submit t("edit_user.update"), 
             class: "btn btn-info btn-sign color-white" %>
         </div>
       <% end %>

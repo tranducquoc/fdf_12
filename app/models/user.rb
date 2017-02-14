@@ -28,8 +28,10 @@ class User < ApplicationRecord
 
   enum status: {wait: 0, active: 1, blocked: 2}
   mount_uploader :avatar, UserAvatarUploader
-
-  validates :name, presence: true
+  
+  VALID_NAME_REGEX = /\A^[\p{L}\s'.-]+\z/
+  
+  validates :name, presence: true, format: {with: VALID_NAME_REGEX}
   validate :image_size
 
   after_create :create_default_domain

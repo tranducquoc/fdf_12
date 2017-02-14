@@ -13,8 +13,8 @@
     </div>
   </div>
   <div class="col-md-8 shop_text">
-    <div class="row shop-manager-margin-left-right">
-      <h3>
+    <div class="row shop-manager-margin-left-right ">
+      <h3 class="shop-name-small">
         <% if shop.domains.present? && @domain.present? %>
           <%= link_to shop.name, domain_dashboard_shop_path(@domain, shop) %>
         <% else %>
@@ -25,7 +25,9 @@
       <input id="shop-average-rating" type="number"
         class="rating-loading star-rating" data-size="sm"
         value="<%= shop.averate_rating %>">
-      <div class="description quote"><p><%= shop.description %></p></div>
+      <div class="description quote", title="<%= shop.description %>"><p>
+        <%= truncate(shop.description, length: Settings.max_description) %></p>
+      </div>
     </div>
   </div>
   <div class="row margin-top-50">
@@ -53,7 +55,7 @@
               <td><%= domain.products.size %></td>
               <td>
                 <% if domain.shops.include? shop %>
-                  <%= shop.request_status(domain).status %>
+                  <%= status_request_shop shop.request_status domain %>
                 <% end %>
               </td>
               <td>

@@ -26,7 +26,7 @@ module Dashboard::OrdersHelper
   end
 
   def change_status order, label_class
-    content_tag :span, order.status, class: "label #{label_class}"
+    content_tag :span, t("all_status.#{order.status}"), class: "label #{label_class}"
   end
 
   def option_status status, order

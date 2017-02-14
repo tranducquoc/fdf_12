@@ -30,7 +30,9 @@
                 <tr>
                   <td><%= t ".status" %></td>
                   <td>
-                    <span class="label label-info"><%= @user.status %></span>
+                    <span class="label label-info">
+                      <%= t "all_status.#{@user.status}" %>
+                    </span>
                   </td>
                 </tr>
                 <tr>

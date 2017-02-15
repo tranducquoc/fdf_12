@@ -107,4 +107,26 @@ module ApplicationHelper
       html += "<span>#{t "secret"}</span>"
     end
   end
+
+  def status_request_shop request_shop
+    case
+    when request_shop.pending?
+      change_status request_shop, "label-warning"
+    when request_shop.rejected?
+      change_status request_shop, "label-danger"
+    when request_shop.approved?
+      change_status request_shop, "label-success"
+    else
+      change_status request_shop, "label-info"
+    end
+  end
+
+  def change_status request_shop, label_class
+    content_tag :span, t("all_status.#{request_shop.status}"),
+      class: "label #{label_class}"
+  end
+
+  def domain_status
+    Domain.statuses.keys.select{|status| status != Domain.statuses.keys[2]}
+  end
 end

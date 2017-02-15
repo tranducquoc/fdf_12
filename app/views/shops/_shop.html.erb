@@ -1,6 +1,6 @@
-<div class="col-sm-4 box_shop">
-  <div class="col-sm-12">
-    <div class="col-md-5">
+<div class="col-md-4 col-sm-4 col-xs-4 box_shop">
+  <div class="col-sm-12 col-md-12 col-xs-12">
+    <div class="col-md-5 col-sm-5 col-xs-5">
       <div class="row thumbnail">
         <% if @domain.present? %>
           <%= link_to domain_shop_path(@domain, shop) do %>
@@ -14,19 +14,25 @@
 
       </div>
     </div>
-    <div class="col-md-7">
-      <h3 class="margin_top_5px">
-        <% if @domain.present? %>
-          <%= link_to shop.name, domain_shop_path(@domain, shop) %>
-        <% else %>
-          <%= link_to shop.name,domain_shop_path(shop, domain_id: "not_find") %>
-        <% end %>
-      </h3>
+    <div class="col-md-7 col-sm-7 col-xs-7">
+      <div class="shop-name-small">
+        <h3 class="margin_top_5px">
+          <% if @domain.present? %>
+            <%= link_to truncate(shop.name, length: Settings.max_shop_name),
+              domain_shop_path(@domain, shop), 
+              class: "tooltips", title: shop.name %>
+          <% else %>
+            <%= link_to shop.name,domain_shop_path(shop, domain_id: "not_find") %>
+          <% end %>
+        </h3>
+      </div>
       <%= render "shared/shop_status_label", shop: shop %>
       <input id="shop-average-rating" type="number"
         class="rating-loading star-rating" data-size="sm"
         value=<%= shop.averate_rating %> >
-      <div class="description quote"><p><%= shop.description %></p></div>
+      <div class="description quote", title="<%= shop.description %>"><p>
+        <%= truncate(shop.description, length: Settings.max_description) %></p>
+      </div>
       <div>
         <ul class="tags">
           <% shop.all_tags.each do |tag| %>

@@ -33,7 +33,7 @@
     </div>
   </td>
   <td><%= product.price %></td>
-  <td><%= product.status %></td>
+  <td><%= t "all_status.#{product.status}" %></td>
   <td>
     <% if @domain.present? %>
       <%= link_to t("common.edit_button"),

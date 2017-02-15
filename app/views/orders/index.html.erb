@@ -22,12 +22,12 @@
             class: "form-control datepicker2",
             placeholder: t("time.formats.date_format") %>
         </div>
-        <div class="col-md-4 margin5">
+        <div class="col-md-4 margin5 text-center">
           <% Settings.filter_status_order.each do |key, value| %>
             <%= label_tag value, class: "radio-inline" do %>
               <%= radio_button_tag :status, value,
                 checked = params[:status] == value || params[:status].blank? %>
-              <%= value.titleize %>
+              <%= t "all_status.#{value}" %>
             <% end %>
           <% end %>
         </div>

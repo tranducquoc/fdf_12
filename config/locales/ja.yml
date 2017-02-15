@@ -5,6 +5,7 @@ ja:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  user_cancel_order_products: "You just cancel your order"
   introduce_domain_help: "Giới thiệu"
   step_one_domain_help: "Bước 1"
   step_two_domain_help: "Bước 2"

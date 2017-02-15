@@ -41,6 +41,7 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  user_cancel_order_products: "Bạn vừa hủy một đơn hàng"
   introduce_domain_help: "Giới thiệu"
   step_one_domain_help: "Bước 1"
   step_two_domain_help: "Bước 2"

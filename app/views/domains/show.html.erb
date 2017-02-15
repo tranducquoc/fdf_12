@@ -105,14 +105,14 @@
           </div>
         </div>
         <!-- End carousel -->
-      </div>
-      <div class="row">
         <% if (@domain.professed?) && (!current_user.domains.include? @domain) %>
           <strong>
             <%= link_to t("join_domain"), user_domains_path(user_id: current_user.id,
-              domain_id: @domain.id), method: :post, class: "join" %>
+              domain_id: @domain.id), method: :post, class: "join label label-success" %>
           </strong>
-        <% end %>
+      </div>
+      <% end %>
+      <div class="row">
         <div class="col-md-12 row-title">
           <h2 class="section_title">
             <%= t "common.top_shops" %>

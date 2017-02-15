@@ -107,6 +107,8 @@ class Event < ApplicationRecord
         "#{I18n.t "deleted_user_order_shop"}"
       elsif order_shop_event.present?
         "#{I18n.t "user_order_products"}"
+      else
+        "#{I18n.t "user_cancel_order_products"}"
       end
     end
   end

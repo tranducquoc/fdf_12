@@ -17,7 +17,6 @@ $(document).ready(function(){
 $(document).ready(function(){
   $('.search_users').on('keyup', '#user_search', 
     function() {
-      console.log("sss")
       $.get($('#user_search').attr('action'),
       $('#user_search').serialize(), null, 'script');
       return false;

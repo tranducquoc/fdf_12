@@ -81,7 +81,7 @@
         <div class="col-sm-9">
           <div id="id_top_products" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
-              <% @shops.each_with_index do |shop, index| %>
+              <% @shops_slide.each_with_index do |shop, index| %>
                 <div class="<%= index == 0 ? 'item active' : 'item' %>">
                   <%= image_tag shop.cover_image.url, alt: shop.name,
                     class: "defaut-pic-cover" %>

@@ -753,3 +753,8 @@ en:
     status: "Trạng thái "
     tag: "Nhãn"
     image: "Hình ảnh"
+  log_in:
+    email: "Email"
+    password: "Password"
+    remember: "Remember me"
+    lb: "Log in"

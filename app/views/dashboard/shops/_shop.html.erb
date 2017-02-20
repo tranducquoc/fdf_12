@@ -47,7 +47,7 @@
         </tr>
         </thead>
         <tbody>
-          <% @current_user.domains.each do |domain|  %>
+          <% @current_user.domains.includes(:shops).each do |domain|  %>
             <tr>
               <td><%= domain.name %></td>
               <td><%= domain.users.size %></td>

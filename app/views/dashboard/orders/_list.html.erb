@@ -14,7 +14,8 @@
     </div>
     <div class="panel-body orders-hidden" id="order-<%= order.id %>" >
       <input type="hidden" value=<%= order.id %> >
-      <%= render "order_products", order_products: order.order_products %>
+      <%= render "order_products", order_products: 
+        order.order_products.includes(:product) %>
       <div class="pull-right">
         <h4>
           <b><%= t ".total" %>: </b><%= order.total_price %> <%= t"cart.vnd" %>

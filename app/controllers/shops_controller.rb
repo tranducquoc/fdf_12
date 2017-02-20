@@ -3,7 +3,7 @@ class ShopsController < ApplicationController
 
   def index
     @shops = if @domain.present?
-      Shop.shop_in_domain @domain.id
+      Shop.includes(:tags).shop_in_domain @domain.id
     else
       Shop.all
     end.active.page(params[:page])

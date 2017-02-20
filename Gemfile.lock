@@ -80,6 +80,9 @@ GEM
     bootstrap-tagsinput-rails (0.4.2.1)
       railties (>= 3.1)
     builder (3.2.2)
+    bullet (5.5.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
     cancancan (1.10.0)
     carrierwave (0.10.0)
@@ -362,6 +365,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
+    uniform_notifier (1.10.0)
     warden (1.2.6)
       rack (>= 1.0)
     web-console (3.4.0)
@@ -384,6 +388,7 @@ DEPENDENCIES
   bootstrap-kaminari-views
   bootstrap-sass (~> 3.3.6)
   bootstrap-tagsinput-rails
+  bullet
   byebug
   cancancan (= 1.10)
   carrierwave (= 0.10.0)

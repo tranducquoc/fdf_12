@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.btn_block').on('click', function() {
+  $('.btn_block_user').on('click', function() {
     statusNow = $(this).val();
     btn = $(this);
     statusChange = (statusNow === 'blocked') ? 'active' : 'blocked';

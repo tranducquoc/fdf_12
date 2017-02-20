@@ -52,10 +52,10 @@
                   method: :delete, class: "btn btn-danger" %>
                 <% if user.status == "wait" %>
                   <%= link_to t(".active"), admin_user_path(user.id, status: "active"), method: :put,
-                    class: "btn btn-primary btn_block" %>
+                    class: "btn btn-primary btn_block_user" %>
                 <% else %>
                   <%= link_to t(".wait"), admin_user_path(user.id, status: "wait"), method: :put,
-                    class: "btn btn-danger btn_block" %>
+                    class: "btn btn-danger btn_block_user" %>
                 <% end %>
               </td>
             </tr>

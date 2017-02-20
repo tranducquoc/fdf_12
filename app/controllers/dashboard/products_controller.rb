@@ -18,11 +18,11 @@ class Dashboard::ProductsController < BaseDashboardController
     if @order_item
       case
       when @order_item.done?
-        @order_products = @product.order_products.done
+        @order_products = @product.order_products.includes(:user).done
       when @order_item.rejected?
-        @order_products = @product.order_products.rejected
+        @order_products = @product.order_products.includes(:user).rejected
       else
-        @order_products = @product.order_products.accepted
+        @order_products = @product.order_products.includes(:user).accepted
       end
     else
       flash[:danger] = t "flash.danger.dashboard.product.not_found"

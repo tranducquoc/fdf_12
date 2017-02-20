@@ -11,7 +11,8 @@
         <hr>
       </div>
       <%= render "order_products",
-        order_products: order.order_products.where(user: current_user) %>
+        order_products: order.order_products.
+          includes(:product).where(user: current_user) %>
       <div class="pull-right">
         <h4 class="style_price">
           <b><%= t "oder.total" %></b>

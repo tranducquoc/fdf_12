@@ -17,9 +17,9 @@ class DomainsController < ApplicationController
     @domains = Domain.professed
     @categories = Category.all
     @tags = ActsAsTaggableOn::Tag.all
-    @shops = Shop.shop_in_domain(@domain.id).top_shops.decorate
+    @shops = Shop.includes(:tags).shop_in_domain(@domain.id).top_shops.decorate
     @shops_slide = Shop.shop_in_domain(@domain.id)
-    @products = @domain.products.top_products
+    @products = @domain.products.includes(:shop).top_products
     session[:domain_id] = @domain.id
     create_cart
     session[:cart_domain] = @cart_domain

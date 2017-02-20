@@ -2,11 +2,11 @@ class ProductsController < ApplicationController
   
   def index
     @products = if params[:category_id].present?
-      @domain.products.by_category params[:category_id]
+      @domain.products.includes(:shop).by_category params[:category_id]
     elsif @domain.present?
-      @domain.products
+      @domain.products.includes(:shop)
     else
-      Product.all
+      Product.all.includes(:shop)
     end.active.page(params[:page])
       .per Settings.common.products_per_page
   end

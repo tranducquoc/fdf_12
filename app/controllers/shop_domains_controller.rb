@@ -5,9 +5,9 @@ class ShopDomainsController < ApplicationController
 
   def index
     @shop_domains = if params[:approved].present?
-      @choosen_domain.shop_domains.approved
+      @choosen_domain.shop_domains.includes(shop: :users).approved
     else
-      @choosen_domain.shop_domains.pending
+      @choosen_domain.shop_domains.includes(shop: :users).pending
     end
   end
 

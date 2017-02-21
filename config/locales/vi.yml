@@ -55,9 +55,9 @@ vi:
     Vui lòng sử dụng Chrome để có trải nghiệm tốt nhất.
     Xin lỗi vì sự bất tiện này!"
   manual_help_forder: "Hướng dẫn sử dụng"
-  step_one_help_forder: "Bước 1: Tham gia vào miền công khai hoặc miền riêng tư mà bạn là thành viên. Và bạn có thể tự tạo, quản lý miền của chính mình"
-  step_two_help_forder: "Bước 2: Thực hiện thao tác đặt hàng các món ăn theo miền, theo cửa hàng. Hoặc bạn có thể tự tạo cửa hàng cho riêng mình và quản lí chúng"
-  step_three_help_forder: "Bước 3: Bạn có thể đặt hàng, quản lí đơn hàng, quản lí cửa hàng theo từng miền riêng biệt"
+  step_one_help_forder: "Tham gia vào miền công khai hoặc miền riêng tư mà bạn là thành viên. Và bạn có thể tự tạo, quản lý miền của chính mình"
+  step_two_help_forder: "Thực hiện thao tác đặt hàng các món ăn theo miền, theo cửa hàng. Hoặc bạn có thể tự tạo cửa hàng cho riêng mình và quản lí chúng"
+  step_three_help_forder: "Bạn có thể đặt hàng, quản lí đơn hàng, quản lí cửa hàng theo từng miền riêng biệt"
   request_have_been_delete: "Yêu cầu đã bị xóa"
   add_domain_manager: "vừa cho bạn trở thành người quản lí của miền:"
   remote_domain_manager: "vừa xóa bạn ra khỏi danh sách quản lí của miền:"
@@ -758,7 +758,7 @@ vi:
   your_shop: "Cửa hàng của bạn"
   edit_user:
     password: "Mật khẩu"
-    password_confirm: "Lặp lại mật khẩu"
+    password_confirm: "xác nhận mật khẩu"
     name: "Tên"
     description: "Mô tả"
     current_password: "Mật khẩu hiện tại"

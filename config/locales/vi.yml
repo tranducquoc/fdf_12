@@ -789,3 +789,8 @@ vi:
     status: "Trạng thái "
     tag: "Nhãn"
     image: "Hình ảnh"
+  log_in:
+    email: "Email"
+    password: "Mật khẩu"
+    remember: "Ghi nhớ đăng nhâp"
+    lb: "Đăng nhập"

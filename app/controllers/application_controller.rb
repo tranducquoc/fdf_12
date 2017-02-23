@@ -1,3 +1,5 @@
+require "json_response"
+
 class ApplicationController < ActionController::Base
   include ApplicationHelper
   protect_from_forgery with: :exception
@@ -139,6 +141,12 @@ class ApplicationController < ActionController::Base
         redirect_to :back
         flash[:danger] = t "can_not_load_domain"
       end
+    end
+  end
+
+  JsonResponse::STATUS_CODE.keys.each do |status|
+    define_method "response_#{status}" do |message = "", content = {}|
+      render json: JsonResponse.send(status, message, content)
     end
   end
 end

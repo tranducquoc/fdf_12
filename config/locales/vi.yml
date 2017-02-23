@@ -41,6 +41,11 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  api:
+    error_password_wrong: "Sai mật khẩu!"
+    error_user_not_found: "Không tìm thấy người dùng!"
+    error_products_not_found: "Không tìm thấy sản phẩm!"
+    success: "OK"
   user_cancel_order_products: "Bạn vừa hủy một đơn hàng"
   introduce_domain_help: "Giới thiệu"
   step_one_domain_help: "Bước 1"

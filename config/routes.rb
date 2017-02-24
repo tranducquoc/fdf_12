@@ -87,6 +87,6 @@ Rails.application.routes.draw do
   api_version(module: "V1", path: {value: "v1"}, default: true) do
     resources :authen_user_tokens, defaults: {format: :json}
     resources :products, defaults: {format: :json}
-    resources :users, defaults: {format: :json}
+    get "/logout", to: "users_logout#logout", defaults: {format: :json}
   end
 end

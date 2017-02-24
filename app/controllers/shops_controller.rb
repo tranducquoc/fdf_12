@@ -1,5 +1,6 @@
 class ShopsController < ApplicationController
   before_action :load_shop, only: [:show, :update]
+  before_action :authenticate_user!
 
   def index
     @shops = if @domain.present?

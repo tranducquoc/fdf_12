@@ -3,6 +3,8 @@ class V1::AuthenUserTokensController < ApplicationController
     user = User.find_by_email params[:email]
     if user.present?
       if user.valid_password? params[:password]
+        user.add_authentication_token
+        user.add_device_id params[:device_id]
         serialization = ActiveModelSerializers::SerializableResource.new user
         response_success t("api.success"), serialization
       else
@@ -11,5 +13,5 @@ class V1::AuthenUserTokensController < ApplicationController
     else
       response_not_found t "api.error_user_not_found"
     end
-  end
+  end  
 end

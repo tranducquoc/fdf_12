@@ -1,5 +1,6 @@
 class RaterController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def create
     if user_signed_in?
       obj = params[:klass].classify.constantize.find(params[:id])

@@ -1,4 +1,6 @@
 class SearchesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     q = params[:search]
     products = Product.in_domain(@domain.id).active.search(name_or_description_cont: q).result

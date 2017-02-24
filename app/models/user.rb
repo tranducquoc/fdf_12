@@ -61,6 +61,16 @@ class User < ApplicationRecord
     slug.blank? || name_changed? || super
   end
 
+  def add_device_id device_id
+    if device_id.present? && self.device_id != device_id
+      self.update_attributes device_id: device_id
+    end
+  end
+
+  def add_authentication_token
+    self.update_attributes authentication_token: generate_authentication_token
+  end
+
   private
   def image_size
     max_size = Settings.pictures.max_size
@@ -71,5 +81,12 @@ class User < ApplicationRecord
 
   def create_default_domain
     CreateDomainService.new(self).create
+  end
+
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token if User.where(authentication_token: token).count.zero?
+    end
   end
 end

@@ -2,6 +2,7 @@ class ShopDomainsController < ApplicationController
   before_action :load_shop, only: [:create, :destroy]
   before_action :load_shop_domain, only: :update
   before_action :load_domain_by_param
+  before_action :authenticate_user!
 
   def index
     @shop_domains = if params[:approved].present?

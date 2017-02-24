@@ -91,6 +91,14 @@ class Event < ApplicationRecord
 
   def send_notification
     EventBroadcastJob.perform_now Event.unread.count, self
+    send_fcm_message self.load_message, self.user.device_id if self.user.device_id.present?
+  end
+
+  def send_fcm_message body, reg_tokens
+    fcm = FCM.new ENV["FCM_KEY"]
+    registration_ids = [reg_tokens]
+    options = {data: {message: body}}
+    response = fcm.send registration_ids, options
   end
 
   def order_shop_event_user

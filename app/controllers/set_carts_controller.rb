@@ -1,5 +1,6 @@
 class SetCartsController < ApplicationController
   before_action :load_shop, only: :update
+  before_action :authenticate_user!
 
   def update
     @cart_shop = load_cart_shop @shop

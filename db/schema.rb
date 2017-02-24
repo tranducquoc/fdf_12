@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222073250) do
+ActiveRecord::Schema.define(version: 20170224032725) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -359,6 +359,7 @@ ActiveRecord::Schema.define(version: 20170222073250) do
     t.date     "oauth_expires_at"
     t.string   "slug"
     t.string   "authentication_token",   limit: 30
+    t.string   "device_id"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
     t.index ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree

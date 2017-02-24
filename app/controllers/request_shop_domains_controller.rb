@@ -1,6 +1,7 @@
 class RequestShopDomainsController < ApplicationController
   before_action :load_request, only: :update
   before_action :load_shop, only: :index
+  before_action :authenticate_user!
   
   def index
     @user_domains = current_user.domains

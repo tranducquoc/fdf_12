@@ -54,6 +54,8 @@ gem "json"
 gem "friendly_id", "~> 5.1.0"
 gem "ratyrate"
 gem "redis", "~> 3.0"
+gem "fcm"
+
 group :development, :test do
   gem "byebug", platform: :mri
   gem "factory_girl_rails"

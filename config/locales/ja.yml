@@ -5,6 +5,12 @@ ja:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  api:
+    error_password_wrong: "不正なパスワード!"
+    error_user_not_found: "ユーザーが見つかりません!"
+    error_products_not_found: "プロダクトが見つかりません!"
+    success: "成功する"
+    logout: "ログアウトが成功する!"
   user_cancel_order_products: "あなたは注文をキャンセルしました"
   introduce_domain_help: "紹介する"
   step_one_domain_help: "ステップ 1"

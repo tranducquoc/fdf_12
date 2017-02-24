@@ -5,6 +5,12 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  api:
+    error_password_wrong: "Wrong password!"
+    error_user_not_found: "User not found!"
+    error_products_not_found: "Products not found!"
+    success: "Succes"
+    logout: "Log out success!"
   user_cancel_order_products: "You just cancel your order"
   introduce_domain_help: "Introduce"
   step_one_domain_help: "Step 1"

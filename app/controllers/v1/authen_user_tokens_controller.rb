@@ -1,6 +1,6 @@
 class V1::AuthenUserTokensController < ApplicationController
   def index
-    user = User.find_by_email params[:email]
+    user = User.find_by_email params[:user_email]
     if user.present?
       if user.valid_password? params[:password]
         serialization = ActiveModelSerializers::SerializableResource.new user

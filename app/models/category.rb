@@ -17,4 +17,10 @@ class Category < ApplicationRecord
   scope :asc_by_name, ->{order :name}
 
   validates :name, presence: true, uniqueness: true
+
+  class << self
+    def  number_category_by_domain category, domain
+      domain.products.by_category(category).size
+    end
+  end
 end

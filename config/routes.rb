@@ -88,5 +88,6 @@ Rails.application.routes.draw do
     resources :authen_user_tokens, defaults: {format: :json}
     resources :products, defaults: {format: :json}
     get "/logout", to: "users_logout#logout", defaults: {format: :json}
+    resources :categories, defaults: {format: :json}
   end
 end

@@ -131,6 +131,15 @@ class OrdersController < ApplicationController
     end
     if @count_exit_order > Settings.count_tag
       if @count_exit_order == @cart_shop.items.size
+        @cart_shop.items.each_with_index do |cart, index|
+          product = Product.find_by id: cart.product_id
+          if product.present? && Time.now.is_between_short_time?(product.start_hour, product.end_hour)
+            delete_item = @cart.items.find{|item| item.product_id == product.id.to_s}
+            @cart.items.delete delete_item
+            @cart_domain.add_cart @cart.sort, session[:domain_id]
+            session[:cart_domain] = @cart_domain.update_cart
+          end
+        end
         redirect_to carts_path
         flash[:danger] = t "oder.allthing_deleted"
       else

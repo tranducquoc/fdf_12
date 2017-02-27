@@ -5,7 +5,14 @@
         <%= render "list" %>
       </div>
       <div class="pull-left padding-top-20 margin_cart">
-        <%= link_to t("oder.add-all"), new_domain_cart_path(@domain), class: "btn btn-primary for-order-all defaut-btn" %>
+        <% if @count_exit_order != Settings.count_tag %>
+          <%= link_to t("oder.add-all"), new_domain_cart_path(@domain),
+            class: "btn btn-primary for-order-all defaut-btn" %>
+        <% else %>
+          <%= link_to t("oder.add-all"), "#", 
+            class: "btn btn-primary for-order-all defaut-btn", 
+            data: {toggle: "modal", target: "#confirm-order-modal"} %>
+        <% end %>
       </div>
       <div class="pull-right">
         <h3 class="total_pay">
@@ -14,4 +21,45 @@
       </div>
     </div>
   <% end %>
+</div>
+
+<div id="confirm-order-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" 
+          data-dismiss="modal">&times;</button>
+        <h3 class="modal-title text-center">
+          <strong><%= t "confirm_order" %></strong>
+        </h3>
+      </div>
+      <div class="modal-body">
+        <div class="fade in well confirm_order">
+          <% if @order_price.present? %>
+            <h3><%= t "price_message" %>
+              <strong><%= format_price @order_price %></strong>
+            </h3>
+          <% else %>
+            <h3><%= t "price_message" %>
+              <strong><%= format_price @cart_group_price %></strong>
+            </h3>
+          <% end %>
+          <h3><%= t("oder.all_product_will_be_order") %></h3>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="list btn btn-primary btn-action" 
+          data-dismiss="modal"><%= t "cancel" %>
+        </button>
+        <% if @shop.present? %>
+          <%= link_to t("continue"), set_carts_path(id: @domain.id,
+            shop_id: @products_deleted.first.shop.id),
+            class: "btn btn_add_to_cart btn-add", method: :put %>
+        <% else %>
+          <%= link_to t("continue"), domain_carts_path(@domain),
+            method: :post, class: "btn btn_add_to_cart btn-add" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

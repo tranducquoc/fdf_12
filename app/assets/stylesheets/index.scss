@@ -157,3 +157,30 @@ IMG.displayed {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+.confirm_order {
+  margin-bottom: 0px;
+  strong { color: #3c763d; }
+}
+
+#confirm-order-modal {
+  .modal-title { 
+    color: #ff5722;
+  }
+}
+
+#new-domain-modal {
+  .modal-dialog {
+    max-width: 500px;
+    max-height: 100px;
+  }
+  
+  h3 { 
+    margin-top: 10px;
+    color: #ff5722; 
+  }
+}

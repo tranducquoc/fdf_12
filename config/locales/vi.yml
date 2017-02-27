@@ -800,3 +800,5 @@ vi:
     password: "Mật khẩu"
     remember: "Ghi nhớ đăng nhâp"
     lb: "Đăng nhập"
+  confirm_order: "Xác nhận đặt hàng"
+  create_domain: "Tạo miền"

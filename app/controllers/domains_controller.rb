@@ -30,7 +30,7 @@ class DomainsController < ApplicationController
     save_domain = SaveDomainService.new(@domain, current_user).save
     session[:domain_id] = @domain.id
     flash[:success] = save_domain
-    redirect_to new_user_domain_path domain_id: @domain.id
+    redirect_to user_searchs_path domain_id: @domain.id
   end
 
   def update

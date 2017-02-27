@@ -2,8 +2,9 @@
   <div class="col-md-12 col-sm-12">
     <div class="">
       <% if @domain.present? %>
-        <%= link_to t("common.create_button"), new_domain_path(domain_id: @domain.id),
-          class: "btn btn-block btn-success btn-sm btn-create-domain" %>
+        <%= link_to t("common.create_button"), "#",
+          class: "btn btn-block btn-success btn-sm btn-create-domain",
+          data: {toggle: "modal", target: "#new-domain-modal"} %>
       <% else %>
         <%= link_to t("common.create_button"), new_domain_path,
           class: "btn btn-block btn-success btn-sm btn-create-user" %>
@@ -26,3 +27,38 @@
     <%= render @member_domains %>
   </tbody>
 </table>
+
+<div id="new-domain-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h3 class="text-center"><strong><%= t "create_domain" %></strong></h3>
+        <%= form_for Domain.new do |f| %>
+          <div class="panel panel-success">
+            <div class="panel-body">
+              <%= render "shared/error_messages", object: Domain.new %>
+              <div class="form-group">
+                <%= f.label t "new_domain.name" %>
+                <%= f.text_field :name, required: :true, class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <%= f.label t "new_domain.status" %><br>
+                <%= f.select :status,
+                  domain_status.map{|status|
+                    [t("all_status.#{status}"), status]},
+                    {}, {class: "form-control inline"} %>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <%= f.submit t("common.create_button"),
+              class: "btn btn-primary btn-success space-top-submit" %>
+            <button type="button" class="list btn btn-primary btn-danger" 
+              data-dismiss="modal"><%= t "cancel" %>
+            </button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -138,6 +138,7 @@ ja:
   time_auto_reject: "キャンセル期間の自動: "
   number_product: "製品の数: "
   shop_name: "店の名前: "
+  cancel: "キャンセル"
   change-avatar: "変化画像"
   current_week: "今週"
   btn_search: "検索"
@@ -754,3 +755,5 @@ ja:
     password: "パスワード"
     remember: "ログインを忘れないでください"
     lb: "ログイン"
+  confirm_order: "Xác nhận đặt hàng"
+  create_domain: "Tạo miền"

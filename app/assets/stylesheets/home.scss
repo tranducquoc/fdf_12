@@ -473,7 +473,11 @@ $orange_main: #ff5722;
 }
 
 .margin-to {
-  background: url(header_bg.png) #a99f9f;
+  background: linear-gradient(
+    rgba(33, 37, 43, 0.6),
+    rgba(33, 37, 43, 0.6)
+  ),
+  url(background-footer.jpg);
   height: 100%;
 }
 

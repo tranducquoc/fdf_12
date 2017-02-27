@@ -8,7 +8,8 @@ namespace :fdf_db do
       email: "tran.duc.quoc@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -16,7 +17,8 @@ namespace :fdf_db do
       email: "do.thi.diem.thao@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -24,7 +26,8 @@ namespace :fdf_db do
       email: "nguyen.van.tran.anh@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -32,7 +35,8 @@ namespace :fdf_db do
       email: "pham.van.chien@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -40,7 +44,8 @@ namespace :fdf_db do
       email: "ta.duy.anh@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -48,7 +53,8 @@ namespace :fdf_db do
       email: "hoang.nhac.trung@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -56,7 +62,8 @@ namespace :fdf_db do
       email: "yushi.fukagawa@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -64,7 +71,8 @@ namespace :fdf_db do
       email: "vu.xuan.dung@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -72,7 +80,8 @@ namespace :fdf_db do
       email: "nguyen.xuan.son@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -80,7 +89,8 @@ namespace :fdf_db do
       email: "nguyen.ngoc.tuan@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -88,7 +98,8 @@ namespace :fdf_db do
       email: "nguyen.thi.minh.ngoc@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -96,7 +107,8 @@ namespace :fdf_db do
       email: "tran.van.tan@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -104,7 +116,8 @@ namespace :fdf_db do
       email: "dao.tri.vu@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -112,7 +125,8 @@ namespace :fdf_db do
       email: "ta.minh.thanh@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -120,7 +134,8 @@ namespace :fdf_db do
       email: "chu.anh.tuan@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -128,7 +143,8 @@ namespace :fdf_db do
       email: "nguyen.huu.thai.binh@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
 
     User.create!(
@@ -136,7 +152,8 @@ namespace :fdf_db do
       email: "hiroaki.ishida@framgia.com",
       password: "123456",
       password_confirmation: "123456",
-      status: 1
+      status: 1,
+      authentication_token: Devise.friendly_token
     )
   end
 

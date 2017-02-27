@@ -14,7 +14,6 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require star-rating.min
-//= require bootstrap-sprockets
 //= require bootstrap
 //= require jquery.raty
 //= require ratyrate

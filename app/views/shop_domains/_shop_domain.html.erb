@@ -16,11 +16,13 @@
         <% if !shop_domain.approved? %>
           <strong>
             <%= link_to t("order_statistics.accept"),
-              shop_domain_path(shop_domain, status: :approved), method: :put %>
-          </strong><br>
+              shop_domain_path(shop_domain, status: :approved), 
+              method: :put, class: "btn btn-success" %>
+          </strong>
           <strong>
-            <%= link_to t("delete"),
-              shop_domain_path(shop_domain, status: :rejected), method: :put %>
+            <%= link_to t("request_shop.reject"),
+              shop_domain_path(shop_domain, status: :rejected), 
+              method: :put, class: "btn btn-danger" %>
           </strong>
         <% else %>
           <%= link_to t("manage_domain.delete_shop"),

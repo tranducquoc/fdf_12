@@ -6,7 +6,7 @@ class SetCartsController < ApplicationController
     @cart_shop = load_cart_shop @shop
     @cart_shop.items.each_with_index do |cart, index|
       product = Product.find_by id: cart.product_id
-      if @product.present? && Time.now.is_between_short_time?(product.start_hour, product.end_hour)
+      if product.present? && Time.now.is_between_short_time?(product.start_hour, product.end_hour)
         delete_item = @cart.items.find{|item| item.product_id == product.id.to_s}
         @cart.items.delete delete_item
         @cart_domain.add_cart @cart.sort, session[:domain_id]

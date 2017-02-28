@@ -15,6 +15,7 @@ class SetUserService
       user = User.new row.to_hash.slice(*IMPORT_COLUMNS)
       user.password = (0...8).map {(65 + rand(26)).chr}.join
       user.password_confirmation = user.password
+      user.authentication_token = Devise.friendly_token
       if user.save
         password = user.password
         ContactRequestMailer.delay.to_user(user, password)

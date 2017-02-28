@@ -15,6 +15,7 @@ class Admin::UsersController < AdminController
 
   def create
     @user = User.new newuser_params
+    @user.authentication_token = Devise.friendly_token
     if @user.save
       flash[:success] = t "flash.success.admin.created_user"
       redirect_to admin_users_path

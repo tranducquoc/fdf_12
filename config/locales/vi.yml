@@ -47,6 +47,20 @@ vi:
     error_products_not_found: "Không tìm thấy sản phẩm!"
     success: "Success"
     logout: "Log out thành công!"
+  framgia_label: "Framgia"
+  image_index: "Hình ảnh"
+  feature_index: "Tính năng"
+  contact_index: "Liên lạc"
+  help_manual_index: "Hướng dẫn sử dụng"
+  framgia_user_feedback_index: "Nhận xét của khách hàng: "
+  framgia_user_feedback_context: "Tôi đã sử dụng Forder để đặt món ăn từ những ngày đầu và rất tin tưởng
+    vào Forder, tôi cảm thấy hài lòng vì mọi sản phẩm được đặt ở đây đều đảm bảo
+    về chất lượng sản phẩm cũng như uy tín, thời gian giao hàng rất đúng hẹn, tôi sẽ còn tiếp
+    tục sử dụng Forder trong tương lai và sẽ giới thiệu Forder cho bạn bè cùng sử dụng."
+  framgia_user_name_feedback: " - Nguyễn Lợi"
+  framgia_user_job_feedback: "Nhân viên văn phòng"
+  forder_index_intro: "Đây là một trang web đặt món ăn chuyên nghiệp
+    để biết thêm chi tiết vui lòng đọc hướng dẫn sử dụng"
   user_cancel_order_products: "Bạn vừa hủy một đơn hàng"
   introduce_domain_help: "Giới thiệu"
   step_one_domain_help: "Bước 1"

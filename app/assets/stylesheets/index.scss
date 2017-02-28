@@ -95,12 +95,12 @@ IMG.displayed {
 
 .intro {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: url('coffee.jpg') no-repeat center center fixed;
+  background: url('bk.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  padding-top: 550px;
+  padding-top: 500px;
 }
 
 .intro-web {
@@ -168,7 +168,7 @@ IMG.displayed {
 }
 
 #confirm-order-modal {
-  .modal-title { 
+  .modal-title {
     color: #ff5722;
   }
 }
@@ -178,10 +178,10 @@ IMG.displayed {
     max-width: 500px;
     max-height: 100px;
   }
-  
-  h3 { 
+
+  h3 {
     margin-top: 10px;
-    color: #ff5722; 
+    color: #ff5722;
   }
 }
 
@@ -189,4 +189,12 @@ IMG.displayed {
   .row {
     padding-bottom: 10px;
   }
+}
+
+.font-title-intro {
+  color: #3c763d;
+}
+
+.font-icon-intro {
+  color: #ff5722;
 }

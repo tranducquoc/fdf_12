@@ -6,6 +6,7 @@ ja:
       date_format: "MM/DD/YYYY"
   split: " -"
   api:
+    error_user_token_not_found: "User's token not found!"
     error_domains_not_found: "Domain not found!"
     error_categories_not_found: "Categories not found!"
     error_password_wrong: "不正なパスワード!"

@@ -42,6 +42,7 @@ vi:
       date_format: "MM/DD/YYYY"
   split: " -"
   api:
+    error_user_token_not_found: "Mã xác nhận của người dùng không tìm thấy!"
     error_domains_not_found: "Miền không tìm thấy!"
     error_categories_not_found: "Không tìm thấy Phân Loại!"
     error_password_wrong: "Mật khẩu không đúng!"

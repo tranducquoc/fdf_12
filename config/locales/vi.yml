@@ -41,6 +41,7 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  back_to_top: "Quay về đầu trang"
   api:
     error_user_token_not_found: "Mã xác nhận của người dùng không tìm thấy!"
     error_domains_not_found: "Miền không tìm thấy!"

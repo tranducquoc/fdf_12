@@ -5,6 +5,7 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  back_to_top: "Scroll to Top"
   api:
     error_user_token_not_found: "User's token not found!"
     error_domains_not_found: "Domain not found!"

@@ -6,6 +6,8 @@ en:
       date_format: "MM/DD/YYYY"
   split: " -"
   api:
+    error_domains_not_found: "Domain not found!"
+    error_categories_not_found: "Categories not found!"
     error_password_wrong: "Wrong password!"
     error_user_not_found: "User not found!"
     error_products_not_found: "Products not found!"

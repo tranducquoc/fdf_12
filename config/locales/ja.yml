@@ -6,6 +6,8 @@ ja:
       date_format: "MM/DD/YYYY"
   split: " -"
   back_to_top: "Scroll to Top"
+  forder_index_intro: "This is a website professional food order
+      for more details please read the user manual"
   api:
     error_user_token_not_found: "User's token not found!"
     error_domains_not_found: "Domain not found!"

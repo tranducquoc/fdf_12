@@ -1,12 +1,27 @@
 <!-- Pushy Menu -->
 <nav class="pushy pushy-left">
-  <ul class="list-unstyled">
-    <li><a href="#home"><%= t "home" %></a></li>
-    <li><a href="#feat"><%= t "feature_index" %></a></li>
-    <li><a href="#photos"><%= t "image_index" %></a></li>
-    <li><a href="#contact"><%= t "contact_index" %></a></li>
-    <li><%= link_to t("help_manual_index"), pdf_readers_path, target: "_blank" %></li>
-  </ul>
+  <li class="list-unstyled">
+  <li><a href="#home"><%= t "home" %></a></li>
+  <li><a href="#feat"><%= t "feature_index" %></a></li>
+  <li><a href="#photos"><%= t "image_index" %></a></li>
+  <li><a href="#contact"><%= t "contact_index" %></a></li>
+  <li><%= link_to t("help_manual_index"), pdf_readers_path, target: "_blank" %></li>
+  <li>
+    <div>
+      <a href="#" role="button"><%= t "language" %></a>
+        <ul class="languages select-default ul-index-padding-left" role="menu">
+          <% Settings.languages.each do|key, value| %>
+            <li class="li-index-style-none" data-lang="<%= value.type %>">
+              <%= link_to "#" do %>
+                <%= image_tag value.image, class: "image-flag-choose" %>
+                <span><%= value.name %></span>
+              <% end %>
+            </li>
+            <div class="clearfix"></div>
+          <% end %>
+        </ul>
+    </div>
+  </li>
 </nav>
 <!-- Site Overlay -->
 <div class="site-overlay"></div>

@@ -1,5 +1,4 @@
 class SetLanguageController < ApplicationController
-  before_action :authenticate_user!
   
   def update
     if I18n.available_locales.include? params[:locale].to_sym

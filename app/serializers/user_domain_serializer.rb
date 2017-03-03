@@ -1,4 +1,4 @@
 class UserDomainSerializer < ActiveModel::Serializer
-  attributes :domain_id
+  :domain_id
   belongs_to :domain
 end

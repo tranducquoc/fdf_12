@@ -5,30 +5,29 @@ ja:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
-  back_to_top: "Scroll to Top"
-  forder_index_intro: "This is a website professional food order
-      for more details please read the user manual"
+  back_to_top: "トップに戻ります"
+  forder_index_intro: "これはウェブサイトのプロフェッショナルな料理の注文です詳細については、
+    ユーザーマニュアルをお読みください"
   api:
-    error_user_token_not_found: "User's token not found!"
-    error_domains_not_found: "Domain not found!"
-    error_categories_not_found: "Categories not found!"
+    error_user_token_not_found: "ユーザーのトークンが見つかりません"
+    error_domains_not_found: "ドメインが見つかりません"
+    error_categories_not_found: "カテゴリが見つかりません"
     error_password_wrong: "不正なパスワード!"
     error_user_not_found: "ユーザーが見つかりません!"
     error_products_not_found: "プロダクトが見つかりません!"
     success: "成功する"
     logout: "ログアウトが成功する!"
   framgia_label: "Framgia"
-  image_index: "Picture"
-  feature_index: "Features"
-  contact_index: "Contact"
-  help_manual_index: "Manual instruction"
-  framgia_user_feedback_index: "Review of the customer: "
-  framgia_user_feedback_context: "I used to order food Forder from the early days and very confident
-    on Forder, I felt satisfied that all products placed here will ensure
-    on product quality and reputation, on time delivery is on time, I will continue
-    Forder continue using in the future and will recommend to friends and Forder use."
+  image_index: "画像"
+  feature_index: "特長"
+  contact_index: "コンタクト"
+  help_manual_index: "マニュアルの指示"
+  framgia_user_feedback_index: "顧客のレビュー "
+  framgia_user_feedback_context: "私は以前から食品を注文していましたが、Forderに非常に自信を持っていました。
+    私は、ここに置かれたすべての製品が、品質の高い商品と評判を保証すると感じました。
+    友人やフォルダー利用者に推薦する"
   framgia_user_name_feedback: " - NguyenLoi"
-  framgia_user_job_feedback: "Officer"
+  framgia_user_job_feedback: "役員"
   user_cancel_order_products: "あなたは注文をキャンセルしました"
   introduce_domain_help: "紹介する"
   step_one_domain_help: "ステップ 1"

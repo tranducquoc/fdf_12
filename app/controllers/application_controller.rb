@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :load_events
   before_action :load_domain_in_session
+  before_filter :set_cache_back
 
   protected
   def configure_permitted_parameters
@@ -78,8 +79,12 @@ class ApplicationController < ActionController::Base
   def load_cart_shop shop_order
     cart_shop = @cart_group.detect {|shop| shop[:shop_id] == shop_order.id}
     items = []
-    cart_shop[:items].each do |item|
-      items << item.to_hash
+    if cart_shop.present?
+      cart_shop[:items].each do |item|
+        items << item.to_hash
+      end
+    else
+      redirect_to carts_path
     end
     Cart.new(session[:domain_id], items) if cart_shop.present?
   end
@@ -148,5 +153,11 @@ class ApplicationController < ActionController::Base
     define_method "response_#{status}" do |message = "", content = {}|
       render json: JsonResponse.send(status, message, content)
     end
+  end
+
+  def set_cache_back
+    response.headers["Cache-Control"] = "no-cache, no-store"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "#{1.year.ago}"
   end
 end

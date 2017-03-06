@@ -3,7 +3,7 @@ class EventBroadcastJob < ApplicationJob
 
   def perform counter, event
     ActionCable.server.broadcast "notification_channel_#{event.user_id}", counter: render_counter(counter),
-      event: render_event(event)
+      event: render_event(event), number: counter
   end
 
   private

@@ -90,7 +90,7 @@ class Event < ApplicationRecord
   end
 
   def send_notification
-    EventBroadcastJob.perform_now Event.unread.count, self
+    EventBroadcastJob.perform_now self.user.events.unread.count, self
     send_fcm_message self.load_message, self.user.device_id if self.user.device_id.present?
   end
 

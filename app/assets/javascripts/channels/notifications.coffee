@@ -9,8 +9,6 @@ App.notifications = App.cable.subscriptions.create "NotificationsChannel",
     # Called when there's incoming data on the websocket for this channel
     $('#events').prepend "#{data.event}"
     this.update_counter(data.counter)
-    if this.update_counter(data.counter)?
-      location.reload()
 
    update_counter: (counter) ->
      $counter = $('#notification_count')

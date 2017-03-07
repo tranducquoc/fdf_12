@@ -12,11 +12,22 @@ class DashboardShopsApiService
   end
 
   def result_json list_domains, list_shops, domain_info
-    {
-      shops: ActiveModel::Serializer::CollectionSerializer.new(list_shops,
-        each_serializer: ShopSerializer), domains: ActiveModel::
-        Serializer::CollectionSerializer.new(list_domains,
-      each_serializer: UserDomainSerializer), info: domain_info
-    }
+    shops = []
+    list_shops.each do |shop|
+      shop_domain = []
+      shop_info = []
+      list_domains.each do |domain|
+        if domain.shops.include? shop
+          shop_domain << {domain_id: domain.id, status: shop.request_status(domain).status}
+        else
+          shop_domain << {domain_id: domain.id, status: ""}
+        end
+      end
+      domain_info.each do |obj|
+        shop_info << obj
+      end
+      shops << {shop: shop, shop_domain: shop_domain, shop_info: shop_info}
+    end
+    shops
   end
 end

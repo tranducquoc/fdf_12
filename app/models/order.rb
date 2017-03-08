@@ -57,6 +57,8 @@ class Order < ApplicationRecord
   scope :group_day, -> {group "EXTRACT(day FROM created_at)"}
   scope :on_today, -> {where "date(orders.created_at) = date(now())"}
 
+  scope :orders_list_by_date, ->{order created_at: :desc}
+
   def build_order_products
     unless self.change_status
       cart.items.each do |item|
@@ -70,6 +72,10 @@ class Order < ApplicationRecord
   end
 
   class << self
+    def group_by_orders_by_created_at
+      orders_list_by_date.group_by{|i| i.created_at.beginning_of_day}
+    end
+
     def build_data_chart user_shops, category_statistic
       order_chart = case category_statistic
       when "current_week"

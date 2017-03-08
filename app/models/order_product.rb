@@ -50,6 +50,12 @@ class OrderProduct < ApplicationRecord
       .group("order_products.product_id")
   end
 
+  scope :order_by_date, ->{order created_at: :desc}
+
+  def self.group_by_products_by_created_at
+    order_by_date.group_by{|i| i.created_at}
+  end
+
   def send_notification_order
     if self.rejected?
       self.events.create message: :rejected, user_id: self.user.id,

@@ -9,6 +9,7 @@ ja:
   forder_index_intro: "これはウェブサイトのプロフェッショナルな料理の注文です詳細については、
     ユーザーマニュアルをお読みください"
   api:
+    error_orders_list_not_found: "Orders list not found!"
     error_user_token_not_found: "ユーザーのトークンが見つかりません"
     error_domains_not_found: "ドメインが見つかりません"
     error_categories_not_found: "カテゴリが見つかりません"

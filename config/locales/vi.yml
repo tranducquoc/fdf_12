@@ -43,6 +43,7 @@ vi:
   split: " -"
   back_to_top: "Quay về đầu trang"
   api:
+    error_orders_list_not_found: "Không tìm thấy danh sách đặt hàng!"
     error_user_token_not_found: "Mã xác nhận của người dùng không tìm thấy!"
     error_domains_not_found: "Miền không tìm thấy!"
     error_categories_not_found: "Không tìm thấy Phân Loại!"

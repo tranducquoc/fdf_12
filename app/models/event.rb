@@ -142,10 +142,10 @@ class Event < ApplicationRecord
   def check_message domain, shop_domain
     if shop_domain.present?
       case true
-      when shop_domain.pending?
+      when self.message == Settings.request_status.pending
         "#{I18n.t "shop_request"}#{shop_domain.shop.name}
-          #{I18n.t "to_domain"}#{domain.name}"
-      when shop_domain.approved?
+          #{I18n.t "into_domain_request"}#{domain.name}"
+      when self.message == Settings.request_status.approved
         user_domain = UserDomain.find_by user_id: user_id, domain_id: domain.id,
           role: :manager
         if user_id == domain.owner || user_domain.present?
@@ -156,7 +156,8 @@ class Event < ApplicationRecord
             #{I18n.t "to_domain"}#{domain.name}"
         end
       else
-        "#{I18n.t "blocked_shop_request"}#{domain.name}"
+        "#{I18n.t "blocked_shop_request"}#{shop_domain.shop.name}#{I18n.t "into_domain"}
+          #{domain.name}#{I18n.t "not_accept"}"
       end
     else
       "#{I18n.t "dada_not_found"}"

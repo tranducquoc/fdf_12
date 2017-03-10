@@ -5,6 +5,9 @@ ja:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  into_domain_request: " ドメインリクエスト: "
+  into_domain: " ドメインに: "
+  not_accept: " 受け入れない"
   back_to_top: "トップに戻ります"
   forder_index_intro: "これはウェブサイトのプロフェッショナルな料理の注文です詳細については、
     ユーザーマニュアルをお読みください"

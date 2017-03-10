@@ -5,6 +5,9 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  into_domain_request: " domain request: "
+  into_domain: " to domain: "
+  not_accept: " not accept"
   back_to_top: "Scroll to Top"
   api:
     error_orders_list_not_found: "Orders list not found!"
@@ -71,7 +74,7 @@ en:
   shop_request: "List request shop: "
   owner_active_shop_request: "Have added the shop: "
   active_shop_request: "Your shop request have been accepted to join: "
-  blocked_shop_request: "Your shop request into domain have been blocked from: "
+  blocked_shop_request: "Your shop request: "
   add_shop_domain_success: "Accepting shop to domain successfully"
   can_not_load_shop: "Can not find shop"
   continue: "Continue"

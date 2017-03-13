@@ -84,6 +84,13 @@ class Shop < ApplicationRecord
     self.shop_domains.by_domain(domain).first
   end
 
+  def create_event_request_shop user_id, shop
+    if shop.pending?
+      Event.create message: :new_shop,
+        user_id: user_id, eventable_id: id, eventable_type: Shop.name
+    end
+  end
+
   private
   def create_shop_manager
     shop_managers.create user_id: owner_id
@@ -105,13 +112,13 @@ class Shop < ApplicationRecord
   end
 
   def send_notification_after_confirmed
-    if self.status_changed? && !self.pending?
+    if self.previous_changes.has_key? :status
       ShopNotification.new(self).send_when_confirmed
     end
   end
 
   def send_notification
-    if self.status_changed? && !self.pending?
+    if self.previous_changes.has_key? :status
       Event.create message: self.status, user_id: owner_id,
         eventable_id: id, eventable_type: Shop.name
     end

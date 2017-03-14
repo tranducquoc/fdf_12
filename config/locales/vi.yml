@@ -41,6 +41,14 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  admin_need_accept_shop: "cần chờ người quản trị kích hoạt để sử dụng"
+  request_status:
+    pending: "Đang đợi"
+    rejected: "Đã từ chối"
+    active: "Đã kích hoạt"
+    closed: "Đã đóng"
+    blocked: "Đã bị khóa"
+  shop_accept_request: "Trạng thái của cửa hàng"
   into_domain_request: " yêu cầu vào miền: "
   into_domain: " vào miền: "
   not_accept: " không được chấp nhận"
@@ -155,7 +163,7 @@ vi:
   change_shop: "Bạn vừa thay đổi quyền quản lí của cửa hàng"
   cant_not_find_shop: "Không thể tìm thấy tài khoản với email này"
   shop_subject: "Yêu cầu tạo cửa hàng mới"
-  shop_request_message: "Cửa hàng mà bạn yêu cầu đang ở trạng thái chờ, bạn cần
+  shop_request_message: "Cửa hàng \"%{shop_name}\" mà bạn yêu cầu đang ở trạng thái chờ, bạn cần
     đợi admin kích hoạt để sử dụng"
   account_info: "Thông tin tài khoản"
   hello: "Xin chào,"
@@ -694,7 +702,7 @@ vi:
     owner: "Chủ"
   notification:
     ago: "trước"
-    shop: "vừa thay đổi trạng thái"
+    shop: "đã được thay đổi trạng thái thành"
     index: "Thông báo của bạn"
     product: "có một bình luận"
     order: "đang chờ duyệt."

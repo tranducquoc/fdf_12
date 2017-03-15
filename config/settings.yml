@@ -84,3 +84,4 @@ min_price: 0
 max_description: 22
 max_shop_name: 20
 max_shop_name_dash: 30
+count_order_start: -1

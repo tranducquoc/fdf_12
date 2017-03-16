@@ -155,6 +155,15 @@ namespace :fdf_db do
       status: 1,
       authentication_token: Devise.friendly_token
     )
+
+    User.create!(
+      name: "Tran Thi Ngoc Bich",
+      email: "tran.thi.ngoc.bich@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
   end
 
   task create_admin: :environment do
@@ -494,6 +503,24 @@ namespace :fdf_db do
       avatar: File.open(Rails.root + "public/images/cuahangbunthitnuong.jpg"),
       owner_id: 1
     )
+
+    Shop.create!(
+      name: "TOCOTOCO",
+      description: "Trà sữa, Macchiato, ...",
+      status: 1,
+      cover_image: "image",
+      avatar: File.open(Rails.root + "public/images/tocotoco_shop.jpg"),
+      owner_id: 18
+    )
+
+    Shop.create!(
+      name: "Coco",
+      description: "Nước giải khát trái cây",
+      status: 1,
+      cover_image: "image",
+      avatar: File.open(Rails.root + "public/images/coco_shop.jpg"),
+      owner_id: 18
+    )
   end
 
   task create_category: :environment do
@@ -535,6 +562,14 @@ namespace :fdf_db do
 
     Category.create!(
       name: "Bún thịt nướng"
+    )
+
+    Category.create!(
+      name: "Trà sữa"
+    )
+
+    Category.create!(
+      name: "Nước trái cây"
     )
   end
 
@@ -1568,5 +1603,1358 @@ namespace :fdf_db do
       end_hour: "11:00:00",
       image: File.open(Rails.root + "public/images/bunthitnuong.jpg")
     )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Hồng Trà Lớn",
+      price: 30000,
+      description: "Hồng Trà Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/hongtra.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Hồng Trà Vừa",
+      price: 25000,
+      description: "Hồng Trà Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/hongtra.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà Sữa Lớn",
+      price: 36000,
+      description: "Trà Sữa Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_tocotoco.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà Sữa Vừa",
+      price: 30000,
+      description: "Trà Sữa Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_tocotoco.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà Sữa Panda Lớn",
+      price: 44000,
+      description: "Trà Sữa Panda Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_panda.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà Sữa Panda Vừa",
+      price: 38000,
+      description: "Trà Sữa Panda Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_panda.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà Sữa Nhật Đậu Đỏ Lớn",
+      price: 46000,
+      description: "Trà Sữa Nhật Đậu Đỏ Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_nhatdaudo.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà Sữa Nhật Đậu Đỏ Vừa",
+      price: 42000,
+      description: "Trà Sữa Nhật Đậu Đỏ Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_nhatdaudo.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Hồng Trà Kem Dừa Vừa",
+      price: 38000,
+      description: "Hồng Trà Kem Dừa Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/hongtra_kemdua.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa cafe Lớn",
+      price: 44000,
+      description: "Trà sữa cafe Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_cafe.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa cafe Vừa",
+      price: 38000,
+      description: "Trà sữa cafe Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_cafe.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa Trân châu sợi Lớn",
+      price: 42000,
+      description: "Trà sữa Trân châu sợi Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_tranchausoi.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa Trân châu sợi Vừa",
+      price: 37000,
+      description: "Trà sữa Trân châu sợi Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_tranchausoi.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa Kim Cương Đen Okinawa Lớn",
+      price: 44000,
+      description: "Trà sữa Kim Cương Đen Okinawa Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_tranchauokinawa.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa Kim Cương Đen Okinawa Vừa",
+      price: 38000,
+      description: "Trà sữa Kim Cương Đen Okinawa Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_tranchauokinawa.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa Hokkaidou Lớn",
+      price: 44000,
+      description: "Trà sữa Hokkaidou Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_hokkaidou.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa Hokkaidou Vừa",
+      price: 38000,
+      description: "Trà sữa Hokkaidou Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_hokkaidou.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Toco Socola Lớn",
+      price: 42000,
+      description: "Toco Socola Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/toco_socola.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Toco Socola Vừa",
+      price: 37000,
+      description: "Toco Socola Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/toco_socola.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa bạc hà Lớn",
+      price: 42000,
+      description: "Trà sữa bạc hà Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_bacha.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa bạc hà Vừa",
+      price: 37000,
+      description: "Trà sữa bạc hà Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_bacha.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa dâu tây Lớn",
+      price: 42000,
+      description: "Trà sữa dâu tây Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_dautay.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa dâu tây Vừa",
+      price: 37000,
+      description: "Trà sữa dâu tây Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_dautay.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa trân châu Boba Lớn",
+      price: 42000,
+      description: "Trà sữa trân châu Boba Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_tranchauboba.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa trân châu Boba Vừa",
+      price: 37000,
+      description: "Trà sữa trân châu Boba Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_tranchauboba.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa ba anh em Lớn",
+      price: 44000,
+      description: "Trà sữa ba anh em Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_baanhem.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa ba anh em Vừa",
+      price: 38000,
+      description: "Trà sữa ba anh em Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_baanhem.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa xanh sữa vị nhài Lớn",
+      price: 40000,
+      description: "Trà sữa xanh sữa vị nhài Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_vinhai.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa xanh sữa vị nhài Vừa",
+      price: 35000,
+      description: "Trà sữa xanh sữa vị nhài Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_vinhai.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa dưa gang Lớn",
+      price: 42000,
+      description: "Trà sữa dưa gang Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_duagang.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa dưa gang Vừa",
+      price: 37000,
+      description: "Trà sữa dưa gang Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_duagang.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa Toco Lớn",
+      price: 44000,
+      description: "Trà sữa Toco Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_toco.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa Toco Vừa",
+      price: 38000,
+      description: "Trà sữa Toco Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_toco.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa rau cau Lớn",
+      price: 42000,
+      description: "Trà sữa rau cau Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_raucau.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa rau cau Vừa",
+      price: 37000,
+      description: "Trà sữa rau cau Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_raucau.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa bánh Pudding Lớn",
+      price: 42000,
+      description: "Trà sữa bánh Pudding Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_pudding.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà sữa bánh Pudding Vừa",
+      price: 37000,
+      description: "Trà sữa bánh Pudding Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasua_pudding.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh Lớn",
+      price: 30000,
+      description: "Trà xanh Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/tra_xanh.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh Vừa",
+      price: 25000,
+      description: "Trà xanh Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/tra_xanh.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh nho Lớn",
+      price: 35000,
+      description: "Trà xanh nho Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/tra-xanh-nho.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh nho Vừa",
+      price: 32000,
+      description: "Trà xanh nho Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/tra-xanh-nho.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh nho Lớn",
+      price: 35000,
+      description: "Trà xanh nho Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/tra-xanh-nho.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Hồng trà việt quất Lớn",
+      price: 38000,
+      description: "Hồng trà việt quất Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/hong_tra_viet_quoc.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Hồng trà việt quất Vừa",
+      price: 33000,
+      description: "Hồng trà việt quất Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/hong_tra_viet_quoc.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà Chanh hoàng gia Lớn",
+      price: 48000,
+      description: "Trà Chanh hoàng gia Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trachanh_hoanggia.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh collagen + VitaminC Lớn",
+      price: 44000,
+      description: "Trà xanh kết hợp kiwi chanh leo",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanh_collagen.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh collagen + VitaminC Vừa",
+      price: 39000,
+      description: "Trà xanh kết hợp kiwi chanh leo",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanh_collagen.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh Đào & Dâu tây Lớn",
+      price: 40000,
+      description: "Trà xanh Đào & Dâu tây Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanh_dao_dautay.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh Đào & Dâu tây Vừa",
+      price: 35000,
+      description: "Trà xanh Đào & Dâu tây Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanh_dao_dautay.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh chanh quốc mật ong Lớn",
+      price: 40000,
+      description: "Trà xanh chanh quốc mật ong Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanh_chanhquoc_matong.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh chanh quốc mật ong Vừa",
+      price: 35000,
+      description: "Trà xanh chanh quốc mật ong Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanh_chanhquoc_matong.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh chanh leo Lớn",
+      price: 38000,
+      description: "Trà xanh chanh leo Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanh_chanhleo.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh chanh leo Vừa",
+      price: 33000,
+      description: "Trà xanh chanh leo Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanh_chanhleo.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh chanh xoài Lớn",
+      price: 38000,
+      description: "Trà xanh chanh xoài Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanh_xoai.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh chanh xoài Vừa",
+      price: 33000,
+      description: "Trà xanh chanh xoài Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanh_xoai.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh đào & chanh leo Lớn",
+      price: 40000,
+      description: "Trà xanh đào & chanh leo Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanh_dao_chanhleo.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh đào & chanh leo Vừa",
+      price: 33000,
+      description: "Trà xanh đào & chanh leo Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanh_dao_chanhleo.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh mật ong sợi Lớn",
+      price: 44000,
+      description: "Trà xanh mật ong sợi Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanh_matongsoi.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà xanh mật ong sợi Vừa",
+      price: 37000,
+      description: "Trà xanh mật ong sợi Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanh_matongsoi.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Macchiato Hoàng gia Vừa",
+      price: 49000,
+      description: "Macchiato Hoàng gia Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/macchiato-hoang-gia.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Macchiato Matcha Lớn",
+      price: 44000,
+      description: "Macchiato Matcha Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/macchiato_matcha.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Macchiato Matcha Vừa",
+      price: 38000,
+      description: "Macchiato Matcha Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/macchiato_matcha.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Macchiato Hồng trà Lớn",
+      price: 40000,
+      description: "Macchiato Hồng trà Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/macchiato_hongtra.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Macchiato Hồng trà Vừa",
+      price: 35000,
+      description: "Macchiato Hồng trà Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/macchiato_hongtra.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Macchiato Socola Lớn",
+      price: 44000,
+      description: "Macchiato Socola Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/macchiato_socola.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Macchiato Socola Vừa",
+      price: 38000,
+      description: "Macchiato Socola Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/macchiato_socola.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Macchiato Trà xanh Lớn",
+      price: 40000,
+      description: "Macchiato Trà xanh Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/macchiato-tra-xanh.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Macchiato Trà xanh Vừa",
+      price: 35000,
+      description: "Macchiato Trà xanh Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/macchiato-tra-xanh.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Yakult Trà xanh Lớn",
+      price: 42000,
+      description: "Macchiato Trà xanh Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/yakult_traxanh.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Yakult Trà xanh Vừa",
+      price: 37000,
+      description: "Macchiato Trà xanh Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/yakult_traxanh.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Yakult Chanh leo Lớn",
+      price: 42000,
+      description: "Yakult Chanh leo Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/yakult_chanhleo.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Yakult Chanh leo Vừa",
+      price: 37000,
+      description: "Yakult Chanh leo Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/yakult_chanhleo.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Yakult Xoài Lớn",
+      price: 42000,
+      description: "Yakult Xoài Lớn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/yakult_xoai.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Yakult Xoài Vừa",
+      price: 37000,
+      description: "Yakult Xoài Vừa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/yakult_xoai.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trân châu sợi",
+      price: 6000,
+      description: "Trân châu sợi",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/tran_chau_soi.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Thạch cà phê",
+      price: 8000,
+      description: "Thạch cà phê",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/thach_cafe.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Rau câu",
+      price: 6000,
+      description: "Rau câu",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/raucau.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Pudding",
+      price: 6000,
+      description: "Pudding",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/pudding.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trân châu",
+      price: 6000,
+      description: "Trân châu",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/tranchau.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Thạch matcha",
+      price: 8000,
+      description: "Thạch matcha",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/thach_matcha.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Lô hội",
+      price: 6000,
+      description: "Lô hội",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/lo_hoi.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Macchiato",
+      price: 8000,
+      description: "Macchiato",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/macchiato.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Hướng dương",
+      price: 15000,
+      description: "Hướng dương",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/hat-huong-duong.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Xúc xích",
+      price: 15000,
+      description: "Xúc xích",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/xuc_xich.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Bò khô",
+      price: 28000,
+      description: "Bò khô",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/bo_kho.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Mức việt quốc sữa chua đá xay",
+      price: 42000,
+      description: "Mức việt quốc sữa chua đá xay",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/muc_viet_quoc.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Trà Nhật đá xay",
+      price: 42000,
+      description: "Trà Nhật đá xay",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/tranhat_daxay.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Cafe caramel đá xay",
+      price: 42000,
+      description: "Cafe caramel đá xay",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/cafe_caramel.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Mứt dâu tây đá xay",
+      price: 42000,
+      description: "Mứt dâu tây đá xay",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/mutdautay_daxay.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Xoài sữa chua đá xay",
+      price: 42000,
+      description: "Xoài sữa chua đá xay",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/xoai_suachua_daxay.jpg")
+    )
+
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 11,
+      user_id: 18,
+      name: "Chanh leo sữa chua đá xay",
+      price: 42000,
+      description: "Chanh leo sữa chua đá xay",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/chanhleo_suachua_daxay.jpg")
+    )
+
+    Product.create!(
+      category_id: 12,
+      status: 0,
+      shop_id: 12,
+      user_id: 18,
+      name: "Chanh leo",
+      price: 25000,
+      description: "Chanh leo",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/chanh_leo_coco.jpg")
+    )
+
+    Product.create!(
+      category_id: 12,
+      status: 0,
+      shop_id: 12,
+      user_id: 18,
+      name: "Nước Dứa",
+      price: 25000,
+      description: "Nước Dứa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/nuoc_dua_ep.jpg")
+    )
+
+    Product.create!(
+      category_id: 12,
+      status: 0,
+      shop_id: 12,
+      user_id: 18,
+      name: "Nước Cà Rốt",
+      price: 25000,
+      description: "Nước Cà Rốt",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/nuoc_ca_rot.jpg")
+    )
+
+    Product.create!(
+      category_id: 12,
+      status: 0,
+      shop_id: 12,
+      user_id: 18,
+      name: "Nước Cam Cà Rốt",
+      price: 30000,
+      description: "Nước Cam Cà Rốt",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/nuoc_cam_carot.jpg")
+    )
+
+    Product.create!(
+      category_id: 12,
+      status: 0,
+      shop_id: 12,
+      user_id: 18,
+      name: "Nước Cam",
+      price: 30000,
+      description: "Nước Cam",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/nuoc_cam.jpg")
+    )
+
+    Product.create!(
+      category_id: 12,
+      status: 0,
+      shop_id: 12,
+      user_id: 18,
+      name: "Nước Thanh Long",
+      price: 30000,
+      description: "Nước Thanh Long",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/nuoc_thanh_long.jpg")
+    )
+
+    Product.create!(
+      category_id: 12,
+      status: 0,
+      shop_id: 12,
+      user_id: 18,
+      name: "Nước Ổi",
+      price: 25000,
+      description: "Nước Ổi",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/nuoc_oi.jpg")
+    )
+
+    Product.create!(
+      category_id: 12,
+      status: 0,
+      shop_id: 12,
+      user_id: 18,
+      name: "Nước khế",
+      price: 25000,
+      description: "Nước khế",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/nuoc_khe.jpg")
+    )
+
+    Product.create!(
+      category_id: 12,
+      status: 0,
+      shop_id: 12,
+      user_id: 18,
+      name: "Nước Táo",
+      price: 30000,
+      description: "Nước Táo",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/nuoc_tao.jpg")
+    )
+
+    Product.create!(
+      category_id: 12,
+      status: 0,
+      shop_id: 12,
+      user_id: 18,
+      name: "Nước Lê",
+      price: 30000,
+      description: "Nước Lê",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/nuoc_le.jpg")
+    )
+
+    Product.create!(
+      category_id: 12,
+      status: 0,
+      shop_id: 12,
+      user_id: 18,
+      name: "Nước Bưởi",
+      price: 30000,
+      description: "Nước Bưởi",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/nuoc_buoi.jpg")
+    )
+
+    Product.create!(
+      category_id: 12,
+      status: 0,
+      shop_id: 12,
+      user_id: 18,
+      name: "Nước Dưa Hấu",
+      price: 25000,
+      description: "Nước Dưa Hấu",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/nuoc_duahau.jpg")
+    )
+
+    Product.create!(
+      category_id: 12,
+      status: 0,
+      shop_id: 12,
+      user_id: 18,
+      name: "Nước Trà Xanh",
+      price: 20000,
+      description: "Nước Trà Xanh",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/nuoc_traxanh.jpg")
+    )
+
   end
 end

@@ -10,7 +10,7 @@
       <%= social_share_button_tag @product.name %>
     </div>
     <div class="fb-like" data-href="<%= request.original_url %>"
-      data-layout="standard" data-action="like"></div>
+    data-layout="standard" data-action="like"></div>
     <ul class="tags">
       <% @product.tags.each do |tag| %>
         <li><%= link_to tag.name, tag_path(tag), class: "tag" %></li>
@@ -24,17 +24,31 @@
   </div>
   <div class="unit5">
     <div class="m-panel pad-50">
-      <h3 class="lead">
-        <strong>
-          <%= @product.name %>
-          <%= link_to cart_path(@product.id), remote: true,
-            method: :put, class: "btn btn_add_to_cart btn-add",
-            disabled: Time.now.is_between_short_time?(@product.start_hour, @product.end_hour) do %>
-            <span class="glyphicon glyphicon-shopping-cart"></span>
-            <%= t "cart.add_to_card" %>
-          <% end %>
-        </strong>
-      </h3>
+      <% if !(current_user.domains.include? @domain) %>
+        <h3 class="lead">
+          <strong>
+            <%= @product.name %>
+            <%= link_to cart_path(@product.id), remote: true,
+              method: :put, class: "btn btn_add_to_cart btn-add disabled",
+              disabled: Time.now.is_between_short_time?(@product.start_hour, @product.end_hour) do %>
+              <span class="glyphicon glyphicon-shopping-cart"></span>
+              <%= t "cart.add_to_card" %>
+            <% end %>
+          </strong>
+        </h3>
+      <% else %>
+        <h3 class="lead">
+          <strong>
+            <%= @product.name %>
+            <%= link_to cart_path(@product.id), remote: true,
+              method: :put, class: "btn btn_add_to_cart btn-add",
+              disabled: Time.now.is_between_short_time?(@product.start_hour, @product.end_hour) do %>
+              <span class="glyphicon glyphicon-shopping-cart"></span>
+              <%= t "cart.add_to_card" %>
+            <% end %>
+          </strong>
+        </h3>
+      <% end %>
       <div class="a-divider--fit"></div>
       <div class="aligner-jsc wp100 h40">
         <p class="lead eb-orange mar-bottom-0">

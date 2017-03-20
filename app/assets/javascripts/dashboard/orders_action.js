@@ -89,6 +89,9 @@ $(document).ready(function() {
       if ($(obj).find('input:checkbox').prop('checked')) {
         idOrders.push(($(obj).children()[0]).value);
       }
+      else {
+        idOrders.push(($(obj).children()[0]).value);
+      }
     });
     var idItems = [];
     var classes = ['label-info', 'label-warning', 'label-danger', 'label-primary'];

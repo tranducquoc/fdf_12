@@ -41,6 +41,9 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  not_accept_to_domain: " của bạn không được chấp nhận vào miền: "
+  shop_request_to_domain_owner_shop: "Cửa hàng "
+  shop_request_to_domain_owner: " của bạn vừa được đồng ý vào miền: "
   admin_need_accept_shop: "cần chờ người quản trị kích hoạt để sử dụng"
   request_status:
     pending: "Đang đợi"

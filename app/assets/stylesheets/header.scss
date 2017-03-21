@@ -5,7 +5,7 @@ $orange_main: #ff5722;
 
 .home-header {
   .navbar {
-    background: url(header_bg.png) $orange_main;
+    background: image-url(header_bg) $orange_main;
     border: 0;
     border-radius: 0;
     min-height: 42px;
@@ -301,7 +301,7 @@ $orange_main: #ff5722;
 }
 
 .select_domain {
-  background: url(header_bg.png) #ff5722;
+  background: image-url(header_bg) #ff5722;
   margin-top: 11px;
   color: white;
   border: 0px;

@@ -1,7 +1,13 @@
 $(document).ready(function() {
+  $('#step2').on("click", "button.btnBack", function(){
+    $('.disabl_step1').removeClass("disabled");
+    $('.disabl_step2').addClass( "disabled" );
+  });
+
   $('#checkbox').on('click', function(){
     $('input:checkbox').not(this).prop('checked', this.checked);
   });
+
   $('.btnNext').on('click', function() {
     var shopId = $('#shop-id').val();
     $.ajax({
@@ -11,7 +17,7 @@ $(document).ready(function() {
       success: function(data) {
         content = "<div class='panel panel-default' id='tabs'>"+
           "<div class='panel-body'> <div class='dropdown action'>"+
-          "<button class='list btn btn-primary btn-action btnPrev step1'"+
+          "<button class='list btn btn-primary btn-action btnPrev step1 btnBack'"+
           "id='tab-2' href='#step1' data-toggle='tab'>Back</button>"+
           "<a class='list btn btn-success btn-action pull-right'"+
           "href='/dashboard/shops/" + shopId +
@@ -46,6 +52,8 @@ $(document).ready(function() {
           total2 +"</strong></td></tr>"
         content += row;
         content += '</tbody></table>'
+        $('.disabl_step2').removeClass("disabled");
+        $('.disabl_step1').addClass( "disabled" );
         $('#step2').html(content);
       },
       error: function(error_message) {

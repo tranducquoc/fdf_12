@@ -41,13 +41,15 @@
           <% if user_signed_in? && current_user.domains.present? %>
             <li class="dropdown">
               <a href="#" data-toggle="dropdown"
-              class="dropdown-toggle">
-                <div>
-                  <i class="<%= domain_icon @domain %>"></i>
-                  <span class="user-title"><%= @domain.name %>
-                    <b class="caret"></b>
-                  </span>
-                </div>
+                class="dropdown-toggle">
+                <% if @domain.present? %>
+                  <div>
+                    <i class="<%= domain_icon @domain %>"></i>
+                      <span class="user-title"><%= @domain.name %>
+                      <b class="caret"></b>
+                    </span>
+                  </div>
+                <% end %>
               </a>
               <ul class="dropdown-menu">
                 <% current_user.domains.each do |domain| %>

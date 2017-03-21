@@ -151,12 +151,12 @@ class Event < ApplicationRecord
           "#{I18n.t "owner_active_shop_request"}#{shop_domain.shop.name}
             #{I18n.t "to_domain"}#{domain.name}"
         else
-          "#{I18n.t "active_shop_request"}#{shop_domain.shop.name}
-            #{I18n.t "to_domain"}#{domain.name}"
+          "#{I18n.t "shop_request_to_domain_owner_shop"}#{shop_domain.shop.name}
+            #{I18n.t "shop_request_to_domain_owner"}#{domain.name}"
         end
       else
-        "#{I18n.t "blocked_shop_request"}#{shop_domain.shop.name}#{I18n.t "into_domain"}
-          #{domain.name}#{I18n.t "not_accept"}"
+        "#{I18n.t "shop_request_to_domain_owner_shop"}#{shop_domain.shop.name}
+          #{I18n.t "not_accept_to_domain"}#{domain.name}"
       end
     else
       "#{I18n.t "dada_not_found"}"

@@ -5,6 +5,9 @@ ja:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  not_accept_to_domain: " ドメインに受け入れられません: "
+  shop_request_to_domain_owner_shop: "店 "
+  shop_request_to_domain_owner: " ドメインに合意されています: "
   admin_need_accept_shop: "管理者を待って活性化する必要があります"
   request_status:
     pending: "ペンディング"

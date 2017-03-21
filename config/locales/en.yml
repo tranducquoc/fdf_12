@@ -5,6 +5,9 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  not_accept_to_domain: " not accepted into domain: "
+  shop_request_to_domain_owner_shop: "Your shop "
+  shop_request_to_domain_owner: " has just been accepted into the domain: "
   admin_need_accept_shop: "Need to wait for the admin to activate"
   request_status:
     pending: "Pending"

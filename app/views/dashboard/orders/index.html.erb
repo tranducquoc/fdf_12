@@ -1,15 +1,15 @@
 <h2 class="text-center"><%= t "dashboard.order.title" %></h2>
 <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
   <div class="btn-group" role="group">
-    <button type="button" id="stars" class="btn btn-primary step1"
+    <button type="button" id="stars" class="btn btn-primary step1 disabl_step1"
       href="#step1" data-toggle="tab">
       <span class="fa fa-check" aria-hidden="true"></span>
       <div class="hidden-xs"><%= t "order_statistics.step1"%></div>
     </button>
   </div>
-  <div class="btn-group btnNext" role="group">
-    <button type="button" id="favorites" class="btn btn-default step2"
-      href="#step2" data-toggle="tab" disabled="disabled">
+  <div class="btn-group" role="group">
+    <button type="button" id="favorites" class="btn btn-default step2 disabl_step2 disabled"
+      href="#step2" data-toggle="tab">
       <span class="fa fa-list-alt" aria-hidden="true"></span>
       <div class="hidden-xs"><%= t "order_statistics.step2"%></div>
     </button>

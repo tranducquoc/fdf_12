@@ -452,7 +452,7 @@ $orange_main: #ff5722;
 }
 
 .item-select {
-  background: url(big-star.png);
+  background: image-url(big-star);
 }
 
 .for-notifi {
@@ -477,7 +477,7 @@ $orange_main: #ff5722;
     rgba(33, 37, 43, 0.6),
     rgba(33, 37, 43, 0.6)
   ),
-  url(background-footer.jpg);
+  image-url(background-footer);
   height: 100%;
 }
 

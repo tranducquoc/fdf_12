@@ -78,7 +78,7 @@ IMG.displayed {
 }
 
 .feature{
-  background: url('feature.jpg') no-repeat center center fixed;
+  background: image-url('feature') no-repeat center center fixed;
   background-size: cover;
 
   img {
@@ -95,7 +95,7 @@ IMG.displayed {
 
 .intro {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: url('bk.jpg') no-repeat center center fixed;
+  background: image-url('bk') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -104,7 +104,7 @@ IMG.displayed {
 }
 
 .intro-web {
-  background: url('drink-bg.jpg') no-repeat center center fixed;
+  background: image-url('drink-bg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -112,7 +112,7 @@ IMG.displayed {
 }
 
 .end-index {
-  background: url('footer-bg.jpg') no-repeat center center fixed;
+  background: image-url('footer-bg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;

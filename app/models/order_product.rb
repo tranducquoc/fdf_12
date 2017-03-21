@@ -30,7 +30,7 @@ class OrderProduct < ApplicationRecord
   end
   scope :history_by_day_with_status, ->(shop_id, status) do
     joins(:product, :order)
-      .select("products.name as name, sum(quantity) as quantity,
+      .select("products.name as name, sum(quantity) as quantity, order_products.user_id,
         sum(quantity) * products.price as price, order_products.created_at as
         created_at, products.id as product_id, order_products.status as status,
         order_products.id as id")

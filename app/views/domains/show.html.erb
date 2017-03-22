@@ -108,7 +108,7 @@
         <% if (@domain.professed?) && (!current_user.domains.include? @domain) %>
           <strong>
             <%= link_to t("join_domain"), user_domains_path(user_id: current_user.id,
-              domain_id: @domain.id), method: :post, class: "join label label-success" %>
+              domain_id: @domain.id, join_domain: true), method: :post, class: "join label label-success" %>
           </strong>
       </div>
       <% end %>

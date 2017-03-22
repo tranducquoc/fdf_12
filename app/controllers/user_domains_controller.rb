@@ -39,7 +39,8 @@ class UserDomainsController < ApplicationController
 
   def destroy
     UserDomain.destroy_all domain_id: @choosen_domain.id, user_id: @user.id
-    flash[:success] = t "delete_domain"
+    flash[:success] = t "leave_domain_success" if params[:leave_domain].present?
+    flash[:success] = t "delete_domain" if params[:delete_user_domain].present?
     if current_user.domains.include? @choosen_domain
       redirect_to :back
     else
@@ -67,7 +68,8 @@ class UserDomainsController < ApplicationController
         user_domain.create_event_add_user_domain @domain.owner
         sent_notification_domain_manager @domain
       end
-      flash[:success] = t "add_domain"
+      flash[:success] = t "join_domain_success" if params[:join_domain].present?
+      flash[:success] = t "add_domain" if params[:add_domain].present?
     else
       flash[:danger] = t "can_not_add_account"
     end

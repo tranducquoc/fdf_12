@@ -40,15 +40,6 @@ namespace :fdf_db do
     )
 
     User.create!(
-      name: "Tran Thi Ngoc Bich",
-      email: "tran.thi.ngoc.bich@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
-      status: 1,
-      authentication_token: Devise.friendly_token
-    )
-
-    User.create!(
       name: "Ta Duy Anh",
       email: "ta.duy.anh@framgia.com",
       password: "123456",
@@ -164,6 +155,16 @@ namespace :fdf_db do
       status: 1,
       authentication_token: Devise.friendly_token
     )
+
+    User.create!(
+      name: "Tran Thi Ngoc Bich",
+      email: "tran.thi.ngoc.bich@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
   end
 
   task create_admin: :environment do

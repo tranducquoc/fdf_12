@@ -40,6 +40,15 @@ namespace :fdf_db do
     )
 
     User.create!(
+      name: "Tran Thi Ngoc Bich",
+      email: "tran.thi.ngoc.bich@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
       name: "Ta Duy Anh",
       email: "ta.duy.anh@framgia.com",
       password: "123456",
@@ -155,15 +164,6 @@ namespace :fdf_db do
       status: 1,
       authentication_token: Devise.friendly_token
     )
-
-    User.create!(
-      name: "Tran Thi Ngoc Bich",
-      email: "tran.thi.ngoc.bich@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
-      status: 1,
-      authentication_token: Devise.friendly_token
-    )
   end
 
   task create_admin: :environment do
@@ -197,86 +197,8 @@ namespace :fdf_db do
   task create_user_domain: :environment do
     UserDomain.create!(
       user_id: 6,
-      domain_id: 18,
-      role: 0
-    )
-
-    UserDomain.create!(
-      user_id: 7,
-      domain_id: 18,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 8,
-      domain_id: 18,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 9,
-      domain_id: 18,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 10,
-      domain_id: 18,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 11,
-      domain_id: 18,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 12,
-      domain_id: 18,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 13,
-      domain_id: 18,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 14,
-      domain_id: 18,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 15,
-      domain_id: 18,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 16,
-      domain_id: 18,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 17,
-      domain_id: 18,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 15,
       domain_id: 19,
       role: 0
-    )
-
-    UserDomain.create!(
-      user_id: 6,
-      domain_id: 19,
-      role: 1
     )
 
     UserDomain.create!(
@@ -323,6 +245,12 @@ namespace :fdf_db do
 
     UserDomain.create!(
       user_id: 14,
+      domain_id: 19,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 15,
       domain_id: 19,
       role: 1
     )
@@ -408,6 +336,78 @@ namespace :fdf_db do
     UserDomain.create!(
       user_id: 17,
       domain_id: 20,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 15,
+      domain_id: 21,
+      role: 0
+    )
+
+    UserDomain.create!(
+      user_id: 6,
+      domain_id: 21,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 7,
+      domain_id: 21,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 8,
+      domain_id: 21,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 9,
+      domain_id: 21,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 10,
+      domain_id: 21,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 11,
+      domain_id: 21,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 12,
+      domain_id: 21,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 13,
+      domain_id: 21,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 14,
+      domain_id: 21,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 16,
+      domain_id: 21,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 17,
+      domain_id: 21,
       role: 1
     )
   end

@@ -21,6 +21,8 @@ class ShopsController < ApplicationController
     user = User.find_by email: params[:email]
     if user
       @shop.update_attributes owner_id: user.id
+      @shop.shop_domains.update_all domain_id: user.user_domains.ids
+      @shop.shop_managers.update_all user_id: user.id
       flash[:success] = t "change_shop"
       redirect_to root_path
     else

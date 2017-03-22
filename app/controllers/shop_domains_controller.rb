@@ -80,7 +80,7 @@ class ShopDomainsController < ApplicationController
 
   def sent_notification_domain_manager domain, shop_domain
     domain.user_domains.each do |user_domain|
-      if user_domain.manager?
+      if user_domain.manager? && user_domain.user_id != @choosen_domain.owner
         shop_domain.create_event_request_shop user_domain.user_id, shop_domain
       end
     end

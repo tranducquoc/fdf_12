@@ -5,6 +5,7 @@ ja:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  order_confirm_accept: " 確認されている: "
   join_domain_success: "成功したドメインにあります"
   leave_domain_success: "成功したドメインを残します"
   order_success: " 成功します"

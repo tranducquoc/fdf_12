@@ -21,8 +21,8 @@ class Event < ApplicationRecord
       order_product_event
     when User.name
       order_shop_event = Order.find_by id: eventitem_id
-      "#{I18n.t "order_of"} #{order_shop_event.user.name}
-      #{I18n.t "shop_order_products"}"
+      "#{I18n.t "order"} #{order_shop_event.shop.name} #{I18n.t "of"}
+      #{order_shop_event.user.name} #{I18n.t "shop_order_products"}"
     when ShopDomain.name
       shop_event_name_message
       domain = Domain.find_by id: eventable_id
@@ -127,16 +127,21 @@ class Event < ApplicationRecord
     if order.present?
       done_products = order.order_products.done.size
       rejected_products = order.order_products.rejected.size
-      "#{I18n.t "order_product"} #{done_products} #{I18n.t "done_products"},
-        #{rejected_products} #{I18n.t "rejected_products"}"
+      if done_products == Settings.start_count
+        "#{I18n.t "order"} #{order.shop.name} #{I18n.t "request_status.rejected"}"
+      else
+        "#{I18n.t "order"} #{order.shop.name} #{I18n.t "order_confirm_accept"}
+          #{done_products} #{I18n.t "done_products"},
+            #{rejected_products} #{I18n.t "rejected_products"}"
+      end
     end
   end
 
   def shop_event_name_message
     if eventable_type == User.name
       order_shop_event = Order.find_by id: eventitem_id
-      "#{I18n.t "order_of"} #{order_shop_event.user.name}
-        #{I18n.t "shop_order_products"}"
+      "#{I18n.t "order"} #{order_shop_event.shop.name} #{I18n.t "of"}
+        #{order_shop_event.user.name} #{I18n.t "shop_order_products"}"
     end
   end
 

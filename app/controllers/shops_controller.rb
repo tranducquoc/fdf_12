@@ -20,9 +20,18 @@ class ShopsController < ApplicationController
   def update
     user = User.find_by email: params[:email]
     if user
-      @shop.update_attributes owner_id: user.id
-      @shop.shop_domains.update_all domain_id: user.user_domains.ids
-      @shop.shop_managers.update_all user_id: user.id
+      current_user.user_domains.each do |current_user|
+        current_user.domain_id
+        user.user_domains.each do |user_domain|
+          if current_user.domain_id == user_domain.domain_id
+            @shop.update_attributes owner_id: user.id
+            @shop.shop_domains.update_all domain_id: user_domain.domain_id
+          else
+            @shop.update_attributes owner_id: user_domain.user_id
+            @shop.shop_domains.update_all domain_id: user_domain.domain_id
+          end
+        end
+      end
       flash[:success] = t "change_shop"
       redirect_to root_path
     else

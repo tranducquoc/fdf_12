@@ -5,6 +5,7 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  order_confirm_accept: " has been confirmed: "
   join_domain_success: "You joined the domain successfully"
   leave_domain_success: "You left the domain successfully"
   order_success: " success"

@@ -41,6 +41,7 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  order_confirm_accept: " đã được xác nhận: "
   join_domain_success: "Bạn đã tham gia miền thành công"
   leave_domain_success: "Bạn đã rời khỏi miền thành công"
   order_success: " thành công"

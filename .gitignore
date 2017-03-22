@@ -62,3 +62,4 @@ config/environments/*.local.yml
 # Ignore application configuration
 /config/application.yml
 /.idea/
+/public/javascripts/translations.js

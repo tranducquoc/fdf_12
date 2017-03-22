@@ -104,7 +104,8 @@ class Event < ApplicationRecord
     if message == Settings.notification_new
       order_shop_event = Order.find_by id: eventitem_id
       if order_shop_event.present?
-        "#{I18n.t "order_of"} #{order_shop_event.user.name} #{I18n.t "notification.order"}"
+        "#{I18n.t "order"} #{order_shop_event.shop.name} #{I18n.t "of"} #{order_shop_event.user.name}
+          #{I18n.t "notification.order"}"
       else
         "#{I18n.t "a_order"} #{I18n.t "order_deleted"}"
       end
@@ -113,7 +114,8 @@ class Event < ApplicationRecord
       if message == Settings.filter_status_order.rejected
         "#{I18n.t "deleted_user_order_shop"}"
       elsif order_shop_event.present?
-        "#{I18n.t "user_order_products"}"
+        "#{I18n.t "user_order_products"} #{order_shop_event.shop.name}
+          #{I18n.t "order_success"}"
       else
         "#{I18n.t "user_cancel_order_products"}"
       end
@@ -236,20 +238,15 @@ class Event < ApplicationRecord
     when self.message == Settings.request_status.new_shop
       "#{eventable_type} #{eventable.name}  #{I18n.t "admin_need_accept_shop"}"
     when self.message == Settings.request_status.pending
-      "#{eventable.name} #{eventable_type} #{I18n.t "notification.shop"}
-        : #{I18n.t "request_status.pending"}"
+      "#{eventable.name} #{eventable_type} #{I18n.t "request_status.pending"}"
     when self.message == Settings.request_status.rejected
-      "#{eventable.name} #{eventable_type} #{I18n.t "notification.shop"}
-        : #{I18n.t "request_status.rejected"}"
+      "#{eventable.name} #{eventable_type} #{I18n.t "request_status.rejected"}"
     when self.message == Settings.request_status.active
-      "#{eventable.name} #{eventable_type} #{I18n.t "notification.shop"}
-        : #{I18n.t "request_status.active"}"
+      "#{eventable.name} #{eventable_type} #{I18n.t "request_status.active"}"
     when self.message == Settings.request_status.closed
-      "#{eventable.name} #{eventable_type} #{I18n.t "notification.shop"}
-        : #{I18n.t "request_status.closed"}"
+      "#{eventable.name} #{eventable_type} #{I18n.t "request_status.closed"}"
     when self.message == Settings.request_status.block
-      "#{eventable.name} #{eventable_type} #{I18n.t "notification.shop"}
-        : #{I18n.t "request_status.blocked"}"
+      "#{eventable.name} #{eventable_type} #{I18n.t "request_status.blocked"}"
     end
   end
 end

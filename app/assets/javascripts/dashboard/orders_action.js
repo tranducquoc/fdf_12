@@ -130,6 +130,7 @@ $(document).ready(function() {
           $(klass).removeClass(currentClass).addClass(classes[actions.indexOf(action)]);
           if (action == 'rejected') {
             $('.step2-new').hide();
+            document.location = "/dashboard/shops/" + shopId + "/order_products"
           }
           else{
             $('.step2-new').show();

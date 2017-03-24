@@ -26,6 +26,7 @@ en:
   not_accept: " not accept"
   back_to_top: "Scroll to Top"
   api:
+    error_list_shop_by_domain_not_found: "Shops listing not found!"
     error_orders_list_not_found: "Orders list not found!"
     error_user_token_not_found: "User's token not found!"
     error_domains_not_found: "Domain not found!"

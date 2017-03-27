@@ -47,7 +47,7 @@ class Shop < ApplicationRecord
   delegate :email, to: :owner, prefix: :owner
 
   scope :by_date_newest, ->{order created_at: :desc}
-  scope :top_shops, ->{active.by_date_newest.limit Settings.index.max_shops}
+  scope :top_shops, ->{by_date_newest.limit Settings.index.max_shops}
 
   scope :by_active, ->{where status: :active}
   scope :of_owner, -> owner_id {where owner_id: owner_id}

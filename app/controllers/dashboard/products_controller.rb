@@ -44,9 +44,10 @@ class Dashboard::ProductsController < BaseDashboardController
             save_product_domain domain
           end
         end
+        flash[:success] = t "flash.success.dashboard.create_product"
         redirect_to domain_dashboard_shop_path(@domain, @shop)
       else
-        flash[:success] = t "flash.success.dashboard.create_product"
+        flash[:success] = t "api.error_domains_not_found"
         redirect_to dashboard_shop_path(@shop, domain_id: Settings.not_find)
       end
     else

@@ -40,7 +40,7 @@ span.x4:before, i.x4:before
 
 header .container-fluid
 {
-  background-image: url('/assets/food_background.jpg');
+  background-image: image-url('food_background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -90,7 +90,7 @@ header .container-fluid
 
 .number .container-fluid
 {
-  background-image: url('/assets/food_banner_index1.jpg');
+  background-image: image-url('food_banner_index1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -129,7 +129,7 @@ header .container-fluid
 
 .story .container-fluid
 {
-  background-image: url('/assets/food_banner_index2.jpg');
+  background-image: image-url('food_banner_index2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

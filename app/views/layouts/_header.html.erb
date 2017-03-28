@@ -4,11 +4,11 @@
       <div class="navbar-header">
         <% if @domain.present? %>
           <%= link_to domain_path(@domain), class: "navbar-brand" do %>
-            <%= image_tag "/assets/logo.png" %>
+            <%= image_tag "logo.png" %>
           <% end %>
         <% else %>
           <a class="navbar-brand" href="/">
-            <img src="/assets/logo.png" alt="<%= t "common.base_title" %>">
+            <%= image_tag "logo.png", alt: t("common.base_title")  %>
           </a>
         <% end %>
         <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -151,14 +151,14 @@
           <% if user_signed_in? %>
             <li class="nav navbar-user dropdown">
               <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
-              class="dropdown-toggle" role="button" 
+              class="dropdown-toggle" role="button"
               title="<%= current_user.name %>">
                 <div>
                   <span class="user-avatar">
                     <%= image_tag current_user.avatar.url %>
                   </span>
-                  <span class="user-title"> 
-                    <%= truncate(current_user.name, 
+                  <span class="user-title">
+                    <%= truncate(current_user.name,
                       length: Settings.max_user_name) %>
                     <b class="caret"></b>
                   </span>

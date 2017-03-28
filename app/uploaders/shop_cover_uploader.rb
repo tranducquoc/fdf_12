@@ -30,7 +30,9 @@ class ShopCoverUploader < CarrierWave::Uploader::Base
   end
 
   def default_url *args
-    "/assets/" + [version_name, "default_shop_cover.jpg"].compact.join('_')
+    ActionController::Base
+      .helpers
+      .asset_path([version_name, "default_shop_cover.png"].compact.join("_"))
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

@@ -5,6 +5,7 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  domain_manager_header: "Domain management"
   shop_not_activate: "Shop does not work!"
   order_confirm_accept: " has been confirmed: "
   join_domain_success: "You joined the domain successfully"

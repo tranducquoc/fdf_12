@@ -25,11 +25,11 @@
   <div class="unit5">
     <div class="m-panel pad-50">
       <% if !(current_user.domains.include? @domain) %>
-        <h3 class="lead">
+        <h3 class="lead margin-zerob">
           <strong>
             <%= @product.name %>
             <%= link_to cart_path(@product.id), remote: true,
-              method: :put, class: "btn btn_add_to_cart btn-add disabled",
+              method: :put, class: "btn btn_add_to_cart btn-add padding-left-for-button disabled",
               disabled: Time.now.is_between_short_time?(@product.start_hour,
                 @product.end_hour) do %>
               <span class="glyphicon glyphicon-shopping-cart"></span>
@@ -38,11 +38,11 @@
           </strong>
         </h3>
       <% else %>
-        <h3 class="lead">
+        <h3 class="lead margin-zerob">
           <strong>
             <%= @product.name %>
             <%= link_to cart_path(@product.id), remote: true,
-              method: :put, class: "btn btn_add_to_cart btn-add",
+              method: :put, class: "btn btn_add_to_cart btn-add padding-left-for-button",
               disabled: Time.now.is_between_short_time?(@product.start_hour,
                 @product.end_hour) || !@product.shop.active? do %>
               <span class="glyphicon glyphicon-shopping-cart"></span>

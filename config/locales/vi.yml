@@ -41,6 +41,7 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  domain_manager_header: "Quản lý miền"
   shop_not_activate: "Shop không hoạt động!"
   order_confirm_accept: " đã được xác nhận: "
   join_domain_success: "Bạn đã tham gia miền thành công"

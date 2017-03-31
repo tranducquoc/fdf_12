@@ -4,6 +4,13 @@ class ShopDomain < ApplicationRecord
 
   enum status: {pending: 0, approved: 1, rejected: 2}
 
+  scope :select_all_shop_by_domain, ->(user_domain_id, shop_id) do
+    select("id, domain_id, shop_id, status")
+      .where("domain_id = ? and shop_id = ?", user_domain_id, shop_id)
+  end
+
+  scope :not_in_shop_domain, -> only_shop_domain {where.not domain_id: only_shop_domain}
+
   scope :by_domain, ->domain {where domain_id: domain.id}
   def create_event_request_shop user_id, shop_domain
     if shop_domain.pending?

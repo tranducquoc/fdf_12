@@ -646,3 +646,9 @@ text-small {
 .image-order-size {
   width: 90px !important;
 }
+
+@media screen and (max-width: 768px) {
+  .margin-left_domain {
+    margin-left: 10px !important;
+  }
+}

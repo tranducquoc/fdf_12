@@ -27,9 +27,10 @@ class Dashboard::ShopsController < BaseDashboardController
     @shop = @shop.decorate
     @products = @shop.products.page(params[:page])
       .per Settings.common.products_per_page
+    @products_all = @shop.products.all
     if @start_hour.present? and @end_hour.present?
       if compare_time_order @start_hour, @end_hour
-        @products.update_all status: :active, start_hour: @start_hour,
+        @products_all.update_all status: :active, start_hour: @start_hour,
           end_hour: @end_hour
         flash.now[:success] = t "dashboard.shops.show.update_success"
       else

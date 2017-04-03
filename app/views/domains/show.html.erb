@@ -31,10 +31,10 @@
   <div class="col-sm-12 top_home">
     <div class="col-sm-3">
       <div class="block-item-list block padding-0">
-        <h3 class="title padding-left-10">
+        <h3 class="title padding-left-10  margin-left_domain">
           <span><%= t "common.categories" %></span>
         </h3>
-        <div class="clearfix body">
+        <div class="clearfix body  margin-left_domain">
           <div class="category-list padding-top-0">
             <div class="<%= 'scroll' if @domains.size < Settings.max_content_scroll %>">
             <%= link_to products_path(domain_id: @domain.id),
@@ -58,7 +58,7 @@
           </div>
         </div>
         <div class="block-item-list block">
-          <h3 class="title">
+          <h3 class="title  margin-left_domain">
             <span><%= t "public_domain" %>(<%= @domains.size %>)</span>
           </h3>
           <div class="clearfix body">
@@ -114,7 +114,7 @@
       <% end %>
       <div class="row">
         <div class="col-md-12 row-title">
-          <h2 class="section_title">
+          <h2 class="section_title  margin-left_domain">
             <%= t "common.top_shops" %>
           </h2>
         </div>
@@ -130,7 +130,7 @@
 
       <div class="row">
         <div class="col-md-12 row-title">
-          <h2 class="section_title">
+          <h2 class="section_title  margin-left_domain">
             <%= t "common.top_products" %>
           </h2>
         </div>

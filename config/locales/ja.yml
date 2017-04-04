@@ -5,6 +5,7 @@ ja:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  order_manager_head: "歴史のオーダ"
   domain_manager_header: "ドメイン長"
   shop_not_activate: "店はアクティビティがありません!"
   order_confirm_accept: " 確認されている: "

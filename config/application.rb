@@ -29,5 +29,6 @@ module Fdf12
     config.active_job.queue_adapter = :delayed_job
     config.i18n.default_locale = :vi
     config.i18n.available_locales = [:vi, :en, :ja]
+    config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/deploy"
   end
 end

@@ -41,6 +41,7 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  order_manager_header: "Lịch sử đặt hàng"
   domain_manager_header: "Quản lý miền"
   shop_not_activate: "Shop không hoạt động!"
   order_confirm_accept: " đã được xác nhận: "

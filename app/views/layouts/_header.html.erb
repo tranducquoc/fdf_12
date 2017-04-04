@@ -166,7 +166,7 @@
               </a>
               <ul class="dropdown-menu" role="menu"
               aria-labelledby="basic-nav-dropdown">
-                <li role="presentation" class="">
+                <li role="presentation">
                   <% if @domain.present? %>
                     <%= link_to user_path(current_user,
                       domain_id: @domain.id) do %>
@@ -183,7 +183,7 @@
                 </li>
                 <li role="separator" class="divider"></li>
                 <li role="separator" class="divider"></li>
-                <li role="presentation" class="">
+                <li role="presentation">
                   <% if @domain.present? %>
                     <%= link_to domain_dashboard_shops_path(@domain) do %>
                       <i class="fa fa-shopping-bag"></i>
@@ -197,7 +197,7 @@
                   <% end %>
                 </li>
                 <li role="separator" class="divider"></li>
-                <li role="presentation" class="">
+                <li role="presentation">
                   <% if @domain.present? %>
                     <%= link_to domains_path(domain_id: @domain.id) do %>
                       <i class="fa fa-flag-o"></i>
@@ -210,9 +210,16 @@
                     <% end %>
                   <% end %>
                 </li>
+                <li role="separator" class="divider"></li>
+                <li role="presentation">
+                  <% if @domain.present? %>
+                    <a href="/orders/#"><i class="fa fa-shopping-cart"></i>
+                      <span><%= t "order_manager_header" %></span></a>
+                  <% end %>
+                </li>
                 <% if current_user.shops.any? %>
                   <li role="separator" class="divider"></li>
-                  <li role="presentation" class="">
+                  <li role="presentation">
                     <% if @domain.present? %>
                       <%= link_to domain_dashboard_path(@domain) do %>
                         <i class="fa fa-bar-chart"></i>
@@ -227,14 +234,14 @@
                   </li>
                 <% end %>
                 <li role="separator" class="divider"></li>
-                <li role="presentation" class="">
+                <li role="presentation">
                   <a role="menuitem" href="#" tabindex="-1">
                     <i class="fa fa-ticket"></i>
                     <span><%= t "header.report_abuse" %></span>
                   </a>
                 </li>
                 <li role="separator" class="divider"></li>
-                <li role="presentation" class="">
+                <li role="presentation">
                   <% if @domain.present? %>
                     <%= link_to edit_user_registration_path(domain_id: @domain.id) do %>
                       <i class="fa fa-cog"></i>
@@ -247,7 +254,7 @@
                     <% end %>
                   <% end %>
                 </li>
-                <li role="presentation" class="">
+                <li role="presentation">
                   <%= link_to destroy_user_session_path, method: :delete do %>
                     <i class="fa fa-sign-out"></i>
                     <span><%= t "header.logout" %></span>

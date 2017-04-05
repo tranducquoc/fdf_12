@@ -5,7 +5,7 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
-  order_manager_head: "Order history"
+  order_manager_header: "Order history"
   domain_manager_header: "Domain management"
   shop_not_activate: "Shop does not work!"
   order_confirm_accept: " has been confirmed: "

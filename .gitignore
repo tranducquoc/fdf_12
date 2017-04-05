@@ -51,7 +51,6 @@ build-iPhoneSimulator/
 .rvmrc
 
 /config/database.yml
-/public/javascripts/translations.js
 .DS_Store
 
 config/settings.local.yml
@@ -63,3 +62,4 @@ config/environments/*.local.yml
 /config/application.yml
 /.idea/
 /public/javascripts/translations.js
+/public/deploy/

@@ -11,6 +11,8 @@ class ShopDomain < ApplicationRecord
 
   scope :not_in_shop_domain, -> only_shop_domain {where.not domain_id: only_shop_domain}
 
+  scope :list_shop_domains, -> domain {where domain_id: domain}
+
   scope :by_domain, ->domain {where domain_id: domain.id}
   def create_event_request_shop user_id, shop_domain
     if shop_domain.pending?

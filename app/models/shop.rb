@@ -60,6 +60,8 @@ class Shop < ApplicationRecord
       ShopDomain.statuses[:approved]
   end
 
+  scope :list_shops, -> ids {where id: ids}
+
   def is_owner? user
     owner == user
   end

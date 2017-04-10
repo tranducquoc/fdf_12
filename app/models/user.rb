@@ -40,6 +40,7 @@ class User < ApplicationRecord
   scope :by_date_newest, ->{order created_at: :desc}
   scope :by_active, ->{where status: active}
   scope :of_ids, -> ids {where id: ids}
+  scope :list_all_users, -> ids {where id: ids}
 
   class << self
     def from_omniauth auth

@@ -8,7 +8,8 @@ class V1::OrdersProductAllController < V1::BaseController
       data_carts = cart_params
       if data_carts.present?
         count_order = Settings.count_order_start
-        OrderProductAllApiService.new(data_carts, count_order, data_orders).order_all_product
+        response_success t("api.success"),
+          OrderProductAllApiService.new(data_carts, count_order, data_orders).order_all_product
       else
         response_not_found t "api.error_orders_list_not_found"
       end

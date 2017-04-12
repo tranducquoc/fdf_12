@@ -13,8 +13,7 @@ class Event < ApplicationRecord
     when Shop.name
       check_admin_accept_shop_request_status
     when Product.name
-      "#{eventable.name} #{eventable_type} #{I18n.t "notification.product"}
-        :#{message.upcase}"
+      "#{I18n.t "products"} #{eventable.name} #{I18n.t "notification.product"}"
     when Order.name
       order_shop_event_user
     when OrderProduct.name
@@ -241,17 +240,17 @@ class Event < ApplicationRecord
   def check_admin_accept_shop_request_status
     case true
     when self.message == Settings.request_status.new_shop
-      "#{eventable_type} #{eventable.name}  #{I18n.t "admin_need_accept_shop"}"
+      "#{eventable_type} #{eventable.name} #{I18n.t "admin_need_accept_shop"}"
     when self.message == Settings.request_status.pending
-      "#{eventable.name} #{eventable_type} #{I18n.t "request_status.pending"}"
+      "#{eventable_type} #{eventable.name} #{I18n.t "request_status.pending"}"
     when self.message == Settings.request_status.rejected
-      "#{eventable.name} #{eventable_type} #{I18n.t "request_status.rejected"}"
+      "#{eventable_type} #{eventable.name} #{I18n.t "request_status.rejected"}"
     when self.message == Settings.request_status.active
-      "#{eventable.name} #{eventable_type} #{I18n.t "request_status.active"}"
+      "#{eventable_type} #{eventable.name} #{I18n.t "request_status.active"}"
     when self.message == Settings.request_status.closed
-      "#{eventable.name} #{eventable_type} #{I18n.t "request_status.closed"}"
+      "#{eventable_type} #{eventable.name} #{I18n.t "request_status.closed"}"
     when self.message == Settings.request_status.block
-      "#{eventable.name} #{eventable_type} #{I18n.t "request_status.blocked"}"
+      "#{eventable_type} #{eventable.name} #{I18n.t "request_status.blocked"}"
     end
   end
 end

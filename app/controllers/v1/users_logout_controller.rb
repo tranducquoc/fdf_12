@@ -1,6 +1,6 @@
 class V1::UsersLogoutController < V1::BaseController
   def logout
-    user = User.find_by_authentication_token params[:user_token]
+    user = User.find_by_authentication_token request.headers["X-User-Token"]
     if user.present?
       user.update_attributes device_id: nil
       user.add_authentication_token

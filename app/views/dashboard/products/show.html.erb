@@ -1,17 +1,19 @@
 <div class="container">
-  <div class="panel panel-default">
-    <div class="panel-body"><h2 class="margin-zeroc"><%= @product.name %></h2></div>
-    <table class="table table-bordered">
-      <thead>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4 class="margin-zeroc"><strong><%= @product.name %></strong></h4></div>
+    <div class="panel-body">
+      <table class="table table-bordered">
+        <thead>
         <tr>
           <th><%= t "dashboard.product.show.name" %></th>
           <th><%= t "dashboard.product.show.quantity" %></th>
           <th><%= t "dashboard.product.show.price" %></th>
           <th><%= t "dashboard.product.show.total" %></th>
         </tr>
-      </thead>
-      <% @order_products.each do |order| %>
-        <tbody>
+        </thead>
+        <% @order_products.each do |order| %>
+          <tbody>
           <tr>
             <td>
               <%= order.user_name %>
@@ -24,11 +26,12 @@
             </td>
             <td>
               <strong><%= total_price(@product.price, order.quantity).to_i %>
-              <%= t "cart.vnd" %></strong>
+                <%= t "cart.vnd" %></strong>
             </td>
           </tr>
-        </tbody>
-      <% end %>
-    </table>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>

@@ -45,7 +45,7 @@
                 <% if @domain.present? %>
                   <div>
                     <i class="<%= domain_icon @domain %>"></i>
-                      <span class="user-title">
+                      <span class="user-title" title="<%= @domain.name %>">
                         <%= truncate(@domain.name,
                           length: Settings.max_user_name) %>
                       <b class="caret"></b>

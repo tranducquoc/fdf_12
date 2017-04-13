@@ -25,7 +25,7 @@
               placeholder: t("time.formats.date_format") %>
           </div>
           <div class="col-md-2">
-              <%= submit_tag t(".btn_search"), class: "btn btn-primary" %>
+            <%= submit_tag t(".btn_search"), class: "btn btn-primary" %>
           </div>
         <% end %>
       </div>
@@ -46,14 +46,14 @@
         <div class="panel-group">
           <% if @order_products_done.present? %>
             <%= render "order_product", order_products: @order_products_done %>
+            <p>
+              <%= t("download") %>
+              <%= link_to t("csv"), dashboard_shop_order_managers_path(@shop.id, format: "csv") %> |
+              <%= link_to t("excel"), dashboard_shop_order_managers_path(@shop.id, format: "xls") %>
+            </p>
           <% else %>
             <span class="text-danger"><%= t ".not_products" %></span>
           <% end %>
-          <p>
-            <%= t("download") %>
-            <%= link_to t("csv"), dashboard_shop_order_managers_path(@shop.id, format: "csv") %> |
-            <%= link_to t("excel"), dashboard_shop_order_managers_path(@shop.id, format: "xls") %>
-          </p>
         </div>
       </div>
     </div>
@@ -62,6 +62,11 @@
         <div class="panel-group">
           <% if @order_products_reject.present? %>
             <%= render "order_product", order_products: @order_products_reject %>
+            <p>
+              <%= t("download") %>
+              <%= link_to t("csv"), dashboard_shop_order_managers_path(@shop.id, format: "csv") %> |
+              <%= link_to t("excel"), dashboard_shop_order_managers_path(@shop.id, format: "xls") %>
+            </p>
           <% else %>
             <span class="text-danger"><%= t ".not_products" %></span>
           <% end %>

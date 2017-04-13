@@ -67,8 +67,8 @@
                 <div class="<%= 'scroll' if @domains.size < Settings.max_content_scroll %>">
                 <% @domains.each do |domain| %>
                   <%= link_to domain_path(domain),
-                    class: "btn btn-default col-lg-6 col-md-12 active" do %>
-                    <span><%= domain.name %></span>
+                    class: "btn btn-default col-md-6 col-md-12 active margin-btnl" do %>
+                    <span title="<%= domain.name %>"><%= truncate(domain.name, length: Settings.max_len) %></span>
                   <% end %>
                 <% end %>
                 </div>

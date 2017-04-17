@@ -213,12 +213,6 @@
                   <% end %>
                 </li>
                 <li role="separator" class="divider"></li>
-                <li role="presentation">
-                  <% if @domain.present? %>
-                    <a href="/orders/#"><i class="fa fa-shopping-cart"></i>
-                      <span><%= t "order_manager_header" %></span></a>
-                  <% end %>
-                </li>
                 <% if current_user.shops.any? %>
                   <li role="separator" class="divider"></li>
                   <li role="presentation">

@@ -4,37 +4,37 @@ namespace :fdf_db do
   end
   task create_user: :environment do
     User.create!(
-      name: "Tran Duc Quoc",
-      email: "tran.duc.quoc@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      name: "Dang Thi My Dung",
+      email: "dang.thi.my.dung@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
 
     User.create!(
-      name: "Do Thi Diem Thao",
-      email: "do.thi.diem.thao@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      name: "Nguyen Thi Luong Duyen",
+      email: "nguyen.thi.luong.duyen@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
 
     User.create!(
-      name: "Nguyen Van Tran Anh",
-      email: "nguyen.van.tran.anh@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      name: "Pham Thi Ngoc Quynh",
+      email: "pham.thi.ngoc.quynh@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
 
     User.create!(
-      name: "Pham Van Chien",
-      email: "pham.van.chien@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      name: "Pham Xuan Vu",
+      email: "pham.xuan.vu@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -42,8 +42,8 @@ namespace :fdf_db do
     User.create!(
       name: "Ta Duy Anh",
       email: "ta.duy.anh@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -51,8 +51,8 @@ namespace :fdf_db do
     User.create!(
       name: "Hoang Nhac Trung",
       email: "hoang.nhac.trung@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -60,8 +60,8 @@ namespace :fdf_db do
     User.create!(
       name: "Yushi Fukagawa",
       email: "yushi.fukagawa@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -69,8 +69,8 @@ namespace :fdf_db do
     User.create!(
       name: "Vu Xuan Dung",
       email: "vu.xuan.dung@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -78,8 +78,8 @@ namespace :fdf_db do
     User.create!(
       name: "Nguyen Xuan Son",
       email: "nguyen.xuan.son@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -87,8 +87,8 @@ namespace :fdf_db do
     User.create!(
       name: "Nguyen Ngoc Tuan",
       email: "nguyen.ngoc.tuan@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -96,8 +96,8 @@ namespace :fdf_db do
     User.create!(
       name: "Nguyen Thi Minh Ngoc",
       email: "nguyen.thi.minh.ngoc@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -105,8 +105,8 @@ namespace :fdf_db do
     User.create!(
       name: "Tran Van Tan",
       email: "tran.van.tan@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -114,8 +114,8 @@ namespace :fdf_db do
     User.create!(
       name: "Dao Tri Vu",
       email: "dao.tri.vu@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -123,8 +123,8 @@ namespace :fdf_db do
     User.create!(
       name: "Ta Minh Thanh",
       email: "ta.minh.thanh@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -132,8 +132,8 @@ namespace :fdf_db do
     User.create!(
       name: "Chu Anh Tuan",
       email: "chu.anh.tuan@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -141,8 +141,8 @@ namespace :fdf_db do
     User.create!(
       name: "Nguyen Huu Thai Binh",
       email: "nguyen.huu.thai.binh@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -150,8 +150,8 @@ namespace :fdf_db do
     User.create!(
       name: "Hiroaki Ishida",
       email: "hiroaki.ishida@framgia.com",
-      password: "123456",
-      password_confirmation: "123456",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -170,8 +170,8 @@ namespace :fdf_db do
   task create_admin: :environment do
     Admin.create!(
       email: "forder.info@gmail.com",
-      password: "123456",
-      password_confirmation: "123456"
+      password: "Aa@123",
+      password_confirmation: "Aa@123"
     )
   end
 
@@ -430,7 +430,7 @@ namespace :fdf_db do
       status: 1,
       cover_image: "image",
       avatar: File.open(Rails.root + "public/images/quansinhto.jpg"),
-      owner_id: 2
+      owner_id: 4
     )
 
     Shop.create!(
@@ -448,7 +448,7 @@ namespace :fdf_db do
       status: 1,
       cover_image: "image",
       avatar: File.open(Rails.root + "public/images/quandua.jpg"),
-      owner_id: 4
+      owner_id: 3
     )
 
     Shop.create!(
@@ -456,7 +456,7 @@ namespace :fdf_db do
       description: "Mì Quảng",
       cover_image: "image",
       avatar: File.open(Rails.root + "public/images/quanmiquang.jpg"),
-      owner_id: 4,
+      owner_id: 1,
       status: 1
     )
 
@@ -484,7 +484,7 @@ namespace :fdf_db do
       status: 1,
       cover_image: "image",
       avatar: File.open(Rails.root + "public/images/cuahangmyque.jpg"),
-      owner_id: 1
+      owner_id: 2
     )
 
     Shop.create!(
@@ -493,7 +493,7 @@ namespace :fdf_db do
       status: 1,
       cover_image: "image",
       avatar: File.open(Rails.root + "public/images/cuahangtauhu.jpg"),
-      owner_id: 1
+      owner_id: 2
     )
 
     Shop.create!(
@@ -521,6 +521,23 @@ namespace :fdf_db do
       cover_image: "image",
       avatar: File.open(Rails.root + "public/images/coco_shop.jpg"),
       owner_id: 18
+    )
+
+    Shop.create!( #13
+      name: "Trà sữa Gong Cha - 貢茶",
+      description: "Trà sữa, nước giải khát",
+      status: 1,
+      cover_image: "image",
+      avatar: File.open(Rails.root + "public/images/cuahangtrasuagongcha.jpg"),
+      owner_id: 1
+    )
+    Shop.create!( #14
+      name: "Trà sữa BoBaPop",
+      description: "Trà sữa, nước giải khát",
+      status: 1,
+      cover_image: "image",
+      avatar: File.open(Rails.root + "public/images/cuahangtrasuabobapop.jpg"),
+      owner_id: 1
     )
   end
 
@@ -565,7 +582,7 @@ namespace :fdf_db do
       name: "Bún thịt nướng"
     )
 
-    Category.create!(
+    Category.create!( #11
       name: "Trà sữa"
     )
 
@@ -598,8 +615,8 @@ namespace :fdf_db do
       name: "Cơm Sườn",
       price: 22000,
       description: "Cơm Sườn",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
       image: File.open(Rails.root + "public/images/comsuon.jpg")
     )
 
@@ -611,8 +628,8 @@ namespace :fdf_db do
       name: "Cơm Xíu Mại",
       price: 22000,
       description: "Cơm Xíu Mại",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
       image: File.open(Rails.root + "public/images/comxiumai.jpg")
     )
 
@@ -624,8 +641,8 @@ namespace :fdf_db do
       name: "Cơm Gà Kho",
       price: 22000,
       description: "Cơm Gà Kho",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
       image: File.open(Rails.root + "public/images/comgakho.jpg")
     )
 
@@ -637,8 +654,8 @@ namespace :fdf_db do
       name: "Cơm Thịt Kho Trứng",
       price: 22000,
       description: "Cơm Thịt Kho Trứng",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
       image: File.open(Rails.root + "public/images/comthitkhotrung.jpg")
     )
 
@@ -650,8 +667,8 @@ namespace :fdf_db do
       name: "Cơm Thịt Kho Tôm",
       price: 22000,
       description: "Cơm Thịt Kho Tôm",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
       image: File.open(Rails.root + "public/images/comthitkhotom.jpg")
     )
 
@@ -663,8 +680,8 @@ namespace :fdf_db do
       name: "Cơm Cá Sốt Cà",
       price: 22000,
       description: "Cơm Cá Sốt Cà",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
       image: File.open(Rails.root + "public/images/comcasotca.jpg")
     )
 
@@ -676,8 +693,8 @@ namespace :fdf_db do
       name: "Cơm Sườn Non",
       price: 24000,
       description: "Cơm Sườn Non",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
       image: File.open(Rails.root + "public/images/comsuonnon.jpg")
     )
 
@@ -689,8 +706,8 @@ namespace :fdf_db do
       name: "Cơm Gà Đùi",
       price: 24000,
       description: "Cơm Gà Đùi",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
       image: File.open(Rails.root + "public/images/comgadui.jpg")
     )
 
@@ -702,8 +719,8 @@ namespace :fdf_db do
       name: "Cơm Đậu Nhồi Thịt",
       price: 20000,
       description: "Cơm Đậu Nhồi Thịt",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
       image: File.open(Rails.root + "public/images/comdaunhoithit.jpg")
     )
 
@@ -715,8 +732,8 @@ namespace :fdf_db do
       name: "Cơm Mực Nhồi Thịt",
       price: 24000,
       description: "Cơm Mực Nhồi Thịt",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
       image: File.open(Rails.root + "public/images/commucnhoithit.jpg")
     )
 
@@ -728,8 +745,8 @@ namespace :fdf_db do
       name: "Cơm Chim Cút Roty",
       price: 24000,
       description: "Cơm Chim Cút Roty",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
       image: File.open(Rails.root + "public/images/comchimcutroty.jpg")
     )
 
@@ -741,8 +758,8 @@ namespace :fdf_db do
       name: "Cơm Thịt Heo Chiên",
       price: 22000,
       description: "Cơm Thịt Heo Chiên",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
       image: File.open(Rails.root + "public/images/comthitheochien.jpg")
     )
 
@@ -754,8 +771,8 @@ namespace :fdf_db do
       name: "Canh Khổ Qua",
       price: 5000,
       description: "Canh Khổ Qua",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "10:00:00",
+      end_hour: "11:00:00",
       image: File.open(Rails.root + "public/images/canhkhoqua.jpg")
     )
 
@@ -767,8 +784,8 @@ namespace :fdf_db do
       name: "Chè Thái Có Sầu Riêng",
       price: 20000,
       description: "Chè Thái Có Sầu Riêng",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/chethaicosaurieng.jpg")
     )
 
@@ -780,8 +797,8 @@ namespace :fdf_db do
       name: "Chè Thái Không Sầu Riêng",
       price: 16000,
       description: "Chè Thái Không Sầu Riêng",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/chethaikhongsaurieng.jpg")
     )
 
@@ -793,8 +810,8 @@ namespace :fdf_db do
       name: "Đậu Hũ Sầu Riêng",
       price: 18000,
       description: "Đậu Hũ Sầu Riêng",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/dauhusaurieng.jpg")
     )
 
@@ -806,8 +823,8 @@ namespace :fdf_db do
       name: "Đậu Hũ Sữa Dừa",
       price: 14000,
       description: "Đậu Hũ Sữa Dừa",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/dauhusuadua.jpg")
     )
 
@@ -819,8 +836,8 @@ namespace :fdf_db do
       name: "Đậu Hũ Socola",
       price: 14000,
       description: "Đậu Hũ Socola",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/dauhusocola.jpg")
     )
 
@@ -832,8 +849,8 @@ namespace :fdf_db do
       name: "Đậu Hũ Dâu",
       price: 14000,
       description: "Đậu Hũ Dâu",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/dauhudau.jpg")
     )
 
@@ -845,8 +862,8 @@ namespace :fdf_db do
       name: "Đậu Hũ Đậu Nành",
       price: 14000,
       description: "Đậu Hũ Đậu Nành",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/dauhudaunanh.jpg")
     )
 
@@ -858,8 +875,8 @@ namespace :fdf_db do
       name: "Flan",
       price: 10000,
       description: "Flan",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/flan.jpg")
     )
 
@@ -871,8 +888,8 @@ namespace :fdf_db do
       name: "Flan Sầu Riêng",
       price: 14000,
       description: "Flan Sầu Riêng",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/flansaurieng.jpg")
     )
 
@@ -884,8 +901,8 @@ namespace :fdf_db do
       name: "Flan Kem Tươi",
       price: 12000,
       description: "Flan Kem Tươi",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/flankemtuoi.jpg")
     )
 
@@ -897,8 +914,8 @@ namespace :fdf_db do
       name: "Flan Dâu",
       price: 10000,
       description: "Flan Dâu",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/flandau.jpg")
     )
 
@@ -910,8 +927,8 @@ namespace :fdf_db do
       name: "Flan Dừa",
       price: 10000,
       description: "Flan Dừa",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/flandua.jpg")
     )
 
@@ -923,8 +940,8 @@ namespace :fdf_db do
       name: "Yaourt Nếp Cẩm",
       price: 18000,
       description: "Yaourt Nếp Cẩm",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/yaourtnepcam.jpg")
     )
 
@@ -936,8 +953,8 @@ namespace :fdf_db do
       name: "Chè Đậu Xanh Đánh",
       price: 16000,
       description: "Chè Đậu Xanh Đánh",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/chedauxanhdanh.jpg")
     )
 
@@ -949,8 +966,8 @@ namespace :fdf_db do
       name: "Chè Khúc Bạch",
       price: 16000,
       description: "Chè Khúc Bạch",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/chekhucbach.jpg")
     )
 
@@ -962,8 +979,8 @@ namespace :fdf_db do
       name: "Sinh Tố",
       price: 15000,
       description: "Sinh Tố",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/sinhto.jpg")
     )
 
@@ -975,8 +992,8 @@ namespace :fdf_db do
       name: "Chè Xoa Xoa",
       price: 12000,
       description: "Chè Xoa Xoa",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/chexoaxoa.jpg")
     )
 
@@ -988,8 +1005,8 @@ namespace :fdf_db do
       name: "Chè Đậu Xanh",
       price: 10000,
       description: "Chè Đậu Xanh",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/chedauxanh.jpg")
     )
 
@@ -1001,8 +1018,8 @@ namespace :fdf_db do
       name: "Sâm Bổ Lượng",
       price: 15000,
       description: "Sâm Bổ Lượng",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/samboluong.jpg")
     )
 
@@ -1014,8 +1031,8 @@ namespace :fdf_db do
       name: "Chè Mít",
       price: 15000,
       description: "Chè Mít",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/chemit.jpg")
     )
 
@@ -1027,8 +1044,8 @@ namespace :fdf_db do
       name: "Dâu Xay Sữa Chua",
       price: 20000,
       description: "Dâu Xay Sữa Chua",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/dauxaysuachua.jpg")
     )
 
@@ -1040,8 +1057,8 @@ namespace :fdf_db do
       name: "Nước Chanh",
       price: 10000,
       description: "Nước Chanh",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/nuocchanh.jpg")
     )
 
@@ -1053,8 +1070,8 @@ namespace :fdf_db do
       name: "Cóc Ép",
       price: 12000,
       description: "Cóc Ép",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/cocep.jpg")
     )
 
@@ -1066,8 +1083,8 @@ namespace :fdf_db do
       name: "Cà Rốt Ép",
       price: 12000,
       description: "Cà Rốt Ép",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/carotep.jpg")
     )
 
@@ -1079,8 +1096,8 @@ namespace :fdf_db do
       name: "Thơm Ép",
       price: 12000,
       description: "Thơm Ép",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/thomep.jpg")
     )
 
@@ -1092,8 +1109,8 @@ namespace :fdf_db do
       name: "Chè Đậu Thập Cẩm",
       price: 12000,
       description: "Chè Đậu Thập Cẩm",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/chedauthapcam.jpg")
     )
 
@@ -1105,8 +1122,8 @@ namespace :fdf_db do
       name: "Chè Đậu Đỏ",
       price: 12000,
       description: "Chè Đậu Đỏ",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/chedaudo.jpg")
     )
 
@@ -1118,8 +1135,8 @@ namespace :fdf_db do
       name: "Chanh Dây",
       price: 10000,
       description: "Chanh Dây",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/chanhday.jpg")
     )
 
@@ -1131,8 +1148,8 @@ namespace :fdf_db do
       name: "Sinh Tố Bơ",
       price: 30000,
       description: "Sinh Tố Bơ",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/sinhtobo.jpg")
     )
 
@@ -1144,8 +1161,8 @@ namespace :fdf_db do
       name: "Nước Cam",
       price: 20000,
       description: "Nước Cam",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/nuoccam.jpg")
     )
 
@@ -1157,8 +1174,8 @@ namespace :fdf_db do
       name: "Sinh Tố Mãng Cầu",
       price: 20000,
       description: "Sinh Tố Mãng Cầu",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/sinhtomangcau.jpg")
     )
 
@@ -1170,8 +1187,8 @@ namespace :fdf_db do
       name: "Dừa Bến Tre",
       price: 22000,
       description: "Dừa Bến Tre",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/dua.jpg")
     )
 
@@ -1183,8 +1200,8 @@ namespace :fdf_db do
       name: "Rau Câu Trái Dừa",
       price: 30000,
       description: "Rau Câu Trái Dừa",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/raucautraidua.jpg")
     )
 
@@ -1196,8 +1213,8 @@ namespace :fdf_db do
       name: "Rau Câu Flan Trái Dừa",
       price: 33000,
       description: "Rau Câu Flan Trái Dừa",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/raucauflandua.jpg")
     )
 
@@ -1209,8 +1226,8 @@ namespace :fdf_db do
       name: "Yaourt Dừa",
       price: 15000,
       description: "Yaourt Dừa",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/yaourtdua.jpg")
     )
 
@@ -1222,8 +1239,8 @@ namespace :fdf_db do
       name: "Yaourt Trái Dừa",
       price: 45000,
       description: "Yaourt Trái Dừa",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/yaourttraidua.jpg")
     )
 
@@ -1235,8 +1252,8 @@ namespace :fdf_db do
       name: "Yaourt Dừa Trái Cây",
       price: 20000,
       description: "Yaourt Dừa Trái Cây",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/yaourtduatraicay.jpg")
     )
 
@@ -1248,8 +1265,8 @@ namespace :fdf_db do
       name: "Yaourt Bơ + Sầu Riêng",
       price: 25000,
       description: "Yaourt Bơ + Sầu Riêng",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/yaourtbosaurieng.jpg")
     )
 
@@ -1261,8 +1278,8 @@ namespace :fdf_db do
       name: "Mít Sữa Dừa",
       price: 20000,
       description: "Mít Sữa Dừa",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/mitsuadua.jpg")
     )
 
@@ -1274,8 +1291,8 @@ namespace :fdf_db do
       name: "Mít Sữa Dừa Sầu Riêng",
       price: 25000,
       description: "Mít Sữa Dừa Sầu Riêng",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/mitsuaduasaurieng.jpg")
     )
 
@@ -1287,8 +1304,8 @@ namespace :fdf_db do
       name: "Mì Quảng Ếch",
       price: 30000,
       description: "Mì Quảng Ếch",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/miquangech.jpg")
     )
 
@@ -1300,8 +1317,8 @@ namespace :fdf_db do
       name: "Mì Quảng Lươn",
       price: 30000,
       description: "Mì Quảng Lươn",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/miquangluon.jpg")
     )
 
@@ -1313,8 +1330,8 @@ namespace :fdf_db do
       name: "Mì Quảng Sườn",
       price: 25000,
       description: "Mì Quảng Sườn",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/miquangsuon.jpg")
     )
 
@@ -1326,8 +1343,8 @@ namespace :fdf_db do
       name: "Mì Quảng Bò",
       price: 20000,
       description: "Mì Quảng Bò",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/miquangbo.jpg")
     )
 
@@ -1339,8 +1356,8 @@ namespace :fdf_db do
       name: "Mì Quảng Gà",
       price: 20000,
       description: "Mì Quảng Gà",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/miquangga.jpg")
     )
 
@@ -1352,8 +1369,8 @@ namespace :fdf_db do
       name: "Mì Quảng Cá Lóc",
       price: 20000,
       description: "Mì Quảng Cá Lóc",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/miquangcaloc.jpg")
     )
 
@@ -1365,8 +1382,8 @@ namespace :fdf_db do
       name: "Sữa chua-15",
       price: 15000,
       description: "Sữa chua-15",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/suachua.jpg")
     )
 
@@ -1378,8 +1395,8 @@ namespace :fdf_db do
       name: "Sữa chua-20",
       price: 20000,
       description: "Sữa chua-20",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/suachua.jpg")
     )
 
@@ -1391,8 +1408,8 @@ namespace :fdf_db do
       name: "Nước sấu-15",
       price: 15000,
       description: "Nước sấu-15",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/nuocsau.jpg")
     )
 
@@ -1404,8 +1421,8 @@ namespace :fdf_db do
       name: "Nếp cẩm-20",
       price: 20000,
       description: "Nếp cẩm-20",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/nepcam.jpg")
     )
 
@@ -1417,8 +1434,8 @@ namespace :fdf_db do
       name: "Nếp cẩm-15",
       price: 15000,
       description: "Nếp cẩm-15",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/nepcam.jpg")
     )
 
@@ -1430,8 +1447,8 @@ namespace :fdf_db do
       name: "Khoai lang tẩm mật ong chiên",
       price: 30000,
       description: "Khoai lang tẩm mật ong chiên",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/khoailang.jpg")
     )
 
@@ -1443,8 +1460,8 @@ namespace :fdf_db do
       name: "Nem chua rán nhỏ",
       price: 30000,
       description: "Nem chua rán nhỏ",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/nemchua.jpg")
     )
 
@@ -1456,8 +1473,8 @@ namespace :fdf_db do
       name: "Nem chua rán lớn",
       price: 50000,
       description: "Nem chua rán lớn",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/nemchua.jpg")
     )
 
@@ -1469,8 +1486,8 @@ namespace :fdf_db do
       name: "Nước mơ",
       price: 15000,
       description: "Nước mơ",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/nuocmo.jpg")
     )
 
@@ -1483,8 +1500,8 @@ namespace :fdf_db do
       name: "Phin Sữa Đá",
       price: 29000,
       description: "Phin Sữa Đá",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/phinsuada.jpg")
     )
 
@@ -1496,8 +1513,8 @@ namespace :fdf_db do
       name: "Cacao Nóng",
       price: 54000,
       description: "Cacao Nóng",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/cacaonong.jpg")
     )
 
@@ -1509,8 +1526,8 @@ namespace :fdf_db do
       name: "Trà Sen Vàng",
       price: 49000,
       description: "Trà Sen Vàng",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/trasenvang.jpg")
     )
 
@@ -1522,8 +1539,8 @@ namespace :fdf_db do
       name: "Trà Thanh Đào",
       price: 49000,
       description: "Trà Thanh Đào",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/trathanhdao.jpg")
     )
 
@@ -1535,8 +1552,8 @@ namespace :fdf_db do
       name: "Nâu nóng",
       price: 29000,
       description: "Nâu nóng",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/naunong.jpg")
     )
 
@@ -1548,8 +1565,8 @@ namespace :fdf_db do
       name: "Freeze Matcha",
       price: 59000,
       description: "Freeze Matcha",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/freeze.jpg")
     )
 
@@ -1561,8 +1578,8 @@ namespace :fdf_db do
       name: "Trà Thạch Đào",
       price: 49000,
       description: "Trà Thạch Đào",
-      start_hour: "08:00:00",
-      end_hour: "20:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/trathachdao.jpg")
     )
 
@@ -1587,8 +1604,8 @@ namespace :fdf_db do
       name: "Tàu hủ rau câu",
       price: 12000,
       description: "Tàu hủ rau câu",
-      start_hour: "10:00:00",
-      end_hour: "11:00:00",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/tauhu.jpg")
     )
 
@@ -2957,5 +2974,365 @@ namespace :fdf_db do
       image: File.open(Rails.root + "public/images/nuoc_traxanh.jpg")
     )
 
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Trà xanh kem sữa",
+      price: 43000,
+      description: "Trà xanh kem sữa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanhkemsua.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Trà sữa trà xanh",
+      price: 40000,
+      description: "Trà sữa trà xanh",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasuatraxanh.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Trà Oolong kem sữa",
+      price: 47000,
+      description: "Trà Oolong kem sữa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traoolongkemsua.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Trà sữa khoai môn",
+      price: 47000,
+      description: "Trà sữa khoai môn",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasuakhoaimon.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Trà Alisan kem sữa",
+      price: 47000,
+      description: "Trà Alisan kem sữa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traalisankemsua.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Trà sữa trân châu đen",
+      price: 43000,
+      description: "Trà sữa trân châu đen",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasuatranchauden.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Trà sữa Hokkaido",
+      price: 43000,
+      description: "Trà sữa Hokkaido",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasuahokkaido.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Trà early grey kem sữa",
+      price: 47000,
+      description: "Trà early grey kem sữa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traearlygreykemsua.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Trà sữa pudding Trứng đậu đỏ",
+      price: 47000,
+      description: "Trà sữa pudding Trứng đậu đỏ",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasuapuddingtrungdaudo.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Trà xanh đào",
+      price: 40000,
+      description: "Trà xanh đào",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanhdao.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Trà xanh chanh dây",
+      price: 40000,
+      description: "Trà xanh chanh dây",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanhchanhday.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Trà Alisan xoài",
+      price: 43000,
+      description: "Trà Alisan xoài",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traalisanxoai.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Đào hồng mận và hột é",
+      price: 43000,
+      description: "Đào hồng mận và hột é",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/daohongmanvahote.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Trà sữa Oolong đá xay",
+      price: 54000,
+      description: "Trà sữa Oolong đá xay",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasuaolongdaxay.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Xoài đá xay",
+      price: 54000,
+      description: "Xoài đá xay",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/xoaidaxay.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Socola đá xay",
+      price: 54000,
+      description: "Socola đá xay",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/socoladaxay.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Cà phê Gong Cha",
+      price: 54000,
+      description: "Cà phê Gong Cha",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/cafegongcha.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 13,
+      user_id: 1,
+      name: "Cà phê Gong Cha kem sữa",
+      price: 54000,
+      description: "Cà phê Gong Cha kem sữa",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/cafegongchakemsua.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 14,
+      user_id: 1,
+      name: "Trà xanh mật ong chanh tươi",
+      price: 29000,
+      description: "Trà xanh mật ong chanh tươi",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanhmatongchanhtuoi.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 14,
+      user_id: 1,
+      name: "Trà sữa alisan",
+      price: 29000,
+      description: "Trà sữa alisan",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasuaalisanbobapop.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 14,
+      user_id: 1,
+      name: "Trà quý phi",
+      price: 35000,
+      description: "Trà quý phi",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traquyphi.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 14,
+      user_id: 1,
+      name: "Trà sữa oolong trân châu",
+      price: 29000,
+      description: "Trà sữa oolong trân châu",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasuaolongtranchau.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 14,
+      user_id: 1,
+      name: "Trà sữa gạo nâu trân châu",
+      price: 29000,
+      description: "Trà sữa gạo nâu trân châu",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasuagaonautranchau.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 14,
+      user_id: 1,
+      name: "Trà sữa caramen",
+      price: 29000,
+      description: "Trà sữa caramen",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasuacaramen.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 14,
+      user_id: 1,
+      name: "Trà đào",
+      price: 35000,
+      description: "Trà đào",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/tradaobobapop.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 14,
+      user_id: 1,
+      name: "Trà sữa trân châu",
+      price: 26000,
+      description: "Trà sữa trân châu",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasuatranchauboba.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 14,
+      user_id: 1,
+      name: "Trà sữa coffe",
+      price: 26000,
+      description: "Trà sữa coffe",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasuacoffe.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 14,
+      user_id: 1,
+      name: "Trà sữa tươi",
+      price: 26000,
+      description: "Trà sữa tươi",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/trasuatuoi.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 14,
+      user_id: 1,
+      name: "Trà xanh Yakult đậm",
+      price: 35000,
+      description: "Trà xanh Yakult đậm",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanhyakultdam.jpg")
+    )
+    Product.create!(
+      category_id: 11,
+      status: 0,
+      shop_id: 14,
+      user_id: 1,
+      name: "Trà xanh nhật bản",
+      price: 38000,
+      description: "Trà xanh nhật bản",
+      start_hour: "14:00:00",
+      end_hour: "15:00:00",
+      image: File.open(Rails.root + "public/images/traxanhnhatban.jpg")
+    )
   end
 end

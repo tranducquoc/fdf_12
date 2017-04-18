@@ -34,7 +34,7 @@ class Dashboard::ShopsController < BaseDashboardController
           end_hour: @end_hour
         flash.now[:success] = t "dashboard.shops.show.update_success"
       else
-        flash.now[:danger] = t "dashboard.shops.show.update_faild"
+        flash.now[:danger] = t "dashboard.shops.show.update_fail"
       end
     end
   end

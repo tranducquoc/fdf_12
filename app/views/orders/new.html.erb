@@ -8,11 +8,11 @@
             <%= simple_form_for @order do |f| %>
               <% if @domain.present? %>
                 <%= link_to t("order_statistics.back"),
-                  domain_carts_path(@domain),
+                  domain_carts_path(@domain), method: :get,
                   class: "btn btn-primary defaut-position" %>
                 <%= link_to t("create_order"),
                   domain_orders_path(@domain, shop_id: @shop.id),
-                  method: :post, class: "btn btn-danger margin_order" %>
+                  method: :post, class: "btn btn-info margin_order" %>
               <% else %>
                 <%= link_to t("order_statistics.back"), carts_path,
                   class: "btn btn-primary defaut-position" %>

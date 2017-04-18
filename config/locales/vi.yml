@@ -341,8 +341,8 @@ vi:
       dashboard:
         create_product: "Tạo mới thất bại. Vui lòng thử lại!"
         edit_product: "Có lỗi xảy ra trong quá trình thay đổi!"
-        update_product: "Lỗi: Cập nhật thất bại!"
-        updated_shop: "Lỗi: Cập nhật thất bại!"
+        update_product: "Cập nhật thất bại!"
+        updated_shop: "Cập nhật thất bại!"
         delete_product: "Xóa không thành công!"
         order_product: "Sản phẩm đã được đặt hàng"
         add_product_failed: "Không thể thêm sản phẩm vào miền này"
@@ -843,3 +843,20 @@ vi:
     lb: "Đăng nhập"
   confirm_order: "Xác nhận đặt hàng"
   create_domain: "Tạo miền"
+  views:
+    pagination:
+      first: "&laquo; Đầu tiên"
+      last: "Cuối cùng &raquo;"
+      previous: "&lsaquo; Trước"
+      next: "Tiếp theo &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "Không tìm thấy %{entry_name}"
+          one: "Đang hiển thị <b>1</b> %{entry_name}"
+          other: "Đang hiển thị <b>tất cả %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Đang hiển thị %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> của <b>%{total}</b> trong tất cả"
+

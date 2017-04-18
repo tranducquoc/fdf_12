@@ -1,4 +1,5 @@
-<% if @domain == current_user.domains.first && !@domain.shops.present? %>
+<% if (@domain == current_user.domains.first && !@domain.shops.present?) ||
+  current_user.domains.size > Settings.order_increase %>
   <div class="block-item-list block">
     <h3 class="title">
       <span><%= t "public_domain" %>(<%= @domains.size %>)</span>

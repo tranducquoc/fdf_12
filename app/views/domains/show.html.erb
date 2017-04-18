@@ -1,5 +1,4 @@
-<% if (@domain == current_user.domains.first && !@domain.shops.present?) ||
-  current_user.domains.size > Settings.order_increase %>
+<% if params[:id][Settings.min_string..Settings.max_string] == Settings.user_domain_name %>
   <div class="block-item-list block">
     <h3 class="title">
       <span><%= t "public_domain" %>(<%= @domains.size %>)</span>

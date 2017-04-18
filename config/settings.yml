@@ -86,3 +86,6 @@ max_shop_name: 20
 max_shop_name_dash: 30
 count_order_start: -1
 max_len: 14
+min_string: 0
+max_string: 6
+user_domain_name: "ca-nhan"

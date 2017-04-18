@@ -9,10 +9,8 @@
       </div>
       <div class="row">
         <div class="col-md-8">
-          <%= link_to shop.owner do %>
             <%= t "livesearch.shop_owner", name: shop.owner_name,
               status: shop.status_text.camelize %>
-          <% end %>
         </div>
         <div class="col-md-4">
           <%= link_to "" do %>

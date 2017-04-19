@@ -33,15 +33,6 @@
       <div class="description quote", title="<%= shop.description %>"><p>
         <%= truncate(shop.description, length: Settings.max_description) %></p>
       </div>
-      <div>
-        <ul class="tags">
-          <% shop.all_tags.each do |tag| %>
-            <li>
-              <%= link_to tag.name, tag_path(tag), class: "tag" %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
     </div>
   </div>
 </div>

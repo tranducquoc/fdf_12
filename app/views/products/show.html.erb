@@ -11,11 +11,6 @@
     </div>
     <div class="fb-like" data-href="<%= request.original_url %>"
     data-layout="standard" data-action="like"></div>
-    <ul class="tags">
-      <% @product.tags.each do |tag| %>
-        <li><%= link_to tag.name, tag_path(tag), class: "tag" %></li>
-      <% end %>
-    </ul>
     <div class="a-divider--hidden"></div>
     <div class="bordered rounded bg-eb-white">
       <%= render "shared/comments", object: @product, comment: @comment,

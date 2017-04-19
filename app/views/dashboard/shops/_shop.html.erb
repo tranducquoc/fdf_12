@@ -14,17 +14,31 @@
   </div>
   <div class="col-md-8 shop_text">
     <div class="row shop-manager-margin-left-right ">
-      <h3 class="shop-name-small">
-        <% if shop.domains.present? && @domain.present? %>
-          <%= link_to shop.name, domain_dashboard_shop_path(@domain, shop) %>
-        <% else %>
-          <%= link_to shop.name, dashboard_shop_path(shop, domain_id: Settings.not_find) %>
-        <% end %>
-      </h3>
-      <%= render "shared/shop_status_label", shop: shop %>
-      <input id="shop-average-rating" type="number"
-        class="rating-loading star-rating" data-size="sm"
-        value="<%= shop.averate_rating %>">
+      <div>
+        <h3 class="shop-name-small">
+          <% if shop.domains.present? && @domain.present? %>
+            <%= link_to shop.name, domain_dashboard_shop_path(@domain, shop) %>
+          <% else %>
+            <%= link_to shop.name, dashboard_shop_path(shop, domain_id: Settings.not_find) %>
+          <% end %>
+        </h3><%= render "shared/shop_status_label", shop: shop %>
+      </div>
+      <% if shop.status_on_off == Settings.shop_status_off %>
+        <label class="switch">
+          <%= check_box_tag "shops[]", shop.id, false, class: "checkbox",
+            id: "checkbox_#{shop.id}", data:{remote: true} %>
+          <div class="slider round"></div>
+        </label>
+      <% else %>
+        <label class="switch">
+          <%= check_box_tag "shops[]", shop.id, true, class: "checkbox", id: "checkbox_#{shop.id}",
+            data:{remote: true} %>
+          <div class="slider round"></div>
+        </label>
+      <% end %>
+      <div class="description-margin-bot checkbox_<%= shop.id %>">
+        <%= render "dashboard/shops/shop_label_status", shop: shop %>
+      </div>
       <div class="description quote", title="<%= shop.description %>"><p>
         <%= truncate(shop.description, length: Settings.max_description) %></p>
       </div>
@@ -33,7 +47,7 @@
   <div class="row margin-top-50">
     <div class="col-lg-12">
       <table id="domain-table"
-        class="table table-striped table-hovertable-bordered text-center">
+      class="table table-striped table-hovertable-bordered text-center">
         <thead>
         <tr>
           <th><%= t "request_shop.domain_name" %></th>
@@ -47,48 +61,48 @@
         </tr>
         </thead>
         <tbody>
-          <% @current_user.domains.includes(:shops).each do |domain|  %>
-            <tr>
-              <td><%= domain.name %></td>
-              <td><%= domain.users.size %></td>
-              <td><%= domain.shop_domains.approved.size %></td>
-              <td><%= domain.products.size %></td>
-              <td>
-                <% if domain.shops.include? shop %>
-                  <%= status_request_shop shop.request_status domain %>
-                <% end %>
-              </td>
-              <td>
-                <% shop_domain = ShopDomain.find_by shop_id: shop.id,
-                  domain_id: domain.id %>
-                <% if !domain.shops.include? shop %>
-                  <% if domain.owner? current_user.id %>
-                    <%= link_to t("request_shop.request_to_domain"),
-                      shop_domains_path(shop_id: shop.id,
+        <% @current_user.domains.includes(:shops).each do |domain|  %>
+          <tr>
+            <td><%= domain.name %></td>
+            <td><%= domain.users.size %></td>
+            <td><%= domain.shop_domains.approved.size %></td>
+            <td><%= domain.products.size %></td>
+            <td>
+              <% if domain.shops.include? shop %>
+                <%= status_request_shop shop.request_status domain %>
+              <% end %>
+            </td>
+            <td>
+              <% shop_domain = ShopDomain.find_by shop_id: shop.id,
+                domain_id: domain.id %>
+              <% if !domain.shops.include? shop %>
+                <% if domain.owner? current_user.id %>
+                  <%= link_to t("request_shop.request_to_domain"),
+                    shop_domains_path(shop_id: shop.id,
                       domain_id: domain.id, status: :approved), method: :post,
-                      class: "btn btn-info refresh" %>
-                  <% else %>
-                    <%= link_to t("request_shop.request_to_domain"),
-                      shop_domains_path(shop_id: shop.id,
-                      domain_id: domain.id, status: :pending), method: :post,
-                      class: "btn btn-info refresh"%>
-                  <% end %>
+                    class: "btn btn-info refresh" %>
                 <% else %>
-                  <% if shop.request_status(domain).rejected? %>
-                    <%= link_to t("request_shop.request_to_domain"),
-                      shop_domain_path(shop_domain, status: :pending), 
-                      method: :put, class: "btn btn-info refresh"%>
-                  <% else %>
-                    <%= link_to t("request_shop.cancel"),
-                      shop_domain_path(shop_domain,
-                      domain_id: domain.id, shop_id: shop.id), method: :delete,
-                      data: {confirm: t("common.delete_confirm")},
-                      class: "btn btn-danger" %>
-                  <% end %>
+                  <%= link_to t("request_shop.request_to_domain"),
+                    shop_domains_path(shop_id: shop.id,
+                      domain_id: domain.id, status: :pending), method: :post,
+                    class: "btn btn-info refresh"%>
                 <% end %>
-              </td>
-            </tr>
-          <% end %>
+              <% else %>
+                <% if shop.request_status(domain).rejected? %>
+                  <%= link_to t("request_shop.request_to_domain"),
+                    shop_domain_path(shop_domain, status: :pending),
+                    method: :put, class: "btn btn-info refresh"%>
+                <% else %>
+                  <%= link_to t("request_shop.cancel"),
+                    shop_domain_path(shop_domain,
+                      domain_id: domain.id, shop_id: shop.id), method: :delete,
+                    data: {confirm: t("common.delete_confirm")},
+                    class: "btn btn-danger" %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
         </tbody>
       </table>
     </div>

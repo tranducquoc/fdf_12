@@ -20,6 +20,13 @@ class DomainsController < ApplicationController
     @shops = Shop.includes(:tags).shop_in_domain(@domain.id).top_shops.decorate
     @shops_slide = Shop.shop_in_domain(@domain.id)
     @products = @domain.products.includes(:shop).top_products
+    shops = @shops_slide.select do |shop|
+      shop.status_on_off == Settings.shop_status_on
+    end
+    @products_shop = []
+    shops.each do |t|
+      @products_shop << t.products
+    end
     session[:domain_id] = @domain.id
     create_cart
     session[:cart_domain] = @cart_domain

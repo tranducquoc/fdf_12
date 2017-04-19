@@ -3,6 +3,8 @@ class Shop < ApplicationRecord
 
   ratyrate_rateable Settings.rate
 
+  after_update :check_status_shop
+
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
 
@@ -29,6 +31,8 @@ class Shop < ApplicationRecord
   has_many :request_shop_domains
 
   enum status: {pending: 0, active: 1, closed: 2, rejected: 3, blocked: 4}
+
+  enum status_on_off: {off: 0, on: 1}
 
   after_create :create_shop_manager, :send_notification_after_requested
   after_update :send_notification_after_confirmed
@@ -93,6 +97,11 @@ class Shop < ApplicationRecord
     end
   end
 
+  def create_event_close_shop
+    Event.create message: :shop_off,
+      user_id: owner_id, eventable_id: id, eventable_type: Shop.name
+  end
+
   private
   def create_shop_manager
     shop_managers.create user_id: owner_id
@@ -124,5 +133,21 @@ class Shop < ApplicationRecord
       Event.create message: self.status, user_id: owner_id,
         eventable_id: id, eventable_type: Shop.name
     end
+  end
+
+  def update_new_status_shop
+    if self.status_on_off == Settings.shop_status_on && self.openforever == Settings.checked_false
+      self.update_attributes status_on_off: :off
+      self.create_event_close_shop
+    end
+  end
+
+  def check_status_shop
+    delay(run_at: time_auto_close_shop.minutes.from_now)
+      .update_new_status_shop
+  end
+
+  def time_auto_close_shop
+    self.time_auto_close.hour * Settings.minute_constant + self.time_auto_close.min
   end
 end

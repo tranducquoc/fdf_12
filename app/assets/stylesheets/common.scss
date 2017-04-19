@@ -106,3 +106,9 @@
 .shop_not_activate {
   color: red;
 }
+
+.overlap-shop {
+  z-index: 1;
+  position: relative;
+  color: red;
+}

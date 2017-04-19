@@ -19,7 +19,10 @@
           <div class="row shop-basic-info">
             <h4 class="title">
               <%= @shop.name %>
-              <%= render "shared/shop_status_label", shop: @shop %>
+              <br>
+                <%= render "shared/shop_status_label", shop: @shop %>
+              <br>
+                <%= render "shared/shop_on_off", shop: @shop %>
             </h4>
             <div id="rate-star" class="col-xs-3">
               <%= rating_for @shop, Settings.rate, enable_half: true,

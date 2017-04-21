@@ -1,7 +1,7 @@
 <% provide :title, t("devise.user.forgot_password") %>
 <div class="devise">
   <div class="row">
-    <h2 class="text-center title">Forgot your password?</h2>
+    <h2 class="text-center title"> <%= t("devise.user.forgot_password") %></h2>
   </div>
 
   <div class="row">
@@ -16,7 +16,7 @@
         </div>
 
         <div class="actions text-center margin-top-10">
-          <%= f.submit "Send me reset password instructions", class: "btn btn-info" %>
+          <%= f.submit t "devise.user.reset_password", class: "btn btn-info" %>
         </div>
       <% end %>
       <%= render "users/shared/links" %>

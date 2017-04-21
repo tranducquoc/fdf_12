@@ -265,6 +265,12 @@ en:
       sign_out: "Sign out"
       update_info: "Update Information"
       forgot_password: "Forgot Password"
+      reset_password: "Reset Password"
+      change_pass: "Change your password"
+      new_password: "New password"
+      confirm_new_password: "Confirm new password"
+      change: "Change"
+      characters_minimum: "characters minimum"
   flash:
     success_message: "Success!"
     danger_message: "Failed!"

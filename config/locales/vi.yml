@@ -305,6 +305,12 @@ vi:
       sign_out: "Đăng xuất"
       update_info: "Cập nhật thông tin"
       forgot_password: "Quên mật khẩu"
+      reset_password: "Đặt lại mật khẩu"
+      change_pass: "Thay đổi mật khẩu"
+      new_password: "Mật khẩu mới"
+      confirm_new_password: "Xác nhận mật khẩu mới"
+      change: "Thay đổi"
+      characters_minimum: "Ký tự tối thiểu "
   flash:
     success_message: "Thành công!"
     danger_message: "Thất bại!"

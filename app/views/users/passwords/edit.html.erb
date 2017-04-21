@@ -1,5 +1,5 @@
 <div class="row">
-  <h2 class="text-center title">Change your password</h2>
+  <h2 class="text-center title"> <%= t "devise.user.change_pass" %></h2>
 </div>
 
 <div class="row">
@@ -9,20 +9,20 @@
       <%= f.hidden_field :reset_password_token %>
 
       <div class="field">
-        <%= f.label :password, "New password" %><br />
+        <%= f.label :password, t("devise.user.new_password") %><br />
         <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+          <em>(<%= @minimum_password_length %> <%= t "devise.user.characters_minimum" %>)</em><br />
         <% end %>
-        <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+        <%= f.password_field :password, autofocus: true, class: "form-control" %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation, "Confirm new password" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <%= f.label :password_confirmation, t("devise.user.confirm_new_password") %><br />
+        <%= f.password_field :password_confirmation, class: "form-control" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Change my password" %>
+      <div class="actions text-center">
+        <%= f.submit t("devise.user.change"), class: "btn btn-default" %>
       </div>
     <% end %>
 

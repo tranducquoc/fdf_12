@@ -262,6 +262,12 @@ ja:
       sign_out: "サインアウト"
       update_info: "アップデート情報"
       forgot_password: "パスワードを忘れました"
+      reset_password: "パスワードを再設定する"
+      change_pass: "パスワードを変更します"
+      new_password: "新しいパスワード"
+      confirm_new_password: "新しいパスワードの確認"
+      change: "変更"
+      characters_minimum: "最小文字数"
   flash:
     success_message: "成功する!"
     danger_message: "失敗!"

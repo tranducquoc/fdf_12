@@ -40,9 +40,10 @@
     </div>
     <%= link_to cart_path(product.id), remote: true,
       method: :put, class: "btn btn_add_to_cart btn-add",
-      disabled: Time.now.is_between_short_time?(product.start_hour, product.end_hour) do %>
-        <span class="glyphicon glyphicon-shopping-cart"></span>
-        <%= t "cart.add_to_card" %>
+      disabled: Time.now.is_between_short_time?(product.start_hour, product.end_hour) ||
+        !product.shop.active? || product.shop.status_on_off == Settings.shop_status_off do %>
+      <span class="glyphicon glyphicon-shopping-cart"></span>
+      <%= t "cart.add_to_card" %>
     <% end %>
   </div>
 </div>

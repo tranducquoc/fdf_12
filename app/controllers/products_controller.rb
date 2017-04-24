@@ -8,8 +8,18 @@ class ProductsController < ApplicationController
       @domain.products.includes(:shop)
     else
       Product.all.includes(:shop)
-    end.active.page(params[:page])
-      .per Settings.common.products_per_page
+    end
+
+    @shops_slide = Shop.shop_in_domain(@domain.id)
+    shops = @shops_slide.select do |shop|
+      shop.status_on_off == Settings.shop_status_on
+    end
+    products_shop = []
+    shops.each do |t|
+      products_shop << t.products
+    end
+    @products_shop = Kaminari.paginate_array(products_shop.flatten).page(
+      params[:page]).per(Settings.common.products_per_page)
   end
 
   def new

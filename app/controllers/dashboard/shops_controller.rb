@@ -48,24 +48,34 @@ class Dashboard::ShopsController < BaseDashboardController
   end
 
   def update
-    if !params[:shop].present?
-      flash[:danger] = t "choose_picture"
-      redirect_to dashboard_shop_path
-    else
-      if @shop.update_attributes shop_params
-        flash[:success] = t "flash.success.dashboard.updated_shop"
-        redirect_by_domain
+    respond_to do |format|
+      @shop_id = @shop.id
+      if params[:checked] == Settings.checked_true
+        @shop.update_attributes status_on_off: :on
       else
-        flash[:danger] = t "flash.danger.dashboard.updated_shop"
-        render :edit
+        @shop.update_attributes status_on_off: :off
       end
+      format.html do
+        if !params[:shop].present?
+          redirect_to dashboard_shop_path
+        else
+          if @shop.update_attributes shop_params
+            flash[:success] = t "flash.success.dashboard.updated_shop"
+            redirect_by_domain
+          else
+            flash[:danger] = t "flash.danger.dashboard.updated_shop"
+            render :edit
+          end
+        end
+      end
+      format.js
     end
   end
 
   private
   def shop_params
     params.require(:shop).permit :id, :name, :description,
-      :cover_image, :avatar, :time_auto_reject
+      :cover_image, :avatar, :time_auto_reject, :time_auto_close, :openforever
   end
 
   def load_params_update

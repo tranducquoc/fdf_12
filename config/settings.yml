@@ -82,10 +82,15 @@ feedback: "https://docs.google.com/forms/d/e/1FAIpQLSeWye6zJ8U7epz5W3G5MDZTT8YE5
 max_user_name: 8
 min_price: 0
 max_description: 22
-max_shop_name: 20
+max_shop_name: 17
 max_shop_name_dash: 30
 count_order_start: -1
 max_len: 14
 min_string: 0
 max_string: 6
 user_domain_name: "ca-nhan"
+shop_status_on: "on"
+shop_status_off: "off"
+checked_false: "false"
+checked_true: "true"
+shop_off: "shop_off"

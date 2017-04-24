@@ -11,7 +11,6 @@
             <%= image_tag shop.avatar.url, class: "top-shop" %>
           <% end %>
         <% end %>
-
       </div>
     </div>
     <div class="col-md-7 col-sm-7 col-xs-7">
@@ -19,17 +18,17 @@
         <h3 class="margin_top_5px">
           <% if @domain.present? %>
             <%= link_to truncate(shop.name, length: Settings.max_shop_name),
-              domain_shop_path(@domain, shop), 
+              domain_shop_path(@domain, shop),
               class: "tooltips", title: shop.name %>
+            <div><%= render "shared/shop_on_off", shop: shop %></div>
           <% else %>
             <%= link_to shop.name,domain_shop_path(shop, domain_id: "not_find") %>
           <% end %>
         </h3>
       </div>
-      <%= render "shared/shop_status_label", shop: shop %>
       <input id="shop-average-rating" type="number"
-        class="rating-loading star-rating" data-size="sm"
-        value=<%= shop.averate_rating %> >
+      class="rating-loading star-rating" data-size="sm"
+      value=<%= shop.averate_rating %> >
       <div class="description quote", title="<%= shop.description %>"><p>
         <%= truncate(shop.description, length: Settings.max_description) %></p>
       </div>

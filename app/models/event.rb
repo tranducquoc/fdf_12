@@ -12,6 +12,10 @@ class Event < ApplicationRecord
     case eventable_type
     when Shop.name
       check_admin_accept_shop_request_status
+      if message == Settings.shop_off
+        order_shop_event = Order.find_by id: eventable_id
+        "#{I18n.t "shop"} #{order_shop_event.shop.name} #{I18n.t "notifi_shop_auto_closed"}"
+      end
     when Product.name
       "#{I18n.t "products"} #{eventable.name} #{I18n.t "notification.product"}"
     when Order.name

@@ -23,13 +23,19 @@
         <h3 class="lead margin-zerob">
           <strong>
             <%= @product.name %>
-            <%= link_to cart_path(@product.id), remote: true,
-              method: :put, class: "btn btn_add_to_cart btn-add padding-left-for-button disabled",
-              disabled: Time.now.is_between_short_time?(@product.start_hour,
-                @product.end_hour) || !@product.shop.active? ||
-                @product.shop.status_on_off == Settings.shop_status_off do %>
-              <span class="glyphicon glyphicon-shopping-cart"></span>
-              <%= t "cart.add_to_card" %>
+            <% if Time.now.is_between_short_time?(@product.start_hour,
+              @product.end_hour) || !@product.shop.active? ||
+              @product.shop.status_on_off == Settings.shop_status_off %>
+              <%= link_to t("blank_link"), class: "btn btn_add_to_cart btn-add padding-left-for-button disabled" do %>
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+                <%= t "cart.add_to_card" %>
+              <% end %>
+            <% else %>
+              <%= link_to cart_path(@product.id), remote: true,
+                method: :put, class: "btn btn_add_to_cart btn-add padding-left-for-button" do %>
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+                <%= t "cart.add_to_card" %>
+              <% end %>
             <% end %>
           </strong>
         </h3>
@@ -37,13 +43,19 @@
         <h3 class="lead margin-zerob">
           <strong>
             <%= @product.name %>
-            <%= link_to cart_path(@product.id), remote: true,
-              method: :put, class: "btn btn_add_to_cart btn-add padding-left-for-button",
-              disabled: Time.now.is_between_short_time?(@product.start_hour,
-                @product.end_hour) || !@product.shop.active? ||
-                @product.shop.status_on_off == Settings.shop_status_off do %>
-              <span class="glyphicon glyphicon-shopping-cart"></span>
-              <%= t "cart.add_to_card" %>
+            <% if Time.now.is_between_short_time?(@product.start_hour,
+              @product.end_hour) || !@product.shop.active? ||
+              @product.shop.status_on_off == Settings.shop_status_off %>
+              <%= link_to t("blank_link"), class: "btn btn_add_to_cart btn-add padding-left-for-button disabled" do %>
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+                <%= t "cart.add_to_card" %>
+              <% end %>
+            <% else %>
+              <%= link_to cart_path(@product.id), remote: true,
+                method: :put, class: "btn btn_add_to_cart btn-add padding-left-for-button" do %>
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
+                  <%= t "cart.add_to_card" %>
+              <% end %>
             <% end %>
           </strong>
         </h3>
@@ -72,13 +84,19 @@
         <div class="mar-bottom-30">
           <div class="a-divider--fit"></div>
         </div>
-        <%= link_to cart_path(@product.id), remote: true,
-          method: :put, class: "btn btn-warning", disabled:
-            Time.now.is_between_short_time?(@product.start_hour,
-              @product.end_hour) || !@product.shop.active? ||
-              @product.shop.status_on_off == Settings.shop_status_off do %>
-          <span class="glyphicon glyphicon-shopping-cart"></span>
-          <%= t "cart.add_to_card" %>
+        <% if Time.now.is_between_short_time?(@product.start_hour,
+          @product.end_hour) || !@product.shop.active? ||
+          @product.shop.status_on_off == Settings.shop_status_off %>
+          <%= link_to t("blank_link"), class: "btn btn_add_to_cart btn-add padding-left-for-button disabled" do %>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <%= t "cart.add_to_card" %>
+          <% end %>
+        <% else %>
+          <%= link_to cart_path(@product.id), remote: true,
+            method: :put, class: "btn btn_add_to_cart btn-add padding-left-for-button" do %>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <%= t "cart.add_to_card" %>
+          <% end %>
         <% end %>
       </div>
       <div class="a-divider--hidden"></div>

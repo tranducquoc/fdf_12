@@ -41,6 +41,7 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  blank_link: "#"
   notifi_shop_auto_closed: " đã đóng cửa"
   open_shop_forever: "Mở cửa hằng ngày "
   time_shop_auto_close: "Hoạt động trong: "

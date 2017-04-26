@@ -68,36 +68,33 @@
               </ul>
             </li>
           <% end %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-            role="button" aria-expanded="false">
-              <span class="glyphicon glyphicon-shopping-cart"></span>
-              <span class="items-count"><%= @cart.count %></span>
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu min-width-cart" role="menu">
-              <%= render "shared/cart" %>
-              <li class="divider"></li>
-              <li>
-                <% if @domain.present? %>
-                  <%= link_to t("cart.view_cart_all"),
-                    domain_carts_path(@domain),
-                    class: "text-center hightline" %>
-                <% else %>
-                  <%= link_to t("cart.view_cart_all"), carts_path,
-                    class: "text-center hightline" %>
-                <% end %>
-              </li>
-            </ul>
-          </li>
+          <% unless @domain.status == Settings.domain_default %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                role="button" aria-expanded="false">
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+                <span class="items-count"><%= @cart.count %></span>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu min-width-cart" role="menu">
+                <%= render "shared/cart" %>
+                <li class="divider"></li>
+                <li>
+                  <% if @domain.present? %>
+                    <%= link_to t("cart.view_cart_all"),
+                      domain_carts_path(@domain),
+                      class: "text-center hightline" %>
+                  <% else %>
+                    <%= link_to t("cart.view_cart_all"), carts_path,
+                      class: "text-center hightline" %>
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          <% end %>
           <li class="navbar-orders">
-            <% if @domain.present? %>
+            <% unless @domain.status == Settings.domain_default %>
               <%= link_to domain_orders_path(@domain) do %>
-                <i class="fa fa-list-ol"></i>
-                <span><%= t "common.your_orders" %></span>
-              <% end %>
-            <% else %>
-              <%= link_to orders_path() do %>
                 <i class="fa fa-list-ol"></i>
                 <span><%= t "common.your_orders" %></span>
               <% end %>

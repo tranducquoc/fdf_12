@@ -39,7 +39,6 @@ class ApplicationController < ActionController::Base
     @cart_group = @cart.items.group_by(&:shop_id).map  do |q|
       {shop_id: q.first, items: q.second.each.map { |qn| qn }}
     end
-
   end
 
   def load_events

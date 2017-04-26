@@ -249,6 +249,7 @@ vi:
   accept_all: "Xác nhận tất cả"
   create_order: "Gửi đi"
   common:
+    your_shops: "Cửa hàng của bạn"
     base_title: "Framgia Food And Drink Order"
     admin_title: "Quản trị"
     home: "Trang chủ"

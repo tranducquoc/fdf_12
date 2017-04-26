@@ -208,6 +208,7 @@ en:
   accept_all: "Accept All"
   create_order: "Create new order"
   common:
+    your_shops: "Your Shops"
     base_title: "Framgia Food and Drink Order"
     admin_title: "Admin Framgia Orders"
     home: "Home"

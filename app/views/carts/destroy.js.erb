@@ -1,0 +1,9 @@
+$('.cart-item-show').replaceWith('<%= j render( partial: "carts/list") %>');
+$('.cart-item').replaceWith('<%= j render(partial: "shared/cart") %>');
+$('.items-count').text('<%= @cart.count %>');
+$.growl.notice({ message: '<%= t "add_cart_succes" %>'});
+var current_path = window.location.pathname;
+var address_cart = "/domains/<%= @domain_name.name %>/carts"
+if (current_path === address_cart.toLowerCase()) {
+  location.reload()
+}

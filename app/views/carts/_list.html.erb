@@ -85,9 +85,4 @@
       </div>
     </div>
   <% end %>
-  <% if @cart.blank? %>
-    <h4><%= t "cart.view_product" %></h4>
-    <%= link_to t("cart.btn_view_product"),
-      products_path, class: "btn btn-primary" %>
-  <% end %>
 </div>

@@ -61,8 +61,9 @@ class CartsController < ApplicationController
       @cart.items.delete item
       update_session
     end
+    @domain_name = Domain.find_by_id session[:domain_id]
     respond_to do |format|
-      format.js {render :update}
+      format.js
     end
   end
 
@@ -127,6 +128,9 @@ class CartsController < ApplicationController
   def update_session
     @cart_domain.add_cart @cart.sort, session[:domain_id]
     session[:cart_domain] = @cart_domain.update_cart
+    @cart_group = @cart.items.group_by(&:shop_id).map  do |q|
+      {shop_id: q.first, items: q.second.each.map { |qn| qn }}
+    end
   end
 
   def order_delete_find_shop

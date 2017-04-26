@@ -1,0 +1,62 @@
+<div class="modal fade" id="modal_order_now">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header modal_header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <h4 class="modal-title modal_text_header"><%= t "common.your_orders" %></h4>
+      </div>
+      <div class="modal-body">
+        <div class="row modal_item">
+          <div class="col-md-4">
+            <%= image_tag "", id: "modal_image",
+            class: "image" %>
+          </div>
+          <div class="col-md-8">
+            <div class="name" id="modal_name"></div>
+            <br>
+            <div class="info">
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td><%= t "cart_quick.modal.quantity" %></td>
+                    <td>
+                      <%= link_to "javascript:void(0)" do %>
+                        <span class="glyphicon glyphicon-minus-sign
+                          text-primary action-padding modal_quantity_down"></span>
+                      <% end %>
+                      <strong id="modal_quantity"></strong>
+                      <%= link_to "javascript:void(0)" do %>
+                        <span class="glyphicon glyphicon-plus-sign text-success
+                          action-padding modal_quantity_up"></span>
+                      <% end %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><%= t "cart_quick.modal.price" %></td>
+                    <td id="modal_price"></td>
+                  </tr>
+                  <tr>
+                    <td><%= t "cart_quick.modal.total" %></td>
+                    <td id="modal_total"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+          <strong><%= t"cart_quick.modal.note" %></strong>
+          <%= text_area_tag "modal_note", "", class: "note" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          <%= t "cancel" %>
+        </button>
+        <%= link_to  t("cart_quick.finish"), "#" ,
+          class: "btn btn_add_to_cart btn-add padding-left-for-button",
+          id: "finish_order_fast" %>
+      </div>
+    </div>
+  </div>
+</div>

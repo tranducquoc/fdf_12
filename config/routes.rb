@@ -60,6 +60,7 @@ Rails.application.routes.draw do
   end
   resources :user_domains
   resources :shop_domains
+  resources :order_fasts
 
   resources :shops, only: [:index, :show, :update]
   resources :products, only: [:index, :show, :new] do

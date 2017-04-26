@@ -41,6 +41,20 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  cart_quick:
+    order_now: "Đặt ngay"
+    finish: "Hoàn tất"
+    modal:
+      quantity: "Số lượng"
+      price: "Đơn giá"
+      total: "Thành tiền"
+      note: "Ghi chú"
+    create_order_fast:
+      error: "Tạo đơn hàng thất bại."
+      success: "Tạo đơn hàng thành công."
+  order_quick:
+    note: "Ghi chú"
+
   blank_link: "#"
   notifi_shop_auto_closed: " đã đóng cửa"
   open_shop_forever: "Mở cửa hằng ngày "

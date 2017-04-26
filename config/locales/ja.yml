@@ -6,6 +6,20 @@ ja:
       date_format: "MM/DD/YYYY"
   split: " -"
   your_shop: "あなたの店"
+  cart_quick:
+    order_now: "今すぐ注文"
+    finish: "完成"
+    modal:
+      quantity: "数量"
+      price: "価格"
+      total: "合計"
+      note: "注意"
+    create_order_fast:
+      error: "オーダーことができません"
+      success: "オーダーの成功"
+  order_quick:
+    note: "注意"
+
   notifi_shop_auto_closed: " シャットダウン"
   open_shop_forever: "毎日開きます "
   time_shop_auto_close: "活動中: "

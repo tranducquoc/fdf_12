@@ -5,6 +5,20 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  cart_quick:
+    order_now: "Order now"
+    finish: "Finish"
+    modal:
+      quantity: "Quantity"
+      price: "Price"
+      total: "Total"
+      note: "Note"
+    create_order_fast:
+      error: "Create order error."
+      success: "Created order."
+  order_quick:
+    note: "Note"
+
   notifi_shop_auto_closed: " has been closed"
   open_shop_forever: "Open daily"
   time_shop_auto_close: "Works in: "

@@ -6,6 +6,7 @@
       <th><%= t "oder.name" %></th>
       <th><%= t "oder.image" %></th>
       <th><%= t "oder.quantity" %></th>
+      <th><%= t "order_quick.note"%></th>
       <th><%= t "oder.status" %></th>
       <th><%= t "oder.price" %></th>
       <th colspan="2"></th>
@@ -24,7 +25,8 @@
           </span>
         </td>
         <td class="text-center"><%= item.quantity %></td>
-        <td >
+        <td><%= item.notes %></td>
+        <td>
           <div class="order-product-status-<%= item.id %>">
             <%= status_order_product item %>
           </div>

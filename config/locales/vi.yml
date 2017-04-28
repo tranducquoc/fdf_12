@@ -558,6 +558,7 @@ vi:
       show:
         name: "Tên"
         quantity: "Số lượng"
+        notes: "Ghi chú"
         price: "Giá"
         total: "Tổng cộng"
         product_name: "Sản phẩm: "

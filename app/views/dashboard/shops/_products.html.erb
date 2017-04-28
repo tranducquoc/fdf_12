@@ -10,12 +10,12 @@
               </div>
               <div class="panel-body">
                 <%= label_tag t("dashboard.shops.show.start_time") %>
-                <%= time_field_tag :start_hour, "", 
+                <%= time_field_tag :start_hour, "",
                   minute_step: Settings.minute_step,
                   required: :true, class: "edit-time" %>
                 <%= label_tag t("dashboard.shops.show.end_time") %>
-                <%= time_field_tag :end_hour, "", 
-                  minute_step: Settings.minute_step, 
+                <%= time_field_tag :end_hour, "",
+                  minute_step: Settings.minute_step,
                   required: :true, class: "edit-time" %>
                 <%= submit_tag t("dashboard.shops.show.update_all"),
                   class: "btn btn-primary space-top-submit btn-update" %>

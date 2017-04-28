@@ -8,6 +8,7 @@
         <tr>
           <th><%= t "dashboard.product.show.name" %></th>
           <th><%= t "dashboard.product.show.quantity" %></th>
+          <th><%= t "dashboard.product.show.notes" %></th>
           <th><%= t "dashboard.product.show.price" %></th>
           <th><%= t "dashboard.product.show.total" %></th>
         </tr>
@@ -20,6 +21,9 @@
             </td>
             <td>
               <%= order.quantity %>
+            </td>
+            <td>
+              <%= order.notes %>
             </td>
             <td>
               <%= @product.price %>

@@ -520,6 +520,7 @@ en:
       show:
         name: "Name"
         quantity: "Quantity"
+        notes: "Notes"
         price: "Price"
         total: "Total"
         product_name: "Product: "

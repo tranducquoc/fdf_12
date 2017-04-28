@@ -514,6 +514,7 @@ ja:
       show:
         name: "名前"
         quantity: "数量"
+        notes: "注意"
         price: "価格"
         total: "合計"
         product_name: "プロダクト: "

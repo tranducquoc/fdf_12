@@ -55,6 +55,8 @@ vi:
   order_quick:
     note: "Ghi chú"
     save_fail: "Lưu ghi chú thất bại."
+  com-add-hcm: "Tầng 8 tòa nhà Nice, số 467 đường Điện Biên Phủ, Bình Thạnh, HCM, Việt Nam"
+  com-add-dn: "Tầng 6 tòa nhà Vĩnh Trung Plaza, số 255-257 đường Hùng Vương, Vĩnh Trung, Thanh Khê, Đà Nẵng, Việt Nam"
 
   blank_link: "#"
   notifi_shop_auto_closed: " đã đóng cửa"

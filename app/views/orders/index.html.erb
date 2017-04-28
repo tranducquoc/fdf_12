@@ -24,7 +24,7 @@
         </div>
         <div class="col-md-4 margin5 text-center">
           <% Settings.filter_status_order.each do |key, value| %>
-            <%= label_tag value, class: "radio-inline" do %>
+            <%= label_tag "status_#{value}", class: "radio-inline" do %>
               <%= radio_button_tag :status, value,
                 checked = params[:status] == value || params[:status].blank? %>
               <%= t "all_status.#{value}" %>

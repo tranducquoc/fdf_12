@@ -58,11 +58,11 @@
             class: "upload_img" %>
         </div>
         <div class="actions text-center margin-top-10">
-          <%= f.submit t("edit_user.update"), 
+          <%= f.submit t("edit_user.update"),
             class: "btn btn-info btn-sign color-white" %>
         </div>
       <% end %>
-      <%= link_to t("common.back_button"), :back %>
+      <%= link_to t("common.back_button"), user_path(current_user, domain_id: @domain.id) %>
     </div>
   </div>
 </div>

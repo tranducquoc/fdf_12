@@ -1,62 +1,86 @@
-<div class="cart-item-show">
+<div class="cart-item-show" data-id="<%= @cart.domain_id %>">
   <% @cart_group.each do |cart| %>
     <div class="panel-body">
       <div class="col-md-12">
         <% cart[:items].each do |item| %>
-          <div class="col-md-3">
+          <div class="col-md-3 border_item_cart">
             <%= image_tag item.product.image.url,
               class: "image-shop cart_view" %>
             <h4 class="media-heading margin_top_cart">
               <%= item.product.name %>
             </h4>
-            <div class="media">
-              <div class="media-body">
-                <span class="text-success">
-                  <strong><%= t "products.status" %></strong></span>
-                <span class="text-success"><strong></strong></span>
+            <div class="hide_show">
+              <div class = "content_item_cart">
+                <div class="media">
+                  <div class="media-body">
+                    <span class="text-success">
+                      <strong><%= t "products.status" %></strong></span>
+                    <span class="text-success"><strong></strong></span>
+                  </div>
+                </div>
+                <table class="table table-hover not_padding_bot">
+                  <thead>
+                    <tr>
+                      <th><%= t "cart.quantity" %></th>
+                      <th class="text-center"><%= t "cart.price" %></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="col-sm-2 col-md-2">
+                        <%= item.quantity %>
+                      </td>
+                      <td class="col-sm-3 col-md-3 text-center">
+                        <strong><%= format_price item.total_price %></strong></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <%= link_to "javascript:void(0)",
+                          class: "pull-right update_notes_cart color_orange",
+                          data: {id: item.product_id} do %>
+                          <div>
+                            <span class="glyphicon glyphicon-pencil action-padding"></span>
+                            <strong><%= t "order_quick.note" %></strong>
+                          </div>
+                        <% end %>
+                      </td>
+                      <td>
+                        <span class="item-right">
+                          <%= link_to set_cart_path(item.product_id), method: :delete,
+                            class: "pull-right" do %>
+                            <span class="glyphicon glyphicon-trash text-danger
+                              action-padding">
+                            </span>
+                          <% end %>
+                        </span>
+                        <%= link_to edit_cart_path(id: item.product_id),
+                          method: :get, remote: true, class: "pull-right" do %>
+                          <span class="glyphicon glyphicon-minus-sign
+                            text-primary action-padding"></span>
+                        <% end %>
+                        <%= link_to cart_path(item.product_id), remote: true,
+                          method: :put, class: "pull-right" do %>
+                          <span class="glyphicon glyphicon-plus-sign text-success
+                            action-padding"></span>
+                        <% end %>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="content_note_item_cart">
+                <%= text_area_tag "", item.notes , class: "content_note" %>
+                <%= link_to "javascript:void(0)", class: "pull-right" do %>
+                  <span class="glyphicon glyphicon-remove-sign
+                    text-primary action-padding content_note_cancel"></span>
+                <% end %>
+                <%= link_to "javascript:void(0)", data: {id: item.product_id},
+                  class: "pull-right" do %>
+                  <span class="glyphicon glyphicon-ok-sign text-success
+                    action-padding content_note_save"></span>
+                <% end %>
               </div>
             </div>
-            <table class="table table-hover">
-              <thead>
-              <tr>
-                <th><%= t "cart.quantity" %></th>
-                <th class="text-center"><%= t "cart.price" %></th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td class="col-sm-2 col-md-2">
-                  <%= item.quantity %>
-                </td>
-                <td class="col-sm-3 col-md-3 text-center">
-                  <strong><%= format_price item.total_price %></strong></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td>
-                  <span class="item-right">
-                    <%= link_to set_cart_path(item.product_id), method: :delete,
-                      class: "pull-right" do %>
-                      <span class="glyphicon glyphicon-trash text-danger
-                        action-padding">
-                      </span>
-                    <% end %>
-                  </span>
-                  <%= link_to edit_cart_path(id: item.product_id),
-                    method: :get, remote: true, class: "pull-right" do %>
-                  <span class="glyphicon glyphicon-minus-sign
-                    text-primary action-padding"></span>
-                  <% end %>
-                  <%= link_to cart_path(item.product_id), remote: true,
-                    method: :put, class: "pull-right" do %>
-                      <span class="glyphicon glyphicon-plus-sign text-success
-                        action-padding">
-                      </span>
-                  <% end %>
-                </td>
-              </tr>
-              </tbody>
-            </table>
           </div>
         <% end %>
       </div>
@@ -86,3 +110,4 @@
     </div>
   <% end %>
 </div>
+<div class="render_js_after_ajax_rails"></div>

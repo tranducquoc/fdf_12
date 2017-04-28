@@ -19,6 +19,7 @@ ja:
       success: "オーダーの成功"
   order_quick:
     note: "注意"
+    save_fail: "故障"
 
   notifi_shop_auto_closed: " シャットダウン"
   open_shop_forever: "毎日開きます "

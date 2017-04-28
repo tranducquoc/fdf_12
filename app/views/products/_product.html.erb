@@ -57,7 +57,8 @@
         <% if Time.now.is_between_short_time?(product.start_hour,
           product.end_hour) || !product.shop.active? ||
           product.shop.status_on_off == Settings.shop_status_off %>
-          <%= link_to t("blank_link"), class: "btn btn_add_to_cart btn-add padding-left-for-button disabled" do %>
+          <%= link_to t("blank_link"), class: "btn btn_add_to_cart btn-add
+            padding-left-for-button disabled" do %>
             <span class="glyphicon glyphicon-shopping-cart"></span>
             <%= t "cart.add_to_card" %>
           <% end %>
@@ -71,6 +72,19 @@
       </div>
     <% else %>
       <div class="interaction_area">
+        <% if @domain.present? %>
+          <%= link_to domain_product_path(@domain, product),
+            class: "btn btn-default btn_add_favorite" do %>
+            <span class="glyphicon glyphicon-eye-open"></span>
+            <%= t "common.view_button" %>
+          <% end %>
+        <% else %>
+          <%= link_to product_path(product, domain_id: "not_find"),
+            class: "btn btn-default btn_add_favorite" do %>
+            <span class="glyphicon glyphicon-eye-open"></span>
+            <%= t "common.view_button" %>
+          <% end %>
+        <% end %>
         <div class="group_button">
           <% if Time.now.is_between_short_time?(product.start_hour,
             product.end_hour) || !product.shop.active? ||
@@ -87,7 +101,8 @@
             <% end %>
           <% else %>
             <%= link_to cart_path(product.id), remote: true,
-              method: :put, class: "btn btn_add_to_cart btn-add padding-left-for-button btn_center" do %>
+              method: :put, class: "btn btn_add_to_cart btn-add
+              padding-left-for-button btn_center" do %>
               <span class="glyphicon glyphicon-shopping-cart"></span>
               <%= t "cart.add_to_card" %>
             <% end %>

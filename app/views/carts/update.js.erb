@@ -1,4 +1,5 @@
 $('.cart-item-show').replaceWith('<%= j render( partial: "carts/list") %>');
 $('.cart-item').replaceWith('<%= j render(partial: "shared/cart") %>');
 $('.items-count').text('<%= @cart.count %>');
+$('.render_js_after_ajax_rails').html('<%= javascript_include_tag "modal" %>')
 $.growl.notice({ message: '<%= t "add_cart_succes" %>'});

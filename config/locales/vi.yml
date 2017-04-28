@@ -54,6 +54,7 @@ vi:
       success: "Tạo đơn hàng thành công."
   order_quick:
     note: "Ghi chú"
+    save_fail: "Lưu ghi chú thất bại."
 
   blank_link: "#"
   notifi_shop_auto_closed: " đã đóng cửa"

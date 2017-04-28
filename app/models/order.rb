@@ -66,7 +66,7 @@ class Order < ApplicationRecord
           product = Product.find_by id: item.product_id
           unless Time.now.is_between_short_time?(product.start_hour, product.end_hour)
             order_products.create product_id: item.product_id,
-              quantity: item.quantity, user_id: user_id
+              quantity: item.quantity, user_id: user_id, notes: item.notes
           end
         end
       end

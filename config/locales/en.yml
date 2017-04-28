@@ -18,6 +18,7 @@ en:
       success: "Created order."
   order_quick:
     note: "Note"
+    save_fail: "Save note error"
 
   notifi_shop_auto_closed: " has been closed"
   open_shop_forever: "Open daily"

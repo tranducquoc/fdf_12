@@ -35,13 +35,22 @@ $orange_main: #ff5722;
   font-weight: bold;
 }
 
+.content_note {
+  resize: none;
+  width: 100%;
+  height: 120px;
+  border-radius: 15px;
+  border: solid 1px orange;
+  margin-bottom: 0px;
+}
+
 .note {
   resize: none;
   width: 100%;
-  height: 100px;
+  height: 120px;
   border-radius: 15px;
   border: solid 1px orange;
-  margin-bottom: -20px;
+  margin-bottom: -30px;
 }
 
 .group_button {
@@ -58,4 +67,58 @@ $orange_main: #ff5722;
 
 .interaction_area {
   text-align: center;
+}
+
+.color_orange {
+  color: white;
+  background-color: orange;
+  border-radius: 5px;
+  padding: 0px 5px 0px 0px;
+  margin-bottom: -40px;
+  float: left !important;
+}
+
+.color_orange:hover {
+  background-color: #29c4f3;
+  color: white;
+}
+
+.list_item_note {
+  resize: none;
+  width: 100%;
+  height: 70px;
+  border-radius: 10px;
+  border-color: orange;
+  margin-top: -30px;
+}
+
+.border_item_cart {
+  border-radius: 10px;
+  border: solid 1px orange;
+  padding-top: 20px;
+  padding-left: 8px;
+  margin-bottom: 15px;
+  display: block;
+  width: 24%;
+  margin-left: 10px;
+  box-shadow: 0 4px 2px rgba(140, 90, 0, 0.25);
+}
+
+.not_padding_bot {
+  padding-bottom: 0px;
+}
+
+.content_item_cart {
+  z-index: 1;
+  position: relative;
+}
+
+.content_note_item_cart {
+  display: none;
+  margin-top: -150px;
+  z-index: 2;
+  position: relative;
+  background-color: white;
+  height: 150px;
+  padding-left: 7px;
 }

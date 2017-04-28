@@ -3,14 +3,19 @@ class Cart
   attr_reader :domain_id
 
   def initialize domain_id, items = []
-    @items = if items 
+    @items = if items
       items.map do |item_data|
-        CartItem.new item_data["product_id"], item_data["shop_id"], item_data["quantity"]
+        CartItem.new item_data["product_id"], item_data["shop_id"], item_data["quantity"],
+          item_data["notes"]
       end
     else
       Array.new
-    end  
+    end
     @domain_id = domain_id
+  end
+
+  def update_note item, notes
+    item.update_note notes
   end
 
   def add_item product_id, shop_id
@@ -49,5 +54,5 @@ class Cart
     items_by_shop.each do |item|
       items.delete item
     end
-  end 
+  end
 end

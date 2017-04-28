@@ -54,3 +54,36 @@ $(document).ready(function(){
     });
   });
 });
+
+$(document).ready(function(){
+  $('.update_notes_cart').click(function(){
+    $(this).closest('.hide_show').find('.content_note_item_cart').slideToggle(800);
+  });
+
+  $('.content_note_cancel').click(function(){
+    $(this).closest('.hide_show').find('.content_note_item_cart').slideToggle(800);
+  });
+
+  $('.content_note_save').click(function(){
+    var note = $(this).closest('.content_note_item_cart').find('.content_note').val();
+    var domain_id = $(this).closest('.cart-item-show').data('id');
+    var product_id = $(this).closest('a').data('id');
+    $.ajax({
+      type: 'PUT',
+      url : '/carts/1',
+      dataType: 'json',
+      context: this,
+      data: {
+        type_notes: "notes",
+        product_id: product_id,
+        notes: note
+      },
+      success: function(response) {
+        $(this).closest('.content_note_item_cart').hide(800);
+      },
+      error: function(errors) {
+        alert(I18n.t('order_quick.save_fail'));
+      }
+    });
+  });
+});

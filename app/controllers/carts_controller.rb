@@ -11,8 +11,19 @@ class CartsController < ApplicationController
   end
 
   def update
-    @cart.add_item params[:id], @product.shop.id
-    update_session
+    if params[:type_notes]
+      item = @cart.items.detect{|n| n.product_id == params[:product_id]}
+      if item
+        @cart.update_note item, params[:notes]
+        update_session
+        render json: {}
+      else
+        render json: {}
+      end
+    else
+      @cart.add_item params[:id], @product.shop.id
+      update_session
+    end
   end
 
   def new

@@ -8,6 +8,10 @@ class CartItem
     @notes = notes
   end
 
+  def update_note notes
+    @notes = notes
+  end
+
   def increment
     @quantity += 1
   end

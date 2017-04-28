@@ -12,23 +12,19 @@
 // See tests for specific formatting like numbers and dates.
 //
 
-// Using UMD pattern from
-// https://github.com/umdjs/umd#regular-module
-// `returnExports.js` version
-;(function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define("i18n", function(){ return factory(root);});
-  } else if (typeof module === 'object' && module.exports) {
-    // Node. Does not work with strict CommonJS, but
-    // only CommonJS-like environments that support module.exports,
-    // like Node.
-    module.exports = factory(root);
+;(function(factory) {
+  if (typeof module !== 'undefined' && module.exports) {
+    // Node/CommonJS
+    module.exports = factory(this);
+  } else if (typeof define === 'function' && define.amd) {
+    // AMD
+    var global=this;
+    define('i18n', function(){ return factory(global);});
   } else {
-    // Browser globals (root is window)
-    root.I18n = factory(root);
+    // Browser globals
+    this.I18n = factory(this);
   }
-}(this, function(global) {
+}(function(global) {
   "use strict";
 
   // Use previously defined object if exists in current scope
@@ -529,7 +525,6 @@
   I18n.translate = function(scope, options) {
     options = this.prepareOptions(options);
 
-    var copiedOptions = this.prepareOptions(options);
     var translationOptions = this.createTranslationOptions(scope, options);
 
     var translation;
@@ -555,7 +550,7 @@
     if (typeof(translation) === "string") {
       translation = this.interpolate(translation, options);
     } else if (isObject(translation) && this.isSet(options.count)) {
-      translation = this.pluralize(options.count, scope, copiedOptions);
+      translation = this.pluralize(options.count, scope, options);
     }
 
     return translation;

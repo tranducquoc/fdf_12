@@ -20,6 +20,8 @@ ja:
   order_quick:
     note: "注意"
     save_fail: "故障"
+  com-add-hcm: "8フロアの Nice building, 467 Dien Bien Phu 砂糖., 25区, Binh Thanh, Ho Chi Minh, Viet Nam"
+  com-add-dn: "6フロアの Vinh Trung Plaza, 255~257 Hung Vuong 砂糖., Vinh Trung, Thanh Khe, Da Nang"
 
   notifi_shop_auto_closed: " シャットダウン"
   open_shop_forever: "毎日開きます "

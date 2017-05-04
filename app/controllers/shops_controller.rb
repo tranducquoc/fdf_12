@@ -42,6 +42,15 @@ class ShopsController < ApplicationController
       @shop.products.each do |product|
         ProductDomain.not_in_shop_domain(only_shop_domain).destroy_all(product_id: product.id)
       end
+      user_shop_owner = ShopManager.find_by(user_id: current_user.id, shop_id: @shop.id, role: :owner)
+      if user_shop_owner.present?
+        user_shop_owner.destroy
+      end
+      user_shop_manager = ShopManager.find_by(user_id: user.id, shop_id: @shop.id, role: :manager)
+      if user_shop_manager.present?
+        user_shop_manager.destroy
+      end
+      ShopManager.create(user_id: user.id, shop_id: @shop.id, role: :owner)
       flash[:success] = t "change_shop"
       redirect_to root_path
     else

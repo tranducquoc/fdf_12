@@ -102,6 +102,10 @@ class Shop < ApplicationRecord
       user_id: owner_id, eventable_id: id, eventable_type: Shop.name
   end
 
+  def shop_owner? user
+    self.owner_id == user
+  end
+
   private
   def create_shop_manager
     shop_managers.create user_id: owner_id

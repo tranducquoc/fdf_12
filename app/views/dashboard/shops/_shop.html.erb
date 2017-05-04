@@ -26,14 +26,14 @@
       <div class="check_button_status_shop">
         <% if shop.status_on_off == Settings.shop_status_off %>
           <label class="switch">
-            <%= check_box_tag "shops[]", shop.id, false, class: "checkbox",
-              id: "checkbox_#{shop.id}", data:{remote: true} %>
+            <%= check_box_tag "checkbox_#{shop.id}", shop.id, false, class: "checkbox",
+              data:{remote: true} %>
             <div class="slider round"></div>
           </label>
         <% else %>
           <label class="switch">
-            <%= check_box_tag "shops[]", shop.id, true, class: "checkbox", id: "checkbox_#{shop.id}",
-            data:{remote: true} %>
+            <%= check_box_tag "checkbox_#{shop.id}", shop.id, true, class: "checkbox",
+              data:{remote: true} %>
             <div class="slider round"></div>
           </label>
         <% end %>

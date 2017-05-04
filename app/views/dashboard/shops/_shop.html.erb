@@ -23,21 +23,25 @@
           <% end %>
         </h3><%= render "shared/shop_status_label", shop: shop %>
       </div>
-      <% if shop.status_on_off == Settings.shop_status_off %>
-        <label class="switch">
-          <%= check_box_tag "shops[]", shop.id, false, class: "checkbox",
-            id: "checkbox_#{shop.id}", data:{remote: true} %>
-          <div class="slider round"></div>
-        </label>
-      <% else %>
-        <label class="switch">
-          <%= check_box_tag "shops[]", shop.id, true, class: "checkbox", id: "checkbox_#{shop.id}",
+      <div class="check_button_status_shop">
+        <% if shop.status_on_off == Settings.shop_status_off %>
+          <label class="switch">
+            <%= check_box_tag "shops[]", shop.id, false, class: "checkbox",
+              id: "checkbox_#{shop.id}", data:{remote: true} %>
+            <div class="slider round"></div>
+          </label>
+          <%= label_tag "", t("shop_was_closed"), class: "label_float_left", id: "label_#{shop.id}" %>
+        <% else %>
+          <label class="switch">
+            <%= check_box_tag "shops[]", shop.id, true, class: "checkbox", id: "checkbox_#{shop.id}",
             data:{remote: true} %>
-          <div class="slider round"></div>
-        </label>
-      <% end %>
-      <div class="description-margin-bot checkbox_<%= shop.id %>">
-        <%= render "dashboard/shops/shop_label_status", shop: shop %>
+            <div class="slider round"></div>
+          </label>
+          <%= label_tag "", t("shop_was_open"), class: "label_float_left", id: "label_#{shop.id}" %>
+        <% end %>
+        <div class="description-margin-bot checkbox_<%= shop.id %> pull-right">
+          <%= render "dashboard/shops/shop_label_status", shop: shop %>
+        </div>
       </div>
       <div class="description quote", title="<%= shop.description %>"><p>
         <%= truncate(shop.description, length: Settings.max_description) %></p>

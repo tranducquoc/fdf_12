@@ -30,16 +30,14 @@
               id: "checkbox_#{shop.id}", data:{remote: true} %>
             <div class="slider round"></div>
           </label>
-          <%= label_tag "", t("shop_was_closed"), class: "label_float_left", id: "label_#{shop.id}" %>
         <% else %>
           <label class="switch">
             <%= check_box_tag "shops[]", shop.id, true, class: "checkbox", id: "checkbox_#{shop.id}",
             data:{remote: true} %>
             <div class="slider round"></div>
           </label>
-          <%= label_tag "", t("shop_was_open"), class: "label_float_left", id: "label_#{shop.id}" %>
         <% end %>
-        <div class="description-margin-bot checkbox_<%= shop.id %> pull-right">
+        <div class="description-margin-bot checkbox_<%= shop.id %>">
           <%= render "dashboard/shops/shop_label_status", shop: shop %>
         </div>
       </div>

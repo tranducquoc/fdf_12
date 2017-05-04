@@ -1,14 +1,19 @@
 <div class="col-md-4 col-sm-4 col-xs-4 box_shop padding-left_domain">
-  <div class="col-sm-12 col-md-12 col-xs-12">
+  <% if shop.status_on_off == Settings.shop_status_off %>
+    <div class="col-sm-12 col-md-12 col-xs-12 shop_close">
+  <% else %>
+    <div class="col-sm-12 col-md-12 col-xs-12 shop_open">
+  <% end %>
     <div class="col-md-5 col-sm-5 col-xs-5">
-      <div class="row thumbnail">
+      <div class="row thumbnail new_image">
+        <%= image_tag "border_image.png", class: "image_border" %>
         <% if @domain.present? %>
           <%= link_to domain_shop_path(@domain, shop) do %>
-            <%= image_tag shop.avatar.url, class: "top-shop" %>
+            <%= image_tag shop.avatar.url, class: "top-shop image_on_image_border" %>
           <% end %>
         <% else %>
           <%= link_to domain_shop_path(shop, domain_id: "not_find") do %>
-            <%= image_tag shop.avatar.url, class: "top-shop" %>
+            <%= image_tag shop.avatar.url, class: "top-shop image_on_image_border" %>
           <% end %>
         <% end %>
       </div>
@@ -26,6 +31,7 @@
           <% end %>
         </h3>
       </div>
+      <br>
       <div class="description quote", title="<%= shop.description %>"><p>
         <%= truncate(shop.description, length: Settings.max_description) %></p>
       </div>

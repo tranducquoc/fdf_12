@@ -1,4 +1,2 @@
 $('.checkbox_<%= @shop_id %>').html('<%= j render(
   partial: "dashboard/shops/shop_label_status", locals: {shop: @shop}) %>');
-$('#label_<%= @shop_id %>').html('<% if @shop.status_on_off == Settings.shop_status_off %>'
-  +'<%= t "shop_was_closed" %><% else %><%= t "shop_was_open" %><% end %>');

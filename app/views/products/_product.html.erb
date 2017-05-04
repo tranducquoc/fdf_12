@@ -72,19 +72,6 @@
       </div>
     <% else %>
       <div class="interaction_area">
-        <% if @domain.present? %>
-          <%= link_to domain_product_path(@domain, product),
-            class: "btn btn-default btn_add_favorite" do %>
-            <span class="glyphicon glyphicon-eye-open"></span>
-            <%= t "common.view_button" %>
-          <% end %>
-        <% else %>
-          <%= link_to product_path(product, domain_id: "not_find"),
-            class: "btn btn-default btn_add_favorite" do %>
-            <span class="glyphicon glyphicon-eye-open"></span>
-            <%= t "common.view_button" %>
-          <% end %>
-        <% end %>
         <div class="group_button">
           <% if Time.now.is_between_short_time?(product.start_hour,
             product.end_hour) || !product.shop.active? ||

@@ -1,4 +1,4 @@
-<% @order_products_done.each do |hash_orders| %>
+<% @order_products.each do |hash_orders| %>
   <%= hash_orders.first %>
   <%= t "oder.id" %>,<%= t "oder.name" %>,<%= t "oder.quantity" %>,<%= t "oder.price" %>
   <% order = hash_orders.last %>

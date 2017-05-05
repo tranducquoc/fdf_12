@@ -1,0 +1,4 @@
+<%= t "dashboard.products.show.name" %>, <%= t "dashboard.products.show.quantity" %>, <%= t "dashboard.products.show.notes" %>, <%= t "dashboard.products.show.price" %>, <%= t "dashboard.products.show.total" %>
+<% @order_products.each do |order| %>
+  <%= order.user_name %>, <%= order.quantity %>, <%= order.notes %>, <%= @product.price %>, <%= format_price total_price(@product.price, order.quantity).to_i %>
+<% end %>

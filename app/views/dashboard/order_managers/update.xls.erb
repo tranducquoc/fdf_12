@@ -4,12 +4,9 @@
   xmlns:x="urn:schemas-microsoft-com:office:excel"
   xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
   xmlns:html="http://www.w3.org/TR/REC-html40">
-  <Worksheet ss:Name="Sheet1">
-    <% @order_products_done.each do |hash_orders| %>
+  <% @order_products.each do |hash_orders| %>
+    <Worksheet ss:Name="<%= hash_orders.first.to_s.gsub("/","-") %>">
       <Table>
-        <Row>
-          <Cell><Data ss:Type="String"><%= hash_orders.first %></Data></Cell>
-        </Row>
         <Row>
           <Cell><Data ss:Type="String"><%= t "oder.id" %></Data></Cell>
           <Cell><Data ss:Type="String"><%= t "oder.name" %></Data></Cell>
@@ -19,21 +16,21 @@
         <% order = hash_orders.last %>
         <% total = 0 %>
         <% order.each_with_index do |order_product, index| %>
-          <Row>
-            <Cell><Data ss:Type="Number"><%= increase_one index %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= order_product.name %></Data></Cell>
-            <Cell><Data ss:Type="Number"><%= order_product.quantity %></Data></Cell>
-            <Cell><Data ss:Type="Number"><%= format_price order_product.price %></Data></Cell>
-          </Row>
-          <% total += order_product.price %>
+        <Row>
+          <Cell><Data ss:Type="Number"><%= increase_one index %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= order_product.name %></Data></Cell>
+          <Cell><Data ss:Type="Number"><%= order_product.quantity %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= format_price order_product.price %></Data></Cell>
+        </Row>
+        <% total += order_product.price %>
         <% end %>
         <Row>
-          <Cell><Data></Data></Cell>
-          <Cell><Data></Data></Cell>
+          <Cell></Cell>
+          <Cell></Cell>
           <Cell><Data ss:Type="String"><%= t "oder.total" %></Data></Cell>
-          <Cell><Data ss:Type="Number"><%= total %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= format_price total %></Data></Cell>
         </Row>
       </Table>
-    <% end %>
-  </Worksheet>
+    </Worksheet>
+  <% end %>
 </Workbook>

@@ -36,6 +36,11 @@
           </tbody>
         <% end %>
       </table>
+      <%= t("download") %>
+      <%= link_to t("csv"), dashboard_shop_product_path(@product.shop_id, @product.id,
+        order_product_id: @order_products.first.id, format: Settings.csv) %> |
+      <%= link_to t("excel"), dashboard_shop_product_path(@product.shop_id, @product.id,
+        order_product_id: @order_products.first.id, format: Settings.xls) %>
     </div>
   </div>
 </div>

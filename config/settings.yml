@@ -95,3 +95,6 @@ checked_false: "false"
 checked_true: "true"
 shop_off: "shop_off"
 domain_default: "default"
+type_order_products_done: 1
+type_order_products_rejected: 2
+csv: "csv"

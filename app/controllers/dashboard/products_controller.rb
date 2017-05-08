@@ -24,6 +24,18 @@ class Dashboard::ProductsController < BaseDashboardController
       else
         @order_products = @product.order_products.includes(:user).accepted
       end
+      file_name = I18n.l(DateTime.now, format: :short_date).to_s
+      respond_to do |format|
+        format.html
+        format.xls do
+          headers["Content-Disposition"] = "attachment; filename=\"#{file_name}.xls\""
+          headers["Content-Type"] ||= Settings.xls
+        end
+        format.csv do
+          headers["Content-Disposition"] = "attachment; filename=\"#{file_name}.csv\""
+          headers["Content-Type"] ||= Settings.csv
+        end
+      end
     else
       flash[:danger] = t "flash.danger.dashboard.product.not_found"
       redirect_to dashboard_shop_products_path

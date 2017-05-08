@@ -27,12 +27,13 @@ class Product < ApplicationRecord
 
   enum status: {active: 0, inactive: 1}
   mount_uploader :image, ProductImageUploader
-  validates :name, presence: true, length: {maximum: 50}
-  validates :description, presence: true
+  validates :name, presence: true, length: {maximum: Settings.product.max_name}
+  validates :description, presence: true, length: {maximum: Settings.product.max_description}
   validate :image_size
   validate :start_hour_before_end_hour
-  validates :price, presence: true, 
-    numericality: {greater_than: Settings.min_price}
+  validates :price, presence: true,
+    numericality: {greater_than: Settings.min_price,
+    less_than_or_equal_to: Settings.product.max_price}
 
   delegate :name, to: :shop, prefix: :shop, allow_nil: true
   delegate :avatar, to: :shop, prefix: :shop

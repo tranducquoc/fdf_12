@@ -101,3 +101,16 @@ csv: "csv"
 shop_member: "member"
 shop_owner: "owner"
 shop_manager: "manager"
+user:
+  max_name: 80
+  max_chatwork_id: 50
+  max_description: 250
+product:
+  max_name: 50
+  max_description: 250
+  max_price: 1000000000
+min_content_of_comment: 10
+max_content_of_comment: 250
+shop:
+  max_name: 50
+  max_description: 250

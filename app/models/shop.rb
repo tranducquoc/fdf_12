@@ -38,8 +38,8 @@ class Shop < ApplicationRecord
   after_update :send_notification_after_confirmed
   after_update_commit :send_notification
 
-  validates :name, presence: true, length: {maximum: 50}
-  validates :description, presence: true
+  validates :name, presence: true, length: {maximum: Settings.shop.max_name}
+  validates :description, presence: true, length: {maximum: Settings.shop.max_description}
   validates :time_auto_reject, presence: true, allow_nil: true
 
   mount_uploader :cover_image, ShopCoverUploader

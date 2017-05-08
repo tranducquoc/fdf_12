@@ -3,7 +3,12 @@ class ShopManager < ApplicationRecord
   belongs_to :user
   belongs_to :shop
 
-  enum role: {staff: 0, owner: 1}
+  enum role: {owner: 0, manager: 1, member: 2}
 
-  scope :by_user, ->user {where user: user}
+  scope :user_ids_by_shop, -> shopManager do
+    where(shop_id: shopManager.shop_id, role: :manager).pluck :user_id
+  end
+
+  scope :by_user, ->user_id {where user_id: user_id}
+
 end

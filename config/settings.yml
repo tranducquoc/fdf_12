@@ -98,3 +98,6 @@ domain_default: "default"
 type_order_products_done: 1
 type_order_products_rejected: 2
 csv: "csv"
+shop_member: "member"
+shop_owner: "owner"
+shop_manager: "manager"

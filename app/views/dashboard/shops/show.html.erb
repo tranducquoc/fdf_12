@@ -49,9 +49,15 @@
               <%= t "common.shop_managers" %>
             </div>
             <div class="shop_user-own">
-              <%= link_to user_path(@user.id), class: "user-item-image" do %>
-                <%= image_tag @user.avatar.url, alt: @user.name %>
-                <p><strong><%= t "shop_owner"%></strong><%= @user.name %></p>
+              <% @users_shop_manager.each do |user| %>
+                <%= link_to user_path(user.user_id), class: "user-item-image" do %>
+                  <%= image_tag user.user.avatar.url, alt: user.user.name,
+                    title: user.user.name %>
+                <% end %>
+              <% end %>
+              <%= link_to domain_dashboard_shop_managers_path(@domain.id,
+                shop_id: @shop.id), class: "user-item-image" do %>
+                <%= image_tag "add_circle.png", alt: t("set_manager_shop") %>
               <% end %>
             </div>
             <div class="panel-footer">
@@ -64,6 +70,7 @@
       </div>
     </div>
   </div>
+
   <div class="margin-for-shopinfo">
     <table class="table table-striped table-inverse padding-102">
       <tr>

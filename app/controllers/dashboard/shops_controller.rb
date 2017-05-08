@@ -23,7 +23,12 @@ class Dashboard::ShopsController < BaseDashboardController
   end
 
   def show
-    @user = User.find_by id: @shop.owner_id
+    user_domain = Domain.find_by_id session[:domain_id]
+    @users = user_domain.users
+    @users_shop_manager = ShopManager.select do |user|
+      (user.shop_id == @shop.id && (user.role == Settings.shop_owner ||
+       user.role == Settings.shop_manager))
+    end
     @shop = @shop.decorate
     @products = @shop.products.page(params[:page])
       .per Settings.common.products_per_page
@@ -42,6 +47,13 @@ class Dashboard::ShopsController < BaseDashboardController
   def index
     @request = @domain.request_shop_domains.build if @domain.present?
     @shops = current_user.own_shops.includes(:domains).page(params[:page]).per(Settings.common.per_page).decorate
+    @shop_managers = ShopManager.by_user current_user.id
+    @shop_mn = []
+    @shop_managers.each do |shop_manager|
+      if shop_manager.role == Settings.shop_owner || shop_manager.role == Settings.shop_manager
+        @shop_mn << shop_manager
+      end
+    end
   end
 
   def edit

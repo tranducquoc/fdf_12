@@ -43,3 +43,26 @@ li.search-item {
     border-radius: 45px;
   }
 }
+
+.search-user-image-owner {
+  margin: auto;
+  img {
+    height: 45px;
+    width: 45px;
+    border-radius: 45px;
+  }
+}
+
+.td-user-image-table {
+  width: 50px;
+}
+
+.td-user-name-table {
+  text-align: center;
+  width: 400px;
+}
+
+.td-user-action-table {
+  text-align: center;
+  width: 200px;
+}

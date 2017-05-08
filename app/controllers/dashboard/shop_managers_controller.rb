@@ -4,18 +4,15 @@ class Dashboard::ShopManagersController < BaseDashboardController
   before_action :check_user_status_for_action
 
   def index
-    @managers = @shop.users
-    q = params[:search]
-    if q
-      @users = User.search(name_or_email_cont: q).result
-      respond_to do |format|
-        format.js
-      end
-    end
+    user_domain = Domain.find_by id: session[:domain_id]
+    @users = user_domain.users if user_domain.users.present?
+    @shops_managers = ShopManager.all
+    @shop_manager = ShopManager.find_by shop_id: params[:shop_id]
   end
 
   def create
-    @shop_manager = @shop.shop_managers.new shop_manager_params
+    @shop_manager = ShopManager.new user_id: params[:user_id],
+      shop_id: params[:shop_id], role: :member
     if @shop_manager.save
       flash[:success] = t "flash.success_message"
     else
@@ -24,31 +21,30 @@ class Dashboard::ShopManagersController < BaseDashboardController
     redirect_to dashboard_shop_shop_managers_path @shop
   end
 
-  def destroy
-    if @shop_manager.destroy
+  def update
+    @shop_manager = ShopManager.find_by user_id: params[:user_id], shop_id: params[:shop_id]
+    if @shop_manager.update_attributes role: params[:format]
       flash[:success] = t "flash.success_message"
     else
       flash[:danger] = t "flash.danger_message"
     end
-    redirect_to dashboard_shop_shop_managers_path @shop
+    redirect_to :back
+  end
+
+  def destroy
+    ShopManager.destroy_all user_id: params[:user_id], shop_id: params[:shop_id]
+    flash[:success] = t "flash.success_message" if params[:delete_user_domain].present?
+    redirect_to :back
   end
 
   private
   def load_shop
     if Shop.exists? params[:shop_id]
       @shop = Shop.find params[:shop_id]
-      unless @shop.is_owner? current_user
-        flash[:danger] = t "flash.danger.load_shop"
-        redirect_to dashboard_shops_path
-      end
     else
       flash[:danger] = t "flash.danger.load_shop"
       redirect_to dashboard_shops_path
     end
-  end
-
-  def shop_manager_params
-    params.require(:shop_manager).permit :user_id
   end
 
   def load_shop_manager

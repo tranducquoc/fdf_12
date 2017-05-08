@@ -10,6 +10,9 @@ class Comment < ApplicationRecord
 
   scope :newest, ->{order created_at: :desc}
 
+  validates :content,
+    length: {in: Settings.min_content_of_comment..Settings.max_content_of_comment}
+
   private
   def create_event
     Event.create message: "",

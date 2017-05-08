@@ -29,10 +29,13 @@ class User < ApplicationRecord
 
   enum status: {wait: 0, active: 1, blocked: 2}
   mount_uploader :avatar, UserAvatarUploader
-  
+
   VALID_NAME_REGEX = /\A^[\p{L}\s'.-]+\z/
-  
-  validates :name, presence: true, format: {with: VALID_NAME_REGEX}
+
+  validates :name, presence: true, format: {with: VALID_NAME_REGEX},
+    length: {maximum: Settings.user.max_name}
+  validates :chatwork_id, length: {maximum: Settings.user.max_chatwork_id}
+  validates :description, length: {maximum: Settings.user.max_description}
   validate :image_size
 
   after_create :create_default_domain

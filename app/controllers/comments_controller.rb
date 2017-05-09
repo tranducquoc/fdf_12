@@ -5,10 +5,16 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.build comment_params
-    if @comment.save
-      flash[:success] = t "flash.success_message"
+    if @comment.content.length < Settings.min_content_of_comment ||
+      @comment.content.length > Settings.max_content_of_comment
+      flash[:danger] = t("comment_short_or_long", min: Settings.min_content_of_comment,
+        max: Settings.max_content_of_comment)
     else
-      flash[:danger] = t "flash.danger_message"
+      if @comment.save
+        flash[:success] = t "flash.success_message"
+      else
+        flash[:danger] = t "flash.danger_message"
+      end
     end
     redirect_to @commentable
   end

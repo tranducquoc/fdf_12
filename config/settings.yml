@@ -109,8 +109,8 @@ product:
   max_name: 50
   max_description: 250
   max_price: 1000000000
-min_content_of_comment: 10
-max_content_of_comment: 250
+min_content_of_comment: 1
+max_content_of_comment: 300
 shop:
   max_name: 50
   max_description: 250

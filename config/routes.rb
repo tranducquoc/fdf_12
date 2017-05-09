@@ -80,6 +80,7 @@ Rails.application.routes.draw do
   end
   resources :tags, only: :show
   get "search(/:search)", to: "searches#index", as: :search
+  resources :searches, only: :new
 
   resources :request_shop_domains
   resources :set_carts

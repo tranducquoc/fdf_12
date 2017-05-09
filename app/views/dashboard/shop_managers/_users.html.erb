@@ -1,14 +1,14 @@
-<% @users.each do |user| %>
-  <tr>
-    <td class="td-user-image-table">
-      <div class="search-user-image-owner">
-        <%= image_tag user.avatar.url %>
-      </div>
-    </td>
-    <td class="td-user-name-table"><%= user.name %></td>
-    <td class="td-user-action-table">
-      <% user_of_shop = ShopManager.find_by(user_id: user.id,
-        shop_id: @shop.id) %>
+<% if @users.present? %>
+  <% @users.each do |user| %>
+    <tr>
+      <td class="td-user-image-table">
+        <div class="search-user-image-owner">
+          <%= image_tag user.avatar.url %>
+        </div>
+      </td>
+      <td class="td-user-name-table"><%= user.name %></td>
+      <td class="td-user-action-table">
+        <% user_of_shop = get_user_of_shop user.id, @shop.id %>
         <% if @shops_managers.include? user_of_shop  %>
           <% if !current_user? user %>
             <% if @shop.shop_owner?(current_user.id) %>
@@ -31,14 +31,24 @@
             <% end %>
           <% end %>
         <% else %>
-          <% manager_of_shop = ShopManager.find_by(user_id: current_user.id,
-            shop_id: @shop.id, role: :manager) %>
+          <% manager_of_shop = get_manager_of_shop current_user.id, @shop.id %>
           <% if manager_of_shop.present? ||
-             @shop.shop_owner?(current_user.id) %>
+            @shop.shop_owner?(current_user.id) %>
             <%= link_to t("add"), dashboard_shop_shop_managers_path(user_id: user.id,
               shop_id: @shop.id), method: :post, class: "btn btn-primary" %>
           <% end %>
         <% end %>
+      </td>
+    </tr>
+  <% end %>
+<% else %>
+  <tr>
+    <td class="td-user-image-table">
+      <div class="search-user-image-owner">
+        <%= image_tag current_user.avatar.url %>
+      </div>
     </td>
+    <td class="td-user-name-table"><%= current_user.name %></td>
+    <td class="td-user-action-table"></td>
   </tr>
 <% end %>

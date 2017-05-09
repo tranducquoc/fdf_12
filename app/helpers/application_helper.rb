@@ -129,4 +129,14 @@ module ApplicationHelper
   def domain_status
     Domain.statuses.keys.select{|status| status != Domain.statuses.keys[2]}
   end
+
+  def get_user_of_shop user_id, shop_id
+    user_of_shop = ShopManager.find_by(user_id: user_id,
+      shop_id: shop_id)
+  end
+
+  def get_manager_of_shop user_id, shop_id
+    manager_of_shop = ShopManager.find_by(user_id: user_id,
+      shop_id: shop_id, role: :manager)
+  end
 end

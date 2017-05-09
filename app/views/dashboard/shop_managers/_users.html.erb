@@ -1,5 +1,5 @@
-<% if @users.present? %>
-  <% @users.each do |user| %>
+<% if @support.users.present? %>
+  <% @support.users.each do |user| %>
     <tr>
       <td class="td-user-image-table">
         <div class="search-user-image-owner">
@@ -9,7 +9,7 @@
       <td class="td-user-name-table"><%= user.name %></td>
       <td class="td-user-action-table">
         <% user_of_shop = get_user_of_shop user.id, @shop.id %>
-        <% if @shops_managers.include? user_of_shop  %>
+        <% if @support.shops_managers.include? user_of_shop  %>
           <% if !current_user? user %>
             <% if @shop.shop_owner?(current_user.id) %>
               <%= link_to t("delete"), dashboard_shop_shop_manager_path(@shop.id,

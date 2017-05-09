@@ -87,3 +87,9 @@ $(document).ready(function(){
     });
   });
 });
+
+$(document).ready(function(){
+  $('#search').keyup(function(){
+    $('#search_owner_form').submit();
+  });
+});

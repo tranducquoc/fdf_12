@@ -4,8 +4,16 @@ class Dashboard::ShopManagersController < BaseDashboardController
   before_action :check_user_status_for_action
 
   def index
-    user_domain = Domain.find_by id: session[:domain_id]
-    @users = user_domain.users if user_domain.users.present?
+    @user_ids = []
+    user_shop_domain = ShopDomain.list_shop_by_id params[:shop_id]
+    user_shop_domain.each do |user_shop|
+      @user_ids << UserDomain.list_all_user_domains(user_shop.domain_id)
+    end
+    @user_ids = @user_ids.flatten.pluck(:user_id).uniq
+    @users = []
+    @user_ids.each do  |user_id|
+      @users << User.find_by(id: user_id)
+    end
     @shops_managers = ShopManager.all
     @shop_manager = ShopManager.find_by shop_id: params[:shop_id]
   end
@@ -18,7 +26,7 @@ class Dashboard::ShopManagersController < BaseDashboardController
     else
       flash[:danger] = t "flash.danger_message"
     end
-    redirect_to dashboard_shop_shop_managers_path @shop
+    redirect_to :back
   end
 
   def update

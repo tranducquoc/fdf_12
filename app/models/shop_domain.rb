@@ -13,6 +13,8 @@ class ShopDomain < ApplicationRecord
 
   scope :list_shop_domains, -> domain {where domain_id: domain}
 
+  scope :list_shop_by_id, -> shop {where shop_id: shop}
+
   scope :by_domain, ->domain {where domain_id: domain.id}
   def create_event_request_shop user_id, shop_domain
     if shop_domain.pending?

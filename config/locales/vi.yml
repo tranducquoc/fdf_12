@@ -58,6 +58,7 @@ vi:
   set_manager_shop: "Thiết lập quyền"
   com-add-hcm: "Tầng 8 tòa nhà Nice, số 467 đường Điện Biên Phủ, Bình Thạnh, HCM, Việt Nam"
   com-add-dn: "Tầng 6 tòa nhà Vĩnh Trung Plaza, số 255-257 đường Hùng Vương, Vĩnh Trung, Thanh Khê, Đà Nẵng, Việt Nam"
+  comment_short_or_long: "Comment của bạn quá ngắn hoặc quá dài(%{min}-%{max} ký tự). Vui lòng kiểm tra lại."
   confirm_set_owner_shop: "Xác nhận"
   set_manager_shop: "Thiết lập quản lý cửa hàng"
   blank_link: "#"

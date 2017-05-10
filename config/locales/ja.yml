@@ -5,6 +5,7 @@ ja:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  wrong_from_day_to_day_find: "無効な日付"
   your_shop: "あなたの店"
   cart_quick:
     order_now: "今すぐ注文"

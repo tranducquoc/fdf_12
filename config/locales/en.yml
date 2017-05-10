@@ -5,6 +5,7 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  wrong_from_day_to_day_find: "Invalid dates!"
   cart_quick:
     order_now: "Order now"
     finish: "Finish"

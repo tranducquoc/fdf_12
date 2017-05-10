@@ -208,3 +208,41 @@ $orange_main: #ff5722;
   box-shadow: 0 4px 2px rgba(140, 90, 0, 0.25);
   object-fit: cover;
 }
+
+.scoll_list_order_manage {
+  width: 100%;
+  height: 500px;
+  overflow: scroll;
+}
+
+.scroll_list_orders {
+  width: 97%;
+  height: 500px;
+  border: solid 1px #e6e6e6;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px rgba(140, 90, 0, 0.25);
+  .scroll_body {
+    width: 98.2%;
+    height: 480px;
+    margin-top: 10px;
+    margin-left: 10px;
+    overflow: scroll;
+  }
+}
+
+.panel_date_list_orders {
+  margin-top: 50px;
+  margin-bottom: -5px;
+  .panel_item {
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    background: #e6e6e6;
+    box-shadow: 0 4px 2px rgba(140, 90, 0, 0.25);
+    position: absolute;
+    z-index: 2;
+    margin-top: -25px;
+  }
+}

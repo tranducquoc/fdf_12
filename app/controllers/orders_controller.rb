@@ -12,7 +12,6 @@ class OrdersController < ApplicationController
       tmp_orders.between_date params[:start_date], params[:end_date]
     else
       tmp_orders.on_today.by_date_newest.page(params[:page])
-        .per Settings.common.per_page
     end
     params[:status] ||= Settings.filter_status_order.all
     @orders = @orders.send params[:status]

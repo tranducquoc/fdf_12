@@ -43,11 +43,21 @@
     <% if @order_days.any? %>
       <div class="row margin_top_-30px">
         <% @order_days.sort.each do |day, orders|  %>
-          <h3><dt><%= t "order_day" %>: <%= I18n.localize day,
-            format: :short_date %></dt></h3>
-          <% orders.each do |order| %>
-            <%= render "list", order: order %>
-          <% end %>
+          <div class="panel_item_list_orders">
+            <div class="panel_date_list_orders">
+              <div class="panel_item">
+                <%= t "order_day" %>: <%= I18n.localize day,
+                  format: :short_date %>
+              </div>
+              <div class="scroll_list_orders">
+                <div class="scroll_body">
+                  <% orders.each do |order| %>
+                    <%= render "list", order: order %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         <% end %>
       </div>
     <% else %>

@@ -8,7 +8,7 @@ class Dashboard::OrdersController < BaseDashboardController
     if @shop
       @q = @shop.orders.includes(:user).ransack params[:q]
       @orders = @q.result.includes(:order_products).unfinished.on_today
-        .by_date_newest.page(params[:page]).per Settings.common.per_page
+        .by_date_newest.page(params[:page])
     end
   end
 

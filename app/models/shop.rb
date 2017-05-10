@@ -62,8 +62,8 @@ class Shop < ApplicationRecord
   scope :of_ids, -> ids {where id: ids}
   scope :shop_in_domain, -> domain_id do
     joins(:shop_domains)
-      .where "shop_domains.domain_id = ? and shop_domains.status = ?", domain_id,
-      ShopDomain.statuses[:approved]
+      .where("shop_domains.domain_id = ? and shop_domains.status = ?", domain_id,
+      ShopDomain.statuses[:approved]).order("status_on_off DESC, true")
   end
 
   scope :list_shops, -> ids {where id: ids}

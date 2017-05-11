@@ -390,7 +390,7 @@ $color_celeste_approx: #ccc;
 }
 
 .truncate {
-  width: auto;
+  width: 250px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -722,4 +722,9 @@ input:checked + .slider:before {
 .height-modal_shop_owner {
   overflow:auto;
   height: 350px;
+}
+
+.auto_new_line_for_description_product {
+  max-width:300px;
+  word-wrap: break-word;
 }

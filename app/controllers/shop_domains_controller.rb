@@ -39,8 +39,12 @@ class ShopDomainsController < ApplicationController
         shop = @shop_domain.shop
         domain = @shop_domain.domain
         AddShopProductToDomainService.new(shop, domain).add
-        @shop_domain.create_event_request_shop @domain.owner, @shop_domain
-        @shop_domain.create_event_request_shop @shop_domain.shop.owner_id, @shop_domain
+        shop_managers = @shop_domain.shop.shop_managers
+        shop_managers.each do |s|
+          if s.owner? || s.manager?
+            @shop_domain.create_event_request_shop s.user_id, @shop_domain
+          end
+        end
         flash[:success] = t "add_shop_domain_success"
       elsif params[:status] == ShopDomain.statuses.key(2)
         @shop_domain.create_event_request_shop @shop_domain.shop.owner_id, @shop_domain

@@ -158,8 +158,14 @@ class Event < ApplicationRecord
         user_domain = UserDomain.find_by user_id: user_id, domain_id: domain.id,
           role: :manager
         if user_id == domain.owner || user_domain.present?
-          "#{I18n.t "owner_active_shop_request"}#{shop_domain.shop.name}
-            #{I18n.t "to_domain"}#{domain.name}"
+          shop_manager = shop_domain.shop.shop_managers.find_by user_id: user_id
+          if shop_manager.present? && shop_manager.manager?
+            "#{I18n.t "shop_request_to_domain_owner_shop"}#{shop_domain.shop.name}
+              #{I18n.t "shop_request_to_domain_owner"}#{domain.name}"
+          else
+            "#{I18n.t "owner_active_shop_request"}#{shop_domain.shop.name}
+              #{I18n.t "to_domain"}#{domain.name}"
+          end
         else
           "#{I18n.t "shop_request_to_domain_owner_shop"}#{shop_domain.shop.name}
             #{I18n.t "shop_request_to_domain_owner"}#{domain.name}"

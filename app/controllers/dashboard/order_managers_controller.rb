@@ -59,7 +59,8 @@ class Dashboard::OrderManagersController < ApplicationController
   def load_shop
     if Shop.exists? params[:shop_id]
       @shop = Shop.find params[:shop_id]
-      unless @shop.is_owner? current_user
+      shop_manager = @shop.shop_managers.find_by(user_id: current_user.id)
+      unless shop_manager.present? && (shop_manager.owner? || shop_manager.manager?)
         flash[:danger] = t "flash.danger.load_shop"
         redirect_to dashboard_shops_path
       end

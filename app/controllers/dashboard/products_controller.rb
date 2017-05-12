@@ -16,13 +16,17 @@ class Dashboard::ProductsController < BaseDashboardController
   def show
     @order_item = OrderProduct.find_by id: params[:order_product_id]
     if @order_item
+      date = Date.parse params[:date]
       case
       when @order_item.done?
-        @order_products = @product.order_products.includes(:user).done
+        @order_products = @product.order_products.order_products_at_date(date)
+          .includes(:user).done
       when @order_item.rejected?
-        @order_products = @product.order_products.includes(:user).rejected
+        @order_products = @product.order_products.order_products_at_date(date)
+          .includes(:user).rejected
       else
-        @order_products = @product.order_products.includes(:user).accepted
+        @order_products = @product.order_products.order_products_at_date(date)
+          .includes(:user).accepted
       end
       file_name = I18n.l(DateTime.now, format: :short_date).to_s
       respond_to do |format|
@@ -38,7 +42,7 @@ class Dashboard::ProductsController < BaseDashboardController
       end
     else
       flash[:danger] = t "flash.danger.dashboard.product.not_found"
-      redirect_to dashboard_shop_products_path
+      redirect_to root_path
     end
   end
 

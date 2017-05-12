@@ -12,9 +12,14 @@ class ShopsController < ApplicationController
   end
 
   def show
-    @products = @shop.products.active.page(params[:page])
-      .per Settings.common.products_per_page
-    @shop = @shop.decorate
+    if @domain.present?
+      @products = @shop.products.active.page(params[:page])
+        .per Settings.common.products_per_page
+      @shop = @shop.decorate
+    else
+      flash[:success] = t "you_should_choosen_domain_first"
+      redirect_to root_url
+    end
   end
 
   def update

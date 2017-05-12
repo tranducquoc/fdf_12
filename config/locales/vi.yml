@@ -41,6 +41,8 @@ vi:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  quick_order_shop: "Đặt nhanh"
+  you_should_choosen_domain_first: "Bạn phải chọn miền trước khi xem cửa hàng!"
   wrong_from_day_to_day_find: "Ngày không hợp lệ!"
   cart_quick:
     order_now: "Đặt ngay"

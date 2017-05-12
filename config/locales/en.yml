@@ -5,6 +5,8 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
   split: " -"
+  quick_order_shop: "Order Fast"
+  you_should_choosen_domain_first: "You must select a domain before viewing the shop!"
   wrong_from_day_to_day_find: "Invalid dates!"
   cart_quick:
     order_now: "Order now"

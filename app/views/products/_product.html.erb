@@ -3,7 +3,7 @@
     <div class="image_product">
       <% if @domain.present? %>
         <%= link_to domain_product_path(@domain, product) do %>
-          <%= image_tag product.image.url, class: "image-shop height-27375 img_cover_size" %>
+          <%= image_tag product.image.url, class: "image-shop height-27375 img_cover_size image_product_item" %>
         <% end %>
       <% else %>
         <%= link_to product_path(product, domain_id: "not_find") do %>

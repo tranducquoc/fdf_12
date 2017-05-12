@@ -62,13 +62,17 @@
     </table>
   </div>
 </div>
-<div class="row">
-  <h2 class="section_title">
-    <%= @products.any? ? t(".products") : t(".no_product") %>
-  </h2>
-  <div class="col-md-12">
-    <%= render @products %>
+<div class="col-sm-12 top_home">
+  <div class="row">
+    <div class="col-md-12 row-title">
+      <h2 class="section_title margin-left_domain padding-left_domain">
+        <%= @products.any? ? t(".products") : t(".no_product") %>
+      </h2>
+    </div>
+    <div class="col-md-12 magin_top_10px">
+      <%= render @products %>
+    </div>
+    <%= paginate @products %>
   </div>
-  <%= paginate @products %>
 </div>
 <%= render "domains/modal_order_fast" %>

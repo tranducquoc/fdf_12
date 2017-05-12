@@ -53,6 +53,7 @@ class OrderProduct < ApplicationRecord
   end
 
   scope :order_by_date, ->{order created_at: :desc}
+  scope :order_products_at_date, ->date {where("DATE(created_at) = ?", date)}
 
   def self.group_by_products_by_created_at
     order_by_date.group_by{|i| i.created_at}

@@ -3,11 +3,13 @@
     <div class="image_product">
       <% if @domain.present? %>
         <%= link_to domain_product_path(@domain, product) do %>
-          <%= image_tag product.image.url, class: "image-shop height-27375 img_cover_size image_product_item" %>
+          <%= image_tag product.image.url,
+            class: "image-shop height-27375 img_cover_size image_product_item" %>
         <% end %>
       <% else %>
         <%= link_to product_path(product, domain_id: "not_find") do %>
-          <%= image_tag product.image.url, class: "image-shop height-27375 img_cover_size" %>
+          <%= image_tag product.image.url,
+            class: "image-shop height-27375 img_cover_size image_product_item" %>
         <% end %>
       <% end %>
       <h3>
@@ -20,33 +22,38 @@
   </div>
   <div class="padding-10">
     <div class="description_area row">
-      <div class="col-md-4">
+      <div class="col-md-4 padding-left--10px">
         <% if @domain.present? %>
           <%= link_to domain_product_path(@domain, product) do %>
           <span class="shop-avatar">
             <% if product.shop_avatar.nil? %>
-              <%= image_tag "default_shop_avatar" %>
+              <%= image_tag "default_shop_avatar", class: "image_shop_icon_product_item" %>
             <% else %>
-              <%= image_tag product.shop_avatar.url, class:"image-home" %>
+              <%= image_tag product.shop_avatar.url,
+                class: "image_shop_icon_product_item present" %>
             <% end %>
           </span>
           <% end %>
-        <% end %>
-      </div>
-      <% if @domain.present? %>
-        <div class="col-md-8">
-          <div>
-            <strong>
+          <div class="shop_nam_item_product">
+            <strong class="truncate-12em">
               <%= link_to truncate(product.shop.name,
                 length: Settings.max_shop_name),
                 domain_shop_path(@domain, product.shop),
                 class: "tooltips", title: product.shop.name %>
             </strong>
           </div>
-          <div class="product_text truncate height-50">
-            <strong><%= product.name %></strong>
+        <% end %>
+      </div>
+      <% if @domain.present? %>
+        <div class="col-md-8">
+          <div>
           </div>
-          <div class="product_text">
+          <div class="product_text truncate name_product_in_shop",
+            title="<%= product.name %>">
+            <strong><%= truncate(product.name,
+              length: Settings.max_shop_name) %></strong>
+          </div>
+          <div class="product_text product_price">
             <h4><%= format_price product.price %></h4>
           </div>
         </div>

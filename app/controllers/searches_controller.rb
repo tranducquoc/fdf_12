@@ -1,7 +1,7 @@
 class SearchesController < ApplicationController
   before_action :authenticate_user!
   before_action :check_user_status_for_action, only: :new
-  before_action :load_shop
+  before_action :load_shop, only: :new
 
   def index
     q = params[:search]

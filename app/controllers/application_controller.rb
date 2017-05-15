@@ -90,7 +90,7 @@ class ApplicationController < ActionController::Base
 
   def check_user_status_for_action
     if current_user.wait?
-      flash[:danger] = t "information"
+      flash[:danger] = t "information_user_not_active"
       redirect_to root_path
     end
   end

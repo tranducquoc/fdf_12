@@ -67,6 +67,8 @@ ja:
     error_products_not_found: "プロダクトが見つかりません!"
     success: "成功する"
     logout: "ログアウトが成功する!"
+    not_found_order: "オーダが見つかりません!"
+    can_not_cancel_order: "オーダをキャンセルすることはできません!"
   framgia_label: "Framgia"
   image_index: "画像"
   feature_index: "特長"

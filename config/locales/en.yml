@@ -64,6 +64,8 @@ en:
     error_products_not_found: "Products not found!"
     success: "Succes"
     logout: "Log out success!"
+    not_found_order: "Order not found!"
+    can_not_cancel_order: "Can not cancel order!"
   framgia_label: "Framgia"
   image_index: "Picture"
   feature_index: "Features"

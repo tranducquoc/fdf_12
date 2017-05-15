@@ -1,4 +1,6 @@
 class V1::OrdersController < V1::BaseController
+  skip_before_filter :verify_authenticity_token
+
   before_action :check_user, only: :index
   before_action :check_domain, only: :index
 
@@ -20,6 +22,19 @@ class V1::OrdersController < V1::BaseController
       end
     else
       response_not_found t "api.error_orders_list_not_found"
+    end
+  end
+
+  def destroy
+    order = Order.find_by id: params[:id]
+    if order.present?
+      if order.destroy
+        response_success t "api.success"
+      else
+        response_error t "api.can_not_cancel_order"
+      end
+    else
+      response_not_found t "api.not_found_order"
     end
   end
 

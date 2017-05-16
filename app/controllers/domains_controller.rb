@@ -36,7 +36,7 @@ class DomainsController < ApplicationController
     @domain = Domain.new domain_params
     save_domain = SaveDomainService.new(@domain, current_user).save
     session[:domain_id] = @domain.id
-    flash[:success] = save_domain
+    flash[:success] = save_domain.last
     redirect_to user_searchs_path domain_id: @domain.id
   end
 
@@ -56,7 +56,7 @@ class DomainsController < ApplicationController
 
   def active_account
     unless current_user.active?
-      flash[:danger] = t "information"
+      flash[:danger] = t "information_user_not_active"
       redirect_to :back
     end
   end

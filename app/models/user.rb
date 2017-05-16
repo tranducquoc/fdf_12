@@ -87,7 +87,7 @@ class User < ApplicationRecord
   end
 
   def create_default_domain
-    CreateDomainService.new(self).create
+    CreateDomainService.new(self).create.last
   end
 
   def generate_authentication_token

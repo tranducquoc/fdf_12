@@ -195,7 +195,7 @@ en:
   contact: "Contact"
   start: "Start date"
   end: "End date"
-  information: "You have to be the active user to do anything"
+  information_user_not_active: "You have to be the active user to do anything"
   download: "Download: "
   csv: "CSV"
   excel: "Excel"

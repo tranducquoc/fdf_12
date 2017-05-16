@@ -68,8 +68,8 @@ ja:
     success: "成功する"
     logout: "ログアウトが成功する!"
     not_found_order: "オーダが見つかりません!"
-    can_not_cancel_order: "オーダをキャンセルすることはできません!"api
-    information_user_not_active:
+    can_not_cancel_order: "オーダをキャンセルすることはできません!"
+    change_status_domain_fail: "ドメインのステータスを変更できませんでした!"
   framgia_label: "Framgia"
   image_index: "画像"
   feature_index: "特長"

@@ -1,5 +1,5 @@
 class V1::DomainsController < V1::BaseController
-  skip_before_filter :verify_authenticity_token, only: :create
+  skip_before_filter :verify_authenticity_token, only: [:create, :update]
 
   before_action :check_user, only: :create
   before_action :active_account, only: :create
@@ -26,6 +26,21 @@ class V1::DomainsController < V1::BaseController
     save_domain = SaveDomainService.new(@domain, @user).save
     save_domain.first == Settings.api_type_success ? response_success(save_domain.last)
       : response_error(save_domain.last)
+  end
+
+  def update
+    domain = Domain.find_by id: params[:id]
+    if domain.present?
+      if Domain.statuses[params[:domain_status]].present?
+        domain.status = params[:domain_status]
+        domain.save ? response_success(t "api.success" )
+          : response_error(t "api.change_status_domain_fail")
+      else
+        response_error t "api.change_status_domain_fail"
+      end
+    else
+      response_not_found t "api.error_domains_not_found"
+    end
   end
 
   private

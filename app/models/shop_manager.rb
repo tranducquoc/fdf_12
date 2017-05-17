@@ -10,5 +10,9 @@ class ShopManager < ApplicationRecord
   end
 
   scope :by_user, ->user_id {where user_id: user_id}
+  scope :select_user_add_role, -> do
+    joins(:user)
+    .select("users.*, role")
+  end
 
 end

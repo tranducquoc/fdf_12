@@ -1,7 +1,6 @@
 class V1::DomainsController < V1::BaseController
   skip_before_filter :verify_authenticity_token, only: [:create, :update]
 
-  before_action :check_user, only: :create
   before_action :active_account, only: :create
 
   def index
@@ -23,7 +22,7 @@ class V1::DomainsController < V1::BaseController
 
   def create
     @domain = Domain.new domain_params
-    save_domain = SaveDomainService.new(@domain, @user).save
+    save_domain = SaveDomainService.new(@domain, current_user).save
     save_domain.first == Settings.api_type_success ? response_success(save_domain.last)
       : response_error(save_domain.last)
   end
@@ -45,14 +44,7 @@ class V1::DomainsController < V1::BaseController
 
   private
   def domain_params
-    params.require(:domain).permit(:name, :status).merge! owner: @user.id
-  end
-
-  def check_user
-    @user = User.find_by id: params[:user_id]
-    unless @user
-      response_not_found t "api.error_user_not_found"
-    end
+    params.require(:domain).permit(:name, :status).merge! owner: current_user.id
   end
 
   def active_account

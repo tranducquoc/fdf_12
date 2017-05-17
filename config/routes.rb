@@ -102,5 +102,6 @@ Rails.application.routes.draw do
     get "/logout", to: "users_logout#logout", defaults: {format: :json}
     resources :categories, only: :index, defaults: {format: :json}
     resources :orders, defaults: {format: :json}
+    resources :shop_managers, defaults: {format: :json}
   end
 end

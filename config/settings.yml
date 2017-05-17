@@ -117,3 +117,5 @@ shop:
   max_description: 250
 api_type_success: 0
 api_type_error: 1
+api_type_not_found: 2
+shop_domain_status_rejected_key: 2

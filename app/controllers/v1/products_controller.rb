@@ -6,9 +6,15 @@ class V1::ProductsController < V1::BaseController
           t.product_domains.find_by_domain_id(params[:domain_id]))
       end
     elsif params[:shop_id].present?
-      products = Product.all.select do |t|
-        (t.shop_id.to_s == params[:shop_id] &&
-          t.product_domains.find_by_domain_id(params[:domain_id]))
+      if params[:domain_id].present?
+        products = Product.all.select do |t|
+          (t.shop_id.to_s == params[:shop_id] &&
+            t.product_domains.find_by_domain_id(params[:domain_id]))
+        end
+      else
+        products = Product.all.select do |t|
+          t.shop_id.to_s == params[:shop_id]
+        end
       end
     else
       products = Product.all.select do |t|

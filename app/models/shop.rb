@@ -47,6 +47,9 @@ class Shop < ApplicationRecord
   mount_uploader :cover_image, ShopCoverUploader
   mount_uploader :avatar, ShopAvatarUploader
 
+  mount_base64_uploader :avatar, ShopAvatarUploader
+  mount_base64_uploader :cover_image, ShopCoverUploader
+
   validate :image_size
 
   delegate :name, to: :owner, prefix: :owner, allow_nil: true

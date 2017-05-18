@@ -1,4 +1,6 @@
 class V1::Dashboard::ShopsController < V1::BaseController
+  skip_before_filter :verify_authenticity_token, only: :create
+
   def index
     user_id = params[:user_id]
     if user_id.present?
@@ -19,5 +21,20 @@ class V1::Dashboard::ShopsController < V1::BaseController
       response_success t("api.success"), (DashboardShopsApiService.
         new.result_json @list_domains, @list_shops, @domain_info)
     end
+  end
+
+  def create
+     @shop = current_user.own_shops.build shop_params
+    if @shop.save
+      response_success t "api.success"
+    else
+      response_error t "api.error"
+    end
+  end
+
+  private
+  def shop_params
+    params.require(:shop).permit :id, :name, :description,
+      :cover_image, :avatar, :time_auto_reject, :time_auto_close, :openforever
   end
 end

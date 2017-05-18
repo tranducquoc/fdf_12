@@ -89,7 +89,7 @@ Rails.application.routes.draw do
 
   api_version(module: "V1", path: {value: "v1"}, default: true) do
     namespace :dashboard do
-      resources :shops, only: :index, defaults: {format: :json}
+      resources :shops, only: [:index, :create], defaults: {format: :json}
       resources :order_managers, only: :index, defaults: {format: :json}
     end
     resources :shops, only: :index, defaults: {format: :json}

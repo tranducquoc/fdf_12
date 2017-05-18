@@ -58,6 +58,7 @@ gem "ratyrate"
 gem "redis", "~> 3.0"
 gem "fcm"
 gem "strip_attributes"
+gem "carrierwave-base64"
 
 group :development, :test do
   gem "byebug", platform: :mri

@@ -16,8 +16,7 @@ class DomainsController < ApplicationController
   def show
     @domains = Domain.professed
     @categories = Category.all
-    @tags = ActsAsTaggableOn::Tag.all
-    @shops = Shop.includes(:tags).shop_in_domain(@domain.id).top_shops.decorate
+    @shops = Shop.shop_in_domain(@domain.id).top_shops.decorate
     @shops_slide = Shop.shop_in_domain(@domain.id)
     @products = @domain.products.includes(:shop).top_products
     shops = @shops_slide.select do |shop|

@@ -1,24 +1,25 @@
 class V1::ProductsController < V1::BaseController
   def index
+    products = []
     if params[:category_id].present?
-      products = Product.all.select do |t|
-        (t.category_id.to_s == params[:category_id] &&
-          t.product_domains.find_by_domain_id(params[:domain_id]))
+      Product.find_each do |t|
+        if t.category_id.to_s == params[:category_id] &&
+          t.product_domains.find_by_domain_id(params[:domain_id])
+            products << t
+        end
       end
     elsif params[:shop_id].present?
-      if params[:domain_id].present?
-        products = Product.all.select do |t|
-          (t.shop_id.to_s == params[:shop_id] &&
-            t.product_domains.find_by_domain_id(params[:domain_id]))
-        end
-      else
-        products = Product.all.select do |t|
-          t.shop_id.to_s == params[:shop_id]
+      Product.find_each do |t|
+        if t.shop_id.to_s == params[:shop_id] &&
+          t.product_domains.find_by_domain_id(params[:domain_id])
+            products << t
         end
       end
     else
-      products = Product.all.select do |t|
-        t.product_domains.find_by_domain_id(params[:domain_id])
+      Product.find_each do |t|
+        if t.product_domains.find_by_domain_id(params[:domain_id])
+          products << t
+        end
       end
     end
     if products.present?

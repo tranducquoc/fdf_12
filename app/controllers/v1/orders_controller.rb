@@ -1,5 +1,5 @@
 class V1::OrdersController < V1::BaseController
-  skip_before_filter :verify_authenticity_token
+  skip_before_filter :verify_authenticity_token, only: :destroy
 
   before_action :check_user, only: :index
   before_action :check_domain, only: :index

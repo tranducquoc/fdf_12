@@ -25,7 +25,7 @@ class Dashboard::ShopsController < BaseDashboardController
   def show
     user_domain = Domain.find_by_id session[:domain_id]
     @users = user_domain.users
-    @users_shop_manager = ShopManager.select do |user|
+    @users_shop_manager = ShopManager.includes(:user).select do |user|
       (user.shop_id == @shop.id && (user.role == Settings.shop_owner ||
        user.role == Settings.shop_manager))
     end

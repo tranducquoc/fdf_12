@@ -16,7 +16,7 @@ class Dashboard::ProductsController < BaseDashboardController
   def show
     @order_item = OrderProduct.find_by id: params[:order_product_id]
     if @order_item
-      date = Date.parse params[:date]
+      date = Date.parse @order_item.created_at.to_s
       case
       when @order_item.done?
         @order_products = @product.order_products.order_products_at_date(date)

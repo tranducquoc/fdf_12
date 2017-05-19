@@ -25,11 +25,33 @@ class ShopDomainApiService
               end
             end
           rescue
-            return [Settings.api_type_success, I18n.t("api.error")]
+            return [Settings.api_type_error, I18n.t("api.error")]
           end
         end
       else
-        return [Settings.api_type_success, I18n.t("api.error")]
+        return [Settings.api_type_error, I18n.t("api.error")]
+      end
+    else
+      return [Settings.api_type_not_found, I18n.t("api.not_owner_domain")]
+    end
+  end
+
+  def destroy_shop_in_domain
+    if @user.domains.find_by(id: @shop_domain.domain_id).present?
+      shop = @shop_domain.shop
+      if shop.present?
+        ActiveRecord::Base.transaction do
+          begin
+            ShopDomain.destroy_all domain_id: @shop_domain.domain_id, shop_id: shop.id
+            list_id_products = shop.products.map &:id
+            ProductDomain.list_product_domain_of_shop(list_id_products).destroy_all
+            return [Settings.api_type_success, I18n.t("api.success")]
+          rescue
+            return [Settings.api_type_error, I18n.t("api.error")]
+          end
+        end
+      else
+        return [Settings.api_type_error, I18n.t("api.error")]
       end
     else
       return [Settings.api_type_not_found, I18n.t("api.not_owner_domain")]

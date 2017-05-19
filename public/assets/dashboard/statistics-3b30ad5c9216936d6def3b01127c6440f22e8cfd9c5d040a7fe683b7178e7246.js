@@ -1,0 +1,1 @@
+(function(){$(document).ready(function(){return $(".datetimepicker").datetimepicker({timepicker:!1,format:"Y/m/d"}),$(".timepicker").datetimepicker({timepicker:!0}),$(".datepicker").datetimepicker({timepicker:!1,format:"m/d/Y"}),$(".datepicker2").datetimepicker({timepicker:!1,format:"Y/m/d"})})}).call(this);

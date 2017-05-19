@@ -1,6 +1,6 @@
 class V1::ShopDomainsController < V1::BaseController
-  skip_before_filter :verify_authenticity_token, only: :update
-  before_action :load_shop_domain, only: :update
+  skip_before_filter :verify_authenticity_token, only: [:update, :destroy]
+  before_action :load_shop_domain, only: [:update, :destroy]
 
   def index
     domain_id = params[:domain_id]
@@ -23,24 +23,34 @@ class V1::ShopDomainsController < V1::BaseController
     if ShopDomain.statuses[params[:status]].present?
       result = ShopDomainApiService.new(@shop_domain, current_user,
         params[:status]).change_status
-      case result.first
-      when Settings.api_type_success
-        response_success result.last
-      when Settings.api_type_error
-        response_error result.last
-      when Settings.api_type_not_found
-        response_not_found result.last
-      end
+      response result
     else
       response_not_found t "api.status_not_exist"
     end
   end
 
+  def destroy
+    result = ShopDomainApiService.new(@shop_domain, current_user, "").destroy_shop_in_domain
+    response result
+  end
+
   private
   def load_shop_domain
-    @shop_domain = ShopDomain.find_by id: params[:id]
+    @shop_domain = ShopDomain.find_by domain_id: params[:domain_id],
+      shop_id: params[:shop_id]
     unless @shop_domain.present?
       response_not_found t("api.error_domains_not_found")
+    end
+  end
+
+  def response result
+    case result.first
+    when Settings.api_type_success
+      response_success result.last
+    when Settings.api_type_error
+      response_error result.last
+    when Settings.api_type_not_found
+      response_not_found result.last
     end
   end
 end

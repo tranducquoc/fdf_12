@@ -34,12 +34,22 @@ class V1::ShopDomainsController < V1::BaseController
     response result
   end
 
+  def show
+    if current_user.domains.find_by(id: params[:domain_id]).present?
+      list_request = ShopDomain.request_of_domain params[:domain_id]
+      list_request.present? ? response_success(t("api.success"), list_request)
+      : response_not_found(t "api.requests_not_found")
+    else
+      response_error t "api.not_owner_domain"
+    end
+  end
+
   private
   def load_shop_domain
     @shop_domain = ShopDomain.find_by domain_id: params[:domain_id],
       shop_id: params[:shop_id]
     unless @shop_domain.present?
-      response_not_found t("api.error_domains_not_found")
+      response_not_found t "api.not_found"
     end
   end
 

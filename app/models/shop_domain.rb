@@ -10,12 +10,12 @@ class ShopDomain < ApplicationRecord
   end
 
   scope :not_in_shop_domain, -> only_shop_domain {where.not domain_id: only_shop_domain}
-
   scope :list_shop_domains, -> domain {where domain_id: domain}
-
   scope :list_shop_by_id, -> shop {where shop_id: shop}
-
   scope :by_domain, ->domain {where domain_id: domain.id}
+  scope :request_of_domain, ->domain_id {where domain_id: domain_id,
+    status: Settings.pending}
+
   def create_event_request_shop user_id, shop_domain
     if shop_domain.pending?
       Event.create message: :pending,

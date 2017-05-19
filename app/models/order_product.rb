@@ -45,7 +45,8 @@ class OrderProduct < ApplicationRecord
     joins(:product, :order)
       .select("products.name as name, sum(quantity) * products.price as price,
         sum(quantity) as quantity, products.id as product_id, orders.id as shop_id
-        , order_products.status as status, order_products.id as id")
+        , order_products.status as status, order_products.id as id
+        , order_products.created_at as date")
       .where("order_products.status = ? and
         date(orders.created_at) = date(now())",
         OrderProduct.statuses[:accepted])

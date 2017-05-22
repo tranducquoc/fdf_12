@@ -11,6 +11,9 @@ class Comment < ApplicationRecord
   after_create_commit { create_event }
 
   scope :newest, ->{order created_at: :desc}
+  scope :add_name_image_of_user, -> do
+    joins(:user).select("comments.*, users.name, users.avatar")
+  end
 
   validates :content,
     length: {in: Settings.min_content_of_comment..Settings.max_content_of_comment}

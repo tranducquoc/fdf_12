@@ -29,6 +29,7 @@ class Product < ApplicationRecord
 
   enum status: {active: 0, inactive: 1}
   mount_uploader :image, ProductImageUploader
+  mount_base64_uploader :image, ProductImageUploader
   validates :name, presence: true, length: {maximum: Settings.product.max_name}
   validates :description, presence: true, length: {maximum: Settings.product.max_description}
   validate :image_size

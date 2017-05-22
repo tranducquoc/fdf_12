@@ -104,5 +104,6 @@ Rails.application.routes.draw do
     resources :categories, only: :index, defaults: {format: :json}
     resources :orders, defaults: {format: :json}
     resources :shop_managers, defaults: {format: :json}
+    resources :comments, defaults: {format: :json}
   end
 end

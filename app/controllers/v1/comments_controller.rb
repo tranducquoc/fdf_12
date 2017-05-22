@@ -1,6 +1,6 @@
 class V1::CommentsController < V1::BaseController
   skip_before_filter :verify_authenticity_token, only: :create
-  before_action :load_commentable_object, only: :create
+  before_action :load_commentable_object, only: [:create, :index]
 
   def create
     @comment = @commentable.comments.build comment_params
@@ -15,6 +15,11 @@ class V1::CommentsController < V1::BaseController
         response_error t "flash.danger_message"
       end
     end
+  end
+
+  def index
+    comments = @commentable.comments.add_name_image_of_user
+    response_success t("api.success"), comments
   end
 
   private

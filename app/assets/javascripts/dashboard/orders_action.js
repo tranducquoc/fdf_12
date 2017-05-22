@@ -164,35 +164,94 @@ $(document).ready(function() {
     });
   });
 
-  $('.single-action').on('click', function() {
-    var classes = ['label-info', 'label-warning', 'label-danger', 'label-primary'];
-    var actions = ['pending', 'accepted', 'rejected', 'done'];
-    action = $(this).val();
-    parent = $(this).parent().parent();
-    itemId =  parent.children()[0].value;
+  $('.single-action').click(function(){
+    kclass = '.order-product-status-' + order_product_id;
+    var action = $(this).data('action');
+    var order_id = $(this).parents('.list_order_item').data('id');
+    var order_class = '#order_item_' + order_id;
+    var status_now = $(kclass).data('status')
+    if(status_now == action)
+      return;
+    else {
+      var order_product_id =  $(this).data('id');
+      var shopId = $('#shop-id').val();
+      $.ajax({
+        type: 'PUT',
+        url : '/dashboard/shops/' + shopId + '/order_products/' + order_product_id,
+        dataType: 'json',
+        data: {
+          order_product: {
+            status: action,
+            order_id: order_id
+          },
+          type: 1
+        },
+        success: function(data) {
+          kclass = '.order-product-status-' + order_product_id;
+          if(data.status === 'rejected')
+            $(kclass).html('<span class="label label-danger">' + $('#shop-id').data('rej') + '</span>');
+          else
+            $(kclass).html('<span class="label label-warning">' + $('#shop-id').data('acc') + '</span>');
+          $(kclass).attr('data-status', data.status);
+          $(order_class).find('.value_pending').html(data.count_pending);
+          $(order_class).find('.value_accepted').html(data.count_accepted);
+          $(order_class).find('.value_rejected').html(data.count_rejected);
+          render_item_packing(data.list_packing);
+        },
+        error: function(error_message) {
+          alert(error_message);
+        }
+      });
+    }
+  });
+  $('.single-action-all').click(function(){
+    var action = $(this).data('action');
+    var order_id = $(this).parents('.list_order_item').data('id');
     var shopId = $('#shop-id').val();
+    var order_class = '#order_item_' + order_id;
     $.ajax({
       type: 'PUT',
-      url : '/dashboard/shops/' + shopId + '/order_products/' + itemId,
+      url : '/dashboard/shops/' + shopId + '/order_products/0',
       dataType: 'json',
       data: {
         order_product: {
-          status: action
-        }
+          status: action,
+          order_id: order_id
+        },
+        type: 0
       },
       success: function(data) {
-        var klass = '.order-product-status-' + itemId + ' span';
-        $(klass).text(action);
-        $('#status-order-'+ itemId).prop('selectedIndex', actions.indexOf(action));
-        var currentClass = $(klass).attr('class').split(' ')[1];
-        $(klass).removeClass(currentClass).addClass(classes[actions.indexOf(action)]);
+        if(data.status === 'rejected')
+          $(order_class + ' .content table tbody tr').children('.class_status_order_product').html('<span class="label label-danger">' + $('#shop-id').data('rej') + '</span>');
+        else
+          $(order_class + ' .content table tbody tr').children('.class_status_order_product').html('<span class="label label-warning">' + $('#shop-id').data('acc') + '</span>');
+        $(order_class).find('.value_pending').html(data.count_pending);
+        $(order_class).find('.value_accepted').html(data.count_accepted);
+        $(order_class).find('.value_rejected').html(data.count_rejected);
+        render_item_packing(data.list_packing);
       },
       error: function(error_message) {
-        Console.log('error: ' + error_message);
+        alert(error_message);
       }
     });
   });
 });
+
+function render_item_packing(data){
+  var html = '';
+  var total_quantity = 0;
+  var total_money = 0;
+  $.each(data, function( index, value ) {
+    total_money += value.price;
+    total_quantity += value.quantity;
+    html +=  '<tr><td>' + value.name + '</td><td class="center">' +
+      value.quantity +'</td><td class="right">' + value.price + '.0</td></tr>'
+  });
+  $('.info_total_packing_product').html(total_quantity);
+  $('.info_total_packing_categorie').html(data.length);
+  $('.info_total_packing_money').html(total_money + '.0');
+  $('#list_packing').html(html);
+};
 
 $(document).on('click', '.step2', function() {
   $('#stars').removeClass('btn-primary').addClass('btn-default');

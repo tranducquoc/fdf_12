@@ -47,14 +47,14 @@ class OrderProduct < ApplicationRecord
         sum(quantity) as quantity, products.id as product_id, orders.id as shop_id
         , order_products.status as status, order_products.id as id
         , order_products.created_at as date")
-      .where("order_products.status = ? and
-        date(orders.created_at) = date(now())",
+      .where("order_products.status = ?",
         OrderProduct.statuses[:accepted])
       .group("order_products.product_id")
   end
 
   scope :order_by_date, ->{order created_at: :desc}
   scope :order_products_at_date, ->date {where("DATE(created_at) = ?", date)}
+  scope :all_order_product_of_list_orders, ->list {where order_id: list}
 
   def self.group_by_products_by_created_at
     order_by_date.group_by{|i| i.created_at}

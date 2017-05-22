@@ -112,7 +112,7 @@ class Dashboard::ProductsController < BaseDashboardController
   private
   def load_shop
     if Shop.exists? params[:shop_id]
-      @shop = Shop.find params[:shop_id]
+      @shop = Shop.find_by params[:shop_id]
     else
       flash[:danger] = t "flash.danger.load_shop"
       redirect_to dashboard_shop_path
@@ -130,7 +130,7 @@ class Dashboard::ProductsController < BaseDashboardController
 
   def load_product
     if Product.exists? params[:id]
-      @product = @shop.products.find params[:id]
+      @product = @shop.products.find_by id: params[:id].to_i
     else
       flash[:danger] = t "flash.danger.dashboard.product.not_found"
       redirect_to dashboard_shop_products_path

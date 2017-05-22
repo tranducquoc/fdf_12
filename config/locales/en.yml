@@ -854,3 +854,11 @@ en:
   confirm_yes: "Yes"
   confirm_no: "No"
   automatic_go_to: "Automatic go to shop page as a user in %{time}s"
+  view_order_new:
+    accepted_all: "Accept all"
+    rejected_all: "Reject all"
+    packing_order: "Packing order"
+    packing_all: "Packing"
+    total_items: "Total items"
+    total_categorie: "Total category"
+    total_money: "Total money"

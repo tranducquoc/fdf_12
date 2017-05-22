@@ -48,4 +48,12 @@ module Dashboard::OrdersHelper
   def check_status? status, confirm_order
     status == confirm_order
   end
+
+  def total_items list_item
+    list_item.inject(0){|sum, n| sum + n.quantity}
+  end
+
+  def total_money list_item
+    list_item.inject(0){|sum, n| sum + n.price}
+  end
 end

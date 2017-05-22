@@ -861,3 +861,12 @@ ja:
   confirm_yes: "合意"
   confirm_no: "いいえ"
   automatic_go_to: "自動的に %{time}s 秒で情報を格納するためにスイッチ"
+  view_order_new:
+    accepted_all: "すべて受け入れる"
+    rejected_all: "すべて拒否する"
+    packing_order: "注文を閉じます"
+    packing_all: "すべての注文を閉じます"
+    packing: "の注文を閉じます"
+    total_items: "品の合計数"
+    total_categorie: "品目の合計数"
+    total_money: "合計"

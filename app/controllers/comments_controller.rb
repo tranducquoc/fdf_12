@@ -21,8 +21,12 @@ class CommentsController < ApplicationController
 
   def destroy
     @commentable = @comment.commentable
-    if @comment.destroy
-      flash[:success] = t "flash.success_message"
+    if @comment.user_id == current_user.id
+      if @comment.destroy
+        flash[:success] = t "flash.success_message"
+      else
+        flash[:danger] = t "flash.danger_message"
+      end
     else
       flash[:danger] = t "flash.danger_message"
     end

@@ -9,9 +9,11 @@
       <%= time_ago_in_words comment.created_at %>
     </span>
   </span>
-  <span>
-    <%= link_to t("common.delete_button"), comment_path(comment),
-      method: :delete, data: {confirm: t("common.delete_confirm")},
-      class: "pull-right" %>
-  </span>
+  <% if comment.user_id == current_user.id %>
+    <span>
+      <%= link_to t("common.delete_button"), comment_path(comment),
+        method: :delete, data: {confirm: t("common.delete_confirm")},
+        class: "pull-right" %>
+    </span>
+  <% end %>
 </li>

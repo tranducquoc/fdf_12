@@ -22,14 +22,42 @@
     <div class="shop-name-small">
       <h3 class="margin_top_5px">
         <% if @domain.present? %>
-          <%= link_to truncate(shop.name, length: Settings.max_shop_name),
-            domain_shop_path(@domain, shop),
-            class: "tooltips", title: shop.name %>
+          <% if is_owner_manager_of_shop? shop.id %>
+            <%= link_to truncate(shop.name, length: Settings.max_shop_name),
+              "#modal-confirm", "data-toggle": "modal",
+              class: "tooltips confirm-button", title: shop.name %>
+          <% else %>
+            <%= link_to truncate(shop.name, length: Settings.max_shop_name),
+              domain_shop_path(@domain, shop),
+              class: "tooltips", title: shop.name %>
+          <% end %>
           <div><%= render "shared/shop_on_off", shop: shop %></div>
         <% else %>
-          <%= link_to shop.name,domain_shop_path(shop, domain_id: "not_find") %>
+          <%= link_to shop.name, domain_shop_path(shop, domain_id: "not_find") %>
         <% end %>
       </h3>
+      <div id="modal-confirm" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header modal_header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                &times;
+              </button>
+              <h4 class="modal-title modal_text_header"><%= t "common.notifications" %></h4>
+            </div>
+            <div class="modal-body confirm-body">
+              <p><%= t "confirm_to_manage_shop" %></p>
+              <p class="timer"></p>
+            </div>
+            <div class="modal-footer">
+              <%= link_to t("confirm_no"), domain_shop_path(@domain, shop),
+                class: "btn btn-default" %>
+              <%= link_to t("confirm_yes"), domain_dashboard_shop_path(@domain, shop),
+                class: "btn btn-add confirm-yes" %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <br>
     <div class="description quote", title="<%= shop.description %>"><p>

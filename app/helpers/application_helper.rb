@@ -139,4 +139,14 @@ module ApplicationHelper
     manager_of_shop = ShopManager.find_by(user_id: user_id,
       shop_id: shop_id, role: :manager)
   end
+
+  def get_owner_of_shop user_id, shop_id
+    owner_of_shop = ShopManager.find_by(user_id: user_id,
+      shop_id: shop_id, role: :owner)
+  end
+
+  def is_owner_manager_of_shop? shop_id
+    get_owner_of_shop(current_user, shop_id).present? ||
+      get_manager_of_shop(current_user, shop_id).present?
+  end
 end

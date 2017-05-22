@@ -728,3 +728,13 @@ input:checked + .slider:before {
   max-width:300px;
   word-wrap: break-word;
 }
+
+#modal-confirm-shop {
+  text-align: center;
+  p {
+    font-size: 20px;
+  }
+  .btn {
+    margin: 0 10px;
+  }
+}

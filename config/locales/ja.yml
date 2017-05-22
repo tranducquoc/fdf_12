@@ -852,4 +852,7 @@ ja:
           other: "他<b>%{count}</b>個の%{entry_name}が表示されています"
       more_pages:
         display_entries: "<b>%{first}&nbsp;-&nbsp;%{last}</b> 全部<b>%{total}</b>個の%{entry_name}が表示されています"
-
+  confirm_to_manage_shop: "あなたはサイトの管理に行きたいですか？"
+  confirm_yes: "合意"
+  confirm_no: "いいえ"
+  automatic_go_to: "自動的に %{time}s 秒で情報を格納するためにスイッチ"

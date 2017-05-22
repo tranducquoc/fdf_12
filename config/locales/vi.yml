@@ -901,4 +901,7 @@ vi:
           other: "Đang hiển thị <b>tất cả %{count}</b> %{entry_name}"
       more_pages:
         display_entries: "Đang hiển thị %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> của <b>%{total}</b> trong tất cả"
-
+  confirm_to_manage_shop: "Bạn có muốn đến trang quản lý cửa hàng?"
+  confirm_yes: "Đồng ý"
+  confirm_no: "Không"
+  automatic_go_to: "Tự động chuyển đến trang cửa hàng với tư cách người dùng trong %{time}s"

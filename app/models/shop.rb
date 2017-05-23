@@ -6,6 +6,7 @@ class Shop < ApplicationRecord
   ratyrate_rateable Settings.rate
 
   after_update :check_status_shop
+  before_destroy :destroy_event
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
@@ -70,6 +71,11 @@ class Shop < ApplicationRecord
   end
 
   scope :list_shops, -> ids {where id: ids}
+
+  def destroy_event
+    events =  Event.where(eventable_type: "Shop", eventable_id: self.id)
+    events.destroy_all
+  end
 
   def is_owner? user
     owner == user

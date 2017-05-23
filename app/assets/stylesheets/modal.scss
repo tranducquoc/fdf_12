@@ -284,3 +284,15 @@ $orange_main: #ff5722;
 .float-right {
   float: right;
 }
+
+.confirm-body {
+  text-align: center;
+  p {
+    font-size: 20px;
+    margin: 0;
+  }
+  p.timer {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+}

@@ -850,3 +850,7 @@ en:
     lb: "Log in"
   confirm_order: "Confirm order"
   create_domain: "Create domain"
+  confirm_to_manage_shop: "Do you want to go to shop's management page?"
+  confirm_yes: "Yes"
+  confirm_no: "No"
+  automatic_go_to: "Automatic go to shop page as a user in %{time}s"

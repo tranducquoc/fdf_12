@@ -9,8 +9,8 @@
           <%= link_to t("oder.add-all"), new_domain_cart_path(@domain),
             class: "btn btn-primary for-order-all defaut-btn" %>
         <% else %>
-          <%= link_to t("oder.add-all"), "#", 
-            class: "btn btn-primary for-order-all defaut-btn", 
+          <%= link_to t("oder.add-all"), "#",
+            class: "btn btn-primary for-order-all defaut-btn",
             data: {toggle: "modal", target: "#confirm-order-modal"} %>
         <% end %>
       </div>
@@ -26,8 +26,8 @@
 <div id="confirm-order-modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" 
+      <div class="modal-header modal_header">
+        <button type="button" class="close"
           data-dismiss="modal">&times;</button>
         <h3 class="modal-title text-center">
           <strong><%= t "confirm_order" %></strong>
@@ -48,7 +48,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="list btn btn-primary btn-action" 
+        <button type="button" class="list btn btn-primary btn-action"
           data-dismiss="modal"><%= t "cancel" %>
         </button>
         <% if @shop.present? %>

@@ -66,6 +66,8 @@ ja:
     error_user_not_found: "ユーザーが見つかりません!"
     error_products_not_found: "プロダクトが見つかりません!"
     error_requests_not_found: "リクエストが見つかりません!"
+    error_owner_delete_yourself: "自分自身を削除することはできません"
+    error_delete_member: "あなたは他のメンバーを削除することはできません"
     success: "成功する"
     error: "エラー"
     not_found: "見つかりません"

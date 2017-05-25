@@ -1,5 +1,5 @@
 class V1::Dashboard::ProductsController < V1::BaseController
-  skip_before_filter :verify_authenticity_token, only: :create
+  skip_before_filter :verify_authenticity_token, only: [:create, :update]
   before_action :load_shop, only: :create
 
   def create
@@ -15,6 +15,19 @@ class V1::Dashboard::ProductsController < V1::BaseController
       end
     else
       response_error t "api.error"
+    end
+  end
+
+  def update
+    product = Product.find_by id: params[:id]
+    if product
+      if product.update_attributes product_params
+        response_success t "api.success"
+      else
+        response_error t "flash.danger.dashboard.edit_product"
+      end
+    else
+      response_not_found t "flash.danger.dashboard.product.not_found"
     end
   end
 

@@ -1,15 +1,11 @@
 class Dashboard::OrdersController < BaseDashboardController
-  before_action :load_shop, except: :show
+  before_action :load_shop, except: :show, only: :index
   before_action :load_shop_order, only: [:show, :edit, :destroy]
 
   def index
-    @order = Order.new
-    @order_all_reject = @shop.orders.is_rejected.on_today
-    if @shop
-      @q = @shop.orders.includes(:user).ransack params[:q]
-      @orders = @q.result.includes(:order_products).unfinished.on_today
-        .by_date_newest.page(params[:page])
-    end
+    @orders = Order.orders_of_shop_pending params[:shop_id]
+    @order_products = load_order_product @orders
+    load_list_toal_orders
   end
 
   def edit
@@ -51,7 +47,6 @@ class Dashboard::OrdersController < BaseDashboardController
   end
 
   private
-
   def order_params
     params.require(:order).permit(:status).merge! change_status: true
   end
@@ -94,5 +89,19 @@ class Dashboard::OrdersController < BaseDashboardController
     else
       render :back
     end
+  end
+
+  def load_order_product orders
+    list = {}
+    orders.each do |o|
+      list[o.id] = o.order_products
+    end
+    list
+  end
+
+  def load_list_toal_orders
+    list_orders_id = Order.orders_of_shop_pending(@shop.id).select{|s|
+      s.order_products.detect{|o| o.pending?} == nil}.pluck(:id)
+    @list_products_packing = OrderProduct.all_order_product_of_list_orders(list_orders_id).order_products_accepted
   end
 end

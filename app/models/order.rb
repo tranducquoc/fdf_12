@@ -58,6 +58,11 @@ class Order < ApplicationRecord
   scope :on_today, -> {where "date(orders.created_at) = date(now())"}
 
   scope :orders_list_by_date, ->{order created_at: :desc}
+  scope :orders_of_shop_pending, -> shop_id do where shop_id: shop_id,
+    status: Settings.filter_status_order.pending
+  end
+
+  scope :orders_by_list_id, -> list {where id: list}
 
   def build_order_products
     unless self.change_status

@@ -910,3 +910,12 @@ vi:
   confirm_yes: "Đồng ý"
   confirm_no: "Không"
   automatic_go_to: "Tự động chuyển đến trang cửa hàng với tư cách người dùng trong %{time}s"
+  view_order_new:
+    accepted_all: "Chấp nhận tất cả"
+    rejected_all: "Từ chối tất cả"
+    packing_order: "Đóng đơn hàng"
+    packing_all: "Đóng gói tất cả"
+    packing: "Đóng gói"
+    total_items: "Tổng số mặt hàng"
+    total_categorie: "Tổng số loại hàng"
+    total_money: "Tổng tiền"

@@ -30,5 +30,6 @@ module Fdf12
     config.i18n.default_locale = :vi
     config.i18n.available_locales = [:vi, :en, :ja]
     config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/deploy"
+    config.time_zone = 'Hanoi'
   end
 end

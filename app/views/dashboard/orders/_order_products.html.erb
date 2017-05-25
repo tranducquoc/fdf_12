@@ -1,48 +1,44 @@
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th><%= t "oder.id" %></th>
-      <th><%= t "oder.name" %></th>
-      <th><%= t "oder.image" %></th>
-      <th><%= t "oder.quantity" %></th>
-      <th><%= t "order_quick.note"%></th>
-      <th><%= t "oder.status" %></th>
-      <th><%= t "oder.price" %></th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% order_products.each_with_index do |item, index| %>
-      <tr>
-        <input type="hidden" value="<%=item.id%>">
-        <td><input type="checkbox" class = "checkbox-abc" id="checkbox-<%= item.id %>"/>
-        <td><%= index + 1 %></td>
-        <td><%= item.product_name %></td>
-        <td>
-          <span class="product-thumbnail">
-            <%= image_tag item.product.image.url, class: "image-order-size" %>
-          </span>
-        </td>
-        <td class="text-center"><%= item.quantity %></td>
-        <td><%= item.notes %></td>
-        <td>
-          <div class="order-product-status-<%= item.id %>">
-            <%= status_order_product item %>
-          </div>
-        <td class="text-center">
-          <strong><%= item.total_price %> <%= t"cart.vnd" %> </strong></td>
-        <td class="col-md-1">
-          <button class= "btn btn-primary single-action" value= "accepted">
-            <%= t "order_statistics.accept"%>
-          </button>
-        </td>
-        <td class="col-md-1">
-          <button class= "btn btn-danger single-action" value="rejected">
-            <%= t "order_statistics.reject"%>
-          </button>
-        </td>
-      </tr>
+<% order_products.each_with_index do |item, index| %>
+<tr>
+  <td class="text-center width-150px"><%= item.product.name %></td>
+  <td class="text-center"><%= item.quantity %></td>
+  <td class="width-250px"><%= item.notes %></td>
+  <td class="text-center order-product-status-<%= item.id %> class_status_order_product"
+    data-status="<%= item.status %>">
+    <%= status_order_product item if item.try(:status).present? %>
+  </td>
+  <td class="text-center"><strong><%= format_price item.total_price %></strong></td>
+  <td>
+    <%= link_to "javascript:void(0)", class: "single-action",
+      data:{id: item.id, action: "accepted"} do %>
+      <span class="glyphicon glyphicon-ok-sign btn_accepted"></span>
     <% end %>
-  </tbody>
-</table>
+    <%= link_to "javascript:void(0)", class: "single-action",
+      data:{id: item.id, action: "rejected"} do %>
+      <span class="glyphicon glyphicon-remove-sign btn_rejected"></span>
+    <% end %>
+  </td>
+</tr>
+<% end %>
+<div class="display-inline">
+  <span class="glyphicon glyphicon-info-sign btn_pending"></span>
+  <%= label_tag "", t("all_status.pending") + ": ", class: "btn_pending" %>
+  <%= label_tag "", order_products.select{|o| o.pending?}.size,
+    class: "btn_pending value_pending" %> |
+  <span class="glyphicon glyphicon-ok-sign btn_accepted"></span>
+  <%= label_tag "", t("all_status.accepted") + ": ", class: "btn_accepted" %>
+  <%= label_tag "", order_products.select{|o| o.accepted?}.size,
+    class: "btn_accepted value_accepted" %> |
+  <span class="glyphicon glyphicon-remove-sign btn_rejected"></span>
+  <%= label_tag "", t("all_status.rejected") + ": ", class: "btn_rejected" %>
+  <%= label_tag "", order_products.select{|o| o.rejected?}.size,
+    class: "btn_rejected value_rejected" %>
+</div>
+<div class="float-right font_bold">
+   <span class="glyphicon glyphicon-ok-sign btn_accepted"></span>
+  <%= link_to t("order_statistics.accept"), "javascript:void(0)",
+    class: "btn_accepted single-action-all", data:{action: "accepted"} %> |
+  <%= link_to t("order_statistics.reject"), "javascript:void(0)",
+    class: "btn_rejected single-action-all", data:{action: "rejected"} %>
+  <span class="glyphicon glyphicon-remove-sign btn_rejected"></span>
+</div>

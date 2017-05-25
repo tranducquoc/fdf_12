@@ -1,51 +1,81 @@
-<h2 class="text-center"><%= t "dashboard.order.title" %></h2>
-<div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
-  <div class="btn-group" role="group">
-    <button type="button" id="stars" class="btn btn-primary step1 disabl_step1"
-      href="#step1" data-toggle="tab">
-      <span class="fa fa-check" aria-hidden="true"></span>
-      <div class="hidden-xs"><%= t "order_statistics.step1"%></div>
-    </button>
-  </div>
-  <div class="btn-group" role="group">
-    <button type="button" id="favorites" class="btn btn-default step2 disabl_step2 disabled"
-      href="#step2" data-toggle="tab">
-      <span class="fa fa-list-alt" aria-hidden="true"></span>
-      <div class="hidden-xs"><%= t "order_statistics.step2"%></div>
-    </button>
-  </div>
-</div>
-
-<div class="well">
-  <div class="tab-content">
-    <div class="tab-pane fade in" id="step1">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="dropdown action">
-            <input type="hidden" value = "<%= @shop.id %>" id="shop-id">
-            <%= check_box_tag "orders[]", @orders.ids, false, class: "checkbox", id: "checkbox" %>
-            <button class="list btn btn-primary btn-action button" value="accepted">
-              <%= t "order_statistics.accept"%>
-            </button>
-            <button class="list btn btn-danger btn-action button" value="rejected">
-              <%= t "order_statistics.reject"%>
-            </button>
-            <% if @order_all_reject.any? %>
-              <button class="list btn btn-success pull-right btnNext step2 step2-new"
-                id="tab-1" href="#step2" data-toggle="tab">
-                <%= t "order_statistics.continue" %>
-              </button>
-            <% else %>
-              <p></p>
-            <% end %>
+<div class="packing_view">
+  <h2 class="text-center"><%= t "dashboard.order.title" %></h2>
+  <div class="row">
+    <div class="col-md-8 border_order_list col-md-8-resize">
+      <div class="title modal-header header_title_order">
+        <span class="order_header_text">
+          <%= t "order_statistics.step1"%>
+          <div class="title_button">
+            <span class="glyphicon glyphicon-ok-sign btn_accepted"></span>
+            <%= link_to t("view_order_new.accepted_all"), dashboard_shop_order_product_path(
+              type: Settings.type_update_all_orders, id: 0,
+              status: Settings.filter_status_order.accepted), method: :put,
+              class: "btn_accepted" %> |
+            <%= link_to t("view_order_new.rejected_all"), dashboard_shop_order_product_path(
+              type: Settings.type_update_all_orders, id: 0,
+              status: Settings.filter_status_order.rejected), method: :put,
+              class: "btn_rejected" %>
+            <span class="glyphicon glyphicon-remove-sign btn_rejected"></span>
           </div>
-        </div>
+        </span>
       </div>
-      <div class="scoll_list_order_manage">
+      <div class="body-1">
+      <input type="hidden" value = "<%= @shop.id %>" id="shop-id"
+        data-rej="<%= t "all_status.rejected" %>"
+        data-acc="<%= t "all_status.accepted" %>">
         <%= render @orders %>
       </div>
     </div>
-    <div class="tab-pane fade in" id="step2">
+    <div class="col-md-4 border_order_list">
+      <div class="title modal-header header_title_order">
+        <span class="order_header_text">
+          <%= t "order_statistics.step2"%>
+          <div class="title_button">
+            <span class="glyphicon glyphicon-gift btn_done"></span>
+            <%= link_to t("view_order_new.packing_order"),
+              dashboard_shop_order_products_path,
+              class: "btn_done single-action", value: "rejected" %>
+          </div>
+        </span>
+      </div>
+      <div class="body-2">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th><%= t "oder.name" %></th>
+              <th class="center"><%= t "oder.quantity" %></th>
+              <th class="right"><%= t "oder.price" %></th>
+            </tr>
+          </thead>
+          <tbody id="list_packing">
+            <%= render partial: 'dashboard/orders/product_packing_item',
+              collection: @list_products_packing, as: :item %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-4 border_order_list">
+      <div class="body-3">
+        <table class="info_total_packing">
+          <tbody>
+            <tr>
+              <td><%= label_tag "", t("view_order_new.total_items") %>:</td>
+              <td><%= label_tag "", total_items(@list_products_packing),
+                class: "info_packing  info_total_packing_product" %></td>
+            </tr>
+            <tr>
+              <td><%= label_tag "", t("view_order_new.total_categorie") %>:</td>
+              <td><%= label_tag "", @list_products_packing.size,
+                class: "info_packing info_total_packing_categorie" %></td>
+            </tr>
+            <tr>
+              <td><%= label_tag "", t("view_order_new.total_money") %>:</td>
+              <td><%= label_tag "", total_money(@list_products_packing),
+                class: "info_packing info_total_packing_money" %><%= t "cart.vnd"%></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

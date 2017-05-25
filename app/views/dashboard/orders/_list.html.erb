@@ -1,26 +1,23 @@
-<div class="panel-group done-action"
-  id="<%= order.id %>">
-  <div class="panel panel-default">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="order-status-<%= order.id %> orders">
-          <input type="hidden" value=<%= order.id %>>
-          <span id="status-<%= order.id %>" value="<%= order.status %>">
-            <%= status_order order %></span>
-          <span><b><%= order.user_name %></b></span>
-          <span class="pull-right"><%= l order.created_at, format: :short_date %></span>
-        </div>
-      </div>
-    </div>
-    <div class="panel-body orders-hidden" id="order-<%= order.id %>" >
-      <input type="hidden" value=<%= order.id %> >
-      <%= render "order_products", order_products: 
-        order.order_products.includes(:product) %>
-      <div class="pull-right">
-        <h4>
-          <b><%= t ".total" %>: </b><%= order.total_price %> <%= t"cart.vnd" %>
-        </h4>
-      </div>
-    </div>
+<div class="list_order_item" id="order_item_<%= order.id %>" data-id="<%= order.id %>">
+  <span class="title">
+    <%= order.user_name %> - <%= l order.created_at, format: :short_time %>
+    <%= l order.created_at, format: :short_date %>
+  </span>
+  <div class="content">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="text-center"><%= t "oder.name" %></th>
+          <th class="center"><%= t "oder.quantity" %></th>
+          <th class="center"><%= t "order_quick.note"%></th>
+          <th class="center"><%= t "oder.status" %></th>
+          <th class="right"><%= t "oder.price" %></th>
+           <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render "order_products", order_products: @order_products[order.id] %>
+      </tbody>
+    </table>
   </div>
 </div>

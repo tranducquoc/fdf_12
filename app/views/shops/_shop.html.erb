@@ -24,7 +24,7 @@
         <% if @domain.present? %>
           <% if is_owner_manager_of_shop? shop.id %>
             <%= link_to truncate(shop.name, length: Settings.max_shop_name),
-              "#modal-confirm", "data-toggle": "modal",
+              "#modal-confirm-#{shop.id}", "data-toggle": "modal",
               class: "tooltips confirm-button", title: shop.name %>
           <% else %>
             <%= link_to truncate(shop.name, length: Settings.max_shop_name),
@@ -36,7 +36,7 @@
           <%= link_to shop.name, domain_shop_path(shop, domain_id: "not_find") %>
         <% end %>
       </h3>
-      <div id="modal-confirm" class="modal fade">
+      <div id="<%= "modal-confirm-" + shop.id.to_s %>" class="modal fade">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header modal_header">

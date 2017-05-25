@@ -4,18 +4,18 @@
       <div class="row">
         <%= render "order_products", order_products: @cart_shop.items %>
         <div class="pull-left">
-          <div class="col-md-4">
+          <div>
             <%= simple_form_for @order do |f| %>
               <% if @domain.present? %>
                 <%= link_to t("order_statistics.back"),
                   domain_carts_path(@domain), method: :get,
-                  class: "btn btn-primary defaut-position" %>
+                  class: "btn btn-primary" %>
                 <%= link_to t("create_order"),
                   domain_orders_path(@domain, shop_id: @shop.id),
                   method: :post, class: "btn btn-info margin_order" %>
               <% else %>
                 <%= link_to t("order_statistics.back"), carts_path,
-                  class: "btn btn-primary defaut-position" %>
+                  class: "btn btn-primary" %>
                 <%= f.submit t("create_order"), data: {confirm: t("confirm")},
                   class: "btn btn-danger margin_order" %>
                 <%= hidden_field_tag :shop_id, @shop.id %>

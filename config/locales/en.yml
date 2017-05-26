@@ -63,6 +63,8 @@ en:
     error_user_not_found: "User not found!"
     error_products_not_found: "Products not found!"
     error_requests_not_found: "Requests not found!"
+    error_owner_delete_yourself: "Owner can not deleted yourself!"
+    error_delete_member: "You don't have permission to delete other member!"
     success: "Succes"
     error: "Error"
     not_found: "Not found"

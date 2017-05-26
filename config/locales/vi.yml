@@ -103,6 +103,8 @@ vi:
     error_user_not_found: "Không tìm thấy người dùng!"
     error_products_not_found: "Không tìm thấy sản phẩm!"
     error_requests_not_found: "Không tìm thấy yêu cầu nào!"
+    error_owner_delete_yourself: "Owner không thể tự rời Domain!"
+    error_delete_member: "Bạn không có quyền xóa thành viên khác!"
     success: "OK"
     error: "Lỗi"
     not_found: "Không tìm thấy"

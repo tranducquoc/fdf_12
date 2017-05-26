@@ -111,9 +111,8 @@ class Dashboard::ProductsController < BaseDashboardController
 
   private
   def load_shop
-    if Shop.exists? params[:shop_id]
-      @shop = Shop.find_by params[:shop_id]
-    else
+    @shop = Shop.find_by slug: params[:shop_id]
+    unless @shop.present?
       flash[:danger] = t "flash.danger.load_shop"
       redirect_to dashboard_shop_path
     end

@@ -862,3 +862,4 @@ en:
     total_items: "Total items"
     total_categorie: "Total category"
     total_money: "Total money"
+  not_have_permission: "You do not have permission to access this page."

@@ -1,4 +1,4 @@
-class Dashboard::OrderManagersController < ApplicationController
+class Dashboard::OrderManagersController < BaseDashboardController
   before_action :load_shop, only: [:index, :update]
 
   def index
@@ -61,7 +61,7 @@ class Dashboard::OrderManagersController < ApplicationController
       @shop = Shop.find_by id: params[:shop_id]
       shop_manager = @shop.shop_managers.find_by(user_id: current_user.id)
       unless shop_manager.present? && (shop_manager.owner? || shop_manager.manager?)
-        flash[:danger] = t "flash.danger.load_shop"
+        flash[:danger] = t "not_have_permission"
         redirect_to dashboard_shops_path
       end
     else

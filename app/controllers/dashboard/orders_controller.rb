@@ -1,6 +1,7 @@
 class Dashboard::OrdersController < BaseDashboardController
   before_action :load_shop, except: :show, only: :index
   before_action :load_shop_order, only: [:show, :edit, :destroy]
+  before_action :check_owner_or_manager, only: [:index, :show]
 
   def index
     @orders = Order.orders_of_shop_pending params[:shop_id]

@@ -921,3 +921,4 @@ vi:
     total_items: "Tổng số mặt hàng"
     total_categorie: "Tổng số loại hàng"
     total_money: "Tổng tiền"
+  not_have_permission: "Bạn không có quyền truy cập vào trang này."

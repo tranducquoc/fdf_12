@@ -3,6 +3,7 @@ class Dashboard::ShopsController < BaseDashboardController
   before_action :load_params_update, only: :show
   before_action :check_user_status_for_action
   before_action :load_domain_in_session
+  before_action :check_owner_or_manager, only: [:show, :edit]
 
   def new
     @shop = current_user.own_shops.build
@@ -23,24 +24,28 @@ class Dashboard::ShopsController < BaseDashboardController
   end
 
   def show
-    user_domain = Domain.find_by_id session[:domain_id]
-    @users = user_domain.users
-    @users_shop_manager = ShopManager.includes(:user).select do |user|
-      (user.shop_id == @shop.id && (user.role == Settings.shop_owner ||
-       user.role == Settings.shop_manager))
-    end
-    @shop = @shop.decorate
-    @products = @shop.products.page(params[:page])
-      .per Settings.common.products_per_page
-    @products_all = @shop.products.all
-    if @start_hour.present? and @end_hour.present?
-      if compare_time_order @start_hour, @end_hour
-        @products_all.update_all status: :active, start_hour: @start_hour,
-          end_hour: @end_hour
-        flash.now[:success] = t "dashboard.shops.show.update_success"
-      else
-        flash.now[:danger] = t "dashboard.shops.show.update_fail"
+    user_domain = Domain.find_by id: session[:domain_id]
+    if user_domain
+      @users = user_domain.users
+      @users_shop_manager = ShopManager.includes(:user).select do |user|
+        (user.shop_id == @shop.id && (user.role == Settings.shop_owner ||
+         user.role == Settings.shop_manager))
       end
+      @shop = @shop.decorate
+      @products = @shop.products.page(params[:page])
+        .per Settings.common.products_per_page
+      @products_all = @shop.products.all
+      if @start_hour.present? and @end_hour.present?
+        if compare_time_order @start_hour, @end_hour
+          @products_all.update_all status: :active, start_hour: @start_hour,
+            end_hour: @end_hour
+          flash.now[:success] = t "dashboard.shops.show.update_success"
+        else
+          flash.now[:danger] = t "dashboard.shops.show.update_fail"
+        end
+      end
+    else
+      redirect_to root_path
     end
   end
 
@@ -147,6 +152,14 @@ class Dashboard::ShopsController < BaseDashboardController
   def check_admin_accept_new_shop shop
     if shop.pending?
       shop.create_event_request_shop shop.owner_id, shop
+    end
+  end
+
+  def check_owner_or_manager
+    shop_manager = ShopManager.find_by user_id: current_user.id, shop_id: @shop.id
+    unless shop_manager.present? && (shop_manager.owner? || shop_manager.manager?)
+      flash[:danger] = t "not_have_permission"
+      redirect_to root_path
     end
   end
 end

@@ -534,6 +534,7 @@ en:
         new_button: "Add new product"
         delete: "Detete"
       show:
+        stt: "ID"
         name: "Name"
         quantity: "Quantity"
         notes: "Notes"

@@ -12,6 +12,7 @@
       <table class="table table-bordered">
         <thead>
           <tr>
+            <th><%= t "dashboard.products.show.stt" %></th>
             <th><%= t "dashboard.products.show.name" %></th>
             <th><%= t "dashboard.products.show.quantity" %></th>
             <th><%= t "dashboard.products.show.notes" %></th>
@@ -19,9 +20,12 @@
             <th><%= t "dashboard.products.show.total" %></th>
           </tr>
         </thead>
-        <% @order_products.each do |order| %>
+        <% @order_products.each_with_index do |order, index| %>
           <tbody>
             <tr>
+              <td>
+                <%= increase_one index %>
+              </td>
               <td>
                 <%= order.user_name %>
               </td>

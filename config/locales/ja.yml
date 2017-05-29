@@ -528,6 +528,7 @@ ja:
         new_button: "新規作成"
         delete: "削除"
       show:
+        stt: "番号"
         name: "名前"
         quantity: "数量"
         notes: "注意"

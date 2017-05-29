@@ -575,6 +575,7 @@ vi:
         new_button: "Tạo mới sản phẩm"
         delete: "Xóa"
       show:
+        stt: "STT"
         name: "Tên"
         quantity: "Số lượng"
         notes: "Ghi chú"

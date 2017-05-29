@@ -23,23 +23,23 @@
           <% end %>
         </h3><%= render "shared/shop_status_label", shop: shop %>
       </div>
-      <div class="check_button_status_shop">
+      <div class="description-margin-bot checkbox_<%= shop.id %> set_inline">
+        <%= render "dashboard/shops/shop_label_status", shop: shop %>
+      </div>
+      <div class="onoffswitch">
         <% if shop.status_on_off == Settings.shop_status_off %>
-          <label class="switch">
-            <%= check_box_tag "checkbox_#{shop.id}", shop.id, false, class: "checkbox",
-              data:{remote: true} %>
-            <div class="slider round"></div>
-          </label>
+          <input type="checkbox" name="<%= "checkbox_#{shop.id}" %>"
+            class="onoffswitch-checkbox" id="<%= "checkbox_#{shop.id}" %>"
+            value="<%= shop.id %>" data-remote="true">
         <% else %>
-          <label class="switch">
-            <%= check_box_tag "checkbox_#{shop.id}", shop.id, true, class: "checkbox",
-              data:{remote: true} %>
-            <div class="slider round"></div>
-          </label>
+          <input type="checkbox" name="<%= "checkbox_#{shop.id}" %>"
+            class="onoffswitch-checkbox" id="<%= "checkbox_#{shop.id}" %>"
+            value="<%= shop.id %>" data-remote="true" checked="checked">
         <% end %>
-        <div class="description-margin-bot checkbox_<%= shop.id %>">
-          <%= render "dashboard/shops/shop_label_status", shop: shop %>
-        </div>
+        <label class="onoffswitch-label" for="<%= "checkbox_#{shop.id}" %>">
+          <span class="onoffswitch-inner"></span>
+          <span class="onoffswitch-switch"></span>
+        </label>
       </div>
       <div class="description quote", title="<%= shop.description %>"><p>
         <%= truncate(shop.description, length: Settings.max_description) %></p>

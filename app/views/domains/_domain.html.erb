@@ -13,13 +13,14 @@
           <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <% Domain.statuses.each do |key, value| %>
-            <li role="presentation">
-              <%= link_to domain_path(domain, status: key), method: :put do %>
-                <%= raw display_domain_status value %>
-              <% end %>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li role="separator" class="divider"></li>
+            <% if key != Settings.domain.default %>
+              <li role="presentation">
+                <%= link_to domain_path(domain, status: key), method: :put do %>
+                  <%= raw display_domain_status value %>
+                <% end %>
+              </li>
+              <li role="separator" class="divider"></li>
+            <% end %>
           <% end %>
         </ul>
       </ul>

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('#id_shops_list').find('input.checkbox').each(function(index, input){
+  $('#id_shops_list').find('input.onoffswitch-checkbox').each(function(index, input){
     $(input).on('change', function(){
       if($(input).is(':checked')){
         $.ajax({

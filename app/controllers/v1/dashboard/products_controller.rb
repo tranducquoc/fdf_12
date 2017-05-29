@@ -14,7 +14,7 @@ class V1::Dashboard::ProductsController < V1::BaseController
         response_success result.last
       end
     else
-      response_error t "api.error"
+      response_error t "not_have_permission"
     end
   end
 

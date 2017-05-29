@@ -1,6 +1,6 @@
 <% if shop.status_on_off == Settings.shop_status_on && shop.openforever == true %>
   <span class="label label-info margin-left-for-open-shop"><%= t "open_shop_forever" %></span>
 <% elsif shop.status_on_off == Settings.shop_status_on %>
-  <span class="margin-left-for-open-shop"><%= t "time_shop_auto_close" %></span>
-  <%= l shop.time_auto_close, format: :short_time %>
+  <span class="label label-info margin-left-for-open-shop"><%= t "time_shop_auto_close" %>
+    <%= l shop.time_auto_close, format: :short_time %></span>
 <% end %>

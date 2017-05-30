@@ -123,3 +123,8 @@ shop_domain_status_rejected_key: 2
 type_upload_all_order_products: 0
 type_update_order_product: 1
 type_update_all_orders: 3
+index_zero_in_array: 0
+index_one_in_array: 1
+index_two_in_array: 2
+serialize_true: "1"
+serialize_false: "0"

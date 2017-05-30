@@ -71,7 +71,12 @@ class Admin::UsersController < AdminController
   end
 
   def newuser_params
-    params.require(:user).permit :name, :email, :password,
-      :password_confirmation
+    email_settings = {order_request: Settings.serialize_true,
+      order_processed: Settings.serialize_true, send_order: Settings.serialize_true}
+    notification_settings = {order_request: Settings.serialize_true,
+      order_processed: Settings.serialize_true, send_order: Settings.serialize_true}
+    params.require(:user).permit(:name, :email, :password,
+      :password_confirmation).merge email_settings: email_settings,
+      notification_settings: notification_settings, language: I18n.default_locale
   end
 end

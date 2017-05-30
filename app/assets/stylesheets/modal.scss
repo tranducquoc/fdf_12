@@ -302,7 +302,7 @@ $orange_main: #ff5722;
   border-radius: 10px;
   .body-1 {
     width: 102%;
-    height: 560px;
+    height: 520px;
     overflow: scroll;
   }
   .body-2 {
@@ -498,4 +498,25 @@ $orange_main: #ff5722;
 }
 .h500 {
   height: 500px;
+}
+.btn_filter {
+  float: right;
+  margin-left: 5px;
+}
+.glyphicon {
+  padding-top: 2px;
+}
+.filter_header {
+  margin-top: 2px;
+  width: 70%;
+  margin-left: 15%;
+  background: image-url(header_bg) #f4f4f4;
+}
+.radio_button_filter {
+  margin-top: -12px;
+  text-align: center;
+  font-weight: bold;
+}
+.radio-inline {
+  color: black;
 }

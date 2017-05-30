@@ -44,6 +44,13 @@ class Dashboard::ShopsController < BaseDashboardController
           flash.now[:danger] = t "dashboard.shops.show.update_fail"
         end
       end
+      user_ids = []
+      user_shop_domain = ShopDomain.list_shop_by_id @shop.id
+      user_shop_domain.each do |user_shop|
+        user_ids << UserDomain.list_all_user_domains(user_shop.domain_id)
+      end
+      user_ids = user_ids.flatten.pluck(:user_id).uniq
+      @support = Supports::SearchSupport.new(@shop.id, user_ids, "")
     else
       redirect_to root_path
     end

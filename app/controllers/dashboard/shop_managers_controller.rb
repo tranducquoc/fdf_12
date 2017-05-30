@@ -16,29 +16,30 @@ class Dashboard::ShopManagersController < BaseDashboardController
 
   def create
     @shop_manager = ShopManager.new user_id: params[:user_id],
-      shop_id: params[:shop_id], role: :member
+      shop_id: params[:shop_id], role: :manager
     if @shop_manager.save
-      flash[:success] = t "flash.success_message"
+      @shop_manager
     else
       flash[:danger] = t "flash.danger_message"
+      redirect_to :back
     end
-    redirect_to :back
-  end
 
-  def update
-    @shop_manager = ShopManager.find_by user_id: params[:user_id], shop_id: params[:shop_id]
-    if @shop_manager.update_attributes role: params[:format]
-      flash[:success] = t "flash.success_message"
-    else
-      flash[:danger] = t "flash.danger_message"
-    end
-    redirect_to :back
   end
 
   def destroy
-    ShopManager.destroy_all user_id: params[:user_id], shop_id: params[:shop_id]
-    flash[:success] = t "flash.success_message" if params[:delete_user_domain].present?
-    redirect_to :back
+    @shop_manager = ShopManager.find_by user_id: params[:user_id],
+      shop_id: params[:shop_id], role: :manager
+    if @shop_manager
+      if @shop_manager.destroy
+        @shop_manager
+      else
+        flash[:danger] = t "flash.danger_message"
+        redirect_to :back
+      end
+    else
+      flash[:danger] = t "flash.danger_message"
+      redirect_to :back
+    end
   end
 
   private

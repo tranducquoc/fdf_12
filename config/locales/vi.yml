@@ -923,3 +923,5 @@ vi:
     total_categorie: "Tổng số loại hàng"
     total_money: "Tổng tiền"
   not_have_permission: "Bạn không có quyền truy cập vào trang này."
+  set_manage_for_shop: "Xét quyền quản lý"
+  unset_manager: "Hủy quản lý"

@@ -7,35 +7,21 @@
         </div>
       </td>
       <td class="td-user-name-table"><%= user.name %></td>
-      <td class="td-user-action-table">
-        <% user_of_shop = get_user_of_shop user.id, @shop.id %>
-        <% if @support.shops_managers.include? user_of_shop  %>
+      <td class="td-user-action-table user_item_<%= user.id %>">
+        <% if @shop.shop_owner?(current_user.id) %>
           <% if !current_user? user %>
-            <% if @shop.shop_owner?(current_user.id) %>
-              <%= link_to t("delete"), dashboard_shop_shop_manager_path(@shop.id,
+            <% user_of_shop = get_user_of_shop user.id, @shop.id %>
+            <% if  user_of_shop.present? && user_of_shop.manager? %>
+              <% role = Settings.shop_member %>
+              <%= link_to t("unset_manager"), dashboard_shop_shop_manager_path(@shop.id,
                 user_id: user.id, shop_id: @shop.id),
-                method: :delete, data: {confirm: t("common.delete_confirm")},
-                class: "btn btn-danger" %>
-              <% if user_of_shop.member? %>
-                <% role = Settings.shop_manager %>
-                <%= link_to t("manage_domain.manage"), dashboard_shop_shop_manager_path(@shop.id, role,
-                  user_id: user.id, shop_id: @shop.id),
-                  method: :patch, class: "btn btn-primary" %>
-              <% end %>
-              <% if user_of_shop.manager? %>
-                <% role = Settings.shop_member %>
-                <%= link_to t("manage_domain.remove"), dashboard_shop_shop_manager_path(@shop.id, role,
-                  user_id: user.id, shop_id: @shop.id),
-                  method: :patch, class: "btn btn-primary btn-warning" %>
-              <% end %>
+                method: :delete, class: "btn btn-warning", remote: true %>
+            <% else %>
+              <% role = Settings.shop_manager %>
+              <%= link_to t("manage_domain.manage"), dashboard_shop_shop_managers_path(
+                user_id: user.id, shop_id: @shop.id),
+                method: :post, class: "btn btn-primary btn-success", remote: true %>
             <% end %>
-          <% end %>
-        <% else %>
-          <% manager_of_shop = get_manager_of_shop current_user.id, @shop.id %>
-          <% if manager_of_shop.present? ||
-            @shop.shop_owner?(current_user.id) %>
-            <%= link_to t("add"), dashboard_shop_shop_managers_path(user_id: user.id,
-              shop_id: @shop.id), method: :post, class: "btn btn-primary" %>
           <% end %>
         <% end %>
       </td>

@@ -874,3 +874,5 @@ ja:
     total_categorie: "品目の合計数"
     total_money: "合計"
   not_have_permission: "クーポンを利用するにはここをクリックしてください"
+  set_manage_for_shop: "レビューを管理する"
+  unset_manager: "キャンセルを管理する"

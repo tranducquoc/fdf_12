@@ -56,6 +56,7 @@ class OrdersController < ApplicationController
       if @order.save
         delete_cart_item_shop @shop
         check_order @order, @cart_shop, @shop
+        @order.create_event_order if checked_notification_setting?(Settings.index_two_in_array)
       else
         flash[:danger] = t "oder.not_oder"
         redirect_to new_order_path

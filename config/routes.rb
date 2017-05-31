@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   post "/rate" => "rater#create", :as => "rate"
   devise_for :admins, path: "admin",
     controllers: {sessions: "admin/sessions"}
-  devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
+  devise_for :users, controllers: {
+    omniauth_callbacks: "users/omniauth_callbacks",
+    sessions: "users/sessions"
+  }
 
   get "index" => "static_pages#index"
   root "static_pages#home"
@@ -62,7 +65,7 @@ Rails.application.routes.draw do
   resources :user_domains
   resources :shop_domains
   resources :order_fasts
-
+  resources :user_settings, only: [:edit, :update]
   resources :shops, only: [:index, :show, :update]
   resources :products, only: [:index, :show, :new] do
     resources :comments, only: :create

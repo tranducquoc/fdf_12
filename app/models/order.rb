@@ -19,7 +19,6 @@ class Order < ApplicationRecord
 
   after_update :build_order_products
   after_create :build_order_products
-  after_create :create_event_order
   after_create_commit :create_notification
   after_create :check_status_order, if: -> {self.pending?}
 
@@ -131,24 +130,33 @@ class Order < ApplicationRecord
       shop_managers = self.shop.shop_managers
       shop_managers.each do |s|
         if s.owner? || s.manager?
-          Event.create message: Settings.notification_new,
-            user_id: s.user_id, eventable_id: shop.id,
-            eventable_type: Order.name, eventitem_id: self.id
+          if !s.user.notification_settings.present? ||
+            s.user.notification_settings.values[Settings.index_zero_in_array] == Settings.serialize_true
+            Event.create message: Settings.notification_new,
+              user_id: s.user_id, eventable_id: shop.id,
+              eventable_type: Order.name, eventitem_id: self.id
+          end
         end
       end
     end
   end
 
   def create_event_done products_done, products_rejected
-    Event.create message: :done,
-      user_id: self.user.id, eventable_id: shop.id, eventable_type: OrderProduct.name,
-      eventitem_id: self.id
+    if !self.user.notification_settings.present? ||
+      self.user.notification_settings.values[Settings.index_one_in_array] == Settings.serialize_true
+      Event.create message: :done,
+        user_id: self.user.id, eventable_id: shop.id, eventable_type: OrderProduct.name,
+        eventitem_id: self.id
+    end
     shop_managers = self.shop.shop_managers
     shop_managers.each do |s|
       if s.owner? || s.manager?
-        Event.create message: :done,
-          user_id: s.user_id, eventable_id: shop.id, eventable_type: User.name,
-          eventitem_id: self.id
+        if !s.user.notification_settings.present? ||
+          s.user.notification_settings.values[Settings.index_one_in_array] == Settings.serialize_true
+          Event.create message: :done,
+            user_id: s.user_id, eventable_id: shop.id, eventable_type: User.name,
+            eventitem_id: self.id
+        end
       end
     end
   end

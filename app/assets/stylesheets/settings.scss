@@ -1,0 +1,21 @@
+.user-setting {
+  .btn-update {
+    text-align: center;
+  }
+  .table-language {
+    margin-bottom: 0;
+    th, td {
+      border-top: 0;
+    }
+    .image-flag-be {
+      margin-right: 5px;
+    }
+    p {
+      margin-bottom: 0;
+      line-height: 25px;
+    }
+    .form-control {
+      border-radius: 4px !important;
+    }
+  }
+}

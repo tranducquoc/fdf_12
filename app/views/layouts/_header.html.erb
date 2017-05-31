@@ -235,16 +235,9 @@
                 </li>
                 <li role="separator" class="divider"></li>
                 <li role="presentation">
-                  <% if @domain.present? %>
-                    <%= link_to edit_user_registration_path(domain_id: @domain.id) do %>
-                      <i class="fa fa-cog"></i>
-                      <span><%= t "header.settings" %></span>
-                    <% end %>
-                  <% else %>
-                    <%= link_to edit_user_registration_path do %>
-                      <i class="fa fa-cog"></i>
-                      <span><%= t "header.settings" %></span>
-                    <% end %>
+                  <%= link_to edit_user_setting_path(current_user) do %>
+                    <i class="fa fa-cog"></i>
+                    <span><%= t "header.settings" %></span>
                   <% end %>
                 </li>
                 <li role="presentation">

@@ -133,3 +133,6 @@ filter_order:
   pending: 1
   accepted: 2
   rejected: 3
+user_domain_role:
+  member: "member"
+  manager: "manager"

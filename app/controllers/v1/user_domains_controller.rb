@@ -1,5 +1,5 @@
 class V1::UserDomainsController < V1::BaseController
-  skip_before_filter :verify_authenticity_token, only: [:create, :destroy]
+  skip_before_filter :verify_authenticity_token, only: [:create, :destroy, :update]
   before_action :load_user
   before_action :load_domain
 
@@ -14,6 +14,33 @@ class V1::UserDomainsController < V1::BaseController
       end
     else
       response_error t "api.not_owner_domain"
+    end
+  end
+
+  def update
+    user_domain = UserDomain.find_by domain_id: params[:domain_id],
+      user_id: params[:user_id]
+    if user_domain.present?
+      if @domain.owner? current_user.id
+        if @user == current_user
+          response_error t "api.error_owner_delete_yourself"
+        else
+          if params[:role] == Settings.user_domain_role.member ||
+            params[:role] == Settings.user_domain_role.manager
+            if user_domain.update_attributes role: params[:role]
+              response_success t "api.success"
+            else
+              response_error t "api.error"
+            end
+          else
+            response_error t "api.error"
+          end
+        end
+      else
+       response_error t "api.not_owner_domain"
+      end
+    else
+      response_error t "api.not_found"
     end
   end
 

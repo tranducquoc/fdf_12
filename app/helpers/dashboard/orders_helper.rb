@@ -56,4 +56,19 @@ module Dashboard::OrdersHelper
   def total_money list_item
     list_item.inject(0){|sum, n| sum + n.price}
   end
+
+  def checking_radio_button type
+    checking = Array.new(4, "")
+    case type
+    when Settings.filter_status_order.pending
+      checking[Settings.filter_order.pending] = "checked"
+    when Settings.filter_status_order.accepted
+      checking[Settings.filter_order.accepted] = "checked"
+    when Settings.filter_status_order.rejected
+      checking[Settings.filter_order.rejected] = "checked"
+    else
+      checking[Settings.filter_order.all] = "checked"
+    end
+    checking
+  end
 end

@@ -4,8 +4,8 @@ class Dashboard::OrdersController < BaseDashboardController
   before_action :check_owner_or_manager, only: [:index, :show]
 
   def index
-    @orders = Order.orders_of_shop_pending params[:shop_id]
-    @order_products = load_order_product @orders
+    orders = Order.orders_of_shop_pending params[:shop_id]
+    load_order_product orders, params[:type]
     load_list_toal_orders
   end
 
@@ -92,12 +92,29 @@ class Dashboard::OrdersController < BaseDashboardController
     end
   end
 
-  def load_order_product orders
-    list = {}
+  def load_order_product orders, type
+    @order_products = {}
+    @orders = []
     orders.each do |o|
-      list[o.id] = o.order_products
+      case type
+      when Settings.filter_status_order.pending
+        check_item o.order_products.select{|op| op.pending?}, o
+      when Settings.filter_status_order.accepted
+        check_item o.order_products.select{|op| op.accepted?}, o
+      when Settings.filter_status_order.rejected
+        check_item o.order_products.select{|op| op.rejected?}, o
+      else
+        @order_products[o.id] = o.order_products
+        @orders << o
+      end
     end
-    list
+  end
+
+  def check_item item, order
+    if item.size > 0
+      @order_products[order.id] = item
+      @orders << order
+    end
   end
 
   def load_list_toal_orders

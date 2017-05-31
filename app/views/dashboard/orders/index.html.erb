@@ -19,6 +19,35 @@
           </div>
         </span>
       </div>
+      <div class="title modal-header header_title_order filter_header">
+        <% checking = checking_radio_button params[:type] %>
+        <div class="radio_button_filter">
+          <%= link_to dashboard_shop_orders_path,
+            class: "radio-inline" do %>
+            <input type="radio" name="filter_order"
+              <%= checking[Settings.filter_order.all] %>>
+            <%= t "all_status.all" %>
+          <% end %>
+          <%= link_to dashboard_shop_orders_path(type:
+            Settings.filter_status_order.pending), class: "radio-inline" do %>
+            <input type="radio" name="filter_order"
+              <%= checking[Settings.filter_order.pending] %>>
+            <%= t "all_status.pending" %>
+          <% end %>
+          <%= link_to dashboard_shop_orders_path(type:
+            Settings.filter_status_order.accepted), class: "radio-inline" do %>
+            <input type="radio" name="filter_order"
+              <%= checking[Settings.filter_order.accepted] %>>
+            <%= t "all_status.approved" %>
+          <% end %>
+          <%= link_to dashboard_shop_orders_path(type:
+            Settings.filter_status_order.rejected), class: "radio-inline" do %>
+            <input type="radio" name="filter_order"
+              <%= checking[Settings.filter_order.rejected] %>>
+            <%= t "all_status.rejected" %>
+          <% end %>
+        </div>
+      </div>
       <div class="body-1">
       <input type="hidden" value = "<%= @shop.id %>" id="shop-id"
         data-rej="<%= t "all_status.rejected" %>"

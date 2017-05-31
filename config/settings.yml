@@ -128,3 +128,8 @@ index_one_in_array: 1
 index_two_in_array: 2
 serialize_true: "1"
 serialize_false: "0"
+filter_order:
+  all: 0
+  pending: 1
+  accepted: 2
+  rejected: 3

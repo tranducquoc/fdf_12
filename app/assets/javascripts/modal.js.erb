@@ -93,3 +93,9 @@ $(document).ready(function(){
     $('#search_owner_form').submit();
   });
 });
+
+$(document).ready(function() {
+  $('input[type=radio][name=filter_order]').change(function() {
+    $(this).parent('a').get(0).click();
+  });
+});

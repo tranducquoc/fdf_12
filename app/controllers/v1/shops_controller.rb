@@ -1,15 +1,29 @@
 class V1::ShopsController < V1::BaseController
+  before_action :load_domain
+
   def index
-    if params[:domain_id]
-      shops = ShopDomain.list_shop_domains params[:domain_id]
-      result = Shop.list_shops shops.map(&:shop_id)
-      if result.present?
-        response_success t("api.success"), result
+    if params.has_key?(:top_shops)
+      top_shops = @domain.shops.top_shops
+      if top_shops.present?
+        response_success top_shops
       else
-        response_not_found t("api.error_list_shop_by_domain_not_found")
+        response_not_found t "api.error_list_shop_by_domain_not_found"
       end
     else
-      response_not_found t("api.error_domains_not_found")
+      shops = @domain.shops
+      if shops.present?
+        response_success t("api.success"), shops
+      else
+        response_not_found t "api.error_list_shop_by_domain_not_found"
+      end
+    end
+  end
+
+  private
+  def load_domain
+    @domain = Domain.find_by id: params[:domain_id]
+    unless @domain.present?
+      response_not_found t "api.error_domains_not_found"
     end
   end
 end

@@ -5,8 +5,13 @@ class Dashboard::OrdersController < BaseDashboardController
 
   def index
     orders = Order.orders_of_shop_pending params[:shop_id]
-    load_order_product orders, params[:type]
-    load_list_toal_orders
+    if orders.present?
+      load_order_product orders, params[:type]
+      load_list_toal_orders
+    else
+      flash[:danger] = t "oder.not_oder"
+      redirect_to :back
+    end
   end
 
   def edit

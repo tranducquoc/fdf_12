@@ -15,6 +15,7 @@ class OrderProduct < ApplicationRecord
   delegate :name, to: :product, prefix: true
   delegate :email, to: :user, prefix: true
   delegate :price, to: :product, prefix: true
+  delegate :image, to: :product, prefix: true
 
   def total_price
     product.price * quantity

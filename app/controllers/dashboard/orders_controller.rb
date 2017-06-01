@@ -10,7 +10,8 @@ class Dashboard::OrdersController < BaseDashboardController
       load_list_toal_orders
     else
       flash[:danger] = t "oder.not_oder"
-      redirect_to :back
+      redirect_to domain_dashboard_shop_path(domain_id: session[:domain_id],
+        id: @shop.slug)
     end
   end
 

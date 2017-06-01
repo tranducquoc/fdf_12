@@ -151,15 +151,17 @@ class Shop < ApplicationRecord
   end
 
   def update_new_status_shop
-    if self.status_on_off == Settings.shop_status_on && self.openforever == Settings.checked_false
-      self.update_attributes status_on_off: :off
-      self.create_event_close_shop
-    end
+    self.update_attributes(status_on_off: :off, delayjob_id: nil)
+    self.create_event_close_shop
   end
 
   def check_status_shop
-    delay(run_at: time_auto_close_shop.minutes.from_now)
-      .update_new_status_shop
+    if (self.status_on_off == Settings.shop_status_on &&
+      self.openforever == Settings.checked_false)
+      shop_job = delay(run_at: time_auto_close_shop.minutes.from_now)
+        .update_new_status_shop
+      self.update_column :delayjob_id, shop_job.id
+    end
   end
 
   def time_auto_close_shop

@@ -47,6 +47,7 @@ class Dashboard::ProductsController < BaseDashboardController
   end
 
   def edit
+    @product = Product.friendly.find params[:id]
   end
 
   def create

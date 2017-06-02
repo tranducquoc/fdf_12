@@ -5,6 +5,7 @@ class OrderSerializer < ActiveModel::Serializer
 
   class OrderProductSerializer < ActiveModel::Serializer
     attributes :id, :quantity, :price, :notes, :user_id, :order_id, :product_id,
-      :product_name, :product_price, :coupon_id, :deleted_at, :updated_at, :status
+      :product_name, :product_price, :product_image, :coupon_id, :deleted_at,
+      :updated_at, :status
   end
 end

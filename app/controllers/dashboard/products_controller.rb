@@ -1,7 +1,8 @@
 class Dashboard::ProductsController < BaseDashboardController
   before_action :load_shop
   before_action :load_categories, only: [:edit, :new, :update]
-  before_action :load_product, except: [:index, :new, :create]
+  before_action :load_product, only: :show
+  before_action :load_product_by_slug, only: [:edit, :update, :destroy]
   before_action :load_products, only: :index
   before_action :load_domain, only: [:new, :edit, :destroy]
 
@@ -47,7 +48,7 @@ class Dashboard::ProductsController < BaseDashboardController
   end
 
   def edit
-    @product = Product.friendly.find params[:id]
+
   end
 
   def create
@@ -157,6 +158,14 @@ class Dashboard::ProductsController < BaseDashboardController
     unless product_domain.save
       flash[:danger] = t "flash.danger.dashboard.add_product_failed"
       redirect_to :back
+    end
+  end
+
+  def load_product_by_slug
+    @product = Product.friendly.find params[:id]
+    if @order_products
+      flash[:danger] = t "flash.danger.dashboard.product.not_found"
+      redirect_to root_path
     end
   end
 end

@@ -26,7 +26,7 @@
               <td>
                 <%= link_to order_product.name,
                   dashboard_shop_product_path(order_product.product.shop.slug,
-                  order_product.product.id, order_product_id: order_product.id)%>
+                  order_product.product.slug, order_product_id: order_product.id)%>
               </td>
               <td class="text-center"><%= order_product.quantity %></td>
               <td class="text-center">

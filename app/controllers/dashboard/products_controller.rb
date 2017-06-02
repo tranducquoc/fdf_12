@@ -1,8 +1,7 @@
 class Dashboard::ProductsController < BaseDashboardController
   before_action :load_shop
   before_action :load_categories, only: [:edit, :new, :update]
-  before_action :load_product, only: :show
-  before_action :load_product_by_slug, only: [:edit, :update, :destroy]
+  before_action :load_product, except: [:new, :index, :create]
   before_action :load_products, only: :index
   before_action :load_domain, only: [:new, :edit, :destroy]
 
@@ -48,7 +47,6 @@ class Dashboard::ProductsController < BaseDashboardController
   end
 
   def edit
-
   end
 
   def create
@@ -129,15 +127,6 @@ class Dashboard::ProductsController < BaseDashboardController
     @categories = Category.all
   end
 
-  def load_product
-    if Product.exists? params[:id]
-      @product = @shop.products.find_by id: params[:id].to_i
-    else
-      flash[:danger] = t "flash.danger.dashboard.product.not_found"
-      redirect_to dashboard_shop_products_path
-    end
-  end
-
   def load_products
     @products = @shop.products
   end
@@ -161,9 +150,9 @@ class Dashboard::ProductsController < BaseDashboardController
     end
   end
 
-  def load_product_by_slug
-    @product = Product.friendly.find params[:id]
-    if @order_products
+  def load_product
+    @product = @shop.products.find_by slug: params[:id]
+    if @products
       flash[:danger] = t "flash.danger.dashboard.product.not_found"
       redirect_to root_path
     end

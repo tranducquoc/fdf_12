@@ -36,4 +36,5 @@ class Domain < ApplicationRecord
 
   scope :by_creator, -> user_id{where owner: user_id}
   scope :member, -> user_id{where.not owner: user_id}
+  scope :by_status, -> status {where status: status}
 end

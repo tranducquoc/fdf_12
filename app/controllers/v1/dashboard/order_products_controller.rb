@@ -1,7 +1,25 @@
 class V1::Dashboard::OrderProductsController < V1::BaseController
-  skip_before_filter :verify_authenticity_token, only: :update
-  before_action :check_owner_or_manager, only: :update
+  skip_before_filter :verify_authenticity_token, only: [:update, :index]
+  before_action :check_owner_or_manager, only: [:update, :index]
   before_action :check_status, only: :update
+  before_action :load_shop, only: :index
+
+  def index
+    orders_ids = Order.orders_of_shop_pending(@shop.id).select{|s|
+      s.order_products.detect{|o| o.pending?} == nil}.pluck(:id)
+    orders = Order.orders_by_list_id orders_ids
+    if orders.present?
+      updated_orders = orders.to_a
+      order_products = OrderProduct.all_order_product_of_list_orders(orders.ids).accepted
+      if (order_products.update_all status: :done) &&
+        (orders.update_all status: :done)
+        OrderProductService.new(updated_orders, @shop).update_order_product
+      response_success t "api.success"
+      end
+    else
+      response_not_found t "api.not_found"
+    end
+  end
 
   def update
     case
@@ -60,6 +78,13 @@ class V1::Dashboard::OrderProductsController < V1::BaseController
       response_success t "api.success"
     else
       response_error t "api.error"
+    end
+  end
+
+   def load_shop
+    @shop = Shop.find_by id: params[:shop_id]
+    unless @shop.present?
+      response_not_found t "api.not_found"
     end
   end
 end

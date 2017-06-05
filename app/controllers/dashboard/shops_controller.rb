@@ -74,21 +74,32 @@ class Dashboard::ShopsController < BaseDashboardController
   def update
     respond_to do |format|
       @shop_id = @shop.id
-      if params[:checked] == Settings.checked_true
-        @shop.update_attributes status_on_off: :on
+      case
+      when params[:checked] == Settings.checked_true
+        @shop.update_attribute :status_on_off, :on
+      when params[:checked] == Settings.checked_false
+        if @shop.delayjob_id.present?
+          shop_job = Delayed::Job.find_by id: @shop.delayjob_id
+          shop_job.delete if shop_job.present?
+        end
+        @shop.update_attributes(status_on_off: :off, delayjob_id: nil)
       else
-        @shop.update_attributes status_on_off: :off
-      end
-      format.html do
-        if !params[:shop].present?
-          redirect_to dashboard_shop_path
-        else
-          if @shop.update_attributes shop_params
-            flash[:success] = t "flash.success.dashboard.updated_shop"
-            redirect_by_domain
+        format.html do
+          if !params[:shop].present?
+            redirect_to dashboard_shop_path
           else
-            flash[:danger] = t "flash.danger.dashboard.updated_shop"
-            render :edit
+            shop_job_id = @shop.delayjob_id
+            if @shop.update_attributes shop_params
+              flash[:success] = t "flash.success.dashboard.updated_shop"
+              if shop_job_id.present?
+                shop_job = Delayed::Job.find_by id: shop_job_id
+                shop_job.delete if shop_job.present?
+              end
+              redirect_by_domain
+            else
+              flash[:danger] = t "flash.danger.dashboard.updated_shop"
+              render :edit
+            end
           end
         end
       end
@@ -98,8 +109,9 @@ class Dashboard::ShopsController < BaseDashboardController
 
   private
   def shop_params
-    params.require(:shop).permit :id, :name, :description,
-      :cover_image, :avatar, :time_auto_reject, :time_auto_close, :openforever
+    params.require(:shop).permit(:id, :name, :description,
+      :cover_image, :avatar, :time_auto_reject, :time_auto_close, :openforever)
+      .merge status_on_off: :off, delayjob_id: nil
   end
 
   def load_params_update

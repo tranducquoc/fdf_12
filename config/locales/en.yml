@@ -74,6 +74,7 @@ en:
     change_status_domain_fail: "Change status of domain failed!"
     status_not_exist: "Status not exist!"
     not_owner_domain: "あなたはこのドメインの所有者ではありません!"
+    not_owner_shop: "You are not owner!"
   framgia_label: "Framgia"
   image_index: "Picture"
   feature_index: "Features"

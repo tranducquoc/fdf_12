@@ -1,5 +1,7 @@
 class V1::ShopsController < V1::BaseController
-  before_action :load_domain
+  skip_before_filter :verify_authenticity_token, only: :update
+  before_action :load_domain, only: :index
+  before_action :load_shop, only: :update
 
   def index
     if params.has_key?(:top_shops)
@@ -19,11 +21,35 @@ class V1::ShopsController < V1::BaseController
     end
   end
 
+  def update
+    if @shop.shop_owner? current_user.id
+      user = User.find_by email: params[:owner_email]
+      if user.present?
+        if ShopManagerService.new(current_user, user, @shop).change_owner_shop
+          response_success t "change_shop"
+        else
+          response_error t "api.error"
+        end
+      else
+        response_not_found t "api.error_user_not_found"
+      end
+    else
+      response_error t "api.not_owner_shop"
+    end
+  end
+
   private
   def load_domain
     @domain = Domain.find_by id: params[:domain_id]
     unless @domain.present?
       response_not_found t "api.error_domains_not_found"
+    end
+  end
+
+  def load_shop
+    @shop = Shop.find_by id: params[:id]
+    unless @shop.present?
+      response_not_found t "dashboard.shops.not_found"
     end
   end
 end

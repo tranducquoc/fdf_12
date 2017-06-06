@@ -114,6 +114,7 @@ vi:
     change_status_domain_fail: "Thay đổi trạng thái miền thất bại!"
     status_not_exist: "Trạng thái không tồn tại!"
     not_owner_domain: "Bạn không phải là chủ miền này!"
+    not_owner_shop: "Bạn không phải là chủ cửa hàng!"
   framgia_label: "Framgia"
   image_index: "Hình ảnh"
   feature_index: "Tính năng"

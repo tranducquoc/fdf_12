@@ -75,6 +75,8 @@ en:
     status_not_exist: "Status not exist!"
     not_owner_domain: "あなたはこのドメインの所有者ではありません!"
     not_owner_shop: "You are not owner!"
+    error_already_manager: "The user is already manager"
+    error_add_yourself: "Can not add yourself"
   framgia_label: "Framgia"
   image_index: "Picture"
   feature_index: "Features"

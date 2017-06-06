@@ -78,6 +78,8 @@ ja:
     status_not_exist: "ステータスが存在しません!"
     not_owner_domain: "あなたはこのドメインの所有者ではありません!"
     not_owner_shop: "あなたはお店のオーナーではありません!"
+    error_already_manager: "ユーザーは既に管理者です!"
+    error_add_yourself: "あなた自身を追加することはできません!"
   framgia_label: "Framgia"
   image_index: "画像"
   feature_index: "特長"

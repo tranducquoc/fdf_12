@@ -55,6 +55,7 @@ class Shop < ApplicationRecord
 
   delegate :name, to: :owner, prefix: :owner, allow_nil: true
   delegate :email, to: :owner, prefix: :owner
+  delegate :avatar, to: :owner, prefix: true
 
   scope :by_date_newest, ->{order created_at: :desc}
   scope :top_shops, ->{by_date_newest.limit Settings.index.max_shops}

@@ -12,7 +12,9 @@ class V1::ShopsController < V1::BaseController
     else
       shops = @domain.shops
       if shops.present?
-        response_success t("api.success"), shops
+        result = ActiveModel::Serializer::CollectionSerializer.new(shops,
+          each_serializer: ShopSerializer)
+        response_success t("api.success"), result
       else
         response_not_found t "api.error_list_shop_by_domain_not_found"
       end

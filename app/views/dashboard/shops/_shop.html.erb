@@ -65,7 +65,8 @@
         <tbody>
         <% @current_user.domains.includes(:shops).each do |domain|  %>
           <tr>
-            <td><%= domain.name %></td>
+            <td title="<%= domain.name %>"><%= truncate(domain.name,
+              length: Settings.max_domain_name) %></td>
             <td><%= domain.users.size %></td>
             <td><%= domain.shop_domains.approved.size %></td>
             <td><%= domain.products.size %></td>

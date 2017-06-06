@@ -136,3 +136,4 @@ filter_order:
 user_domain_role:
   member: "member"
   manager: "manager"
+max_domain_name: 12

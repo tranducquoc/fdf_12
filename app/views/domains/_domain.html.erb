@@ -5,7 +5,11 @@
     <% else %>
       <i class="glyphicon glyphicon-lock"></i>
     <% end %>
-    <%= link_to domain.name, domain_path(domain) %>
+    <%= link_to domain_path(domain) do %>
+      <span class="user-title" title="<%= domain.name %>">
+        <%= truncate(domain.name, length: Settings.max_domain_name) %>
+      </span>
+    <% end %>
     <% unless domain.default? %>
       <% if domain.owner?(current_user.id) || domain.manage_by?(current_user) %>
         <ul class="dropdown">

@@ -137,3 +137,4 @@ user_domain_role:
   member: "member"
   manager: "manager"
 max_domain_name: 12
+id_default: 0

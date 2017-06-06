@@ -34,6 +34,7 @@ class User < ApplicationRecord
 
   enum status: {wait: 0, active: 1, blocked: 2}
   mount_uploader :avatar, UserAvatarUploader
+  mount_base64_uploader :avatar, UserAvatarUploader
 
   VALID_NAME_REGEX = /\A^[\p{L}\s'.-]+\z/
 

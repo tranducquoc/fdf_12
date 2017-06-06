@@ -113,5 +113,6 @@ Rails.application.routes.draw do
     resources :comments, defaults: {format: :json}
     resources :user_domains, defaults: {format: :json}
     resources :events, only: :index, defaults: {format: :json}
+    resources :users, only: :update, defaults: {format: :json}
   end
 end

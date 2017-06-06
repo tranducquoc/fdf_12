@@ -97,6 +97,7 @@ Rails.application.routes.draw do
       resources :products, defaults: {format: :json}
       resources :orders, defaults: {format: :json}
       resources :order_products, only: [:update, :index], defaults: {format: :json}
+      resources :shop_managers, only: :index, defaults: {format: :json}
     end
     resources :shops, only: :index, defaults: {format: :json}
     resources :list_members, defaults: {format: :json}

@@ -10,7 +10,8 @@
             <% @domains.each do |domain| %>
               <%= link_to domain_path(domain),
                 class: "btn btn-default col-lg-6 col-md-12 active" do %>
-                <span><%= domain.name %></span>
+                <span><%= truncate(domain.name,
+                  length: Settings.max_user_name) %></span>
               <% end %>
             <% end %>
           </div>

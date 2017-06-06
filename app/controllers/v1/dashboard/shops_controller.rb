@@ -1,7 +1,7 @@
 class V1::Dashboard::ShopsController < V1::BaseController
   skip_before_filter :verify_authenticity_token, only: [:create, :update]
-  before_action :check_owner_or_manager, only: :update
-  before_action :load_shop, only: :update
+  before_action :check_owner_or_manager, only: [:update, :edit]
+  before_action :load_shop, only: [:update, :edit]
 
   def index
     user_id = params[:user_id]
@@ -42,6 +42,17 @@ class V1::Dashboard::ShopsController < V1::BaseController
     end
   end
 
+  def edit
+    case params[:status]
+    when Settings.shop_status_on
+      update_on_off_shop @shop, Settings.shop_status_on
+    when Settings.shop_status_off
+      update_on_off_shop @shop, Settings.shop_status_off
+    else
+      response_not_found t "api.not_found"
+    end
+  end
+
   private
   def shop_params
     params.require(:shop).permit :id, :name, :description,
@@ -59,6 +70,14 @@ class V1::Dashboard::ShopsController < V1::BaseController
     @shop = Shop.find_by id: params[:id]
     unless @shop.present?
       response_not_found t "api.not_found"
+    end
+  end
+
+  def update_on_off_shop shop, status
+    if shop.update_attribute :status_on_off, status
+      response_success t "api.success"
+    else
+      response_error t "api.error"
     end
   end
 end

@@ -12,6 +12,7 @@ class UserDomain < ApplicationRecord
     where(domain_id: domain.id, role: :manager).pluck :user_id
   end
 
+  scope :users_by_domain, -> domain_id {where domain_id: domain_id}
   scope :list_all_user_domains, -> domain {where domain_id: domain}
 
   def destroy_data

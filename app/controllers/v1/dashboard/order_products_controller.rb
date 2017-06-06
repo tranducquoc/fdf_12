@@ -23,9 +23,10 @@ class V1::Dashboard::OrderProductsController < V1::BaseController
 
   def update
     case
-    when params[:order_id].present?
+    when params[:order_id].present? && params[:order_id].to_i != Settings.id_default
       update_one_order
-    when params[:order_product_id].present?
+    when params[:order_product_id].present? && params[:order_product_id].to_i !=
+      Settings.id_default
       update_all_orders
     else
       update_order_product

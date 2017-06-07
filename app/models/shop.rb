@@ -41,7 +41,10 @@ class Shop < ApplicationRecord
   after_update :send_notification_after_confirmed
   after_update_commit :send_notification
 
-  validates :name, presence: true, length: {maximum: Settings.shop.max_name}
+  VALID_NAME_REGEX = /[a-zA-Z]/
+
+  validates :name, presence: true, format: {with: VALID_NAME_REGEX},
+    length: {maximum: Settings.shop.max_name}
   validates :description, presence: true, length: {maximum: Settings.shop.max_description}
   validates :time_auto_reject, presence: true, allow_nil: true
 

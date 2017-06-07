@@ -6,7 +6,7 @@ class SaveDomainService
 
   def save
     ActiveRecord::Base.transaction do
-      if @domain.save!
+      if @domain.save
         AddUserToDomainService.new(@user, @domain).add
         return [Settings.api_type_success, I18n.t("save_domain_successfully")]
       else

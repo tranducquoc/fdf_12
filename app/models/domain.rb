@@ -10,7 +10,9 @@ class Domain < ApplicationRecord
   has_many :request_shop_domains
   has_many :orders
 
-  validates :name, presence: true
+  VALID_NAME_REGEX = /[a-zA-Z]/
+
+  validates :name, presence: true, format: {with: VALID_NAME_REGEX}
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]

@@ -34,9 +34,15 @@ class DomainsController < ApplicationController
   def create
     @domain = Domain.new domain_params
     save_domain = SaveDomainService.new(@domain, current_user).save
-    session[:domain_id] = @domain.id
-    flash[:success] = save_domain.last
-    redirect_to user_searchs_path domain_id: @domain.id
+    if save_domain.first == Settings.api_type_success
+      session[:domain_id] = @domain.id
+      flash[:success] = save_domain.last
+      redirect_to domains_path @domain.slug
+    else
+      flash[:danger] = save_domain.last
+      redirect_to :back
+    end
+
   end
 
   def update

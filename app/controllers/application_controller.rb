@@ -162,7 +162,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_current_domain
-    if params[:domain_id].present?
+    if params[:domain_id].present? && current_user.present?
       domain = Domain.find_by slug: params[:domain_id]
       if domain.present? && UserDomain.find_by(user_id: current_user.id,
         domain_id: domain.id).present?

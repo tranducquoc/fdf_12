@@ -115,6 +115,8 @@ vi:
     status_not_exist: "Trạng thái không tồn tại!"
     not_owner_domain: "Bạn không phải là chủ miền này!"
     not_owner_shop: "Bạn không phải là chủ cửa hàng!"
+    error_already_manager: "Người dùng đã là quản lý"
+    error_add_yourself: "Không thể thêm chính bạn"
   framgia_label: "Framgia"
   image_index: "Hình ảnh"
   feature_index: "Tính năng"

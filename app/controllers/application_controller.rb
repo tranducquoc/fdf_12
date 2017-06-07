@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :create_cart
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :load_events
+  before_action :check_current_domain
   before_action :load_domain_in_session
   before_filter :set_cache_back
 
@@ -158,5 +159,20 @@ class ApplicationController < ActionController::Base
     response.headers["Cache-Control"] = "no-cache, no-store"
     response.headers["Pragma"] = "no-cache"
     response.headers["Expires"] = "#{1.year.ago}"
+  end
+
+  def check_current_domain
+    if params[:domain_id].present?
+      domain = Domain.find_by slug: params[:domain_id]
+      if domain.present? && UserDomain.find_by(user_id: current_user.id,
+        domain_id: domain.id).present?
+        if session[:domain_id] != domain.id
+          session[:domain_id] = domain.id
+        end
+      else
+        flash[:danger] = t "can_not_load_domain"
+        redirect_to root_path
+      end
+    end
   end
 end

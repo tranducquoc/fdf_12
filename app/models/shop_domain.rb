@@ -15,6 +15,7 @@ class ShopDomain < ApplicationRecord
   scope :by_domain, ->domain {where domain_id: domain.id}
   scope :request_of_domain, ->domain_id {where domain_id: domain_id,
     status: Settings.pending}
+  scope :by_status_approved, -> {where status: Settings.request_status.approved}
 
   def create_event_request_shop user_id, shop_domain
     if shop_domain.pending?

@@ -51,6 +51,22 @@ class V1::DomainsController < V1::BaseController
     end
   end
 
+  def show
+    user_domains = current_user.user_domains
+    domains = Domain.list_domain_by_ids user_domains.map(&:domain_id)
+    result = []
+    domains.each do |d|
+      domain_hash = d.attributes
+      domain_hash["count_user"] = d.users.size
+      domain_hash["count_shop"] = d.shop_domains.by_status_approved.size
+      domain_hash["count_product"] = d.products.size
+      domain_hash["role_of_current_user"] = user_domains.find_by(domain_id:
+        d.id).present? ? user_domains.find_by(domain_id: d.id).role : ""
+      result << domain_hash
+    end
+    response_success t("api.success"), result
+  end
+
   private
   def domain_params
     params.require(:domain).permit(:name, :status).merge! owner: current_user.id

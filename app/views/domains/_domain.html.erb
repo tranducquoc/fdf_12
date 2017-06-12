@@ -54,6 +54,23 @@
             <%= domain.shop_domains.pending.size %>
           <% end %>
         </strong>
+      <% end %>
+    <% end %>
+    </td>
+    <td data-domain-id="<%= domain.id %>" data-domain-name="<%= domain.name %>"
+      data-domain-status="<%= domain.status %>">
+    <% unless domain.default? %>
+      <% if domain.manage_by?(current_user) %>
+        <%= link_to t("edit"), "#",
+          class: "btn btn-block btn-success btn_domian btn_edit_domain",
+          data: {toggle: "modal", target: "#edit-domain-modal"} %>
+      <% elsif domain.owner?(current_user.id) %>
+        <%= link_to t("edit"), "#",
+          class: "btn btn-block btn-success btn_domian btn_edit_domain",
+          data: {toggle: "modal", target: "#edit-domain-modal"} %>
+        <%= link_to t("delete"), domain_path(domain.id), method: :delete,
+          class: "btn btn-block btn-danger btn_domian btn_delete_domain",
+          data: {confirm: t("common.delete_confirm")} %>
       <% else %>
         <% user_domain = UserDomain.find_by user_id: current_user.id,
           domain_id: domain.id %>
@@ -61,7 +78,7 @@
           user_domain_path(user_domain, domain_id: domain.id,
           user_id: current_user.id, leave_domain: true), method: :delete,
           data: {confirm: t("common.delete_confirm")},
-          class: "btn btn-danger" %>
+          class: "btn btn-info btn_domian" %>
       <% end %>
     <% end %>
   </td>

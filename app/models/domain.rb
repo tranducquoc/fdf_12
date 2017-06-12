@@ -1,4 +1,5 @@
 class Domain < ApplicationRecord
+  acts_as_paranoid
   strip_attributes only: :name
 
   has_many :user_domains

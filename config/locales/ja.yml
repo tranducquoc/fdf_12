@@ -847,8 +847,8 @@ ja:
     password: "パスワード"
     remember: "ログインを忘れないでください"
     lb: "ログイン"
-  confirm_order: "Xác nhận đặt hàng"
-  create_domain: "Tạo miền"
+  confirm_order: "オーダーを確認する"
+  create_domain: "ドメインを作成する"
   views:
     pagination:
       first: "&laquo; 最初"
@@ -890,3 +890,9 @@ ja:
   receive_send_order_notification: "オーダーの成功とき通知を受けます"
   receive_notification: "通知を受け取る"
   receive_email: "メールを受け取る"
+  edit_domain: "メインを編集"
+  save: "セーブ"
+  edit: "編集"
+  missing_delete_domain: "削除することはできません。"
+  delete_domain_success: "成功"
+  delete_domain_fail : "故障"

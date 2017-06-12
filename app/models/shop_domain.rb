@@ -1,4 +1,5 @@
 class ShopDomain < ApplicationRecord
+  acts_as_paranoid
   belongs_to :domain
   belongs_to :shop
 

@@ -19,6 +19,7 @@
       <th><%= t "members" %></th>
       <th><%= t "shop" %></th>
       <th><%= t "products" %></th>
+      <th><%= t "common.btn_request" %></th>
       <th><%= t "admin.users.index.actions" %></th>
     </tr>
   </thead>
@@ -44,16 +45,50 @@
               <div class="form-group">
                 <%= f.label t "new_domain.status" %><br>
                 <%= f.select :status,
-                  domain_status.map{|status|
-                    [t("all_status.#{status}"), status]},
-                    {}, {class: "form-control inline"} %>
+                  domain_status.map{|status| [t("all_status.#{status}"), status]},
+                  {}, {class: "form-control inline"} %>
               </div>
             </div>
           </div>
           <div class="text-center">
             <%= f.submit t("common.create_button"),
               class: "btn btn-primary btn-success space-top-submit" %>
-            <button type="button" class="list btn btn-primary btn-danger" 
+            <button type="button" class="list btn btn-primary btn-danger"
+              data-dismiss="modal"><%= t "cancel" %>
+            </button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="edit-domain-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h3 class="text-center"><strong><%= t "edit_domain" %></strong></h3>
+        <%= form_for Domain.new, method: :get do |f| %>
+          <div class="panel panel-success">
+            <div class="panel-body">
+              <%= render "shared/error_messages", object: Domain.new %>
+              <div class="form-group">
+                <%= f.label t "new_domain.name" %>
+                <%= f.text_field :name, required: :true, class: "form-control
+                  edit_domain_name" %>
+              </div>
+              <div class="form-group">
+                <%= f.label t "new_domain.status" %><br>
+                <%= f.select :status,
+                  domain_status.map{|status| [t("all_status.#{status}"), status]},
+                  {}, {class: "form-control inline edit_domain_status"} %>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <%= f.submit t("save"),
+              class: "btn btn-primary btn-success space-top-submit" %>
+            <button type="button" class="list btn btn-primary btn-danger"
               data-dismiss="modal"><%= t "cancel" %>
             </button>
           </div>

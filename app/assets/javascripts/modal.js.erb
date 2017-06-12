@@ -99,3 +99,21 @@ $(document).ready(function() {
     $(this).parent('a').get(0).click();
   });
 });
+
+$(document).ready(function(){
+  $('.btn_edit_domain').click(function(){
+    var id = $(this).parent('td').data('domain-id');
+    var name = $(this).parent('td').data('domain-name');
+    var status = $(this).parent('td').data('domain-status');
+    $('.edit_domain_name').val(name);
+    $('.edit_domain_name').parents('form').attr('action', '/domains/' + id + '/edit');
+    if(status === 'professed') {
+      $('.edit_domain_status').find('option[value="' + status + '"]').attr("selected",true);
+      $('.edit_domain_status').find('option[value="secret"]').removeAttr("selected");
+    }
+    else {
+      $('.edit_domain_status').find('option[value="' + status + '"]').attr("selected",true);
+      $('.edit_domain_status').find('option[value="professed"]').removeAttr("selected");
+    }
+  });
+});

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604225915) do
+ActiveRecord::Schema.define(version: 20170612074310) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -104,6 +104,8 @@ ActiveRecord::Schema.define(version: 20170604225915) do
     t.string   "slug"
     t.integer  "status"
     t.integer  "owner"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_domains_on_deleted_at", using: :btree
     t.index ["slug"], name: "index_domains_on_slug", using: :btree
   end
 
@@ -264,6 +266,8 @@ ActiveRecord::Schema.define(version: 20170604225915) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "status"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_shop_domains_on_deleted_at", using: :btree
     t.index ["domain_id"], name: "index_shop_domains_on_domain_id", using: :btree
     t.index ["shop_id"], name: "index_shop_domains_on_shop_id", using: :btree
   end
@@ -334,6 +338,8 @@ ActiveRecord::Schema.define(version: 20170604225915) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "role"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_user_domains_on_deleted_at", using: :btree
     t.index ["domain_id"], name: "index_user_domains_on_domain_id", using: :btree
     t.index ["user_id"], name: "index_user_domains_on_user_id", using: :btree
   end

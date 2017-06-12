@@ -1,4 +1,5 @@
 class UserDomain < ApplicationRecord
+  acts_as_paranoid
   strip_attributes only: [:description, :name]
 
   belongs_to :user

@@ -1,6 +1,5 @@
 class V1::OrdersController < V1::BaseController
   skip_before_filter :verify_authenticity_token, only: :destroy
-
   before_action :check_user, only: :index
   before_action :check_domain, only: :index
 
@@ -35,6 +34,21 @@ class V1::OrdersController < V1::BaseController
       end
     else
       response_not_found t "api.not_found_order"
+    end
+  end
+
+  def show
+    if params[:time_start].present? && params[:time_end].present?
+      orders = Order.between_date params[:time_start], params[:time_end]
+    else
+      orders = current_user.orders.on_today
+    end
+    if orders.present?
+      result = ActiveModel::Serializer::CollectionSerializer.new(orders,
+        each_serializer: OrderSerializer)
+      response_success t("api.success"), result
+    else
+      response_not_found t "api.not_found"
     end
   end
 

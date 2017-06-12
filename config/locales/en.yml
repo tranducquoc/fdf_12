@@ -796,7 +796,7 @@ en:
     cancel: "Cancel"
   manage_domain:
     view_all_domains: "view all domains"
-    leave: "leave"
+    leave: "Leave"
     add_member: "Add members"
     edit_shop: "%{num} Shops"
     delete_shop: "Delete"
@@ -882,3 +882,9 @@ en:
   receive_send_order_notification: "Receive notification when creating order successfully"
   receive_notification: "Receive notification"
   receive_email: "Receive email"
+  edit_domain: "Edit domain"
+  save: "Save"
+  edit: "Edit"
+  missing_delete_domain: "Only delete the domain when it has no members and no shops"
+  delete_domain_success: "Delete domain success"
+  delete_domain_fail : "Detete domain failed"

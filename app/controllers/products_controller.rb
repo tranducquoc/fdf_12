@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @products = if params[:category_id].present?
       @domain.products.includes(:shop).by_category params[:category_id]
@@ -9,14 +9,13 @@ class ProductsController < ApplicationController
     else
       Product.all.includes(:shop)
     end
-
     @shops_slide = Shop.shop_in_domain(@domain.id)
     shops = @shops_slide.select do |shop|
       shop.status_on_off == Settings.shop_status_on
     end
     products_shop = []
     shops.each do |t|
-      products_shop << t.products
+      products_shop << t.products.by_active
     end
     @products_shop = Kaminari.paginate_array(products_shop.flatten).page(
       params[:page]).per(Settings.common.products_per_page)

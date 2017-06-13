@@ -945,3 +945,7 @@ vi:
   missing_delete_domain: "Chỉ có thể xóa miền khi nó không có thành viên và cửa hàng nào"
   delete_domain_success: "Xóa miền thành công"
   delete_domain_fail : "Xóa miền thất bại"
+  datepicker:
+    rather_than_current_date: "Thời gian không được lớn hơn thời gian hiện tại."
+    date_start_nil: "Vui lòng chọn thời gian bắt đầu trước."
+    date_start_rather_than_date_end: "Thời gian kết thúc phải lớn hơn bắt đầu."

@@ -30,6 +30,7 @@
 //= require i18n
 //= require i18n.js
 //= require i18n/translations
+//= require sweetalert/dist/sweetalert.min.js
 
 $(document).ready(function () {
   $('.alert').fadeOut(5000);

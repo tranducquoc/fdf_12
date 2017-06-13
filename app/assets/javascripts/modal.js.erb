@@ -117,3 +117,69 @@ $(document).ready(function(){
     }
   });
 });
+
+$(document).ready(function(){
+  function compare_current_date(date_s) {
+    date_list = date_s.split('/');
+    date = new Date(date_list[2], date_list[0], date_list[1]);
+    var currentDate = new Date();
+    if (date.getDate() <= currentDate.getDate())
+      return true
+    else
+      return false
+  };
+
+  function compare_dates(date_s1, date_s2) {
+    date_list1 = date_s1.split('/');
+    date_list2 = date_s2.split('/');
+    date1 = new Date(date_list1[2], date_list1[0], date_list1[1]);
+    date2 = new Date(date_list2[2], date_list2[0], date_list2[1]);
+    if (date1.getDate() <= date2.getDate())
+      return true
+    else
+      return false
+  };
+
+  var start = null;
+  var end = null;
+
+  $('.datepicker_ordermanager_start').change(function(){
+    var value_start = $(this).val();
+    if(value_start != '' && value_start != start) {
+      start = value_start;
+      if(compare_current_date(value_start) === false) {
+        sweetAlert(I18n.t('api.error'), I18n.t('datepicker.rather_than_current_date'), 'error');
+        $(this).val('');
+        start = '';
+      }
+    }
+  });
+
+  $('.datepicker_ordermanager_end').change(function(){
+    var value_start = $('.datepicker_ordermanager_start').val();
+    if(value_start === '') {
+      sweetAlert(I18n.t('api.error'), I18n.t('datepicker.date_start_nil'), 'error');
+      $(this).val('');
+      end = '';
+    }
+    else {
+      var value_end = $(this).val();
+      if(value_end != '' && value_end != end) {
+        end = value_end;
+        if(compare_current_date(value_end) === false) {
+          sweetAlert(I18n.t('api.error'), I18n.t('datepicker.rather_than_current_date'), 'error');
+          $(this).val('');
+          end = '';
+        }
+        else {
+          if(compare_dates(value_start, value_end) === false) {
+            sweetAlert(I18n.t('api.error'),
+              I18n.t('datepicker.date_start_rather_than_date_end'), 'error');
+            $(this).val('');
+            end = '';
+          }
+        }
+      }
+    }
+  });
+});

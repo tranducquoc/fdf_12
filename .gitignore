@@ -64,4 +64,5 @@ config/environments/*.local.yml
 /public/javascripts/translations.js
 /public/deploy/index.html
 .ruby-version
-/vendor/assets/bower_components
+/vendor/bundle
+vendor/assets/bower_components/*

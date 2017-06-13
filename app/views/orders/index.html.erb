@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-2">
           <%= text_field_tag :start_date, params[:start_date],
-            class: "form-control datetimepicker",
+            class: "form-control datetimepicker datepicker_ordermanager_start",
             placeholder: t("time.formats.date_format") %>
         </div>
         <div class="col-md-1 margin my-margin">
@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-2">
           <%= text_field_tag :end_date, params[:end_date],
-            class: "form-control datepicker2",
+            class: "form-control datepicker2 datepicker_ordermanager_end",
             placeholder: t("time.formats.date_format") %>
         </div>
         <div class="col-md-4 margin5 text-center">

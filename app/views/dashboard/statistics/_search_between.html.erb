@@ -8,7 +8,7 @@
       <div class="col-md-2">
         <%= text_field_tag :start_date, params[:start_date],
           data: {date_format: Settings.date_format},
-          class: "form-control datetimepicker",
+          class: "form-control datetimepicker datepicker_ordermanager_start",
           placeholder: Settings.date_format %>
       </div>
       <div class="col-md-1">
@@ -17,7 +17,7 @@
       <div class="col-md-2">
         <%= text_field_tag :end_date, params[:end_date],
           data: {date_format: Settings.date_format},
-          class: "form-control datetimepicker",
+          class: "form-control datetimepicker datepicker_ordermanager_end",
           placeholder: Settings.date_format %>
       </div>
       <%= hidden_field_tag :current_shop_id, params[:current_shop_id] %>

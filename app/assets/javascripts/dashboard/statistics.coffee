@@ -1,7 +1,7 @@
 $(document).ready ->
   $('.datetimepicker').datetimepicker
     timepicker: false,
-    format: 'Y/m/d'
+    format: 'm/d/Y'
 
   $('.timepicker').datetimepicker
     timepicker: true
@@ -12,4 +12,4 @@ $(document).ready ->
 
   $('.datepicker2').datetimepicker
     timepicker: false,
-    format: 'Y/m/d'
+    format: 'm/d/Y'

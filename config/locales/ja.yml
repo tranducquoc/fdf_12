@@ -896,3 +896,7 @@ ja:
   missing_delete_domain: "削除することはできません。"
   delete_domain_success: "成功"
   delete_domain_fail : "故障"
+  datepicker:
+    rather_than_current_date: "現在の時間を超えない"
+    date_start_nil: "開始時間を選択してください"
+    date_start_rather_than_date_end: "終了時刻は開始時間より大きする"

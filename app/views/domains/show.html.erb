@@ -6,7 +6,7 @@
     <div class="clearfix body">
       <div class="category-list padding-top-0">
         <% if @domains.present? %>
-          <div class="<%= 'scroll' if @domains.size < Settings.max_content_scroll %>">
+          <div class="<%= "scroll" if @domains.size > Settings.max_content_scroll %>">
             <% @domains.each do |domain| %>
               <%= link_to domain_path(domain),
                 class: "btn btn-default col-lg-6 col-md-12 active" do %>
@@ -38,7 +38,7 @@
         </h3>
         <div class="clearfix body  margin-left_domain">
           <div class="category-list padding-top-0">
-            <div class="<%= 'scroll' if @domains.size < Settings.max_content_scroll %>">
+            <div class="<%= "scroll" if @domains.size > Settings.max_content_scroll %>">
               <%= link_to products_path(domain_id: @domain.id),
                 class: "btn btn-default col-lg-6 col-md-12 active" do %>
                 <span><%= t "common.category.all" %></span>
@@ -64,9 +64,9 @@
           <span><%= t "public_domain" %>(<%= @domains.size %>)</span>
         </h3>
         <div class="clearfix body">
-          <div class="category-list padding-top-10">
+          <div class="category-list padding_0">
             <% if @domains.present? %>
-              <div class="<%= 'scroll' if @domains.size < Settings.max_content_scroll %>">
+              <div class="<%= "scroll" if @domains.size > Settings.max_content_scroll %>">
                 <% @domains.each do |domain| %>
                   <%= link_to domain_path(domain),
                     class: "btn btn-default col-md-6 col-md-12 active margin-btnl" do %>

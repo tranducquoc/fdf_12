@@ -6,7 +6,7 @@
           <%= image_tag shop.avatar.url, class: "image-shop-show" %>
         <% end %>
       <% else %>
-        <%= link_to dashboard_shop_path(shop, domain_id: Settings.not_find) do %>
+        <%= link_to dashboard_shop_path(shop, domain_id: session[:domain_id]) do %>
           <%= image_tag shop.avatar.url, class: "image-shop-show" %>
         <% end %>
       <% end %>
@@ -19,7 +19,7 @@
           <% if shop.domains.present? && @domain.present? %>
             <%= link_to shop.name, domain_dashboard_shop_path(@domain, shop) %>
           <% else %>
-            <%= link_to shop.name, dashboard_shop_path(shop, domain_id: Settings.not_find) %>
+            <%= link_to shop.name, dashboard_shop_path(shop, domain_id: session[:domain_id]) %>
           <% end %>
         </h3><%= render "shared/shop_status_label", shop: shop %>
       </div>

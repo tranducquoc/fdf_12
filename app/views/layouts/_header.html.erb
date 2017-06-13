@@ -177,7 +177,7 @@
                     <% end %>
                   <% else %>
                     <%= link_to user_path(current_user,
-                      domain_id: Settings.not_find) do %>
+                      domain_id: session[:domain_id]) do %>
                       <i class="fa fa-user"></i>
                       <span><%= t "header.account" %></span>
                     <% end %>
@@ -192,7 +192,7 @@
                       <span><%= t "header.shop_manager" %></span>
                     <% end %>
                   <% else %>
-                    <%= link_to dashboard_shops_path(domain_id: Settings.not_find) do %>
+                    <%= link_to dashboard_shops_path(domain_id: session[:domain_id]) do %>
                       <i class="glyphicon glyphicon-pencil"></i>
                       <span><%= t "header.shop_manager" %></span>
                     <% end %>

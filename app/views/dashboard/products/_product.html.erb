@@ -13,7 +13,7 @@
         </strong></h5>
       <% end %>
     <% else %>
-      <%= link_to product_path(domain_id: Settings.not_find) do %>
+      <%= link_to product_path(domain_id: session[:domain_id]) do %>
         <div class="shop-product-image">
           <%= image_tag product.image.url %>
         </div><br>
@@ -45,10 +45,10 @@
         class: "btn btn-sm btn-danger" %>
     <% else %>
       <%= link_to t("common.edit_button"),
-        edit_dashboard_shop_product_path(product.shop, product, domain_id: Settings.not_find),
+        edit_dashboard_shop_product_path(product.shop, product, domain_id: session[:domain_id]),
         class: "btn btn-sm btn-primary" %>
       <%= link_to t("common.delete_button"),
-        dashboard_shop_product_path(product.shop, product, domain_id: Settings.not_find),
+        dashboard_shop_product_path(product.shop, product, domain_id: session[:domain_id]),
         method: :delete, data: {confirm: t("common.delete_confirm")},
         class: "btn btn-sm btn-danger" %>
     <% end %>

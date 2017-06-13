@@ -552,7 +552,7 @@ en:
         edit_all_time: "Edit time order for all product"
         update_all: "Update All"
         update_success: "Update time order for all product successfully"
-        update_faild: "Update time order for all product failed"
+        update_fail: "Update time order for all product failed"
         start_time: "Start time: "
         end_time: "End time: "
       products:

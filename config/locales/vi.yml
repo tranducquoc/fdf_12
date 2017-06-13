@@ -593,7 +593,7 @@ vi:
         edit_all_time: "Cập nhật thời gian đặt hàng"
         update_all: "Cập nhật tất cả"
         update_success: "Cập nhật thành công"
-        update_faild: "Cập nhật thất bại"
+        update_fail: "Cập nhật thất bại"
         start_time: "Băt đầu lúc: "
         end_time: "Kết thúc lúc: "
       products:

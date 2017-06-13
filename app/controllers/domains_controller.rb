@@ -24,7 +24,7 @@ class DomainsController < ApplicationController
     end
     @products_shop = []
     shops.each do |t|
-      @products_shop << t.products
+      @products_shop << t.products.by_active
     end
     session[:domain_id] = @domain.id
     create_cart

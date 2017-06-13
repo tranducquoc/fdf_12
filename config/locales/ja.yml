@@ -546,7 +546,7 @@ ja:
         edit_all_time: "時間順序の更新"
         update_all: "すべてのの更新"
         update_success: "更新に成功"
-        update_faild: "更新に失敗しました"
+        update_fail: "更新に失敗しました"
         start_time: "始まる: "
         end_time: "で終了する: "
       products:

@@ -155,7 +155,7 @@ class Dashboard::ShopsController < BaseDashboardController
     if check_domain_present?
       redirect_to dashboard_shop_path(@shop, domain_id: @domain.id)
     else
-      redirect_to dashboard_shop_path(@shop, domain_id: Settings.not_find)
+      redirect_to dashboard_shop_path(@shop, domain_id: session[:domain_id])
     end
   end
 

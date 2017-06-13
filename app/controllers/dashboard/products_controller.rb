@@ -64,7 +64,7 @@ class Dashboard::ProductsController < BaseDashboardController
         redirect_to domain_dashboard_shop_path(@domain, @shop)
       else
         flash[:success] = t "api.error_domains_not_found"
-        redirect_to dashboard_shop_path(@shop, domain_id: Settings.not_find)
+        redirect_to dashboard_shop_path(@shop, domain_id: session[:domain_id])
       end
     else
       flash[:danger] = t "flash.danger.dashboard.create_product"
@@ -84,7 +84,7 @@ class Dashboard::ProductsController < BaseDashboardController
           if check_domain_present?
             redirect_to domain_dashboard_shop_path @domain, @shop
           else
-            redirect_to dashboard_shop_path(@shop, domain_id: Settings.not_find)
+            redirect_to dashboard_shop_path(@shop, domain_id: session[:domain_id])
           end
         end
       end
@@ -105,7 +105,7 @@ class Dashboard::ProductsController < BaseDashboardController
     if @domain.present?
       redirect_to domain_dashboard_shop_path @domain, @shop
     else
-      redirect_to dashboard_shop_path(@shop, domain_id: Settings.not_find)
+      redirect_to dashboard_shop_path(@shop, domain_id: session[:domain_id])
     end
   end
 

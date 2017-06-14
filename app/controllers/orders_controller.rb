@@ -10,7 +10,8 @@ class OrdersController < ApplicationController
     tmp_orders = current_user.orders.by_domain(session[:domain_id])
     if params[:start_date].present? && params[:end_date].present?
       if params[:start_date] <= params[:end_date]
-        @orders = tmp_orders.between_date params[:start_date], params[:end_date]
+        @orders = tmp_orders.between_date convert_date_string(params[:start_date]),
+        convert_date_string(params[:end_date])
       else
         flash[:danger] = t "wrong_from_day_to_day_find"
         @orders = tmp_orders.on_today.by_date_newest.page(params[:page])
@@ -155,5 +156,12 @@ class OrdersController < ApplicationController
           order_price: @order_price, shop_id: @shop.id
       end
     end
+  end
+
+  def convert_date_string date
+    dates = date.split(Settings.convert_date.seperate);
+    return dates[Settings.convert_date.year] + Settings.convert_date.seperate +
+      dates[Settings.convert_date.month] + Settings.convert_date.seperate +
+      dates[Settings.convert_date.day]
   end
 end

@@ -82,6 +82,10 @@ class User < ApplicationRecord
     self.update_attributes authentication_token: generate_authentication_token
   end
 
+  def is_member_of_domain? domain
+    self.domains.include? domain
+  end
+
   private
   def image_size
     max_size = Settings.pictures.max_size

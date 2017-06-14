@@ -107,13 +107,7 @@
       </div>
     </div>
     <!-- End carousel -->
-    <% if (@domain.professed?) && (!current_user.domains.include? @domain) %>
-      <strong>
-        <%= link_to t("join_domain"), user_domains_path(user_id: current_user.id,
-          domain_id: @domain.id, join_domain: true), method: :post, class: "join label label-success" %>
-      </strong>
-      </div>
-    <% end %>
+    </div>
     <div class="row">
       <div class="col-md-12 row-title">
         <h2 class="section_title  margin-left_domain padding-left_domain">
@@ -124,10 +118,12 @@
       <div class="col-md-12 padding_0" id="id_shops_list">
         <%= render @shops %>
       </div>
-      <div class="btn_view_all_wrapper pull-center">
-        <%= link_to t("common.btn_view_all"), domain_shops_path(@domain),
-          class: "btn btn_view_all btn-warning top_shop" %>
-      </div>
+      <% if current_user.is_member_of_domain? @domain %>
+        <div class="btn_view_all_wrapper pull-center">
+          <%= link_to t("common.btn_view_all"), domain_shops_path(@domain),
+            class: "btn btn_view_all btn-warning top_shop" %>
+        </div>
+      <% end %>
     </div>
 
     <div class="row">
@@ -140,10 +136,12 @@
       <div class="col-md-12 magin_top_10px">
         <%= render @products_shop.flatten.slice(0, 12) %>
       </div>
-      <div class="btn_view_all_wrapper pull-center">
-        <%= link_to t("common.btn_view_all"), domain_products_path(@domain),
-          class: "btn btn_view_all btn-warning top_shop" %>
-      </div>
+      <% if current_user.is_member_of_domain? @domain %>
+        <div class="btn_view_all_wrapper pull-center">
+          <%= link_to t("common.btn_view_all"), domain_products_path(@domain),
+            class: "btn btn_view_all btn-warning top_shop" %>
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>

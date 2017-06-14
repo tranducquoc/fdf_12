@@ -1,7 +1,7 @@
 class V1::DomainsController < V1::BaseController
-  skip_before_filter :verify_authenticity_token, only: [:create, :update]
-
+  skip_before_filter :verify_authenticity_token, only: [:create, :update, :destroy]
   before_action :active_account, only: :create
+  before_action :check_owner_domain, only: :destroy
 
   def index
     if params[:user_token].present?
@@ -67,6 +67,19 @@ class V1::DomainsController < V1::BaseController
     response_success t("api.success"), result
   end
 
+  def destroy
+    resulf = DomainService.new(@domain, current_user).destroy_domain
+    if resulf.first == Settings.api_type_error
+      response_error resulf.last
+    else
+      if session[:domain_id] == @domain.id
+        change_domain = Domain.find_by owner: current_user.id
+        session[:domain_id] = change_domain.id
+      end
+      response_success resulf.last
+    end
+  end
+
   private
   def domain_params
     params.require(:domain).permit(:name, :status).merge! owner: current_user.id
@@ -75,6 +88,17 @@ class V1::DomainsController < V1::BaseController
   def active_account
     unless current_user.active?
       response_error = t "information_user_not_active"
+    end
+  end
+
+  def check_owner_domain
+    @domain = Domain.find_by id: params[:id]
+    if @domain.present?
+      unless @domain.owner == current_user.id
+        response_error t "not_have_permission"
+      end
+    else
+      response_not_found t "can_not_load_domain"
     end
   end
 end

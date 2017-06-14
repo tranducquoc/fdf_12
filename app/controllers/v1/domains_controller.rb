@@ -2,6 +2,7 @@ class V1::DomainsController < V1::BaseController
   skip_before_filter :verify_authenticity_token, only: [:create, :update, :destroy]
   before_action :active_account, only: :create
   before_action :check_owner_domain, only: :destroy
+  before_action :check_manager_or_owner, only: :edit
 
   def index
     if params[:user_token].present?
@@ -80,9 +81,26 @@ class V1::DomainsController < V1::BaseController
     end
   end
 
+  def edit
+    domain = Domain.find_by id: params[:id]
+    if domain
+      if domain.update_attributes edit_domain_params
+        response_success t "save_domain_successfully"
+      else
+        response_error t "save_domain_not_successfully"
+      end
+    else
+      response_not_found t "can_not_load_domain"
+    end
+  end
+
   private
   def domain_params
     params.require(:domain).permit(:name, :status).merge! owner: current_user.id
+  end
+
+  def edit_domain_params
+    params.permit :name, :status
   end
 
   def active_account
@@ -95,6 +113,17 @@ class V1::DomainsController < V1::BaseController
     @domain = Domain.find_by id: params[:id]
     if @domain.present?
       unless @domain.owner == current_user.id
+        response_error t "not_have_permission"
+      end
+    else
+      response_not_found t "can_not_load_domain"
+    end
+  end
+
+  def check_manager_or_owner
+    user_domain = UserDomain.find_by user_id: current_user.id, domain_id: params[:id]
+    if user_domain.present?
+      unless user_domain.owner? || user_domain.manager?
         response_error t "not_have_permission"
       end
     else

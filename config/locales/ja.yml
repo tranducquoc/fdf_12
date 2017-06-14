@@ -900,3 +900,6 @@ ja:
     rather_than_current_date: "現在の時間を超えない"
     date_start_nil: "開始時間を選択してください"
     date_start_rather_than_date_end: "終了時刻は開始時間より大きする"
+  user_need_join_domain_shop: "ンフォメーションストア%{shop_name}みて前に、%{domain_name}ドメインに参加する必要があります"
+  user_need_join_domain_product: "%{product_name}ご注文前に%{domain_name}ドメインに参加する必要があります"
+  click_to_join_domain: "このドメインに入るために \"OK\" をクリックします"

@@ -892,3 +892,6 @@ en:
     rather_than_current_date: "Input date is not greater than the current date"
     date_start_nil: "Please select the start date"
     date_start_rather_than_date_end: "End date is greater than start date"
+  user_need_join_domain_shop: "You need to join %{domain_name} domain before view %{shop_name}'s shop infomation."
+  user_need_join_domain_product: "You need to join %{domain_name} domain before view and order %{product_name}."
+  click_to_join_domain: "Click \"OK\" to join this domain"

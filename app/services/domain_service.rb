@@ -4,7 +4,7 @@ class DomainService
     @current_user = user
   end
 
-  def destroy
+  def destroy_domain
     shop_domains = @domain.shop_domains.select{|s| s.approved?}
     user_domains = @domain.user_domains.select{|s| s.user_id != @current_user.id}
     if shop_domains.present? || user_domains.present?
@@ -12,6 +12,7 @@ class DomainService
     else
       ActiveRecord::Base.transaction do
         begin
+          Event.by_model_and_id(Domain.name, @domain.id).destroy_all
           @domain.shop_domains.destroy_all
           @domain.user_domains.destroy_all
           @domain.destroy

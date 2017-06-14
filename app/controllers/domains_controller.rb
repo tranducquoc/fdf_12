@@ -75,7 +75,7 @@ class DomainsController < ApplicationController
     if check_owner_domain
       domain = Domain.find_by id: params[:id]
       if domain
-        resulf = DomainService.new(domain, current_user).destroy
+        resulf = DomainService.new(domain, current_user).destroy_domain
         if resulf.first == Settings.api_type_error
           flash[:danger] = resulf.last
         else

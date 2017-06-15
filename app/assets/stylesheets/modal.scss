@@ -302,7 +302,7 @@ $orange_main: #ff5722;
   border-radius: 10px;
   .body-1 {
     width: 102%;
-    height: 520px;
+    height: 475px;
     overflow: scroll;
   }
   .body-2 {
@@ -398,13 +398,11 @@ $orange_main: #ff5722;
 }
 
 .col-md-8-resize {
-  width: 66%;
-  margin-right: 7px;
   height: 560px;
 }
 
 .info_total_packing {
-  font-size: 18px;
+  margin-left: 10px;
   font-weight: bold;
   margin-top: 5px;
 }

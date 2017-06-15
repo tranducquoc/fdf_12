@@ -97,18 +97,17 @@ class ApplicationController < ActionController::Base
   end
 
   def load_domain
-    if params[:domain_id] == Settings.not_find
-      @domain = nil
-    else
+    begin 
       @domain = if params[:domain_id]
         Domain.friendly.find params[:domain_id]
       elsif params[:id]
-        Domain.friendly.find params[:id]
-      else
-        @domain = nil
+         Domain.friendly.find params[:id]
       end
+    rescue
+      flash[:danger] = t "can_not_load_domain"
+      redirect_to root_path
     end
-    session[:domain_id] = @domain.id if @domain.present?
+    session[:domain_id] = @domain.id if @domain.present?  
   end
 
   def redirect_to_root_domain
@@ -121,13 +120,6 @@ class ApplicationController < ActionController::Base
     if user_signed_in? && !current_user.domains.present?
       domain = Domain.first
       create_data_for_domain current_user, domain
-    end
-  end
-
-  def check_user_have_domains
-    if user_signed_in? && !current_user.domains.any? && current_user.active?
-      flash[:danger] = t "flash.danger.create_domain"
-      redirect_to new_domain_path
     end
   end
 

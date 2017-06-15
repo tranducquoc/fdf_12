@@ -80,8 +80,8 @@ class DomainsController < ApplicationController
           flash[:danger] = resulf.last
         else
           if session[:domain_id] == domain.id
-            change_domain = Domain.find_by owner: current_user.id
-            session[:domain_id] = change_domain.id
+            change_domain = current_user.domains.first
+            session[:domain_id] = change_domain.present? ? change_domain.id : nil
           end
           flash[:success] = resulf.last
         end

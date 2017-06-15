@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   before_action :check_user_status_for_action
 
   def index
-    tmp_orders = current_user.orders.by_domain(session[:domain_id])
+    tmp_orders = current_user.orders
     if params[:start_date].present? && params[:end_date].present?
       if params[:start_date] <= params[:end_date]
         @orders = tmp_orders.between_date convert_date_string(params[:start_date]),

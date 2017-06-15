@@ -44,8 +44,6 @@ class User < ApplicationRecord
   validates :description, length: {maximum: Settings.user.max_description}
   validate :image_size
 
-  after_create :create_default_domain
-
   scope :by_date_newest, ->{order created_at: :desc}
   scope :by_active, ->{where status: active}
   scope :of_ids, -> ids {where id: ids}
@@ -92,10 +90,6 @@ class User < ApplicationRecord
     if avatar.size > max_size.megabytes
       errors.add :avatar, I18n.t("pictures.error_message", max_size: max_size)
     end
-  end
-
-  def create_default_domain
-    CreateDomainService.new(self).create.last
   end
 
   def generate_authentication_token

@@ -1,14 +1,8 @@
 <div class="col-sm-4 row block-shop-feed-item2 padding-l div-item">
   <div class="col-md-4 shop_image">
-    <div class="row shop_width">
-      <% if shop.domains.present? && @domain.present? %>
-        <%= link_to domain_dashboard_shop_path(@domain, shop) do %>
-          <%= image_tag shop.avatar.url, class: "image-shop-show" %>
-        <% end %>
-      <% else %>
-        <%= link_to dashboard_shop_path(shop, domain_id: session[:domain_id]) do %>
-          <%= image_tag shop.avatar.url, class: "image-shop-show" %>
-        <% end %>
+    <div class="row shop_width"> 
+      <%= link_to dashboard_shop_path shop do %>
+        <%= image_tag shop.avatar.url, class: "image-shop-show" %>
       <% end %>
     </div>
   </div>
@@ -17,9 +11,9 @@
       <div>
         <h3 class="shop-name-small">
           <% if shop.domains.present? && @domain.present? %>
-            <%= link_to shop.name, domain_dashboard_shop_path(@domain, shop) %>
+            <%= link_to shop.name, dashboard_shop_path(shop) %>
           <% else %>
-            <%= link_to shop.name, dashboard_shop_path(shop, domain_id: session[:domain_id]) %>
+            <%= link_to shop.name, dashboard_shop_path(shop) %>
           <% end %>
         </h3><%= render "shared/shop_status_label", shop: shop %>
       </div>

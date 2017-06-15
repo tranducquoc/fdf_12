@@ -198,217 +198,217 @@ namespace :fdf_db do
   task create_user_domain: :environment do
     UserDomain.create!(
       user_id: 6,
-      domain_id: 19,
+      domain_id: 1,
       role: 0
     )
 
     UserDomain.create!(
       user_id: 7,
-      domain_id: 19,
+      domain_id: 1,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 8,
-      domain_id: 19,
+      domain_id: 1,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 9,
-      domain_id: 19,
+      domain_id: 1,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 10,
-      domain_id: 19,
+      domain_id: 1,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 11,
-      domain_id: 19,
+      domain_id: 1,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 12,
-      domain_id: 19,
+      domain_id: 1,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 13,
-      domain_id: 19,
+      domain_id: 1,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 14,
-      domain_id: 19,
+      domain_id: 1,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 15,
-      domain_id: 19,
+      domain_id: 1,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 16,
-      domain_id: 19,
+      domain_id: 1,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 17,
-      domain_id: 19,
+      domain_id: 1,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 15,
-      domain_id: 20,
-      role: 0
-    )
-
-    UserDomain.create!(
-      user_id: 6,
-      domain_id: 20,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 7,
-      domain_id: 20,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 8,
-      domain_id: 20,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 9,
-      domain_id: 20,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 10,
-      domain_id: 20,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 11,
-      domain_id: 20,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 12,
-      domain_id: 20,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 13,
-      domain_id: 20,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 14,
-      domain_id: 20,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 16,
-      domain_id: 20,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 17,
-      domain_id: 20,
-      role: 1
-    )
-
-    UserDomain.create!(
-      user_id: 15,
-      domain_id: 21,
+      domain_id: 2,
       role: 0
     )
 
     UserDomain.create!(
       user_id: 6,
-      domain_id: 21,
+      domain_id: 2,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 7,
-      domain_id: 21,
+      domain_id: 2,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 8,
-      domain_id: 21,
+      domain_id: 2,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 9,
-      domain_id: 21,
+      domain_id: 2,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 10,
-      domain_id: 21,
+      domain_id: 2,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 11,
-      domain_id: 21,
+      domain_id: 2,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 12,
-      domain_id: 21,
+      domain_id: 2,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 13,
-      domain_id: 21,
+      domain_id: 2,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 14,
-      domain_id: 21,
+      domain_id: 2,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 16,
-      domain_id: 21,
+      domain_id: 2,
       role: 1
     )
 
     UserDomain.create!(
       user_id: 17,
-      domain_id: 21,
+      domain_id: 2,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 15,
+      domain_id: 3,
+      role: 0
+    )
+
+    UserDomain.create!(
+      user_id: 6,
+      domain_id: 3,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 7,
+      domain_id: 3,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 8,
+      domain_id: 3,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 9,
+      domain_id: 3,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 10,
+      domain_id: 3,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 11,
+      domain_id: 3,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 12,
+      domain_id: 3,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 13,
+      domain_id: 3,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 14,
+      domain_id: 3,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 16,
+      domain_id: 3,
+      role: 1
+    )
+
+    UserDomain.create!(
+      user_id: 17,
+      domain_id: 3,
       role: 1
     )
   end

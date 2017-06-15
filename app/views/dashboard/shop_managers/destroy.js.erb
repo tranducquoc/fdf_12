@@ -1,0 +1,4 @@
+$('.user_item_<%= @shop_manager.user_id %>').html('<%= link_to t("manage_domain.manage"),
+  dashboard_shop_shop_managers_path(user_id: @shop_manager.user_id,
+  shop_id: @shop_manager.shop_id), method: :post,
+  class: "btn btn-primary btn-success", remote: true %>')

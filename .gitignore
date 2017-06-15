@@ -9,7 +9,8 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
-
+/log/*
+/public/uploads/*
 # Used by dotenv library to load environment variables.
 # .env
 
@@ -48,3 +49,20 @@ build-iPhoneSimulator/
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
+
+/config/database.yml
+.DS_Store
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
+.byebug_history
+
+# Ignore application configuration
+/config/application.yml
+/.idea/
+/public/javascripts/translations.js
+/public/deploy/index.html
+.ruby-version
+/vendor/bundle
+vendor/assets/bower_components/*

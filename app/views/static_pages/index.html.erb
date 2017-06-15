@@ -1,0 +1,197 @@
+<!-- Pushy Menu -->
+<nav class="pushy pushy-left">
+  <li class="list-unstyled">
+  <li><a href="#home"><%= t "home" %></a></li>
+  <li><a href="#feat"><%= t "feature_index" %></a></li>
+  <li><a href="#photos"><%= t "image_index" %></a></li>
+  <li><a href="http://education.framgia.vn/tools" target="_blank"><%= t "more_tools" %></a></li>
+  <li><a href="#contact"><%= t "contact_index" %></a></li>
+  <li><%= link_to t("help_manual_index"), pdf_readers_path, target: "_blank" %></li>
+  <li>
+    <div>
+      <a href="#" role="button"><%= t "language" %></a>
+        <ul class="languages select-default ul-index-padding-left" role="menu">
+          <% Settings.languages.each do|key, value| %>
+            <li class="li-index-style-none" data-lang="<%= value.type %>">
+              <%= link_to "#" do %>
+                <%= image_tag value.image, class: "image-flag-choose" %>
+                <span><%= value.name %></span>
+              <% end %>
+            </li>
+            <div class="clearfix"></div>
+          <% end %>
+        </ul>
+    </div>
+  </li>
+</nav>
+<!-- Site Overlay -->
+<div class="site-overlay"></div>
+<header id="home">
+  <div class="container-fluid">
+    <!-- change the image in style.css to the class header .container-fluid [approximately row 50] -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-xs-10">
+          <a href="#" class="thumbnail logo">
+            <%= image_tag "logo.png", alt: "Logo", class: "img-responsive" %>
+          </a>
+        </div>
+        <div class="col-md-1 col-md-offset-8 col-xs-2 text-center">
+          <div class="menu-btn"><span class="hamburger">&#9776;</span></div>
+        </div>
+      </div>
+      <div class="jumbotron">
+        <h1><Strong><%= t "common.base_title" %></Strong><br></h1>
+        <p><%= t "forder_index_intro" %></p>
+        <p><%= link_to t("header.sign_in"), new_user_session_path, class: "btn btn-lg btn-danger" %></p>
+      </div>
+    </div>
+  </div>
+</header>
+<section id="feat">
+  <div class="container">
+    <div class="row features">
+      <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="100ms">
+        <span class="typcn typcn-zoom-in x4 font-icon-intro"></span>
+        <h4><%= t "feature.search" %></h4>
+      </div>
+      <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="300ms">
+        <span class="typcn typcn-shopping-cart x4 font-icon-intro"></span>
+        <h4><%= t "feature.order" %></h4>
+      </div>
+      <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="500ms">
+        <span class="typcn typcn-tags x4 font-icon-intro"></span>
+        <h4><%= t "feature.shop" %></h4>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="intro">
+  <div class="intro-web">
+    <div class="content-section-c">
+      <div class="container">
+        <div class="row wow fadeInUp" data-wow-delay="300ms">
+          <div class="col-lg-5 col-sm-6">
+            <div class="clearfix"></div>
+            <h1 class="font-title-intro">
+              <strong><%= t "index.intro_search.title" %></strong>
+            </h1>
+            <p class="lead"><%= t "index.intro_search.context" %></p>
+          </div>
+          <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+            <%= image_tag "draft/search-page.png", class: "img-responsive" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-section-a">
+      <div class="container">
+        <div class="row wow fadeInUp" data-wow-delay="500ms">
+          <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+            <div class="clearfix"></div>
+            <h1 class="section-heading font-title-intro">
+              <strong><%= t "index.intro_shop.title" %></strong>
+            </h1>
+            <p class="lead"><%= t "index.intro_shop.context" %></p>
+          </div>
+          <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+            <%= image_tag "draft/shop-page.png", class: "img-responsive" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-section-c">
+      <div class="container">
+        <div class="row wow fadeInUp" data-wow-delay="500ms">
+          <div class="col-lg-5 col-sm-6">
+            <div class="clearfix"></div>
+            <h1 class="font-title-intro">
+              <strong><%= t "index.intro_order.title" %></strong>
+            </h1>
+            <p class="lead"><%= t "index.intro_order.context" %></p>
+          </div>
+          <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+            <%= image_tag "draft/order-page.png", class: "img-responsive" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section id="history" class="story wow fadeInUp" data-wow-delay="500ms">
+  <!-- change the image in style.css to the class .story .container-fluid [approximately row 141] -->
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 opaline">
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <p class="lead"><strong><i><%= t "framgia_user_feedback_index" %></i></strong></p>
+              <p><i><%= t "framgia_user_feedback_context" %></i></p>
+              <h6 class="lead"><%= t "framgia_user_name_feedback" %></h6>
+              <p><small><%= t "framgia_user_job_feedback" %><br></small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="photos" class="gallery wow fadeInUp" data-wow-delay="300ms">
+  <div class="container">
+    <div class="row">
+      <div class="masonry image-gallery">
+        <div class="grid-sizer"></div>
+        <div class="gutter-sizer"></div>
+        <div class="item item-width2">
+          <%= image_tag "nem-chua-ran.jpg" %>
+        </div>
+        <div class="item">
+          <%= image_tag "thai_food.jpg" %>
+        </div>
+        <div class="item">
+          <%= image_tag "mon-che.jpg" %>
+        </div>
+        <div class="item">
+          <%= image_tag "nuoc-dua.jpg" %>
+        </div>
+        <div class="item">
+          <%= image_tag "tau_hu.jpg" %>
+        </div>
+        <div class="item item-width2">
+          <%= image_tag "shopping.jpg" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="row margin-to co-black prefooter wow fadeInUp" id="contact" data-wow-delay="300ms">
+  <div class="col-sm-4 text-default padding-duong">
+    <h1 class="com-name"><strong><%= t("company") %></strong></h1>
+      <strong class="text-default">
+        <%= link_to t("home"), root_path %><br></strong>
+      <strong class="text-default">
+        <%= link_to t("document"), pdf_readers_path, target: "_blank" %></strong>
+    <h5 class="text-default"><%= t "com-infor" %></h5>
+  </div>
+  <div class="col-sm-4 padding-duong text-default">
+    <i class="fa fa-map-marker fa-2x default-icon address-icon"></i>
+    <%= t "com-add" %>
+    </br>
+    <i class="fa fa-mobile fa-2x default-icon"></i>
+    <%= t "phone-num" %>
+    </br>
+    <i class="fa fa-envelope default-icon text-default" aria-hidden="true">
+    </i>
+    <%= mail_to t "com-email" %>
+  </div>
+  <div class="col-sm-4 padding-duong text-default">
+    <%= t "about_label" %>
+    <%= t "com-detail" %>
+    </br>
+    <%= link_to t("feed_back"), Settings.feedback, target: "_blank",
+      class: "text-default" %>
+  </div>
+</div>
+<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap-scrollspy.js"></script>
+<script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.js"></script>

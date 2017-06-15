@@ -1,0 +1,172 @@
+<% provide :title, t("header.settings") %>
+<%= form_for current_user, url: user_setting_path, html: {class: "user-setting"} do |f| %>
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h5 class="panel-title">
+            <i class="fa fa-bell"></i> <%= t "setting_notification" %>
+          </h5>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="col-md-6"></th>
+                <th class="col-md-3"><%= t "receive_notification" %></th>
+                <th class="col-md-3"><%= t "receive_email" %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong><%= t "receive_all_notification" %></strong></td>
+                <td>
+                  <div class="onoffswitch">
+                    <input type="checkbox" id="turn-all-notification"
+                      class="onoffswitch-checkbox"
+                      <%= checked_all_notification_setting %>>
+                    <label class="onoffswitch-label" for="turn-all-notification">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="onoffswitch">
+                    <input type="checkbox" name="turn-all-email" id="turn-all-email"
+                      class="onoffswitch-checkbox"
+                      <%= checked_all_email_setting %>>
+                    <label class="onoffswitch-label" for="turn-all-email">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><%= t "receive_order_request_notification" %></td>
+                <td>
+                  <div class="onoffswitch">
+                    <%= f.fields_for :notification_settings do |notification| %>
+                      <%= notification.check_box :order_request,
+                        id: "turn-order-request-notification",
+                        class: "onoffswitch-checkbox",
+                        checked: checked_notification_setting?(Settings.index_zero_in_array) %>
+                    <% end %>
+                    <label class="onoffswitch-label" for="turn-order-request-notification">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="onoffswitch">
+                    <%= f.fields_for :email_settings do |email| %>
+                      <%= email.check_box :order_request,
+                        id: "turn-order-request-email",
+                        class: "onoffswitch-checkbox",
+                        checked: checked_email_setting?(Settings.index_zero_in_array) %>
+                    <% end %>
+                    <label class="onoffswitch-label" for="turn-order-request-email">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><%= t "receive_order_processed_notification" %></td>
+                <td>
+                  <div class="onoffswitch">
+                    <%= f.fields_for :notification_settings do |notification| %>
+                      <%= notification.check_box :order_processed,
+                        id: "turn-order-processed-notification",
+                        class: "onoffswitch-checkbox",
+                        checked: checked_notification_setting?(Settings.index_one_in_array) %>
+                    <% end %>
+                    <label class="onoffswitch-label"
+                      for="turn-order-processed-notification">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="onoffswitch">
+                    <%= f.fields_for :email_settings do |email| %>
+                      <%= email.check_box :order_processed,
+                        id: "turn-order-processed-email",
+                        class: "onoffswitch-checkbox",
+                        checked: checked_email_setting?(Settings.index_one_in_array) %>
+                    <% end %>
+                    <label class="onoffswitch-label" for="turn-order-processed-email">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><%= t "receive_send_order_notification" %></td>
+                <td>
+                  <div class="onoffswitch">
+                    <%= f.fields_for :notification_settings do |notification| %>
+                      <%= notification.check_box :send_order,
+                        id: "turn-send-order-notification",
+                        class: "onoffswitch-checkbox",
+                        checked: checked_notification_setting?(Settings.index_two_in_array) %>
+                    <% end %>
+                    <label class="onoffswitch-label"
+                      for="turn-send-order-notification">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="onoffswitch">
+                    <%= f.fields_for :email_settings do |email| %>
+                      <%= email.check_box :send_order,
+                        id: "turn-send-order-email",
+                        class: "onoffswitch-checkbox",
+                        checked: checked_email_setting?(Settings.index_two_in_array) %>
+                    <% end %>
+                    <label class="onoffswitch-label" for="turn-send-order-email">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h5 class="panel-title">
+            <i class="fa fa-globe"></i> <%= t "choose_default_language" %>
+          </h5>
+        </div>
+        <div class="panel-body">
+          <table class="table table-language">
+            <tbody>
+              <tr>
+                <th class="col-md-3"><%= t "choose_language" %></th>
+                <td class="col-md-3">
+                <%= f.select :language, options_for_select([[t("vietnam"), "vi"],
+                  [t("english"), "en"], [t("japanese"), "ja"]],
+                  current_user.language), {}, class: "form-control" %>
+                </td>
+                <td class="col-md-6"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 btn-update">
+      <%= f.submit t("edit_user.update"), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

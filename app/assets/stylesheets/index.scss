@@ -1,0 +1,200 @@
+$orange_main: #ff5722;
+IMG.displayed {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50%;
+}
+
+.content-section-c {
+  padding: 50px 0;
+  background-color: white;
+}
+
+.content-section-a {
+  padding: 50px 0;
+  background-color: rgba(248, 248, 248, 0.72);
+
+  .section-heading {
+    padding-bottom: 50px;
+    padding-right: 60px;
+  }
+}
+
+.content-section-b {
+  padding: 50px 0;
+  color: white;
+}
+
+.index-user {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: url('bg.jpg') no-repeat center center;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+  padding-bottom: 350px;
+
+  h2 {
+    color: white;
+  }
+
+  .logo {
+    padding-top: 375px;
+  }
+}
+
+.header-index {
+  .navbar {
+    background: url(header_bg.png) $orange_main;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .navbar-brand {
+    height: 40px;
+    padding: 3px 10px;
+    float: left;
+    font-size: 18px;
+    line-height: 20px;
+
+    img {
+      height: 35px;
+      display: block;
+      padding-top: 5px;
+      padding-left: 20px;
+    }
+  }
+
+  .language {
+    padding-top: 15px;
+    text-align: center;
+    color: white;
+  }
+
+  li ul {
+    cursor: pointer;
+  }
+}
+
+.feature{
+  background: image-url('feature') no-repeat center center fixed;
+  background-size: cover;
+
+  img {
+    height: 300px;
+    width: 300px;
+    display: block;
+  }
+
+  .feature-heading {
+    padding-left: 0px;
+    padding-bottom: 30px;
+  }
+}
+
+.intro {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: image-url('bk') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  padding-top: 500px;
+}
+
+.intro-web {
+  background: image-url('drink-bg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.end-index {
+  background: image-url('footer-bg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  padding-bottom: 200px;
+
+  .end {
+    padding-top: 250px;
+    padding-bottom: 250px;
+  }
+}
+
+.service-box-l{
+  margin-left: auto;
+  margin-right: auto;
+  width: 280px;
+
+  h3 {
+    padding-left: 0px;
+  }
+}
+
+.sign-in-btn {
+  padding-top: 30px;
+}
+
+.btn-create-domain  {
+  display: block;
+  width: 12% !important;
+  float: left;
+  margin-bottom: 5px !important;
+  z-index: 1200;
+}
+
+@media screen and (max-width: 768px) {
+  .scroll-horizontal {
+    overflow-x: auto;
+  }
+}
+
+.search-user-form {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+.confirm_order {
+  margin-bottom: 0px;
+  strong { color: #3c763d; }
+}
+
+#confirm-order-modal {
+  .modal-title {
+    color: white;
+  }
+}
+
+#new-domain-modal {
+  .modal-dialog {
+    max-width: 500px;
+    max-height: 100px;
+  }
+
+  h3 {
+    margin-top: 10px;
+    color: #ff5722;
+  }
+}
+
+#shop-manager-modal {
+  .row {
+    padding-bottom: 10px;
+  }
+}
+
+.font-title-intro {
+  color: #3c763d;
+}
+
+.font-icon-intro {
+  color: #ff5722;
+}

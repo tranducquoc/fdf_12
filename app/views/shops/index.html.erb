@@ -1,0 +1,14 @@
+<div class="col-sm-12 top_home">
+  <div class="row">
+    <div class="col-md-12 row-title">
+      <h2 class="section_title  margin-left_domain padding-left_domain">
+        <%= t "common.all_shops" %>
+      </h2>
+    </div>
+    <hr>
+    <div class="col-md-12 padding_0" id="id_shops_list">
+      <%= render @shops %>
+    </div>
+  </div>
+</div>
+<%= paginate @shops %>

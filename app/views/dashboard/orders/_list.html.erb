@@ -1,0 +1,23 @@
+<div class="list_order_item" id="order_item_<%= order.id %>" data-id="<%= order.id %>">
+  <span class="title">
+    <%= order.user_name %> - <%= l order.created_at, format: :short_time %>
+    <%= l order.created_at, format: :short_date %>
+  </span>
+  <div class="content">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="text-center"><%= t "oder.name" %></th>
+          <th class="center"><%= t "oder.quantity" %></th>
+          <th class="center"><%= t "order_quick.note"%></th>
+          <th class="center"><%= t "oder.status" %></th>
+          <th class="right"><%= t "oder.price" %></th>
+           <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render "order_products", order_products: @order_products[order.id] %>
+      </tbody>
+    </table>
+  </div>
+</div>

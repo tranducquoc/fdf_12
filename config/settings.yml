@@ -1,0 +1,145 @@
+common:
+  per_page: 6
+  products_per_page: 12
+  shops_per_page: 16
+orders:
+  status: {open: "open", deliver: "deliver", close: "close"}
+pictures:
+  upload_dir: "uploads"
+  accepted_files: "image/jpeg, image/gif, image/png"
+  max_size: 5
+  avatar_size: "128"
+  avatar_small_size: "24"
+mailer:
+  default_mail: "no-reply@fdf-12.herokuapp.com"
+  sent_mail: "forder.info@gmail.com"
+index:
+  max_shops: 6
+  max_products: 8
+comment:
+  num_posts: 2
+date_format: "YYYY/MM/DD"
+search:
+  min_results: 5
+admin:
+  dashboard:
+    max_items: 10
+rate: "rate"
+notification:
+  number_unread_not_display: 0
+delay_check_order: 1
+max_content_scroll: 3
+count_tag: 0
+order_increase: 1
+minute_constant: 60
+minute_step: 5
+filter_status_order:
+  pending: "pending"
+  accepted: "accepted"
+  done: "done"
+  rejected: "rejected"
+  all: "all"
+check_order: 2
+start_count_order: 0
+row_header: 1
+row_user_start: 2
+start_count: 0
+user_increase: 1
+increase_one: 1
+not_find: "not_find"
+add_shop: "add_shop"
+edit_shop: "edit_shop"
+active: "active"
+blocked: "blocked"
+waiting: "waiting"
+pending: "pending"
+new: "new"
+account_password: "123456"
+languages:
+  vietnamese: {name: "Tiếng Việt", image: "vi.png", type: "vi"}
+  english: {name: "English", image: "en.png", type: "en"}
+  japanese: {name: "日本語", image: "ja.png", type: "ja"}
+image_url:
+  cart: "cart.png"
+  systemdone: "systemaccepted.jpg"
+notification_new: "new"
+file_xls: ".xls"
+file_xlsx: ".xlsx"
+xls: "xls"
+xlsx: "xlsx"
+min_product_in_category: 0
+request_status:
+  pending: "pending"
+  approved: "approved"
+  rejected: "rejected"
+  active: "active"
+  closed: "closed"
+  blocked: "blocked"
+  new_shop: "new_shop"
+domain:
+  professed: "glyphicon glyphicon-globe"
+  secret: "glyphicon glyphicon-lock"
+  default: "default"
+feedback: "https://docs.google.com/forms/d/e/1FAIpQLSeWye6zJ8U7epz5W3G5MDZTT8YE5rWELbHDpyRtD4drC0QrGw/viewform"
+max_user_name: 8
+min_price: 0
+max_description: 22
+max_shop_name: 17
+max_shop_name_dash: 30
+count_order_start: -1
+max_len: 14
+min_string: 0
+max_string: 6
+user_domain_name: "ca-nhan"
+shop_status_on: "on"
+shop_status_off: "off"
+checked_false: "false"
+checked_true: "true"
+shop_off: "shop_off"
+domain_default: "default"
+type_order_products_done: 1
+type_order_products_rejected: 2
+csv: "csv"
+shop_member: "member"
+shop_owner: "owner"
+shop_manager: "manager"
+user:
+  max_name: 80
+  max_chatwork_id: 50
+  max_description: 250
+product:
+  max_name: 50
+  max_description: 250
+  max_price: 1000000000
+min_content_of_comment: 1
+max_content_of_comment: 300
+shop:
+  max_name: 50
+  max_description: 250
+api_type_success: 0
+api_type_error: 1
+api_type_not_found: 2
+shop_domain_status_rejected_key: 2
+type_upload_all_order_products: 0
+type_update_order_product: 1
+type_update_all_orders: 3
+index_zero_in_array: 0
+index_one_in_array: 1
+index_two_in_array: 2
+serialize_true: "1"
+serialize_false: "0"
+filter_order:
+  all: 0
+  pending: 1
+  accepted: 2
+  rejected: 3
+user_domain_role:
+  member: "member"
+  manager: "manager"
+max_domain_name: 12
+id_default: 0
+convert_date:
+  day: 1
+  month: 0
+  year: 2
+  seperate: "/"

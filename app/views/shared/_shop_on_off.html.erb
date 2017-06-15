@@ -1,0 +1,5 @@
+<% if shop.status_on_off == Settings.shop_status_off %>
+  <strong class="label label-danger overlap-shop"><%= t "shop_was_closed" %></strong>
+<% else %>
+  <strong class="label label-success overlap-shop"><%= t "shop_was_open" %></strong>
+<% end %>

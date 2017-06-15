@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4 class="margin-zeroc">
+        <strong><%= @product.name %></strong>
+        <span class="float-right"><%= @order_products.first.present? ?
+          l(@order_products.first.created_at, format: :short_date) : "" %>
+        </span>
+      </h4>
+    </div>
+    <div class="panel-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th><%= t "dashboard.products.show.stt" %></th>
+            <th><%= t "dashboard.products.show.name" %></th>
+            <th><%= t "dashboard.products.show.quantity" %></th>
+            <th><%= t "dashboard.products.show.notes" %></th>
+            <th><%= t "dashboard.products.show.price" %></th>
+            <th><%= t "dashboard.products.show.total" %></th>
+          </tr>
+        </thead>
+        <% @order_products.each_with_index do |order, index| %>
+          <tbody>
+            <tr>
+              <td>
+                <%= increase_one index %>
+              </td>
+              <td>
+                <%= order.user_name %>
+              </td>
+              <td>
+                <%= order.quantity %>
+              </td>
+              <td>
+                <%= order.notes %>
+              </td>
+              <td>
+                <%= @product.price %>
+              </td>
+              <td>
+                <strong><%= total_price(@product.price, order.quantity).to_i %>
+                  <%= t "cart.vnd" %></strong>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+      <%= t("download") %>
+      <%= link_to t("csv"), dashboard_shop_product_path(@product.shop_slug, @product.slug,
+        order_product_id: @order_products.first.id,
+        date: @order_products.first.created_at, format: Settings.csv) %> |
+      <%= link_to t("excel"), dashboard_shop_product_path(@product.shop_slug, @product.slug,
+        order_product_id: @order_products.first.id,
+        date: @order_products.first.created_at, format: Settings.xls) %>
+    </div>
+  </div>
+</div>

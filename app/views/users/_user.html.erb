@@ -1,0 +1,48 @@
+<% @users.each_with_index do |user, index| %>
+  <tr>
+    <td><%= increase_one index %></td>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.chatwork_id %></td>
+    <td>
+      <div class="search-user-image">
+        <%= image_tag user.avatar.url, class: "thumbnail" %>
+      </div>
+    </td>
+    <td><%= user.description %></td>
+    <td>
+      <% if @choosen_domain.users.present? %>
+        <% if @choosen_domain.users.include? user %>
+          <% if !current_user? user %>
+            <% user_domain = UserDomain.find_by(user_id: user.id,
+              domain_id: @choosen_domain.id) %>
+            <% if @choosen_domain.owner?(current_user.id) %>
+              <%= link_to t("delete"),
+                user_domain_path(user_domain.id, user_id: user.id,
+                domain_id: @choosen_domain.id, delete_user_domain: true),
+                method: :delete, data: {confirm: t("common.delete_confirm")},
+                class: "btn btn-danger" %>
+              <% if user_domain.member? %>
+                <%= link_to t("manage_domain.manage"),
+                  user_domain_path(user_domain, role: :manager),
+                  method: :patch, class: "btn btn-primary" %>
+              <% end %>
+              <% if user_domain.manager? %>
+                <%= link_to t("manage_domain.remove"),
+                  user_domain_path(user_domain, role: :member),
+                  method: :patch, class: "btn btn-primary btn-warning" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <% if @choosen_domain.manage_by?(current_user) ||
+            @choosen_domain.owner?(current_user.id) %>
+            <%= link_to t("add"), user_domains_path(user_id: user.id,
+              domain_id: @choosen_domain.id, add_domain: true),
+              method: :post, class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

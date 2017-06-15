@@ -1,0 +1,40 @@
+<% if @support.users.present? %>
+  <% @support.users.each do |user| %>
+    <tr>
+      <td class="td-user-image-table">
+        <div class="search-user-image-owner">
+          <%= image_tag user.avatar.url %>
+        </div>
+      </td>
+      <td class="td-user-name-table"><%= user.name %></td>
+      <td class="td-user-action-table user_item_<%= user.id %>">
+        <% if @shop.shop_owner?(current_user.id) %>
+          <% if !current_user? user %>
+            <% user_of_shop = get_user_of_shop user.id, @shop.id %>
+            <% if  user_of_shop.present? && user_of_shop.manager? %>
+              <% role = Settings.shop_member %>
+              <%= link_to t("unset_manager"), dashboard_shop_shop_manager_path(@shop.id,
+                user_id: user.id, shop_id: @shop.id),
+                method: :delete, class: "btn btn-warning", remote: true %>
+            <% else %>
+              <% role = Settings.shop_manager %>
+              <%= link_to t("manage_domain.manage"), dashboard_shop_shop_managers_path(
+                user_id: user.id, shop_id: @shop.id),
+                method: :post, class: "btn btn-primary btn-success", remote: true %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+<% else %>
+  <tr>
+    <td class="td-user-image-table">
+      <div class="search-user-image-owner">
+        <%= image_tag current_user.avatar.url %>
+      </div>
+    </td>
+    <td class="td-user-name-table"><%= current_user.name %></td>
+    <td class="td-user-action-table"></td>
+  </tr>
+<% end %>

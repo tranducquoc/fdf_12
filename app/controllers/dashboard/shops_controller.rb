@@ -24,36 +24,21 @@ class Dashboard::ShopsController < BaseDashboardController
   end
 
   def show
-    user_domain = Domain.find_by id: session[:domain_id]
-    if user_domain
-      @users = user_domain.users
-      @users_shop_manager = ShopManager.includes(:user).select do |user|
-        (user.shop_id == @shop.id && (user.role == Settings.shop_owner ||
-         user.role == Settings.shop_manager))
+    @users_shop_manager = @shop.users
+    @shop = @shop.decorate
+    @products = @shop.products.page(params[:page])
+      .per Settings.common.products_per_page
+    @products_all = @shop.products.all
+    if @start_hour.present? and @end_hour.present?
+      if compare_time_order @start_hour, @end_hour
+        @products_all.update_all status: :active, start_hour: @start_hour,
+          end_hour: @end_hour
+        flash.now[:success] = t "dashboard.shops.show.update_success"
+      else
+        flash.now[:danger] = t "dashboard.shops.show.update_fail"
       end
-      @shop = @shop.decorate
-      @products = @shop.products.page(params[:page])
-        .per Settings.common.products_per_page
-      @products_all = @shop.products.all
-      if @start_hour.present? and @end_hour.present?
-        if compare_time_order @start_hour, @end_hour
-          @products_all.update_all status: :active, start_hour: @start_hour,
-            end_hour: @end_hour
-          flash.now[:success] = t "dashboard.shops.show.update_success"
-        else
-          flash.now[:danger] = t "dashboard.shops.show.update_fail"
-        end
-      end
-      user_ids = []
-      user_shop_domain = ShopDomain.list_shop_by_id @shop.id
-      user_shop_domain.each do |user_shop|
-        user_ids << UserDomain.list_all_user_domains(user_shop.domain_id)
-      end
-      user_ids = user_ids.flatten.pluck(:user_id).uniq
-      @support = Supports::SearchSupport.new(@shop.id, user_ids, "")
-    else
-      redirect_to root_path
     end
+    @support = Supports::SearchSupport.new(@shop.id, "")  
   end
 
   def index
@@ -148,7 +133,7 @@ class Dashboard::ShopsController < BaseDashboardController
     else
       flash[:danger] = t "flash.danger.dashboard.updated_shop"
     end
-    redirect_to domain_dashboard_shops_path @domain
+    redirect_to dashboard_shops_path
   end
 
   def redirect_by_domain

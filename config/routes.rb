@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   }
 
   get "index" => "static_pages#index"
+  get "help" => "static_pages#show"
   root "static_pages#home"
   mount ActionCable.server => "/cable"
   namespace :admin do
@@ -54,13 +55,6 @@ Rails.application.routes.draw do
     resources :orders
     resources :carts
     resources :shop_domains
-    namespace :dashboard do
-      root "statistics#index", path: "/"
-      resources :shops do
-        resources :products
-      end
-      resources :shop_managers
-    end
   end
   resources :user_domains
   resources :shop_domains

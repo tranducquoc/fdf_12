@@ -1,7 +1,6 @@
 class StaticPagesController < ApplicationController
   before_action :load_data, only: :home
   layout "index", only: :index
-  before_action :check_user_have_domains
   caches_page :index
 
   def index
@@ -16,6 +15,10 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def show
+    @professed_domains = Domain.professed
+  end
+
   private
   def load_data
     @categories = Category.all
@@ -27,8 +30,7 @@ class StaticPagesController < ApplicationController
     if current_user.domains.present?
       redirect_to domain_path(current_user.domains.first)
     else
-      @shops = Shop.top_shops.decorate
-      @products = Product.top_products
+      redirect_to help_path
     end
   end
 end

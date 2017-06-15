@@ -3,7 +3,6 @@ class Dashboard::ProductsController < BaseDashboardController
   before_action :load_categories, only: [:edit, :new, :update]
   before_action :load_product, except: [:new, :index, :create]
   before_action :load_products, only: :index
-  before_action :load_domain, only: [:new, :edit, :destroy]
 
   def new
     @product = @shop.products.new
@@ -50,22 +49,10 @@ class Dashboard::ProductsController < BaseDashboardController
   end
 
   def create
-    @domain = Domain.find_by id: params[:product][:domain_id]
     @product = @shop.products.new product_params
     if @product.save
-      @domains = @shop.domains
-      if @domains.present?
-        @domains.each do |domain|
-          if check_shop_of_domain? domain
-            save_product_domain domain
-          end
-        end
-        flash[:success] = t "flash.success.dashboard.create_product"
-        redirect_to domain_dashboard_shop_path(@domain, @shop)
-      else
-        flash[:success] = t "api.error_domains_not_found"
-        redirect_to dashboard_shop_path(@shop, domain_id: session[:domain_id])
-      end
+      flash[:success] = t "flash.success.dashboard.create_product"
+      redirect_to dashboard_shop_path @shop
     else
       flash[:danger] = t "flash.danger.dashboard.create_product"
       load_categories
@@ -81,11 +68,7 @@ class Dashboard::ProductsController < BaseDashboardController
           render json: {status: @product.status}
         end
         format.html do
-          if check_domain_present?
-            redirect_to domain_dashboard_shop_path @domain, @shop
-          else
-            redirect_to dashboard_shop_path(@shop, domain_id: session[:domain_id])
-          end
+          redirect_to dashboard_shop_path @shop
         end
       end
     else
@@ -102,11 +85,8 @@ class Dashboard::ProductsController < BaseDashboardController
     else
       flash[:danger] = t "flash.danger.dashboard.delete_product"
     end
-    if @domain.present?
-      redirect_to domain_dashboard_shop_path @domain, @shop
-    else
-      redirect_to dashboard_shop_path(@shop, domain_id: session[:domain_id])
-    end
+    redirect_to dashboard_shop_path @shop
+    
   end
 
   private
@@ -129,25 +109,6 @@ class Dashboard::ProductsController < BaseDashboardController
 
   def load_products
     @products = @shop.products
-  end
-
-  def check_domain_present?
-    @domain = Domain.find_by id: params[:product][:domain_id]
-    @domain.present?
-  end
-
-  def check_shop_of_domain? domain
-    shop_domain = ShopDomain.find_by shop_id: @shop.id, domain_id: domain.id
-    shop_domain.approved?
-  end
-
-  def save_product_domain domain
-    product_domain = ProductDomain.new product_id: @product.id,
-      domain_id: domain.id
-    unless product_domain.save
-      flash[:danger] = t "flash.danger.dashboard.add_product_failed"
-      redirect_to :back
-    end
   end
 
   def load_product

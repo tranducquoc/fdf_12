@@ -6,27 +6,37 @@
         <%= form_tag dashboard_shop_order_managers_path, method: :get do |f| %>
           <div class="col-md-1 margin my-margin">
             <span class="label-span">
-              <%= t(".start_date") %>
+              <%= t ".start_date" %>
             </span>
           </div>
           <div class="col-md-2">
             <%= text_field_tag :start_date, params[:start_date],
-              class: "form-control datepicker datepicker_ordermanager_start",
-              placeholder: t("time.formats.date_format") %>
+              class: "form-control order-manager-datepicker
+                order-manager-date order-manager-start",
+              placeholder: t(".start_date") %>
           </div>
           <div class="col-md-1 margin my-margin">
             <span class="label-span">
-            <%= t(".end_date") %>
+            <%= t ".end_date" %>
             </span>
           </div>
           <div class="col-md-2">
             <%= text_field_tag :end_date, params[:end_date],
-              class: "form-control datepicker datepicker_ordermanager_end",
-              placeholder: t("time.formats.date_format") %>
+              class: "form-control order-manager-datepicker 
+                order-manager-date order-manager-end",
+              placeholder: t(".end_date") %>
+          </div>
+          <div class="col-md-1 margin my-margin">
+            <span class="label-span">
+            <%= t(".filter_by") %>
+            </span>
           </div>
           <div class="col-md-2">
-            <%= submit_tag t(".btn_search"), class: "btn btn-primary" %>
+            <%= select_tag "history-order-manager",
+              options_for_select(order_manage_filter),
+              class: "history-order-manager form-control inline" %>
           </div>
+          <%= hidden_field_tag :shop_id, @shop.id %>
         <% end %>
       </div>
     </div>
@@ -45,7 +55,9 @@
       <div class="well">
         <div class="panel-group">
           <% if @order_products_done.present? %>
-            <%= render "order_product", order_products: @order_products_done %>
+            <div class="history-order-done">
+              <%= render "order_product", order_products: @order_products_done %>
+            </div>
             <p>
               <%= t("download") %>
               <%= link_to t("csv"), dashboard_shop_order_manager_path(id: @shop.id,
@@ -56,7 +68,9 @@
                 start: params[:start_date], end: params[:end_date]), method: :put %>
             </p>
           <% else %>
-            <span class="text-danger"><%= t ".not_products" %></span>
+            <div class="history-order-done">
+              <span class="text-danger"><%= t ".not_products" %></span>
+            </div>
           <% end %>
         </div>
       </div>
@@ -65,7 +79,9 @@
       <div class="well">
         <div class="panel-group">
           <% if @order_products_reject.present? %>
-            <%= render "order_product", order_products: @order_products_reject %>
+            <div class="history-order-reject">
+              <%= render "order_product", order_products: @order_products_reject %>
+            </div>
             <p>
               <%= t("download") %>
               <%= link_to t("csv"), dashboard_shop_order_manager_path(id: @shop.id,
@@ -76,7 +92,9 @@
                 start: params[:start_date], end: params[:end_date]), method: :put %>
             </p>
           <% else %>
-            <span class="text-danger"><%= t ".not_products" %></span>
+            <div class="history-order-reject">
+              <span class="text-danger"><%= t ".not_products" %></span>
+            </div>
           <% end %>
         </div>
       </div>

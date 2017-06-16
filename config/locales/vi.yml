@@ -37,6 +37,7 @@ vi:
         other: ! '%{count} giây'
   time:
     formats:
+      custom_date: "%d-%m-%Y"
       short_date: "%m/%d/%Y"
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
@@ -535,10 +536,6 @@ vi:
     admin_lte_2_login:
       login_box_message: "Đăng nhập để tạo phiên làm việc"
   dashboard:
-    order_managers:
-      index:
-        start_date: "Ngày bắt đầu"
-        end_date: "Ngày kết thúc"
     statistics:
       index:
         tittle: "Thống kê đơn hàng"
@@ -654,6 +651,9 @@ vi:
         reject_orders: "Đơn hàng bị từ chối"
         not_products: "Không có sản phẩm nào"
         btn_search: "Lọc"
+        start_date: "Từ ngày"
+        end_date: "Đến ngày"
+        filter_by: "Lọc theo"
   cart:
     view_cart_all: "Xem tất cả"
     add_to_card: "Thêm"
@@ -773,7 +773,7 @@ vi:
     status: "vừa"
     read_all: "Đánh dấu tất cả đã đọc"
   order_statistics:
-    id: "ID"
+    id: "STT"
     name: "Tên sản phẩm"
     quantity: "Số lượng"
     price: "Đơn giá"
@@ -787,6 +787,8 @@ vi:
     continue: "Tiếp tục"
     total_price: "Tổng cộng: "
     done: "Hoàn thành"
+    user_name: "Người đặt hàng"
+    details: "Chi tiết"
   order_day: "Ngày đặt hàng"
   language: "Ngôn ngữ: "
   english: "English"
@@ -960,3 +962,8 @@ vi:
     go_to_shop: "Vào trang cửa hàng"
     not_nember_of_shop: "Bạn chưa phải là thành viên của miền này"
     join_domain_now: "Tham gia ngay"
+  search_user: "Lọc theo người dùng: "
+  name_or_email: "Nhập tên hoặc email" 
+  order_manage_filter:
+    product: "Sản phẩm"
+    user: "Người dùng"

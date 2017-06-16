@@ -21,9 +21,6 @@ class OrderProduct < ApplicationRecord
     product.price * quantity
   end
 
-  scope :accepted, ->{where status: OrderProduct.statuses[:accepted]}
-  scope :done, ->{where status: OrderProduct.statuses[:done]}
-  scope :rejected, ->{where status: OrderProduct.statuses[:rejected]}
   scope :on_today, ->{where "date(order_products.created_at) = date(now())"}
   scope :by_user, ->user {where user: user}
   scope :group_product, -> do
@@ -54,9 +51,28 @@ class OrderProduct < ApplicationRecord
       .group("order_products.product_id")
   end
 
+  scope :group_by_user, ->(shop_id) do
+    joins(:product, :order)
+      .where("orders.status = ? and
+        orders.shop_id = ?", Order.statuses[:done], shop_id)
+  end
+
   scope :order_by_date, ->{order created_at: :desc}
   scope :order_products_at_date, ->date {where("DATE(created_at) = ?", date)}
   scope :all_order_product_of_list_orders, ->list {where order_id: list}
+
+  scope :in_date, ->start_date, end_date do
+    if end_date.present? && start_date.present?
+      where("DATE(order_products.created_at) <= ? AND order_products.created_at >= ?",
+        end_date.to_date, start_date.to_date)
+    elsif end_date.present?
+      where("DATE(order_products.created_at) <= ?", end_date.to_date)
+    elsif start_date.present?
+      where("order_products.created_at >= ?", start_date.to_date)
+    else
+      where "DATE(order_products.created_at) = date(now())"
+    end
+  end
 
   def self.group_by_products_by_created_at
     order_by_date.group_by{|i| i.created_at}

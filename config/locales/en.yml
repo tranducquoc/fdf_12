@@ -1,6 +1,7 @@
 en:
   time:
     formats:
+      custom_date: "%d-%m-%Y"
       short_date: "%m/%d/%Y"
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
@@ -494,10 +495,6 @@ en:
     admin_lte_2_login:
       login_box_message: "Sign in to start your session"
   dashboard:
-    order_managers:
-      index:
-        start_date: "Start date"
-        end_date: "End date"
     statistics:
       index:
         tittle: "Statistics order"
@@ -613,6 +610,9 @@ en:
         reject_orders: "Reject Orders"
         not_products: "Not has any products"
         btn_search: "Filter"
+        start_date: "Start date"
+        end_date: "End date"
+        filter_by: "Filter by"
   cart:
     view_cart_all: "View all"
     add_to_card: "Add to cart"
@@ -746,6 +746,8 @@ en:
     continue: "Continue"
     total_price: "Total price: "
     done: "Done"
+    user_name: "User Name"
+    details: "Details"
   order_day: "Order day"
   language: "Language: "
   english: "English"
@@ -903,3 +905,8 @@ en:
     go_to_shop: "Go to shop page"
     not_nember_of_shop: "You are not friend of this domain"
     join_domain_now: "Join now"
+  search_user: "Filter by users: "
+  name_or_email: "Enter name or email"
+  order_manage_filter:
+    product: "Product"
+    user: "User"

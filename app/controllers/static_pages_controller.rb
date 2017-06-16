@@ -30,7 +30,7 @@ class StaticPagesController < ApplicationController
     if current_user.domains.present?
       redirect_to domain_path(current_user.domains.first)
     else
-      redirect_to help_path
+      redirect_to canhan_path
     end
   end
 end

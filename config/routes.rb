@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   }
 
   get "index" => "static_pages#index"
-  get "help" => "static_pages#show"
+  get "canhan" => "static_pages#show"
   root "static_pages#home"
   mount ActionCable.server => "/cable"
   namespace :admin do
@@ -46,6 +46,7 @@ Rails.application.routes.draw do
       resources :order_managers, only: [:index, :update]
       resources :order_products
       resources :accepted_order_products, defaults: {format: :json}
+      resources :user_orders
     end
     resources :statistics
   end

@@ -1,0 +1,39 @@
+<table class="table table-bordered text-center">
+  <thead>
+    <tr>
+      <th><%= t "dashboard.products.show.stt" %></th>
+      <th><%= t "dashboard.products.show.name" %></th>
+      <th><%= t "dashboard.products.show.quantity" %></th>
+      <th><%= t "dashboard.products.show.notes" %></th>
+      <th><%= t "dashboard.products.show.price" %></th>
+      <th><%= t "dashboard.products.show.total" %></th>
+    </tr>
+  </thead>
+  <% order_products.each_with_index do |order, index| %>
+    <tbody>
+      <tr>
+        <td>
+          <%= increase_one index %>
+        </td>
+        <td>
+          <%= order.product_name %>
+        </td>
+        <td>
+          <%= order.quantity %>
+        </td>
+        <td>
+          <%= order.notes %>
+        </td>
+        <td>
+          <%= order.product_price %>
+        </td>
+        <td>
+          <strong>
+            <%= total_price(order.product_price, order.quantity).to_i %>
+            <%= t "cart.vnd" %>
+          </strong>
+        </td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>

@@ -18,13 +18,7 @@ class SearchesController < ApplicationController
 
   def new
     name = params[:search]
-    user_ids = []
-    user_shop_domain = ShopDomain.list_shop_by_id params[:shop_id]
-    user_shop_domain.each do |user_shop|
-      user_ids << UserDomain.list_all_user_domains(user_shop.domain_id)
-    end
-    user_ids = user_ids.flatten.pluck(:user_id).uniq
-    @support = Supports::SearchSupport.new(params[:shop_id], user_ids, name)
+    @support = Supports::SearchSupport.new(params[:shop_id], name)
     respond_to do |format|
       format.js
     end

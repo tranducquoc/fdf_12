@@ -58,7 +58,7 @@
             <div class="modal-footer">
               <%= link_to t("confirm_no"), domain_shop_path(@domain, shop),
                 class: "btn btn-default confirm-no-#{shop.id}" %>
-              <%= link_to t("confirm_yes"), domain_dashboard_shop_path(@domain, shop),
+              <%= link_to t("confirm_yes"), dashboard_shop_path(shop),
                 class: "btn btn-add confirm-yes" %>
             </div>
           </div>

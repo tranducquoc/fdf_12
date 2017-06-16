@@ -3,7 +3,7 @@
     <div class="col-sm-4 row block-shop-feed-item2 padding-l div-item">
       <div class="col-md-4 shop_image">
         <div class="row shop_width">
-          <%= link_to domain_dashboard_shop_path(@domain, shop_mn.shop) do %>
+          <%= link_to dashboard_shop_path(shop_mn.shop) do %>
             <%= image_tag shop_mn.shop.avatar.url, class: "image-shop-show" %>
           <% end %>
         </div>
@@ -12,7 +12,7 @@
         <div class="row shop-manager-margin-left-right ">
           <div>
             <h3 class="shop-name-small">
-              <%= link_to shop_mn.shop.name, domain_dashboard_shop_path(@domain, shop_mn.shop) %>
+              <%= link_to shop_mn.shop.name, dashboard_shop_path(shop_mn.shop) %>
             </h3><%= render "shared/shop_status_label", shop: shop_mn.shop %>
           </div>
 

@@ -71,7 +71,7 @@
               </ul>
             </li>
           <% end %>
-          <% unless @domain.status == Settings.domain_default %>
+          <% if current_user.domains.present? %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                 role="button" aria-expanded="false">
@@ -96,11 +96,9 @@
             </li>
           <% end %>
           <li class="navbar-orders">
-            <% unless @domain.status == Settings.domain_default %>
-              <%= link_to domain_orders_path(@domain) do %>
-                <i class="fa fa-list-ol"></i>
-                <span><%= t "common.your_orders" %></span>
-              <% end %>
+            <%= link_to orders_path do %>
+              <i class="fa fa-list-ol"></i>
+              <span><%= t "common.your_orders" %></span>
             <% end %>
           </li>
           <li class="block-notification-dropdown dropdown event ">
@@ -169,63 +167,33 @@
               <ul class="dropdown-menu" role="menu"
               aria-labelledby="basic-nav-dropdown">
                 <li role="presentation">
-                  <% if @domain.present? %>
-                    <%= link_to user_path(current_user,
-                      domain_id: @domain.id) do %>
-                      <i class="fa fa-user"></i>
-                      <span><%= t "header.account" %></span>
-                    <% end %>
-                  <% else %>
-                    <%= link_to user_path(current_user,
-                      domain_id: session[:domain_id]) do %>
-                      <i class="fa fa-user"></i>
-                      <span><%= t "header.account" %></span>
-                    <% end %>
+                  <%= link_to user_path current_user do %>
+                    <i class="fa fa-user"></i>
+                    <span><%= t "header.account" %></span>
                   <% end %>
                 </li>
                 <li role="separator" class="divider"></li>
                 <li role="separator" class="divider"></li>
-                <li role="presentation">
-                  <% if @domain.present? %>
-                    <%= link_to domain_dashboard_shops_path(@domain) do %>
-                      <i class="fa fa-shopping-bag"></i>
-                      <span><%= t "header.shop_manager" %></span>
-                    <% end %>
-                  <% else %>
-                    <%= link_to dashboard_shops_path(domain_id: session[:domain_id]) do %>
-                      <i class="glyphicon glyphicon-pencil"></i>
-                      <span><%= t "header.shop_manager" %></span>
-                    <% end %>
-                  <% end %>
+                <li role="presentation">  
+                  <%= link_to dashboard_shops_path do %>
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span><%= t "header.shop_manager" %></span>
+                  <% end %> 
                 </li>
                 <li role="separator" class="divider"></li>
-                <li role="presentation">
-                  <% if @domain.present? %>
-                    <%= link_to domains_path(domain_id: @domain.id) do %>
-                      <i class="fa fa-flag-o"></i>
-                      <span><%= t "domain_manager_header" %></span>
-                    <% end %>
-                  <% else %>
-                    <%= link_to domains_path do %>
-                      <i class="fa fa-flag-o"></i>
-                      <span><%= t "domain_manager_header" %></span>
-                    <% end %>
+                <li role="presentation"> 
+                  <%= link_to domains_path do %>
+                    <i class="fa fa-flag-o"></i>
+                    <span><%= t "domain_manager_header" %></span>
                   <% end %>
                 </li>
                 <li role="separator" class="divider"></li>
                 <% if current_user.shops.any? %>
                   <li role="separator" class="divider"></li>
                   <li role="presentation">
-                    <% if @domain.present? %>
-                      <%= link_to domain_dashboard_path(@domain) do %>
-                        <i class="fa fa-bar-chart"></i>
-                        <span><%= t "header.shop_statistic" %></span>
-                      <% end %>
-                    <% else %>
-                      <%= link_to dashboard_path() do %>
-                        <i class="fa fa-bar-chart"></i>
-                        <span><%= t "header.shop_statistic" %></span>
-                      <% end %>
+                    <%= link_to dashboard_path do %>
+                      <i class="fa fa-bar-chart"></i>
+                      <span><%= t "header.shop_statistic" %></span>
                     <% end %>
                   </li>
                 <% end %>

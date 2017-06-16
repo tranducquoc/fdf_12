@@ -1,7 +1,6 @@
 class Supports::SearchSupport
-  def initialize shop_id, user_ids, key_word
+  def initialize shop_id, key_word
     @shop_id = shop_id
-    @user_ids = user_ids
     @key_word = key_word
   end
 
@@ -14,6 +13,6 @@ class Supports::SearchSupport
   end
 
   def users
-    User.user_of_list_id(@user_ids).search(name_cont: @key_word.strip).result
+    User.search(name_cont: @key_word.strip).result
   end
 end

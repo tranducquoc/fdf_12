@@ -14,32 +14,32 @@
         <thead>
           <tr>
             <th><%= t "order_statistics.id" %></th>
-            <th><%= t "order_statistics.name" %></th>
-            <th class="text-center"><%= t "order_statistics.quantity" %></th>
-            <th class="text-center"><%= t "order_statistics.price" %></th>
+            <th><%= t "order_statistics.user_name" %></th>
+            <th class="text-center"><%= t "order_statistics.details" %></th>
           </tr>
         </thead>
         <tbody>
-          <% value.each_with_index do |order_product, index| %>
+          <% group_by_user(value).each_with_index do |order_products, index| %>
             <tr>
               <td><%= increase_one index %></td>
               <td>
-                <%= link_to order_product.name,
-                  dashboard_shop_product_path(order_product.product.shop.slug,
-                  order_product.product.slug, order_product_id: order_product.id)%>
+                <div><%= link_to user_name_for_id(order_products.first),
+                  user_path(id: order_products.first) %></div>
+                <div>
+                  <%= t "order_statistics.total_price" %>
+                  <strong><%= sum_price order_products.last %>
+                  <%= t "cart.vnd" %>
+                  </strong>
+                </div>
               </td>
-              <td class="text-center"><%= order_product.quantity %></td>
               <td class="text-center">
-                <strong><%= format_price order_product.price %></strong>
-              </td>
+                <%= render "user_order_details", 
+                  order_products: order_products.last %>
+              </td> 
             </tr>
           <% end %>
         </tbody>
       </table>
-      <strong class="into-left">
-        <%= t "order_statistics.total_price" %>
-        <%= format_price value.sum &:price %>
-      </strong>
     </div>
   </div>
 <% end %>

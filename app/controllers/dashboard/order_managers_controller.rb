@@ -2,20 +2,17 @@ class Dashboard::OrderManagersController < BaseDashboardController
   before_action :load_shop, only: [:index, :update]
 
   def index
-    @order_products_done = OrderProduct.history_by_day_with_status(@shop.id,
-      OrderProduct.statuses[:done]).group_by{|i| l(i.created_at, format: :short_date)}
-    @order_products_reject = OrderProduct.history_by_day_with_status(@shop.id,
-      OrderProduct.statuses[:rejected]).group_by{|i| l(i.created_at, format: :short_date)}
-    if params[:start_date].present? && params[:end_date].present?
-      @order_products_done = @order_products_done
-        .select {|key| (params[:start_date]..params[:end_date]).include? key}
-      @order_products_reject = @order_products_reject
-        .select {|key| (params[:start_date]..params[:end_date]).include? key}
-    else
-      @order_products_done = @order_products_done
-        .select {|key| key == Time.now.strftime(t "time.formats.short_date")}
-      @order_products_reject = @order_products_reject
-        .select {|key| key == Time.now.strftime(t "time.formats.short_date")}
+    @order_products_done = OrderProduct.in_date(params[:start_date], params[:end_date])
+      .order_by_date.history_by_day_with_status(@shop.id,
+      OrderProduct.statuses[:done]).group_by{|i| l(i.created_at, format: :custom_date)}
+    @order_products_reject = OrderProduct.in_date(params[:start_date], params[:end_date])
+      .order_by_date.history_by_day_with_status(@shop.id,
+      OrderProduct.statuses[:rejected]).group_by{|i| l(i.created_at, format: :custom_date)} 
+    if request.xhr?
+      @params = params
+      respond_to do |format|
+        format.js
+      end
     end
   end
 

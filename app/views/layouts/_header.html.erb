@@ -1,6 +1,6 @@
 <div class="home-header">
   <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="media-margin-header-bar">
+    <div class="container media-margin-header-bar">
       <div class="navbar-header">
         <% if @domain.present? %>
           <%= link_to domain_path(@domain), class: "navbar-brand" do %>
@@ -37,7 +37,7 @@
             <i class="fa fa-search"></i>
           <% end %>
         <% end %>
-        <ul class="nav navbar-nav nav-header">
+        <ul class="nav navbar-nav">
           <% if user_signed_in? && current_user.domains.present? %>
             <li class="dropdown">
               <a href="#" data-toggle="dropdown"
@@ -174,14 +174,14 @@
                 </li>
                 <li role="separator" class="divider"></li>
                 <li role="separator" class="divider"></li>
-                <li role="presentation">  
+                <li role="presentation">
                   <%= link_to dashboard_shops_path do %>
                     <i class="glyphicon glyphicon-pencil"></i>
                     <span><%= t "header.shop_manager" %></span>
-                  <% end %> 
+                  <% end %>
                 </li>
                 <li role="separator" class="divider"></li>
-                <li role="presentation"> 
+                <li role="presentation">
                   <%= link_to domains_path do %>
                     <i class="fa fa-flag-o"></i>
                     <span><%= t "domain_manager_header" %></span>

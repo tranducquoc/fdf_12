@@ -190,6 +190,10 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $('.top-shop-slide-item').hover(function(){
-    $(this).find('.toggle_panel').toggle('slide');
+    $(this).find('.toggle_panel').slideToggle(500);
+  });
+
+  $('.all-shop-slide-item').hover(function(){
+    $(this).find('.toggle_panel').slideToggle(500);
   });
 });

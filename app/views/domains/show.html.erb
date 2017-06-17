@@ -86,25 +86,26 @@
       </a>
     </div>
   </div>
-<!-- End carousel -->
-</div>
-<div class="container-fluid">
-  <div class="col-xs-12 margin-top-30">
-    <div class="margin-bottom-20 margin-top-30 border-top-shop">
+  <!-- End carousel -->
+  <div class="col-xs-12">
+    <div class="margin-top-30 border-top-shop">
       <span class="top-shop-product"><%= t "common.top_shops" %></span>
       <span><span class="border-top-shop-product"></span></span>
     </div>
   </div>
-  <div class="col-md-12 padding_0" id="id_shops_list">
-    <%= render @shops %>
-  </div>
-  <% if current_user.is_member_of_domain? @domain %>
-    <div class="btn_view_all_wrapper pull-center">
-      <%= link_to t("common.btn_view_all"), domain_shops_path(@domain),
-        class: "btn btn_view_all btn-warning top_shop" %>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="owl-carousel owl-theme">
+      <%= render @shops %>
     </div>
-  <% end %>
-  <div class="col-xs-12 margin-top-50">
+    <div class="line-end-silde"></div>
+    <% if current_user.is_member_of_domain? @domain %>
+      <div class="btn_view_all_wrapper pull-center">
+        <%= link_to t("common.btn_view_all"), domain_shops_path(@domain),
+          class: "btn btn_view_all btn-warning top_shop" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-xs-12">
     <div class="margin-bottom-20 margin-top-30 border-top-shop">
       <span class="top-shop-product"><%= t "common.top_products" %></span>
       <span><span class="border-top-shop-product"></span></span>
@@ -112,12 +113,12 @@
   </div>
   <div class="col-md-12 magin_top_10px">
     <%= render @products_shop.flatten.slice(0, 12) %>
+    <% if current_user.is_member_of_domain? @domain %>
+      <div class="btn_view_all_wrapper pull-center">
+        <%= link_to t("common.btn_view_all"), domain_products_path(@domain),
+          class: "btn btn_view_all btn-warning top_shop" %>
+      </div>
+    <% end %>
   </div>
-  <% if current_user.is_member_of_domain? @domain %>
-    <div class="btn_view_all_wrapper pull-center">
-      <%= link_to t("common.btn_view_all"), domain_products_path(@domain),
-        class: "btn btn_view_all btn-warning top_shop" %>
-    </div>
-  <% end %>
 </div>
 <%= render "modal_order_fast" %>

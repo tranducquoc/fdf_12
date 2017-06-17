@@ -955,3 +955,8 @@ vi:
   all_domains: "Tất cả miền"
   filter_order: "Lọc đơn hàng"
   select_domain: "Chọn miền: "
+  top_shops:
+    go_to_manage_shop: "Vào trang quản lý"
+    go_to_shop: "Vào trang cửa hàng"
+    not_nember_of_shop: "Bạn chưa phải là thành viên của miền này"
+    join_domain_now: "Tham gia ngay"

@@ -906,3 +906,8 @@ ja:
   all_domains: "All domains"
   filter_order: "Filter Orders"
   select_domain: "Select domain: "
+  top_shops:
+    go_to_manage_shop: "あなたはメンバーではありません"
+    go_to_shop: "今すぐ登録"
+    not_nember_of_shop: "ショップに入ります"
+    join_domain_now: "サイト管理に入ります"

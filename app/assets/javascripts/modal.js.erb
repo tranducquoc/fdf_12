@@ -183,3 +183,20 @@ $(document).ready(function(){
     }
   });
 });
+
+$(document).ready(function(){
+  $('.owl-carousel').owlCarousel({
+    items: 3,
+    loop: true,
+    autoplay: true,
+    autoPlaySpeed: 5000,
+    autoPlayTimeout: 5000,
+    autoplayHoverPause: false
+  });
+});
+
+$(document).ready(function(){
+  $('.top-shop-slide-item').hover(function(){
+    $(this).find('.toggle_panel').toggle('slide');
+  });
+});

@@ -898,3 +898,8 @@ en:
   all_domains: "All domains"
   filter_order: "Filter Orders"
   select_domain: "Select domain: "
+  top_shops:
+    go_to_manage_shop: "Go to manage page"
+    go_to_shop: "Go to shop page"
+    not_nember_of_shop: "You are not friend of this domain"
+    join_domain_now: "Join now"

@@ -31,6 +31,7 @@
 //= require i18n.js
 //= require i18n/translations
 //= require sweetalert/dist/sweetalert.min.js
+//= require owl.carousel/dist/owl.carousel.min.js
 
 $(document).ready(function () {
   $('.alert').fadeOut(5000);

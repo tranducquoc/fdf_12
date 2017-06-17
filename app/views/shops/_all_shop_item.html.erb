@@ -1,8 +1,8 @@
-<div class="">
-  <div class="top-shop-slide">
+<div class="col-sm-4 col-md-4 col-xs-6">
+   <div class="top-shop-slide">
     <div class="<%= shop.status_on_off == Settings.shop_status_off ?
-     "col-sm-12 col-md-12 col-xs-12 top-shop-slide-item  shop_close" :
-     "col-sm-12 col-md-12 col-xs-12 top-shop-slide-item shop_open" %>">
+     "col-sm-12 col-md-12 col-xs-12 all-shop-slide-item  shop_close" :
+     "col-sm-12 col-md-12 col-xs-12 all-shop-slide-item shop_open" %>">
     <% if current_user.is_member_of_domain? @domain %>
       <% if is_owner_manager_of_shop? shop.id %>
         <div class="toggle_panel">
@@ -34,7 +34,7 @@
       </div>
     <% end %>
       <div class="col-sm-5 col-md-5 col-xs-5 top_shop_image">
-        <%= link_to shop_path(shop) do %>
+        <%= link_to shop_path(@domain, shop) do %>
           <%= image_tag shop.avatar.url, class: "image" %>
         <% end %>
       </div>

@@ -914,3 +914,15 @@ en:
   food_name: "Food's name"
   view_more_products: "View more products"
   load_more_products: "Loading more products"
+  general_info:
+    total:
+      orders: "Number of orders received"
+      order_pending: "Number of orders pending"
+      products: "Number of products"
+    reject_order_auto: "Auto reject orders"
+    open_shop_now: "Open shop now"
+    close_shop_now: "Close shop now"
+    edit_shop: "Edit info of shop"
+    add_new_product: "Add new product"
+  auto_close_shop: "Open/Close shop manually: "
+  time_auto_close_shop: "Time auto close: "

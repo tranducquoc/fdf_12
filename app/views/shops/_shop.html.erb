@@ -46,7 +46,7 @@
               "data-id": shop.id %>
           <% else %>
             <%= link_to shop.name,
-              shop_path(@domain, shop), class: "tooltips shop-name",
+              shop_path(shop), class: "tooltips shop-name",
               title: shop.name %>
           <% end %>
         <% else %>

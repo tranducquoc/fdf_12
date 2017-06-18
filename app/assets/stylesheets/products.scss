@@ -241,14 +241,13 @@ img {
 .image_product {
   position: relative;
   h3 {
-    margin-top: 70px;
     position: absolute;
-    top: 135px;
+    bottom: 0;
     text-align: center;
     color: #fff;
     background-color: rgba(255, 138, 102, 0.62);
-    font-size: 22px;
     width: 100% !important;
+    margin: 0;
   }
 }
 
@@ -291,4 +290,20 @@ img {
   margin-top: 0px !important;
   margin-bottom: 0px !important;
   color: #ff5722;
+}
+
+.load-more-products {
+  text-align: center;
+  a {
+    display: inline-block;
+    min-width: 100px !important;
+    padding: 10px;
+    border-radius: 4px;
+    background: #f15626;
+    color: white;
+    &:hover {
+      background: #ff2716;
+      color: white;
+    }
+  }
 }

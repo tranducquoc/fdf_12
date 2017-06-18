@@ -918,3 +918,7 @@ ja:
   order_manage_filter:
     product: "Product"
     user: "User"
+  opening_hours: "業務時間"
+  food_name: "食べ物の名前"
+  view_more_products: "もっと見る"
+  load_more_products: "より多くの製品のロード"

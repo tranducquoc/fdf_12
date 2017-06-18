@@ -252,7 +252,7 @@ en:
     top_shops: "Top Shops"
     previous: "Previous"
     next: "Next"
-    btn_view_all: "VIEW ALL"
+    btn_view_all: "View all"
     btn_order_now: "Order now"
     btn_add_to_favorite: "Add to Favorite"
     toggle_navigation: "Toggle navigation"
@@ -910,3 +910,7 @@ en:
   order_manage_filter:
     product: "Product"
     user: "User"
+  opening_hours: "Opening hours"
+  food_name: "Food's name"
+  view_more_products: "View more products"
+  load_more_products: "Loading more products"

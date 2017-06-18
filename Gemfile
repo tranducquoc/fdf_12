@@ -44,6 +44,7 @@ gem "simple_token_authentication", "~> 1.0"
 gem "versionist"
 gem "active_model_serializers", "~> 0.10.0"
 gem "actionpack-page_caching"
+gem "animate-rails"
 
 source "https://rails-assets.org" do
   gem "rails-assets-datetimepicker"

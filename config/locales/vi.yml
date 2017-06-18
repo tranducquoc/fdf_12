@@ -963,7 +963,11 @@ vi:
     not_nember_of_shop: "Bạn chưa phải là thành viên của miền này"
     join_domain_now: "Tham gia ngay"
   search_user: "Lọc theo người dùng: "
-  name_or_email: "Nhập tên hoặc email" 
+  name_or_email: "Nhập tên hoặc email"
   order_manage_filter:
     product: "Sản phẩm"
     user: "Người dùng"
+  opening_hours: "Giờ mở bán"
+  food_name: "Tên món ăn"
+  view_more_products: "Xem thêm sản phẩm"
+  load_more_products: "Đang tải thêm sản phẩm"

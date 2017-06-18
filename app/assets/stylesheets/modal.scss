@@ -790,3 +790,119 @@ $orange_main: #ff5722;
     }
   }
 }
+
+.shop_image_cover_and_avatar {
+  .avatar {
+    width: 100%;
+    height: 200px;
+    margin-top: -40%;
+    object-fit: cover;
+  }
+  .title {
+    color: $orange_main;
+    font-weight: bold;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .list_owner_and_manger {
+    width: 100%;
+    height: 40px;
+    display: inline-flex;
+  }
+  .block {
+    .title {
+      margin-bottom: 0;
+      font-weight: inherit;
+      .text-header {
+        font-weight: inherit;
+        padding-top: 6px;
+      }
+      .btn-change-owner {
+        margin-right: 5px;
+        display: block;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 3px;
+      }
+    }
+  }
+}
+
+.function_manage {
+  display: inline-flex;
+  .btn_function {
+    width: 90px;
+    height: 90px;
+    background-color: #ffffff;
+    margin: 5px;
+    border-radius: 10px;
+    border: solid 1px #fd680e;
+    .btn_item {
+      display: block;
+      padding-top: 7%;
+      color: #fd680e;
+      .btn_icon {
+        height: 30px;
+        width: 30px;
+        font-size: 30px;
+      }
+    }
+  }
+  .btn_function:hover {
+    width: 90px;
+    height: 90px;
+    background-color: #fd680e;
+    margin: 5px;
+    border-radius: 10px;
+    border: solid 1px #ffffff;
+    .btn_item {
+      color: #ffffff;
+    }
+  }
+}
+
+.general_info {
+  .general_item {
+    background-color: #eeeeee;
+    border-radius: 10px;
+    color: #fd680e;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: 2px;
+    display: -webkit-box;
+    .general_icon {
+      font-size: 50px;
+      color: white;
+      background-color: #fd680e;
+      border-radius: 50px;
+      padding: 4px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .general_number {
+      font-size: 30px;
+    }
+    .general_text {
+
+    }
+  }
+}
+
+.general_item:hover {
+  transform: translateY(-3px);
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.46);
+}
+
+.font-size-30 {
+  font-size: 30px;
+}
+
+.display-none {
+  display: none;
+}
+
+.padding-left-0 {
+  padding-left: 0 !important;
+}

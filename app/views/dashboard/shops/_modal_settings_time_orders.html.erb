@@ -1,0 +1,31 @@
+<div class="modal fade" id="modal_update_time_order">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_tag [:dashboard, @shop], method: :get do |f| %>
+        <div class="modal-header modal_header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title modal_text_header"><%= t "dashboard.shops.show.edit_all_time" %></h4>
+        </div>
+        <div class="modal-body">
+            <div class="panel-body text-center">
+              <%= label_tag t("dashboard.shops.show.start_time") %>
+              <%= time_field_tag :start_hour, "",
+                minute_step: Settings.minute_step,
+                required: :true, class: "edit-time" %>
+              <%= label_tag t("dashboard.shops.show.end_time") %>
+              <%= time_field_tag :end_hour, "",
+                minute_step: Settings.minute_step,
+                required: :true, class: "edit-time" %>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            <%= t "cancel" %>
+          </button>
+          <%= submit_tag t("dashboard.shops.show.update_all"),
+            class: "btn btn_add_to_cart btn-add padding-left-for-button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -143,3 +143,4 @@ convert_date:
   month: 0
   year: 2
   seperate: "/"
+limit_show_manager_of_shop: 5

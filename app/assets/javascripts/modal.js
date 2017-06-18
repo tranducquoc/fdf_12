@@ -204,3 +204,53 @@ $(document).ready(function(){
     $(this).find('.toggle_panel').slideToggle(500);
   });
 });
+
+// open/close shop
+$(document).ready(function(){
+  $('.btn-open-close-shop').click(function(){
+    var btn = $(this);
+    var type = btn.data('type');
+    if(type === 'close') {
+      $.ajax({
+        url: '/dashboard/shops/' + $(this).data('id'),
+        type: 'PUT',
+        dataType: 'script',
+        data: {
+          'checked': false
+        },
+        success: function(response) {
+          sweetAlert(I18n.t('api.success'), I18n.t('shop_was_closed'), 'success');
+          btn.data('type', 'open');
+          btn.html('<div class="btn_icon material-icons">lock_open</div><div><%= I18n.t("general_info.open_shop_now") %></div>');
+        },
+        error: function(errors) {
+          sweetAlert(I18n.t('api.error'), I18n.t('api.error'), 'error');
+        }
+      });
+    }
+    else {
+      $.ajax({
+        url: '/dashboard/shops/' + $(this).data('id'),
+        type: 'PUT',
+        dataType: 'script',
+        data:{
+          'checked': true
+        },
+        success: function(response) {
+          sweetAlert(I18n.t('api.success'), I18n.t('shop_was_open'), 'success');
+          btn.data('type', 'close');
+          btn.html('<div class="btn_icon material-icons">lock_outline</div><div><%= I18n.t("general_info.close_shop_now") %></div>');
+        },
+        error: function(errors) {
+          sweetAlert(I18n.t('api.error'), I18n.t('api.error'), 'error');
+        }
+      });
+    }
+  });
+});
+
+$(document).ready(function(){
+  $('#shop_openforever').change(function(){
+    $('.time_auto_close_shop').slideToggle(500);
+  });
+});

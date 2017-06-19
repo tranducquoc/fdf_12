@@ -17,6 +17,7 @@
             <th><%= t "order_statistics.name" %></th>
             <th class="text-center"><%= t "order_statistics.quantity" %></th>
             <th class="text-center"><%= t "order_statistics.price" %></th>
+            <th class="text-center"><%= t "order_statistics.total_price" %></th>
           </tr>
         </thead>
         <tbody>
@@ -29,6 +30,7 @@
                   order_product.product.slug, order_product_id: order_product.id)%>
               </td>
               <td class="text-center"><%= order_product.quantity %></td>
+              <td class="text-center"><%= order_product.product_price %></td>
               <td class="text-center">
                 <strong><%= format_price order_product.price %></strong>
               </td>
@@ -43,3 +45,15 @@
     </div>
   </div>
 <% end %>
+<p>
+  <%= t("download") %>
+  <%= link_to Settings.csv, dashboard_shop_order_manager_path(id: @shop.id,
+    format: Settings.csv, type: type,
+    start_date: params[:start_date], end_date: params[:end_date]) %> |
+  <%= link_to Settings.xls, dashboard_shop_order_manager_path(id: @shop.id,
+    format: Settings.xls, type: type,
+    start_date: params[:start_date], end_date: params[:end_date]) %> |
+  <%= link_to Settings.xlsx, dashboard_shop_order_manager_path(id: @shop.id,
+    format: Settings.xlsx, type: type,
+    start_date: params[:start_date], end_date: params[:end_date]) %>
+</p>

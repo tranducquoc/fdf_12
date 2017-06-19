@@ -56,17 +56,9 @@
         <div class="panel-group">
           <% if @order_products_done.present? %>
             <div class="history-order-done">
-              <%= render "order_product", order_products: @order_products_done %>
+              <%= render "order_product", order_products: @order_products_done,
+                type: :done %>
             </div>
-            <p>
-              <%= t("download") %>
-              <%= link_to t("csv"), dashboard_shop_order_manager_path(id: @shop.id,
-                format: Settings.csv, type: Settings.type_order_products_done,
-                start: params[:start_date], end: params[:end_date]), method: :put %> |
-              <%= link_to t("excel"), dashboard_shop_order_manager_path(id: @shop.id,
-                format: Settings.xls, type:  Settings.type_order_products_done,
-                start: params[:start_date], end: params[:end_date]), method: :put %>
-            </p>
           <% else %>
             <div class="history-order-done">
               <span class="text-danger"><%= t ".not_products" %></span>
@@ -80,17 +72,9 @@
         <div class="panel-group">
           <% if @order_products_reject.present? %>
             <div class="history-order-reject">
-              <%= render "order_product", order_products: @order_products_reject %>
+              <%= render "order_product", order_products: @order_products_reject,
+                type: :rejected %>
             </div>
-            <p>
-              <%= t("download") %>
-              <%= link_to t("csv"), dashboard_shop_order_manager_path(id: @shop.id,
-                format: Settings.csv, type: Settings.type_order_products_rejected,
-                start: params[:start_date], end: params[:end_date]), method: :put %> |
-              <%= link_to t("excel"), dashboard_shop_order_manager_path(id: @shop.id,
-                format: Settings.xls, type: Settings.type_order_products_rejected,
-                start: params[:start_date], end: params[:end_date]), method: :put %>
-            </p>
           <% else %>
             <div class="history-order-reject">
               <span class="text-danger"><%= t ".not_products" %></span>

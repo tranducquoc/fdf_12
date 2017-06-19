@@ -43,10 +43,10 @@ Rails.application.routes.draw do
       resources :products
       resources :orders
       resources :shop_managers, only: [:index, :create, :destroy, :update]
-      resources :order_managers, only: [:index, :update]
+      resources :order_managers, only: [:index, :show]
       resources :order_products
       resources :accepted_order_products, defaults: {format: :json}
-      resources :user_orders
+      resources :user_orders, only: [:index, :show]
     end
     resources :statistics
   end

@@ -43,3 +43,15 @@
     </div>
   </div>
 <% end %>
+<p>
+  <%= t("download") %>
+  <%= link_to Settings.csv, dashboard_shop_user_order_path(id: @shop.id,
+    format: Settings.csv, type: type,
+    start_date: params[:start_date], end_date: params[:end_date])%> |
+  <%= link_to Settings.xls, dashboard_shop_user_order_path(id: @shop.id,
+    format: Settings.xls, type: type,
+    start_date: params[:start_date], end_date: params[:end_date]) %> |
+  <%= link_to Settings.xlsx, dashboard_shop_user_order_path(id: @shop.id,
+    format: Settings.xlsx, type: type,
+    start_date: params[:start_date], end_date: params[:end_date]) %>
+</p>

@@ -62,7 +62,7 @@ $(document).ready(function() {
     });
   });
 
-  $('.status-order').change(function() {
+  $(document).on('change', '.status-order', function() {
     itemId = $(this).parent().parent().children()[0].value;
     var selectedValue = $( '#status-order-'+ itemId +' option:selected' ).text()
     var classes = ['label-info', 'label-warning', 'label-danger', 'label-primary'];

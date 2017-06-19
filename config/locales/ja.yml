@@ -1,6 +1,7 @@
 ja:
   time:
     formats:
+      custom_date: "%d-%m-%Y"
       short_date: "%m/%d/%Y"
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
@@ -487,10 +488,6 @@ ja:
     admin_lte_2_login:
       login_box_message: "セッションを作成するにはログインしてください"
   dashboard:
-    order_managers:
-      index:
-        start_date: から"
-        end_date: "まで"
     statistics:
       index:
         tittle: "統計注文"
@@ -607,6 +604,9 @@ ja:
         reject_orders: "ご注文は拒否します"
         not_products: "商品なし"
         btn_search: "サーチ"
+        start_date: から"
+        end_date: "まで"
+        filter_by: "Filter by"
   cart:
     view_cart_all: "すべて表示"
     add_to_card: "増加"
@@ -740,6 +740,8 @@ ja:
     continue: "次へ"
     total_price: "合計: "
     done: "達成"
+    user_name: "User Name"
+    details: "Details"
   order_day: "デイ注文"
   language: "語: "
   english: "English"
@@ -911,3 +913,8 @@ ja:
     go_to_shop: "今すぐ登録"
     not_nember_of_shop: "ショップに入ります"
     join_domain_now: "サイト管理に入ります"
+  search_user: "Filter by users: "
+  name_or_email: "Enter name or email"
+  order_manage_filter:
+    product: "Product"
+    user: "User"

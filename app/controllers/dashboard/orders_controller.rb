@@ -4,7 +4,9 @@ class Dashboard::OrdersController < BaseDashboardController
   before_action :check_owner_or_manager, only: [:index, :show]
 
   def index
-    orders = Order.by_domain(params[:domain_id]).orders_of_shop_pending params[:shop_id]
+    user_ids = User.search(name_or_email_cont: params[:user_search]).result.pluck :id
+    orders = Order.by_domain(params[:domain_id]).orders_of_shop_pending(params[:shop_id])
+      .of_user_ids(user_ids)
     load_order_product orders, params[:type]
     load_list_toal_orders
     if request.xhr?

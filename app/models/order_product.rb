@@ -29,14 +29,13 @@ class OrderProduct < ApplicationRecord
       .group("order_products.product_id")
       .order("total DESC")
   end
-  scope :history_by_day_with_status, ->(shop_id, status) do
+  scope :history_by_day_with_status, ->(shop_id) do
     joins(:product, :order)
       .select("products.name as name, sum(quantity) as quantity,
         sum(quantity) * products.price as price, order_products.created_at as
         created_at, products.id as product_id, order_products.status as status,
         order_products.id as id")
-      .where("order_products.status = ? and orders.status = ? and
-        orders.shop_id = ?", status, Order.statuses[:done], shop_id)
+      .where("orders.status = ? and orders.shop_id = ?",Order.statuses[:done], shop_id)
       .group("order_products.product_id,
         DATE_FORMAT(order_products.created_at, '%Y%m%d')")
   end
@@ -51,8 +50,8 @@ class OrderProduct < ApplicationRecord
       .group("order_products.product_id")
   end
 
-  scope :group_by_user, ->(shop_id) do
-    joins(:product, :order)
+  scope :order_done_of_shop, ->(shop_id) do
+    joins(:order)
       .where("orders.status = ? and
         orders.shop_id = ?", Order.statuses[:done], shop_id)
   end

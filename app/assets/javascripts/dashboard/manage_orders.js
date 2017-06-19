@@ -69,11 +69,14 @@ $(document).ready(function(){
     }
   };
 
+  $('#history-order-manager').val('product');
+  $('.order-manager-date').val('');
+
   $('#history-order-manager').on('change', function(){
     filter_order()
   });
 
   $('.order-manager-date').on('change', function() {
     filter_order()
-  })
+  });
 });

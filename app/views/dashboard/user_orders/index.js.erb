@@ -1,2 +1,2 @@
-$('.history-order-done').html('<%= j render "user_orders", order_products: @order_products_done %>')
-$('.history-order-reject').html('<%= j render "user_orders", order_products: @order_products_reject %>')
+$('.history-order-done').html('<%= j render "user_orders", order_products: @order_products_done, type: :done %>')
+$('.history-order-reject').html('<%= j render "user_orders", order_products: @order_products_reject, type: :rejected %>')

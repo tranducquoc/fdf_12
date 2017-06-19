@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <% @order_products.each do |hash_orders| %>
+    <Worksheet ss:Name="<%= hash_orders.first.to_s.gsub("/","-") %>">
+      <Table>
+        <Row>
+          <Cell><Data ss:Type="String"><%= hash_orders.first %></Data></Cell>
+        </Row>
+        <% orders = hash_orders.last %>
+        <% group_by_user(orders).each_with_index do |order_products, index| %>
+          <Row>
+          </Row>
+          <Row>
+            <Cell ss:AutoFitWidth="0"><Data><%= increase_one index %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= user_name_for_id(order_products.first) %></Data></Cell>
+            <Cell><Data><%= t "order_statistics.total_price" %><%= sum_price order_products.last %><%= t "cart.vnd" %></Data></Cell>
+          </Row>
+          <Row>
+            <Cell><Data></Data></Cell>
+            <Cell><Data ss:Type="String"><%= t "dashboard.products.show.stt" %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= t "dashboard.products.show.name" %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= t "dashboard.products.show.quantity" %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= t "dashboard.products.show.notes" %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= t "dashboard.products.show.price" %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= t "dashboard.products.show.total" %></Data></Cell>
+          </Row>
+          <% order_products.last.each_with_index do |order, index| %>
+            <Row>
+              <Cell><Data></Data></Cell>
+              <Cell><Data ss:Type="Number"><%= increase_one index %></Data></Cell>
+              <Cell><Data ss:Type="String"><%= order.product_name %></Data></Cell>
+              <Cell><Data ss:Type="Number"><%= order.quantity %></Data></Cell>
+              <Cell><Data ss:Type="String">
+                <%= order.notes %>
+              </Data></Cell>
+              <Cell><Data ss:Type="String">
+                <%= order.product_price %>
+              </Data></Cell>
+              <Cell><Data ss:Type="String"><%= total_price(order.product_price, order.quantity).to_i %><%= t "cart.vnd" %></Data></Cell>
+            </Row>
+          <% end %>
+        <% end %>
+      </Table>
+    </Worksheet>
+  <% end %>
+</Workbook>

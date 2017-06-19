@@ -390,7 +390,6 @@ $color_celeste_approx: #ccc;
 }
 
 .truncate {
-  width: 250px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -479,9 +478,19 @@ a {
 .padding_product {
   padding: 0;
 }
-.height-27375 {
-  width: 100%;
-  height: 229px !important;
+
+@media (min-width: 992px) {
+  .height-27375 {
+    width: 100%;
+    height: 229px;
+  }
+}
+
+@media (max-width: 991px) {
+  .height-27375 {
+    width: 100%;
+    height: 180px;
+  }
 }
 
 .wh {

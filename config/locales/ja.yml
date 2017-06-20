@@ -826,6 +826,7 @@ ja:
     rejected: "拒否されました"
     all: "すべて"
     active: "仕事"
+    inactive: "非アクティブ"
     closed: "閉じました"
     blocked: "ロック"
     approved: "一般に認められました"
@@ -936,3 +937,20 @@ ja:
   time_auto_close_shop: "Time auto close: "
   status_shop: "Status of shop"
   change_picture: "Change picture"
+  activerecord:
+    errors:
+      models:
+        product:
+          attributes:
+            name:
+              blank: "Product's name can't empty"
+              too_long: "Product's name can't be more than 50 characters"
+            description:
+              blank: "Description can't empty"
+              too_long: "Description can't be more than 250 characters"
+            price:
+              blank: "Price can't empty"
+              greater_than: "Price must be greater than 0"
+              less_than_or_equal_to: "Price must be less than or equal to 1000000000"
+  update_image_avatar: "Update image avatar"
+  invalid_hour: "Start hour must be less than or equal end hour"

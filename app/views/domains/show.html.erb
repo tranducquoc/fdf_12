@@ -98,49 +98,46 @@
       <%= render @shops %>
     </div>
     <div class="line-end-silde"></div>
-      <% if current_user.is_member_of_domain? @domain %>
-        <div class="btn_view_all_wrapper pull-center">
-          <%= link_to domain_shops_path(@domain),
-            class: "view-all" do %>
-            <span class="border-view-all">
-              <span class="view-all-left"></span>
-            </span>
-            <span class="text-view-all"><%= t "common.btn_view_all" %></span>
-            <span class="border-view-all">
-              <span class="view-all-right"></span>
-            </span>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+    <% if current_user.is_member_of_domain? @domain %>
+      <div class="btn_view_all_wrapper pull-center">
+        <%= link_to domain_shops_path(@domain),
+          class: "view-all" do %>
+          <span class="border-view-all">
+            <span class="view-all-left"></span>
+          </span>
+          <span class="text-view-all"><%= t "common.btn_view_all" %></span>
+          <span class="border-view-all">
+            <span class="view-all-right"></span>
+          </span>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <div class="col-xs-12 margin-top-50">
-    <div class="col-xs-12">
-      <div class="margin-bottom-20 margin-top-30 border-top-shop">
-        <span class="top-shop-product"><%= t "common.top_products" %></span>
-        <span><span class="border-top-shop-product"></span></span>
-      </div>
+    <div class="margin-bottom-20 margin-top-30 border-top-shop">
+      <span class="top-shop-product"><%= t "common.top_products" %></span>
+      <span><span class="border-top-shop-product"></span></span>
     </div>
-    <div class="col-md-12 magin_top_10px">
-      <div class="row padding-left-right-15">
-        <%= render @products_shop.flatten.slice(0, 12) %>
-      </div>
-      <div class="line-end-silde margin-top-20"></div>
-      <% if current_user.is_member_of_domain? @domain %>
-        <div class="btn_view_all_wrapper pull-center">
-          <%= link_to domain_products_path(@domain),
-            class: "view-all" do %>
-            <span class="border-view-all">
-              <span class="view-all-left"></span>
-            </span>
-            <span class="text-view-all"><%= t "common.btn_view_all" %></span>
-            <span class="border-view-all">
-              <span class="view-all-right"></span>
-            </span>
-          <% end %>
-        </div>
-      <% end %>
+  </div>
+  <div class="col-md-12 magin_top_10px">
+    <div class="row padding-left-right-15">
+      <%= render @products_shop.flatten.slice(0, 12) %>
     </div>
+    <div class="line-end-silde margin-top-20"></div>
+    <% if current_user.is_member_of_domain? @domain %>
+      <div class="btn_view_all_wrapper pull-center">
+        <%= link_to domain_products_path(@domain),
+          class: "view-all" do %>
+          <span class="border-view-all">
+            <span class="view-all-left"></span>
+          </span>
+          <span class="text-view-all"><%= t "common.btn_view_all" %></span>
+          <span class="border-view-all">
+            <span class="view-all-right"></span>
+          </span>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 <%= render "modal_order_fast" %>

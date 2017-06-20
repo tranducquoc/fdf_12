@@ -73,7 +73,8 @@
         <% end %>
       </div>
       <div class="btn_function">
-        <%= link_to new_dashboard_shop_product_path(@shop), class: "btn_item" do %>
+        <%= link_to new_dashboard_shop_product_path(@shop), remote: true,
+          class: "btn_item" do %>
           <div class="btn_icon material-icons">add_shopping_cart</div>
           <div><%= t "general_info.add_new_product" %></div>
         <% end %>
@@ -185,3 +186,4 @@
 <%= render "modal_change_owner" %>
 <%= render "modal_edit_shop" %>
 <%= render "modal_settings_time_orders" %>
+<div id="new-edit-product-modal" class="modal fade"></div>

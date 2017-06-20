@@ -86,7 +86,6 @@ class Dashboard::ProductsController < BaseDashboardController
       flash[:danger] = t "flash.danger.dashboard.delete_product"
     end
     redirect_to dashboard_shop_path @shop
-    
   end
 
   private

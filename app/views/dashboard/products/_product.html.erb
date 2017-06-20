@@ -36,7 +36,7 @@
   <td><%= t "all_status.#{product.status}" %></td>
   <td>
     <%= link_to t("common.edit_button"),
-      edit_dashboard_shop_product_path(product.shop, product),
+      edit_dashboard_shop_product_path(product.shop, product), remote: true,
       class: "btn btn-sm btn-primary" %>
     <%= link_to t("common.delete_button"),
       dashboard_shop_product_path(product.shop, product),

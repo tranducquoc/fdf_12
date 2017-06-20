@@ -5,7 +5,7 @@
   <div class="clearfix body">
     <div class="category-list padding-top-0">
       <% if @professed_domains.present? %>
-        <div class="<%= "scroll" if @domains.size > Settings.max_content_scroll %>">
+        <div class="<%= "scroll" if @professed_domains.size > Settings.max_content_scroll %>">
           <% @professed_domains.each do |domain| %>
             <%= link_to domain_path(domain),
               class: "btn btn-default col-lg-6 col-md-12 active" do %>

@@ -1,13 +1,11 @@
 class Dashboard::OrderManagersController < BaseDashboardController
-  before_action :load_shop, only: [:index, :update]
+  before_action :load_shop
 
   def index
     @order_products_done = OrderProduct.in_date(params[:start_date], params[:end_date])
-      .order_by_date.history_by_day_with_status(@shop.id,
-      OrderProduct.statuses[:done]).group_by{|i| l(i.created_at, format: :custom_date)}
+      .done.order_by_date.history_by_day_with_status(@shop.id).group_by{|i| l(i.created_at, format: :custom_date)}
     @order_products_reject = OrderProduct.in_date(params[:start_date], params[:end_date])
-      .order_by_date.history_by_day_with_status(@shop.id,
-      OrderProduct.statuses[:rejected]).group_by{|i| l(i.created_at, format: :custom_date)} 
+      .rejected.order_by_date.history_by_day_with_status(@shop.id).group_by{|i| l(i.created_at, format: :custom_date)} 
     if request.xhr?
       @params = params
       respond_to do |format|
@@ -16,29 +14,17 @@ class Dashboard::OrderManagersController < BaseDashboardController
     end
   end
 
-  def update
-    if params[:type].to_i == Settings.type_order_products_done
-      @order_products = OrderProduct.history_by_day_with_status(@shop.id,
-        OrderProduct.statuses[:done]).group_by{|i| l(i.created_at, format: :short_date)}
-      if params[:start].present? && params[:end].present?
-        @order_products = @order_products
-          .select {|key| (params[:start]..params[:end]).include? key}
-      else
-        @order_products = @order_products
-          .select {|key| key == Time.now.strftime(t "time.formats.short_date")}
-      end
+  def show
+    if params[:type] == Settings.filter_status_order.done
+      @order_products = OrderProduct.in_date(params[:start_date], params[:end_date])
+        .done.order_by_date.history_by_day_with_status(@shop.id)
+        .group_by{|i| l(i.created_at, format: :custom_date)} 
     else
-      @order_products = OrderProduct.history_by_day_with_status(@shop.id,
-        OrderProduct.statuses[:rejected]).group_by{|i| l(i.created_at, format: :short_date)}
-      if params[:start].present? && params[:end].present?
-        @order_products = @order_products
-          .select {|key| (params[:start]..params[:end]).include? key}
-      else
-        @order_products = @order_products
-          .select {|key| key == Time.now.strftime(t "time.formats.short_date")}
-      end
+      @order_products = OrderProduct.in_date(params[:start_date], params[:end_date])
+        .rejected.order_by_date.history_by_day_with_status(@shop.id)
+        .group_by{|i| l(i.created_at, format: :custom_date)}   
     end
-    file_name = I18n.l(DateTime.now, format: :short_date).to_s
+    file_name = I18n.l(DateTime.now, format: :long).to_s
     respond_to do |format|
       format.html
       format.xls do
@@ -49,11 +35,16 @@ class Dashboard::OrderManagersController < BaseDashboardController
         headers["Content-Disposition"] = "attachment; filename=\"#{file_name}.csv\""
         headers["Content-Type"] ||= Settings.csv
       end
+      format.xlsx do
+        headers["Content-Disposition"] = "attachment; filename=\"#{file_name}.xlsx\""
+        headers["Content-Type"] ||= Settings.xlsx
+      end
     end
   end
 
   private
   def load_shop
+    params[:shop_id] = params[:id] if params[:id]
     if Shop.exists? params[:shop_id]
       @shop = Shop.find_by id: params[:shop_id]
       shop_manager = @shop.shop_managers.find_by(user_id: current_user.id)

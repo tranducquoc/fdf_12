@@ -18,24 +18,29 @@ $(document).ready(function() {
     timer = setTimeout(function(){
       if (top < (height / 2)) {
         if (left < (width / 2)) {
-          $('.' + id).css({'top': top + 15, 'left': left + 15}).slideDown(200);
+          $('.' + id).css({'top': top + 15, 'left': left + 15})
+            .animate({'width': 'show', 'height': 'show'}, 300);
         } else {
           $('.' + id).css({'top': top + 15, 'right': width - left + 15})
-            .slideDown(200);
+            .animate({'width': 'show', 'height': 'show'}, 300);
         }
       } else {
         if (left < (width / 2)){
           $('.' + id).css({'bottom': height - top + 15, 'left': left + 15})
-            .slideDown(200);
+            .animate({'width': 'show', 'height': 'show'}, 300);
         } else {
           $('.' + id).css({'bottom': height - top + 15,
-            'right': width - left + 15}).slideDown(200);
+            'right': width - left + 15})
+            .animate({'width': 'show', 'height': 'show'}, 300);
         }
       }
-    }, 400);
+    }, 600);
   }, function(){
     clearTimeout(timer);
-    $('.' + id).slideUp(100);
+    $.when($('.' + id).animate({'width': 'hide', 'height': 'hide'}, 200))
+      .done(function() {
+        $('.' + id).css({'top': '', 'bottom': '', 'left': '', 'right': ''});
+      });
   });
   $('.load-more-products a').click(function(e) {
     e.preventDefault();

@@ -285,7 +285,7 @@ ja:
     product_number: "%{number} 品"
     view_button: "見る"
     tags: "カード"
-    shop_managers: "管理"
+    shop_managers: "管理 (%{num})"
   header:
     account: "アカウント"
     shop_manager: "店長"

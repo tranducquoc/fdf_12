@@ -171,7 +171,7 @@ en:
   feed_back: "Feed back"
   shop_owner: "Shop owner: "
   change_shop_owner: "Change the shop owner"
-  enter_email: "Enter the new shop owner email"
+  enter_email: "Enter the new shop owner name or email"
   change_shop: "You have changed the shop's admin"
   cant_not_find_shop: "Can not find user by this email"
   shop_subject: "New shop request"
@@ -287,7 +287,7 @@ en:
     product_number: "%{number} products"
     view_button: "View"
     tags: "Tags"
-    shop_managers: "Managers"
+    shop_managers: "Managers (%{num})"
   header:
     account: "Account"
     shop_manager: "Shop management"

@@ -44,8 +44,9 @@
     <div class="col-md-4 col-sm-4 col-xs-4">
       <div class="block">
         <div class="title padding-left-10 margin-left_domain form-header">
-          <%= label_tag "", t("common.shop_managers") + "(#{@users_shop_manager.size})",
-            class: "text-header" %>
+          <strong class="text-header number-shop-manager">
+            <%= t("common.shop_managers", num: @users_shop_manager.size) %>  
+          </strong>
           <% if @shop.owner_id == current_user.id %>
             <%= link_to "javascript:void(0)",
               class: "btn v2-btn-warning float-right btn-change-owner",
@@ -56,21 +57,9 @@
           <% end %>
         </div>
         <div class="list_owner_and_manger">
-          <% @users_shop_manager.limit(Settings.limit_show_manager_of_shop).each do |user| %>
-            <%= link_to user_path(user), class: "user-item-image" do %>
-              <%= image_tag user.avatar.url, alt: user.name,
-                title: user.name %>
-            <% end %>
-          <% end %>
-          <% if @users_shop_manager.size > Settings.limit_show_manager_of_shop %>
-            <%= label_tag "", ". . .", class: "font-size-30" %>
-          <% end %>
-          <% if @shop.owner_id == current_user.id %>
-            <%= link_to "#manager_of_shop", "data-toggle": "modal",
-              class: "user-item-image" do %>
-              <%= image_tag "add_circle.png", alt: t("set_manager_shop") %>
-            <% end %>
-          <% end %>
+          <div class="list-shop-manager">
+            <%= render "list_shop_manager", shop_managers: @users_shop_manager %>
+          </div>
         </div>
       </div>
     </div>

@@ -3,4 +3,4 @@ $('.user_item_<%= @shop_manager.user_id %>').html('<%= link_to t("unset_manager"
   user_id: @shop_manager.user_id, shop_id: @shop_manager.shop_id),
   method: :delete, class: "btn btn-warning", remote: true %>')
 $('.list-shop-manager').html('<%= j render "dashboard/shops/list_shop_manager", shop_managers: @shop.users %>');
-$('.number-shop-manager').html('<%= t("common.shop_managers", num: @shop.users.size) %>');
+$('.number-shop-manager').html('<%= label_tag "", t("common.shop_managers", num: @shop.users.size), class: "text-header" %>');

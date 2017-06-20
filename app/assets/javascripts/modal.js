@@ -259,3 +259,16 @@ $(document).ready(function(){
     $('.time_auto_close_shop').slideToggle(500);
   });
 });
+
+// changes picture shop
+$(document).ready(function(){
+  $('.change_icon').hover(function(){
+    $(this).parent('a').find('.change_item').animate({'width': 'show'}, 500);
+  }, function() {
+    $(this).parent('a').find('.change_item').animate({'width': 'hide'}, 500);
+  });
+
+  $('.change_image').click(function(){
+    $(this).parent('.change_image_hover').find('input').click();
+  });
+});

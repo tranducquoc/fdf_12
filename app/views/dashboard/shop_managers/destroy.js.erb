@@ -3,4 +3,4 @@ $('.user_item_<%= @choosen_user.id %>').html('<%= link_to t("manage_domain.manag
   shop_id: @shop.id), method: :post,
   class: "btn btn-primary btn-success", remote: true %>');
 $('.list-shop-manager').html('<%= j render "dashboard/shops/list_shop_manager", shop_managers: @shop.users %>');
-$('.number-shop-manager').html('<%= t("common.shop_managers", num: @shop.users.size) %>');
+$('.number-shop-manager').html('<%= label_tag "", t("common.shop_managers", num: @shop.users.size), class: "text-header" %>');

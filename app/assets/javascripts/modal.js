@@ -185,14 +185,24 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-  $('.owl-carousel').owlCarousel({
-    items: 3,
-    loop: true,
-    autoplay: true,
-    autoPlaySpeed: 5000,
-    autoPlayTimeout: 5000,
-    autoplayHoverPause: false
-  });
+  if($(window).width() >= 1200)
+    $('.owl-carousel').owlCarousel({
+      items: 3,
+      loop: true,
+      autoplay: true,
+      autoPlaySpeed: 5000,
+      autoPlayTimeout: 5000,
+      autoplayHoverPause: false
+    });
+  else
+    $('.owl-carousel').owlCarousel({
+      items: 2,
+      loop: true,
+      autoplay: true,
+      autoPlaySpeed: 5000,
+      autoPlayTimeout: 5000,
+      autoplayHoverPause: false
+    });
 });
 
 $(document).ready(function(){
@@ -221,7 +231,8 @@ $(document).ready(function(){
         success: function(response) {
           sweetAlert(I18n.t('api.success'), I18n.t('shop_was_closed'), 'success');
           btn.data('type', 'open');
-          btn.html('<div class="btn_icon material-icons">lock_open</div><div><%= I18n.t("general_info.open_shop_now") %></div>');
+          btn.html('<div class="btn_icon material-icons">lock_open</div><div>' +
+            I18n.t("general_info.open_shop_now") + '</div>');
         },
         error: function(errors) {
           sweetAlert(I18n.t('api.error'), I18n.t('api.error'), 'error');
@@ -239,7 +250,8 @@ $(document).ready(function(){
         success: function(response) {
           sweetAlert(I18n.t('api.success'), I18n.t('shop_was_open'), 'success');
           btn.data('type', 'close');
-          btn.html('<div class="btn_icon material-icons">lock_outline</div><div><%= I18n.t("general_info.close_shop_now") %></div>');
+          btn.html('<div class="btn_icon material-icons">lock_outline</div><div>' +
+            I18n.t("general_info.close_shop_now") + '</div>');
         },
         error: function(errors) {
           sweetAlert(I18n.t('api.error'), I18n.t('api.error'), 'error');

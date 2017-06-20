@@ -971,3 +971,15 @@ vi:
   food_name: "Tên món ăn"
   view_more_products: "Xem thêm sản phẩm"
   load_more_products: "Đang tải thêm sản phẩm"
+  general_info:
+    total:
+      orders: "Số đơn hàng đã nhận."
+      order_pending: "Số đơn hàng đang đợi."
+      products: "Số lượng sản phẩm."
+    reject_order_auto: "Hủy đơn hàng tự động."
+    open_shop_now: "Mở cửa hàng ngay"
+    close_shop_now: "Đóng cửa hàng ngay"
+    edit_shop: "Chỉnh sửa cửa hàng"
+    add_new_product: "Thêm sản phẩm mới"
+  auto_close_shop: "Đóng/mở cửa thủ công: "
+  time_auto_close_shop: "Thời gian đóng cửa tự động: "

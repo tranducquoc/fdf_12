@@ -794,7 +794,7 @@ $orange_main: #ff5722;
 .shop_image_cover_and_avatar {
   .avatar {
     width: 100%;
-    height: 200px;
+    height: 210px;
     margin-top: -40%;
     object-fit: cover;
   }
@@ -905,4 +905,8 @@ $orange_main: #ff5722;
 
 .padding-left-0 {
   padding-left: 0 !important;
+}
+
+.mg-bottom-0 {
+  margin-bottom: 0 !important;
 }

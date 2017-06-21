@@ -683,6 +683,7 @@ ja:
     name: "プロダクトの名前"
     price: "価格"
     not_product: "空ではありません"
+    not_allow: "You are not allowed to view this product!"
   shared:
     comments:
       comment_box: "コメントブラケット"
@@ -954,3 +955,5 @@ ja:
               less_than_or_equal_to: "Price must be less than or equal to 1000000000"
   update_image_avatar: "Update image avatar"
   invalid_hour: "Start hour must be less than or equal end hour"
+  not_have_domain: "You have to take part in a domain to continue!"
+  shop_not_allow: "You are not allowed to view this shop"

@@ -57,6 +57,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :carts
     resources :shop_domains
+    resources :categories
   end
   resources :user_domains
   resources :shop_domains

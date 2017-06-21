@@ -83,12 +83,7 @@ module ApplicationHelper
   end
 
   def number_product_in_category_by_domain category, domain
-    products = if @domain.present?
-      domain.products.by_category category
-    else
-      category.products
-    end
-    products.size
+    active_products_in_domain_by_category(domain, category).size
   end
 
   def domain_icon domain
@@ -190,5 +185,15 @@ module ApplicationHelper
 
   def load_select_category categories
     categories.collect {|category| [category.name, category.id]}
+  end
+
+  def active_products_in_domain_by_category domain, category
+    shops_slide = Shop.shop_in_domain(domain.id)
+    shops = shops_slide.select{|shop| shop.on?}
+    products_domain = []
+    shops.each do |t|
+      products_domain << t.products.by_active.by_category(category)
+    end
+    products_domain.flatten
   end
 end

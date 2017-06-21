@@ -16,9 +16,8 @@ class DomainsController < ApplicationController
   def show
     @domains = Domain.professed
     @categories = Category.all
-    @shops = Shop.shop_in_domain(@domain.id).top_shops.decorate
+    @shops = Shop.active.shop_in_domain(@domain.id).top_shops.decorate
     @shops_slide = Shop.shop_in_domain(@domain.id)
-    @products = @domain.products.includes(:shop).top_products
     shops = @shops_slide.select do |shop|
       shop.status_on_off == Settings.shop_status_on
     end

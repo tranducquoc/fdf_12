@@ -616,7 +616,7 @@ vi:
       confirm: "Xác nhận"
       detail_order: "Chi tiết"
       view_order_list: "Danh sách đặt hàng"
-      view_history_orders: "Lịch sử"
+      view_history_orders: "Lịch sử đặt hàng"
       btn_search: "Tìm kiếm"
       Date: "Ngày"
       Name: "Tên"
@@ -984,3 +984,4 @@ vi:
   auto_close_shop: "Đóng/mở cửa thủ công: "
   time_auto_close_shop: "Thời gian đóng cửa tự động: "
   status_shop: "Trạng thái cửa hàng"
+  change_picture: "Đổi hình"

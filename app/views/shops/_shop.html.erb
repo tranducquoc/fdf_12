@@ -12,7 +12,7 @@
               <span class="glyphicon glyphicon-home"></span>
               <%= t "top_shops.go_to_manage_shop" %>
             <% end %>
-            <%= link_to shop_path(shop), class: "btn v2-btn-info btn_show_shop" do %>
+            <%= link_to domain_shop_path(@domain, shop), class: "btn v2-btn-info btn_show_shop" do %>
               <span class="glyphicon glyphicon-shopping-cart"></span>
               <%= t "top_shops.go_to_shop" %>
             <% end %>
@@ -34,7 +34,7 @@
       </div>
     <% end %>
       <div class="col-sm-5 col-md-5 col-xs-5 top_shop_image">
-        <%= link_to shop_path(shop) do %>
+        <%= link_to domain_shop_path(@domain, shop) do %>
           <%= image_tag shop.avatar.url, class: "image" %>
         <% end %>
       </div>
@@ -46,7 +46,7 @@
               "data-id": shop.id %>
           <% else %>
             <%= link_to shop.name,
-              shop_path(shop), class: "tooltips shop-name",
+              domain_shop_path(@domain, shop), class: "tooltips shop-name",
               title: shop.name %>
           <% end %>
         <% else %>

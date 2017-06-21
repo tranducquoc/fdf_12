@@ -168,4 +168,11 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def check_domain_present
+    unless current_user.domains.present?
+      flash[:danger] = t "not_have_domain"
+      redirect_to root_path
+    end
+  end
 end

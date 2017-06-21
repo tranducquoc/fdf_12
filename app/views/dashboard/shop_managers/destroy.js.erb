@@ -1,4 +1,6 @@
-$('.user_item_<%= @shop_manager.user_id %>').html('<%= link_to t("manage_domain.manage"),
-  dashboard_shop_shop_managers_path(user_id: @shop_manager.user_id,
-  shop_id: @shop_manager.shop_id), method: :post,
-  class: "btn btn-primary btn-success", remote: true %>')
+$('.user_item_<%= @choosen_user.id %>').html('<%= link_to t("manage_domain.manage"),
+  dashboard_shop_shop_managers_path(user_id: @choosen_user.id,
+  shop_id: @shop.id), method: :post,
+  class: "btn btn-primary btn-success", remote: true %>');
+$('.list-shop-manager').html('<%= j render "dashboard/shops/list_shop_manager", shop_managers: @shop.users %>');
+$('.number-shop-manager').html('<%= t("common.shop_managers", num: @shop.users.size) %>');

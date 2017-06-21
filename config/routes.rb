@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       resources :user_orders, only: [:index, :show]
     end
     resources :statistics
+    resources :new_manager_searches, only: :index
   end
   resources :domains do
     resources :products

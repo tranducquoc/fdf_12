@@ -144,3 +144,4 @@ convert_date:
   year: 2
   seperate: "/"
 limit_show_manager_of_shop: 5
+minute_step: 5

@@ -187,4 +187,8 @@ module ApplicationHelper
       checked_email_setting?(Settings.index_one_in_array) &&
       checked_email_setting?(Settings.index_two_in_array)) ? "checked" : ""
   end
+
+  def load_select_category categories
+    categories.collect {|category| [category.name, category.id]}
+  end
 end

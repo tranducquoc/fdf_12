@@ -1007,3 +1007,8 @@ vi:
   invalid_hour: "Giờ bắt đầu phải lớn hơn hoặc bằng giờ kết thúc"
   not_have_domain: "Bạn phải tham gia vào một miền để tiếp tục!"
   shop_not_allow: "Bạn không có quyền xem cửa hàng này"
+  manage_user_domain: "Quản lý thành viên miền %{name}"
+  add_domain_users: "Thêm thành viên"
+  manage_domain_users: "Quản lí thành viên"
+  finish_manage_domain_user: "Hoàn thành"
+  search_domain_user: "Tìm thành viên"

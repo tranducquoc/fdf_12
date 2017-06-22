@@ -49,6 +49,9 @@ class User < ApplicationRecord
   scope :of_ids, -> ids {where id: ids}
   scope :list_all_users, -> ids {where id: ids}
   scope :user_of_list_id, -> list {where id: list}
+  scope :not_in_domain, ->domain do
+    where("id NOT IN (?)", domain.users.pluck(:user_id)) if domain.users.present?
+  end
 
   class << self
     def from_omniauth auth

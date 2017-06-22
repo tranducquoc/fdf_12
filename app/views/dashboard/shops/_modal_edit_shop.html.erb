@@ -1,13 +1,13 @@
-<div class="modal fade" id="modal_edit_shop">
+<div class="modal fade" id="modal_edit_shop_<%= shop.id %>">
   <div class="modal-dialog">
     <div class="modal-content">
-    <%= simple_form_for [:dashboard, @shop] do |f| %>
+    <%= simple_form_for [:dashboard, shop] do |f| %>
       <div class="modal-header modal_header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title modal_text_header"><%= t "dashboard.shops.edit.title" %></h4>
       </div>
       <div class="modal-body">
-        <%= render "shared/error_messages", object: @shop %>
+        <%= render "shared/error_messages", object: shop %>
         <div class="form-group">
           <%= f.label t "request_shop.shop_name" %>
           <%= f.text_field :name, placeholder: t(".shop_name"),
@@ -22,7 +22,7 @@
           <%= f.label t "auto_close_shop" %>
           <%= f.check_box :openforever, checked_value: true, unchecked_value: false %>
         </div>
-        <div class="form-group time_auto_close_shop <%= @shop.openforever ? "display-none" : "" %>">
+        <div class="form-group time_auto_close_shop <%= shop.openforever ? "display-none" : "" %>">
           <%= f.label t "time_auto_close_shop" %>
           <%= f.time_select :time_auto_close, minute_step: Settings.minute_step  %>
         </div>
@@ -32,13 +32,13 @@
         </div>
         <div class="form-group">
           <%= f.label t "owners_shop_avatar" %>
-          <%= image_tag @shop.avatar.url, class: "avatar pd_top_10px defaut-size" %>
+          <%= image_tag shop.avatar.url, class: "avatar pd_top_10px defaut-size" %>
           <%= f.file_field :avatar, accept: Settings.pictures.accepted_files,
           class: "upload_img" %>
         </div>
         <div class="form-group">
           <%= f.label t "owners_shop_cover_image" %>
-          <%= image_tag @shop.cover_image.url, class: "avatar_cover pd_top_10px
+          <%= image_tag shop.cover_image.url, class: "avatar_cover pd_top_10px
             defaut-cover-size defaut-pic-cover" %>
           <%= f.file_field :cover_image, accept: Settings.pictures.accepted_files,
           class: "upload_img_cover" %>

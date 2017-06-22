@@ -948,3 +948,154 @@ $orange_main: #ff5722;
 .mg-bottom-0 {
   margin-bottom: 0 !important;
 }
+
+.manage_shops_item {
+  height: 185px;
+  margin-bottom: 20px;
+  padding: 3%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.46);
+  .item_image {
+    img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border: solid 1px $orange_main;
+      border-radius: 10px;
+    }
+  }
+  .item_info {
+    .shop_name {
+      text-align: center;
+      font-size: 30px;
+      color: $orange_main;
+      display: inherit;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .item_tag {
+    display: inline-flex;
+    .user_role_owner {
+      background: orange;
+      border-radius: 3px;
+      padding: 0 5px 0 5px;
+      color: white;
+      margin-top: 3px
+    }
+    .user_role_manager {
+      background: #43ad11;
+      border-radius: 3px;
+      padding: 0 5px 0 5px;
+      color: white;
+      margin-top: 3px
+    }
+    .shop_pending {
+      background: red;
+      border-radius: 3px;
+      padding: 0 5px 0 5px;
+      color: white;
+      margin-top: 3px
+    }
+    .shop_openning {
+      background: #43ad11;
+      border-radius: 3px;
+      padding: 0 5px 0 5px;
+      color: white;
+      margin-top: 3px
+    }
+    .shop_closed {
+      background: red;
+      border-radius: 3px;
+      padding: 0 5px 0 5px;
+      color: white;
+      margin-top: 3px
+    }
+    .shop_clock {
+      background: black;
+      border-radius: 3px;
+      padding: 0 5px 0 5px;
+      color: white;
+      margin-top: 3px
+    }
+    .shop_manualy {
+      background: black;
+      border-radius: 3px;
+      padding: 0 5px 0 5px;
+      color: white;
+      margin-top: 3px
+    }
+  }
+  .item_domain {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .function {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    right: 15px;
+    bottom: 20px;
+    background-color: rgba(244, 244, 244, 0.87);
+    border-radius: 10px;
+    display: none;
+    .shop-function {
+      top: 30%;
+    }
+    .function_manage {
+      display: inline-flex;
+      .btn_function {
+        width: 75px;
+        height: 77px;
+        background-color: #ffffff;
+        margin: 5px;
+        border-radius: 10px;
+        border: solid 1px #fd680e;
+        box-shadow: 1px 1px 1px 1px grey;
+        .btn_item {
+          display: block;
+          padding-top: 7%;
+          padding-bottom: 7%;
+          color: #fd680e;
+          .btn_icon {
+            height: 20px;
+            width: 20px;
+            font-size: 20px;
+          }
+        }
+      }
+      .btn_function:hover {
+        width: 75px;
+        height: 77px;
+        background-color: #fd680e;
+        margin: 5px;
+        border-radius: 10px;
+        border: solid 1px #ffffff;
+        .btn_item {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+.shop_item_open {
+  border: solid 1px green;
+}
+
+.shop_item_close {
+  border: solid 1px red;
+}
+
+.manage-domain-of-shop {
+  margin-bottom: 0;
+  tbody {
+    max-height: 300px;
+    height: 100% !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}

@@ -85,6 +85,11 @@ class Shop < ApplicationRecord
     owner == user
   end
 
+  def is_manager? user_id
+    shop_manager = self.shop_managers.find_by user_id: user_id
+    return shop_manager.present? && shop_manager.manager?
+  end
+
   def all_tags
     tags.uniq
   end
@@ -117,8 +122,8 @@ class Shop < ApplicationRecord
       user_id: owner_id, eventable_id: id, eventable_type: Shop.name
   end
 
-  def shop_owner? user
-    self.owner_id == user
+  def shop_owner? user_id
+    self.owner_id == user_id
   end
 
   private

@@ -217,7 +217,7 @@ $(document).ready(function(){
       $.ajax({
         url: '/dashboard/shops/' + $(this).data('id'),
         type: 'PUT',
-        dataType: 'script',
+        dataType: 'json',
         data: {
           'checked': false
         },
@@ -226,6 +226,7 @@ $(document).ready(function(){
           btn.data('type', 'open');
           btn.html('<div class="btn_icon material-icons">lock_open</div><div>' +
             I18n.t("general_info.open_shop_now") + '</div>');
+          change_class_after_close_shop(btn);
         },
         error: function(errors) {
           sweetAlert(I18n.t('api.error'), I18n.t('api.error'), 'error');
@@ -236,7 +237,7 @@ $(document).ready(function(){
       $.ajax({
         url: '/dashboard/shops/' + $(this).data('id'),
         type: 'PUT',
-        dataType: 'script',
+        dataType: 'json',
         data:{
           'checked': true
         },
@@ -245,6 +246,7 @@ $(document).ready(function(){
           btn.data('type', 'close');
           btn.html('<div class="btn_icon material-icons">lock_outline</div><div>' +
             I18n.t("general_info.close_shop_now") + '</div>');
+          change_class_after_open_shop(btn, response.time)
         },
         error: function(errors) {
           sweetAlert(I18n.t('api.error'), I18n.t('api.error'), 'error');
@@ -270,5 +272,54 @@ $(document).ready(function(){
 
   $('.change_image').click(function(){
     $(this).parent('.change_image_hover').find('input').click();
+  });
+});
+
+//coutdown time close shop
+$(document).ready(function(){
+  coutdown_shop_auto_close();
+});
+
+function coutdown_shop_auto_close() {
+  $('.shop_auto_close').each(function(){
+    time = $(this).data('timeclose');
+    $(this).countdown(time).on('update.countdown', function(event) {
+      $(this).html(event.strftime('%H:%M:%S'));
+    }).on('finish.countdown', function(event) {
+      change_class_after_close_shop($(this));
+      $(this).parents('.manage_shops_item').find('.btn-open-close-shop').data('type', 'open')
+        .html('<div class="btn_icon material-icons">lock_open</div><div>' +
+        I18n.t("general_info.open_shop_now") + '</div>');
+    });
+  })
+};
+
+function change_class_after_open_shop(object, time) {
+  object.parents('.manage_shops_item').removeClass('shop_item_close')
+    .addClass('shop_item_open');
+  object.parents('.manage_shops_item').find('.shop_closed')
+    .addClass('shop_openning').removeClass('shop_closed').html(I18n.t("shop_was_open"));
+  object.parents('.manage_shops_item').find('.shop_clock').data('timeclose', time);
+  object.parents('.manage_shops_item').find('.shop_clock')
+    .addClass('shop_auto_close');
+  coutdown_shop_auto_close();
+};
+
+function change_class_after_close_shop(object) {
+  object.parents('.manage_shops_item').addClass('shop_item_close')
+    .removeClass('shop_item_open');
+  object.parents('.manage_shops_item').find('.shop_openning')
+    .addClass('shop_closed').removeClass('shop_openning').html(I18n.t("shop_was_closed"))
+  object.parents('.manage_shops_item').find('.shop_auto_close').countdown('pause');
+  object.parents('.manage_shops_item').find('.shop_clock').removeClass('shop_auto_close')
+    .html('--:--:--');
+};
+
+//manage domain of shop
+$(document).ready(function(){
+  $('.manage_shops_item').hover(function(){
+    $(this).find('.function').animate({'height': 'show'}, 400);
+  }, function() {
+    $(this).find('.function').animate({'height': 'hide'}, 400);
   });
 });

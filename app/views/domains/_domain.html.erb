@@ -54,6 +54,12 @@
             <%= domain.shop_domains.pending.size %>
           <% end %>
         </strong>
+        <strong>
+          <%= link_to content_tag(:i, t("manage_domain_users"), class: "icon-user"),
+            "#", class: "btn btn-primary",
+            data: {toggle: "modal", target: "#domain-member-modal-#{domain.id}"} %>
+        </strong>
+        <%= render "add_domain_members_modal", domain: domain %>  
       <% end %>
     <% end %>
     </td>

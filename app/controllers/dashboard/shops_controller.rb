@@ -38,19 +38,13 @@ class Dashboard::ShopsController < BaseDashboardController
         flash.now[:danger] = t "dashboard.shops.show.update_fail"
       end
     end
-    @support = Supports::SearchSupport.new(@shop.id, "")  
+    @support = Supports::SearchSupport.new(@shop.id, "")
   end
 
   def index
     @request = @domain.request_shop_domains.build if @domain.present?
-    @shops = current_user.own_shops.includes(:domains).page(params[:page]).per(Settings.common.per_page).decorate
-    @shop_managers = ShopManager.by_user current_user.id
-    @shop_mn = []
-    @shop_managers.each do |shop_manager|
-      if shop_manager.role == Settings.shop_owner || shop_manager.role == Settings.shop_manager
-        @shop_mn << shop_manager
-      end
-    end
+    @shops = current_user.shops.page(params[:page])
+      .per Settings.common.products_per_page
   end
 
   def edit
@@ -88,7 +82,11 @@ class Dashboard::ShopsController < BaseDashboardController
           end
         end
       end
-      format.js
+      shop_job = Delayed::Job.find_by id: @shop.delayjob_id
+      time_close = shop_job.run_at.strftime(Settings.fomat_time_coutdown) if shop_job.present?
+      format.js do
+        render json: {time: time_close}
+      end
     end
   end
 

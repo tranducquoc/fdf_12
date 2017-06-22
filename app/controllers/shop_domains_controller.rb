@@ -29,16 +29,12 @@ class ShopDomainsController < ApplicationController
 
   def destroy
     ShopDomain.destroy_all domain_id: params[:domain_id], shop_id: @shop.id
-    AddShopProductToDomainService.new(@shop, @choosen_domain).delete
     redirect_to :back
   end
 
   def update
     if @shop_domain.update_attributes status: params[:status]
       if @shop_domain.approved?
-        shop = @shop_domain.shop
-        domain = @shop_domain.domain
-        AddShopProductToDomainService.new(shop, domain).add
         shop_managers = @shop_domain.shop.shop_managers
         shop_managers.each do |s|
           if s.owner? || s.manager?
@@ -74,9 +70,6 @@ class ShopDomainsController < ApplicationController
     if shop_domain.save
       shop_domain.create_event_request_shop @choosen_domain.owner, shop_domain
       sent_notification_domain_manager @choosen_domain, shop_domain
-      if shop_domain.approved?
-        AddShopProductToDomainService.new(@shop, @choosen_domain).add
-      end
     else
       flash[:danger] = t "can_not_add_shop"
     end

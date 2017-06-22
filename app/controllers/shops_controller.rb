@@ -1,6 +1,8 @@
 class ShopsController < ApplicationController
   before_action :load_shop, only: [:show, :update]
   before_action :authenticate_user!
+  before_action :check_domain_present
+  before_action :check_show_shop, only: :show
 
   def index
     @shops = if @domain.present?
@@ -70,6 +72,13 @@ class ShopsController < ApplicationController
       @shop = Shop.find params[:id]
     else
       flash[:danger] = t "flash.danger.load_shop"
+      redirect_to root_path
+    end
+  end
+
+  def check_show_shop
+    unless @shop.domains.include?(@domain) && @shop.active?
+      flash[:danger] = t "shop_not_allow"
       redirect_to root_path
     end
   end

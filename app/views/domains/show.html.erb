@@ -19,7 +19,7 @@
                 Settings.min_product_in_category %>
                 <div class="col-lg-6 col-md-12 col-xs-6 margin-bottom-5
                   padding-left-right-5 padding_0">
-                  <%= link_to category_path(category, domain_id: @domain.id),
+                  <%= link_to domain_category_path(@domain, category),
                     class: "categorie" do %>
                     <span class="domain-name"><%= category.name %></span>
                     <span class="categorie-count">

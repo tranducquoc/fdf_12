@@ -730,6 +730,7 @@ vi:
     name: "Tên sản phẩm"
     price: "Đơn giá"
     not_product: "Chưa có sản phẩm nào"
+    not_allow: "Bạn không có quyền xem sản phẩm này!"
   shared:
     comments:
       comment_box: "Khung bình luận"
@@ -1004,3 +1005,5 @@ vi:
               not_a_number: "Giá sản phẩm phải là số"
   update_image_avatar: "Cập nhật ảnh đại diện"
   invalid_hour: "Giờ bắt đầu phải lớn hơn hoặc bằng giờ kết thúc"
+  not_have_domain: "Bạn phải tham gia vào một miền để tiếp tục!"
+  shop_not_allow: "Bạn không có quyền xem cửa hàng này"

@@ -708,7 +708,7 @@ $orange_main: #ff5722;
     border: solid 1px;
     margin-top: 20px;
     width: 90%;
-    margin-left: 2.5%;
+    margin-left: 5%;
     border-radius: 20px;
     margin-bottom: 20px;
   }
@@ -846,8 +846,9 @@ $orange_main: #ff5722;
   }
   .list_owner_and_manger {
     width: 100%;
-    height: 40px;
+    height: 50px;
     display: inline-flex;
+    white-space: nowrap;
   }
   .list_owner_and_manger {
     padding-top: 10px;
@@ -875,14 +876,14 @@ $orange_main: #ff5722;
   display: inline-flex;
   .btn_function {
     width: 90px;
-    height: 90px;
+    height: 80px;
     background-color: #ffffff;
-    margin: 5px;
+    margin: 5px 20px;
     border-radius: 10px;
     border: solid 1px #fd680e;
+    box-shadow: 1px 1px 1px 1px grey;
     .btn_item {
       display: block;
-      padding-top: 7%;
       color: #fd680e;
       .btn_icon {
         height: 30px;
@@ -893,13 +894,22 @@ $orange_main: #ff5722;
   }
   .btn_function:hover {
     width: 90px;
-    height: 90px;
+    height: 80px;
     background-color: #fd680e;
-    margin: 5px;
+    margin: 5px 20px;
     border-radius: 10px;
     border: solid 1px #ffffff;
+    box-shadow: 1px 1px 1px 1px grey;
     .btn_item {
       color: #ffffff;
+    }
+  }
+  @media (max-width: 992px) {
+    .btn_function {
+      margin: 5px;
+    }
+    .btn_function:hover {
+      margin: 5px;
     }
   }
 }
@@ -1098,4 +1108,50 @@ $orange_main: #ff5722;
     overflow-y: auto;
     overflow-x: hidden;
   }
+}
+
+.list-functions {
+  margin-top: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: solid 1px $orange_main;
+  display: inline-block;
+  position: relative;
+  border-radius: 10px;
+    width: 100%;
+  .title-list-functions {
+    position: absolute;
+    top: -10px;
+    left: 30px;
+    background: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: $orange_main
+  }
+}
+
+.slide-top-shop-prev {
+  position: absolute;
+  top: 50%;
+  left: -7px;
+  transform: translateY(-50%);
+}
+
+.slide-top-shop-next {
+  position: absolute;
+  right: -7px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.btn-prev-next {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgba(243, 90, 41, 0.42);
+}
+
+.btn-prev-next:hover {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgba(243, 90, 41, 1);
 }

@@ -1,0 +1,24 @@
+<% users.each_with_index do |user, index| %>
+  <tr>
+    <td class="text-center">
+      <%= image_tag user.avatar.url, class: "manager-img" %>
+    </td>
+    <td>
+      <div><strong><%= user.name %></strong></div>
+      <%= user.email %>
+    </td>
+    <td>
+      <% if !current_user? user %>
+        <% user_domain = find_user_domain(user, @choosen_domain) %>
+        <% if @choosen_domain.owner?(current_user.id) %>
+          <span>
+            <%= delete_user_domain_btn user_domain %>
+          </span>
+          <span class="domain-manager-action-<%= user_domain.id %>">
+            <%= domain_manager_action user_domain %>
+          </span>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

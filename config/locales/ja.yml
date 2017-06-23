@@ -957,3 +957,8 @@ ja:
   invalid_hour: "Start hour must be less than or equal end hour"
   not_have_domain: "You have to take part in a domain to continue!"
   shop_not_allow: "You are not allowed to view this shop"
+  manage_user_domain: "Manage %{name} members"
+  add_domain_users: "Add Members"
+  manage_domain_users: "Manage Members"
+  finish_manage_domain_user: "Done"
+  search_domain_user: "Search user"

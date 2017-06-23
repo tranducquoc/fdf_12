@@ -1,0 +1,19 @@
+<% users.each_with_index do |user, index| %>
+  <tr>
+    <td class="text-center">
+      <%= image_tag user.avatar.url, class: "manager-img" %>
+    </td>
+    <td>
+      <div><strong><%= user.name %></strong></div>
+      <%= user.email %>
+    </td>
+    <td>
+      <% if @choosen_domain.manage_by?(current_user) ||
+        @choosen_domain.owner?(current_user.id) %>
+        <%= link_to t("add"), user_domains_path(user_id: user.id,
+          domain_id: @choosen_domain.id, add_domain: true),
+          method: :post, class: "btn btn-primary", remote: true %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

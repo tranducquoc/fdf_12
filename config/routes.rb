@@ -86,6 +86,7 @@ Rails.application.routes.draw do
   resources :set_carts
   resources :pdf_readers, only: :index
   resources :user_searchs
+  resources :user_domain_searches, only: :index
 
   api_version(module: "V1", path: {value: "v1"}, default: true) do
     namespace :dashboard do

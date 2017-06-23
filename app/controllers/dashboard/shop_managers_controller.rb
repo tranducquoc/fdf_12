@@ -19,7 +19,6 @@ class Dashboard::ShopManagersController < BaseDashboardController
       flash[:danger] = t "flash.danger_message"
       redirect_to :back
     end
-
   end
 
   def destroy

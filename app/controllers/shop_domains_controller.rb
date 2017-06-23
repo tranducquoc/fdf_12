@@ -5,10 +5,14 @@ class ShopDomainsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @shop_domains = if params[:approved].present?
-      @choosen_domain.shop_domains.includes(shop: :users).approved
+    if request.xhr?
+      render_js nil, @choosen_domain
     else
-      @choosen_domain.shop_domains.includes(shop: :users).pending
+      @shop_domains = if params[:approved].present?
+        @choosen_domain.shop_domains.includes(shop: :users).approved
+      else
+        @choosen_domain.shop_domains.includes(shop: :users).pending
+      end
     end
   end
 
@@ -29,7 +33,11 @@ class ShopDomainsController < ApplicationController
 
   def destroy
     ShopDomain.destroy_all domain_id: params[:domain_id], shop_id: @shop.id
-    redirect_to :back
+    if request.xhr?
+        render_js nil, @choosen_domain
+    else
+      redirect_to :back
+    end
   end
 
   def update
@@ -41,11 +49,17 @@ class ShopDomainsController < ApplicationController
             @shop_domain.create_event_request_shop s.user_id, @shop_domain
           end
         end
-        flash[:success] = t "add_shop_domain_success"
+        message = t "add_shop_domain_success"
       elsif params[:status] == ShopDomain.statuses.key(2)
         @shop_domain.create_event_request_shop @shop_domain.shop.owner_id, @shop_domain
+        message = t "rejected_shop_domain"
       end
-      redirect_to :back
+      if request.xhr?
+        render_js message, @shop_domain.domain
+      else
+        flash[:success] = message
+        redirect_to :back
+      end
     end
   end
 
@@ -80,6 +94,15 @@ class ShopDomainsController < ApplicationController
       if user_domain.manager? && user_domain.user_id != @choosen_domain.owner
         shop_domain.create_event_request_shop user_domain.user_id, shop_domain
       end
+    end
+  end
+
+  def render_js message, domain
+    @message = message
+    @list_shops = domain.shop_domains.includes(shop: :users).approved
+    @request_shops = domain.shop_domains.includes(shop: :users).pending
+    respond_to do |format|
+      format.js
     end
   end
 end

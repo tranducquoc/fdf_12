@@ -1,4 +1,4 @@
-<% @shop_domains.each_with_index do |shop_domain, index| %>
+<% shop_domains.each_with_index do |shop_domain, index| %>
   <tr>
     <td><%= increase_one index %></td>
     <td>
@@ -17,19 +17,19 @@
           <strong>
             <%= link_to t("order_statistics.accept"),
               shop_domain_path(shop_domain, status: :approved), 
-              method: :put, class: "btn btn-success" %>
+              method: :put, class: "btn btn-success", remote: true %>
           </strong>
           <strong>
             <%= link_to t("request_shop.reject"),
               shop_domain_path(shop_domain, status: :rejected), 
-              method: :put, class: "btn btn-danger" %>
+              method: :put, class: "btn btn-danger", remote: true %>
           </strong>
         <% else %>
           <%= link_to t("manage_domain.delete_shop"),
             shop_domain_path(shop_domain,
             domain_id: shop_domain.domain.id, shop_id: shop_domain.shop.id),
             method: :delete, data: {confirm: t("common.delete_confirm")},
-            class: "btn btn-danger"
+            class: "btn btn-danger", remote: true
           %>
         <% end %>
       <% end %>

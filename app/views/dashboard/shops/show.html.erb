@@ -67,7 +67,7 @@
         </div>
       <% end %>
       <div class="btn_function">
-        <%= link_to "#modal_edit_shop", "data-toggle": "modal", class: "btn_item" do %>
+        <%= link_to "#modal_edit_shop_#{@shop.id}", "data-toggle": "modal", class: "btn_item" do %>
           <div class="btn_icon material-icons">border_color</div>
           <div><%= t "general_info.edit_shop" %></div>
         <% end %>
@@ -184,6 +184,6 @@
 <!-- modals -->
 <%= render "modal_add_managers" %>
 <%= render "modal_change_owner" %>
-<%= render "modal_edit_shop" %>
+<%= render "modal_edit_shop", shop: @shop %>
 <%= render "modal_settings_time_orders" %>
 <div id="new-edit-product-modal" class="modal fade"></div>

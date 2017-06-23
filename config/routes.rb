@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     end
     resources :statistics
     resources :new_manager_searches, only: :index
+    resources :shop_manager_domains
   end
   resources :domains do
     resources :products

@@ -189,6 +189,7 @@ $(document).ready(function(){
     $('.owl-carousel').owlCarousel({
       items: 3,
       loop: true,
+      nav:true,
       autoplay: true,
       autoPlaySpeed: 5000,
       autoPlayTimeout: 5000,
@@ -198,11 +199,16 @@ $(document).ready(function(){
     $('.owl-carousel').owlCarousel({
       items: 2,
       loop: true,
+      nav:true,
       autoplay: true,
       autoPlaySpeed: 5000,
       autoPlayTimeout: 5000,
       autoplayHoverPause: false
     });
+  $('.owl-prev').addClass('slide-top-shop-prev')
+    .html('<i class="material-icons btn-prev-next">keyboard_arrow_left</i>');
+  $('.owl-next').addClass('slide-top-shop-next')
+    .html('<i class="material-icons btn-prev-next">keyboard_arrow_right</i>')
 });
 
 $(document).ready(function(){

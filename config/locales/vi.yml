@@ -1003,8 +1003,17 @@ vi:
               greater_than: "Giá sản phẩm phải lớn hơn 0"
               less_than_or_equal_to: "Giá sản phẩm phải nhỏ hơn hoặc bằng 1000000000"
               not_a_number: "Giá sản phẩm phải là số"
-  update_image_avatar: "Cập nhật ảnh đại diện"
-  invalid_hour: "Giờ bắt đầu phải lớn hơn hoặc bằng giờ kết thúc"
+        shop:
+          attributes:
+            name:
+              blank: "Tên cửa hàng không được để trống"
+              without: "Tên cửa hàng không hợp lệ"
+              too_long: "Tên cửa hàng không được quá 50 ký tự"
+            description:
+              blank: "Mô tả cửa hàng không được để trống"
+              too_long: "Mô tả cửa hàng không được quá 250 ký tự"
+  update_image_avatar: "Cập nhật ảnh"
+  invalid_hour: "Giờ kết thúc phải lớn hơn hoặc bằng giờ bắt đầu"
   not_have_domain: "Bạn phải tham gia vào một miền để tiếp tục!"
   shop_not_allow: "Bạn không có quyền xem cửa hàng này"
   manage_user_domain: "Quản lý thành viên miền %{name}"
@@ -1018,3 +1027,4 @@ vi:
   manage_joins_domains: "Miền tham gia"
   create_new_shop: "Tạo cửa hàng mới"
   function: "Chức năng"
+  update_cover_image: "Cập nhật ảnh bìa"

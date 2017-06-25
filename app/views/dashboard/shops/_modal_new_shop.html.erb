@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal_edit_shop_<%= shop.id %>">
+<div class="modal fade" id="modal-new-shop">
   <div class="modal-dialog modal-shop">
     <div class="modal-content">
       <div class="modal-header modal_header">
@@ -8,7 +8,7 @@
         </h4>
       </div>
       <div class="modal-body">
-        <%= render "form", shop: shop %>
+        <%=  render "form", shop: @shop %>
       </div>
     </div>
   </div>

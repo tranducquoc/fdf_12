@@ -119,7 +119,8 @@
         </div>
       <% end %>
       <div class="btn_function">
-        <%= link_to "#modal_edit_shop_#{@shop.id}", "data-toggle": "modal", class: "btn_item" do %>
+        <%= link_to "#modal_edit_shop_#{@shop.id}", "data-toggle": "modal",
+          class: "btn_item btn-edit-shop", "data-shop-id": "#{@shop.id}" do %>
           <div class="btn_icon material-icons">border_color</div>
           <div><%= t "general_info.edit_shop" %></div>
         <% end %>

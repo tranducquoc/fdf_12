@@ -953,8 +953,17 @@ ja:
               blank: "Price can't empty"
               greater_than: "Price must be greater than 0"
               less_than_or_equal_to: "Price must be less than or equal to 1000000000"
-  update_image_avatar: "Update image avatar"
-  invalid_hour: "Start hour must be less than or equal end hour"
+        shop:
+          attributes:
+            name:
+              blank: "Shop's name can't empty"
+              without: "Shop's name invalid"
+              too_long: "Shop's name can't be more than 50 characters"
+            description:
+              blank: "Description can't empty"
+              too_long: "Description can't be more than 250 characters"
+  update_image_avatar: "Update image"
+  invalid_hour: "End hour must be less than or equal start hour"
   not_have_domain: "You have to take part in a domain to continue!"
   shop_not_allow: "You are not allowed to view this shop"
   manage_user_domain: "Manage %{name} members"
@@ -969,3 +978,4 @@ ja:
   manage_joins_domains: "Joins domains"
   create_new_shop: "Create new shop"
   function: "Chức năng"
+  update_cover_image: "Update cover image"

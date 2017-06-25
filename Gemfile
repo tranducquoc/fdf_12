@@ -46,6 +46,7 @@ gem "active_model_serializers", "~> 0.10.0"
 gem "actionpack-page_caching"
 gem "animate-rails"
 gem "validates_timeliness"
+gem "jquery-validation-rails"
 
 source "https://rails-assets.org" do
   gem "rails-assets-datetimepicker"

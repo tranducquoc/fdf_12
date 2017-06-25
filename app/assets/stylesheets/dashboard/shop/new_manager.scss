@@ -1,14 +1,30 @@
 .manager-img {
-  max-height: 50px;
-  max-width: 50px;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
 }
 
 .manager-search {
+  cursor: pointer;
   padding: 10px;
+  &:hover {
+    background-color: #f5f5f5;
+  }
+  .col-xs-10 {
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    justify-content: center;
+    p {
+      width: 100%;
+      margin-bottom: 0;
+    }
+  }
 }
 
 .new-manager-search-result {
   height: auto;
-  max-height: 200px;
-  overflow-y: auto;
+  max-height: 350px;
+  overflow-y: overlay;
+  border-radius: 0 !important;
 }

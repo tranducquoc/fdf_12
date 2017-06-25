@@ -4,6 +4,7 @@ class Dashboard::ShopsController < BaseDashboardController
   before_action :check_user_status_for_action
   before_action :load_domain_in_session
   before_action :check_owner_or_manager, only: [:show, :edit]
+  before_action :get_current_action, only: [:index, :show]
 
   def new
     @shop = current_user.own_shops.build
@@ -42,6 +43,7 @@ class Dashboard::ShopsController < BaseDashboardController
   end
 
   def index
+    @shop = Shop.new
     @request = @domain.request_shop_domains.build if @domain.present?
     @shops = current_user.shops.page(params[:page])
       .per Settings.common.products_per_page
@@ -74,7 +76,11 @@ class Dashboard::ShopsController < BaseDashboardController
                 shop_job = Delayed::Job.find_by id: shop_job_id
                 shop_job.delete if shop_job.present?
               end
-              redirect_by_domain
+              if @@current_action == Settings.shop_actions.index
+                redirect_to dashboard_shops_path
+              else
+                redirect_to dashboard_shop_path
+              end
             else
               flash[:danger] = t "flash.danger.dashboard.updated_shop"
               render :edit
@@ -163,5 +169,9 @@ class Dashboard::ShopsController < BaseDashboardController
       flash[:danger] = t "not_have_permission"
       redirect_to root_path
     end
+  end
+
+  def get_current_action
+    @@current_action = params[:action]
   end
 end

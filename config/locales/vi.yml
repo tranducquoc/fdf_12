@@ -1034,3 +1034,4 @@ vi:
   request_domain_shops: "Cửa hàng yêu cầu"
   finish_manage_domain_shop: "Hoàn thành"
   manage_domain_shops: "Quản lý cửa hàng"
+  not_have_shops: "Không có cửa hàng nào"

@@ -94,9 +94,15 @@
     </div>
   </div>
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <div class="owl-carousel owl-theme">
-      <%= render @shops %>
-    </div>
+    <% if @shops.present? %>
+      <div class="owl-carousel owl-theme">
+        <%= render @shops %>
+      </div>
+    <% else %>
+      <div class="no-shops">
+        <%= t "not_have_shops" %>
+      </div>
+    <% end %>
     <div class="line-end-silde"></div>
     <% if current_user.is_member_of_domain? @domain %>
       <div class="btn_view_all_wrapper pull-center">
@@ -120,9 +126,15 @@
     </div>
   </div>
   <div class="col-md-12 magin_top_10px">
-    <div class="row padding-left-right-15">
-      <%= render @products_shop.flatten.slice(0, 12) %>
-    </div>
+    <% if @products_shop.present? %>
+      <div class="row padding-left-right-15">
+        <%= render @products_shop.flatten.slice(0, 12) %>
+      </div>
+    <% else %>
+      <div class="no-products">
+        <%= t "dashboard.order_managers.index.not_products" %>
+      </div>
+    <% end %>
     <div class="line-end-silde margin-top-20"></div>
     <% if current_user.is_member_of_domain? @domain %>
       <div class="btn_view_all_wrapper pull-center">

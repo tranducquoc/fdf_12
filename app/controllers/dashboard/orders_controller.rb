@@ -9,15 +9,18 @@ class Dashboard::OrdersController < BaseDashboardController
       .of_user_ids(user_ids)
     load_order_product orders, params[:type]
     load_list_toal_orders
-    if @orders.present?
+    if params[:check_orders].present?
+      respond_to do |format|
+        format.json do
+          render json: {orders: @orders.size}
+        end
+      end
+    else
       if request.xhr?
         respond_to do |format|
           format.js
         end
       end
-    else
-      flash[:danger] = t "oder.not_oder"
-      redirect_to dashboard_shop_path @shop
     end
   end
 

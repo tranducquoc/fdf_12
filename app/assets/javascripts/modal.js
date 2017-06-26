@@ -329,3 +329,26 @@ $(document).ready(function(){
     $(this).find('.function').animate({'height': 'hide'}, 400);
   });
 });
+
+$(document).ready(function(){
+  $('.btn_list_orders').click(function(){
+    var shop_id = $(this).data('id');
+    $.ajax({
+      url: '/dashboard/shops/' + shop_id + '/orders',
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        check_orders: true
+      },
+      success: function(response) {
+        if(response.orders == 0)
+          sweetAlert(I18n.t('api.error'), I18n.t('oder.not_oder'), 'error');
+        else
+          window.location.href = '/dashboard/shops/' + shop_id + '/orders'
+      },
+      error: function(errors) {
+        sweetAlert(I18n.t('api.error'), I18n.t('api.error'), 'error');
+      }
+    });
+  });
+});

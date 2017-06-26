@@ -43,7 +43,8 @@
           </div>
           <% unless shop.pending? %>
             <div class="btn_function">
-              <%= link_to dashboard_shop_orders_path(shop.id), class: "btn_item" do %>
+              <%= link_to "javascript:void(0)", "data-id": shop.id,
+                class: "btn_item btn_list_orders" do %>
                 <div class="btn_icon material-icons">view_list</div>
                 <div><%= t "dashboard.order.view_order_list" %></div>
               <% end %>

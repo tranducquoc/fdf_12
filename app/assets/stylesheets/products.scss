@@ -319,14 +319,16 @@ img {
   display: block;
 }
 
-.time-group {
+.intime-group {
   display: inline-block;
-  width: 49%;
-  box-sizing: border-box;
-  .intime-group {
-    display: inline-block;
-    width: 47%;
-  }
+  width: 70px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
 }
 
 .margin-left-2 {
@@ -334,29 +336,27 @@ img {
 }
 
 .modal-product {
-  min-width: 700px;
+  min-width: 600px;
 }
 
-form.form-product {
-  .errors {
-    float: right;
-    color: red;
-  }
-  .form-button {
-    min-width: 80px;
-  }
+label.error, .time-error {
+  float: right;
+  color: red;
+}
+
+.form-button {
+  min-width: 80px;
 }
 
 .hidden-file {
   display: none !important;
 }
 
-.choose-avatar {
+.choose-avatar, .choose-avatar-shop, .choose-cover-image-shop {
   position: absolute;
   bottom: 10px;
   left: 10px;
-  height: 35px;
-  white-space: nowrap;
+  display: flex;
   > i {
     width: 35px;
     height: 35px;
@@ -367,24 +367,30 @@ form.form-product {
     background-color: #fd680e;
     border-radius: 50px;
     cursor: pointer;
+    transition: 0.5s ease-in-out;
+    &:hover {
+      transform: rotate(1turn);
+      -webkit-transform: rotate(1turn);
+      -moz-transform: rotate(1turn);
+      transition: 0.5s ease-in-out;
+    }
   }
   > label {
     display: none;
-    float: right;
-    height: 33px;
-    margin-top: 2px;
-    background-color: white;
-    border: 2px solid #fd680e;
-    line-height: 30px;
-    font-weight: normal;
-    border-radius: 50px;
-    margin-left: -35px;
-    padding: 0 3px 0 33px;
+    width: 200px;
+    height: 35px;
+    margin-top: 1px;
+    background-color: rgba(238, 238, 238, 0.65);
+    color: #fd680e;
+    border: 1px solid;
+    line-height: 33px;
+    border-radius: 0 50px 50px 0;
     cursor: pointer;
+    margin-left: -18px;
+    text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 250px;
   }
 }
 
@@ -398,4 +404,8 @@ form.form-product {
   padding-top: 15px;
   text-align: right;
   border-top: 1px solid #e5e5e5;
+}
+
+.color-red {
+  color: red;
 }

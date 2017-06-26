@@ -21,12 +21,13 @@ class Order < ApplicationRecord
   after_create :build_order_products
   after_create_commit :create_notification
   after_create :check_status_order, if: -> {self.pending?}
-  
+
   scope :of_user_ids, -> ids {where user_id: ids}
   scope :by_date_newest, ->{order created_at: :desc}
   scope :unfinished, ->{where.not status: Order.statuses[:done]}
   scope :is_rejected, -> {where.not status: Order.statuses[:rejected]}
   scope :by_domain, -> domain_id {where domain_id: domain_id if domain_id.present?}
+  scope :by_domain_ids, -> ids {where domain_id: ids}
 
   ransacker :created_at do
     Arel.sql("date(created_at)")

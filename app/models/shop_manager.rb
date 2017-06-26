@@ -19,4 +19,8 @@ class ShopManager < ApplicationRecord
     joins(:user)
     .select("users.*, role")
   end
+
+  scope :not_in_any_domain, -> do
+    where.not(id: ShopManagerDomain.select(:shop_manager_id).distinct)
+  end
 end

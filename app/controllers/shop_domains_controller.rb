@@ -34,7 +34,7 @@ class ShopDomainsController < ApplicationController
   def destroy
     ShopDomain.destroy_all domain_id: params[:domain_id], shop_id: @shop.id
     if request.xhr?
-        render_js nil, @choosen_domain
+      render_js nil, @choosen_domain
     else
       redirect_to :back
     end

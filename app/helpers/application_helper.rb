@@ -191,4 +191,8 @@ module ApplicationHelper
     end
     products_domain.flatten
   end
+
+  def check_length_perpage products
+    products.size > Settings.common.products_per_page
+  end
 end

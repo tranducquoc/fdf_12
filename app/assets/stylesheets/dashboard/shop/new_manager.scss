@@ -28,3 +28,16 @@
   overflow-y: overlay;
   border-radius: 0 !important;
 }
+
+.filter-user-by-shop-domain.form-control {
+  outline: 0;
+  border-radius: 10px !important;
+}
+
+#user_by_shop_domain {
+  border-radius: 10px !important;
+}
+
+.filter-user-by-shop-domain-label {
+  padding-left: 10px;
+}

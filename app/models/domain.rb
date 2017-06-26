@@ -10,6 +10,7 @@ class Domain < ApplicationRecord
   has_many :products, through: :product_domains
   has_many :request_shop_domains
   has_many :orders
+  has_many :shop_manager_domains, dependent: :destroy
 
   VALID_NAME_REGEX = /[a-zA-Z]/
 

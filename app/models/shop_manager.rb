@@ -3,6 +3,9 @@ class ShopManager < ApplicationRecord
   belongs_to :user
   belongs_to :shop
 
+  has_many :shop_manager_domains, dependent: :destroy
+  has_many :domains, through: :shop_manager_domains
+
   enum role: {owner: 0, manager: 1, member: 2}
 
   delegate :name, to: :user, prefix: true
@@ -16,5 +19,4 @@ class ShopManager < ApplicationRecord
     joins(:user)
     .select("users.*, role")
   end
-
 end

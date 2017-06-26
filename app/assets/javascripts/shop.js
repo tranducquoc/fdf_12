@@ -9,6 +9,9 @@ $(document).ready(function() {
     reader.readAsDataURL(input.files[0]);
     }
   };
+  $.validator.addMethod("shop_valid", function(value, element, regex) {
+    return this.optional(element) || regex.test(value);
+  }, I18n.t("activerecord.errors.models.shop.attributes.name.without"));
   $('#new_shop').validate({
     errorPlacement: function (error, element) {
       error.insertBefore(element);
@@ -16,7 +19,8 @@ $(document).ready(function() {
     rules: {
       'shop[name]': {
         required: true,
-        maxlength: 50
+        maxlength: 50,
+        shop_valid: /[a-zA-Z]/
       },
       'shop[description]': {
         required: true,

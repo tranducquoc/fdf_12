@@ -30,14 +30,14 @@ class UserDomainsController < ApplicationController
 
   def update
     if @user_domain.update_attributes(role: params[:role])
-      message = @user_domain.manager? ? 
+      message = @user_domain.manager? ?
         t("manage_domain.add_manager_successfully")
         : t("manage_domain.remove_manager_successfully")
     else
       message = t("manage_domain.add_manager_faild")
     end
     @user_domain.create_event_add_manager_domain @user_domain.user_id
-    render_js message 
+    render_js message
   end
 
   def destroy
@@ -52,7 +52,7 @@ class UserDomainsController < ApplicationController
       else
         flash[:success] = t "leave_domain_success" if params[:leave_domain].present?
         flash[:success] = t "delete_domain" if params[:delete_user_domain].present?
-        redirect_to root_path
+        redirect_to domains_path
       end
     end
   end

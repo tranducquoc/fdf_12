@@ -839,10 +839,11 @@ vi:
     cancel: "Hủy"
   manage_domain:
     view_all_domains: "Tất cả miền"
-    leave: "Rời"
+    leave: "Rời miền"
     add_member: "Thêm thành viên"
     edit_shop: "%{num} Cửa hàng"
     delete_shop: "Xóa"
+    delete_domain: "Xóa miền"
     edit_member: "%{num} Thành viên"
     user: "Quản lý thành viên"
     add_manager_successfully: "Thêm quản lý miền thành công"
@@ -852,6 +853,7 @@ vi:
     manage: "Quản lý"
     personal: "Cá nhân"
     shop: "Quản lý cửa hàng"
+    request_join_domain: "%{num} Yêu cầu vào miền"
   views:
     pagination:
       first: "Đầu tiên"
@@ -1012,6 +1014,11 @@ vi:
             description:
               blank: "Mô tả cửa hàng không được để trống"
               too_long: "Mô tả cửa hàng không được quá 250 ký tự"
+        domain:
+          attributes:
+            name:
+              blank: "Tên miền không được để trống"
+              without: "Tên miền không hợp lệ"
   update_image_avatar: "Cập nhật ảnh"
   invalid_hour: "Giờ kết thúc phải lớn hơn hoặc bằng giờ bắt đầu"
   not_have_domain: "Bạn phải tham gia vào một miền để tiếp tục!"
@@ -1035,3 +1042,5 @@ vi:
   finish_manage_domain_shop: "Hoàn thành"
   manage_domain_shops: "Quản lý cửa hàng"
   not_have_shops: "Không có cửa hàng nào"
+  create_new_domain: "Tạo miền mới"
+  enter_domain: "Vào miền"

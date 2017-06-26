@@ -799,10 +799,11 @@ en:
     cancel: "Cancel"
   manage_domain:
     view_all_domains: "view all domains"
-    leave: "Leave"
+    leave: "Leave domain"
     add_member: "Add members"
     edit_shop: "%{num} Shops"
     delete_shop: "Delete"
+    delete_domain: "Delete domain"
     edit_member: "%{num} Members"
     user: "Manage members"
     add_manager_successfully: "Domain manager is saved successfully"
@@ -812,6 +813,7 @@ en:
     manage: "Set Manager"
     personal: "Personal"
     shop: "Manage shops"
+    request_join_domain: "%{num} Requests join domain"
   views:
     pagination:
       first: "First"
@@ -954,6 +956,11 @@ en:
             description:
               blank: "Description can't empty"
               too_long: "Description can't be more than 250 characters"
+        domain:
+          attributes:
+            name:
+              blank: "Domain's name can't empty"
+              without: "Domain's name invalid"
   update_image_avatar: "Update image"
   invalid_hour: "End hour must be less than or equal start hour"
   not_have_domain: "You have to take part in a domain to continue!"
@@ -977,3 +984,5 @@ en:
   finish_manage_domain_shop: "Done"
   manage_domain_shops: "Manage shops"
   not_have_shops: "Not has any products"
+  create_new_domain: "Create new domain"
+  enter_domain: "Enter domain"

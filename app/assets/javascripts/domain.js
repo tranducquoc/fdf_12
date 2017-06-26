@@ -46,4 +46,48 @@ $(document).ready(function() {
   $('.item-product-shop').hover(function() {
     $(this).find('.toggle_panel').toggle('slide');
   });
+  $('.list-domain').hover(function() {
+    $(this).find('.domain-item-hidden').slideDown('fast');
+  }, function() {
+    $(this).find('.domain-item-hidden').slideUp('fast');
+  });
+  $.validator.addMethod("valid", function(value, element, regex) {
+    return this.optional(element) || regex.test(value);
+  }, I18n.t("activerecord.errors.models.domain.attributes.name.without"));
+  $('#new_domain').validate({
+    errorPlacement: function (error, element) {
+      error.insertBefore(element);
+    },
+    rules: {
+      'domain[name]': {
+        required: true,
+        valid: /[a-zA-Z]/
+      }
+    },
+    messages: {
+      'domain[name]': {
+        required: I18n.t('activerecord.errors.models.domain.attributes.name.blank')
+      }
+    }
+  });
+  $('.btn-edit-domain').click(function() {
+    var domain_id = $(this).data('domain-id');
+    var edit_domain = document.getElementById('edit_domain_' + domain_id);
+    $(edit_domain).validate({
+      errorPlacement: function (error, element) {
+        error.insertBefore(element);
+      },
+      rules: {
+        'domain[name]': {
+          required: true,
+          valid: /[a-zA-Z]/
+        }
+      },
+      messages: {
+        'domain[name]': {
+          required: I18n.t('activerecord.errors.models.domain.attributes.name.blank')
+        }
+      }
+    });
+  });
 });

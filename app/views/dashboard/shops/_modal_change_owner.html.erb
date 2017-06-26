@@ -8,13 +8,15 @@
       </div>
       <div class="modal-body">
         <div class="row padding-bottom-0">
-            <%= form_tag shop_path(@shop), method: :put do %>
+            <%= form_tag dashboard_shop_owner_path(@shop),
+              method: :put do %>
               <%= render "shared/error_messages", object: @shop %>
               <div class="col-xs-10 col-xs-offset-1">
                 <div class="form-group">
                   <h4 class="center"><%= label_tag(:email, t("enter_email")) %></h4>
                 </div>
               </div>
+              <%= hidden_field_tag :shop_id, @shop.id %>
               <div class="col-xs-10 col-xs-offset-1">
                 <div class="form-group dropdown">
                   <%= text_field_tag :email, nil,

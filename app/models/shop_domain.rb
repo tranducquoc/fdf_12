@@ -3,6 +3,8 @@ class ShopDomain < ApplicationRecord
   belongs_to :domain
   belongs_to :shop
 
+  before_destroy :destroy_shop_manager_domain
+
   enum status: {pending: 0, approved: 1, rejected: 2}
 
   scope :select_all_shop_by_domain, ->(user_domain_id, shop_id) do
@@ -31,6 +33,13 @@ class ShopDomain < ApplicationRecord
       Event.create message: :rejected,
         user_id: user_id, eventable_id: domain.id, eventable_type: ShopDomain.name,
         eventitem_id: self.id
+    end
+  end
+
+  private
+  def destroy_shop_manager_domain
+    self.shop.shop_managers.each do |shop_manager|
+      shop_manager.shop_manager_domains.by_domain(self.domain).destroy_all
     end
   end
 end

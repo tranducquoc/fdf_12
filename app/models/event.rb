@@ -188,7 +188,7 @@ class Event < ApplicationRecord
         user_domain = UserDomain.find_by user_id: user_id, domain_id: domain.id,
           role: :manager
         if user_id == domain.owner || user_domain.present?
-          "/domains?domain_id=#{eventitem_id}"
+          "/domains?domain_id=#{domain.id}"
         else
           "/domains/#{domain.slug}/dashboard/shops"
         end

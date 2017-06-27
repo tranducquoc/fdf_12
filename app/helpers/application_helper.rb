@@ -32,7 +32,7 @@ module ApplicationHelper
 
   def count_notification_unread
     if user_signed_in?
-      number_noti =  @count_unread_notification
+      number_noti =  current_user.events.by_date.unread.size
       if number_noti == Settings.notification.number_unread_not_display
         number_noti = ""
       else

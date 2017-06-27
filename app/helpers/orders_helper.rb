@@ -29,4 +29,16 @@ module OrdersHelper
   def group_by_user orders
     orders.group_by{|u| u.user_id}
   end
+
+  def accepted_products order_products
+    order_products.sum{|o| o.accepted? || o.done? ? o.quantity : 0 }
+  end
+
+  def rejected_products order_products
+    order_products.sum{|o| o.rejected? ? o.quantity : 0 }
+  end
+
+  def total_pay order_products
+    order_products.sum{|o| o.accepted? || o.done? || o.pending? ? o.quantity * o.product_price : 0}
+  end
 end

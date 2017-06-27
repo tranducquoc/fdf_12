@@ -1,9 +1,10 @@
 <% @events.each do |event| %>
-  <div class="notification-body mark-read" data-id="<%= event.id %>"
+  <div class="notification-body mark-read <%= bg_unread event %>"
+    data-id="<%= event.id %>"
     data-link="<%= event.get_link_redirect %>" data-no-turbolink="true">
     <span role="presentation" class="">
         <%= link_to "#" do %>
-          <div class="row <%= bg_unread event %>">
+          <div class="row">
             <div class="col-md-3">
                 <span class="item-left event-product-thumbnail">
                   <%= image_tag event.get_link_img %>

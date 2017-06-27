@@ -968,6 +968,7 @@ en:
   manage_user_domain: "Manage %{name} members"
   add_domain_users: "Add Members"
   manage_domain_users: "Member domain manager"
+  domain_manage_users: "Manage user"
   finish_manage_domain_user: "Done"
   search_domain_user: "Search user"
   shop_manager: "Shop manager"

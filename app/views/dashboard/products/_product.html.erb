@@ -1,29 +1,17 @@
 <tr class="center-vertical-td">
   <td>
-    <% if @domain.present? %>
-      <%= link_to domain_product_path(@domain, product) do %>
-        <div class="shop-product-image">
-          <%= image_tag product.image.url %>
-        </div><br>
-        <h5 class="time-output"><strong>
+    <%= link_to product_path(domain_id: session[:domain_id]) do %>
+      <div class="shop-product-image">
+        <%= image_tag product.image.url %>
+      </div><br>
+      <h5 class="time-output">
+        <strong>
           <%= t "cart.order_time_text" %>
           <%= l product.start_hour, format: :short_time %>
           <%= t "split" %>
           <%= l product.end_hour, format: :short_time %>
-        </strong></h5>
-      <% end %>
-    <% else %>
-      <%= link_to product_path(domain_id: session[:domain_id]) do %>
-        <div class="shop-product-image">
-          <%= image_tag product.image.url %>
-        </div><br>
-        <h5 class="time-output"><strong>
-          <%= t "cart.order_time_text" %>
-          <%= l product.start_hour, format: :short_time %>
-          <%= t "split" %>
-          <%= l product.end_hour, format: :short_time %>
-        </strong></h5>
-      <% end %>
+        </strong>
+      </h5>
     <% end %>
   </td>
   <td><%= product.name %></td>

@@ -461,8 +461,9 @@ $orange_main: #ff5722;
 }
 
 .avatar-show-user {
-  width: 251px;
-  height: 225px;
+  width: 100%;
+  height: auto;
+  max-height: 250px;
 }
 
 .min-size {
@@ -664,4 +665,51 @@ text-small {
 
 .padding-top-10 {
   padding-top: 10px;
+}
+
+.message-alert {
+  position: fixed;
+  top: 50px;
+  right: 10px;
+  z-index: 1111;
+  ul {
+    padding-left: 0;
+    li {
+      list-style: none;
+    }
+  }
+}
+
+.boder-radius-0 {
+  border-radius: 0 !important;
+}
+
+.text-panel {
+  color: white;
+  font-size: 20px;
+  line-height: 42px;
+}
+
+.table-account {
+  tr {
+    th {
+      width: 110px;
+      white-space: nowrap;
+    }
+    td {
+      word-wrap: break-word;
+      @media (min-width: 1200px) {
+        max-width: 380px;
+      }
+      @media (min-width: 992px) {
+        max-width: 380px;
+      }
+      @media (min-width: 768px) {
+        max-width: 280px;
+      }
+      @media (max-width: 767px) {
+        max-width: 350px;
+      }
+    }
+  }
 }

@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-3 col-sm-12 col-xs-12">
-    <div class="block-item-list block padding-0 col-md-12 col-sm-6 col-xs-18">
+    <div class="block-item-list block padding-0 col-md-12 col-sm-6
+      col-xs-18 boder-radius-0">
       <h3 class="title padding-left-10 margin-left_domain form-header">
         <span class="text-header"><%= t "common.categories" %></span>
       </h3>
@@ -20,7 +21,7 @@
                 <div class="col-lg-6 col-md-12 col-xs-6 margin-bottom-5
                   padding-left-right-5 padding_0">
                   <%= link_to domain_category_path(@domain, category),
-                    class: "categorie" do %>
+                    class: "categorie bd-radius-category" do %>
                     <span class="domain-name"><%= category.name %></span>
                     <span class="categorie-count">
                       <%= number_product_in_category_by_domain category, @domain %>
@@ -33,7 +34,8 @@
         </div>
       </div>
     </div>
-    <div class="block-item-list block padding-0 col-md-12 col-sm-6 col-xs-18">
+    <div class="block-item-list block padding-0 col-md-12 col-sm-6
+      col-xs-18 boder-radius-0">
       <h3 class="title padding-left-10 margin-left_domain form-header">
         <span class="text-header"><%= t "public_domain" %>(<%= @domains.size %>)</span>
       </h3>

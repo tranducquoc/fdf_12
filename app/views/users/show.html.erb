@@ -1,34 +1,40 @@
 <% provide :title, @user.name %>
 <div class="row">
-  <div class="toppad col-md-12" >
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2" >
     <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title text-center"><%= @user.name %></h3>
+      <div class="panel-default modal_header">
+        <h3 class="panel-title text-center text-panel">
+          <strong><%= t "account_info" %></strong>
+        </h3>
       </div>
       <div class="panel-body">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-xs-4">
             <%= image_tag @user.avatar.url, alt: @user.name, class: "avatar-show-user" %>
           </div>
-          <div class="col-md-8">
-            <table class="table">
+          <div class="col-xs-8">
+            <table class="table table-hover table-account">
               <tbody>
                 <tr>
-                  <td><%= t ".email" %></td>
+                  <th><%= t ".full_name" %></th>
+                  <td><%= @user.name %></td>
+                </tr>
+                <tr>
+                  <th><%= t ".email" %></th>
                   <td><%= @user.email %></td>
                 </tr>
                 <tr>
-                  <td><%= t ".chatwork" %></td>
+                  <th><%= t ".chatwork" %></th>
                   <td><%= @user.chatwork_id %></td>
                 </tr>
                 <tr>
-                  <td><%= t ".create_at" %></td>
+                  <th><%= t ".create_at" %></th>
                   <td>
                     <%= @user.created_at.strftime(t "date_format") %>
                   </td>
                 </tr>
                 <tr>
-                  <td><%= t ".status" %></td>
+                  <th><%= t ".status" %></th>
                   <td>
                     <span class="label label-info">
                       <%= t "all_status.#{@user.status}" %>
@@ -36,24 +42,22 @@
                   </td>
                 </tr>
                 <tr>
-                  <td><%= t ".description" %></td>
+                  <th><%= t ".description" %></th>
                   <td>
                     <%= @user.description %>
                   </td>
                 </tr>
               </tbody>
             </table>
-            <div class="panel-footer">
-              <span class="pull-right">
-                <% if current_user? @user %>
-                  <%= link_to edit_user_registration_path,
-                    class: "btn btn-sm btn-warning" do %>
-                    <i class="glyphicon glyphicon-edit"></i>
-                    <%= t "common.edit_button" %>
-                  <% end %>
-                <% end %>
-              </span>
-            </div>
+          </div>
+          <div class="col-xs-12">
+            <% if current_user? @user %>
+              <%= link_to edit_user_registration_path,
+                class: "btn btn-sm btn-warning float-right form-button" do %>
+                <i class="glyphicon glyphicon-edit"></i>
+                <%= t "common.edit_button" %>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </div>

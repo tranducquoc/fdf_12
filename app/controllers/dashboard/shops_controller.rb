@@ -98,9 +98,15 @@ class Dashboard::ShopsController < BaseDashboardController
 
   private
   def shop_params
-    params.require(:shop).permit(:id, :name, :description,
-      :cover_image, :avatar, :time_auto_reject, :time_auto_close, :openforever)
-      .merge status_on_off: :off, delayjob_id: nil
+    if params[:shop][:openforever] == Settings.checkbox_value_true
+      params.require(:shop).permit(:id, :name, :description,
+        :cover_image, :avatar, :time_auto_reject, :time_auto_close, :openforever)
+        .merge status_on_off: :on, delayjob_id: nil
+    else
+      params.require(:shop).permit(:id, :name, :description,
+        :cover_image, :avatar, :time_auto_reject, :time_auto_close, :openforever)
+        .merge status_on_off: :off, delayjob_id: nil
+    end
   end
 
   def load_params_update

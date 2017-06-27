@@ -637,10 +637,9 @@ $orange_main: #ff5722;
   display: inline-block;
   width: 100%;
   color: white;
-  border-radius: 5px;
   font-size: 15px;
   line-height: 25px;
-  margin-right: 10px;
+  margin-top: 7px;
   background: #60a73c;
   box-shadow: 1px 1px 1px rgba(68, 13, 13, 0.54);
   padding-left: 10px;
@@ -664,7 +663,6 @@ $orange_main: #ff5722;
   height: 25px;
   text-align: center;
   float: right;
-  margin-right: -7px;
   background: white;
   color: #fd6332;
 }
@@ -1178,4 +1176,9 @@ $orange_main: #ff5722;
 
 .v-a-middle {
   vertical-align: middle !important;
+}
+
+.bd-radius-category {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
 }

@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var price = 0;
   var product = null;
-  $('.btn_modal_order_now').click(function(){
+  $(document).on('click', '.btn_modal_order_now', function(){
     product = $(this).data('product');
     price = product.price;
     document.getElementById("modal_image").src = product.image.url;

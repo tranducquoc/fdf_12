@@ -27,7 +27,7 @@ class CartDomain
     end
   end
 
-  def update_cart 
+  def update_cart
     carts = @carts.map do |cart|
       items = []
       cart.items.each do |item|
@@ -35,8 +35,14 @@ class CartDomain
       end
       {items: items, domain_id: cart.domain_id}
     end
-    {carts: carts}   
-  end 
+    {carts: carts}
+  end
+
+  def detele_cart carts_domain
+    carts_domain.each do |cart|
+      carts.delete cart
+    end
+  end
 
   def to_hash
     hash = {}

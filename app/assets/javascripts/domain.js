@@ -90,4 +90,28 @@ $(document).ready(function() {
       }
     });
   });
+  $(document).on('click', '[data-destroy="user-domain"]', function(e) {
+    e.preventDefault();
+    var user_name = $(this).data('user-name');
+    var domain_name = $(this).data('domain-name');
+    var url = $(this).attr('href');
+    swal({
+      customClass: 'custom-swal',
+      title: I18n.t('common.notifications'),
+      text: I18n.t('confirm_delete_user_domain', {user_name: user_name, domain_name: domain_name}),
+      showCancelButton: true,
+      confirmButtonColor: '#ff5722',
+      confirmButtonText: I18n.t('submit'),
+      cancelButtonText: I18n.t('cancel'),
+      closeOnCancel: true
+    }, function(confirmed) {
+      if(confirmed) {
+        $.ajax({
+          url: url,
+          type: "delete",
+          dataType: "script"
+        });
+      }
+    });
+  });
 });

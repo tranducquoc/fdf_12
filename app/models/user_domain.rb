@@ -7,6 +7,9 @@ class UserDomain < ApplicationRecord
 
   enum role: {owner: 0, manager: 1, member: 2}
 
+  delegate :name, to: :domain, prefix: true
+  delegate :name, to: :user, prefix: true
+
   before_destroy :destroy_shop_manager_domain
 
   scope :user_ids_by_domain, -> domain do

@@ -997,3 +997,8 @@ en:
   update_fails: "Update fails!"
   order_at: "Order at: "
   unpaid: "Unpaid"
+  confirm_delete_domain: "Do you really want to delete %{domain_name} domain?"
+  confirm_leave_domain: "Do you really want to leave %{domain_name} domain?"
+  confirm_delete_product: "Do you really want to delete product %{product_name}?"
+  confirm_cancel_request_shop: "Do you really want to cancel request join %{domain_name} domain of %{shop_name} shop"
+  confirm_delete_user_domain: "Do you really want to delete member %{user_name} from %{domain_name} domain?"

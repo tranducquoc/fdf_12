@@ -8,7 +8,7 @@
       <div class="clearfix body  margin-left_domain">
         <div class="category-list padding-top-0">
           <div class="<%= "scroll" if @domains.size > Settings.max_content_scroll %>">
-            <div class="col-lg-6 col-md-12 col-xs-6 margin-bottom-5 padding_0
+            <div class="col-lg-6 col-md-12 col-xs-6 padding_0 margin-top-5-bot-5
               padding-left-right-5">
               <%= link_to products_path(domain_id: @domain.id),
                 class: "categorie" do %>
@@ -18,7 +18,7 @@
             <% @categories.each do |category| %>
               <% if number_product_in_category_by_domain(category, @domain) >
                 Settings.min_product_in_category %>
-                <div class="col-lg-6 col-md-12 col-xs-6 margin-bottom-5
+                <div class="col-lg-6 col-md-12 col-xs-6 margin-top-5-bot-5
                   padding-left-right-5 padding_0">
                   <%= link_to domain_category_path(@domain, category),
                     class: "categorie bd-radius-category" do %>
@@ -44,7 +44,7 @@
           <% if @domains.present? %>
             <div class="<%= "scroll" if @domains.size > Settings.max_content_scroll %>">
               <% @domains.each do |domain| %>
-                <div class="col-lg-6 col-md-12 col-xs-6 margin-bottom-5 padding_0
+                <div class="col-lg-6 col-md-12 col-xs-6 padding_0
                   padding-left-right-5">
                   <%= link_to domain_path(domain),
                     class: "categorie" do %>
@@ -62,7 +62,7 @@
     </div>
   </div>
   <!-- Begin carousel -->
-  <div class="col-sm-12 col-md-9">
+  <div class="col-xs-12 col-sm-12 col-md-9">
     <div id="id_top_products" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner" role="listbox">
         <% @shops_slide.each_with_index do |shop, index| %>
@@ -89,6 +89,8 @@
     </div>
   </div>
   <!-- End carousel -->
+</div>
+<div class="row">
   <div class="col-xs-12">
     <div class="margin-top-30 border-top-shop">
       <span class="top-shop-product"><%= t "common.top_shops" %></span>

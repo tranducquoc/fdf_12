@@ -5,11 +5,10 @@ module DomainsHelper
   end
 
   def delete_user_domain_btn user_domain
-    link_to t("delete"),
-      user_domain_path(user_domain,
+    link_to t("delete"), user_domain_path(user_domain,
       domain_id: user_domain.domain_id, delete_user_domain: true),
-      method: :delete, data: {confirm: t("common.delete_confirm")},
-      class: "btn btn-danger", remote: true
+      data: {destroy: "user-domain", "domain-name": user_domain.domain_name,
+        "user-name": user_domain.user_name}, class: "btn btn-danger btn-delete-user"
   end
 
   def domain_manager_action user_domain

@@ -33,6 +33,7 @@
 //= require sweetalert/dist/sweetalert.min.js
 //= require owl.carousel/dist/owl.carousel.min.js
 //= require jquery.validate
+//= require sweet-alert-confirm
 
 $(document).ready(function () {
   $('.alert').fadeOut(5000);

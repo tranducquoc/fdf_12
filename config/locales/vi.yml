@@ -1055,3 +1055,8 @@ vi:
   update_fails: "Cập nhật thất bại!"
   order_at: "Đặt lúc: "
   unpaid: "Chưa thanh toán"
+  confirm_delete_domain: "Bạn thật sự muốn xóa miền %{domain_name}?"
+  confirm_leave_domain: "Bạn thật sự muốn rời miền %{domain_name}?"
+  confirm_delete_product: "Bạn thật sự muốn xóa sản phẩm %{product_name}?"
+  confirm_cancel_request_shop: "Bạn muốn hủy yêu cầu vào miền %{domain_name} của cửa hàng %{shop_name}"
+  confirm_delete_user_domain: "Bạn thật sự muốn xóa thành viên %{user_name} khỏi miền %{domain_name}?"

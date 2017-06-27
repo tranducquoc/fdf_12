@@ -313,6 +313,8 @@ $orange_main: #ff5722;
     width: 102%;
     height: 110px;
     margin-top: 20px;
+    padding-left: 10px;
+    padding-top: 8px;
   }
 }
 
@@ -1168,4 +1170,12 @@ $orange_main: #ff5722;
   text-align: center;
   font-size: 25px;
   color: #f15626;
+}
+
+.margin-top-10 {
+  margin-top: 10px;
+}
+
+.v-a-middle {
+  vertical-align: middle !important;
 }

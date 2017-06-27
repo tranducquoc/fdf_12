@@ -2,13 +2,21 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="margin-bottom-15">
-        <strong><%= t"oder.status" %></strong>
-        <%= status_order order %>
+        <%= t("oder.status") << " " %>
+        <strong><%= status_order order %></strong> |
+        <%= t "cart.order_time_text" %>
+        <strong><%= order.created_at.strftime(Settings.fomat_time) %></strong> |
+        <%= t "number_product" %>
+        <strong><%= total_items order.order_products %></strong> |
+        <%= t("all_status.accepted") << ": " %>
+        <strong><%= accepted_products order.order_products %></strong> |
+        <%= t("all_status.rejected") << ": " %>
+        <strong><%= rejected_products order.order_products %></strong>
         <% if order.pending? %>
           <%= link_to t("oder.btn_cancel_oder"), order_path(order, shop_id: order.shop_id),
             method: :delete, class: "btn btn-xs btn-danger pull-right" %>
         <% end %>
-        <hr>
+        <div class="line-end-silde margin-top-10 margin-bottom-15"></div>
       </div>
       <%= render "order_products",
         order_products: order.order_products.
@@ -16,7 +24,7 @@
       <div class="pull-right">
         <h4 class="style_price">
           <b><%= t "oder.total" %></b>
-          <%= format_price order.total_pay %>
+          <strong><%= format_price total_pay(order.order_products) %></strong>
         </h4>
       </div>
     </div>

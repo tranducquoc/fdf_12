@@ -976,6 +976,7 @@ ja:
   manage_user_domain: "％{name}メンバーを管理する"
   add_domain_users: "メンバーを追加"
   manage_domain_users: "メンバードメインマネージャー"
+  domain_manage_users: "ユーザーを管理します"
   finish_manage_domain_user: "完了"
   search_domain_user: "ユーザーを検索"
   shop_manager: "ショップマネージャー"

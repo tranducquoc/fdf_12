@@ -1026,6 +1026,7 @@ vi:
   manage_user_domain: "Quản lý thành viên miền %{name}"
   add_domain_users: "Thêm thành viên"
   manage_domain_users: "Thành viên quản lý miền"
+  domain_manage_users: "Quản lý thành viên"
   finish_manage_domain_user: "Hoàn thành"
   search_domain_user: "Tìm thành viên"
   shop_manager: "Quản lý cửa hàng"

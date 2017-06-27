@@ -185,6 +185,7 @@
   <div class="box_pro">
     <%= render "products" if @products.any? %>
   </div>
+  <%= paginate @products %>
 </div>
 <!-- modals -->
 <%= render "modal_add_managers" %>

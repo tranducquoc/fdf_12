@@ -1045,3 +1045,6 @@ vi:
   not_have_shops: "Không có cửa hàng nào"
   create_new_domain: "Tạo miền mới"
   enter_domain: "Vào miền"
+  cart_of_shop: "Giỏ hàng của bạn tại cửa hàng: %{name}"
+  order_this_shop: "Đặt đơn hàng của cửa hàng này"
+  daily: "Hằng ngày!"

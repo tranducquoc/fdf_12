@@ -106,7 +106,7 @@
       </div>
     <% end %>
     <div class="line-end-silde"></div>
-    <% if current_user.is_member_of_domain? @domain %>
+    <% if current_user.is_member_of_domain?(@domain) && @shops.present? %>
       <div class="btn_view_all_wrapper pull-center">
         <%= link_to domain_shops_path(@domain),
           class: "view-all" do %>
@@ -138,7 +138,7 @@
       </div>
     <% end %>
     <div class="line-end-silde margin-top-20"></div>
-    <% if current_user.is_member_of_domain? @domain %>
+    <% if current_user.is_member_of_domain?(@domain) && @products_shop.present? %>
       <div class="btn_view_all_wrapper pull-center">
         <%= link_to domain_products_path(@domain),
           class: "view-all" do %>

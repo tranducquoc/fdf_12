@@ -45,7 +45,7 @@ module Dashboard::ShopsHelper
 
   def load_tag_coutdown_auto_close_shop shop
     if shop.openforever?
-      label_tag "", Settings.time_none, class: "shop_manualy"
+      label_tag "", t("daily"), class: "shop_manualy"
     else
       if shop.on?
         label_tag "", Settings.time_none, class: "shop_clock shop_auto_close",

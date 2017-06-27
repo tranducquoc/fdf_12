@@ -995,3 +995,6 @@ ja:
   manage_domain_shops: "店を管理する"
   not_have_shops: "商品はありません"
   enter_domain: "ドメインを入力"
+  cart_of_shop: "ショップのカート: %{name}"
+  order_this_shop: "この店の発注"
+  daily: "毎日!"

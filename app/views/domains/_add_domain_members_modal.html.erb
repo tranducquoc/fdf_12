@@ -1,6 +1,6 @@
 <div id="domain-member-modal-<%= domain.id %>" role="dialog"
   class="modal fade domain-member" data-domain="<%= domain.id %>">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-product">
     <div class="modal-content">
       <div class="modal-header modal_header">
         <button type="button" class="close" data-dismiss="modal"
@@ -21,7 +21,7 @@
               <%= t "manage_domain_users" %>
             </a>
           </li>
-          <li class="float-right">
+          <li class="float-right input-search-nav">
             <div class="form-group search-domain-user">
               <%= text_field_tag :user_domain_search,
                 params[:user_domain_search],

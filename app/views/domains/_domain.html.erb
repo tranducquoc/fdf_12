@@ -38,16 +38,14 @@
             <%= link_to t("edit"), "#edit-domain-modal-#{domain.id}",
               class: "btn-edit-domain", data: {toggle: "modal", "domain-id": domain.id} %>
             <% if domain.owner?(current_user.id) %>
-              <%= link_to t("manage_domain.delete_domain"), domain_path(domain.id),
-                method: :delete, data: {confirm: t("common.delete_confirm")} %>
+              <%= link_to t("manage_domain.delete_domain"),
+                "#confirm-delete-domain-#{domain.id}", "data-toggle": "modal" %>
             <% end %>
           <% else %>
             <% user_domain = UserDomain.find_by user_id: current_user.id,
               domain_id: domain.id %>
             <%= link_to t("manage_domain.leave"),
-              user_domain_path(user_domain, domain_id: domain.id,
-              user_id: current_user.id, leave_domain: true), method: :delete,
-              data: {confirm: t("common.delete_confirm")} %>
+              "#confirm-leave-domain-#{domain.id}", "data-toggle": "modal" %>
           <% end %>
         <% end %>
       </div>
@@ -57,3 +55,57 @@
 <%= render "modal_edit_domain", domain: domain %>
 <%= render "manager_domain_shops_modal", domain: domain %>
 <%= render "add_domain_members_modal", domain: domain %>
+
+<% if domain.owner? current_user.id %>
+  <div id="confirm-delete-domain-<%= domain.id %>" class="modal fade">
+    <div class="modal-dialog modal-delete-domain">
+      <div class="modal-content">
+        <div class="modal-header modal_header">
+          <button class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title modal_text_header"><%= t "common.notifications" %></h4>
+        </div>
+        <div class="modal-body">
+          <p class="center">
+            <%= t("confirm_delete_domain", domain_name: domain.name) %>
+          </p>
+        </div>
+        <div class="modal-footer margin-top-0">
+            <button type="button" class="btn btn-default form-button"
+              data-dismiss="modal">
+              <%= t "cancel" %>
+            </button>
+            <%= link_to t("manage_domain.delete_domain"), domain_path(domain.id),
+              method: :delete, class: "btn btn-add form-button" %>
+          </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if !domain.owner?(current_user.id) && !domain.manage_by?(current_user) %>
+  <div id="confirm-leave-domain-<%= domain.id %>" class="modal fade">
+    <div class="modal-dialog modal-delete-domain">
+      <div class="modal-content">
+        <div class="modal-header modal_header">
+          <button class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title modal_text_header"><%= t "common.notifications" %></h4>
+        </div>
+        <div class="modal-body">
+          <p class="center">
+            <%= t "confirm_leave_domain", domain_name: domain.name %>
+          </p>
+        </div>
+        <div class="modal-footer margin-top-0">
+          <button type="button" class="btn btn-default form-button"
+            data-dismiss="modal">
+            <%= t "cancel" %>
+          </button>
+          <%= link_to t("manage_domain.leave"),
+            user_domain_path(user_domain, domain_id: domain.id,
+            user_id: current_user.id, leave_domain: true), method: :delete,
+            class: "btn btn-add form-button" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

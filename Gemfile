@@ -47,6 +47,7 @@ gem "actionpack-page_caching"
 gem "animate-rails"
 gem "validates_timeliness"
 gem "jquery-validation-rails"
+gem "sweet-alert-confirm"
 
 source "https://rails-assets.org" do
   gem "rails-assets-datetimepicker"

@@ -1,6 +1,15 @@
 module OrdersHelper
   def shop_domain_select shop
-    shop.domains.map{|domain| [domain.name, domain.id]}
+    shop_manager = ShopManager.find_by user_id: current_user.id, shop_id: shop.id
+    if shop_manager.present?
+      if shop_manager.owner?
+        domain_ids = @shop.shop_domains.select{|s| s.approved?}.map &:domain_id
+      else
+        domain_ids = shop_manager.shop_manager_domains.map &:domain_id
+      end
+    end
+    domains = Domain.list_domain_by_ids domain_ids
+    domains.map{|domain| [domain.name, domain.id]}
   end
 
   def user_name_for_id id

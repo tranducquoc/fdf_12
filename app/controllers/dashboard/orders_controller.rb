@@ -5,8 +5,13 @@ class Dashboard::OrdersController < BaseDashboardController
 
   def index
     user_ids = User.search(name_or_email_cont: params[:user_search]).result.pluck :id
-    orders = Order.by_domain(params[:domain_id]).orders_of_shop_pending(params[:shop_id])
-      .of_user_ids(user_ids)
+    if params[:domain_id].present?
+      orders = Order.by_domain(params[:domain_id]).orders_of_shop_pending(params[:shop_id])
+        .of_user_ids user_ids
+    else
+      orders = Order.by_domain_ids(load_list_manage_domain).orders_of_shop_pending(params[:shop_id])
+        .of_user_ids user_ids
+    end
     load_order_product orders, params[:type]
     load_list_toal_orders
     if params[:check_orders].present?
@@ -138,5 +143,19 @@ class Dashboard::OrdersController < BaseDashboardController
     list_orders_id = Order.orders_of_shop_pending(@shop.id).select{|s|
       s.order_products.detect{|o| o.pending?} == nil}.pluck(:id)
     @list_products_packing = OrderProduct.all_order_product_of_list_orders(list_orders_id).order_products_accepted
+  end
+
+  def load_list_manage_domain
+    shop_manager = ShopManager.find_by user_id: current_user.id, shop_id: @shop.id
+    if shop_manager.present?
+      if shop_manager.owner?
+        return @shop.shop_domains.select{|s| s.approved?}.map &:domain_id
+      else
+        return shop_manager.shop_manager_domains.map &:domain_id
+      end
+    else
+      flash[:danger] = t "not_have_permission"
+      redirect_to root_path
+    end
   end
 end

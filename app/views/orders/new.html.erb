@@ -9,22 +9,22 @@
               <% if @domain.present? %>
                 <%= link_to t("order_statistics.back"),
                   domain_carts_path(@domain), method: :get,
-                  class: "btn btn-primary" %>
+                  class: "btn v2-btn-success" %>
                 <%= link_to t("create_order"),
                   domain_orders_path(@domain, shop_id: @shop.id),
-                  method: :post, class: "btn btn-info margin_order" %>
+                  method: :post, class: "btn btn-add margin_order" %>
               <% else %>
                 <%= link_to t("order_statistics.back"), carts_path,
-                  class: "btn btn-primary" %>
+                  class: "btn v2-btn-successbtn-success" %>
                 <%= f.submit t("create_order"), data: {confirm: t("confirm")},
-                  class: "btn btn-danger margin_order" %>
+                  class: "btn btn-add margin_order" %>
                 <%= hidden_field_tag :shop_id, @shop.id %>
               <% end %>
             <% end %>
           </div>
         </div>
         <div class="pull-right">
-          <h4 class="style_price">
+          <h4 class="style_price font-size-20">
             <b><%= t "oder.total" %></b>
             <%= format_price @cart_shop.total_price %>
           </h4>

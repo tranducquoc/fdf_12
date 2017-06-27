@@ -700,6 +700,7 @@ en:
   date_format: "%d/%m/%Y"
   users:
     show:
+      full_name: "Full name"
       email: "Email"
       chatwork: "Chatwork id"
       create_at: "Joined at"
@@ -928,7 +929,6 @@ en:
     close_shop_now: "Close shop now"
     edit_shop: "Edit info of shop"
     add_new_product: "Add new product"
-  auto_close_shop: "Open/Close shop manually"
   time_auto_close_shop: "Time auto close: "
   status_shop: "Status of shop"
   change_picture: "Change picture"

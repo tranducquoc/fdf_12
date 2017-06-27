@@ -694,6 +694,7 @@ ja:
   date_format: "%d/%m/%Y"
   users:
     show:
+      full_name: "フルネーム"
       email: "メール"
       chatwork: "Chatwork id"
       create_at: "参加日"
@@ -805,7 +806,7 @@ ja:
     manage: "管理します"
     personal: "パーソナル"
     shop: "店長"
-    request_join_domain: "%{num} Requests join domain"
+    request_join_domain: "%{num}ドメイン参加をリクエストする"
   views:
     pagination:
       first: "最初に"
@@ -936,7 +937,6 @@ ja:
     close_shop_now: "今すぐ店を閉める"
     edit_shop: "ストアの編集情報"
     add_new_product: "新しい商品を追加"
-  auto_close_shop: "オープン/クローズショップ手動"
   time_auto_close_shop: "時間自動クローズ "
   status_shop: "店舗の状況"
   change_picture: "写真を変える"

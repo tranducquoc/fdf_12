@@ -353,14 +353,24 @@ $orange_main: #ff5722;
 }
 
 .item-product-thumbnail {
-  display: block;
-  float: left;
+  display: inline-flex;
   padding-top: 15px;
-  padding-left: 30px;
+  padding-left: 15px;
+  padding-bottom: 10px;
   img {
-    height: 50px;
-    width: 75px;
-    border-radius: 25px;
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px;
+  }
+  .item_info {
+    margin-left: 5px;
+    .name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 }
 

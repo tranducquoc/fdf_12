@@ -1,24 +1,26 @@
 <div class="page-content">
   <% if @cart_group.present? %>
     <div class="container">
-      <div class="row">
+      <div class="row margin-top--50px">
         <%= render "list" %>
       </div>
-      <div class="pull-left padding-top-20 margin_cart">
-        <% if @count_exit_order != Settings.count_tag %>
-          <%= link_to t("oder.add-all"), new_domain_cart_path(@domain),
-            class: "btn btn-primary for-order-all defaut-btn" %>
-        <% else %>
-          <%= link_to t("oder.add-all"), "#",
-            class: "btn btn-primary for-order-all defaut-btn",
-            data: {toggle: "modal", target: "#confirm-order-modal"} %>
-        <% end %>
-      </div>
-      <div class="pull-right">
-        <h3 class="total_pay">
-          <b><%= t "all" %></b> <%= format_price @cart_group_price%>
-        </h3>
-      </div>
+      <% if @cart_group.size > 1 %>
+        <div class="pull-left padding-top-20 margin_cart">
+          <% if @count_exit_order != Settings.count_tag %>
+            <%= link_to t("oder.add-all"), new_domain_cart_path(@domain),
+              class: "btn btn-primary for-order-all defaut-btn" %>
+          <% else %>
+            <%= link_to t("oder.add-all"), "#",
+              class: "btn btn-primary for-order-all defaut-btn",
+              data: {toggle: "modal", target: "#confirm-order-modal"} %>
+          <% end %>
+        </div>
+        <div class="pull-right">
+          <h3 class="total_pay font-size-25">
+            <b><%= t "all" %></b> <%= format_price @cart_group_price %>
+          </h3>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>

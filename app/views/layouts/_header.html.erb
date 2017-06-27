@@ -86,10 +86,10 @@
                   <% if @domain.present? %>
                     <%= link_to t("cart.view_cart_all"),
                       domain_carts_path(@domain),
-                      class: "text-center hightline" %>
+                      class: "btn-add btn" %>
                   <% else %>
                     <%= link_to t("cart.view_cart_all"), carts_path,
-                      class: "text-center hightline" %>
+                      class: "btn-add btn" %>
                   <% end %>
                 </li>
               </ul>

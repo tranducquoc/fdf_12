@@ -1,6 +1,13 @@
 <div class="cart-item-show" data-id="<%= @cart.domain_id %>">
   <% @cart_group.each do |cart| %>
-    <div class="panel-body">
+    <div class="margin-top-50 border-top-shop">
+      <span class="top-shop-product">
+        <%= t "cart_of_shop", name: cart[:items].first.product.shop_name %>
+      </span>
+      <span><span class="border-top-shop-product"></span></span>
+    </div>
+    <br>
+    <div class="panel-body padding-0">
       <div class="col-md-12">
         <% cart[:items].each do |item| %>
           <div class="col-md-3 border_item_cart">
@@ -13,8 +20,6 @@
               <div class = "content_item_cart">
                 <div class="media">
                   <div class="media-body">
-                    <span class="text-success">
-                      <strong><%= t "products.status" %></strong></span>
                     <span class="text-success"><strong></strong></span>
                   </div>
                 </div>
@@ -84,28 +89,23 @@
           </div>
         <% end %>
       </div>
-      <div class="row">
+      <div>
         <hr>
         <div class="pull-right">
-          <h3 class="total-cart text-success h3_cart defaut-top">
+          <h3 class="total-cart h3_cart defaut-top">
             <b><%= t "dashboard.products.show.total" %>:</b>
             <%= format_price detail_price cart[:items]%>
           </h3>
         </div>
         <div class="defaut-top">
           <% if cart.present? %>
-            <% if @domain.present? %>
-              <%= link_to t("oder.btn_oder"),
-                new_domain_order_path(@domain, shop_id: cart[:shop_id]),
-                class: "btn btn-primary" %>
-            <% else %>
-              <%= link_to t("oder.btn_oder"),
-                new_order_path(shop_id: cart[:shop_id]),
-                class: "btn btn-primary" %>
-            <% end %>
+            <%= link_to t("order_this_shop"),
+              new_domain_order_path(@domain, shop_id: cart[:shop_id]),
+              class: "btn v2-btn-warning font-weight-bold" %>
           <% end %>
         </div>
-        <hr>
+        <br>
+        <div class="line-end-silde"></div>
       </div>
     </div>
   <% end %>

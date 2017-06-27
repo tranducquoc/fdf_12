@@ -987,3 +987,6 @@ en:
   not_have_shops: "Not has any products"
   create_new_domain: "Create new domain"
   enter_domain: "Enter domain"
+  cart_of_shop: "Your carts at shop: %{name}"
+  order_this_shop: "Place an order of this shop"
+  daily: "Daily!"

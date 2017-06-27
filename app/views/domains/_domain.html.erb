@@ -33,7 +33,7 @@
           <% if domain.owner?(current_user.id) || domain.manage_by?(current_user) %>
             <%= link_to t("manage_domain_shops"), "#domain-shop-modal-#{domain.id}",
               "data-toggle": "modal" %>
-            <%= link_to t("manage_domain_users"), "#domain-member-modal-#{domain.id}",
+            <%= link_to t("domain_manage_users"), "#domain-member-modal-#{domain.id}",
              "data-toggle": "modal" %>
             <%= link_to t("edit"), "#edit-domain-modal-#{domain.id}",
               class: "btn-edit-domain", data: {toggle: "modal", "domain-id": domain.id} %>

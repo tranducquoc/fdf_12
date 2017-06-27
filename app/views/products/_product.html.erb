@@ -3,21 +3,14 @@
   <div class="item-product-shop">
     <div class="product_content_area">
       <div class="image_product" data-product-id="<%= product.id %>">
-        <% if @domain.present? %>
-          <% if current_user.is_member_of_domain? @domain %>
-            <%= link_to domain_product_path(@domain, product) do %>
-              <%= image_tag product.image.url,
-                class: "image-shop height-27375 img_cover_size" %>
-            <% end %>
-          <% else %>
+        <% if current_user.is_member_of_domain? @domain %>
+          <%= link_to product_path(product) do %>
             <%= image_tag product.image.url,
               class: "image-shop height-27375 img_cover_size" %>
           <% end %>
         <% else %>
-          <%= link_to product_path(product, domain_id: "not_find") do %>
-            <%= image_tag product.image.url,
-              class: "image-shop height-27375 img_cover_size" %>
-          <% end %>
+          <%= image_tag product.image.url,
+            class: "image-shop height-27375 img_cover_size" %>
         <% end %>
         <h3>
           <%= t "cart.order_time_text" %>

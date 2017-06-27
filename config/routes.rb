@@ -18,7 +18,8 @@ Rails.application.routes.draw do
     controllers: {sessions: "admin/sessions"}
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
-    sessions: "users/sessions"
+    sessions: "users/sessions",
+    registrations: "users/registrations"
   }
 
   get "index" => "static_pages#index"

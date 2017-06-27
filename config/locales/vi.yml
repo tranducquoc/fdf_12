@@ -741,6 +741,7 @@ vi:
   date_format: "%d/%m/%Y"
   users:
     show:
+      full_name: "Họ tên"
       email: "Email"
       chatwork: "Chatwork id"
       create_at: "Tham gia ngày"
@@ -985,7 +986,6 @@ vi:
     close_shop_now: "Đóng cửa ngay"
     edit_shop: "Chỉnh sửa cửa hàng"
     add_new_product: "Thêm sản phẩm mới"
-  auto_close_shop: "Đóng/mở cửa thủ công"
   time_auto_close_shop: "Thời gian đóng cửa tự động: "
   status_shop: "Trạng thái cửa hàng"
   change_picture: "Đổi hình"

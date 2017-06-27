@@ -1,4 +1,5 @@
-<div class="notification-body mark-read" data-id="<%= event.id %>"
+<div class="notification-body mark-read <%= bg_unread event %>"
+  data-id="<%= event.id %>"
   data-link="<%= event.get_link_redirect %>">
   <span role="presentation" class="">
     <%= link_to "#" do %>

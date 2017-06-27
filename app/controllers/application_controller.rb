@@ -45,7 +45,6 @@ class ApplicationController < ActionController::Base
   def load_events
     if user_signed_in?
       @events = current_user.events.by_date
-      @count_unread_notification = @events.unread.size
     end
   end
 

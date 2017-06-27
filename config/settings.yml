@@ -149,3 +149,4 @@ fomat_time_coutdown: "%Y/%m/%d %H:%M:%S"
 time_none: "--:--:--"
 shop_actions:
   index: "index"
+fomat_time: "%H:%M"

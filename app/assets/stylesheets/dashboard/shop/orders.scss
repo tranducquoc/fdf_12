@@ -125,12 +125,13 @@ $orange_main: #ff5722;
 }
 
 .image_box {
-  width: 230px;
-  height: 150px;
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
 }
 
 .width_image {
-  width: 20%;
+  width: 10%;
 }
 
 .right {
@@ -198,7 +199,6 @@ $orange_main: #ff5722;
 }
 
 .order-manager-label {
-  
   color: green;
   font-weight: bold;
 }

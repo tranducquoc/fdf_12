@@ -2,7 +2,7 @@
 <tr>
   <td class="text-center width-150px"><%= item.product.name %></td>
   <td class="text-center"><%= item.quantity %></td>
-  <td class="width-250px"><%= item.notes %></td>
+  <td class="width-250px text-center"><%= item.notes %></td>
   <td class="text-center order-product-status-<%= item.id %> class_status_order_product"
     data-status="<%= item.status %>">
     <%= status_order_product item if item.try(:status).present? %>

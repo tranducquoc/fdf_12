@@ -13,19 +13,20 @@
   <tbody>
     <% order_products.each_with_index do |item, index| %>
       <tr id="<%= item.product_id %>">
-        <td class="text-center"><%= index + 1 %></td>
-        <td class="text-center"><%= item.product.name %></td>
-        <td class="width_image">
+        <td class="text-center v-a-middle"><%= index + 1 %></td>
+        <td class="text-center v-a-middle"><%= item.product.name %></td>
+        <td class="width_image text-center">
           <span>
             <%= image_tag item.product.image.url, class: "image_box" %>
           </span>
         </td>
-        <td class="text-center"><%= item.quantity %></td>
-        <td><%= item.notes %></td>
-        <td class="text-center">
+        <td class="text-center v-a-middle"><%= item.quantity %></td>
+        <td class="text-center v-a-middle"><%= item.notes %></td>
+        <td class="text-center v-a-middle">
           <%= status_order_product item if item.try(:status).present? %></td>
-        <td class="right">
-          <strong><%= format_price item.total_price %></strong></td>
+        <td class="right v-a-middle">
+          <strong><%= format_price item.total_price %></strong>
+        </td>
       </tr>
     <% end %>
   </tbody>

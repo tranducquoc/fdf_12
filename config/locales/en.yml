@@ -967,7 +967,7 @@ en:
   shop_not_allow: "You are not allowed to view this shop"
   manage_user_domain: "Manage %{name} members"
   add_domain_users: "Add Members"
-  manage_domain_users: "Manage Members"
+  manage_domain_users: "Member domain manager"
   finish_manage_domain_user: "Done"
   search_domain_user: "Search user"
   shop_manager: "Shop manager"

@@ -1049,3 +1049,6 @@ vi:
   cart_of_shop: "Giỏ hàng của bạn tại cửa hàng: %{name}"
   order_this_shop: "Đặt đơn hàng của cửa hàng này"
   daily: "Hằng ngày!"
+  paid: "Đã thanh toán"
+  update_success: "Cập nhật thành công!"
+  update_fails: "Cập nhật thất bại!"

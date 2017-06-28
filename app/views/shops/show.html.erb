@@ -24,58 +24,61 @@
       </marquee>
     </div>
   </div>
-  <div class="col-sm-12 col-md-12 col-xs-12 text-center pd_top_10px">
-    <div class="general_info">
-      <div class="col-sm-6 col-md-3 col-xs-6">
-        <div class="general_item">
-          <div class="col-sm-4 col-md-4 col-xs-4 padding-0">
-            <i class="material-icons general_icon">store</i>
-          </div>
-          <div class="col-sm-8 col-md-8 col-xs-8 padding-right-0 padding-left-0">
-            <div class="general_number">
-              <%= check_shop_on_off @shop %>
+  <div class="list-functions">
+    <%= label_tag "", t("infomation_shop"), class: "title-list-functions"%>
+    <div class="col-sm-12 col-md-12 col-xs-12 text-center pd_top_10px">
+      <div class="general_info">
+        <div class="col-sm-6 col-md-3 col-xs-6">
+          <div class="general_item">
+            <div class="col-sm-4 col-md-4 col-xs-4 padding-0">
+              <i class="material-icons general_icon">store</i>
             </div>
-            <%= t "status_shop" %>
+            <div class="col-sm-8 col-md-8 col-xs-8 padding-right-0 padding-left-0">
+              <div class="general_number">
+                <%= check_shop_on_off @shop %>
+              </div>
+              <%= t "status_shop" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3 col-xs-6">
+          <div class="general_item">
+            <div class="col-sm-4 col-md-4 col-xs-4 padding-0">
+              <i class="material-icons general_icon">backup</i>
+            </div>
+            <div class="col-sm-8 col-md-8 col-xs-8 padding-right-0 padding-left-0">
+              <div class="general_number"><%= @shop.orders.size %></div>
+              <%= t "general_info.total.orders" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3 col-xs-6">
+          <div class="general_item">
+            <div class="col-sm-4 col-md-4 col-xs-4 padding-0">
+              <i class="material-icons general_icon">restore</i>
+            </div>
+            <div class="col-sm-8 col-md-8 col-xs-8 padding-right-0 padding-left-0">
+              <div class="general_number">
+                <%= l @shop.time_auto_reject, format: :short_time %>
+              </div>
+              <%= t "general_info.reject_order_auto" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3 col-xs-6">
+          <div class="general_item">
+            <div class="col-sm-4 col-md-4 col-xs-4 padding-0">
+              <i class="material-icons general_icon">storage</i>
+            </div>
+            <div class="col-sm-8 col-md-8 col-xs-8 padding-right-0 padding-left-0">
+              <div class="general_number">
+                <%= @shop.products.size %>
+              </div>
+              <%= t "general_info.total.products" %>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-sm-6 col-md-3 col-xs-6">
-        <div class="general_item">
-          <div class="col-sm-4 col-md-4 col-xs-4 padding-0">
-            <i class="material-icons general_icon">backup</i>
-          </div>
-          <div class="col-sm-8 col-md-8 col-xs-8 padding-right-0 padding-left-0">
-            <div class="general_number"><%= @shop.orders.size %></div>
-            <%= t "general_info.total.orders" %>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 col-xs-6">
-        <div class="general_item">
-          <div class="col-sm-4 col-md-4 col-xs-4 padding-0">
-            <i class="material-icons general_icon">restore</i>
-          </div>
-          <div class="col-sm-8 col-md-8 col-xs-8 padding-right-0 padding-left-0">
-            <div class="general_number">
-              <%= l @shop.time_auto_reject, format: :short_time %>
-            </div>
-            <%= t "general_info.reject_order_auto" %>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 col-xs-6">
-        <div class="general_item">
-          <div class="col-sm-4 col-md-4 col-xs-4 padding-0">
-            <i class="material-icons general_icon">storage</i>
-          </div>
-          <div class="col-sm-8 col-md-8 col-xs-8 padding-right-0 padding-left-0">
-            <div class="general_number">
-              <%= @shop.products.size %>
-            </div>
-            <%= t "general_info.total.products" %>
-          </div>
-        </div>
-        </div>
     </div>
   </div>
 </div>

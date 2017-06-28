@@ -24,12 +24,7 @@
               <td><%= increase_one index %></td>
               <td>
                 <div><%= link_to user_name_for_id(order_products.first),
-                  user_path(id: order_products.first) %></div>
-                <div>
-                  <%= t "order_statistics.total_price" %>
-                  <strong><%= sum_price order_products.last %>
-                  <%= t "cart.vnd" %>
-                  </strong>
+                  user_path(id: order_products.first) %>
                 </div>
               </td>
               <td class="text-center">

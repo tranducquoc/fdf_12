@@ -744,6 +744,7 @@ ja:
     done: "達成"
     user_name: "User Name"
     details: "Details"
+    total_price_date: "合計 "
   order_day: "デイ注文"
   language: "語: "
   english: "English"
@@ -1002,3 +1003,5 @@ ja:
   paid: "支払った"
   update_success: "成功する!"
   update_fails: "失敗!"
+  order_at: "オーダーする "
+  uppaid: "未払い"

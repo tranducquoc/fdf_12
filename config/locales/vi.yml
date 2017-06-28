@@ -788,6 +788,7 @@ vi:
     step2: "Bước 2: Đóng đơn hàng"
     continue: "Tiếp tục"
     total_price: "Tổng cộng: "
+    total_price_date: "Tổng cộng trong ngày: "
     done: "Hoàn thành"
     user_name: "Người đặt hàng"
     details: "Chi tiết"
@@ -1052,3 +1053,5 @@ vi:
   paid: "Đã thanh toán"
   update_success: "Cập nhật thành công!"
   update_fails: "Cập nhật thất bại!"
+  order_at: "Đặt lúc: "
+  unpaid: "Chưa thanh toán"

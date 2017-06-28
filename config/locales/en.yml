@@ -747,6 +747,7 @@ en:
     step2: "Step 2: Close Order"
     continue: "Continue"
     total_price: "Total price: "
+    total_price_date: "Total price on this day: "
     done: "Done"
     user_name: "User Name"
     details: "Details"
@@ -994,3 +995,5 @@ en:
   paid: "Paid"
   update_success: "Update success!"
   update_fails: "Update fails!"
+  order_at: "Order at: "
+  unpaid: "Unpaid"

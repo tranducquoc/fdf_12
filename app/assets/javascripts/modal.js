@@ -359,3 +359,29 @@ $(document).ready(function(){
     });
   });
 });
+
+//change checkbok paid
+$(document).ready(function(){
+  $('.is-order-paid').change(function(){
+    var order_id = $(this).val();
+    var shop_id = $(this).data('shopid');
+    var type = $(this).is(':checked');
+    $.ajax({
+      url: '/dashboard/shops/' + shop_id + '/orders/' + order_id + '/edit',
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        checked: type
+      },
+      success: function(response) {
+        if(response.mess === "true")
+          sweetAlert(I18n.t('api.success'), I18n.t('update_success'), 'success');
+        else
+          sweetAlert(I18n.t('api.error'), I18n.t('update_fails'), 'error');
+      },
+      error: function(errors) {
+        sweetAlert(I18n.t('api.error'), I18n.t('api.error'), 'error');
+      }
+    });
+  });
+});

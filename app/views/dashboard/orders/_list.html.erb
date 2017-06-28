@@ -16,7 +16,8 @@
         </tr>
       </thead>
       <tbody>
-        <%= render "order_products", order_products: @order_products[order.id] %>
+        <%= render "order_products", order_products: @order_products[order.id],
+          order: order %>
       </tbody>
     </table>
   </div>

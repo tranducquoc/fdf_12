@@ -999,3 +999,6 @@ ja:
   cart_of_shop: "ショップのカート: %{name}"
   order_this_shop: "この店の発注"
   daily: "毎日!"
+  paid: "支払った"
+  update_success: "成功する!"
+  update_fails: "失敗!"

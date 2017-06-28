@@ -63,4 +63,10 @@ module Dashboard::ShopsHelper
       content_tag :i, "", class: "glyphicon glyphicon-lock"
     end
   end
+
+  def managers_of_domans shop
+    user_ids = shop.shop_managers.select{|s|
+      s.shop_manager_domains.find_by(domain_id: session[:domain_id]) || s.owner?}.map &:user_id
+    return User.of_ids user_ids
+  end
 end

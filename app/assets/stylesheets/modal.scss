@@ -901,7 +901,7 @@ $orange_main: #ff5722;
       color: #ffffff;
     }
   }
-  @media (max-width: 992px) {
+  @media (max-width: 1192px) {
     .btn_function {
       margin: 5px;
     }
@@ -928,6 +928,7 @@ $orange_main: #ff5722;
       padding: 4px;
       margin-top: 5px;
       margin-bottom: 5px;
+      margin-left: 10px;
     }
     .general_number {
       font-size: 30px;
@@ -938,6 +939,12 @@ $orange_main: #ff5722;
 .general_item:hover {
   transform: translateY(-3px);
   box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.46);
+  .general_icon {
+    transform: rotate(1turn);
+    -webkit-transform: rotate(1turn);
+    -moz-transform: rotate(1turn);
+    transition: 0.5s ease-in-out;
+  }
 }
 
 .font-size-30 {

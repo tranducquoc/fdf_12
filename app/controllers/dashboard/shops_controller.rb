@@ -25,7 +25,6 @@ class Dashboard::ShopsController < BaseDashboardController
   end
 
   def show
-    @users_shop_manager = @shop.users
     @shop = @shop.decorate
     @products = @shop.products.page(params[:page])
       .per Settings.common.products_per_page

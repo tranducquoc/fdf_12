@@ -982,7 +982,7 @@ vi:
       orders: "Số đơn hàng đã nhận."
       order_pending: "Số đơn hàng đang đợi."
       products: "Số lượng sản phẩm."
-    reject_order_auto: "Hủy đơn hàng tự động."
+    reject_order_auto: "Thời gian hủy đơn hàng tự động."
     open_shop_now: "Mở cửa ngay"
     close_shop_now: "Đóng cửa ngay"
     edit_shop: "Chỉnh sửa cửa hàng"

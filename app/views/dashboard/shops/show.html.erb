@@ -38,13 +38,15 @@
       <div class="block padding-0">
         <div class="title padding-left-10 margin-left_domain form-header">
           <strong class="text-header number-shop-manager">
-            <%= label_tag "", t("common.shop_managers", num: @users_shop_manager.size),
+            <%= label_tag "", t("common.shop_managers",
+              num: managers_of_domans(@shop).size),
             class: "text-header" %>
           </strong>
         </div>
         <div class="list_owner_and_manger">
           <div class="list-shop-manager">
-            <%= render "list_shop_manager", shop_managers: @users_shop_manager %>
+            <%= render "list_shop_manager",
+              shop_managers: managers_of_domans(@shop) %>
           </div>
         </div>
       </div>
@@ -54,10 +56,10 @@
     <div class="general_info">
       <div class="col-sm-6 col-md-3 col-xs-6">
         <div class="general_item">
-          <div class="col-sm-4 col-md-4 col-xs-4 padding-0">
+          <div class="col-sm-3 col-md-3 col-xs-3 padding-0">
             <i class="material-icons general_icon">backup</i>
           </div>
-          <div class="col-sm-8 col-md-8 col-xs-8 padding-right-0 padding-left-0">
+          <div class="col-sm-9 col-md-9 col-xs-9 padding-right-0 padding-left-0">
             <div class="general_number"><%= @shop.orders.size %></div>
             <%= t "general_info.total.orders" %>
           </div>
@@ -65,10 +67,10 @@
       </div>
       <div class="col-sm-6 col-md-3 col-xs-6">
         <div class="general_item">
-          <div class="col-sm-4 col-md-4 col-xs-4 padding-0">
+          <div class="col-sm-3 col-md-3 col-xs-3 padding-0">
             <i class="material-icons general_icon">shopping_basket</i>
           </div>
-          <div class="col-sm-8 col-md-8 col-xs-8 padding-right-0 padding-left-0">
+          <div class="col-sm-9 col-md-9 col-xs-9 padding-right-0 padding-left-0">
             <div class="general_number"><%= orders_pending_of_shop @shop %></div>
             <%= t "general_info.total.order_pending" %>
           </div>
@@ -76,10 +78,10 @@
       </div>
       <div class="col-sm-6 col-md-3 col-xs-6">
         <div class="general_item">
-          <div class="col-sm-4 col-md-4 col-xs-4 padding-0">
+          <div class="col-sm-3 col-md-3 col-xs-3 padding-0">
             <i class="material-icons general_icon">restore</i>
           </div>
-          <div class="col-sm-8 col-md-8 col-xs-8 padding-right-0 padding-left-0">
+          <div class="col-sm-9 col-md-9 col-xs-9 padding-right-0 padding-left-0">
             <div class="general_number">
               <%= l @shop.time_auto_reject, format: :short_time %>
             </div>
@@ -89,10 +91,10 @@
       </div>
       <div class="col-sm-6 col-md-3 col-xs-6">
         <div class="general_item">
-          <div class="col-sm-4 col-md-4 col-xs-4 padding-0">
+          <div class="col-sm-3 col-md-3 col-xs-3 padding-0">
             <i class="material-icons general_icon">storage</i>
           </div>
-          <div class="col-sm-8 col-md-8 col-xs-8 padding-right-0 padding-left-0">
+          <div class="col-sm-9 col-md-9 col-xs-9 padding-right-0 padding-left-0">
             <div class="general_number">
               <%= @shop.products.size %>
             </div>
@@ -165,6 +167,13 @@
               <div><%= t "change_shop_owner" %></div>
             <% end %>
           </div>
+          <div class="btn_function">
+            <%= link_to "#manage-domain-of-shop-#{@shop.id}",
+              "data-toggle": "modal", class: "btn_item" do %>
+              <i class="btn_icon material-icons">assistant_photo</i>
+              <div><%= t "manage_joins_domains" %></div>
+            <% end %>
+          </div>
         <% end %>
       <% end %>
       </div>
@@ -191,5 +200,6 @@
 <%= render "modal_add_managers" %>
 <%= render "modal_change_owner" %>
 <%= render "modal_settings_time_orders" %>
+<%= render "modal_manage_joins_domains", shop: @shop %>
 <div id="new-edit-product-modal" class="modal fade"></div>
 <div id="edit-shop-modal" class="modal fade"></div>

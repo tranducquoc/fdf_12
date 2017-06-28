@@ -64,6 +64,20 @@ class Order < ApplicationRecord
 
   scope :orders_by_list_id, -> list {where id: list}
 
+  scope :in_date, ->start_date, end_date do
+    case
+    when end_date.present? && start_date.present?
+      where("DATE(created_at) <= ? AND created_at >= ?",
+        end_date.to_date, start_date.to_date)
+    when end_date.present?
+      where("DATE(created_at) <= ?", end_date.to_date)
+    when start_date.present?
+      where("created_at >= ?", start_date.to_date)
+    else
+      where "DATE(created_at) = date(now())"
+    end
+  end
+
   def build_order_products
     unless self.change_status
       if cart.present?

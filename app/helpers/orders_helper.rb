@@ -41,4 +41,18 @@ module OrdersHelper
   def total_pay order_products
     order_products.sum{|o| o.accepted? || o.done? || o.pending? ? o.quantity * o.product_price : 0}
   end
+
+  def group_by_order order_products
+    order_products.group_by{|u| u.order}
+  end
+
+  def order_paid_status_label order
+    order.is_paid ?
+      content_tag(:span, t("paid"), class: "paid-order") :
+      content_tag(:span, t("unpaid"), class: "unpaid-order")
+  end
+
+  def order_paid_status_text order
+    order.is_paid ? t("paid") : t("unpaid")
+  end
 end

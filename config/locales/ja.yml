@@ -1005,3 +1005,8 @@ ja:
   update_fails: "失敗!"
   order_at: "オーダーする "
   uppaid: "未払い"
+  confirm_delete_domain: "あなたは本当に%{domain_name}ドメインを削除しますか"
+  confirm_leave_domain: "あなたは本当に%{domain_name}ドメインを残したいですか"
+  confirm_delete_product: "あなたは本当に%{product_name}を削除しますか"
+  confirm_cancel_request_shop: "あなたは%{domain_name}ドメインの %{shop_name}リクエストをキャンセルしたいです"
+  confirm_delete_user_domain: "％{domain_name}ドメインから％{user_name}を削除しますか"

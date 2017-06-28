@@ -64,15 +64,15 @@
               <div class="col-xs-6 form-group time_auto_close_shop center
                 margin-bottom-0 <%= @shop.openforever ? "display-none" : "" %>">
                 <%= f.label :time_auto_close, t("time_auto_close_shop") %>
-                <%= f.time_select :time_auto_close, {},
-                  minute_step: Settings.minute_step, class: "intime-field" %>
+                <%= f.time_select :time_auto_close,
+                  {minute_step: Settings.minute_step}, class: "intime-field" %>
               </div>
             </div>
             <div class="form-group">
               <%= f.label :time_auto_reject, t("time_auto_reject_order") %>
               <div class="time-field">
-                <%= f.time_select :time_auto_reject, {},
-                  minute_step: Settings.minute_step, class: "intime-field" %>
+                <%= f.time_select :time_auto_reject,
+                  {minute_step: Settings.minute_step}, class: "intime-field" %>
               </div>
             </div>
           </div>

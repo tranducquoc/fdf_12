@@ -58,10 +58,10 @@
                         method: :put, class: "btn btn-info refresh"%>
                     <% else %>
                       <%= link_to t("request_shop.cancel"),
-                        shop_domain_path(shop_domain,
-                        domain_id: domain.id, shop_id: shop.id), method: :delete,
-                        data: {confirm: t("common.delete_confirm")},
-                        class: "btn btn-danger" %>
+                        "#confirm-cancel-request-#{domain.id << shop.id}",
+                        "data-toggle": "modal",class: "btn btn-danger" %>
+                      <%= render "modal_confirm_cancel_request", domain: domain,
+                        shop: shop, shop_domain: shop_domain %>
                     <% end %>
                   <% end %>
                 </td>

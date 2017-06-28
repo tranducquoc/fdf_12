@@ -42,6 +42,8 @@ class UserDomainsController < ApplicationController
 
   def destroy
     if @user_domain.destroy
+      domain = Domain.find_by id: @user_domain.domain_id
+      delete_cart_domain domain
       if current_user.domains.include? @choosen_domain
         if request.xhr?
           @users = User.not_in_domain @choosen_domain
@@ -111,6 +113,14 @@ class UserDomainsController < ApplicationController
     @message = message
     respond_to do |format|
       format.js
+    end
+  end
+
+  def delete_cart_domain domain
+    carts_domain = @cart_domain.carts.select{|cart| cart.domain_id == domain.id}
+    if carts_domain.present?
+      @cart_domain.detele_cart carts_domain
+      session[:cart_domain] = @cart_domain.update_cart
     end
   end
 end

@@ -168,7 +168,7 @@
               aria-labelledby="basic-nav-dropdown">
                 <li role="presentation">
                   <%= link_to user_path current_user do %>
-                    <i class="fa fa-user"></i>
+                    <i class="fa fa-user icon-menu""></i>
                     <span><%= t "header.account" %></span>
                   <% end %>
                 </li>
@@ -176,14 +176,14 @@
                 <li role="separator" class="divider"></li>
                 <li role="presentation">
                   <%= link_to dashboard_shops_path do %>
-                    <i class="glyphicon glyphicon-pencil"></i>
+                    <i class="glyphicon glyphicon-pencil icon-menu""></i>
                     <span><%= t "header.shop_manager" %></span>
                   <% end %>
                 </li>
                 <li role="separator" class="divider"></li>
                 <li role="presentation">
                   <%= link_to domains_path do %>
-                    <i class="fa fa-flag-o"></i>
+                    <i class="fa fa-flag-o icon-menu""></i>
                     <span><%= t "domain_manager_header" %></span>
                   <% end %>
                 </li>
@@ -192,7 +192,7 @@
                   <li role="separator" class="divider"></li>
                   <li role="presentation">
                     <%= link_to dashboard_path do %>
-                      <i class="fa fa-bar-chart"></i>
+                      <i class="fa fa-bar-chart icon-menu""></i>
                       <span><%= t "header.shop_statistic" %></span>
                     <% end %>
                   </li>
@@ -200,20 +200,20 @@
                 <li role="separator" class="divider"></li>
                 <li role="presentation">
                   <a role="menuitem" href="#" tabindex="-1">
-                    <i class="fa fa-ticket"></i>
+                    <i class="fa fa-ticket icon-menu""></i>
                     <span><%= t "header.report_abuse" %></span>
                   </a>
                 </li>
                 <li role="separator" class="divider"></li>
                 <li role="presentation">
                   <%= link_to edit_user_setting_path(current_user) do %>
-                    <i class="fa fa-cog"></i>
+                    <i class="fa fa-cog icon-menu""></i>
                     <span><%= t "header.settings" %></span>
                   <% end %>
                 </li>
                 <li role="presentation">
                   <%= link_to destroy_user_session_path, method: :delete do %>
-                    <i class="fa fa-sign-out"></i>
+                    <i class="fa fa-sign-out icon-menu""></i>
                     <span><%= t "header.logout" %></span>
                   <% end %>
                 </li>

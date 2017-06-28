@@ -96,7 +96,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_domain
-    begin 
+    begin
       @domain = if params[:domain_id]
         Domain.friendly.find params[:domain_id]
       elsif params[:id]
@@ -106,7 +106,7 @@ class ApplicationController < ActionController::Base
       flash[:danger] = t "can_not_load_domain"
       redirect_to root_path
     end
-    session[:domain_id] = @domain.id if @domain.present?  
+    session[:domain_id] = @domain.id if @domain.present?
   end
 
   def redirect_to_root_domain

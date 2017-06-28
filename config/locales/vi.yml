@@ -1035,6 +1035,7 @@ vi:
   manage_joins_domains: "Miền tham gia"
   create_new_shop: "Tạo cửa hàng mới"
   function: "Chức năng"
+  infomation_shop: "Thông tin cửa hàng"
   update_cover_image: "Cập nhật ảnh bìa"
   rejected_shop_domain: "Đã từ chối thêm cửa hàng vào miền"
   manage_domain_shop: "Quản lý cửa hàng miền %{name}"

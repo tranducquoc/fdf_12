@@ -151,3 +151,5 @@ shop_actions:
   index: "index"
 fomat_time: "%H:%M"
 checkbox_value_true: "1"
+update_success: "true"
+update_fails: "false"

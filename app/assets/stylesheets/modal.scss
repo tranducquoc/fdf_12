@@ -720,7 +720,7 @@ $orange_main: #ff5722;
   .top_shop_image {
     padding-left: 0;
     .image {
-      height: 7vw;
+      height: 90px;
       margin-top: 10px;
       margin-bottom: 10px;
       object-fit: cover;
@@ -1194,4 +1194,11 @@ $orange_main: #ff5722;
 
 .margin-top--50px {
   margin-top: -50px;
+}
+
+.rate {
+  div {
+    display: inline-flex;
+    height: 18px;
+  }
 }

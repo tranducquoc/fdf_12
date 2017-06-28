@@ -977,6 +977,7 @@ en:
   manage_joins_domains: "Joins domains"
   create_new_shop: "Create new shop"
   function: "Function"
+  infomation_shop: "Shop Infomation"
   update_cover_image: "Update cover image"
   rejected_shop_domain: "Rejected shop to domain successfully"
   manage_domain_shop: "Manage %{name} shops"

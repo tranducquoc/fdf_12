@@ -986,6 +986,7 @@ ja:
   manage_joins_domains: "ドメインを結合する"
   create_new_shop: "新しいショップを作る"
   function: "関数"
+  infomation_shop: "ストアの情報"
   update_cover_image: "写真を変える"
   rejected_shop_domain: "成功します"
   manage_domain_shop: "％{name}店舗を管理する"

@@ -13,6 +13,7 @@ class OrderFastsController < ApplicationController
             order.total_pay = product.price * params[:quantity].to_i
             order.shop_id = product.shop_id
             order.save
+            order.create_event_order if checked_notification_setting?(Settings.index_two_in_array)
             order_product = order.order_products.new
             order_product.user_id = current_user.id
             order_product.product_id = product.id

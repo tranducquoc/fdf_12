@@ -1,0 +1,14 @@
+<% if users.present? %>
+  <% users.each do |user| %>
+    <div class="manager-search col-xs-12"
+      data-email="<%= user.email %>">
+      <div class="col-xs-2">
+        <%= image_tag user.avatar.url, class: "manager-img" %>
+      </div>
+      <div class="col-xs-10">
+        <p class="font-bold"><%= user.name %></p>
+        <p><%= user.email %></p>
+      </div>
+    </div>
+  <% end %>
+<% end %>

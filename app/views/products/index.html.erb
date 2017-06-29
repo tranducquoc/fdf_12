@@ -1,15 +1,16 @@
 <% provide :title, t("common.all_products") %>
-<div class="col-sm-12 top_home">
 <div class="row">
-  <div class="col-md-12 row-title">
-    <h2 class="section_title margin-left_domain padding-left_domain">
-      <%= t "common.all_products" %>
-    </h2>
+  <div class="col-xs-12">
+    <div class="margin-bottom-20 margin-top-30 border-top-shop">
+      <span class="top-shop-product"><%= t "common.all_products" %></span>
+      <span><span class="border-top-shop-product"></span></span>
+    </div>
   </div>
-  <div class="col-md-12 magin_top_10px">
+  <div class="col-md-12 magin_top_10px list-products">
     <%= render @products_shop.flatten %>
   </div>
+  <div class="load-more-products col-md-12 col-xs-12 margin-top-30">
+    <%= link_to_next_page(@products_shop, t("view_more_products")) %>
+  </div>
 </div>
-</div>
-<%= paginate @products_shop %>
 <%= render "domains/modal_order_fast" %>

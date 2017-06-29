@@ -5,36 +5,27 @@ class Dashboard::ShopManagersController < BaseDashboardController
   before_action :check_owner_or_manager
 
   def index
-    user_ids = []
-    user_shop_domain = ShopDomain.list_shop_by_id params[:shop_id]
-    user_shop_domain.each do |user_shop|
-      user_ids << UserDomain.list_all_user_domains(user_shop.domain_id)
-    end
-    user_ids = user_ids.flatten.pluck(:user_id).uniq
-    @support = Supports::SearchSupport.new(params[:shop_id], user_ids, "")
+    @support = Supports::SearchSupport.new(params[:shop_id], "")
   end
 
   def create
     @shop_manager = ShopManager.new user_id: params[:user_id],
       shop_id: params[:shop_id], role: :manager
     if @shop_manager.save
-      @shop_manager
+      respond_to do |format|
+        format.js
+      end
     else
       flash[:danger] = t "flash.danger_message"
       redirect_to :back
     end
-
   end
 
   def destroy
-    @shop_manager = ShopManager.find_by user_id: params[:user_id],
-      shop_id: params[:shop_id], role: :manager
-    if @shop_manager
-      if @shop_manager.destroy
-        @shop_manager
-      else
-        flash[:danger] = t "flash.danger_message"
-        redirect_to :back
+    @choosen_user = @shop_manager.user
+    if @shop_manager.destroy
+      respond_to do |format|
+        format.js
       end
     else
       flash[:danger] = t "flash.danger_message"
@@ -53,7 +44,8 @@ class Dashboard::ShopManagersController < BaseDashboardController
   end
 
   def load_shop_manager
-    @shop_manager = ShopManager.find_by id: params[:id]
+    @shop_manager = ShopManager.find_by user_id: params[:user_id],
+      shop_id: params[:shop_id], role: :manager
     unless @shop_manager
       flash[:danger] = t "flash.danger.load_shop"
       redirect_to dashboard_shop_shop_managers_path @shop

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612074310) do
+ActiveRecord::Schema.define(version: 20170628014815) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -154,17 +154,18 @@ ActiveRecord::Schema.define(version: 20170612074310) do
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "status",                   default: 0, null: false
+    t.integer  "status",                   default: 0,     null: false
     t.datetime "end_at"
     t.text     "notes",      limit: 65535
     t.integer  "user_id"
     t.integer  "shop_id"
     t.integer  "coupon_id"
     t.datetime "deleted_at"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.float    "total_pay",  limit: 24
     t.integer  "domain_id"
+    t.boolean  "is_paid",                  default: false
     t.index ["coupon_id"], name: "index_orders_on_coupon_id", using: :btree
     t.index ["deleted_at"], name: "index_orders_on_deleted_at", using: :btree
     t.index ["domain_id"], name: "index_orders_on_domain_id", using: :btree
@@ -270,6 +271,15 @@ ActiveRecord::Schema.define(version: 20170612074310) do
     t.index ["deleted_at"], name: "index_shop_domains_on_deleted_at", using: :btree
     t.index ["domain_id"], name: "index_shop_domains_on_domain_id", using: :btree
     t.index ["shop_id"], name: "index_shop_domains_on_shop_id", using: :btree
+  end
+
+  create_table "shop_manager_domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "shop_manager_id"
+    t.integer  "domain_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["domain_id"], name: "index_shop_manager_domains_on_domain_id", using: :btree
+    t.index ["shop_manager_id"], name: "index_shop_manager_domains_on_shop_manager_id", using: :btree
   end
 
   create_table "shop_managers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -401,6 +411,8 @@ ActiveRecord::Schema.define(version: 20170612074310) do
   add_foreign_key "reviews", "users"
   add_foreign_key "shop_domains", "domains"
   add_foreign_key "shop_domains", "shops"
+  add_foreign_key "shop_manager_domains", "domains"
+  add_foreign_key "shop_manager_domains", "shop_managers"
   add_foreign_key "shop_managers", "shops"
   add_foreign_key "shop_managers", "users"
   add_foreign_key "user_domains", "domains"

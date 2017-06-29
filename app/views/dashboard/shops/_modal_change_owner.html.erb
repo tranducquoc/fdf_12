@@ -1,0 +1,44 @@
+<div id="shop-manager-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-product">
+    <div class="modal-content">
+      <div class="modal-header modal_header">
+        <button type="button" class="close" data-dismiss="modal"
+          aria-hidden="true">&times;</button>
+        <h4 class="modal-title modal_text_header"><%= t "change_shop_owner" %></h4>
+      </div>
+      <div class="modal-body">
+        <div class="row padding-bottom-0">
+            <%= form_tag dashboard_shop_owner_path(@shop),
+              method: :put do %>
+              <%= render "shared/error_messages", object: @shop %>
+              <div class="col-xs-10 col-xs-offset-1">
+                <div class="form-group">
+                  <h4 class="center"><%= label_tag(:email, t("enter_email")) %></h4>
+                </div>
+              </div>
+              <%= hidden_field_tag :shop_id, @shop.id %>
+              <div class="col-xs-10 col-xs-offset-1">
+                <div class="form-group dropdown">
+                  <%= text_field_tag :email, nil,
+                    class: "form-control dropdown-toggle", placeholder: t("enter_email"),
+                    "data-toggle": "dropdown", "aria-hidden": :true,
+                    autocomplete: :off, required: true, id: "new-manager-search" %>
+                    <ul class="dropdown-menu new-manager-search-result width-100">
+                      <div id="new-manager-dom"></div>
+                    </ul>
+                </div>
+              </div>
+              <div class="col-xs-12 padding-top-10 right">
+                <button type="button" class="list btn btn-default form-button"
+                  data-dismiss="modal"><%= t "cancel" %>
+                </button>
+                <%= submit_tag t("edit_user.update"),
+                  class: "btn btn_add_to_cart btn-add form-button" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

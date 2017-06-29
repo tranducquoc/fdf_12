@@ -44,6 +44,10 @@ gem "simple_token_authentication", "~> 1.0"
 gem "versionist"
 gem "active_model_serializers", "~> 0.10.0"
 gem "actionpack-page_caching"
+gem "animate-rails"
+gem "validates_timeliness"
+gem "jquery-validation-rails"
+gem "sweet-alert-confirm"
 
 source "https://rails-assets.org" do
   gem "rails-assets-datetimepicker"
@@ -59,6 +63,9 @@ gem "redis", "~> 3.0"
 gem "fcm"
 gem "strip_attributes"
 gem "carrierwave-base64"
+gem "zip-zip"
+gem "axlsx", "2.1.0.pre"
+gem "axlsx_rails", "> 0.4"
 
 group :development, :test do
   gem "byebug", platform: :mri

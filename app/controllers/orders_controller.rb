@@ -7,21 +7,14 @@ class OrdersController < ApplicationController
   before_action :check_user_status_for_action
 
   def index
-    tmp_orders = current_user.orders.by_domain(session[:domain_id])
-    if params[:start_date].present? && params[:end_date].present?
-      if params[:start_date] <= params[:end_date]
-        @orders = tmp_orders.between_date convert_date_string(params[:start_date]),
-        convert_date_string(params[:end_date])
-      else
-        flash[:danger] = t "wrong_from_day_to_day_find"
-        @orders = tmp_orders.on_today.by_date_newest.page(params[:page])
-      end
-    else
-      @orders = tmp_orders.on_today.by_date_newest.page(params[:page])
-    end
+    tmp_orders = current_user.orders.in_date(params[:start_date], params[:end_date])
     params[:status] ||= Settings.filter_status_order.all
-    @orders = @orders.send params[:status]
-    @order_days = @orders.group_by{|t| t.created_at.beginning_of_day}
+    @order_days = tmp_orders.send(params[:status]).group_by{|t| t.created_at.beginning_of_day}
+    if request.xhr?
+      respond_to do |format|
+        format.js
+      end
+    end
   end
 
   def new

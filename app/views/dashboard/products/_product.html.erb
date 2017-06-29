@@ -1,29 +1,17 @@
 <tr class="center-vertical-td">
   <td>
-    <% if @domain.present? %>
-      <%= link_to domain_product_path(@domain, product) do %>
-        <div class="shop-product-image">
-          <%= image_tag product.image.url %>
-        </div><br>
-        <h5 class="time-output"><strong>
+    <%= link_to product_path(domain_id: session[:domain_id]) do %>
+      <div class="shop-product-image">
+        <%= image_tag product.image.url %>
+      </div><br>
+      <h5 class="time-output">
+        <strong>
           <%= t "cart.order_time_text" %>
           <%= l product.start_hour, format: :short_time %>
           <%= t "split" %>
           <%= l product.end_hour, format: :short_time %>
-        </strong></h5>
-      <% end %>
-    <% else %>
-      <%= link_to product_path(domain_id: session[:domain_id]) do %>
-        <div class="shop-product-image">
-          <%= image_tag product.image.url %>
-        </div><br>
-        <h5 class="time-output"><strong>
-          <%= t "cart.order_time_text" %>
-          <%= l product.start_hour, format: :short_time %>
-          <%= t "split" %>
-          <%= l product.end_hour, format: :short_time %>
-        </strong></h5>
-      <% end %>
+        </strong>
+      </h5>
     <% end %>
   </td>
   <td><%= product.name %></td>
@@ -35,22 +23,35 @@
   <td><%= product.price %></td>
   <td><%= t "all_status.#{product.status}" %></td>
   <td>
-    <% if @domain.present? %>
-      <%= link_to t("common.edit_button"),
-         edit_domain_dashboard_shop_product_path(@domain, product.shop, product),
-        class: "btn btn-sm btn-primary" %>
-      <%= link_to t("common.delete_button"),
-        dashboard_shop_product_path(product.shop, product, domain_id: @domain.id),
-        method: :delete, data: {confirm: t("common.delete_confirm")},
-        class: "btn btn-sm btn-danger" %>
-    <% else %>
-      <%= link_to t("common.edit_button"),
-        edit_dashboard_shop_product_path(product.shop, product, domain_id: session[:domain_id]),
-        class: "btn btn-sm btn-primary" %>
-      <%= link_to t("common.delete_button"),
-        dashboard_shop_product_path(product.shop, product, domain_id: session[:domain_id]),
-        method: :delete, data: {confirm: t("common.delete_confirm")},
-        class: "btn btn-sm btn-danger" %>
-    <% end %>
+    <%= link_to t("common.edit_button"),
+      edit_dashboard_shop_product_path(product.shop, product), remote: true,
+      class: "btn btn-sm btn-primary" %>
+    <%= link_to t("common.delete_button"), "#confirm-delete-product-#{product.id}",
+      "data-toggle": "modal", class: "btn btn-sm btn-danger" %>
   </td>
 </tr>
+
+<div id="confirm-delete-product-<%= product.id %>" class="modal fade">
+  <div class="modal-dialog modal-delete-domain">
+    <div class="modal-content">
+      <div class="modal-header modal_header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title modal_text_header"><%= t "common.notifications" %></h4>
+      </div>
+      <div class="modal-body">
+        <p class="center">
+          <%= t("confirm_delete_product", product_name: product.name) %>
+        </p>
+      </div>
+      <div class="modal-footer margin-top-0">
+        <button type="button" class="btn btn-default form-button"
+          data-dismiss="modal">
+          <%= t "cancel" %>
+        </button>
+        <%= link_to t("submit"),
+          dashboard_shop_product_path(product.shop, product), method: :delete,
+          class: "btn btn-add form-button" %>
+      </div>
+    </div>
+  </div>
+</div>

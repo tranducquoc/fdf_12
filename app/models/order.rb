@@ -22,11 +22,12 @@ class Order < ApplicationRecord
   after_create_commit :create_notification
   after_create :check_status_order, if: -> {self.pending?}
 
+  scope :of_user_ids, -> ids {where user_id: ids}
   scope :by_date_newest, ->{order created_at: :desc}
   scope :unfinished, ->{where.not status: Order.statuses[:done]}
-  scope :on_today, ->{where "date(orders.created_at) = date(now())"}
   scope :is_rejected, -> {where.not status: Order.statuses[:rejected]}
-  scope :by_domain, -> domain_id {where domain_id: domain_id}
+  scope :by_domain, -> domain_id {where domain_id: domain_id if domain_id.present?}
+  scope :by_domain_ids, -> ids {where domain_id: ids}
 
   ransacker :created_at do
     Arel.sql("date(created_at)")
@@ -62,6 +63,20 @@ class Order < ApplicationRecord
   end
 
   scope :orders_by_list_id, -> list {where id: list}
+
+  scope :in_date, ->start_date, end_date do
+    case
+    when end_date.present? && start_date.present?
+      where("DATE(created_at) <= ? AND created_at >= ?",
+        end_date.to_date, start_date.to_date)
+    when end_date.present?
+      where("DATE(created_at) <= ?", end_date.to_date)
+    when start_date.present?
+      where("created_at >= ?", start_date.to_date)
+    else
+      where "DATE(created_at) = date(now())"
+    end
+  end
 
   def build_order_products
     unless self.change_status

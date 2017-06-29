@@ -1,6 +1,7 @@
 ja:
   time:
     formats:
+      custom_date: "%d-%m-%Y"
       short_date: "%m/%d/%Y"
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
@@ -284,7 +285,7 @@ ja:
     product_number: "%{number} 品"
     view_button: "見る"
     tags: "カード"
-    shop_managers: "管理"
+    shop_managers: "管理 (%{num})"
   header:
     account: "アカウント"
     shop_manager: "店長"
@@ -487,10 +488,6 @@ ja:
     admin_lte_2_login:
       login_box_message: "セッションを作成するにはログインしてください"
   dashboard:
-    order_managers:
-      index:
-        start_date: から"
-        end_date: "まで"
     statistics:
       index:
         tittle: "統計注文"
@@ -607,6 +604,9 @@ ja:
         reject_orders: "ご注文は拒否します"
         not_products: "商品なし"
         btn_search: "サーチ"
+        start_date: から"
+        end_date: "まで"
+        filter_by: "オーダを検索する"
   cart:
     view_cart_all: "すべて表示"
     add_to_card: "増加"
@@ -683,6 +683,7 @@ ja:
     name: "プロダクトの名前"
     price: "価格"
     not_product: "空ではありません"
+    not_allow: "You are not allowed to view this product!"
   shared:
     comments:
       comment_box: "コメントブラケット"
@@ -693,6 +694,7 @@ ja:
   date_format: "%d/%m/%Y"
   users:
     show:
+      full_name: "フルネーム"
       email: "メール"
       chatwork: "Chatwork id"
       create_at: "参加日"
@@ -740,6 +742,9 @@ ja:
     continue: "次へ"
     total_price: "合計: "
     done: "達成"
+    user_name: "User Name"
+    details: "Details"
+    total_price_date: "合計 "
   order_day: "デイ注文"
   language: "語: "
   english: "English"
@@ -792,6 +797,7 @@ ja:
     add_member: "メンバーを追加します"
     edit_shop: "%{num} 店"
     delete_shop: "消します"
+    delete_domain: "Delete domain"
     edit_member: "%{num} メンバー"
     user: "メンバ管理"
     add_manager_successfully: "成功します"
@@ -801,6 +807,7 @@ ja:
     manage: "管理します"
     personal: "パーソナル"
     shop: "店長"
+    request_join_domain: "%{num}ドメイン参加をリクエストする"
   views:
     pagination:
       first: "最初に"
@@ -824,6 +831,7 @@ ja:
     rejected: "拒否されました"
     all: "すべて"
     active: "仕事"
+    inactive: "非アクティブ"
     closed: "閉じました"
     blocked: "ロック"
     approved: "一般に認められました"
@@ -903,3 +911,103 @@ ja:
   user_need_join_domain_shop: "ンフォメーションストア%{shop_name}みて前に、%{domain_name}ドメインに参加する必要があります"
   user_need_join_domain_product: "%{product_name}ご注文前に%{domain_name}ドメインに参加する必要があります"
   click_to_join_domain: "このドメインに入るために \"OK\" をクリックします"
+  all_domains: "すべてのドメイン"
+  filter_order: "フィルタ"
+  select_domain: "ドメインを選択 "
+  top_shops:
+    go_to_manage_shop: "あなたはメンバーではありません"
+    go_to_shop: "今すぐ登録"
+    not_nember_of_shop: "ショップに入ります"
+    join_domain_now: "サイト管理に入ります"
+  search_user: "ユーザーによるフィルタリング "
+  name_or_email: "名前または電子メールを入力"
+  order_manage_filter:
+    product: "プロダクト"
+    user: "ユーザー"
+  opening_hours: "業務時間"
+  food_name: "食べ物の名前"
+  view_more_products: "もっと見る"
+  load_more_products: "より多くの製品のロード"
+  general_info:
+    total:
+      orders: "受注数"
+      order_pending: "保留中の注文数"
+      products: "製品数"
+    reject_order_auto: "オーダーの自動拒否"
+    open_shop_now: "今すぐオープンショップ"
+    close_shop_now: "今すぐ店を閉める"
+    edit_shop: "ストアの編集情報"
+    add_new_product: "新しい商品を追加"
+  time_auto_close_shop: "時間自動クローズ "
+  status_shop: "店舗の状況"
+  change_picture: "写真を変える"
+  activerecord:
+    errors:
+      models:
+        product:
+          attributes:
+            name:
+              blank: "商品の名前は空ではありません"
+              too_long: "商品の名前は50文字以下にする必要があります"
+            description:
+              blank: "説明は空ではありません"
+              too_long: "250文字を超えてはなりません"
+            price:
+              blank: "価格は空ではありません"
+              greater_than: "価格は0より大きくなければなりません"
+              less_than_or_equal_to: "価格は1000000000以下でなければなりません"
+        shop:
+          attributes:
+            name:
+              blank: "ショップ名は空ではありません"
+              without: "ショップ名が無効です"
+              too_long: "ショップの名前は50文字以下にする必要があります"
+            description:
+              blank: "説明は空ではありません"
+              too_long: "250文字を超えてはなりません"
+        domain:
+          attributes:
+            name:
+              blank: "ドメインの名前は空ではありません"
+              without: "ドメイン名が無効です"
+  update_image_avatar: "写真を変える"
+  invalid_hour: "タイム端は以上時間が始まったしなければなりません"
+  not_have_domain: "続行するには、ドメインに参加しなければなりません"
+  shop_not_allow: "この店を見ることはできません"
+  manage_user_domain: "％{name}メンバーを管理する"
+  add_domain_users: "メンバーを追加"
+  manage_domain_users: "メンバードメインマネージャー"
+  domain_manage_users: "ユーザーを管理します"
+  finish_manage_domain_user: "完了"
+  search_domain_user: "ユーザーを検索"
+  shop_manager: "ショップマネージャー"
+  shop_owner: "店主"
+  close_shop_manualy: "クローズショップ手動"
+  manage_shop_detail: "詳細管理"
+  manage_joins_domains: "ドメインを結合する"
+  create_new_shop: "新しいショップを作る"
+  function: "関数"
+  infomation_shop: "ストアの情報"
+  update_cover_image: "写真を変える"
+  rejected_shop_domain: "成功します"
+  manage_domain_shop: "％{name}店舗を管理する"
+  list_domain_shops: "リストショップ"
+  request_domain_shops: "リクエストショップの一覧表示"
+  finish_manage_domain_shop: "完了"
+  manage_domain_shops: "店を管理する"
+  not_have_shops: "商品はありません"
+  enter_domain: "ドメインを入力"
+  cart_of_shop: "ショップのカート: %{name}"
+  order_this_shop: "この店の発注"
+  daily: "毎日!"
+  paid: "支払った"
+  update_success: "成功する!"
+  update_fails: "失敗!"
+  order_at: "オーダーする "
+  uppaid: "未払い"
+  confirm_delete_domain: "あなたは本当に%{domain_name}ドメインを削除しますか"
+  confirm_leave_domain: "あなたは本当に%{domain_name}ドメインを残したいですか"
+  confirm_delete_product: "あなたは本当に%{product_name}を削除しますか"
+  confirm_cancel_request_shop: "あなたは%{domain_name}ドメインの %{shop_name}リクエストをキャンセルしたいです"
+  confirm_delete_user_domain: "％{domain_name}ドメインから％{user_name}を削除しますか"
+  have_no_order_to_day: "今日 オーダー がありません"

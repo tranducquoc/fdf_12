@@ -1,0 +1,12 @@
+<% shop_managers.limit(Settings.limit_show_manager_of_shop).each do |user| %>
+  <%= link_to user_path(user), class: "user-item-image" do %>
+    <%= image_tag user.avatar.url, alt: user.name,
+      title: user.name %>
+  <% end %>
+<% end %>
+<% if @shop.owner_id == current_user.id %>
+  <%= link_to "#manager_of_shop", "data-toggle": "modal",
+    class: "user-item-image" do %>
+    <%= image_tag "add_circle.png", alt: t("set_manager_shop") %>
+  <% end %>
+<% end %>

@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var price = 0;
   var product = null;
-  $('.btn_modal_order_now').click(function(){
+  $(document).on('click', '.btn_modal_order_now', function(){
     product = $(this).data('product');
     price = product.price;
     document.getElementById("modal_image").src = product.image.url;
@@ -174,5 +174,207 @@ $(document).ready(function(){
         }
       }
     }
+  });
+});
+
+$(document).ready(function(){
+  if($(window).width() >= 1200)
+    $('.owl-carousel').owlCarousel({
+      items: 3,
+      loop: true,
+      nav:true,
+      autoplay: true,
+      autoPlaySpeed: 5000,
+      autoPlayTimeout: 5000,
+      autoplayHoverPause: false
+    });
+  else
+    $('.owl-carousel').owlCarousel({
+      items: 2,
+      loop: true,
+      nav:true,
+      autoplay: true,
+      autoPlaySpeed: 5000,
+      autoPlayTimeout: 5000,
+      autoplayHoverPause: false
+    });
+  $('.owl-prev').addClass('slide-top-shop-prev')
+    .html('<i class="material-icons btn-prev-next">keyboard_arrow_left</i>');
+  $('.owl-next').addClass('slide-top-shop-next')
+    .html('<i class="material-icons btn-prev-next">keyboard_arrow_right</i>')
+});
+
+$(document).ready(function(){
+  $('.top-shop-slide-item').hover(function(){
+    $(this).find('.toggle_panel').slideToggle(500);
+  });
+
+  $('.all-shop-slide-item').hover(function(){
+    $(this).find('.toggle_panel').slideToggle(500);
+  });
+});
+
+// open/close shop
+$(document).ready(function(){
+  $('.btn-open-close-shop').click(function(){
+    var btn = $(this);
+    var type = btn.data('type');
+    if(type === 'close') {
+      $.ajax({
+        url: '/dashboard/shops/' + $(this).data('id'),
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+          'checked': false
+        },
+        success: function(response) {
+          sweetAlert(I18n.t('api.success'), I18n.t('shop_was_closed'), 'success');
+          btn.data('type', 'open');
+          btn.html('<div class="btn_icon material-icons">lock_open</div><div>' +
+            I18n.t("general_info.open_shop_now") + '</div>');
+          change_class_after_close_shop(btn);
+        },
+        error: function(errors) {
+          sweetAlert(I18n.t('api.error'), I18n.t('api.error'), 'error');
+        }
+      });
+    }
+    else {
+      $.ajax({
+        url: '/dashboard/shops/' + $(this).data('id'),
+        type: 'PUT',
+        dataType: 'json',
+        data:{
+          'checked': true
+        },
+        success: function(response) {
+          sweetAlert(I18n.t('api.success'), I18n.t('shop_was_open'), 'success');
+          btn.data('type', 'close');
+          btn.html('<div class="btn_icon material-icons">lock_outline</div><div>' +
+            I18n.t("general_info.close_shop_now") + '</div>');
+          change_class_after_open_shop(btn, response.time)
+        },
+        error: function(errors) {
+          sweetAlert(I18n.t('api.error'), I18n.t('api.error'), 'error');
+        }
+      });
+    }
+  });
+});
+
+$(document).ready(function(){
+  $('#shop_openforever').change(function(){
+    $('.time_auto_close_shop').slideToggle(500);
+  });
+});
+
+// changes picture shop
+$(document).ready(function(){
+  $('.change_icon').hover(function(){
+    $(this).parent('a').find('.change_item').animate({'width': 'show'}, 500);
+  }, function() {
+    $(this).parent('a').find('.change_item').animate({'width': 'hide'}, 500);
+  });
+
+  $('.change_image').click(function(){
+    $(this).parent('.change_image_hover').find('input').click();
+  });
+});
+
+//coutdown time close shop
+$(document).ready(function(){
+  coutdown_shop_auto_close();
+});
+
+function coutdown_shop_auto_close() {
+  $('.shop_auto_close').each(function(){
+    time = $(this).data('timeclose');
+    $(this).countdown(time).on('update.countdown', function(event) {
+      $(this).html(event.strftime('%H:%M:%S'));
+    }).on('finish.countdown', function(event) {
+      change_class_after_close_shop($(this));
+      $(this).parents('.manage_shops_item').find('.btn-open-close-shop').data('type', 'open')
+        .html('<div class="btn_icon material-icons">lock_open</div><div>' +
+        I18n.t("general_info.open_shop_now") + '</div>');
+    });
+  })
+};
+
+function change_class_after_open_shop(object, time) {
+  object.parents('.manage_shops_item').removeClass('shop_item_close')
+    .addClass('shop_item_open');
+  object.parents('.manage_shops_item').find('.shop_closed')
+    .addClass('shop_openning').removeClass('shop_closed').html(I18n.t("shop_was_open"));
+  object.parents('.manage_shops_item').find('.shop_clock').data('timeclose', time);
+  object.parents('.manage_shops_item').find('.shop_clock')
+    .addClass('shop_auto_close');
+  coutdown_shop_auto_close();
+};
+
+function change_class_after_close_shop(object) {
+  object.parents('.manage_shops_item').addClass('shop_item_close')
+    .removeClass('shop_item_open');
+  object.parents('.manage_shops_item').find('.shop_openning')
+    .addClass('shop_closed').removeClass('shop_openning').html(I18n.t("shop_was_closed"))
+  object.parents('.manage_shops_item').find('.shop_auto_close').countdown('pause');
+  object.parents('.manage_shops_item').find('.shop_clock').removeClass('shop_auto_close')
+    .html('--:--:--');
+};
+
+//manage domain of shop
+$(document).ready(function(){
+  $('.manage_shops_item').hover(function(){
+    $(this).find('.function').animate({'height': 'show'}, 400);
+  }, function() {
+    $(this).find('.function').animate({'height': 'hide'}, 400);
+  });
+});
+
+$(document).ready(function(){
+  $('.btn_list_orders').click(function(){
+    var shop_id = $(this).data('id');
+    $.ajax({
+      url: '/dashboard/shops/' + shop_id + '/orders',
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        check_orders: true
+      },
+      success: function(response) {
+        if(response.orders == 0)
+          sweetAlert(I18n.t('api.error'), I18n.t('oder.not_oder'), 'error');
+        else
+          window.location.href = '/dashboard/shops/' + shop_id + '/orders'
+      },
+      error: function(errors) {
+        sweetAlert(I18n.t('api.error'), I18n.t('api.error'), 'error');
+      }
+    });
+  });
+});
+
+//change checkbok paid
+$(document).ready(function(){
+  $('.is-order-paid').change(function(){
+    var order_id = $(this).val();
+    var shop_id = $(this).data('shopid');
+    var type = $(this).is(':checked');
+    $.ajax({
+      url: '/dashboard/shops/' + shop_id + '/orders/' + order_id + '/edit',
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        checked: type
+      },
+      success: function(response) {
+        if(response.mess === "true")
+          sweetAlert(I18n.t('api.success'), I18n.t('update_success'), 'success');
+        else
+          sweetAlert(I18n.t('api.error'), I18n.t('update_fails'), 'error');
+      },
+      error: function(errors) {
+        sweetAlert(I18n.t('api.error'), I18n.t('api.error'), 'error');
+      }
+    });
   });
 });

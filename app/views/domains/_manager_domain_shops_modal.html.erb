@@ -1,0 +1,65 @@
+<div id="domain-shop-modal-<%= domain.id %>" role="dialog"
+  class="modal fade domain-shop" data-domain="<%= domain.id %>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header modal_header">
+        <button type="button" class="close" data-dismiss="modal"
+          aria-hidden="true">&times;</button>
+        <h4 class="modal-title modal_text_header">
+          <%= t "manage_domain_shop", name: domain.name %>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs">
+          <li class="active">
+           <%= link_to t("list_domain_shops"), "#1-shop-#{domain.id}",
+              data: {toggle: "tab"} %>
+          </li>
+          <li>
+            <%= link_to t("request_domain_shops"), "#2-shop-#{domain.id}",
+              data: {toggle: "tab"} %>
+          </li>
+        </ul>
+        <div class="tab-content ">
+          <div class="tab-pane active" id="1-shop-<%= domain.id %>">
+            <div class="manager-domain">
+              <table class="table table-striped table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th><%= t "common.number" %></th>
+                    <th><%= t "admin.users.index.name" %></th>
+                    <th><%= t "shop_owner" %></th>
+                    <th><%= t "products" %></th>
+                    <th><%= t "admin.users.index.actions" %></th>
+                  </tr>
+                </thead>
+                <tbody id="list-shops-<%= domain.id %>"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="tab-pane" id="2-shop-<%= domain.id %>">
+            <div class="manager-domain">
+              <table class="table table-striped table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th><%= t "common.number" %></th>
+                    <th><%= t "admin.users.index.name" %></th>
+                    <th><%= t "shop_owner" %></th>
+                    <th><%= t "products" %></th>
+                    <th><%= t "admin.users.index.actions" %></th>
+                  </tr>
+                </thead>
+                <tbody id="list-request-shop-<%= domain.id %>"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer margin_0">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          <%= t "order_statistics.done" %>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,3 @@
+$('#list-users-<%= @choosen_domain.id %>').html('<%= j render "user_domain_searches/list_users", users: @users %>');
+$('#list-added-users-<%= @choosen_domain.id %>').html('<%= j render "user_domain_searches/list_added_users", users: @choosen_domain.users %>');
+$.growl.notice({ message: '<%= @message %>'});

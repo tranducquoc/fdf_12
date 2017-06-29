@@ -32,7 +32,7 @@ module ApplicationHelper
 
   def count_notification_unread
     if user_signed_in?
-      number_noti =  @count_unread_notification
+      number_noti =  current_user.events.by_date.unread.size
       if number_noti == Settings.notification.number_unread_not_display
         number_noti = ""
       else
@@ -83,12 +83,7 @@ module ApplicationHelper
   end
 
   def number_product_in_category_by_domain category, domain
-    products = if @domain.present?
-      domain.products.by_category category
-    else
-      category.products
-    end
-    products.size
+    active_products_in_domain_by_category(domain, category).size
   end
 
   def domain_icon domain
@@ -128,11 +123,6 @@ module ApplicationHelper
 
   def domain_status
     Domain.statuses.keys.select{|status| status != Domain.statuses.keys[2]}
-  end
-
-  def get_user_of_shop user_id, shop_id
-    user_of_shop = ShopManager.find_by(user_id: user_id,
-      shop_id: shop_id)
   end
 
   def get_manager_of_shop user_id, shop_id
@@ -186,5 +176,23 @@ module ApplicationHelper
     (checked_email_setting?(Settings.index_zero_in_array) &&
       checked_email_setting?(Settings.index_one_in_array) &&
       checked_email_setting?(Settings.index_two_in_array)) ? "checked" : ""
+  end
+
+  def load_select_category categories
+    categories.collect {|category| [category.name, category.id]}
+  end
+
+  def active_products_in_domain_by_category domain, category
+    shops_slide = Shop.shop_in_domain(domain.id)
+    shops = shops_slide.select{|shop| shop.on?}
+    products_domain = []
+    shops.each do |t|
+      products_domain << t.products.by_active.by_category(category)
+    end
+    products_domain.flatten
+  end
+
+  def check_length_perpage products
+    products.size > Settings.common.products_per_page
   end
 end

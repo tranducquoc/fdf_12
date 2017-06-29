@@ -1,0 +1,2 @@
+$('#list-users-<%= @choosen_domain.id %>').html('<%= j render "list_users", users: @user_domain.users %>');
+$('#list-added-users-<%= @choosen_domain.id %>').html('<%= j render "list_added_users", users: @user_domain.added_users %>');

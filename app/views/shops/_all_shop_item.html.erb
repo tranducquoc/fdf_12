@@ -1,0 +1,70 @@
+<div class="col-sm-4 col-md-4 col-xs-6">
+   <div class="top-shop-slide">
+    <div class="<%= shop.status_on_off == Settings.shop_status_off ?
+     "col-sm-12 col-md-12 col-xs-12 all-shop-slide-item  shop_close" :
+     "col-sm-12 col-md-12 col-xs-12 all-shop-slide-item shop_open" %>">
+    <% if current_user.is_member_of_domain? @domain %>
+      <% if is_owner_manager_of_shop? shop.id %>
+        <div class="toggle_panel">
+          <div class="button_manager">
+            <%= link_to dashboard_shop_path(shop),
+              class: "btn v2-btn-warning btn_manage_shop" do %>
+              <span class="glyphicon glyphicon-home"></span>
+              <%= t "top_shops.go_to_manage_shop" %>
+            <% end %>
+            <%= link_to shop_path(shop), class: "btn v2-btn-info btn_show_shop" do %>
+              <span class="glyphicon glyphicon-shopping-cart"></span>
+              <%= t "top_shops.go_to_shop" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="toggle_panel">
+        <div class="button_manager">
+          <%= t "top_shops.not_nember_of_shop" %>
+          <br>
+          <%= link_to user_domains_path(user_id: current_user.id,
+            domain_id: @domain.id, join_domain: true), method: :post,
+            class: "btn v2-btn-success btn_join_domain" do %>
+            <span class="glyphicon glyphicon-cloud-upload"></span>
+            <%= t "top_shops.join_domain_now" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+      <div class="col-sm-5 col-md-5 col-xs-5 top_shop_image">
+        <%= link_to shop_path(@domain, shop) do %>
+          <%= image_tag shop.avatar.url, class: "image" %>
+        <% end %>
+      </div>
+      <div class="col-sm-7 col-md-7 col-xs-7 item">
+        <% if current_user.is_member_of_domain? @domain %>
+          <% if is_owner_manager_of_shop? shop.id %>
+            <%= link_to shop.name, "javascript:void(0)",
+              class: "tooltips confirm-button shop-name", title: shop.name,
+              "data-id": shop.id %>
+          <% else %>
+            <%= link_to shop.name,
+              shop_path(@domain, shop), class: "tooltips shop-name",
+              title: shop.name %>
+          <% end %>
+        <% else %>
+          <%= link_to shop.name, "javascript:void(0)",
+            class: "tooltips confirm-button shop-name", title: shop.name %>
+        <% end %>
+        <div class="rate">
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+        </div> |
+        <div class="status"><%= render "shared/shop_on_off", shop: shop %></div>
+        <br>
+        <marquee direction="left" class="text-description"
+          scrollamount=5><%= shop.description %></marquee>
+      </div>
+    </div>
+  </div>
+</div>

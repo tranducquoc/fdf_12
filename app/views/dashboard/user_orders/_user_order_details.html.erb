@@ -1,0 +1,63 @@
+<table class="table table-bordered text-center">
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= t "dashboard.products.show.stt" %></th>
+      <th><%= t "dashboard.products.show.name" %></th>
+      <th><%= t "dashboard.products.show.quantity" %></th>
+      <th><%= t "dashboard.products.show.notes" %></th>
+      <th><%= t "dashboard.products.show.price" %></th>
+      <th><%= t "dashboard.products.show.total" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% group_by_order(order_products).each_with_index do |orders, index| %>
+      <% orders.last.each_with_index do |order, index| %>
+        <tr>
+          <% if index == 0 %>
+            <td rowspan="<%= orders.last.size %>">
+              <strong>
+                <%= t "order_at" %>
+                <%= orders.first.created_at.strftime(Settings.fomat_time) %>
+              </strong>
+              <div>
+                <%= order_paid_status_label orders.first %>  
+              </div>
+            </td>
+          <% end %>
+          <td>
+            <%= increase_one index %>
+          </td>
+          <td>
+            <%= order.product_name %>
+          </td>
+          <td>
+            <%= order.quantity %>
+          </td>
+          <td>
+            <%= order.notes %>
+          </td>
+          <td>
+            <%= order.product_price %>
+          </td>
+          <td>
+            <strong>
+              <%= total_price(order.product_price, order.quantity).to_i %>
+              <%= t "cart.vnd" %>
+            </strong>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+    <tr>
+      <td colspan="7">
+        <div class="order-statistics-total-price">
+          <strong>
+            <%= t "order_statistics.total_price" %>
+            <%= format_price sum_price(order_products) %> 
+          </strong>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

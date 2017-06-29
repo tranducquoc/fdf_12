@@ -4,6 +4,7 @@ class Dashboard::ShopsController < BaseDashboardController
   before_action :check_user_status_for_action
   before_action :load_domain_in_session
   before_action :check_owner_or_manager, only: [:show, :edit]
+  before_action :get_current_action, only: [:index, :show]
 
   def new
     @shop = current_user.own_shops.build
@@ -24,48 +25,27 @@ class Dashboard::ShopsController < BaseDashboardController
   end
 
   def show
-    user_domain = Domain.find_by id: session[:domain_id]
-    if user_domain
-      @users = user_domain.users
-      @users_shop_manager = ShopManager.includes(:user).select do |user|
-        (user.shop_id == @shop.id && (user.role == Settings.shop_owner ||
-         user.role == Settings.shop_manager))
+    @shop = @shop.decorate
+    @products = @shop.products.page(params[:page])
+      .per Settings.common.products_per_page
+    @products_all = @shop.products.all
+    if @start_hour.present? and @end_hour.present?
+      if compare_time_order @start_hour, @end_hour
+        @products_all.update_all status: :active, start_hour: @start_hour,
+          end_hour: @end_hour
+        flash.now[:success] = t "dashboard.shops.show.update_success"
+      else
+        flash.now[:danger] = t "dashboard.shops.show.update_fail"
       end
-      @shop = @shop.decorate
-      @products = @shop.products.page(params[:page])
-        .per Settings.common.products_per_page
-      @products_all = @shop.products.all
-      if @start_hour.present? and @end_hour.present?
-        if compare_time_order @start_hour, @end_hour
-          @products_all.update_all status: :active, start_hour: @start_hour,
-            end_hour: @end_hour
-          flash.now[:success] = t "dashboard.shops.show.update_success"
-        else
-          flash.now[:danger] = t "dashboard.shops.show.update_fail"
-        end
-      end
-      user_ids = []
-      user_shop_domain = ShopDomain.list_shop_by_id @shop.id
-      user_shop_domain.each do |user_shop|
-        user_ids << UserDomain.list_all_user_domains(user_shop.domain_id)
-      end
-      user_ids = user_ids.flatten.pluck(:user_id).uniq
-      @support = Supports::SearchSupport.new(@shop.id, user_ids, "")
-    else
-      redirect_to root_path
     end
+    @support = Supports::SearchSupport.new(@shop.id, "")
   end
 
   def index
+    @shop = Shop.new
     @request = @domain.request_shop_domains.build if @domain.present?
-    @shops = current_user.own_shops.includes(:domains).page(params[:page]).per(Settings.common.per_page).decorate
-    @shop_managers = ShopManager.by_user current_user.id
-    @shop_mn = []
-    @shop_managers.each do |shop_manager|
-      if shop_manager.role == Settings.shop_owner || shop_manager.role == Settings.shop_manager
-        @shop_mn << shop_manager
-      end
-    end
+    @shops = current_user.shops.page(params[:page])
+      .per Settings.common.products_per_page
   end
 
   def edit
@@ -95,7 +75,11 @@ class Dashboard::ShopsController < BaseDashboardController
                 shop_job = Delayed::Job.find_by id: shop_job_id
                 shop_job.delete if shop_job.present?
               end
-              redirect_by_domain
+              if @@current_action == Settings.shop_actions.index
+                redirect_to dashboard_shops_path
+              else
+                redirect_to dashboard_shop_path
+              end
             else
               flash[:danger] = t "flash.danger.dashboard.updated_shop"
               render :edit
@@ -103,15 +87,25 @@ class Dashboard::ShopsController < BaseDashboardController
           end
         end
       end
-      format.js
+      shop_job = Delayed::Job.find_by id: @shop.delayjob_id
+      time_close = shop_job.run_at.strftime(Settings.fomat_time_coutdown) if shop_job.present?
+      format.js do
+        render json: {time: time_close}
+      end
     end
   end
 
   private
   def shop_params
-    params.require(:shop).permit(:id, :name, :description,
-      :cover_image, :avatar, :time_auto_reject, :time_auto_close, :openforever)
-      .merge status_on_off: :off, delayjob_id: nil
+    if params[:shop][:openforever] == Settings.checkbox_value_true
+      params.require(:shop).permit(:id, :name, :description,
+        :cover_image, :avatar, :time_auto_reject, :time_auto_close, :openforever)
+        .merge status_on_off: :on, delayjob_id: nil
+    else
+      params.require(:shop).permit(:id, :name, :description,
+        :cover_image, :avatar, :time_auto_reject, :time_auto_close, :openforever)
+        .merge status_on_off: :off, delayjob_id: nil
+    end
   end
 
   def load_params_update
@@ -148,7 +142,7 @@ class Dashboard::ShopsController < BaseDashboardController
     else
       flash[:danger] = t "flash.danger.dashboard.updated_shop"
     end
-    redirect_to domain_dashboard_shops_path @domain
+    redirect_to dashboard_shops_path
   end
 
   def redirect_by_domain
@@ -180,5 +174,9 @@ class Dashboard::ShopsController < BaseDashboardController
       flash[:danger] = t "not_have_permission"
       redirect_to root_path
     end
+  end
+
+  def get_current_action
+    @@current_action = params[:action]
   end
 end

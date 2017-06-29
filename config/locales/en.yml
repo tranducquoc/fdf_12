@@ -1,6 +1,7 @@
 en:
   time:
     formats:
+      custom_date: "%d-%m-%Y"
       short_date: "%m/%d/%Y"
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
@@ -170,7 +171,7 @@ en:
   feed_back: "Feed back"
   shop_owner: "Shop owner: "
   change_shop_owner: "Change the shop owner"
-  enter_email: "Enter the new shop owner email"
+  enter_email: "Enter the new shop owner name or email"
   change_shop: "You have changed the shop's admin"
   cant_not_find_shop: "Can not find user by this email"
   shop_subject: "New shop request"
@@ -229,7 +230,7 @@ en:
   current_month: "Current Month"
   current_year: "Current Year"
   add_cart_succes: "Update cart order successfully"
-  load_order: "Cannot find order"
+  load_order: "No orders found!"
   order_open_blank: "Don't have any order open!"
   submit: "Submit"
   order_open_present: "List order open."
@@ -251,7 +252,7 @@ en:
     top_shops: "Top Shops"
     previous: "Previous"
     next: "Next"
-    btn_view_all: "VIEW ALL"
+    btn_view_all: "View all"
     btn_order_now: "Order now"
     btn_add_to_favorite: "Add to Favorite"
     toggle_navigation: "Toggle navigation"
@@ -286,7 +287,7 @@ en:
     product_number: "%{number} products"
     view_button: "View"
     tags: "Tags"
-    shop_managers: "Managers"
+    shop_managers: "Managers (%{num})"
   header:
     account: "Account"
     shop_manager: "Shop management"
@@ -494,10 +495,6 @@ en:
     admin_lte_2_login:
       login_box_message: "Sign in to start your session"
   dashboard:
-    order_managers:
-      index:
-        start_date: "Start date"
-        end_date: "End date"
     statistics:
       index:
         tittle: "Statistics order"
@@ -613,6 +610,9 @@ en:
         reject_orders: "Reject Orders"
         not_products: "Not has any products"
         btn_search: "Filter"
+        start_date: "Start date"
+        end_date: "End date"
+        filter_by: "Filter orders by"
   cart:
     view_cart_all: "View all"
     add_to_card: "Add to cart"
@@ -689,6 +689,7 @@ en:
     name: "Product Name"
     price: "Price"
     not_product: "Have not product"
+    not_allow: "You are not allowed to view this product!"
   shared:
     comments:
       comment_box: "Comments box"
@@ -699,6 +700,7 @@ en:
   date_format: "%d/%m/%Y"
   users:
     show:
+      full_name: "Full name"
       email: "Email"
       chatwork: "Chatwork id"
       create_at: "Joined at"
@@ -745,7 +747,10 @@ en:
     step2: "Step 2: Close Order"
     continue: "Continue"
     total_price: "Total price: "
+    total_price_date: "Total price on this day: "
     done: "Done"
+    user_name: "User Name"
+    details: "Details"
   order_day: "Order day"
   language: "Language: "
   english: "English"
@@ -796,10 +801,11 @@ en:
     cancel: "Cancel"
   manage_domain:
     view_all_domains: "view all domains"
-    leave: "Leave"
+    leave: "Leave domain"
     add_member: "Add members"
     edit_shop: "%{num} Shops"
     delete_shop: "Delete"
+    delete_domain: "Delete domain"
     edit_member: "%{num} Members"
     user: "Manage members"
     add_manager_successfully: "Domain manager is saved successfully"
@@ -809,6 +815,7 @@ en:
     manage: "Set Manager"
     personal: "Personal"
     shop: "Manage shops"
+    request_join_domain: "%{num} Requests join domain"
   views:
     pagination:
       first: "First"
@@ -833,6 +840,7 @@ en:
     rejected: "Rejected"
     all: "All"
     active: "Active"
+    inactive: "Inactive"
     closed: "Closed"
     blocked: "Blocked"
     approved: "Approved"
@@ -895,3 +903,103 @@ en:
   user_need_join_domain_shop: "You need to join %{domain_name} domain before view %{shop_name}'s shop infomation."
   user_need_join_domain_product: "You need to join %{domain_name} domain before view and order %{product_name}."
   click_to_join_domain: "Click \"OK\" to join this domain"
+  all_domains: "All domains"
+  filter_order: "Filter Orders"
+  select_domain: "Select domain: "
+  top_shops:
+    go_to_manage_shop: "Go to manage page"
+    go_to_shop: "Go to shop page"
+    not_nember_of_shop: "You are not friend of this domain"
+    join_domain_now: "Join now"
+  search_user: "Filter by users: "
+  name_or_email: "Enter name or email"
+  order_manage_filter:
+    product: "Product"
+    user: "User"
+  opening_hours: "Opening hours"
+  food_name: "Food's name"
+  view_more_products: "View more products"
+  load_more_products: "Loading more products"
+  general_info:
+    total:
+      orders: "Number of orders received"
+      order_pending: "Number of orders pending"
+      products: "Number of products"
+    reject_order_auto: "Auto reject orders"
+    open_shop_now: "Open shop now"
+    close_shop_now: "Close shop now"
+    edit_shop: "Edit info of shop"
+    add_new_product: "Add new product"
+  time_auto_close_shop: "Time auto close: "
+  status_shop: "Status of shop"
+  change_picture: "Change picture"
+  activerecord:
+    errors:
+      models:
+        product:
+          attributes:
+            name:
+              blank: "Product's name can't empty"
+              too_long: "Product's name can't be more than 50 characters"
+            description:
+              blank: "Description can't empty"
+              too_long: "Description can't be more than 250 characters"
+            price:
+              blank: "Price can't empty"
+              greater_than: "Price must be greater than 0"
+              less_than_or_equal_to: "Price must be less than or equal to 1000000000"
+        shop:
+          attributes:
+            name:
+              blank: "Shop's name can't empty"
+              without: "Shop's name invalid"
+              too_long: "Shop's name can't be more than 50 characters"
+            description:
+              blank: "Description can't empty"
+              too_long: "Description can't be more than 250 characters"
+        domain:
+          attributes:
+            name:
+              blank: "Domain's name can't empty"
+              without: "Domain's name invalid"
+  update_image_avatar: "Update image"
+  invalid_hour: "End hour must be less than or equal start hour"
+  not_have_domain: "You have to take part in a domain to continue!"
+  shop_not_allow: "You are not allowed to view this shop"
+  manage_user_domain: "Manage %{name} members"
+  add_domain_users: "Add Members"
+  manage_domain_users: "Member domain manager"
+  domain_manage_users: "Manage user"
+  finish_manage_domain_user: "Done"
+  search_domain_user: "Search user"
+  shop_manager: "Shop manager"
+  shop_owner: "Shop owner"
+  manage_shop_detail: "Detail manage"
+  manage_joins_domains: "Joins domains"
+  create_new_shop: "Create new shop"
+  function: "Function"
+  infomation_shop: "Shop Infomation"
+  update_cover_image: "Update cover image"
+  rejected_shop_domain: "Rejected shop to domain successfully"
+  manage_domain_shop: "Manage %{name} shops"
+  list_domain_shops: "List shops"
+  request_domain_shops: "List request shops"
+  finish_manage_domain_shop: "Done"
+  manage_domain_shops: "Manage shops"
+  not_have_shops: "Not has any products"
+  create_new_domain: "Create new domain"
+  enter_domain: "Enter domain"
+  cart_of_shop: "Your carts at shop: %{name}"
+  order_this_shop: "Place an order of this shop"
+  daily: "Daily!"
+  paid: "Paid"
+  update_success: "Update success!"
+  update_fails: "Update fails!"
+  order_at: "Order at: "
+  unpaid: "Unpaid"
+  confirm_delete_domain: "Do you really want to delete %{domain_name} domain?"
+  confirm_leave_domain: "Do you really want to leave %{domain_name} domain?"
+  confirm_delete_product: "Do you really want to delete product %{product_name}?"
+  confirm_cancel_request_shop: "Do you really want to cancel request join %{domain_name} domain of %{shop_name} shop"
+  confirm_delete_user_domain: "Do you really want to delete member %{user_name} from %{domain_name} domain?"
+  have_no_order_to_day: "There are no orders today!"

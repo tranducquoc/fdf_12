@@ -241,14 +241,13 @@ img {
 .image_product {
   position: relative;
   h3 {
-    margin-top: 70px;
     position: absolute;
-    top: 135px;
+    bottom: 0;
     text-align: center;
     color: #fff;
     background-color: rgba(255, 138, 102, 0.62);
-    font-size: 22px;
     width: 100% !important;
+    margin: 0;
   }
 }
 
@@ -257,7 +256,7 @@ img {
   height: 400px;
 }
 
-.padding_top_10px{
+.pd_top_10px{
   padding-top: 10px;
 }
 
@@ -291,4 +290,122 @@ img {
   margin-top: 0px !important;
   margin-bottom: 0px !important;
   color: #ff5722;
+}
+
+.load-more-products {
+  text-align: center;
+  a {
+    display: inline-block;
+    min-width: 100px !important;
+    padding: 10px;
+    border-radius: 4px;
+    background: #f15626;
+    color: white;
+    &:hover {
+      background: #ff2716;
+      color: white;
+    }
+  }
+}
+
+.product-avatar {
+  width: 100%;
+  min-height: 210px;
+  max-height: 260px;
+  object-fit: cover;
+}
+
+.display-block {
+  display: block;
+}
+
+.intime-group {
+  display: inline-block;
+  width: 70px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.margin-left-2 {
+  margin-left: 2%;
+}
+
+.modal-product {
+  min-width: 600px;
+}
+
+label.error, .time-error {
+  float: right;
+  color: red;
+}
+
+.form-button {
+  min-width: 80px;
+}
+
+.hidden-file {
+  display: none !important;
+}
+
+.choose-avatar, .choose-avatar-shop, .choose-cover-image-shop {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  > i {
+    width: 35px;
+    height: 35px;
+    font-size: 25px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    background-color: #fd680e;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    &:hover {
+      transform: rotate(1turn);
+      -webkit-transform: rotate(1turn);
+      -moz-transform: rotate(1turn);
+      transition: 0.5s ease-in-out;
+    }
+  }
+  > label {
+    display: none;
+    width: 200px;
+    height: 35px;
+    margin-top: 1px;
+    background-color: rgba(238, 238, 238, 0.65);
+    color: #fd680e;
+    border: 1px solid;
+    line-height: 33px;
+    border-radius: 0 50px 50px 0;
+    cursor: pointer;
+    margin-left: -18px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.panel-heading label {
+  margin-bottom: 0;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.button-group-form {
+  padding-top: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+
+.color-red {
+  color: red;
 }

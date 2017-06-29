@@ -1,47 +1,74 @@
-<%= simple_form_for [:dashboard, @shop, @product] do |f| %>
-  <%= render "shared/error_messages", object: @product %>
-   <div class="form-group">
-      <%= f.label t "new_product.category" %>
-      <%= f.select :category_id,
-        @categories.collect {|category| [category.name, category.id]},
-          {}, {class: "form-control"} %>
-        </div>
-  <div class="form-group">
-    <%= f.label t "new_product.name" %>
-    <%= f.text_field :name, placeholder: t(".product_name"),
-      error: t(".product_name_error") , class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label t "new_product.description" %>
-    <%= f.text_area :description, placeholder: t(".product_description"),
-      error: t(".product_description_error"), class: "form-control content_note" %>
-  </div>
-  <div class="form-group">
-    <%= f.label t "new_product.price" %>
-    <%= f.number_field :price, placeholder: t(".product_price"),
-      error: t(".product_price_error"), class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label t "new_product.start_hour" %>
-    <%= f.time_select :start_hour,  minute_step: 5 %>
-    <%= f.label t "new_product.end_hour" %>
-    <%= f.time_select :end_hour,  minute_step: 5 %>
-  </div>
-  <div class="form-group">
-    <%= f.input :status, collection: Product.statuses.keys, selected: :active,
-      label_html: {class: "padding-right-for-button"} %>
-  </div>
-  <div class="form-group">
-    <%= f.label t "new_product.image" %>
-    <%= image_tag @product.image.url, class: "avatar padding_top_10px defaut-size" %>
-    <%= f.file_field :image, accept: Settings.pictures.accepted_files,
-      class: "upload_img" %>
-  </div>
-  <% if @domain.present? %>
-    <%= f.hidden_field :domain_id, value: @domain.id %>
+<div class="row">
+  <%= form_for [:dashboard, @shop, @product], html: {class: "form-product"} do |f| %>
+    <div class="col-xs-5 padding-right-0">
+      <div class="form-group relative">
+        <%= f.label :image, t("new_product.image") %>
+        <%= image_tag @product.image.url, class: "product-avatar" %>
+        <%= f.file_field :image, accept: Settings.pictures.accepted_files,
+          class: "upload_img hidden-file" %>
+        <%= link_to "javascript:void(0)", class: "choose-avatar" do %>
+          <i class="material-icons">camera_enhance</i>
+          <label class="margin-bottom-0"><%= t "update_image_avatar" %></label>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-7">
+      <div class="form-group">
+        <%= f.label :category_id, t("new_product.category") %>
+        <%= f.select :category_id, load_select_category(@categories), {},
+          {class: "form-control"} %>
+      </div>
+      <div class="form-group">
+        <%= f.label :name do %>
+          <%= t "new_product.name" %>
+          <span class="color-red">*</span>
+        <% end %>
+        <%= f.text_field :name, placeholder: t(".product_name"),
+          class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description do %>
+          <%= t "new_product.description" %>
+          <span class="color-red">*</span>
+        <% end %>
+        <%= f.text_area :description, placeholder: t(".product_description"),
+          class: "form-control content_note" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :price do %>
+          <%= t "new_product.price" %>
+          <span class="color-red">*</span>
+        <% end %>
+        <%= f.number_field :price, placeholder: t(".product_price"),
+          class: "form-control" %>
+      </div>
+      <label class="time-error"></label>
+      <div class="form-group">
+        <%= f.label :start_hour, t("new_product.start_hour") << ":",
+          class: "width-150px" %>
+        <%= f.time_select :start_hour, {}, minute_step: Settings.minute_step,
+          class: "intime-group" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :end_hour, t("new_product.end_hour") << ":",
+          class: "width-150px" %>
+        <%= f.time_select :end_hour, {}, minute_step: Settings.minute_step,
+          class: "intime-group" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :status, t("new_product.status") %>
+        <%= f.select :status, options_for_select([[t("all_status.active"), :active],
+          [t("all_status.inactive"), :inactive]],
+          @product.id.present? ? @product.status : :active), {},
+          class: "form-control" %>
+      </div>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+    </div>
+    <div class="col-xs-12 button-group-form">
+      <%= link_to t("common.back_button"), :back,
+        class: "btn btn-default btn-back-to-shop form-button" %>
+      <%= f.submit yield(:submit_button),
+        class: "btn btn_add_to_cart btn-add padding-left-right-10 form-button" %>
+    </div>
   <% end %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= link_to t("common.back_button"), :back, class: "btn btn-warning" %>
-  <%= f.submit yield(:submit_button),
-    class: "btn btn-primary space-top-submit" %>
-<% end %>
+</div>

@@ -1,33 +1,41 @@
 <div class="container">
   <h2 class="order_manager"><%= t ".title" %></h2>
   <div class="panel panel-default">
-    <div class="search_between panel_search">
+    <div class="search_between panel_search text-center">
       <div class="row">
-        <%= form_tag dashboard_shop_order_managers_path, method: :get do |f| %>
-          <div class="col-md-1 margin my-margin">
-            <span class="label-span">
-              <%= t(".start_date") %>
-            </span>
-          </div>
-          <div class="col-md-2">
-            <%= text_field_tag :start_date, params[:start_date],
-              class: "form-control datepicker datepicker_ordermanager_start",
-              placeholder: t("time.formats.date_format") %>
-          </div>
-          <div class="col-md-1 margin my-margin">
-            <span class="label-span">
-            <%= t(".end_date") %>
-            </span>
-          </div>
-          <div class="col-md-2">
-            <%= text_field_tag :end_date, params[:end_date],
-              class: "form-control datepicker datepicker_ordermanager_end",
-              placeholder: t("time.formats.date_format") %>
-          </div>
-          <div class="col-md-2">
-            <%= submit_tag t(".btn_search"), class: "btn btn-primary" %>
-          </div>
-        <% end %>
+        <div class="col-md-1 margin my-margin">
+          <span class="label-span">
+            <%= t ".start_date" %>
+          </span>
+        </div>
+        <div class="col-md-2">
+          <%= text_field_tag :start_date, params[:start_date],
+            class: "form-control order-manager-datepicker
+              order-manager-date order-manager-start",
+            placeholder: t(".start_date") %>
+        </div>
+        <div class="col-md-1 margin my-margin">
+          <span class="label-span">
+          <%= t ".end_date" %>
+          </span>
+        </div>
+        <div class="col-md-2">
+          <%= text_field_tag :end_date, params[:end_date],
+            class: "form-control order-manager-datepicker 
+              order-manager-date order-manager-end",
+            placeholder: t(".end_date") %>
+        </div>
+        <div class="col-md-2 margin my-margin">
+          <span class="label-span">
+          <%= t(".filter_by") %>
+          </span>
+        </div>
+        <div class="col-md-2">
+          <%= select_tag "history-order-manager",
+            options_for_select(order_manage_filter),
+            class: "history-order-manager form-control inline" %>
+        </div>
+        <%= hidden_field_tag :shop_id, @shop.id %>
       </div>
     </div>
   </div>
@@ -44,40 +52,20 @@
     <div id="done" class="tab-pane fade in active">
       <div class="well">
         <div class="panel-group">
-          <% if @order_products_done.present? %>
-            <%= render "order_product", order_products: @order_products_done %>
-            <p>
-              <%= t("download") %>
-              <%= link_to t("csv"), dashboard_shop_order_manager_path(id: @shop.id,
-                format: Settings.csv, type: Settings.type_order_products_done,
-                start: params[:start_date], end: params[:end_date]), method: :put %> |
-              <%= link_to t("excel"), dashboard_shop_order_manager_path(id: @shop.id,
-                format: Settings.xls, type:  Settings.type_order_products_done,
-                start: params[:start_date], end: params[:end_date]), method: :put %>
-            </p>
-          <% else %>
-            <span class="text-danger"><%= t ".not_products" %></span>
-          <% end %>
+          <div class="history-order-done">
+            <%= render "order_product", order_products: @order_products_done,
+              type: :done %>
+          </div>
         </div>
       </div>
     </div>
     <div id="reject" class="tab-pane fade">
       <div class="well">
         <div class="panel-group">
-          <% if @order_products_reject.present? %>
-            <%= render "order_product", order_products: @order_products_reject %>
-            <p>
-              <%= t("download") %>
-              <%= link_to t("csv"), dashboard_shop_order_manager_path(id: @shop.id,
-                format: Settings.csv, type: Settings.type_order_products_rejected,
-                start: params[:start_date], end: params[:end_date]), method: :put %> |
-              <%= link_to t("excel"), dashboard_shop_order_manager_path(id: @shop.id,
-                format: Settings.xls, type: Settings.type_order_products_rejected,
-                start: params[:start_date], end: params[:end_date]), method: :put %>
-            </p>
-          <% else %>
-            <span class="text-danger"><%= t ".not_products" %></span>
-          <% end %>
+          <div class="history-order-reject">
+            <%= render "order_product", order_products: @order_products_reject,
+              type: :rejected %>
+          </div>
         </div>
       </div>
     </div>

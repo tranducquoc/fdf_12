@@ -33,7 +33,8 @@ class Product < ApplicationRecord
   validates :name, presence: true, length: {maximum: Settings.product.max_name}
   validates :description, presence: true, length: {maximum: Settings.product.max_description}
   validate :image_size
-  validate :start_hour_before_end_hour
+  validates_time :end_hour, on_or_after: :start_hour,
+    on_or_after_message: I18n.t("invalid_hour")
   validates :price, presence: true,
     numericality: {greater_than: Settings.min_price,
     less_than_or_equal_to: Settings.product.max_price}
@@ -41,6 +42,7 @@ class Product < ApplicationRecord
   delegate :name, to: :shop, prefix: :shop, allow_nil: true
   delegate :avatar, to: :shop, prefix: :shop
   delegate :slug, to: :shop, prefix: true
+  delegate :name, to: :category, prefix: true
 
   scope :by_date_newest, ->{order created_at: :desc}
   scope :by_active, ->{where status: :active}
@@ -63,14 +65,6 @@ class Product < ApplicationRecord
     max_size = Settings.pictures.max_size
     if image.size > max_size.megabytes
       errors.add :image, I18n.t("pictures.error_message", max_size: max_size)
-    end
-  end
-
-  def start_hour_before_end_hour
-    unless self
-      if start_hour > end_hour
-        errors.add :start_hour, I18n.t("error_message_time")
-      end
     end
   end
 end

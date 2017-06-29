@@ -62,7 +62,7 @@ $(document).ready(function() {
     });
   });
 
-  $('.status-order').change(function() {
+  $(document).on('change', '.status-order', function() {
     itemId = $(this).parent().parent().children()[0].value;
     var selectedValue = $( '#status-order-'+ itemId +' option:selected' ).text()
     var classes = ['label-info', 'label-warning', 'label-danger', 'label-primary'];
@@ -164,7 +164,7 @@ $(document).ready(function() {
     });
   });
 
-  $('.single-action').click(function(){
+  $(document).on('click', '.single-action', function(){
     kclass = '.order-product-status-' + order_product_id;
     var action = $(this).data('action');
     var order_id = $(this).parents('.list_order_item').data('id');
@@ -204,7 +204,7 @@ $(document).ready(function() {
       });
     }
   });
-  $('.single-action-all').click(function(){
+  $(document).on('click', '.single-action-all', function(){
     var action = $(this).data('action');
     var order_id = $(this).parents('.list_order_item').data('id');
     var shopId = $('#shop-id').val();

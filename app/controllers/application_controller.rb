@@ -45,7 +45,6 @@ class ApplicationController < ActionController::Base
   def load_events
     if user_signed_in?
       @events = current_user.events.by_date
-      @count_unread_notification = @events.unread.size
     end
   end
 
@@ -97,16 +96,15 @@ class ApplicationController < ActionController::Base
   end
 
   def load_domain
-    if params[:domain_id] == Settings.not_find
-      @domain = nil
-    else
+    begin
       @domain = if params[:domain_id]
         Domain.friendly.find params[:domain_id]
       elsif params[:id]
-        Domain.friendly.find params[:id]
-      else
-        @domain = nil
+         Domain.friendly.find params[:id]
       end
+    rescue
+      flash[:danger] = t "can_not_load_domain"
+      redirect_to root_path
     end
     session[:domain_id] = @domain.id if @domain.present?
   end
@@ -121,13 +119,6 @@ class ApplicationController < ActionController::Base
     if user_signed_in? && !current_user.domains.present?
       domain = Domain.first
       create_data_for_domain current_user, domain
-    end
-  end
-
-  def check_user_have_domains
-    if user_signed_in? && !current_user.domains.any? && current_user.active?
-      flash[:danger] = t "flash.danger.create_domain"
-      redirect_to new_domain_path
     end
   end
 
@@ -146,6 +137,7 @@ class ApplicationController < ActionController::Base
         redirect_to :back
         flash[:danger] = t "can_not_load_domain"
       end
+      check_user_in_domain @choosen_domain
     end
   end
 
@@ -174,6 +166,20 @@ class ApplicationController < ActionController::Base
         flash[:danger] = t "can_not_load_domain"
         redirect_to root_path
       end
+    end
+  end
+
+  def check_domain_present
+    unless current_user.domains.present?
+      flash[:danger] = t "not_have_domain"
+      redirect_to root_path
+    end
+  end
+
+  def check_user_in_domain domain
+    unless current_user.is_member_of_domain? domain
+      flash[:danger] = t "not_have_permission"
+      redirect_to root_path
     end
   end
 end

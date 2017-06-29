@@ -18,10 +18,12 @@ Rails.application.routes.draw do
     controllers: {sessions: "admin/sessions"}
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
-    sessions: "users/sessions"
+    sessions: "users/sessions",
+    registrations: "users/registrations"
   }
 
   get "index" => "static_pages#index"
+  get "canhan" => "static_pages#show"
   root "static_pages#home"
   mount ActionCable.server => "/cable"
   namespace :admin do
@@ -42,11 +44,15 @@ Rails.application.routes.draw do
       resources :products
       resources :orders
       resources :shop_managers, only: [:index, :create, :destroy, :update]
-      resources :order_managers, only: [:index, :update]
+      resources :order_managers, only: [:index, :show]
       resources :order_products
       resources :accepted_order_products, defaults: {format: :json}
+      resources :user_orders, only: [:index, :show]
     end
     resources :statistics
+    resources :new_manager_searches, only: :index
+    resources :shop_manager_domains
+    resources :shop_owners, only: :update
   end
   resources :domains do
     resources :products
@@ -54,13 +60,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :carts
     resources :shop_domains
-    namespace :dashboard do
-      root "statistics#index", path: "/"
-      resources :shops do
-        resources :products
-      end
-      resources :shop_managers
-    end
+    resources :categories
   end
   resources :user_domains
   resources :shop_domains
@@ -89,6 +89,7 @@ Rails.application.routes.draw do
   resources :set_carts
   resources :pdf_readers, only: :index
   resources :user_searchs
+  resources :user_domain_searches, only: :index
 
   api_version(module: "V1", path: {value: "v1"}, default: true) do
     namespace :dashboard do

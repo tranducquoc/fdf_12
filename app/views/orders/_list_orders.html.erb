@@ -1,0 +1,20 @@
+<% if order_days.any? %>
+  <div class="row margin_top_-30px">
+    <% @order_days.sort.each do |day, orders|  %>
+      <div class="panel_item_list_orders">
+        <div class="panel_date_list_orders">
+          <div class="panel_item">
+            <%= t "order_day" %>: <%= I18n.localize day, format: :short_date %>
+          </div>
+          <div class="scroll_list_orders">
+            <div class="scroll_body">
+              <%= render partial: "list", collection: orders, as: :order %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <h3 class="text-center have-no-history-order"><%= t "have_no_order_to_day" %></h3>
+<% end %>

@@ -37,6 +37,7 @@ vi:
         other: ! '%{count} giây'
   time:
     formats:
+      custom_date: "%d-%m-%Y"
       short_date: "%m/%d/%Y"
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
@@ -213,8 +214,8 @@ vi:
   hdsd_url: "https://drive.google.com/file/d/0Bw0Y2BhwI-7xXzBFOU0tWjlQSjg/view"
   feed_back: "Gởi phản hồi"
   shop_owner: "Chủ cửa hàng: "
-  change_shop_owner: "Thay đổi quản lí"
-  enter_email: "Nhập email của chủ cửa hàng mới"
+  change_shop_owner: "Thay đổi chủ cửa hàng"
+  enter_email: "Nhập email hoặc tên của chủ cửa hàng mới"
   change_shop: "Bạn vừa thay đổi quyền quản lí của cửa hàng"
   cant_not_find_shop: "Không thể tìm thấy tài khoản với email này"
   shop_subject: "Yêu cầu tạo cửa hàng mới"
@@ -273,7 +274,7 @@ vi:
   current_month: "Tháng hiện tại"
   current_year: "Năm hiện tại"
   add_cart_succes: "Cập nhật giỏ hàng thành công"
-  load_order: "Không tìm thấy đơn hàng!"
+  load_order: "Không tìm thấy đơn hàng nào!"
   order_open_blank: "Không có đơn hàng nào đang mở!"
   submit: "Xác nhận"
   order_open_present: "Danh sách đơn hàng đang mở."
@@ -330,7 +331,7 @@ vi:
     product_number: "%{number} sản phẩm"
     view_button: "Xem"
     tags: "Thẻ"
-    shop_managers: "Quản lý"
+    shop_managers: "Quản lý (%{num})"
   header:
     account: "Tài khoản"
     shop_manager: "Quản lý cửa hàng"
@@ -535,10 +536,6 @@ vi:
     admin_lte_2_login:
       login_box_message: "Đăng nhập để tạo phiên làm việc"
   dashboard:
-    order_managers:
-      index:
-        start_date: "Ngày bắt đầu"
-        end_date: "Ngày kết thúc"
     statistics:
       index:
         tittle: "Thống kê đơn hàng"
@@ -552,7 +549,7 @@ vi:
         shop: "Cửa hàng"
     shops:
       new:
-        create_shop: "Tạp cửa hàng mới"
+        create_shop: "Tạo cửa hàng mới"
         submit_button: "Lưu"
         title: "Yêu cầu tạo cửa hàng mới"
         shop: "Cửa hàng"
@@ -619,7 +616,7 @@ vi:
       confirm: "Xác nhận"
       detail_order: "Chi tiết"
       view_order_list: "Danh sách đặt hàng"
-      view_history_orders: "Lịch sử"
+      view_history_orders: "Lịch sử đặt hàng"
       btn_search: "Tìm kiếm"
       Date: "Ngày"
       Name: "Tên"
@@ -654,6 +651,9 @@ vi:
         reject_orders: "Đơn hàng bị từ chối"
         not_products: "Không có sản phẩm nào"
         btn_search: "Lọc"
+        start_date: "Từ ngày"
+        end_date: "Đến ngày"
+        filter_by: "Lọc đơn hàng theo"
   cart:
     view_cart_all: "Xem tất cả"
     add_to_card: "Thêm"
@@ -730,6 +730,7 @@ vi:
     name: "Tên sản phẩm"
     price: "Đơn giá"
     not_product: "Chưa có sản phẩm nào"
+    not_allow: "Bạn không có quyền xem sản phẩm này!"
   shared:
     comments:
       comment_box: "Khung bình luận"
@@ -740,6 +741,7 @@ vi:
   date_format: "%d/%m/%Y"
   users:
     show:
+      full_name: "Họ tên"
       email: "Email"
       chatwork: "Chatwork id"
       create_at: "Tham gia ngày"
@@ -773,7 +775,7 @@ vi:
     status: "vừa"
     read_all: "Đánh dấu tất cả đã đọc"
   order_statistics:
-    id: "ID"
+    id: "STT"
     name: "Tên sản phẩm"
     quantity: "Số lượng"
     price: "Đơn giá"
@@ -786,7 +788,10 @@ vi:
     step2: "Bước 2: Đóng đơn hàng"
     continue: "Tiếp tục"
     total_price: "Tổng cộng: "
+    total_price_date: "Tổng cộng trong ngày: "
     done: "Hoàn thành"
+    user_name: "Người đặt hàng"
+    details: "Chi tiết"
   order_day: "Ngày đặt hàng"
   language: "Ngôn ngữ: "
   english: "English"
@@ -836,10 +841,11 @@ vi:
     cancel: "Hủy"
   manage_domain:
     view_all_domains: "Tất cả miền"
-    leave: "Rời"
+    leave: "Rời miền"
     add_member: "Thêm thành viên"
     edit_shop: "%{num} Cửa hàng"
     delete_shop: "Xóa"
+    delete_domain: "Xóa miền"
     edit_member: "%{num} Thành viên"
     user: "Quản lý thành viên"
     add_manager_successfully: "Thêm quản lý miền thành công"
@@ -849,6 +855,7 @@ vi:
     manage: "Quản lý"
     personal: "Cá nhân"
     shop: "Quản lý cửa hàng"
+    request_join_domain: "%{num} Yêu cầu vào miền"
   views:
     pagination:
       first: "Đầu tiên"
@@ -873,6 +880,7 @@ vi:
     rejected: "Đã từ chối"
     all: "Tất cả"
     active: "Hoạt động"
+    inactive: "Dừng bán"
     closed: "Đã đóng"
     blocked: "Đã khóa"
     approved: "Đã chấp nhận"
@@ -952,3 +960,104 @@ vi:
   user_need_join_domain_shop: "Bạn cần phải tham gia vào miền %{domain_name} trước khi xem thông tin cửa hàng %{shop_name}."
   user_need_join_domain_product: "Bạn cần phải tham gia vào miền %{domain_name} trước khi xem và đặt hàng món %{product_name}."
   click_to_join_domain: "Nhấn \"Đồng ý\" để tham gia vào miền này"
+  all_domains: "Tất cả miền"
+  filter_order: "Lọc đơn hàng"
+  select_domain: "Chọn miền: "
+  top_shops:
+    go_to_manage_shop: "Vào trang quản lý"
+    go_to_shop: "Vào trang cửa hàng"
+    not_nember_of_shop: "Bạn chưa phải là thành viên của miền này"
+    join_domain_now: "Tham gia ngay"
+  search_user: "Lọc theo người dùng: "
+  name_or_email: "Nhập tên hoặc email"
+  order_manage_filter:
+    product: "Sản phẩm"
+    user: "Người dùng"
+  opening_hours: "Giờ mở bán"
+  food_name: "Tên món ăn"
+  view_more_products: "Xem thêm sản phẩm"
+  load_more_products: "Đang tải thêm sản phẩm"
+  general_info:
+    total:
+      orders: "Số đơn hàng đã nhận."
+      order_pending: "Số đơn hàng đang đợi."
+      products: "Số lượng sản phẩm."
+    reject_order_auto: "Thời gian hủy đơn hàng tự động."
+    open_shop_now: "Mở cửa ngay"
+    close_shop_now: "Đóng cửa ngay"
+    edit_shop: "Chỉnh sửa cửa hàng"
+    add_new_product: "Thêm sản phẩm mới"
+  time_auto_close_shop: "Thời gian đóng cửa tự động: "
+  status_shop: "Trạng thái cửa hàng"
+  change_picture: "Đổi hình"
+  activerecord:
+    errors:
+      models:
+        product:
+          attributes:
+            name:
+              blank: "Tên sản phẩm không được để trống"
+              too_long: "Tên sản phẩm không được quá 50 ký tự"
+            description:
+              blank: "Mô tả sản phẩm không được để trống"
+              too_long: "Mô tả sản phẩm không được quá 250 ký tự"
+            price:
+              blank: "Giá sản phẩm không được để trống"
+              greater_than: "Giá sản phẩm phải lớn hơn 0"
+              less_than_or_equal_to: "Giá sản phẩm phải nhỏ hơn hoặc bằng 1000000000"
+              not_a_number: "Giá sản phẩm phải là số"
+        shop:
+          attributes:
+            name:
+              blank: "Tên cửa hàng không được để trống"
+              without: "Tên cửa hàng không hợp lệ"
+              too_long: "Tên cửa hàng không được quá 50 ký tự"
+            description:
+              blank: "Mô tả cửa hàng không được để trống"
+              too_long: "Mô tả cửa hàng không được quá 250 ký tự"
+        domain:
+          attributes:
+            name:
+              blank: "Tên miền không được để trống"
+              without: "Tên miền không hợp lệ"
+  update_image_avatar: "Cập nhật ảnh"
+  invalid_hour: "Giờ kết thúc phải lớn hơn hoặc bằng giờ bắt đầu"
+  not_have_domain: "Bạn phải tham gia vào một miền để tiếp tục!"
+  shop_not_allow: "Bạn không có quyền xem cửa hàng này"
+  manage_user_domain: "Quản lý thành viên miền %{name}"
+  add_domain_users: "Thêm thành viên"
+  manage_domain_users: "Thành viên quản lý miền"
+  domain_manage_users: "Quản lý thành viên"
+  finish_manage_domain_user: "Hoàn thành"
+  search_domain_user: "Tìm thành viên"
+  shop_manager: "Quản lý cửa hàng"
+  shop_owner: "Chủ cửa hàng"
+  manage_shop_detail: "Quản lý chi tiết"
+  manage_joins_domains: "Miền tham gia"
+  create_new_shop: "Tạo cửa hàng mới"
+  function: "Chức năng"
+  infomation_shop: "Thông tin cửa hàng"
+  update_cover_image: "Cập nhật ảnh bìa"
+  rejected_shop_domain: "Đã từ chối thêm cửa hàng vào miền"
+  manage_domain_shop: "Quản lý cửa hàng miền %{name}"
+  list_domain_shops: "Danh sách cửa hàng"
+  request_domain_shops: "Cửa hàng yêu cầu"
+  finish_manage_domain_shop: "Hoàn thành"
+  manage_domain_shops: "Quản lý cửa hàng"
+  not_have_shops: "Không có cửa hàng nào"
+  create_new_domain: "Tạo miền mới"
+  enter_domain: "Vào miền"
+  cart_of_shop: "Giỏ hàng của bạn tại cửa hàng: %{name}"
+  order_this_shop: "Đặt đơn hàng của cửa hàng này"
+  daily: "Hằng ngày!"
+  paid: "Đã thanh toán"
+  update_success: "Cập nhật thành công!"
+  update_fails: "Cập nhật thất bại!"
+  order_at: "Đặt lúc: "
+  unpaid: "Chưa thanh toán"
+  confirm_delete_domain: "Bạn thật sự muốn xóa miền %{domain_name}?"
+  confirm_leave_domain: "Bạn thật sự muốn rời miền %{domain_name}?"
+  confirm_delete_product: "Bạn thật sự muốn xóa sản phẩm %{product_name}?"
+  confirm_cancel_request_shop: "Bạn muốn hủy yêu cầu vào miền %{domain_name} của cửa hàng %{shop_name}"
+  confirm_delete_user_domain: "Bạn thật sự muốn xóa thành viên %{user_name} khỏi miền %{domain_name}?"
+  have_no_order_to_day: "Không có đơn hàng nào trong ngày hôm nay!"

@@ -1,0 +1,30 @@
+<div class="block-item-list block">
+  <h3 class="title">
+    <span><%= t "public_domain" %>(<%= @professed_domains.size %>)</span>
+  </h3>
+  <div class="clearfix body">
+    <div class="category-list padding-top-0">
+      <% if @professed_domains.present? %>
+        <div class="<%= "scroll" if @professed_domains.size > Settings.max_content_scroll %>">
+          <% @professed_domains.each do |domain| %>
+            <%= link_to domain_path(domain),
+              class: "btn btn-default col-lg-6 col-md-12 active" do %>
+              <span class="user-title" title="<%= domain.name %>">
+                <%= truncate(domain.name,
+                  length: Settings.max_domain_name) %>
+              </span>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= image_tag "food_banner1.jpg", alt: "food banner",
+  class: "defaut-pic-cover food_banner_size img_cover_size" %>
+<div>
+  <br/>
+  <h3 class="title"><%= t "manual_help_forder" %></h3>
+  <br/>
+  <%= render "domains/domain_intro_page" %>
+</div>

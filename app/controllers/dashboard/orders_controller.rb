@@ -4,18 +4,43 @@ class Dashboard::OrdersController < BaseDashboardController
   before_action :check_owner_or_manager, only: [:index, :show]
 
   def index
-    orders = Order.orders_of_shop_pending params[:shop_id]
-    if orders.present?
-      load_order_product orders, params[:type]
-      load_list_toal_orders
+    user_ids = User.search(name_or_email_cont: params[:user_search]).result.pluck :id
+    if params[:domain_id].present?
+      orders = Order.by_domain(params[:domain_id]).orders_of_shop_pending(params[:shop_id])
+        .of_user_ids user_ids
     else
-      flash[:danger] = t "oder.not_oder"
-      redirect_to domain_dashboard_shop_path(domain_id: session[:domain_id],
-        id: @shop.slug)
+      orders = Order.by_domain_ids(load_list_manage_domain).orders_of_shop_pending(params[:shop_id])
+        .of_user_ids user_ids
+    end
+    load_order_product orders, params[:type]
+    load_list_toal_orders
+    if params[:check_orders].present?
+      respond_to do |format|
+        format.json do
+          render json: {orders: @orders.size}
+        end
+      end
+    else
+      if request.xhr?
+        respond_to do |format|
+          format.js
+        end
+      end
     end
   end
 
   def edit
+    order = Order.find_by id: params[:id]
+    if order.present? && order.update_attribute(:is_paid, params[:checked])
+      mess = Settings.update_success
+    else
+      mess = Settings.update_fails
+    end
+    respond_to do |format|
+      format.json do
+        render json: {mess: mess}
+      end
+    end
   end
 
   def show
@@ -109,6 +134,8 @@ class Dashboard::OrdersController < BaseDashboardController
         check_item o.order_products.select{|op| op.accepted?}, o
       when Settings.filter_status_order.rejected
         check_item o.order_products.select{|op| op.rejected?}, o
+      when Settings.filter_status_order.done
+        check_item o.order_products.select{|op| op.done?}, o
       else
         @order_products[o.id] = o.order_products
         @orders << o
@@ -127,5 +154,19 @@ class Dashboard::OrdersController < BaseDashboardController
     list_orders_id = Order.orders_of_shop_pending(@shop.id).select{|s|
       s.order_products.detect{|o| o.pending?} == nil}.pluck(:id)
     @list_products_packing = OrderProduct.all_order_product_of_list_orders(list_orders_id).order_products_accepted
+  end
+
+  def load_list_manage_domain
+    shop_manager = ShopManager.find_by user_id: current_user.id, shop_id: @shop.id
+    if shop_manager.present?
+      if shop_manager.owner?
+        return @shop.shop_domains.select{|s| s.approved?}.map &:domain_id
+      else
+        return shop_manager.shop_manager_domains.map &:domain_id
+      end
+    else
+      flash[:danger] = t "not_have_permission"
+      redirect_to root_path
+    end
   end
 end

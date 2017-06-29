@@ -3,6 +3,9 @@ class ShopManager < ApplicationRecord
   belongs_to :user
   belongs_to :shop
 
+  has_many :shop_manager_domains, dependent: :destroy
+  has_many :domains, through: :shop_manager_domains
+
   enum role: {owner: 0, manager: 1, member: 2}
 
   delegate :name, to: :user, prefix: true
@@ -17,4 +20,7 @@ class ShopManager < ApplicationRecord
     .select("users.*, role")
   end
 
+  scope :not_in_any_domain, -> do
+    where.not(id: ShopManagerDomain.select(:shop_manager_id).distinct)
+  end
 end

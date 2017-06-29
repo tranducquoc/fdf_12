@@ -1,0 +1,9 @@
+$(document).ready(function() {
+  $('.list-products').append('<%= j render @products_shop %>');
+  <% if @products_shop.last_page? %>
+    $('.load-more-products').hide();
+  <% else %>
+    $('.load-more-products')
+      .html('<%= j link_to_next_page(@products_shop, t("view_more_products")) %>');
+  <% end %>
+});

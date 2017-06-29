@@ -1,9 +1,9 @@
 class UserDomainsController < ApplicationController
   before_action :load_data
-  before_action :load_domain_by_param
-  before_action :load_user_domain, only: :update
+  before_action :load_domain_by_param, except: :update
+  before_action :load_user_domain, only: [:update, :destroy]
   before_action :authenticate_user!
-  before_action :check_current_domain, except: :create
+  skip_before_action :check_current_domain
 
   def index
     @users = @choosen_domain.users
@@ -24,28 +24,38 @@ class UserDomainsController < ApplicationController
       save_user_domain user_domain
     else
       flash[:danger] = t "can_not_find_user"
+      redirect_to root_path
     end
-    redirect_to :back
   end
 
   def update
-    if @user_domain.update_attributes role: params[:role]
-      flash[:success] = t "manage_domain.add_manager_successfully"
+    if @user_domain.update_attributes(role: params[:role])
+      message = @user_domain.manager? ?
+        t("manage_domain.add_manager_successfully")
+        : t("manage_domain.remove_manager_successfully")
     else
-      flash[:danger] = t "manage_domain.add_manager_faild"
+      message = t("manage_domain.add_manager_faild")
     end
     @user_domain.create_event_add_manager_domain @user_domain.user_id
-    redirect_to :back
+    render_js message
   end
 
   def destroy
-    UserDomain.destroy_all domain_id: @choosen_domain.id, user_id: @user.id
-    flash[:success] = t "leave_domain_success" if params[:leave_domain].present?
-    flash[:success] = t "delete_domain" if params[:delete_user_domain].present?
-    if current_user.domains.include? @choosen_domain
-      redirect_to :back
-    else
-      redirect_to root_path
+    if @user_domain.destroy
+      domain = Domain.find_by id: @user_domain.domain_id
+      delete_cart_domain domain
+      if current_user.domains.include? @choosen_domain
+        if request.xhr?
+          @users = User.not_in_domain @choosen_domain
+          respond_to do |format|
+            format.js
+          end
+        end
+      else
+        flash[:success] = t "leave_domain_success" if params[:leave_domain].present?
+        flash[:success] = t "delete_domain" if params[:delete_user_domain].present?
+        redirect_to domains_path
+      end
     end
   end
 
@@ -69,10 +79,17 @@ class UserDomainsController < ApplicationController
         user_domain.create_event_add_user_domain @domain.owner
         sent_notification_domain_manager @domain
       end
-      flash[:success] = t "join_domain_success" if params[:join_domain].present?
-      flash[:success] = t "add_domain" if params[:add_domain].present?
+      message = params[:join_domain].present? ?
+        t("join_domain_success") : t("add_domain")
     else
-      flash[:danger] = t "can_not_add_account"
+      message = t("can_not_add_account")
+    end
+    if request.xhr?
+      @users = User.not_in_domain @choosen_domain
+      render_js message
+    else
+      flash[:success] = message
+      redirect_to :back
     end
   end
 
@@ -89,6 +106,21 @@ class UserDomainsController < ApplicationController
       if usr_domain.manager?
         usr_domain.create_event_add_user_domain usr_domain.user_id
       end
+    end
+  end
+
+  def render_js message
+    @message = message
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def delete_cart_domain domain
+    carts_domain = @cart_domain.carts.select{|cart| cart.domain_id == domain.id}
+    if carts_domain.present?
+      @cart_domain.detele_cart carts_domain
+      session[:cart_domain] = @cart_domain.update_cart
     end
   end
 end

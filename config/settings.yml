@@ -81,13 +81,13 @@ domain:
   secret: "glyphicon glyphicon-lock"
   default: "default"
 feedback: "https://docs.google.com/forms/d/e/1FAIpQLSeWye6zJ8U7epz5W3G5MDZTT8YE5rWELbHDpyRtD4drC0QrGw/viewform"
-max_user_name: 8
+max_user_name: 20
 min_price: 0
 max_description: 22
 max_shop_name: 17
 max_shop_name_dash: 30
 count_order_start: -1
-max_len: 14
+max_len: 10
 min_string: 0
 max_string: 6
 user_domain_name: "ca-nhan"
@@ -143,3 +143,13 @@ convert_date:
   month: 0
   year: 2
   seperate: "/"
+limit_show_manager_of_shop: 5
+minute_step: 5
+fomat_time_coutdown: "%Y/%m/%d %H:%M:%S"
+time_none: "--:--:--"
+shop_actions:
+  index: "index"
+fomat_time: "%H:%M"
+checkbox_value_true: "1"
+update_success: "true"
+update_fails: "false"

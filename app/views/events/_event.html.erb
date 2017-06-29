@@ -1,19 +1,23 @@
-<div class="event">
-  <div class="notification-body">
-    <li role="presentation">
+<div class="notification-body mark-read <%= bg_unread event %>"
+  data-id="<%= event.id %>"
+  data-link="<%= event.get_link_redirect %>">
+  <span role="presentation" class="">
+    <%= link_to "#" do %>
       <div class="row <%= bg_unread event %>">
         <div class="col-md-3">
-          <%= link_to event.get_link_redirect do %>
-            <span class="item-left product-thumbnail">
-              <%= image_tag event.get_link_img %></span>
-          <% end %>
+            <span class="item-left event-product-thumbnail">
+              <%= image_tag event.get_link_img %>
+            </span>
         </div>
-        <div class="col-md-9 message-notification">
-          <span class="text-center">
-            <%= link_to event.load_message, event.get_link_redirect %>
+        <div class="col-md-9 message-notification padding-left-0">
+          <span class="text-center margin_left_a">
+            <strong><%= link_to event.load_message, "#" %></strong><br>
+            <p class="text-left" >
+              <%= link_to event.load_message_time, "#" %>
+            </p>
           </span>
         </div>
       </div>
-    </li>
-  </div>
+    <% end %>
+  </span>
 </div>

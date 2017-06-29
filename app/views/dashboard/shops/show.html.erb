@@ -1,116 +1,189 @@
-<div class="block-shop-header clearfix">
-  <div class="shop-cover media-margin-shop-top">
-    <h2 class="row_h2">
-      <%= @shop.name %>
-    </h2>
-    <%= image_tag @shop.cover_image.url, class: "defaut-pic-cover" %>
-    <div class="shop-info-wrapper">
-      <div class="shop-avatar-wrapper row">
-        <div class="col-sm-3 col-xs-3 show-shop-avatar">
-          <%= image_tag @shop.avatar.url, class: "avatar igm245 img_cover_size",
-            id: "img-avatar" %>
-          <%= simple_form_for [:dashboard, @shop], html: {id: "form_id"} do |f| %>
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-4">
-                  <% if @domain.present? %>
-                    <%= f.hidden_field :domain_id, value: @domain.id %>
-                  <% end %>
-                  <%= f.file_field :avatar, onchange: "this.form.submit();",
-                    class: "glyphicon glyphicon-camera wh change-picture" %>
-                </div>
-              </div>
-            </div>
+<div class="row">
+  <div class="shop_image_cover_and_avatar">
+    <%= simple_form_for [:dashboard, @shop], html: {id: "form_id"} do |f| %>
+      <%= image_tag @shop.cover_image.url, class: "defaut-pic-cover", id: "image-cover" %>
+      <div class="change_image_hover">
+        <%= f.file_field :cover_image, onchange: "this.form.submit();", class: "hide" %>
+        <%= link_to "javascript:void(0)", class: "change_image" do %>
+          <i class="material-icons change_icon">camera_enhance</i>
+          <div class="change_item"><%= t "change_picture" %></div>
+        <% end %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-3">
+        <%= image_tag @shop.avatar.url, class: "avatar", id: "img-avatar" %>
+        <div class="change_image_hover">
+          <%= f.file_field :avatar, onchange: "this.form.submit();", class: "hide" %>
+          <%= link_to "javascript:void(0)", class: "change_image" do %>
+            <i class="material-icons change_icon">camera_enhance</i>
+            <div class="change_item"><%= t "change_picture" %></div>
           <% end %>
         </div>
       </div>
-    </div>
-    <div class="col-xs-12 col-md-12 shop-nav-wrapper">
-      <div class="row">
-        <div class="col-md-offset-3 col-md-5 col-xs-offset-3 col-xs-5">
-          <div class="row shop-basic-info margin_top_shop">
-            <h4 class="title">
-              <%= @shop.name %>
-              <%= render "shared/shop_status_label", shop: @shop %>
-            </h4>
-            <h4>
-              <%= link_to t("dashboard.order.view_order_list"),
-                dashboard_shop_orders_path(@shop.id),
-                class: "btn btn-theme width_btn" %>
-              <%= link_to t("dashboard.order.view_history_orders"),
-                dashboard_shop_order_managers_path(@shop.id),
-                class: "btn btn-theme" %>
-            </h4>
-          </div>
+    <% end %>
+    <div class="col-md-6 col-sm-5 col-xs-5">
+      <h1 class="title" title="<%= @shop.name %>">
+        <%= @shop.name %>
+      </h1>
+      <% if @shop.pending? %>
+        <%= render "shared/shop_status_label", shop: @shop %>
+      <% else %>
+        <div>
+          <marquee direction="left" class="text-description" scrollamount=5>
+            <%= @shop.description %>
+          </marquee>
         </div>
-        <div class="col-md-4 col-xs-5">
-          <div class="panel panel-info shop_user">
-            <div class="panel-heading">
-              <%= t "common.shop_managers" %>
-            </div>
-            <div class="shop_user-own">
-              <% @users_shop_manager.each do |user| %>
-                <%= link_to user_path(user.user_id), class: "user-item-image" do %>
-                  <%= image_tag user.user.avatar.url, alt: user.user.name,
-                    title: user.user.name %>
-                <% end %>
-              <% end %>
-              <% if @shop.owner_id == current_user.id %>
-                <%= link_to "#manager_of_shop", "data-toggle": "modal",
-                  class: "user-item-image" do %>
-                  <%= image_tag "add_circle.png", alt: t("set_manager_shop") %>
-                <% end %>
-              <% end %>
-            </div>
-            <% if @shop.owner_id == current_user.id %>
-              <div class="panel-footer">
-                <%= link_to t("change_shop_owner"), "#",
-                  class: "btn btn-default btn-block",
-                  data: {toggle: "modal", target: "#shop-manager-modal"} %>
-              </div>
-            <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-4 padding-0">
+      <div class="block padding-0">
+        <div class="title padding-left-10 margin-left_domain form-header">
+          <strong class="text-header number-shop-manager">
+            <%= label_tag "", t("common.shop_managers",
+              num: managers_of_domans(@shop).size),
+            class: "text-header" %>
+          </strong>
+        </div>
+        <div class="list_owner_and_manger">
+          <div class="list-shop-manager">
+            <%= render "list_shop_manager",
+              shop_managers: managers_of_domans(@shop) %>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="margin-for-shopinfo">
-    <table class="table table-striped table-inverse padding-102">
-      <tr>
-        <td class="for-td">
-          <strong><%= t "shop_name" %></strong><%= @shop.name %>
-        </td>
-        <td class="for-td">
-          <strong><%= t "time_auto_reject" %></strong>
-          <%= l @shop.time_auto_reject, format: :short_time %>
-          <%= t "minutes" %>
-        </td>
-        <td class="for-td">
-          <strong><%= t "number_product" %></strong><%= @shop.products.size %>
-        </td>
-        <td class="for-td">
-          <%= link_to t(".edit"), edit_dashboard_shop_path(@shop),
-            class: "btn btn-success pull-right margin_right_10px" %>
-        </td>
-      </tr>
-    </table>
+  <div class="col-sm-12 col-md-12 col-xs-12 text-center padding-top-20">
+    <div class="general_info">
+      <div class="col-sm-6 col-md-3 col-xs-6">
+        <div class="general_item">
+          <div class="col-sm-3 col-md-3 col-xs-3 padding-0">
+            <i class="material-icons general_icon">backup</i>
+          </div>
+          <div class="col-sm-9 col-md-9 col-xs-9 padding-right-0 padding-left-0">
+            <div class="general_number"><%= @shop.orders.size %></div>
+            <%= t "general_info.total.orders" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3 col-xs-6">
+        <div class="general_item">
+          <div class="col-sm-3 col-md-3 col-xs-3 padding-0">
+            <i class="material-icons general_icon">shopping_basket</i>
+          </div>
+          <div class="col-sm-9 col-md-9 col-xs-9 padding-right-0 padding-left-0">
+            <div class="general_number"><%= orders_pending_of_shop @shop %></div>
+            <%= t "general_info.total.order_pending" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3 col-xs-6">
+        <div class="general_item">
+          <div class="col-sm-3 col-md-3 col-xs-3 padding-0">
+            <i class="material-icons general_icon">restore</i>
+          </div>
+          <div class="col-sm-9 col-md-9 col-xs-9 padding-right-0 padding-left-0">
+            <div class="general_number">
+              <%= l @shop.time_auto_reject, format: :short_time %>
+            </div>
+            <%= t "general_info.reject_order_auto" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3 col-xs-6">
+        <div class="general_item">
+          <div class="col-sm-3 col-md-3 col-xs-3 padding-0">
+            <i class="material-icons general_icon">storage</i>
+          </div>
+          <div class="col-sm-9 col-md-9 col-xs-9 padding-right-0 padding-left-0">
+            <div class="general_number">
+              <%= @shop.products.size %>
+            </div>
+            <%= t "general_info.total.products" %>
+          </div>
+        </div>
+        </div>
+    </div>
+    <div class="list-functions">
+      <%= label_tag "", t("function"), class: "title-list-functions"%>
+      <div class="function_manage">
+      <% unless @shop.pending? %>
+        <div class="btn_function">
+          <%= link_to "javascript:void(0)", "data-id": @shop.id,
+            class: "btn_item btn_list_orders" do %>
+            <div class="btn_icon material-icons">view_list</div>
+            <div><%= t "dashboard.order.view_order_list" %></div>
+          <% end %>
+        </div>
+        <div class="btn_function">
+          <%= link_to dashboard_shop_order_managers_path(@shop.id), class: "btn_item" do %>
+            <div class="btn_icon material-icons">description</div>
+            <div><%= t "dashboard.order.view_history_orders" %></div>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="btn_function">
+        <%= link_to edit_dashboard_shop_path(@shop), remote: true,
+          "data-shop-id": "#{@shop.id}", class: "btn_item btn-edit-shop" do %>
+          <div class="btn_icon material-icons">border_color</div>
+          <div><%= t "general_info.edit_shop" %></div>
+        <% end %>
+      </div>
+      <div class="btn_function">
+        <%= link_to new_dashboard_shop_product_path(@shop), remote: true,
+          class: "btn_item" do %>
+          <div class="btn_icon material-icons">add_shopping_cart</div>
+          <div><%= t "general_info.add_new_product" %></div>
+        <% end %>
+      </div>
+      <% unless @shop.pending? %>
+        <div class="btn_function">
+          <%= link_to "#modal_update_time_order", class: "btn_item",
+            "data-toggle": "modal" do %>
+            <div class="btn_icon material-icons">alarm</div>
+            <div><%= t "dashboard.shops.show.edit_all_time" %></div>
+          <% end %>
+        </div>
+        <% if @shop.on? %>
+          <div class="btn_function">
+            <%= link_to "javascript:void(0)",
+            class: "btn_item btn-open-close-shop", data: {type: "close", id: @shop.id} do %>
+              <div class="btn_icon material-icons">lock_outline</div>
+              <div><%= t "general_info.close_shop_now" %></div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="btn_function">
+            <%= link_to "javascript:void(0)",
+              class: "btn_item btn-open-close-shop", data: {type: "open", id: @shop.id} do %>
+              <div class="btn_icon material-icons">lock_open</div>
+              <div><%= t "general_info.open_shop_now" %></div>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @shop.owner_id == current_user.id %>
+          <div class="btn_function">
+            <%= link_to "#shop-manager-modal", "data-toggle": "modal", class: "btn_item" do %>
+              <div class="btn_icon material-icons">person_pin</div>
+              <div><%= t "change_shop_owner" %></div>
+            <% end %>
+          </div>
+          <div class="btn_function">
+            <%= link_to "#manage-domain-of-shop-#{@shop.id}",
+              "data-toggle": "modal", class: "btn_item" do %>
+              <i class="btn_icon material-icons">assistant_photo</i>
+              <div><%= t "manage_joins_domains" %></div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
   </div>
 </div>
+<!-- body -->
 <div class="block-shop-header clearfix">
   <div>
   <h2 class="section_title margin_right_15px row_h2">
-    <div class="btn_view_all_wrapper pull-right">
-      <% if @domain.present? %>
-        <%= link_to t("common.create_button"),
-          new_domain_dashboard_shop_product_path(@domain, @shop),
-          class: "btn btn_view_all btn-warning" %>
-      <% else %>
-        <%= link_to t("common.create_button"),
-          new_dashboard_shop_product_path(@shop),
-          class: "btn btn_view_all btn-warning" %>
-      <% end %>
-    </div>
     <% if @products.any? %>
       <%= t ".has_products" %>
     <% else %>
@@ -121,90 +194,12 @@
   <div class="box_pro">
     <%= render "products" if @products.any? %>
   </div>
+  <%= paginate @products %>
 </div>
-
-<div id="shop-manager-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header modal_header">
-        <button type="button" class="close" data-dismiss="modal"
-          aria-hidden="true">&times;</button>
-        <h4 class="modal-title modal_text_header"><%= t "change_shop_owner" %></h4>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-md-10 col-md-offset-1">
-            <%= form_tag shop_path(@shop), method: :put do %>
-              <%= render "shared/error_messages", object: @shop %>
-              <div class="form-group">
-                <h4 class="center"><%= label_tag(:email, t("enter_email")) %></h4>
-              </div>
-              <div class="form-group">
-                <%= email_field_tag :email, nil, class: "form-control"%>
-              </div>
-              <div class="center padding-top-10">
-                <%= submit_tag t("edit_user.update"),
-                  class: "btn btn-default space-top-submit" %>
-                <button type="button" class="list btn btn-default"
-                  data-dismiss="modal"><%= t "cancel" %>
-                </button>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="manager_of_shop">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header modal_header">
-        <button type="button" class="close" data-dismiss="modal"
-          aria-hidden="true">&times;</button>
-        <h4 class="modal-title modal_text_header"><%= t "set_manage_for_shop" %></h4>
-      </div>
-      <div class="modal-body h500">
-        <div class="row">
-          <div class="row">
-            <div class="search_users col-md-10 col-md-offset-1">
-              <%= form_tag new_search_path, method: :get, id: "search_owner_form",
-                remote: true do %>
-                <%= hidden_field_tag :shop_id, @support.shop_manager.shop_id %>
-                <div class="form-group">
-                  <%= text_field_tag :search, params[:search],
-                    placeholder: t("dashboard.order.btn_search") << "...",
-                    class: "form-control" %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="">
-            <div class="panel panel-success">
-              <div class="add-user-table">
-                <table class="table table-striped table-hover table-bordered">
-                  <thead class="">
-                    <tr>
-                      <th></th>
-                      <th class="td-user-name-table"><%= t "admin.users.index.name" %></th>
-                      <th class="td-user-action-table"><%= t "admin.users.index.actions" %></th>
-                    </tr>
-                  </thead>
-                  <tbody id="list_users">
-                    <%= render "dashboard/shop_managers/users" %>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">
-          <%= t "order_statistics.done" %>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- modals -->
+<%= render "modal_add_managers" %>
+<%= render "modal_change_owner" %>
+<%= render "modal_settings_time_orders" %>
+<%= render "modal_manage_joins_domains", shop: @shop %>
+<div id="new-edit-product-modal" class="modal fade"></div>
+<div id="edit-shop-modal" class="modal fade"></div>

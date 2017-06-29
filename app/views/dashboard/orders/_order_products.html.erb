@@ -1,24 +1,24 @@
 <% order_products.each_with_index do |item, index| %>
-<tr>
-  <td class="text-center width-150px"><%= item.product.name %></td>
-  <td class="text-center"><%= item.quantity %></td>
-  <td class="width-250px"><%= item.notes %></td>
-  <td class="text-center order-product-status-<%= item.id %> class_status_order_product"
-    data-status="<%= item.status %>">
-    <%= status_order_product item if item.try(:status).present? %>
-  </td>
-  <td class="text-center"><strong><%= format_price item.total_price %></strong></td>
-  <td>
-    <%= link_to "javascript:void(0)", class: "single-action",
-      data:{id: item.id, action: "accepted"} do %>
-      <span class="glyphicon glyphicon-ok-sign btn_accepted"></span>
-    <% end %>
-    <%= link_to "javascript:void(0)", class: "single-action",
-      data:{id: item.id, action: "rejected"} do %>
-      <span class="glyphicon glyphicon-remove-sign btn_rejected"></span>
-    <% end %>
-  </td>
-</tr>
+  <tr>
+    <td class="text-center width-150px"><%= item.product.name %></td>
+    <td class="text-center"><%= item.quantity %></td>
+    <td class="width-250px text-center"><%= item.notes %></td>
+    <td class="text-center order-product-status-<%= item.id %> class_status_order_product"
+      data-status="<%= item.status %>">
+      <%= status_order_product item if item.try(:status).present? %>
+    </td>
+    <td class="text-center"><strong><%= format_price item.total_price %></strong></td>
+    <td>
+      <%= link_to "javascript:void(0)", class: "single-action",
+        data:{id: item.id, action: "accepted"} do %>
+        <span class="glyphicon glyphicon-ok-sign btn_accepted"></span>
+      <% end %>
+      <%= link_to "javascript:void(0)", class: "single-action",
+        data:{id: item.id, action: "rejected"} do %>
+        <span class="glyphicon glyphicon-remove-sign btn_rejected"></span>
+      <% end %>
+    </td>
+  </tr>
 <% end %>
 <div class="display-inline">
   <span class="glyphicon glyphicon-info-sign btn_pending"></span>
@@ -32,7 +32,11 @@
   <span class="glyphicon glyphicon-remove-sign btn_rejected"></span>
   <%= label_tag "", t("all_status.rejected") + ": ", class: "btn_rejected" %>
   <%= label_tag "", order_products.select{|o| o.rejected?}.size,
-    class: "btn_rejected value_rejected" %>
+    class: "btn_rejected value_rejected" %> |
+  <i class="glyphicon glyphicon-check btn_done"></i>
+  <%= label_tag "is_paid_#{order.id}", t("paid"), class: "btn_done" %>
+  <%= check_box_tag "is_paid_#{order.id}", order.id, order.is_paid?,
+    "data-shopid": params[:shop_id], class: 'is-order-paid' %>
 </div>
 <div class="float-right font_bold">
    <span class="glyphicon glyphicon-ok-sign btn_accepted"></span>

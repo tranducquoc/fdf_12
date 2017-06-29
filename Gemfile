@@ -48,6 +48,7 @@ gem "animate-rails"
 gem "validates_timeliness"
 gem "jquery-validation-rails"
 gem "sweet-alert-confirm"
+gem "axlsx_styler"
 
 source "https://rails-assets.org" do
   gem "rails-assets-datetimepicker"

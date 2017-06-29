@@ -1061,3 +1061,4 @@ vi:
   confirm_cancel_request_shop: "Bạn muốn hủy yêu cầu vào miền %{domain_name} của cửa hàng %{shop_name}"
   confirm_delete_user_domain: "Bạn thật sự muốn xóa thành viên %{user_name} khỏi miền %{domain_name}?"
   have_no_order_to_day: "Không có đơn hàng nào trong ngày hôm nay!"
+  manager_orders_xlsx: "Quản lý đơn hàng"

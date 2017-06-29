@@ -1,28 +1,42 @@
-require 'axlsx'
+require "axlsx"
+
 xlsx_package = Axlsx::Package.new
 wb = xlsx_package.workbook
+
 wb.styles do |style|
-  highlight_cell = style.add_style bg_color: "0033CC", b: true,
+  highlight_cell = style.add_style bg_color: "0033CC", b: true, sz: 12,
     alignment: {horizontal: :center, vertical: :center, wrap_text: true}
-  highlight_detail = style.add_style bg_color: "00BB00",
+  highlight_detail = style.add_style b:true,
     alignment: {horizontal: :center, vertical: :center, wrap_text: true}
   wrap_text = style.add_style alignment: {horizontal: :center, vertical: :center, wrap_text: true}
   total_price_row = style.add_style alignment: {horizontal: :center, vertical: :center, wrap_text: true},
     fg_color: "ef1c0c"
+  header_style = style.add_style :fg_color => "0033CC", sz: 13,
+    alignment: {horizontal: :center, vertical: :center, wrap_text: true}
 
   @order_products.each do |hash_orders|
     wb.add_worksheet(name: hash_orders.first) do |sheet|
       total = 0;
       orders = hash_orders.last
+      row_data_first = []
+      row_date_last = []
+      header_row = sheet.add_row [nil, nil], style: header_style
+      sheet.merge_cells("#{header_row.cells[0].r}:#{header_row.cells.last.r}")
+      header_row.cells[0].value = t("manager_orders_xlsx")
+      date_row = sheet.add_row [nil, nil], style: wrap_text
+      sheet.merge_cells("#{date_row.cells[0].r}:#{date_row.cells.last.r}")
+      date_row.cells[0].value = l hash_orders.first.to_date, format: :long
+      sheet.add_row []
+      title_row = sheet.add_row [
+        t("dashboard.products.show.stt"),
+        t("order_statistics.user_name"),
+        t("order_statistics.details"), nil, nil , nil, nil, nil, nil, nil],
+        style: highlight_cell
+      row_data_first = title_row
+      sheet.merge_cells("#{title_row.cells[2].r}:#{title_row.cells.last.r}")
       group_by_user(orders).each_with_index do |order_products, index|
-        sheet.add_row []
         total += sum_price order_products.last
-        sheet.add_row [
-          increase_one(index),
-          user_name_for_id(order_products.first),
-          nil, nil, nil , nil, nil, nil],
-          style: highlight_cell
-        sheet.add_row [nil, nil,
+        row_user_first = sheet.add_row [increase_one(index), user_name_for_id(order_products.first), nil, nil,
           t("dashboard.products.show.stt"),
           t("dashboard.products.show.name"),
           t("dashboard.products.show.quantity"),
@@ -33,8 +47,9 @@ wb.styles do |style|
         row_first = []
         group_by_order(order_products.last).each_with_index do |orders, index|
           orders.last.each_with_index do |order, index|
-            sheet.add_row [nil,
-              t("order_at") + orders.first.created_at.strftime(Settings.fomat_time) + "\n" + order_paid_status_text(orders.first),
+            sheet.add_row [nil, nil,
+              t("order_at") + orders.first.created_at.strftime(Settings.fomat_time),
+              order_paid_status_text(orders.first),
               increase_one(index),order.product_name,
               order.quantity, order.notes, order.product_price,
               format_price(total_price(order.product_price, order.quantity))],
@@ -42,15 +57,22 @@ wb.styles do |style|
             row_first = sheet.rows.last if index == 0
           end
           row_last = sheet.rows.last
-          sheet.merge_cells("#{row_first.cells.second.r}:#{row_last.cells.second.r}")
+          sheet.merge_cells("#{row_first.cells[2].r}:#{row_last.cells[2].r}")
+          sheet.merge_cells("#{row_first.cells[3].r}:#{row_last.cells[3].r}")
         end
-        total_row = sheet.add_row [nil, nil, nil, nil, nil, nil, t("order_statistics.total_price"), format_price(sum_price(order_products.last)), nil],
+        total_row = sheet.add_row [nil, nil, nil, nil, nil, nil, nil, nil, t("order_statistics.total_price"), format_price(sum_price(order_products.last))],
           style: total_price_row
+        sheet.add_border "#{total_row.cells.first.r}:#{total_row.cells.last.r}", [:bottom]
+        sheet.merge_cells("#{row_user_first.cells[1].r}:#{total_row.cells[1].r}")
+        sheet.merge_cells("#{row_user_first.cells[0].r}:#{total_row.cells[0].r}")
       end
-      sheet.add_row []
-      sheet.add_row []
-      total_row = sheet.add_row [nil, nil, nil, nil, nil, nil, t("order_statistics.total_price_date"), format_price(total.to_s), nil],
+      sheet.add_row [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]
+      total_row = sheet.add_row [nil, nil, nil, nil, nil, nil, nil, nil,
+        t("order_statistics.total_price_date"),
+        format_price(total.to_s)],
         style: total_price_row
+      sheet.add_border "#{row_data_first.cells[0].r}:#{total_row.cells.last.r}"
+      sheet.add_border "#{row_data_first.cells.first.r}:#{row_data_first.cells.last.r}"
     end
   end
 end

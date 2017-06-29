@@ -82,6 +82,9 @@ GEM
     axlsx_rails (0.5.1)
       actionpack (>= 3.1)
       axlsx (>= 2.0.1)
+    axlsx_styler (0.1.7)
+      activesupport (>= 3.1)
+      axlsx (~> 2.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
     bootstrap-glyphicons (0.0.1)
@@ -443,6 +446,7 @@ DEPENDENCIES
   animate-rails
   axlsx (= 2.1.0.pre)
   axlsx_rails (> 0.4)
+  axlsx_styler
   bootstrap-glyphicons
   bootstrap-kaminari-views
   bootstrap-sass (~> 3.3.6)

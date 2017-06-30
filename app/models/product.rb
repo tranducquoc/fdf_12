@@ -27,10 +27,17 @@ class Product < ApplicationRecord
   has_many :product_domains
   has_many :domains, through: :product_domains
 
+  VALID_NAME_REGEX = /\A[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨ
+    ẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừ
+    ỬỮỰỲỴÝỶỸửữựỳỵỷỹ]{1}[*ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲ
+    ẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴ
+    ÝỶỸửữựỳỵỷỹa-zA-Z0-9\-\_\ ]{0,}+\z/
+
   enum status: {active: 0, inactive: 1}
   mount_uploader :image, ProductImageUploader
   mount_base64_uploader :image, ProductImageUploader
-  validates :name, presence: true, length: {maximum: Settings.product.max_name}
+  validates :name, presence: true, length: {maximum: Settings.product.max_name},
+    format: {with: VALID_NAME_REGEX}
   validates :description, presence: true, length: {maximum: Settings.product.max_description}
   validate :image_size
   validates_time :end_hour, on_or_after: :start_hour,

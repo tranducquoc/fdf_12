@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
   caches_page :index
 
   def index
+    rebase_data
     redirect_to root_path if user_signed_in?
   end
   
@@ -31,6 +32,34 @@ class StaticPagesController < ApplicationController
       redirect_to domain_path(current_user.domains.first)
     else
       redirect_to canhan_path
+    end
+  end
+
+  def rebase_data
+    
+    ProductDomain.destroy_all
+    Domain.all.default.each do |domain|
+      domain.user_domains.destroy_all
+      domain.shop_domains.destroy_all
+      domain.orders.destroy_all
+      Event.by_model_and_id(Domain.name, domain.id).destroy_all
+      Event.by_model_and_id(ShopDomain.name, domain.id).destroy_all
+      Event.by_model_and_id(UserDomain.name, domain.id).destroy_all
+      domain.destroy
+    end
+    ShopManager.all.each do |manager|
+      user = manager.user
+      shop = manager.shop
+      if manager.shop_manager_domains.blank? && !manager.owner?
+      user.domains.each do |domain|
+        if shop.domains.include? domain
+          manager.shop_manager_domains.create domain_id: domain.id
+        end
+      end
+      end
+    end
+    Order.all.each do |order|
+      order.update_attributes is_paid: true
     end
   end
 end

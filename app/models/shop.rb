@@ -24,12 +24,12 @@ class Shop < ApplicationRecord
   has_many :comments, as: :commentable
   has_many :shop_managers, dependent: :destroy
   has_many :users, through: :shop_managers
-  has_many :orders
+  has_many :orders, dependent: :destroy
   has_many :order_products, through: :orders
-  has_many :products
+  has_many :products, dependent: :destroy
   has_many :tags, through: :products
   has_many :events , as: :eventable
-  has_many :shop_domains
+  has_many :shop_domains, dependent: :destroy
   has_many :domains, through: :shop_domains
   has_many :request_shop_domains
 
@@ -77,8 +77,9 @@ class Shop < ApplicationRecord
   scope :list_shops, -> ids {where id: ids}
 
   def destroy_event
-    events =  Event.where(eventable_type: "Shop", eventable_id: self.id)
-    events.destroy_all
+    Event.by_model_and_id(Shop.name, self.id).destroy_all
+    Event.by_model_and_id(OrderProduct.name, self.id).destroy_all
+    Event.by_model_and_id(User.name, self.id).destroy_all
   end
 
   def is_owner? user

@@ -12,7 +12,11 @@ class Domain < ApplicationRecord
   has_many :orders
   has_many :shop_manager_domains, dependent: :destroy
 
-  VALID_NAME_REGEX = /[a-zA-Z]/
+  VALID_NAME_REGEX = /\A[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨ
+    ẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừ
+    ỬỮỰỲỴÝỶỸửữựỳỵỷỹ]{1}[*ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲ
+    ẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴ
+    ÝỶỸửữựỳỵỷỹa-zA-Z0-9\-\_\ ]{0,}+\z/
 
   validates :name, presence: true, format: {with: VALID_NAME_REGEX}
 

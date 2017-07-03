@@ -87,7 +87,32 @@ class Event < ApplicationRecord
     when UserDomain.name
       check_link_user_domain
     when Domain.name
-      get_domain_link
+      "/domains?domain_id=#{eventable_id}"
+    end
+  end
+
+  def check_item_exist?
+    case eventable_type
+    when Shop.name
+      return true if Shop.find_by id: eventable_id
+    when Product.name
+      return true if Product.find_by(id: eventable_id) && Comment.find_by(id eventitem_id)
+    when Order.name
+      if message == Settings.notification_new
+        return true if Shop.find_by(id: eventable_id) && Order.find_by(id: eventitem_id)
+      else
+        return true if Order.find_by(id: eventitem_id)
+      end
+    when OrderProduct.name
+      return true if Order.find_by(id: eventitem_id)
+    when User.name
+      return true if Shop.find_by(id: eventable_id) && Order.find_by(id: eventitem_id)
+    when ShopDomain.name
+      return true if Domain.find_by(id: eventable_id) && ShopDomain.find_by(id: eventitem_id)
+    when UserDomain.name
+      return true if Domain.find_by(id: eventable_id) && User.find_by(id: eventitem_id)
+    when Domain.name
+      return true if Domain.find_by(id: eventable_id)
     end
   end
 
@@ -240,11 +265,6 @@ class Event < ApplicationRecord
     else
       "#{I18n.t "request_have_been_delete"}"
     end
-  end
-
-  def get_domain_link
-    domain = Domain.find_by id: eventable_id
-    "/domains?domain_id=#{domain.id}"
   end
 
   def check_admin_accept_shop_request_status

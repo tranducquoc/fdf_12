@@ -9,7 +9,7 @@ class Event < ApplicationRecord
   scope :by_date, -> {order created_at: :desc}
   scope :unread, -> {where read: false}
   scope :by_model_and_id, -> model, id do where eventable_type: model,
-    eventable_type: id
+    eventable_id: id
   end
 
   def load_message

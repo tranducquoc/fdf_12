@@ -13,6 +13,8 @@ class DomainService
       ActiveRecord::Base.transaction do
         begin
           Event.by_model_and_id(Domain.name, @domain.id).destroy_all
+          Event.by_model_and_id(ShopDomain.name, @domain.id).destroy_all
+          Event.by_model_and_id(UserDomain.name, @domain.id).destroy_all
           @domain.shop_domains.destroy_all
           @domain.user_domains.destroy_all
           @domain.destroy

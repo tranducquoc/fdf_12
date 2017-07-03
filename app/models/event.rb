@@ -96,7 +96,7 @@ class Event < ApplicationRecord
     when Shop.name
       return true if Shop.find_by id: eventable_id
     when Product.name
-      return true if Product.find_by(id: eventable_id) && Comment.find_by(id eventitem_id)
+      return true if Product.find_by(id: eventable_id) && Comment.find_by(id: eventitem_id)
     when Order.name
       if message == Settings.notification_new
         return true if Shop.find_by(id: eventable_id) && Order.find_by(id: eventitem_id)

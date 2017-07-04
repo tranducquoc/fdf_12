@@ -82,17 +82,19 @@
     </div>
   </div>
 </div>
-<!-- body -->
 <div class="block-shop-header clearfix">
   <div>
-  <h2 class="section_title margin_right_15px row_h2">
-    <%= @products.any? ? t(".products") : t(".no_product") %>
-  </h2>
+    <h2 class="section_title margin_right_15px row_h2">
+      <%= @products.any? ? t(".products") : t(".no_product") %>
+    </h2>
   </div>
-  <div class="magin_top_10px">
-      <%= render @products %>
+  <div class="list-products-shop-domain magin_top_10px">
+    <%= render @products %>
   </div>
-  <%= paginate @products %>
+  <div class="load-more-products col-md-12 col-xs-12 margin-top-30">
+    <% unless check_length_perpage_product @products %>
+      <%= link_to_next_page(@products, t("view_more_products")) %>
+    <% end %>
+  </div>
 </div>
-<!-- modals -->
 <%= render "domains/modal_order_fast" %>

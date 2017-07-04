@@ -5,10 +5,10 @@
       <h3 class="title padding-left-10 margin-left_domain form-header">
         <span class="text-header"><%= t "common.categories" %></span>
       </h3>
-      <div class="clearfix body  margin-left_domain">
+      <div class="clearfix body margin-left_domain">
         <div class="category-list padding-top-0">
           <div class="<%= "scroll" if @domains.size > Settings.max_content_scroll %>">
-            <div class="col-lg-6 col-md-12 col-xs-6 padding_0
+            <div class="col-lg-6 col-md-12 col-xs-6 padding_0 margin-bottom-5
               padding-left-right-5">
               <%= link_to products_path(domain_id: @domain.id),
                 class: "categorie" do %>

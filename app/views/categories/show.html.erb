@@ -8,10 +8,14 @@
         <span><span class="border-top-shop-product"></span></span>
       </div>
     </div>
-    <div class="col-xs-12">
+    <div class="list-products-category col-xs-12">
       <%= render @products %>
     </div>
   </div>
 </div>
-<%= paginate @products %>
+<div class="load-more-products col-md-12 col-xs-12 margin-top-30">
+  <% unless check_length_perpage_product @products %>
+    <%= link_to_next_page(@products, t("view_more_products")) %>
+  <% end %>
+</div>
 <%= render "domains/modal_order_fast" %>

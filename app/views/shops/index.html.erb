@@ -5,8 +5,12 @@
       <span><span class="border-top-shop-product"></span></span>
     </div>
   </div>
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-top-30">
+  <div class="list-shops col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-top-30">
       <%= render partial: "shops/all_shop_item", collection: @shops, as: :shop %>
   </div>
 </div>
-<%= paginate @shops %>
+<div class="load-more-products col-md-12 col-xs-12 margin-top-30">
+  <% unless check_length_perpage_shop @shops %>
+    <%= link_to_next_page(@shops, t("view_more_shops")) %>
+  <% end %>
+</div>

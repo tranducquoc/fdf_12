@@ -193,8 +193,12 @@ module ApplicationHelper
     products_domain.flatten
   end
 
-  def check_length_perpage products
+  def check_length_perpage_product products
     products.size > Settings.common.products_per_page
+  end
+
+  def check_length_perpage_shop shops
+    shops.size > Settings.common.shops_per_page
   end
 
   def category_statistic

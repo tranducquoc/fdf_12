@@ -1,5 +1,6 @@
 class Admin::UsersController < AdminController
   load_and_authorize_resource
+  skip_load_and_authorize_resource only: :update
   before_action :load_user, only: [:update, :destroy]
 
   def index
@@ -60,12 +61,13 @@ class Admin::UsersController < AdminController
   private
   def user_params
     params.require(:user).permit :name, :email, :chatwork_id, :avatar,
-    :description, :status
+    :description, :status, :address
   end
 
   def load_user
-    @user = User.find_by id: params[:id]
-    unless @user
+    begin
+      @user = User.friendly.find params[:id]
+    rescue
       redirect_to :back
     end
   end
@@ -75,7 +77,7 @@ class Admin::UsersController < AdminController
       order_processed: Settings.serialize_true, send_order: Settings.serialize_true}
     notification_settings = {order_request: Settings.serialize_true,
       order_processed: Settings.serialize_true, send_order: Settings.serialize_true}
-    params.require(:user).permit(:name, :email, :password,
+    params.require(:user).permit(:name, :email, :address, :password,
       :password_confirmation).merge email_settings: email_settings,
       notification_settings: notification_settings, language: I18n.default_locale
   end

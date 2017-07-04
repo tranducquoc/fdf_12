@@ -459,6 +459,7 @@ vi:
         show_avatar: "Hiện ảnh"
         wait: "Khóa"
         active: "Kích hoạt"
+        group: "Nhóm"
       edit:
         title: "Chỉnh sửa"
         user: "Thông tin người dùng"
@@ -873,6 +874,7 @@ vi:
     update: "Cập nhật"
     update_settings_success: "Cập nhật cài đặt thành công"
     update_settings_fail: "Cập nhật cài đặt thất bại"
+    group: "Nhóm"
   all_status:
     pending: "Đang đợi"
     accepted: "Đã chấp nhận"

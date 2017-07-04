@@ -416,6 +416,7 @@ en:
         show_avatar: "Show avatar"
         wait: "Wait"
         active: "Actice"
+        group: "Group"
       edit:
         title: "Edit user"
         user: "User's information"
@@ -833,6 +834,7 @@ en:
     update: "Update"
     update_settings_success: "Update settings successful"
     update_settings_fail: "Update settings failed"
+    group: "Group"
   all_status:
     pending: "Pending"
     accepted: "Accepted"

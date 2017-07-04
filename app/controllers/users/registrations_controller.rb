@@ -12,15 +12,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
-  # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    resource.update_attributes user_params
+    super
+  end
 
   # DELETE /resource
   # def destroy
@@ -60,5 +59,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def after_update_path_for(resource)
     user_path(resource)
+  end
+
+  def user_params
+    params.require(:user).permit :name, :email, :chatwork_id, :avatar,
+    :description, :status, :address
   end
 end

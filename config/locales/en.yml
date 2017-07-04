@@ -1006,3 +1006,7 @@ en:
   confirm_delete_user_domain: "Do you really want to delete member %{user_name} from %{domain_name} domain?"
   have_no_order_to_day: "There are no orders today!"
   manager_orders_xlsx: "Manager Orders"
+  request_join_domain_success: "Send request to join domain success"
+  delete_request_join_domain_success: "Request to join domain has been canceled"
+  confirm_leave_shop_domain: "Do you really want to remove %{shop_name} shop from %{domain_name} domain"
+  delete_shop_domain_success: "Shop removed from domain"

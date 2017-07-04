@@ -78,7 +78,7 @@ ja:
     change_status_domain_fail: "ドメインのステータスを変更できませんでした!"
     status_not_exist: "ステータスが存在しません!"
     not_owner_domain: "あなたはこのドメインの所有者ではありません!"
-    not_owner_shop: "あなたはお店のオーナーではありません!"
+    not_owner_shop:   "あなたはお店のオーナーではありません!"
     error_already_manager: "ユーザーは既に管理者です!"
     error_add_yourself: "あなた自身を追加することはできません!"
   framgia_label: "Framgia"
@@ -1020,3 +1020,4 @@ ja:
   confirm_leave_shop_domain: "%{shop_name}店の%{domain_name}ドメインからドを削除したいですか"
   delete_shop_domain_success: "削除された"
   view_more_shops: "もっと見る"
+  manager_domain: "このドメインの所有者"

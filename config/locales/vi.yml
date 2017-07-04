@@ -1069,3 +1069,4 @@ vi:
   confirm_leave_shop_domain: "Bạn thật sự muốn xóa cửa hàng %{shop_name} khỏi miền %{domain_name}"
   delete_shop_domain_success: "Đã xóa cửa hàng khỏi miền"
   view_more_shops: "Xem thêm cửa hàng"
+  manager_domain: "Chủ miền"

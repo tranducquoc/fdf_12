@@ -1,0 +1,83 @@
+<% provide :title, t("domain_manager_header") %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-success">
+      <table class="table table-striped table-hover table-bordered">
+        <thead class="">
+          <tr>
+            <th><%= t "request_shop.domain_name" %></th>
+            <th><%= t "request_shop.status" %></th>
+            <th><%= t "members" %></th>
+            <th><%= t "shop" %></th>
+            <th><%= t "livesearch.owner" %></th>
+            <th><%= t "function" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "domain", collection: @domains %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-12 text-center">
+      <%= paginate @domains, theme: "twitter-bootstrap-3" %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-view-domain">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><%= t "about" %></h4>
+      </div>
+      <div class="modal-body">
+        <div role="tabpanel">
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+              <a href="#list-members" aria-controls="home" role="tab" data-toggle="tab">
+                <%= t "edit_member" %>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#list-shops" aria-controls="tab" role="tab" data-toggle="tab">
+                <%= t "list_domain_shops" %>
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active list" id="list-members">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th><%= t "users.index.name" %></th>
+                  </tr>
+                </thead>
+                <tbody id="table-list-members">
+                </tbody>
+              </table>
+            </div>
+            <div role="tabpanel" class="tab-pane list" id="list-shops">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th><%= t "shops.index.name" %></th>
+                  </tr>
+                </thead>
+                <tbody id="table-list-shops">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          <%= t "admin.orders.index.close" %>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

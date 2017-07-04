@@ -46,8 +46,10 @@ $(document).ready(function(){
     var type = $('#history-order-manager').val();
     if (type === 'product')
       url = $(this).attr('action');
-    else
+    else if (type === 'user')
       url = '/dashboard/shops/' + shop_id + '/user_orders'
+    else
+      url = '/dashboard/shops/' + shop_id + '/group_orders'
     $.ajax({
       url: url,
       type: 'GET',

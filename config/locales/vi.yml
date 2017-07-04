@@ -793,6 +793,7 @@ vi:
     done: "Hoàn thành"
     user_name: "Người đặt hàng"
     details: "Chi tiết"
+    group: "Nhóm"
   order_day: "Ngày đặt hàng"
   language: "Ngôn ngữ: "
   english: "English"
@@ -975,6 +976,7 @@ vi:
   order_manage_filter:
     product: "Sản phẩm"
     user: "Người dùng"
+    group: "Nhóm"
   opening_hours: "Giờ mở bán"
   food_name: "Tên món ăn"
   view_more_products: "Xem thêm sản phẩm"

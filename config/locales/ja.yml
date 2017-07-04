@@ -746,6 +746,7 @@ ja:
     user_name: "User Name"
     details: "Details"
     total_price_date: "合計 "
+    group: "グループ"
   order_day: "デイ注文"
   language: "語: "
   english: "English"
@@ -926,6 +927,7 @@ ja:
   order_manage_filter:
     product: "プロダクト"
     user: "ユーザー"
+    group: "グループ"
   opening_hours: "業務時間"
   food_name: "食べ物の名前"
   view_more_products: "もっと見る"

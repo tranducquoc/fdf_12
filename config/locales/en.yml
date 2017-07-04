@@ -752,6 +752,7 @@ en:
     done: "Done"
     user_name: "User Name"
     details: "Details"
+    group: "Group"
   order_day: "Order day"
   language: "Language: "
   english: "English"
@@ -918,6 +919,7 @@ en:
   order_manage_filter:
     product: "Product"
     user: "User"
+    group: "Group"
   opening_hours: "Opening hours"
   food_name: "Food's name"
   view_more_products: "View more products"

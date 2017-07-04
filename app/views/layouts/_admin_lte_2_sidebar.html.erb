@@ -99,6 +99,20 @@
         </ul>
       </li>
       <!-- End Users link -->
+      <!-- Domains link -->
+      <li class="treeview">
+        <a href="#">
+          <i class='fa fa-globe'></i>
+          <span><%= t "domain" %></span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <%= link_to t("domain_manager_header"), admin_domains_path %>
+          </li>
+        </ul>
+      </li>
+      <!-- End Domains link -->
     </ul><!-- /.sidebar-menu -->
   </section>
   <!-- /.sidebar -->

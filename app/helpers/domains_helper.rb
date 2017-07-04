@@ -25,4 +25,17 @@ module DomainsHelper
       user_domain_path(user_domain, role: role),
       method: :patch, class: classes, remote: true
   end
+
+  def owner_name domain
+    user = User.find_by id: domain.owner
+    user.present? ? user.name : ""
+  end
+
+  def load_tag_status domain
+    if domain.secret?
+      label_tag "", t("secret"), class: "domain-secret"
+    else
+      label_tag "", t("professed"), class: "domain-professed"
+    end
+  end
 end

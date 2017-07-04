@@ -1011,3 +1011,4 @@ en:
   confirm_leave_shop_domain: "Do you really want to remove %{shop_name} shop from %{domain_name} domain"
   delete_shop_domain_success: "Shop removed from domain"
   view_more_shops: "View more shops"
+  manager_domain: "Domain owner"

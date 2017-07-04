@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     resources :set_user, only: :create
     resources :shops, except: [:new, :create, :show]
     resources :request_shop_domains
+    resources :domains, only: [:index, :show]
   end
 
   namespace :dashboard do

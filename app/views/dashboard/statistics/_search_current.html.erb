@@ -4,7 +4,7 @@
       <%= render "shop", params_shop: :current_shop_id %>
       <div class="col-md-5">
         <%= select_tag :category_statistic,
-          options_for_select(Statistics.category_statistic,
+          options_for_select(category_statistic,
           params[:category_statistic]), include_blank: true,
           class: "form-control" %>
       </div>

@@ -23,7 +23,7 @@
                 <%= link_to "javascript:void(0)", class: "choose-avatar" do %>
                   <i class="material-icons">camera_enhance</i>
                   <label class="margin-bottom-0">
-                    <%= t "update_cover_image" %>
+                    <%= t "update_image_avatar" %>
                   </label>
                 <% end %>
               </div>
@@ -52,22 +52,6 @@
               <div class="form-group">
                 <%= f.label t "edit_user.description" %>
                 <%= f.text_area :description, class: "form-control disabled-resize-textarea" %>
-              </div>
-              <div class="form-group">
-                <%= f.label t "edit_user.password" %> <i></i><br/>
-                <%= f.password_field :password, autocomplete: "off",
-                  class: "form-control" %>
-              </div>
-              <div class="form-group">
-                <%= f.label t "edit_user.password_confirm" %><br/>
-                <%= f.password_field :password_confirmation, autocomplete: "off",
-                  class: "form-control" %>
-              </div>
-              <div class="form-group">
-                <%= f.label t("edit_user.current_password"), class: "impor" %>
-                <i class="impor"></i><br />
-                <%= f.password_field :current_password, autocomplete: "off",
-                  class: "form-control" %>
               </div>
             </div>
             <div class="actions text-center margin-top-10">

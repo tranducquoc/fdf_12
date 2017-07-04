@@ -1,0 +1,9 @@
+<% if @change_password_status == Settings.status_save.success %>
+  $('#change-password-user').modal('hide');
+  $('#user_password').val('');
+  $('#user_password_confirmation').val('');
+  $('#user_current_password').val('');
+  $.growl.notice({title: I18n.t('common.notifications'), message: I18n.t('update_success')});
+<% else %>
+  $('strong.time-error').html(I18n.t('incorrect_current_password'));
+<% end %>

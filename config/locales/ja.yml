@@ -974,6 +974,24 @@ ja:
             name:
               blank: "ドメインの名前は空ではありません"
               without: "ドメイン名が無効です"
+        user:
+          attributes:
+            name:
+              blank: "ユーザー名は空ではありません"
+              without: "ユーザー名が無効です"
+              too_long: "ユーザー名は50文字を超えてはなりません"
+            address:
+              too_long: "グループ名は50文字を超えてはなりません"
+            chatwork_id:
+              too_long: "Chatwork IDは50文字を超えてはなりません"
+            description:
+              too_long: "説明は50文字を超えてはなりません"
+            password:
+              blank: "パスワードは空ではありません"
+              too_short: "少なくとも6文字のパスワード"
+            password_confirmation:
+              blank: "パスワードの確認は空ではありません"
+              confirmation: "パスワードの確認が一致しません"
   update_image_avatar: "写真を変える"
   invalid_hour: "タイム端は以上時間が始まったしなければなりません"
   not_have_domain: "続行するには、ドメインに参加しなければなりません"
@@ -1023,3 +1041,6 @@ ja:
   delete_shop_domain_success: "削除された"
   view_more_shops: "もっと見る"
   manager_domain: "このドメインの所有者"
+  edit_infomation: "情報を編集"
+  change_password: "パスワードを変更します"
+  incorrect_current_password: "このパスワードは間違っています"

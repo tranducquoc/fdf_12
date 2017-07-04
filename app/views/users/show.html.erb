@@ -53,17 +53,73 @@
                 </tr>
               </tbody>
             </table>
-          </div>
-          <div class="col-xs-12">
-            <% if current_user? @user %>
-              <%= link_to edit_user_registration_path,
-                class: "btn btn-sm btn-warning float-right form-button" do %>
-                <i class="glyphicon glyphicon-edit"></i>
-                <%= t "common.edit_button" %>
-              <% end %>
-            <% end %>
+            <div class="row">
+              <div class="col-xs-12 right">
+                <% if current_user? @user %>
+                  <%= link_to "#change-password-user", "data-toggle": "modal",
+                    class: "btn btn-default form-button" do %>
+                    <i class="glyphicon glyphicon-edit"></i>
+                    <%= t "devise.user.change_pass" %>
+                  <% end %>
+                  <%= link_to edit_user_registration_path,
+                    class: "btn btn-default form-button" do %>
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <%= t "edit_infomation" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="change-password-user" class="modal fade">
+  <div class="modal-dialog modal-edit-user">
+    <div class="modal-content">
+      <div class="modal-header modal_header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title modal_text_header">
+          <%= t "change_password" %>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for @user, url: user_path, method: :put, remote: true,
+          html: {class: "change-password-user"} do |f| %>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <%= f.label t "edit_user.password" %>
+                <%= f.password_field :password, autocomplete: "off",
+                  class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="form-group">
+                <%= f.label t "edit_user.password_confirm" %>
+                <%= f.password_field :password_confirmation, autocomplete: "off",
+                  class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="form-group">
+                <strong class="time-error"></strong>
+                <%= f.label t("edit_user.current_password"), class: "impor" %>
+                <%= f.password_field :current_password, autocomplete: "off",
+                  class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-xs-12 padding-top-10 right">
+              <button type="button" class="btn btn-default form-button"
+                data-dismiss="modal"><%= t "cancel" %>
+              </button>
+              <%= f.submit t("edit_user.update"),
+                class: "btn btn_add_to_cart btn-add form-button" %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

@@ -5,8 +5,7 @@
       <div class="col-md-5">
         <%= select_tag :category_statistic,
           options_for_select(Statistics.category_statistic,
-          params[:category_statistic]),
-          class: "form-control" %>
+          :current_week), class: "form-control" %>
       </div>
       <div class="col-md-2">
         <%= submit_tag t(".btn_search"), class: "btn btn-primary" %>

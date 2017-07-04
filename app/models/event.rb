@@ -101,7 +101,7 @@ class Event < ApplicationRecord
       if message == Settings.notification_new
         return true if Shop.find_by(id: eventable_id) && Order.find_by(id: eventitem_id)
       else
-        return true if Order.find_by(id: eventitem_id)
+        return true if Order.find_by(id: eventable_id)
       end
     when OrderProduct.name
       return true if Order.find_by(id: eventitem_id)
@@ -215,10 +215,10 @@ class Event < ApplicationRecord
         if user_id == domain.owner || user_domain.present?
           "/domains?domain_id=#{domain.id}"
         else
-          "/domains/#{domain.slug}/dashboard/shops"
+          "/dashboard/shops"
         end
       else
-        "/domains/#{domain.slug}/dashboard/shops"
+        "/dashboard/shops"
       end
     else
       "#"

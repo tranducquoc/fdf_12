@@ -1,6 +1,6 @@
 <tr class="center-vertical-td animated fadeInUp product-id-<%= product.id %>">
   <td>
-    <%= link_to product_path(domain_id: session[:domain_id]) do %>
+    <%= link_to product do %>
       <div class="shop-product-image">
         <%= image_tag product.image.url %>
       </div><br>

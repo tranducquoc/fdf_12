@@ -37,9 +37,11 @@ class ProductsController < ApplicationController
   end
 
   def check_show_product
-    unless @product.shop.domains.include?(@domain) && @product.active?
-      flash[:danger] = t "product.not_allow"
-      redirect_to root_path
+    unless @product.shop.get_shop_manager_by(current_user).present?
+      unless @product.shop.domains.include?(@domain) && @product.active?
+        flash[:danger] = t "product.not_allow"
+        redirect_to root_path
+      end
     end
   end
 end

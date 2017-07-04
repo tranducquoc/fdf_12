@@ -196,4 +196,14 @@ module ApplicationHelper
   def check_length_perpage products
     products.size > Settings.common.products_per_page
   end
+
+  def category_statistic
+    [
+      [I18n.t("current_week"), :current_week],
+      [I18n.t("current_month"), :current_month],
+      [I18n.t("current_year"), :current_year],
+      [I18n.t("year"), :year]
+    ]
+  end
+
 end

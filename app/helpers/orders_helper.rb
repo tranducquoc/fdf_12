@@ -18,8 +18,11 @@ module OrdersHelper
   end
 
   def order_manage_filter
-    {I18n.t("order_manage_filter.product") => "product",
-      I18n.t("order_manage_filter.user") => "user"}
+    {
+      I18n.t("order_manage_filter.product") => "product",
+      I18n.t("order_manage_filter.user") => "user",
+      I18n.t("order_manage_filter.group") => "group"
+    }
   end
 
   def sum_price orders
@@ -28,6 +31,10 @@ module OrdersHelper
 
   def group_by_user orders
     orders.group_by{|u| u.user_id}
+  end
+
+  def group_by_user_group orders
+    orders.group_by{|u| u.user.address.upcase if u.user.address.present?}
   end
 
   def accepted_products order_products

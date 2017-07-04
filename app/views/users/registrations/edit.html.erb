@@ -41,6 +41,11 @@
                 <%= f.text_field :name, class: "form-control" %>
               </div>
               <div class="form-group">
+                <%= f.label t "edit_user.group" %> <i></i><br/>
+                <%= f.text_field :address, autocomplete: "off",
+                  class: "form-control" %>
+              </div>
+              <div class="form-group">
                 <%= f.label :chatwork_id %>
                 <%= f.text_field :chatwork_id, class: "form-control" %>
               </div>

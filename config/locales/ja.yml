@@ -411,6 +411,7 @@ ja:
         show_avatar: "アバター お表示"
         wait: "ロック"
         active: "活性化した"
+        group: "グループ"
       edit:
         title: "編集"
         user: "ユーザー情報"
@@ -824,6 +825,7 @@ ja:
     update: "更新"
     update_settings_success: "成功する"
     update_settings_fail: "故障"
+    group: "グループ"
   all_status:
     pending: "待っています"
     accepted: "一般に認められました"

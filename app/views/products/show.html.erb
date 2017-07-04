@@ -61,7 +61,8 @@
           </div>
           <% if Time.now.is_between_short_time?(@product.start_hour,
             @product.end_hour) || !@product.shop.active? ||
-            @product.shop.status_on_off == Settings.shop_status_off %>
+            @product.shop.status_on_off == Settings.shop_status_off ||
+            !(@product.shop.domains.include?(@domain) && @product.active?) %>
             <%= link_to t("blank_link"), class: "btn btn_add_to_cart btn-add
               padding-left-for-button disabled btn_margin_none" do %>
               <span class="glyphicon glyphicon-shopping-cart"></span>

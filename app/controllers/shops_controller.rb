@@ -9,8 +9,7 @@ class ShopsController < ApplicationController
       Shop.shop_in_domain @domain.id
     else
       Shop.all
-    end.active.page(params[:page])
-      .per(Settings.common.shops_per_page).decorate
+    end.active.page(params[:page]).per(Settings.common.shops_per_page)
   end
 
   def show

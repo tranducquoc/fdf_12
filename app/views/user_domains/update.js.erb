@@ -1,2 +1,3 @@
 $('.domain-manager-action-<%= @user_domain.id %>').html('<%= domain_manager_action @user_domain %>');
-$.growl.notice({message: '<%= @message %>'});
+$.growl.notice({title: '<%= t "common.notifications" %>',
+  message: '<%= @message %>'});

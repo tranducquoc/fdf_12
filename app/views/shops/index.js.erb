@@ -1,0 +1,6 @@
+$('.list-shops').append('<%= j render partial: "shops/all_shop_item", collection: @shops, as: :shop %>');
+<% if @shops.last_page? %>
+  $('.load-more-products').remove();
+<% else %>
+  $('.load-more-products').html('<%= j link_to_next_page(@shops, t("view_more_shops")) %>');
+<% end %>

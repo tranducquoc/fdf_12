@@ -921,7 +921,7 @@ en:
   opening_hours: "Opening hours"
   food_name: "Food's name"
   view_more_products: "View more products"
-  load_more_products: "Loading more products"
+  load_more_products: "Loading..."
   general_info:
     total:
       orders: "Number of orders received"
@@ -1010,3 +1010,4 @@ en:
   delete_request_join_domain_success: "Request to join domain has been canceled"
   confirm_leave_shop_domain: "Do you really want to remove %{shop_name} shop from %{domain_name} domain"
   delete_shop_domain_success: "Shop removed from domain"
+  view_more_shops: "View more shops"

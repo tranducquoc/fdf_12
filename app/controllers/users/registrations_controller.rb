@@ -12,13 +12,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  def edit
-    super
-  end
+  # def edit
+  #   super
+  # end
 
   def update
     resource.update_attributes user_params
-    super
+    flash[:success] = t "update_success"
+    respond_with resource, location: after_update_path_for(resource)
   end
 
   # DELETE /resource
@@ -57,8 +58,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def after_update_path_for(resource)
-    user_path(resource)
+  def after_update_path_for resource
+    user_path resource
   end
 
   def user_params

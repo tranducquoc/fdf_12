@@ -1024,6 +1024,24 @@ vi:
             name:
               blank: "Tên miền không được để trống"
               without: "Tên miền không hợp lệ"
+        user:
+          attributes:
+            name:
+              blank: "Tên người dùng không được để trống"
+              without: "Tên người dùng không hợp lệ"
+              too_long: "Tên người dùng không được quá 50 ký tự"
+            address:
+              too_long: "Tên nhóm không được quá 50 ký tự"
+            chatwork_id:
+              too_long: "Chatwork ID không được quá 50 ký tự"
+            description:
+              too_long: "Mô tả người dùng không được quá 50 ký tự"
+            password:
+              blank: "Mật khẩu không được để trống"
+              too_short: "Mật khẩu ít nhất 6 kí tự"
+            password_confirmation:
+              blank: "Mật khẩu xác nhận không được để trống"
+              confirmation: "Mật khẩu xác nhận không khớp"
   update_image_avatar: "Cập nhật ảnh"
   invalid_hour: "Giờ kết thúc phải lớn hơn hoặc bằng giờ bắt đầu"
   not_have_domain: "Bạn phải tham gia vào một miền để tiếp tục!"
@@ -1072,3 +1090,6 @@ vi:
   delete_shop_domain_success: "Đã xóa cửa hàng khỏi miền"
   view_more_shops: "Xem thêm cửa hàng"
   manager_domain: "Chủ miền"
+  edit_infomation: "Sửa thông tin"
+  change_password: "Đổi mật khẩu"
+  incorrect_current_password: "Mật khẩu hiện tại không đúng"

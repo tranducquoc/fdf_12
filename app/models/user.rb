@@ -41,6 +41,7 @@ class User < ApplicationRecord
   validates :name, presence: true, format: {with: VALID_NAME_REGEX},
     length: {maximum: Settings.user.max_name}
   validates :chatwork_id, length: {maximum: Settings.user.max_chatwork_id}
+  validates :address, length: {maximum: Settings.user.max_name}
   validates :description, length: {maximum: Settings.user.max_description}
   validate :image_size
 

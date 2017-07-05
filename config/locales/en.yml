@@ -966,6 +966,24 @@ en:
             name:
               blank: "Domain's name can't empty"
               without: "Domain's name invalid"
+        user:
+          attributes:
+            name:
+              blank: "Username can't empty"
+              without: "Username invalid"
+              too_long: "Username can't be more than 50 characters"
+            address:
+              too_long: "Group name can't be more than 50 characters"
+            chatwork_id:
+              too_long: "Chatwork ID can't be more than 50 characters"
+            description:
+              too_long: "Description can't be more than 50 characters"
+            password:
+              blank: "Password can't empty"
+              too_short: "Password at least 6 character"
+            password_confirmation:
+              blank: "Password confirmation can't empty"
+              confirmation: "Password confirmation doesn't match"
   update_image_avatar: "Update image"
   invalid_hour: "End hour must be less than or equal start hour"
   not_have_domain: "You have to take part in a domain to continue!"
@@ -1014,3 +1032,6 @@ en:
   delete_shop_domain_success: "Shop removed from domain"
   view_more_shops: "View more shops"
   manager_domain: "Domain owner"
+  edit_infomation: "Edit information"
+  change_password: "Change password"
+  incorrect_current_password: "Current password is incorrect"

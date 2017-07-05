@@ -7,7 +7,8 @@ class V1::Dashboard::ShopDomainsController < V1::BaseController
       result = []
       shops.each do |s|
         shop_hash = s.attributes.slice("id", "name", "description", "status",
-          "avatar", "averate_rating", "owner_id")
+          "averate_rating", "owner_id")
+        shop_hash["avatar"] = s.avatar
         shop_hash["owner_name"] = s.owner_name
         shop_hash["owner_email"] = s.owner_email
         shop_hash["owner_avatar"] = s.owner_avatar

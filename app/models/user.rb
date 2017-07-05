@@ -50,6 +50,9 @@ class User < ApplicationRecord
   scope :of_ids, -> ids {where id: ids}
   scope :list_all_users, -> ids {where id: ids}
   scope :user_of_list_id, -> list {where id: list}
+  scope :user_of_list_id_include_role, -> list do
+    joins(:user_domains).select("users.*, user_domains.role").where id: list
+  end
   scope :not_in_domain, ->domain do
     where("id NOT IN (?)", domain.users.pluck(:user_id)) if domain.users.present?
   end

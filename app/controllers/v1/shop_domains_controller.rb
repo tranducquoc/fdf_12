@@ -34,8 +34,18 @@ class V1::ShopDomainsController < V1::BaseController
   end
 
   def destroy
-    result = ShopDomainApiService.new(@shop_domain, current_user, "").destroy_shop_in_domain
-    responses result
+    if params[:leave_domain].present?
+      shop = Shop.find_by id: params[:shop_id]
+      if shop.is_owner? current_user.id
+        result = ShopDomainApiService.new(@shop_domain, current_user, "").destroy_shop_in_domain
+        responses result
+      else
+        response_error t "api.not_owner_shop"
+      end
+    else
+      result = ShopDomainApiService.new(@shop_domain, current_user, "").destroy_shop_in_domain
+      responses result
+    end
   end
 
   def show

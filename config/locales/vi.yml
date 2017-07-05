@@ -810,6 +810,9 @@ vi:
       title: "Tạo và quản lý shop dễ dàng"
       context: "F-order sẽ là nơi lý tưởng để đưa các sản phẩm của bạn đến với tất cả mọi người,
         chỉ một vài bước đơn giản là bạn đã có thể làm chủ một cửa hàng của riêng mình"
+    mobile:
+      title: "Tiện lợi hơn với phiên bản di động"
+      context: "Với F-order mobile, bạn có thể đặt các món ăn một cách nhanh chóng hơn, trực quan hơn. Ngoài ra còn giúp cho người quản lý cửa hàng có thể quản lý một cách tối ưu, theo dõi cửa hàng bất cứ lúc nào, bất cứ ở đâu."
   feature:
     title: "Tính năng"
     search: "Tìm kiếm sản phẩm"
@@ -1093,3 +1096,18 @@ vi:
   edit_infomation: "Sửa thông tin"
   change_password: "Đổi mật khẩu"
   incorrect_current_password: "Mật khẩu hiện tại không đúng"
+  download_app: "Tải ứng dụng"
+  mobile_page:
+    title_slogan: "F-Order, ứng dụng trên di động"
+    slogan: "Nhanh chóng, tiện lợi, tận tình trong từng món ăn."
+    functions: "Những chức năng nỗi bật của ứng dụng F-Order"
+    search:
+      title: "Tìm kiếm nhanh chóng"
+      content: "Bạn có thể tìm ngay món ăn mình yêu thích bằng tên món ăn, loại món ăn hoặc tìm kiếm theo cửa hàng. Với hệ thống cửa hàng rộng lớn cùng vô số món ăn sẻ đáp ứng được hết các sở thích của bạn."
+    order:
+      title: "Đặt hàng thoải mái"
+      content: "Bạn có thể đặt nhanh một món ăn mình yêu thích mà không phải qua các bước trung gian, củng như bạn có thể đặt nhiều món ăn ở nhiều cửa hàng mà không phải gặp khó khăn nào."
+    shop:
+      title: "Tự do kinh doanh"
+      content: "Bạn có thể tạo cho mình nhiều cửa hàng và đem sản phẩm của mình đến với khách hàng ngay. Với hệ thống chức năng quản lý cửa hàng trực quan sẻ hỗ trợ bạn một cách tốt đa trong quá trình kinh doanh với F-Order."
+    coming_soon: "COMING SOON"

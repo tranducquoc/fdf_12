@@ -33,4 +33,7 @@ class StaticPagesController < ApplicationController
       redirect_to canhan_path
     end
   end
+
+  def new
+  end
 end

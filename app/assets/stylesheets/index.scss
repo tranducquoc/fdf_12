@@ -100,11 +100,18 @@ IMG.displayed {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  padding-top: 500px;
 }
 
 .intro-web {
   background: image-url('drink-bg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.intro-web-1 {
+  background: image-url('tom-xao') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -197,4 +204,9 @@ IMG.displayed {
 
 .font-icon-intro {
   color: #ff5722;
+}
+
+.btn_download {
+  margin-left: 35%;
+  font-size: 20px;
 }

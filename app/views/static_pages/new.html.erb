@@ -1,0 +1,92 @@
+<header class="mobile-page">
+  <div class="mobile-background"></div>
+  <div class="mobile-content">
+    <div class="mobile-header">
+      <div class="col-md-8 col-sm-8 col-xs-12">
+        <div class="header-text">
+          <%= label_tag "", t("mobile_page.title_slogan"), class: "text-title" %>
+          <br>
+          <%= label_tag "", t("mobile_page.slogan"), class: "text-slogan" %>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <%= image_tag "mobile-page" %>
+      </div>
+    </div>
+    <div class="col-md-12 mobile-body">
+      <div class="text-center">
+        <%= label_tag "", t("mobile_page.functions"), class: "header-text" %>
+      </div>
+      <div class="functions">
+        <div class="col-md-4 col-sm-4 col-xs-0">
+          <%= image_tag "mobile-hand" %>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12 padding-top-30">
+          <div class="mobile-items">
+            <div class="item-left">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </div>
+            <div class="item-right">
+              <div class="text-title">
+                <%= t "mobile_page.search.title" %>
+              </div>
+              <div class="text-content">
+                <%= t "mobile_page.search.content" %>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-items">
+            <div class="item-left">
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </div>
+            <div class="item-right">
+              <div class="text-title">
+                <%= t "mobile_page.order.title" %>
+              </div>
+              <div class="text-content">
+                <%= t "mobile_page.order.content" %>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-items">
+            <div class="item-left">
+              <i class="fa fa-tags" aria-hidden="true"></i>
+            </div>
+            <div class="item-right">
+              <div class="text-title">
+                <%= t "mobile_page.shop.title" %>
+              </div>
+              <div class="text-content">
+                <%= t "mobile_page.shop.content" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 mobile-end text-center">
+      <div class="text-center">
+        <%= label_tag "", t("download_app"), class: "header-text" %>
+      </div>
+      <div class="download">
+        <div class="download-item">
+          <%= link_to "javascript:void(0)", class: "image-coming-soon" do %>
+            <%= image_tag "download-app-ios" %>
+          <% end %>
+          <div class="coming-soon"><%= t "mobile_page.coming_soon" %></div>
+        </div>
+        <div class="download-item">
+          <%= link_to "#" do %>
+            <%= image_tag "download-app-android" %>
+          <% end %>
+        </div>
+        <div class="download-item">
+          <%= link_to "javascript:void(0)", class: "image-coming-soon" do %>
+            <%= image_tag "download-app-windowphone" %>
+          <% end %>
+          <div class="coming-soon"><%= t "mobile_page.coming_soon" %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

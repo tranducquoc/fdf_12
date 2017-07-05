@@ -67,6 +67,11 @@
           <span class="glyphicon glyphicon-shopping-cart"></span>
           <%= t "cart.add_to_card" %>
         <% end %>
+        <%= link_to t("blank_link"), class: "btn btn_add_to_cart btn-add
+          padding-left-for-button disabled btn_center" do %>
+          <span class="glyphicon glyphicon glyphicon-check"></span>
+          <%= t "cart_quick.order_now" %>
+        <% end %>
       </div>
     <% end %>
     <% unless current_user.is_member_of_domain? @domain %>

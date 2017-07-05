@@ -137,7 +137,7 @@ class ApplicationController < ActionController::Base
         redirect_to :back
         flash[:danger] = t "can_not_load_domain"
       end
-      check_user_in_domain @choosen_domain
+      check_user_in_domain(@choosen_domain) unless params[:join_domain].present?
     end
   end
 

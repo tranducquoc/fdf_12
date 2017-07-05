@@ -762,6 +762,9 @@ ja:
     intro_shop:
       title: "簡単な店を作成と舗管理"
       context: "いくつかの簡単な手順であなたがあなた自身の店を習得することができます"
+    mobile:
+      title: "More convenient with the mobile version"
+      context: "With F-order mobile, you can order food more quickly and visually. It also helps the store manager manage optimally, tracking the store anytime, anywhere."
   feature:
     title: "特徴"
     search: "プロダクトが検索"
@@ -1044,3 +1047,18 @@ ja:
   edit_infomation: "情報を編集"
   change_password: "パスワードを変更します"
   incorrect_current_password: "このパスワードは間違っています"
+  download_app: "Download app"
+  mobile_page:
+    title_slogan: "F-Order, Mobile Apps"
+    slogan: "Fast, convenient, dedicated in each dish."
+    functions: "The prominent functions of the F-Order"
+    search:
+      title: "Quick search"
+      content: "You can instantly find your favorite dish by name, categories or shop. With a large store and countless dishes will meet all your preferences."
+    order:
+      title: "Order comfortably"
+      content: "You can quickly order your favorite dish without going through the middle steps, as you can order many dishes in many stores without any difficulty."
+    shop:
+      title: "Business freedom"
+      content: "You can create your own store and bring your products to customers immediately. With its intuitive store management system, you will be able to support you in the best way with F-Order."
+    coming_soon: "COMING SOON"

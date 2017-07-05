@@ -597,7 +597,7 @@ $orange_main: #ff5722;
   color: #fff;
 }
 .v2-btn-success {
-  background-color: #aad178;
+  background-color: #7db831;
   border-color: #7db831;
   color: #fff;
 }
@@ -1254,4 +1254,145 @@ $orange_main: #ff5722;
 .input-search-nav {
   min-width: 200px;
   max-width: 350px;
+}
+
+.btn-mobile {
+  font-size: 32px;
+  padding-left: 8px;
+  transition: 0.5s ease-in-out;
+}
+
+.fa-mobile:hover {
+  color: #7db831;
+  transform: rotate(1turn);
+  -webkit-transform: rotate(1turn);
+  -moz-transform: rotate(1turn);
+  transition: 0.5s ease-in-out;
+}
+
+//mobile page
+.mobile-page {
+  padding-top: 15px;
+  .mobile-background {
+    background: image-url('sushi') no-repeat center center fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 350px;
+    padding-top: 36px;
+    margin-top: -50px;
+    margin-left: -1000px;
+    margin-right: -1000px;
+    opacity: 0.7;
+  }
+  .mobile-content {
+    margin-top: -350px;
+    position: relative;
+    .mobile-header {
+      height: 350px;
+      img {
+        width: 320px;
+      }
+      .header-text {
+        padding-top: 100px;
+        .text-title {
+          font-size: 50px;
+          color: #f05625;
+        }
+        .text-slogan {
+          font-size: 20px;
+          font-style: italic;
+          margin-left: 20px;
+        }
+      }
+    }
+    .mobile-body {
+      margin-top: 20px;
+      .header-text {
+        font-size: 30px;
+        color: #f05625;
+      }
+      .functions {
+        padding-top: 20px;
+        .mobile-items {
+          position: relative;
+          height: 150px;
+          .item-left {
+            display: inline;
+            font-size: 60px;
+            color: #f05625;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+          .item-right {
+            position: absolute;
+            top: 50%;
+            left: 75px;
+            transform: translateY(-50%);
+            .text-title {
+              font-size: 20px;
+              font-weight: bold;
+            }
+            .text-content {
+              font-size: 15px;
+              font-style: italic;
+            }
+          }
+        }
+        .mobile-items:hover {
+          .item-left {
+            i {
+              transform: rotate(1turn);
+              -webkit-transform: rotate(1turn);
+              -moz-transform: rotate(1turn);
+              transition: 0.5s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+    .mobile-end {
+      margin-top: 20px;
+      background-color: rgba(224, 222, 222, 0.35);
+      padding-bottom: 10px;
+      .header-text {
+        font-size: 30px;
+        color: #f05625;
+      }
+      .download {
+        padding-top: 20px;
+        display: inline;
+        .download-item {
+          display: inline;
+          position: relative;
+        }
+        img {
+          padding-left: 5px;
+          padding-right: 5px;
+          display: inline;
+        }
+        .image-coming-soon {
+          opacity: 0.3;
+        }
+        .coming-soon {
+          display: inline;
+          position: absolute;
+          left: 50%;
+          top: 0;
+          transform: translateX(-50%);
+          font-size: 18px;
+          color: #f05625;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.padding-top-30 {
+  padding-top: 25px;
+}
+
+.float-left {
+  float: left !important;
 }

@@ -14,4 +14,18 @@ class V1::ListMembersController < V1::BaseController
       response_not_found t "api.error_domains_not_found"
     end
   end
+
+  def new
+    domain = Domain.find_by id: params[:domain_id]
+    if domain
+      users_not_in_domain = User.not_in_domain domain
+      if users_not_in_domain
+        response_success t("api.success"), users_not_in_domain
+      else
+        response_error t "api.not_found"
+      end
+    else
+      response_not_found t "api.error_domains_not_found"
+    end
+  end
 end

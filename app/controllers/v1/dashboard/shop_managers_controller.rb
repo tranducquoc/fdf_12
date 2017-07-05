@@ -4,7 +4,7 @@ class V1::Dashboard::ShopManagersController < V1::BaseController
   def index
     user_ids = UserDomain.users_by_domain(params[:domain_id]).map(&:user_id)
     if user_ids.present?
-      result = User.user_of_list_id user_ids
+      result = User.user_of_list_id_include_role user_ids
       response_success t("api.success"), result
     else
       response_not_found t "api.not_found"

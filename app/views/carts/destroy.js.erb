@@ -1,6 +1,10 @@
 $('.cart-item-show').replaceWith('<%= j render( partial: "carts/list") %>');
 $('.cart-item').replaceWith('<%= j render(partial: "shared/cart") %>');
 $('.items-count').text('<%= @cart.count %>');
+<% if @cart.count == Settings.min_cart_item_hide_caret %>
+  $('.dropdown-cart').find('.caret').remove();
+  $('.li-dropdown-cart').find('ul.min-width-cart').remove();
+<% end %>
 $.growl.notice({title: '<%= t "common.notifications" %>',
   message: '<%= t "add_cart_succes" %>'});
 var current_path = window.location.pathname;

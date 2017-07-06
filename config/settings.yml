@@ -34,11 +34,11 @@ order_increase: 1
 minute_constant: 60
 minute_step: 5
 filter_status_order:
+  all: "all"
   pending: "pending"
   accepted: "accepted"
-  done: "done"
   rejected: "rejected"
-  all: "all"
+  done: "done"
 check_order: 2
 start_count_order: 0
 row_header: 1
@@ -160,3 +160,5 @@ destroy_product_status:
 status_save:
   success: 0
   error: 1
+min_cart_item_show_caret: 1
+min_cart_item_hide_caret: 0

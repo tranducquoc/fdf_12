@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :users
     resources :products, only: :index
     resources :set_user, only: :create
+    resources :update_group_user, only: :create
     resources :shops, except: [:new, :create, :show]
     resources :request_shop_domains
     resources :domains, only: [:index, :show]

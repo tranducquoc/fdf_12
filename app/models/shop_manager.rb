@@ -8,7 +8,7 @@ class ShopManager < ApplicationRecord
 
   enum role: {owner: 0, manager: 1, member: 2}
 
-  delegate :name, to: :user, prefix: true
+  delegate :name, :avatar, to: :user, prefix: true
 
   scope :user_ids_by_shop, -> shopManager do
     where(shop_id: shopManager.shop_id, role: :manager).pluck :user_id

@@ -18,3 +18,15 @@
   margin-bottom: 5px !important;
   z-index: 1200;
 }
+
+.admin-button-header {
+  overflow: hidden;
+  margin-bottom: 10px;
+  a {
+    display: inline-block;
+    margin-left: 10px;
+  }
+  span {
+    line-height: 34px;
+  }
+}

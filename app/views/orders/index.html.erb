@@ -1,37 +1,33 @@
 <div class="panel panel-default">
-  <div class="search_between margin_top_15px">
-    <div class="row">
-      <div class="col-md-1 margin my-margin">
-        <span class="label-span">
-          <%= t("start") %>
-        </span>
-      </div>
-      <div class="col-md-2">
-        <%= text_field_tag :start_date, params[:start_date],
-          class: "form-control order-manager-datepicker
-          order-history-date order-history-start",
-          placeholder: t("start") %>
-      </div>
-      <div class="col-md-1 margin my-margin">
-        <span class="label-span"> 
-          <%= t("end") %>
-        </span>
-      </div>
-      <div class="col-md-2">
-        <%= text_field_tag :end_date, params[:end_date],
-          class: "form-control order-manager-datepicker 
-          order-history-date order-history-end",
-          placeholder: t("end") %>
-      </div>
-      <div class="col-md-4 margin5 text-center">
-        <% Settings.filter_status_order.each do |key, value| %>
-          <%= label_tag "status_#{value}", class: "radio-inline" do %>
-            <%= radio_button_tag :history_order_status, value, nil,
-              class: "order-history-status" %>
-            <%= t "all_status.#{value}" %>
-          <% end %>
+  <div class="search_between">
+    <div class="choose-date-order">
+      <span class="order-span">
+        <%= t("start") %>
+      </span>
+      <%= text_field_tag :start_date, params[:start_date],
+        class: "form-control order-manager-datepicker
+        order-history-date order-history-start order-input",
+        placeholder: t("start") %>
+    </div>
+    <div class="choose-date-order">
+      <span class="order-span">
+        <%= t("end") %>
+      </span>
+      <%= text_field_tag :end_date, params[:end_date],
+        class: "form-control order-manager-datepicker
+        order-history-date order-history-end order-input",
+        placeholder: t("end") %>
+    </div>
+    <div class="radio-order">
+      <% Settings.filter_status_order.each do |key, value| %>
+        <%= label_tag "status_#{value}", class: "radio-inline",
+          for: "history_order_status_#{value}" do %>
+          <%= radio_button_tag :history_order_status, value, nil,
+            class: "order-history-status" %>
+          <%= t "all_status.#{value}" %>
+          <span class="span-radio-order"></span>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

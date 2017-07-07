@@ -2,7 +2,8 @@ $(document).ready(function(){
 
   $('.order-manager-datepicker').datetimepicker({
     timepicker: false,
-    format: 'd-m-Y'
+    format: 'd-m-Y',
+    maxDate: $.now()
   });
 
   $('#filter-order-manager').on('change', function(){

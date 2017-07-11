@@ -6,8 +6,7 @@ class ShopService
   def get_information_all_shops
     result = []
     @shops.each do |s|
-      shop_hash = s.attributes.slice :id, :name, :description, :status,
-        :averate_rating, :owner_id
+      shop_hash = s.attributes
       shop_hash["avatar"] = s.avatar
       shop_hash["cover_image"] = s.cover_image
       shop_hash["owner_name"] = s.owner_name

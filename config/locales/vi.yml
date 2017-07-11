@@ -1116,3 +1116,7 @@ vi:
   notice: "Thông báo!"
   import_user: "Thêm tài khoản (excel)"
   import_group_user: "Thêm nhóm (excel)"
+  follow: "Theo dõi"
+  unfollow: "Hủy theo dõi"
+  follow_shop: "Bạn vừa theo dõi cửa hàng %{shop}!"
+  unfollow_shop: "Bạn vừa hủy theo dõi cửa hàng %{shop}!"

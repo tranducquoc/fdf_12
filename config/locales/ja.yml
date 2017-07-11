@@ -1065,3 +1065,7 @@ ja:
   notice: "知らせます"
   import_user: "Import account (excel)"
   import_group_user: "Import group (excel)"
+  follow: "フォローする"
+  unfollow: "アンフォロー"
+  follow_shop: "%{shop}に従ってください!"
+  unfollow_shop: "%{shop}をフォローを解除しました!"

@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   acts_as_token_authenticatable
   ratyrate_rater
+  acts_as_follower
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged]

@@ -10,6 +10,8 @@
     <div class="col-md-9 col-sm-9 col-xs-9">
       <h1 class="title mg-bottom-0" title="<%= @shop.name %>">
         <%= @shop.name %>
+        <%= follow_shop_button @shop %>
+        <%= hidden_field_tag :shop_id, @shop.id %>
       </h1>
       <% if @shop.pending? %>
         <%= render "shared/shop_status_label", shop: @shop %>

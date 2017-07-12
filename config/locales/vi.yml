@@ -282,6 +282,8 @@ vi:
   year: "Năm"
   facebook: "Facebook"
   google_oauth2: "Google"
+  hr_system: "Tài khoản Framgia"
+  auth_fail: "thất bại"
   add_order: "Thêm đơn hàng"
   accept_all: "Xác nhận tất cả"
   create_order: "Gửi đi"

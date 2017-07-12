@@ -18,7 +18,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  devise :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+  devise :omniauthable, omniauth_providers: [:hr_system]
 
   has_many :shop_managers, dependent: :destroy
   has_many :shops, dependent: :destroy, through: :shop_managers
@@ -60,12 +60,15 @@ class User < ApplicationRecord
 
   class << self
     def from_omniauth auth
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-        user.email = auth.info.email
+      user = find_or_initialize_by(email: auth.info.email)
+      if user.present?
         user.name = auth.info.name
-        user.password = Devise.friendly_token[0, 20]
         user.provider = auth.provider
-        user.uid = auth.uid
+        user.password = User.generate_unique_secure_token if user.new_record?
+        user.token = auth.credentials.token
+        user.refresh_token = auth.credentials.refresh_token
+        user.save
+        user
       end
     end
   end
@@ -85,7 +88,7 @@ class User < ApplicationRecord
   end
 
   def add_authentication_token
-    self.update_attributes authentication_token: generate_authentication_token
+    self.update_attributes authentication_token: generate_authentication_token_mobile
   end
 
   def is_member_of_domain? domain
@@ -100,10 +103,10 @@ class User < ApplicationRecord
     end
   end
 
-  def generate_authentication_token
+  def generate_authentication_token_mobile
     loop do
-      token = Devise.friendly_token
-      break token if User.where(authentication_token: token).count.zero?
+      mobile_token = Devise.friendly_token
+      break mobile_token if User.where(authentication_token: mobile_token).count.zero?
     end
   end
 end

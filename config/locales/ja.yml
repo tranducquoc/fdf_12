@@ -236,6 +236,8 @@ ja:
   year: "年"
   facebook: "Facebook"
   google_oauth2: "Google"
+  hr_system: "Framgiaのアカウント"
+  auth_fail: "故障"
   add_order: "受注を追加"
   accept_all: "すべての確認"
   create_order: "注文を作成する"

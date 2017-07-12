@@ -67,6 +67,7 @@ gem "carrierwave-base64"
 gem "zip-zip"
 gem "axlsx", "2.1.0.pre"
 gem "axlsx_rails", "> 0.4"
+gem "omniauth-hrsystem", git: "https://github.com/framgia-education/omniauth-hrsystem.git"
 
 group :development, :test do
   gem "byebug", platform: :mri

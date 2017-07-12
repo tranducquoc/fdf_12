@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704012329) do
+ActiveRecord::Schema.define(version: 20170712040838) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -384,6 +384,8 @@ ActiveRecord::Schema.define(version: 20170704012329) do
     t.text     "notification_settings",  limit: 65535
     t.string   "language"
     t.string   "address"
+    t.string   "token"
+    t.string   "refresh_token"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
     t.index ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree

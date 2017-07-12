@@ -238,6 +238,8 @@ en:
   year: "Year"
   facebook: "Facebook"
   google_oauth2: "Google"
+  hr_system: "Framgia Account"
+  auth_fail: "Auth failure"
   add_order: "Add order"
   accept_all: "Accept All"
   create_order: "Create new order"

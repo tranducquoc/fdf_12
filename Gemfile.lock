@@ -18,6 +18,13 @@ GIT
       activesupport (> 5.x)
       builder (~> 3.1)
 
+GIT
+  remote: https://github.com/framgia-education/omniauth-hrsystem.git
+  revision: b81e4543eaa8eb8cbf331c0848cd08c46171a210
+  specs:
+    omniauth-hrsystem (1.0.0)
+      omniauth-oauth2 (~> 1.2)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -486,6 +493,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
+  omniauth-hrsystem!
   paranoia (~> 2.2.0.pre)
   pry
   pry-rails

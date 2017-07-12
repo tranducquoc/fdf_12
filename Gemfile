@@ -50,6 +50,7 @@ gem "jquery-validation-rails"
 gem "sweet-alert-confirm"
 gem "axlsx_styler"
 gem "acts_as_follower", github: "tcocca/acts_as_follower"
+gem "omniauth-hrsystem", git: "https://github.com/framgia-education/omniauth-hrsystem.git"
 
 source "https://rails-assets.org" do
   gem "rails-assets-datetimepicker"

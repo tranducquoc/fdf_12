@@ -67,6 +67,7 @@ class User < ApplicationRecord
         user.password = User.generate_unique_secure_token if user.new_record?
         user.token = auth.credentials.token
         user.refresh_token = auth.credentials.refresh_token
+        user.status = :active
         user.save
         user
       end

@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   get "index" => "static_pages#index"
   get "canhan" => "static_pages#show"
-  get "moble-page" => "static_pages#new"
+  get "mobile-page" => "static_pages#new"
   root "static_pages#home"
   mount ActionCable.server => "/cable"
   namespace :admin do
@@ -52,6 +52,7 @@ Rails.application.routes.draw do
       resources :accepted_order_products, defaults: {format: :json}
       resources :user_orders, only: [:index, :show]
       resources :group_orders, only: [:index, :show]
+      resources :time_approve_orders, only: [:index, :show]
     end
     resources :statistics
     resources :new_manager_searches, only: :index
@@ -94,16 +95,18 @@ Rails.application.routes.draw do
   resources :pdf_readers, only: :index
   resources :user_searchs
   resources :user_domain_searches, only: :index
+  resources :follow_shops, only: [:create, :destroy]
 
   api_version(module: "V1", path: {value: "v1"}, default: true) do
     namespace :dashboard do
-      resources :shops, except: [:show, :destroy, :new], defaults: {format: :json}
+      resources :shops, except: [:destroy, :new], defaults: {format: :json}
       resources :order_managers, only: :index, defaults: {format: :json}
       resources :products, defaults: {format: :json}
       resources :orders, defaults: {format: :json}
       resources :order_products, only: [:update, :index], defaults: {format: :json}
       resources :shop_managers, only: :index, defaults: {format: :json}
       resources :shop_domains, only: :index, defaults: {format: :json}
+      resources :shop_manager_domains, defaults: {format: :json}
     end
     resources :shops, only: [:index, :update], defaults: {format: :json}
     resources :list_members, defaults: {format: :json}
@@ -118,9 +121,10 @@ Rails.application.routes.draw do
     resources :shop_managers, defaults: {format: :json}
     resources :comments, defaults: {format: :json}
     resources :user_domains, defaults: {format: :json}
-    resources :events, only: :index, defaults: {format: :json}
+    resources :events, only: [:index, :update], defaults: {format: :json}
     resources :users, only: :update, defaults: {format: :json}
     resources :user_settings, only: :index, defaults: {format: :json}
     resources :searches, only: :index, defaults: {format: :json}
+    resources :reset_passwords, only: [:index, :update], defaults: {format: :json}
   end
 end

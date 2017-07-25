@@ -36,7 +36,7 @@ class V1::ShopDomainsController < V1::BaseController
   def destroy
     if params[:leave_domain].present?
       shop = Shop.find_by id: params[:shop_id]
-      if shop.is_owner? current_user.id
+      if shop.is_owner? current_user
         result = ShopDomainApiService.new(@shop_domain, current_user, "").destroy_shop_in_domain
         responses result
       else
@@ -51,8 +51,9 @@ class V1::ShopDomainsController < V1::BaseController
   def show
     if current_user.domains.find_by(id: params[:domain_id]).present?
       list_request = ShopDomain.request_of_domain params[:domain_id]
-      list_request.present? ? response_success(t("api.success"), list_request)
-        : response_not_found(t "api.requests_not_found")
+      result = ActiveModel::Serializer::CollectionSerializer
+        .new list_request, each_serializer: ShopDomainSerializer
+      response_success t("api.success"), result
     else
       response_error t "api.not_owner_domain"
     end

@@ -2,6 +2,7 @@ class Shop < ApplicationRecord
   strip_attributes only: [:description, :name]
 
   acts_as_paranoid
+  acts_as_followable
 
   ratyrate_rateable Settings.rate
 
@@ -176,9 +177,14 @@ class Shop < ApplicationRecord
         .update_new_status_shop
       self.update_column :delayjob_id, shop_job.id
     end
+    send_chatwork_message
   end
 
   def time_auto_close_shop
     self.time_auto_close.hour * Settings.minute_constant + self.time_auto_close.min
+  end
+
+  def send_chatwork_message
+    SendShopStatusToChatworkJob.perform_later self if status_on_off_changed?
   end
 end

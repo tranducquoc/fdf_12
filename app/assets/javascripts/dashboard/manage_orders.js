@@ -45,12 +45,19 @@ $(document).ready(function(){
   function filter_order(start_date, end_date) {
     var shop_id = $('#shop_id').val();
     var type = $('#history-order-manager').val();
-    if (type === 'product')
+    switch(type) {
+    case 'product':
       url = $(this).attr('action');
-    else if (type === 'user')
+      break;
+    case 'user':
       url = '/dashboard/shops/' + shop_id + '/user_orders'
-    else
+      break;
+    case 'group':
       url = '/dashboard/shops/' + shop_id + '/group_orders'
+      break;
+    default:
+      url = '/dashboard/shops/' + shop_id + '/time_approve_orders'
+    }
     $.ajax({
       url: url,
       type: 'GET',
@@ -130,5 +137,30 @@ $(document).ready(function(){
           filter_order(value_start, value_end);
       }
     }
+  });
+
+  $(document).on('click', '.paid-history-btn', function(e) {
+    e.preventDefault();
+    var order_id = $(this).data('order-id');
+    var shop_id = $(this).data('shop-id');
+    $.ajax({
+      url: '/dashboard/shops/' + shop_id + '/orders/' + order_id + '/edit',
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        checked: true
+      },
+      success: function(response) {
+        if(response.mess === "true") {
+          sweetAlert(I18n.t('api.success'), I18n.t('update_success'), 'success');
+          $('.check-order-is-paid-'+ order_id)
+            .html('<span class="paid-order">'+ I18n.t("paid") + '</span>');
+        } else
+          sweetAlert(I18n.t('api.error'), I18n.t('update_fails'), 'error');
+      },
+      error: function(errors) {
+        sweetAlert(I18n.t('api.error'), I18n.t('api.error'), 'error');
+      }
+    });
   });
 });

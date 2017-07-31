@@ -26,7 +26,7 @@ class Dashboard::ShopsController < BaseDashboardController
 
   def show
     @shop = @shop.decorate
-    @products = @shop.products.page(params[:page])
+    @products = @shop.products.by_date_newest.page(params[:page])
       .per Settings.common.products_per_page
     @products_all = @shop.products.all
     if @start_hour.present? and @end_hour.present?

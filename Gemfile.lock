@@ -10,6 +10,12 @@ GIT
       request_store (~> 1.0)
 
 GIT
+  remote: git://github.com/mshibuya/remotipart.git
+  revision: cd653ddc43bb09767b8f2802d6e27b3e00ef992f
+  specs:
+    remotipart (1.3.1)
+
+GIT
   remote: git://github.com/rails/activemodel-serializers-xml.git
   revision: 675d3e8489e3a9f4d605feb4c9a1c71a082fc63f
   specs:
@@ -258,7 +264,7 @@ GEM
       rack (>= 1.6.2, < 3)
     omniauth-facebook (4.0.0)
       omniauth-oauth2 (~> 1.2)
-    omniauth-google-oauth2 (0.5.1)
+    omniauth-google-oauth2 (0.5.2)
       jwt (~> 1.5)
       multi_json (~> 1.3)
       omniauth (>= 1.1.1)
@@ -521,6 +527,7 @@ DEPENDENCIES
   ransack
   ratyrate
   redis (~> 3.0)
+  remotipart!
   roo
   roo-xls
   rspec-activemodel-mocks
@@ -545,4 +552,4 @@ DEPENDENCIES
   zip-zip
 
 BUNDLED WITH
-   1.12.5
+   1.15.3

@@ -100,6 +100,7 @@ $(document).ready(function() {
   }
 
   $('#new-edit-product-modal').on('shown.bs.modal', function() {
+    $('#hidden_products_size').val($('.product-in-shop').length);
     validate_form_product();
     choose_image();
     $('#product_start_hour_4i').change(function() {

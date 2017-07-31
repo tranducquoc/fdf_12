@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   namespace :dashboard do
     root "statistics#index", path: "/"
     resources :shops do
-      resources :products
+      resources :products, expect: :index
       resources :orders
       resources :shop_managers, only: [:index, :create, :destroy, :update]
       resources :order_managers, only: [:index, :show]

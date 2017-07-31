@@ -50,18 +50,16 @@ class Dashboard::ProductsController < BaseDashboardController
 
   def create
     @product = @shop.products.new product_params
-    if @product.save
-      flash[:success] = t "flash.success.dashboard.create_product"
-      redirect_to dashboard_shop_path @shop
-    else
-      flash[:danger] = t "flash.danger.dashboard.create_product"
-      load_categories
-      render :new
+    @success = @product.save ? true : false
+    load_products_by_size if @success
+    respond_to do |format|
+      format.js
     end
   end
 
   def update
     @success = @product.update_attributes(product_params) ? true : false
+    @products = @shop.products.by_date_newest.limit params[:hidden_products_size] if @success
     respond_to do |format|
       format.json do
         render json: {status: @product.status}
@@ -109,5 +107,16 @@ class Dashboard::ProductsController < BaseDashboardController
       flash[:danger] = t "flash.danger.dashboard.product.not_found"
       redirect_to root_path
     end
+  end
+
+  def load_products_by_size
+    product_size = params[:hidden_products_size].to_i
+    limit_product =
+      if @shop.products.size == increase_one(product_size)
+        increase_one product_size
+      else
+        product_size
+      end
+    @products = @shop.products.by_date_newest.limit limit_product
   end
 end

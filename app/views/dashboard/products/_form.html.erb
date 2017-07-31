@@ -1,5 +1,6 @@
 <div class="row">
-  <%= form_for [:dashboard, @shop, @product], html: {class: "form-product"}, remote: true do |f| %>
+  <%= form_for [:dashboard, @shop, @product], html: {class: "form-product"},
+    authenticity_token: true, remote: true  do |f| %>
     <div class="col-xs-5 padding-right-0">
       <div class="form-group relative">
         <%= f.label :image, t("new_product.image") %>
@@ -63,6 +64,7 @@
           class: "form-control" %>
       </div>
       <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= hidden_field_tag :hidden_products_size, Settings.common.products_per_page %>
     </div>
     <div class="col-xs-12 button-group-form">
       <%= link_to t("common.back_button"), :back,
@@ -72,3 +74,5 @@
     </div>
   <% end %>
 </div>
+
+ <%= javascript_include_tag "jquery.remotipart" %>

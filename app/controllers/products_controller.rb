@@ -5,16 +5,15 @@ class ProductsController < ApplicationController
   before_action :check_show_product, only: :show
 
   def index
-    @shops_slide = Shop.shop_in_domain(@domain.id)
-    shops = @shops_slide.select do |shop|
-      shop.status_on_off == Settings.shop_status_on
+    shop_ids = Shop.shop_in_domain(@domain.id).on.pluck :id
+    @products_shop = Product.by_shop_ids(shop_ids).active.search_by_price(params)
+      .by_category(params[:category]).sort_by_price(params[:price_sort])
+      .page(params[:page]).per Settings.common.products_per_page
+    if request.xhr?
+      respond_to do |format|
+        format.js
+      end
     end
-    products_shop = []
-    shops.each do |t|
-      products_shop << t.products.by_active
-    end
-    @products_shop = Kaminari.paginate_array(products_shop.flatten).page(
-      params[:page]).per(Settings.common.products_per_page)
   end
 
   def new

@@ -409,3 +409,22 @@ label.error, .time-error {
 .color-red {
   color: red;
 }
+
+.filter-product-form {
+  padding-right: 20px;
+  padding-left: 20px;
+
+  .price-sort {
+    border-radius: 20px !important;
+    margin-top: 15px;
+  }
+}
+
+.filter-product-category {
+  padding-top: 15px;
+
+  .category-id {
+    border-radius: 20px !important;
+    margin-left: 10px;
+  }
+}

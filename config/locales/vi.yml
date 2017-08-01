@@ -1147,3 +1147,6 @@ vi:
     number_products: "Số lượng sản phẩm: "
     continue: "Tiếp tục mua hàng"
     finish: "Đặt hàng"
+  product_filter:
+    price_desc: "Giá giảm dần"
+    price_asc: "Giá tăng dần"

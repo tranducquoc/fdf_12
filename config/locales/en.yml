@@ -1089,3 +1089,6 @@ en:
     number_products: "Number of products: "
     continue: "Continue shopping"
     finish: "Checkout"
+  product_filter:
+    price_desc: "Price decreases"
+    price_asc: "Price increases"

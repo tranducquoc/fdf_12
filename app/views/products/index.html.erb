@@ -1,4 +1,5 @@
 <% provide :title, t("common.all_products") %>
+<%= hidden_field_tag :domain_id, @domain.id %>
 <div class="row">
   <div class="col-xs-12">
     <div class="margin-bottom-20 margin-top-30 border-top-shop">
@@ -6,8 +7,29 @@
       <span><span class="border-top-shop-product"></span></span>
     </div>
   </div>
+  <div class="panel-group filter-product-form">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-md-12 col-xs-12 col-sm-12">
+          <div class="col-md-3 col-xs-5 col-sm-5 filter-product-category">
+            <span><%= t "oder.category" %>:</span> 
+            <%= select_tag :category_id, options_for_select(load_select_category),
+              {class: "form-control inline category-id", include_blank: t("common.category.all")} %>
+          </div>
+          <div class="col-md-7 col-xs-5 col-sm-5">
+            <input type="text" id="example_id" class="inline" name="example_name" value="" />
+          </div>
+          <div class="col-md-2 col-xs-2 col-sm-2">
+            <%= select_tag :price_sort, options_for_select(filter_price_select),
+              class: "form-control price-sort" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="col-md-12 magin_top_10px list-products">
-    <%= render @products_shop.flatten %>
+    <%= render @products_shop %>
   </div>
   <div class="load-more-products col-md-12 col-xs-12 margin-top-30">
     <%= link_to_next_page(@products_shop, t("view_more_products")) %>

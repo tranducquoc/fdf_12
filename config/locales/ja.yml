@@ -1099,3 +1099,6 @@ ja:
     number_products: "製品の数: "
     continue: "ショッピングを続ける"
     finish: "チェックアウト"
+  product_filter:
+    price_desc: "Giá giảm dần"
+    price_asc: "Giá tăng dần"

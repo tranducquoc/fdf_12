@@ -179,8 +179,8 @@ module ApplicationHelper
       checked_email_setting?(Settings.index_two_in_array)) ? "checked" : ""
   end
 
-  def load_select_category categories
-    categories.collect {|category| [category.name, category.id]}
+  def load_select_category
+    Category.all.collect {|category| [category.name, category.id]}
   end
 
   def active_products_in_domain_by_category domain, category
@@ -208,5 +208,12 @@ module ApplicationHelper
       [I18n.t("current_year"), :current_year],
       [I18n.t("year"), :year]
     ]
+  end
+
+  def filter_price_select
+    {
+      I18n.t("product_filter.price_desc") => "desc",
+      I18n.t("product_filter.price_asc") => "asc",
+    }
   end
 end

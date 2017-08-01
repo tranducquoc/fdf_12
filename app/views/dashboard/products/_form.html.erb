@@ -16,7 +16,7 @@
     <div class="col-xs-7">
       <div class="form-group">
         <%= f.label :category_id, t("new_product.category") %>
-        <%= f.select :category_id, load_select_category(@categories), {},
+        <%= f.select :category_id, load_select_category, {},
           {class: "form-control"} %>
       </div>
       <div class="form-group">

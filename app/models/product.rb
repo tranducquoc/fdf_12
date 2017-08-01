@@ -56,11 +56,7 @@ class Product < ApplicationRecord
   scope :top_products, -> do
     by_active.by_date_newest.limit Settings.index.max_products
   end
-  scope :by_category, -> category{where category_id: category}
-
-  scope :by_category, ->category do
-    where category_id: category.id
-  end
+  scope :by_category, -> category{where category_id: category if category.present?}
 
   scope :in_domain, -> domain_id do
     joins(:product_domains)
@@ -68,6 +64,12 @@ class Product < ApplicationRecord
   end
 
   scope :by_shop_ids, -> ids {where shop_id: ids}
+
+  scope :search_by_price, -> params do
+    where("price >= ? AND price <= ?", params[:from], params[:to]) if params[:from].present?
+  end
+
+  scope :sort_by_price, -> sort {order price: sort if sort.present?}
 
   private
   def image_size

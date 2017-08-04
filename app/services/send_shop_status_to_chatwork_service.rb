@@ -1,16 +1,20 @@
 class SendShopStatusToChatworkService
   def initialize shop
     @shop = shop
-    @room_id = Settings.forder_chatwork_room
   end
 
   def send
-    ChatWork::Message.create room_id: @room_id, body: message_body if to_users.present?
+    @shop.domains.each do |domain|
+      room = Settings.forder_chatwork_room[domain.name.to_s]
+      if room.present? && to_users(room, domain).present?
+        ChatWork::Message.create room_id: room, body: message_body(room, domain)
+      end
+    end
   end
 
   private
 
-  def message_body
+  def message_body room, domain
     body = ""
     Settings.languages.each do |key, value|
       message =
@@ -30,22 +34,23 @@ class SendShopStatusToChatworkService
         end
       body += "\n" + message + Settings.diliver_dot
       end
-    to_users + "\n" + "[info]" + Settings.forder_chatwork_title + body + "[/info]"
+    to_users(room, domain)+ "\n" + "[info]" + Settings.forder_chatwork_title + body + "[/info]"
   end
 
-  def to_users
-    domain_ids = @shop.domains.map(&:id)
-    user_ids = UserDomain.list_all_user_domains(domain_ids).map &:user_id
-    users = User.of_ids user_ids
+  def to_users room, domain
     to_all = ""
-    members = ChatWork::Member.get room_id: @room_id
-    users.each do |user|
-      if !user.chatwork_settings.present? ||
-        user.chatwork_settings[:shop_open] == Settings.serialize_true
-        to_account_id = members
-          .find {|member| member["name"] == I18n.transliterate(user.name)}
-        to_all += "[To:#{to_account_id["account_id"]}]" if to_account_id.present?
+    begin
+      members = ChatWork::Member.get room_id: room
+      domain.users.each do |user|
+        if !user.chatwork_settings.present? ||
+          user.chatwork_settings[:shop_open] == Settings.serialize_true
+          to_account_id = members
+            .find {|member| member["name"] == I18n.transliterate(user.name)}
+          to_all += "[To:#{to_account_id["account_id"]}]" if to_account_id.present?
+        end
       end
+    rescue
+      to_all = ""
     end
     to_all
   end

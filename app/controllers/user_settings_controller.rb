@@ -19,7 +19,8 @@ class UserSettingsController < ApplicationController
   def setting_params
     params.require(:user).permit(:language,
       notification_settings: [:order_request, :order_processed, :send_order],
-      email_settings: [:order_request, :order_processed, :send_order])
+      email_settings: [:order_request, :order_processed, :send_order],
+      chatwork_settings: [:chatwork_processed, :shop_open])
   end
 
   def change_language

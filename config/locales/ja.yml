@@ -1,4 +1,4 @@
-ja:
+receive_notificationja:
   time:
     formats:
       custom_date: "%d-%m-%Y"
@@ -904,8 +904,10 @@ ja:
   receive_order_request_notification: "新オーダーの通知を受ける"
   receive_order_processed_notification: "オーダーの処理されたときに通知を受け取ります"
   receive_send_order_notification: "オーダーの成功とき通知を受けます"
+  receive_notification_when_shop_open_close: "店舗の開閉時に通知を受ける"
   receive_notification: "通知を受け取る"
   receive_email: "メールを受け取る"
+  receive_chatword: "chatworkからの通知を受け取る"
   edit_domain: "メインを編集"
   save: "セーブ"
   edit: "編集"

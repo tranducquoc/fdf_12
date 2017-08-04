@@ -13,8 +13,9 @@
             <thead>
               <tr>
                 <th class="col-md-6"></th>
-                <th class="col-md-3"><%= t "receive_notification" %></th>
-                <th class="col-md-3"><%= t "receive_email" %></th>
+                <th class="col-md-2"><%= t "receive_notification" %></th>
+                <th class="col-md-2"><%= t "receive_email" %></th>
+                <th class="col-md-2"><%= t "receive_chatword" %></th>
               </tr>
             </thead>
             <tbody>
@@ -37,6 +38,17 @@
                       class="onoffswitch-checkbox"
                       <%= checked_all_email_setting %>>
                     <label class="onoffswitch-label" for="turn-all-email">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="onoffswitch">
+                    <input type="checkbox" name="turn-all-email" id="turn-all-chatwork"
+                      class="onoffswitch-checkbox"
+                      <%= checked_all_chatwork_setting %>>
+                    <label class="onoffswitch-label" for="turn-all-chatwork">
                       <span class="onoffswitch-inner"></span>
                       <span class="onoffswitch-switch"></span>
                     </label>
@@ -68,6 +80,14 @@
                         checked: checked_email_setting?(Settings.index_zero_in_array) %>
                     <% end %>
                     <label class="onoffswitch-label" for="turn-order-request-email">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="onoffswitch opacity-3">
+                    <label class="onoffswitch-label">
                       <span class="onoffswitch-inner"></span>
                       <span class="onoffswitch-switch"></span>
                     </label>
@@ -105,6 +125,20 @@
                     </label>
                   </div>
                 </td>
+                <td>
+                  <div class="onoffswitch">
+                    <%= f.fields_for :chatwork_settings do |email| %>
+                      <%= email.check_box :chatwork_processed,
+                        id: "turn-order-processed-chatwork",
+                        class: "onoffswitch-checkbox",
+                        checked: checked_chatwork_setting?(Settings.index_zero_in_array) %>
+                    <% end %>
+                    <label class="onoffswitch-label" for="turn-order-processed-chatwork">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
               </tr>
               <tr>
                 <td><%= t "receive_send_order_notification" %></td>
@@ -132,6 +166,47 @@
                         checked: checked_email_setting?(Settings.index_two_in_array) %>
                     <% end %>
                     <label class="onoffswitch-label" for="turn-send-order-email">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="onoffswitch opacity-3">
+                    <label class="onoffswitch-label">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><%= t "receive_notification_when_shop_open_close" %></td>
+                <td>
+                  <div class="onoffswitch opacity-3">
+                    <label class="onoffswitch-label">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="onoffswitch opacity-3">
+                    <label class="onoffswitch-label">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+                <td>
+                  <div class="onoffswitch">
+                    <%= f.fields_for :chatwork_settings do |email| %>
+                      <%= email.check_box :shop_open,
+                        id: "turn-shop-open-chatwork",
+                        class: "onoffswitch-checkbox",
+                        checked: checked_chatwork_setting?(Settings.index_one_in_array) %>
+                    <% end %>
+                    <label class="onoffswitch-label" for="turn-shop-open-chatwork">
                       <span class="onoffswitch-inner"></span>
                       <span class="onoffswitch-switch"></span>
                     </label>

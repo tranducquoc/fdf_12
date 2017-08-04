@@ -167,6 +167,19 @@ module ApplicationHelper
     end
   end
 
+  def checked_chatwork_setting? index
+    if current_user.chatwork_settings.present?
+      case current_user.chatwork_settings.values[index]
+      when Settings.serialize_false
+        return false
+      when Settings.serialize_true
+        return true
+      end
+    else
+      return true
+    end
+  end
+
   def checked_all_notification_setting
     (checked_notification_setting?(Settings.index_zero_in_array) &&
       checked_notification_setting?(Settings.index_one_in_array) &&
@@ -177,6 +190,11 @@ module ApplicationHelper
     (checked_email_setting?(Settings.index_zero_in_array) &&
       checked_email_setting?(Settings.index_one_in_array) &&
       checked_email_setting?(Settings.index_two_in_array)) ? "checked" : ""
+  end
+
+  def checked_all_chatwork_setting
+    (checked_chatwork_setting?(Settings.index_zero_in_array) &&
+      checked_chatwork_setting?(Settings.index_one_in_array)) ? "checked" : ""
   end
 
   def load_select_category

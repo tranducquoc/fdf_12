@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   serialize :notification_settings, Hash
   serialize :email_settings, Hash
+  serialize :chatwork_settings, Hash
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

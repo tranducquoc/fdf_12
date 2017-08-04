@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711005550) do
+ActiveRecord::Schema.define(version: 20170804040128) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -122,9 +122,9 @@ ActiveRecord::Schema.define(version: 20170711005550) do
   end
 
   create_table "follows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "followable_type"
+    t.string   "followable_type",                 null: false
     t.integer  "followable_id",                   null: false
-    t.string   "follower_type"
+    t.string   "follower_type",                   null: false
     t.integer  "follower_id",                     null: false
     t.boolean  "blocked",         default: false, null: false
     t.datetime "created_at"
@@ -398,6 +398,7 @@ ActiveRecord::Schema.define(version: 20170711005550) do
     t.string   "address"
     t.string   "token"
     t.string   "refresh_token"
+    t.text     "chatwork_settings",      limit: 65535
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
     t.index ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree

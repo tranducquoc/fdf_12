@@ -13,7 +13,7 @@ class SendShopStatusToChatworkService
   def message_body
     body = ""
     Settings.languages.each do |key, value|
-      message = 
+      message =
         if @shop.off?
           I18n.t("chatwork_shop_message.close",
             locale: value[:type], owner: @shop.owner_name, shop: @shop.name)
@@ -34,12 +34,18 @@ class SendShopStatusToChatworkService
   end
 
   def to_users
+    domain_ids = @shop.domains.map(&:id)
+    user_ids = UserDomain.list_all_user_domains(domain_ids).map &:user_id
+    users = User.of_ids user_ids
     to_all = ""
     members = ChatWork::Member.get room_id: @room_id
-    @shop.followers.each do |user|
-      to_account_id = members
-        .find {|member| member["name"] == I18n.transliterate(user.name)}
-      to_all += "[To:#{to_account_id["account_id"]}]" if to_account_id.present?
+    users.each do |user|
+      if !user.chatwork_settings.present? ||
+        user.chatwork_settings[:shop_open] == Settings.serialize_true
+        to_account_id = members
+          .find {|member| member["name"] == I18n.transliterate(user.name)}
+        to_all += "[To:#{to_account_id["account_id"]}]" if to_account_id.present?
+      end
     end
     to_all
   end

@@ -308,7 +308,7 @@ $(document).ready(function(){
         checked: type
       },
       success: function(response) {
-        if(response.mess === "true")
+        if(response.mess === 'true')
           sweetAlert(I18n.t('api.success'), I18n.t('update_success'), 'success');
         else
           sweetAlert(I18n.t('api.error'), I18n.t('update_fails'), 'error');

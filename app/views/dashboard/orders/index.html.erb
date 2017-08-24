@@ -30,7 +30,7 @@
               class: "filter-order-manager form-control inline" %>
             <span class="search_user_order"><%= t "search_user" %></span>
             <%= text_field_tag :order_by_user, nil,
-                placeholder: t("name_or_email"), class: "form-control inline" %>
+              placeholder: t("name_or_email"), class: "form-control inline" %>
           </div>
           <div>
             <% Settings.filter_status_order.each do |key, value| %>
@@ -42,7 +42,7 @@
             <% end %>
           </div>
         </div>
-      </div>     
+      </div>
       <div class="body-1">
         <input type="hidden" value = "<%= @shop.id %>" id="shop-id"
           data-rej="<%= t "all_status.rejected" %>"

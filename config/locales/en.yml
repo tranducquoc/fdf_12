@@ -1094,3 +1094,4 @@ en:
   product_filter:
     price_desc: "Price decreases"
     price_asc: "Price increases"
+  search_products: "Enter the key word"

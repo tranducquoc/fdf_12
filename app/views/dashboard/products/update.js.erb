@@ -1,6 +1,6 @@
 <% if @success %>
   $('#new-edit-product-modal').modal('hide');
-  $('#list-shop-products').html('<%= j render @products%>');
+  $('.product-id-<%= @product.id %>').replaceWith('<%= j render [@product] %>')
   $.growl.notice({title: '<%= t "common.notifications" %>', message: '<%= t "flash.success.dashboard.edit_product" %>'});
 <% else %>
   $.growl.error({title: '<%= t "common.notifications" %>', message: '<%= t "flash.danger.dashboard.edit_product" %>'});

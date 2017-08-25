@@ -25,20 +25,36 @@ class Dashboard::ShopsController < BaseDashboardController
   end
 
   def show
-    @shop = @shop.decorate
-    @products = @shop.products.by_date_newest.page(params[:page])
-      .per Settings.common.products_per_page
-    @products_all = @shop.products.all
-    if @start_hour.present? and @end_hour.present?
-      if compare_time_order @start_hour, @end_hour
-        @products_all.update_all status: :active, start_hour: @start_hour,
-          end_hour: @end_hour
-        flash.now[:success] = t "dashboard.shops.show.update_success"
+    if params[:key_word].present? || params[:search_satus].present?
+      case
+      when params[:search_satus] == Settings.status_product.active
+        @products = @shop.products.active.search(name_or_description_cont: params[:key_word]).result
+      when params[:search_satus] == Settings.status_product.inactive
+        @products = @shop.products.inactive.search(name_or_description_cont: params[:key_word]).result
       else
-        flash.now[:danger] = t "dashboard.shops.show.update_fail"
+        @products = @shop.products.search(name_or_description_cont: params[:key_word]).result
       end
+      @type_search = true
+    else
+      @shop = @shop.decorate
+      @products = @shop.products.by_date_newest.page(params[:page])
+        .per Settings.common.products_per_page
+      @products_all = @shop.products.all
+      if @start_hour.present? and @end_hour.present?
+        if compare_time_order @start_hour, @end_hour
+          @products_all.update_all status: :active, start_hour: @start_hour,
+            end_hour: @end_hour
+          flash.now[:success] = t "dashboard.shops.show.update_success"
+        else
+          flash.now[:danger] = t "dashboard.shops.show.update_fail"
+        end
+      end
+      @support = Supports::SearchSupport.new(@shop.id, "")
     end
-    @support = Supports::SearchSupport.new(@shop.id, "")
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def index

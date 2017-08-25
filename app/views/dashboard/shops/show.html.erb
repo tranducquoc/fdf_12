@@ -190,13 +190,26 @@
 <!-- body -->
 <div class="block-shop-header clearfix">
   <div>
-  <h2 class="section_title margin_right_15px row_h2">
-    <% if @products.any? %>
-      <%= t ".has_products" %>
-    <% else %>
-      <%= t ".no_product" %>
-    <% end %>
-  </h2>
+    <div class="search_on_manage_shop text-center">
+      <%= text_field_tag :products_by_search, nil,
+      placeholder: t("search_products"), data: {id: @shop.slug}, class: "form-control search-keyword" %>
+      <span class="choose-status">
+        <%= label_tag "", t("dashboard.shops.products.status") %> :
+        <input type="radio" name="search-status" id="status_all" value="all" checked="">
+        <%= label_tag "", t("common.category.all"), for: "status_all" %><br>
+        <input type="radio" name="search-status" id="status_active" value="active">
+        <%= label_tag "", t("all_status.active"), for: "status_active" %><br>
+        <input type="radio" name="search-status" id="status_inactive" value="inactive">
+        <%= label_tag "", t("all_status.inactive"), for: "status_inactive" %>
+      </span>
+    </div>
+    <h2 class="section_title margin_right_15px row_h2">
+      <% if @products.any? %>
+        <%= t ".has_products" %>
+      <% else %>
+        <%= t ".no_product" %>
+      <% end %>
+    </h2>
   </div>
   <div class="box_pro">
     <%= render "products" if @products.any? %>

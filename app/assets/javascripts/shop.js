@@ -68,4 +68,26 @@ $(document).ready(function() {
   $('#new-shop-modal').on('hidden.bs.modal', function() {
     $(this).html('');
   });
+
+  $('#products_by_search').on('keyup',function() {
+    search_products();
+  });
+
+  $('input[name=search-status]').change(function(){
+    search_products();
+  });
 });
+
+function search_products() {
+  var status = $('input[name=search-status]:checked').val();
+  var key_word = $('#products_by_search').val();
+  var id = $('#products_by_search').data('id')
+  $.ajax({
+    url: '/dashboard/shops/' + id,
+    type: 'GET',
+    data: {
+      key_word: key_word,
+      search_satus: status
+    }
+  });
+}

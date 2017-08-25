@@ -1104,3 +1104,4 @@ receive_notificationja:
   product_filter:
     price_desc: "Giá giảm dần"
     price_asc: "Giá tăng dần"
+  search_products: "検索するキーワードを入力"

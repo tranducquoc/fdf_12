@@ -1152,3 +1152,4 @@ vi:
   product_filter:
     price_desc: "Giá giảm dần"
     price_asc: "Giá tăng dần"
+  search_products: "Nhập từ khóa để tìm kiếm"

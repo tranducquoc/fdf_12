@@ -859,3 +859,19 @@ input:checked + .slider:before {
 .line-height-55 {
   line-height: 55px;
 }
+
+.search_on_manage_shop {
+  padding-top: 15px;
+  .search-keyword {
+    width: 40%;
+    display: inline;
+  }
+  .choose-status {
+    display: inline-flex;
+    padding-left: 20px;
+    input {
+      margin-left: 20px;
+      margin-right: 5px;
+    }
+  }
+}

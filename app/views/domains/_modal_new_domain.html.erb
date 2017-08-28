@@ -12,6 +12,10 @@
             <%= f.label t "new_domain.name" %>
             <%= f.text_field :name, required: :true, class: "form-control" %>
           </div>
+          <div class="form-group padding-left-right-15 padding-top-10">
+            <%= f.label t "new_domain.room_chatwork" %>
+            <%= f.text_field :room_chatwork, class: "form-control" %>
+          </div>
           <div class="form-group padding-left-right-15">
             <%= f.label t "new_domain.status" %><br>
             <%= f.select :status,

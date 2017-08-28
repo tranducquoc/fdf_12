@@ -897,6 +897,7 @@ vi:
   new_domain:
     name: "Tên"
     status: "Trạng thái"
+    room_chatwork: "Id room chatwork"
   new_product:
     name: "Tên"
     category: "Thể loại"

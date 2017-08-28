@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804040128) do
+ActiveRecord::Schema.define(version: 20170828061105) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -99,12 +99,13 @@ ActiveRecord::Schema.define(version: 20170804040128) do
 
   create_table "domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "slug"
     t.integer  "status"
     t.integer  "owner"
     t.datetime "deleted_at"
+    t.string   "room_chatwork"
     t.index ["deleted_at"], name: "index_domains_on_deleted_at", using: :btree
     t.index ["slug"], name: "index_domains_on_slug", using: :btree
   end

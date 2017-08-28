@@ -5,7 +5,7 @@ class SendShopStatusToChatworkService
 
   def send
     @shop.domains.each do |domain|
-      room = Settings.forder_chatwork_room[domain.name.to_s]
+      room = domain.room_chatwork
       if room.present? && to_users(room, domain).present?
         ChatWork::Message.create room_id: room, body: message_body(room, domain)
       end

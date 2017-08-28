@@ -857,6 +857,7 @@ en:
   new_domain:
     name: "Name"
     status: "Status"
+    room_chatwork: "Id room chatwork"
   new_product:
     name: "Tên"
     category: "Thể loại"

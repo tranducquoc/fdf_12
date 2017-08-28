@@ -1,4 +1,4 @@
-receive_notificationja:
+ja:
   time:
     formats:
       custom_date: "%d-%m-%Y"
@@ -848,6 +848,7 @@ receive_notificationja:
   new_domain:
     name: "名前"
     status: "状態"
+    room_chatwork: "Id room chatwork"
   new_product:
     name: "名前"
     category: "カテゴリ"

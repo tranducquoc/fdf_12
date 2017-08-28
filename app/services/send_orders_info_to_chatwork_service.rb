@@ -4,8 +4,8 @@ class SendOrdersInfoToChatworkService
   end
 
   def send
-    @orders.group_by{|o| o.domain_name}.each do |domain, orders|
-      room = Settings.forder_chatwork_room[domain]
+    @orders.group_by{|o| o.domain}.each do |domain, orders|
+      room = domain.room_chatwork
       if room.present? && to_users(room, orders).present?
         ChatWork::Message.create room_id: room, body: message_body(room, orders)
       end

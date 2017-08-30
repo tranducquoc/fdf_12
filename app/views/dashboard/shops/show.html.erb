@@ -146,7 +146,9 @@
         <% if @shop.on? %>
           <div class="btn_function">
             <%= link_to "javascript:void(0)",
-            class: "btn_item btn-open-close-shop", data: {type: "close", id: @shop.id} do %>
+              class: "btn_item btn-open-close-shop#{@shop.openforever ? '-forever' : ''}",
+              data: {type: "close", id: @shop.id, open: l(@shop.time_open, format: :short_time),
+              close: l(@shop.time_close, format: :short_time)} do %>
               <div class="btn_icon material-icons">lock_outline</div>
               <div><%= t "general_info.close_shop_now" %></div>
             <% end %>
@@ -154,7 +156,9 @@
         <% else %>
           <div class="btn_function">
             <%= link_to "javascript:void(0)",
-              class: "btn_item btn-open-close-shop", data: {type: "open", id: @shop.id} do %>
+              class: "btn_item btn-open-close-shop#{@shop.openforever ? '-forever' : ''}",
+              data: {type: "open", id: @shop.id, open: l(@shop.time_open, format: :short_time),
+              close: l(@shop.time_close, format: :short_time)} do %>
               <div class="btn_icon material-icons">lock_open</div>
               <div><%= t "general_info.open_shop_now" %></div>
             <% end %>

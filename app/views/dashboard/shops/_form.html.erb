@@ -64,8 +64,21 @@
               <div class="col-xs-6 form-group time_auto_close_shop center
                 margin-bottom-0 <%= @shop.openforever ? "display-none" : "" %>">
                 <%= f.label :time_auto_close, t("time_auto_close_shop") %>
-                <%= f.time_select :time_auto_close,
-                  {minute_step: Settings.minute_step}, class: "intime-field" %>
+                <br>
+                <%= f.time_select :time_auto_close, {}, class: "intime-field" %>
+              </div>
+            </div>
+            <div class="row time-open-close-function-open-forever
+              <%= @shop.openforever ? "" : "display-none" %>">
+              <div class="col-xs-6 form-group margin-bottom-0">
+                <%= f.label :time_open, t("time_open_forever") %>
+                <br>
+                <%= f.time_select :time_open, {}, class: "intime-field" %>
+              </div>
+              <div class="col-xs-6 form-group center margin-bottom-0">
+                <%= f.label :time_close, t("time_close_forever") %>
+                <br>
+                <%= f.time_select :time_close, {}, class: "intime-field" %>
               </div>
             </div>
             <div class="form-group">

@@ -60,6 +60,7 @@ class Shop < ApplicationRecord
   mount_base64_uploader :cover_image, ShopCoverUploader
 
   validate :image_size
+  validate :time_open_close
 
   delegate :name, to: :owner, prefix: :owner, allow_nil: true
   delegate :email, to: :owner, prefix: :owner
@@ -170,21 +171,74 @@ class Shop < ApplicationRecord
     self.create_event_close_shop
   end
 
-  def check_status_shop
-    if (self.status_on_off == Settings.shop_status_on &&
-      self.openforever.to_s == Settings.checked_false)
-      shop_job = delay(run_at: time_auto_close_shop.minutes.from_now)
-        .update_new_status_shop
-      self.update_column :delayjob_id, shop_job.id
+  def auto_open_shop
+    time_now = DateTime.now
+    time_run_job = time_now.change({hour: self.time_close.hour, min: self.time_close.min})
+    if time_run_job < time_now
+      time_run_job += 1.day
     end
-    send_chatwork_message
+    shop_job = delay(run_at: time_run_job).auto_close_shop
+    status_before = self.status_on_off
+    self.update_columns status_on_off: :on, delayjob_id: shop_job.id
+    send_chatwork_message if status_before == Settings.shop_status_off
   end
 
-  def time_auto_close_shop
-    self.time_auto_close.hour * Settings.minute_constant + self.time_auto_close.min
+  def auto_close_shop
+    time_now = DateTime.now
+    time_run_job = time_now.change({hour: self.time_open.hour, min: self.time_open.min})
+    if time_run_job < time_now
+      time_run_job += 1.day
+    end
+    shop_job = delay(run_at: time_run_job).auto_open_shop
+    status_before = self.status_on_off
+    self.update_columns status_on_off: :off, delayjob_id: shop_job.id
+    self.create_event_close_shop
+    send_chatwork_message if status_before == Settings.shop_status_on
+  end
+
+  def check_type_close_shop
+    time_now = DateTime.now
+    time_run_job = time_now.change({hour: self.time_auto_close.hour, min: self.time_auto_close.min})
+    if time_run_job < time_now
+      time_run_job += 1.day
+    end
+    if self.openforever.to_s == Settings.checked_false
+      if self.status_on_off == Settings.shop_status_on
+        shop_job = delay(run_at: time_run_job).update_new_status_shop
+        self.update_column :delayjob_id, shop_job.id
+      end
+    else
+      time_now = DateTime.now
+      time_open = time_now.change({hour: self.time_open.hour, min: self.time_open.min})
+      time_close = time_now.change({hour: self.time_close.hour, min: self.time_close.min})
+      time_open += 1.date if time_open >= time_close
+      case
+      when time_now < time_open
+        auto_close_shop
+      when time_open <= time_now && time_now < time_close
+        auto_open_shop
+      when time_close <= time_now
+        auto_close_shop
+      end
+    end
+
+  end
+
+  def check_status_shop
+    if time_open_changed? || time_close_changed? ||
+      openforever_changed? || status_on_off_change || time_auto_close_change
+      check_type_close_shop
+    end
+    send_chatwork_message if status_on_off_changed?
   end
 
   def send_chatwork_message
-    SendShopStatusToChatworkJob.perform_later self if status_on_off_changed?
+    SendShopStatusToChatworkJob.perform_later self
+  end
+
+  def time_open_close
+    if time_close <= time_open
+      errors.add :time_open, I18n.t("datepicker.date_start_rather_than_date_end")
+    end
   end
 end

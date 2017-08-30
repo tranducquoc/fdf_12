@@ -4,6 +4,7 @@ $('#new-shop-modal').html('<%= j render "form" %>');
 $('#new-shop-modal').modal('show');
 $('#shop_openforever').click(function() {
   if ($(this).is(':checked')) {
+    $('.time-open-close-function-open-forever').slideToggle();
     $('.time_auto_close_shop').slideUp('fast');
   } else {
     $('.time_auto_close_shop').slideDown('fast');

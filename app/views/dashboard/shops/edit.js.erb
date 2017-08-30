@@ -3,6 +3,7 @@
 $('#edit-shop-modal').html('<%= j render "form" %>');
 $('#edit-shop-modal').modal('show');
 $('#shop_openforever').click(function() {
+  $('.time-open-close-function-open-forever').slideToggle();
   if ($(this).is(':checked')) {
     $('.time_auto_close_shop').slideUp('fast');
   } else {

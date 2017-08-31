@@ -1109,4 +1109,5 @@ ja:
     price_desc: "Giá giảm dần"
     price_asc: "Giá tăng dần"
   search_products: "検索するキーワードを入力"
-  shop_open_forever: ""
+  shop_open_forever: "％{time_open}から％{time_close}まで毎日自動開閉を設定しています。 手動で開閉することはできません"
+  chatwork_new_products: "あなたがフォローしている％{shop}ショップでは、新商品％{product_name}（price：％{price} vnd）を追加しました。 ショップ％{shop}にお越しいただきありがとうございます。"

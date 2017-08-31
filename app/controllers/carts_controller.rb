@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :authenticate_user!, except: [:update, :index]
+  before_action :authenticate_user!
   before_action :load_product, only: [:update, :edit]
   before_action :check_before_order, only: [:new, :index]
   before_action :check_user_status_for_action, except: [:update, :index]
@@ -7,6 +7,7 @@ class CartsController < ApplicationController
   def index
     if @cart.blank?
       flash[:danger] = t "cart.not_product"
+      redirect_to root_path
     end
   end
 

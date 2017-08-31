@@ -15,6 +15,8 @@ class Product < ApplicationRecord
     slug.blank? || name_changed? || super
   end
 
+  after_create :send_chatwork_message
+
   belongs_to :category
   belongs_to :shop
   belongs_to :user
@@ -77,5 +79,9 @@ class Product < ApplicationRecord
     if image.size > max_size.megabytes
       errors.add :image, I18n.t("pictures.error_message", max_size: max_size)
     end
+  end
+
+  def send_chatwork_message
+    SendMessageNewProductToChatworkJob.perform_later self
   end
 end

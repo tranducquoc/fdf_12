@@ -60,7 +60,6 @@ class Shop < ApplicationRecord
   mount_base64_uploader :cover_image, ShopCoverUploader
 
   validate :image_size
-  validate :time_open_close
 
   delegate :name, to: :owner, prefix: :owner, allow_nil: true
   delegate :email, to: :owner, prefix: :owner
@@ -211,7 +210,7 @@ class Shop < ApplicationRecord
       time_now = DateTime.now
       time_open = time_now.change({hour: self.time_open.hour, min: self.time_open.min})
       time_close = time_now.change({hour: self.time_close.hour, min: self.time_close.min})
-      time_open += 1.date if time_open >= time_close
+      time_close += 1.day if time_open >= time_close
       case
       when time_now < time_open
         auto_close_shop
@@ -234,11 +233,5 @@ class Shop < ApplicationRecord
 
   def send_chatwork_message
     SendShopStatusToChatworkJob.perform_later self
-  end
-
-  def time_open_close
-    if time_close <= time_open
-      errors.add :time_open, I18n.t("datepicker.date_start_rather_than_date_end")
-    end
   end
 end

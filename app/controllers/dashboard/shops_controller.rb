@@ -97,14 +97,13 @@ class Dashboard::ShopsController < BaseDashboardController
             shop_job_id = @shop.delayjob_id
             if @shop.update_attributes shop_params
               flash[:success] = t "flash.success.dashboard.updated_shop"
-              if @@current_action == Settings.shop_actions.index
-                redirect_to dashboard_shops_path
-              else
-                redirect_to dashboard_shop_path @shop
-              end
             else
               flash[:danger] = t "flash.danger.dashboard.updated_shop"
-              render :edit
+            end
+            if @@current_action == Settings.shop_actions.index
+              redirect_to dashboard_shops_path
+            else
+              redirect_to dashboard_shop_path @shop
             end
           end
         end

@@ -893,10 +893,11 @@ $orange_main: #ff5722;
     width: 90px;
     height: 80px;
     background-color: #fd680e;
-    margin: 5px 20px;
+    margin: 5px 15px;
     border-radius: 10px;
     border: solid 1px #ffffff;
     box-shadow: 1px 1px 1px 1px grey;
+    transition: 0.5s ease-in-out;
     .btn_item {
       color: #ffffff;
     }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828061105) do
+ActiveRecord::Schema.define(version: 20170829094412) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -325,6 +325,8 @@ ActiveRecord::Schema.define(version: 20170828061105) do
     t.integer  "status_on_off",                  default: 0
     t.boolean  "openforever",                    default: false
     t.integer  "delayjob_id"
+    t.time     "time_start",                     default: '2000-01-01 00:00:00'
+    t.time     "time_end",                       default: '2000-01-01 00:00:00'
     t.index ["deleted_at"], name: "index_shops_on_deleted_at", using: :btree
     t.index ["owner_id"], name: "index_shops_on_owner_id", using: :btree
   end

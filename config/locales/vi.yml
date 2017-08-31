@@ -41,6 +41,7 @@ vi:
       short_date: "%m/%d/%Y"
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
+      dmy_format: "%d/%m/%Y"
   split: " -"
   quick_order_shop: "Đặt nhanh"
   you_should_choosen_domain_first: "Bạn phải chọn miền trước khi xem cửa hàng!"
@@ -1001,7 +1002,9 @@ vi:
     close_shop_now: "Đóng cửa ngay"
     edit_shop: "Chỉnh sửa cửa hàng"
     add_new_product: "Thêm sản phẩm mới"
-  time_auto_close_shop: "Thời gian đóng cửa tự động: "
+  time_auto_close_shop: "Đóng cửa tự động lúc: "
+  time_open_forever: "Thời gian tự động mở cửa:"
+  time_close_forever: "Thời gian tự đống đóng cửa:"
   status_shop: "Trạng thái cửa hàng"
   change_picture: "Đổi hình"
   activerecord:
@@ -1122,7 +1125,7 @@ vi:
   import_user: "Thêm tài khoản (excel)"
   import_group_user: "Thêm nhóm (excel)"
   chatwork_shop_message:
-    open: "Cửa hàng %{shop} của %{owner} được mở cửa trong %{hour} giờ %{min} phút, hãy nhanh tay đặt ngay cho mình những món hàng yêu thích tại %{url}"
+    open: "Cửa hàng %{shop} của %{owner} được mở cửa đến lúc %{time} ngày %{date}, hãy nhanh tay đặt ngay cho mình những món hàng yêu thích tại %{url}"
     close: "Cửa hàng %{shop} của %{owner} vừa đóng cửa, cám ơn bạn đã sử dụng dịch vụ của chúng tôi, hẹn gặp lại sau!"
     open_forever: "Cửa hàng %{shop} của %{owner} vừa mở cửa, hãy nhanh tay đặt ngay cho mình những món hàng yêu thích tại %{url}"
   follow: "Theo dõi"
@@ -1154,3 +1157,4 @@ vi:
     price_desc: "Giá giảm dần"
     price_asc: "Giá tăng dần"
   search_products: "Nhập từ khóa để tìm kiếm"
+  shop_open_forever: "Cửa hàng đả thiết lập thời gian đóng/mở cửa tự động hằng ngày từ %{time_open} đên %{time_close}. Không thể đóng mở cửa thủ công."

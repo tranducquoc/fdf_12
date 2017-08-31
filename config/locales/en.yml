@@ -5,6 +5,7 @@ en:
       short_date: "%m/%d/%Y"
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
+      dmy_format: "%d/%m/%Y"
   split: " -"
   quick_order_shop: "Order Fast"
   you_should_choosen_domain_first: "You must select a domain before viewing the shop!"
@@ -944,7 +945,9 @@ en:
     close_shop_now: "Close shop now"
     edit_shop: "Edit info of shop"
     add_new_product: "Add new product"
-  time_auto_close_shop: "Time auto close: "
+  time_auto_close_shop: "Auto close at: "
+  time_open_forever: "Time auto open:"
+  time_close_forever: "Time auto close:"
   status_shop: "Status of shop"
   change_picture: "Change picture"
   activerecord:
@@ -1064,7 +1067,7 @@ en:
   import_user: "Import account (excel)"
   import_group_user: "Import group (excel)"
   chatwork_shop_message:
-    open: "Shop %{shop} of %{owner} opened in %{hour} hours %{min} minutes, quickly order your favorite items at %{url}"
+    open: "Shop %{shop} of %{owner} open until %{time} %{date}, quickly order your favorite items at %{url}"
     close: "Shop %{shop} of %{owner} has just closed. Thank you for using our service. See you again later!"
     open_forever: "Shop %{shop} of %{owner} has just opened, quickly order your favorite items at %{url}"
   follow: "Follow"
@@ -1096,3 +1099,4 @@ en:
     price_desc: "Price decreases"
     price_asc: "Price increases"
   search_products: "Enter the key word"
+  shop_open_forever: "The shop has set a daily automatic open/close from %{time_open} to %{time_close}. It can not open/close manually."

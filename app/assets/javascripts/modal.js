@@ -189,17 +189,26 @@ $(document).ready(function(){
           'checked': true
         },
         success: function(response) {
-          sweetAlert(I18n.t('api.success'), I18n.t('shop_was_open'), 'success');
-          btn.data('type', 'close');
-          btn.html('<div class="btn_icon material-icons">lock_outline</div><div>' +
-            I18n.t("general_info.close_shop_now") + '</div>');
-          change_class_after_open_shop(btn, response.time)
+          if(type) {
+            sweetAlert(I18n.t('api.success'), I18n.t('shop_was_open'), 'success');
+            btn.data('type', 'close');
+            btn.html('<div class="btn_icon material-icons">lock_outline</div><div>' +
+              I18n.t("general_info.close_shop_now") + '</div>');
+            change_class_after_open_shop(btn, response.time)
+          }
         },
         error: function(errors) {
           sweetAlert(I18n.t('api.error'), I18n.t('api.error'), 'error');
         }
       });
     }
+  });
+
+  $('.btn-open-close-shop-forever').click(function(){
+    var time_open = $(this).data('open');
+    var time_close = $(this).data('close');
+    sweetAlert(I18n.t('api.error'), I18n.t('shop_open_forever', {time_open: time_open,
+      time_close: time_close}), 'error');
   });
 });
 

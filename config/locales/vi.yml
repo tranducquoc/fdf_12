@@ -1158,3 +1158,4 @@ vi:
     price_asc: "Giá tăng dần"
   search_products: "Nhập từ khóa để tìm kiếm"
   shop_open_forever: "Cửa hàng đả thiết lập thời gian đóng/mở cửa tự động hằng ngày từ %{time_open} đên %{time_close}. Không thể đóng mở cửa thủ công."
+  chatwork_new_products: "Cửa hàng %{shop} mà bạn đang theo dõi vừa thêm sản phẩm mới: %{product_name} (giá: %{price} vnđ). Cảm ơn các bạn đã đồng hành cùng cửa hàng %{shop}."

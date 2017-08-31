@@ -1100,3 +1100,4 @@ en:
     price_asc: "Price increases"
   search_products: "Enter the key word"
   shop_open_forever: "The shop has set a daily automatic open/close from %{time_open} to %{time_close}. It can not open/close manually."
+  chatwork_new_products: "The %{shop} shop you are following has just added a new product: %{product_name} (price: %{price}vnd). Thank you for coming to the shop %{shop}."

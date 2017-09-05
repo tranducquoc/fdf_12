@@ -11,7 +11,7 @@ $(document).ready(function() {
           $.growl.notice({title: '', message: data.flash});
           self.removeClass('follow-shop btn-warning')
             .addClass('unfollow-shop btn-danger');
-          self.text(I18n.t('unfollow'));
+          self.html('<i class="fa fa-minus-square-o" aria-hidden="true"></i> ' + I18n.t('unfollow'));
            $('.shop-followers-count').text(data.follow_count);
         }
         else {
@@ -24,7 +24,7 @@ $(document).ready(function() {
     });
     return false;
   });
- 
+
   $('body').on('click', '.unfollow-shop', function() {
     var self = $(this);
     var shop_id = $('#shop_id').val();
@@ -37,7 +37,7 @@ $(document).ready(function() {
           $.growl.warning({title: '', message: data.flash});
           self.removeClass('unfollow-shop btn-danger')
             .addClass('follow-shop btn-warning');
-          self.text(I18n.t('follow'));
+          self.html('<i class="fa fa-check-square-o" aria-hidden="true"></i> ' + I18n.t('follow'));
           $('.shop-followers-count').text(data.follow_count);
         }
         else {

@@ -44,24 +44,24 @@ class SendShopStatusToChatworkService
   end
 
   def to_users room, domain
-    to_all = ""
-    if @shop.off?
-      to_all = "TO ALL >>>"
-    else
-      begin
-        members = ChatWork::Member.get room_id: room
-        domain.users.each do |user|
-          if !user.chatwork_settings.present? ||
-            user.chatwork_settings[:shop_open] == Settings.serialize_true
-            to_account_id = members
-              .find {|member| member["name"] == I18n.transliterate(user.name)}
-            to_all += "[To:#{to_account_id["account_id"]}]" if to_account_id.present?
-          end
-        end
-      rescue
-        to_all = ""
-      end
-    end
+    to_all = "TO ALL >>>"
+    # if @shop.off?
+    #   to_all = "TO ALL >>>"
+    # else
+    #   begin
+    #     members = ChatWork::Member.get room_id: room
+    #     domain.users.each do |user|
+    #       if !user.chatwork_settings.present? ||
+    #         user.chatwork_settings[:shop_open] == Settings.serialize_true
+    #         to_account_id = members
+    #           .find {|member| member["name"] == I18n.transliterate(user.name)}
+    #         to_all += "[To:#{to_account_id["account_id"]}]" if to_account_id.present?
+    #       end
+    #     end
+    #   rescue
+    #     to_all = ""
+    #   end
+    # end
     to_all
   end
 end

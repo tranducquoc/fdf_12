@@ -5,11 +5,15 @@ module ShopsHelper
 
   def follow_shop_button shop
     if shop.followed_by? current_user
-      link_to t("unfollow"), "#",
-        class: "btn btn-danger btn-follow unfollow-shop"
+      link_to "#", class: "btn btn-danger btn-follow unfollow-shop" do
+        raw '<i class="fa fa-minus-square-o" aria-hidden="true"></i> ' +
+        t("unfollow")
+      end
     else
-      link_to t("follow"), "#",
-        class: "btn btn-warning btn-follow follow-shop"
+      link_to "#", class: "btn btn-warning btn-follow follow-shop" do
+        raw '<i class="fa fa-check-square-o" aria-hidden="true"></i> ' +
+        t("follow")
+      end
     end
   end
 end

@@ -96,11 +96,11 @@ class V1::DomainsController < V1::BaseController
 
   private
   def domain_params
-    params.require(:domain).permit(:name, :status).merge! owner: current_user.id
+    params.require(:domain).permit(:name, :status, :room_chatwork).merge! owner: current_user.id
   end
 
   def edit_domain_params
-    params.permit :name, :status
+    params.permit :name, :status, :room_chatwork
   end
 
   def active_account

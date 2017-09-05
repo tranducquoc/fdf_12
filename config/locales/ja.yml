@@ -1115,3 +1115,4 @@ ja:
   list_ordering:
     button: "リストの順序付け"
     title: "注文リストが保留中です"
+  login_wsm_account: "WSMによるログイン"

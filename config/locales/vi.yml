@@ -1162,4 +1162,5 @@ vi:
   chatwork_new_products: "Cửa hàng %{shop} mà bạn đang theo dõi vừa thêm sản phẩm mới: %{product_name} (giá: %{price} vnđ). Cảm ơn các bạn đã đồng hành cùng cửa hàng %{shop}."
   list_ordering:
     button: "Danh sách đang đặt hàng"
-    title: "注文リストが保留中です"
+    title: "Danh sách đơn hàng đang chờ xử lý"
+  login_wsm_account: "Đăng nhập với tài khoản WSM"

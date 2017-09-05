@@ -32,10 +32,10 @@ GIT
       activerecord (>= 4.0)
 
 GIT
-  remote: https://github.com/framgia-education/omniauth-hrsystem.git
-  revision: b81e4543eaa8eb8cbf331c0848cd08c46171a210
+  remote: https://github.com/framgia-education/omniauth-framgia.git
+  revision: 2cbc30b08cfa07f186c241887970be9304c4e838
   specs:
-    omniauth-hrsystem (1.0.0)
+    omniauth-framgia (1.0.0)
       omniauth-oauth2 (~> 1.2)
 
 GEM
@@ -513,8 +513,8 @@ DEPENDENCIES
   mysql2 (>= 0.3.18, < 0.5)
   omniauth
   omniauth-facebook
+  omniauth-framgia!
   omniauth-google-oauth2
-  omniauth-hrsystem!
   paranoia (~> 2.2.0.pre)
   pry
   pry-rails

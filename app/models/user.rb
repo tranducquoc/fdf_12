@@ -20,8 +20,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  devise :omniauthable, omniauth_providers: [:hr_system]
+    :recoverable, :rememberable, :trackable, :validatable
+  devise :omniauthable, omniauth_providers: [:framgia]
 
   has_many :shop_managers, dependent: :destroy
   has_many :shops, dependent: :destroy, through: :shop_managers
@@ -64,7 +64,7 @@ class User < ApplicationRecord
 
   class << self
     def from_omniauth auth
-      user = find_or_initialize_by(email: auth.info.email)
+      user = find_or_initialize_by email: auth.info.email
       if user.present?
         user.name = auth.info.name
         user.provider = auth.provider
@@ -73,7 +73,18 @@ class User < ApplicationRecord
         user.refresh_token = auth.credentials.refresh_token
         user.status = :active
         user.save
+        add_user_to_domain_after_login_with_framgia_account user, auth.info.workspaces
         user
+      end
+    end
+
+    def add_user_to_domain_after_login_with_framgia_account user, workspaces
+      workspaces.each do |workspace|
+        domain = Domain.find_by name: workspace.name
+        if domain.present?
+          return if user.domain_ids.include? domain.id
+          user.domain_ids += [domain.id]
+        end
       end
     end
   end

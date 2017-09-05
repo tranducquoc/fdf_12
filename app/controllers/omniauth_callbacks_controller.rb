@@ -18,5 +18,5 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     sign_in_and_redirect @user
   end
 
-  alias_method :hr_system, :create
+  alias_method :framgia, :create
 end

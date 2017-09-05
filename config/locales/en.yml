@@ -1105,3 +1105,4 @@ en:
   list_ordering:
     button: "List ordering"
     title: "Order list is pending"
+  login_wsm_account: "Login with WSM account"

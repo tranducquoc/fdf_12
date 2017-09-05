@@ -13,6 +13,7 @@ class ShopsController < ApplicationController
   end
 
   def show
+    @orders = Order.by_domain(@domain.id).orders_of_shop_pending(@shop.id)
     if @domain.present?
       @products = @shop.products.active.page(params[:page])
         .per Settings.common.products_per_page

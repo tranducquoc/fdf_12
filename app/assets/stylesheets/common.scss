@@ -114,5 +114,23 @@
 }
 
 .btn-follow {
-  border-radius: 20px !important;
+  margin: 10px 0 !important;
+  border-radius: 10px !important;
+}
+
+.view-ordering {
+  border-radius: 10px !important;
+}
+
+#modal-view-ordering {
+  .modal-body {
+    max-height: 404px;
+    overflow: scroll;
+  }
+  .order-item {
+    margin: 10px;
+    padding: 10px 10px 0px 10px;
+    border: solid 1px #f9f9f9;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.42);
+  }
 }

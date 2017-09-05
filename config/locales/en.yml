@@ -6,6 +6,7 @@ en:
       short_time: "%H:%M"
       date_format: "MM/DD/YYYY"
       dmy_format: "%d/%m/%Y"
+      full_time: "%H:%M %d/%m/%Y"
   split: " -"
   quick_order_shop: "Order Fast"
   you_should_choosen_domain_first: "You must select a domain before viewing the shop!"
@@ -1101,3 +1102,6 @@ en:
   search_products: "Enter the key word"
   shop_open_forever: "The shop has set a daily automatic open/close from %{time_open} to %{time_close}. It can not open/close manually."
   chatwork_new_products: "The %{shop} shop you are following has just added a new product: %{product_name} (price: %{price}vnd). Thank you for coming to the shop %{shop}."
+  list_ordering:
+    button: "List ordering"
+    title: "Order list is pending"

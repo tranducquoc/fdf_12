@@ -7,11 +7,9 @@
       <%= image_tag @shop.avatar.url, class: "avatar",
         id: "img-avatar" %>
     </div>
-    <div class="col-md-9 col-sm-9 col-xs-9">
+    <div class="col-md-7 col-sm-7 col-xs-7">
       <h1 class="title mg-bottom-0" title="<%= @shop.name %>">
         <%= @shop.name %>
-        <%= follow_shop_button @shop %>
-        <%= hidden_field_tag :shop_id, @shop.id %>
       </h1>
       <% if @shop.pending? %>
         <%= render "shared/shop_status_label", shop: @shop %>
@@ -24,6 +22,14 @@
       <marquee direction="left" class="text-description" scrollamount=5>
         <%= @shop.description %>
       </marquee>
+    </div>
+    <div class="col-md-2 col-sm-2 col-xs-2 text-center">
+      <%= raw follow_shop_button(@shop) %>
+      <%= hidden_field_tag :shop_id, @shop.id %>
+      <%= link_to "#modal-view-ordering", data: {toggle: "modal"}, class: "btn v2-btn-success view-ordering" do %>
+        <i class="fa fa-th-list" aria-hidden="true"></i>
+        <%= t "list_ordering.button" %>
+      <% end %>
     </div>
   </div>
   <div class="list-functions">
@@ -102,3 +108,26 @@
   </div>
 </div>
 <%= render "domains/modal_order_fast" %>
+
+<div class="modal fade" id="modal-view-ordering">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header modal_header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <h4 class="modal-title modal_text_header"><%= t "list_ordering.title" %></h4>
+      </div>
+      <div class="modal-body">
+        <div class="row modal_item">
+          <%= render partial: "view_order_item", collection: @orders, as: :order %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          <%= t "done" %>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="order-item">
+  <div class="item-name">
+    <i class="fa fa-user-o" aria-hidden="true"></i>: <%= order.user_name %>
+    <span class="float-right"><i class="fa fa-clock-o" aria-hidden="true"></i>:
+      <%= l order.created_at, format: :full_time %>
+    </span>
+  </div>
+  <div class="item-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th><%= t "oder.name" %></th>
+          <th><%= t "oder.quantity" %></th>
+          <th><%= t "oder.price" %></th>
+          <th><%= t "order_quick.note" %></th>
+          <th><%= t "oder.status" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% order.order_products.each do |item| %>
+          <tr>
+            <td><%= item.product_name %></td>
+            <td><%= item.quantity %></td>
+            <td><%= format_price item.total_price %></td>
+            <td><%= item.notes %></td>
+            <td><%= status_order_product item if item.try(:status).present? %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

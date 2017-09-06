@@ -10,7 +10,7 @@
         <div class="login-with-framgia text-center">
           <%- resource_class.omniauth_providers.each do |provider| %>
             <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn" do %>
-              <%= image_tag "icon-framgia", class: "icon" %>
+              <%= image_tag "icon-wsm", class: "icon" %>
               <span class="icon-line"></span>
               <span class="name"><%= t "login_wsm_account" %></span>
             <% end %>

@@ -46,7 +46,13 @@ class V1::ProductsController < V1::BaseController
     shop_ids = Shop.shop_in_domain(@domain.id).on.pluck :id
     products = Product.by_shop_ids(shop_ids).active.search_by_price(params)
       .by_category(params[:category_id]).sort_by_price params[:price_sort]
-    response_success t("api.success"), products
+    if products.present?
+      result = ActiveModel::Serializer::CollectionSerializer.new(products,
+        each_serializer: ProductSerializer)
+      response_success t("api.success"), result
+    else
+      response_not_found t "api.error_products_not_found"
+    end
   end
 
   private

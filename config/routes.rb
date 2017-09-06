@@ -117,7 +117,7 @@ Rails.application.routes.draw do
     resources :orders_product_all, defaults: {format: :json}
     resources :domains, except: :new, defaults: {format: :json}
     resources :authen_user_tokens, only: :index, defaults: {format: :json}
-    resources :products, only: :index, defaults: {format: :json}
+    resources :products, only: [:index, :show], defaults: {format: :json}
     get "/logout", to: "users_logout#logout", defaults: {format: :json}
     resources :categories, only: :index, defaults: {format: :json}
     resources :orders, defaults: {format: :json}

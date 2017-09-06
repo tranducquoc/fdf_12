@@ -1,4 +1,6 @@
 class V1::ProductsController < V1::BaseController
+  before_action :load_domain, only: :show
+
   def index
     if params.has_key?(:top_products)
       domain = Domain.find_by id: params[:domain_id]
@@ -38,5 +40,20 @@ class V1::ProductsController < V1::BaseController
     else
       response_not_found t "api.error_products_not_found"
     end
+  end
+
+  def show
+    shop_ids = Shop.shop_in_domain(@domain.id).on.pluck :id
+    products = Product.by_shop_ids(shop_ids).active.search_by_price(params)
+      .by_category(params[:category_id]).sort_by_price params[:price_sort]
+    response_success t("api.success"), products
+  end
+
+  private
+
+  def load_domain
+    @domain = Domain.find_by id: params[:id]
+    return if @domain.present?
+    esponse_not_found t "api.not_found"
   end
 end

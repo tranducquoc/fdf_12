@@ -72,6 +72,7 @@ class User < ApplicationRecord
         user.token = auth.credentials.token
         user.refresh_token = auth.credentials.refresh_token
         user.status = :active
+        user.is_create_by_wsm = true if user.new_record?
         user.save
         add_user_to_domain_after_login_with_framgia_account user, auth.info.workspaces
         user

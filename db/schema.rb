@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829094412) do
+ActiveRecord::Schema.define(version: 20170907015407) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -325,8 +325,8 @@ ActiveRecord::Schema.define(version: 20170829094412) do
     t.integer  "status_on_off",                  default: 0
     t.boolean  "openforever",                    default: false
     t.integer  "delayjob_id"
-    t.time     "time_start",                     default: '2000-01-01 00:00:00'
-    t.time     "time_end",                       default: '2000-01-01 00:00:00'
+    t.time     "time_open",                      default: '2000-01-01 00:00:00'
+    t.time     "time_close",                     default: '2000-01-01 00:00:00'
     t.index ["deleted_at"], name: "index_shops_on_deleted_at", using: :btree
     t.index ["owner_id"], name: "index_shops_on_owner_id", using: :btree
   end
@@ -375,14 +375,14 @@ ActiveRecord::Schema.define(version: 20170829094412) do
     t.string   "chatwork_id"
     t.string   "description"
     t.datetime "deleted_at"
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
-    t.string   "email",                                default: "", null: false
-    t.string   "encrypted_password",                   default: "", null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.string   "email",                                default: "",    null: false
+    t.string   "encrypted_password",                   default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                        default: 0,  null: false
+    t.integer  "sign_in_count",                        default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -402,6 +402,7 @@ ActiveRecord::Schema.define(version: 20170829094412) do
     t.string   "token"
     t.string   "refresh_token"
     t.text     "chatwork_settings",      limit: 65535
+    t.boolean  "is_create_by_wsm",                     default: false
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
     t.index ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree

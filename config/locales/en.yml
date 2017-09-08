@@ -1106,3 +1106,5 @@ en:
     button: "List ordering"
     title: "Order list is pending"
   login_wsm_account: "Login with WSM account"
+  mail_after_create: "You just logged in for the first time with a WSM account. You can sign in with WSM or sign in directly with email: %{email} and password: %{pass}."
+  subject_mail_after_create: "Password of the F-Order account"

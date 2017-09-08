@@ -84,7 +84,7 @@ class User < ApplicationRecord
         domain = Domain.find_by name: workspace.name
         if domain.present?
           return if user.domain_ids.include? domain.id
-          user.domain_ids += [domain.id]
+          user.user_domains.create domain_id: domain.id, role: :member
         end
       end
     end

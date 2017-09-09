@@ -1116,3 +1116,5 @@ ja:
     button: "リストの順序付け"
     title: "注文リストが保留中です"
   login_wsm_account: "WSMによるログイン"
+  mail_after_create: "あなたはWSMアカウントで初めてログインしました。 WSMでサインインするか、電子メールで直接サインインすることができます：%{email}とパスワード：%{pass}"
+  subject_mail_after_create: "F-Orderアカウントのパスワード"

@@ -66,13 +66,15 @@ class User < ApplicationRecord
     def from_omniauth auth
       user = find_or_initialize_by email: auth.info.email
       if user.present?
+        password = User.generate_unique_secure_token[0..9]
         user.name = auth.info.name
         user.provider = auth.provider
-        user.password = User.generate_unique_secure_token if user.new_record?
+        user.password = password if user.new_record?
         user.token = auth.credentials.token
         user.refresh_token = auth.credentials.refresh_token
         user.status = :active
         user.is_create_by_wsm = true if user.new_record?
+        SendPasswordMailer.user_created_wsm(user, password).deliver_now if user.new_record?
         user.save
         add_user_to_domain_after_login_with_framgia_account user, auth.info.workspaces
         user

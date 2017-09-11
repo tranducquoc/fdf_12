@@ -69,6 +69,7 @@ class User < ApplicationRecord
         password = User.generate_unique_secure_token[0..9]
         user.name = auth.info.name
         user.provider = auth.provider
+        user.remote_avatar_url = auth.info.avatar if auth.info.avatar.present?
         user.password = password if user.new_record?
         user.token = auth.credentials.token
         user.refresh_token = auth.credentials.refresh_token

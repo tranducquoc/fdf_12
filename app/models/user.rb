@@ -77,15 +77,16 @@ class User < ApplicationRecord
         user.is_create_by_wsm = true if user.new_record?
         SendPasswordMailer.user_created_wsm(user, password).deliver_now if user.new_record?
         user.save
-        add_user_to_domain_after_login_with_framgia_account user, auth.info.workspaces
+        add_user_to_domain_after_login_with_framgia_account user, auth.info.workspaces, auth.info.workspace_default
         user
       end
     end
 
-    def add_user_to_domain_after_login_with_framgia_account user, workspaces
+    def add_user_to_domain_after_login_with_framgia_account user, workspaces, workspace_default
       workspaces.each do |workspace|
         domain = Domain.find_by name: workspace.name
         if domain.present?
+          user.update_attribute :domain_default, domain.id if domain.name == workspace_default && user.domain_default != domain.id
           return if user.domain_ids.include? domain.id
           user.user_domains.create domain_id: domain.id, role: :member
         end

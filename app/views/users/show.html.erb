@@ -53,24 +53,22 @@
                 </tr>
               </tbody>
             </table>
-            <% if !@user.is_create_by_wsm  %>
-              <div class="row">
-                <div class="col-xs-12 right">
-                  <% if current_user? @user %>
-                    <%= link_to "#change-password-user", "data-toggle": "modal",
-                      class: "btn btn-default form-button" do %>
-                      <i class="glyphicon glyphicon-edit"></i>
-                      <%= t "devise.user.change_pass" %>
-                    <% end %>
-                    <%= link_to edit_user_registration_path,
-                      class: "btn btn-default form-button" do %>
-                      <i class="glyphicon glyphicon-pencil"></i>
-                      <%= t "edit_infomation" %>
-                    <% end %>
+            <div class="row">
+              <div class="col-xs-12 right">
+                <% if current_user? @user %>
+                  <%= link_to "#change-password-user", "data-toggle": "modal",
+                    class: "btn btn-default form-button" do %>
+                    <i class="glyphicon glyphicon-edit"></i>
+                    <%= t "devise.user.change_pass" %>
                   <% end %>
-                </div>
+                  <%= link_to edit_user_registration_path,
+                    class: "btn btn-default form-button" do %>
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <%= t "edit_infomation" %>
+                  <% end %>
+                <% end %>
               </div>
-            <% end %>
+            </div>
           </div>
         </div>
       </div>

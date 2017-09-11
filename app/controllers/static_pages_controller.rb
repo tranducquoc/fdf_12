@@ -27,6 +27,14 @@ class StaticPagesController < ApplicationController
   end
 
   def load_data_for_user
+    if current_user.domain_default.present?
+      if current_user.domain_ids.include? current_user.domain_default
+        redirect_to domain_path(current_user.domain_default)
+        return
+      else
+        current_user.update_column :domain_default, nil
+      end
+    end
     if current_user.domains.present?
       redirect_to domain_path(current_user.domains.first)
     else

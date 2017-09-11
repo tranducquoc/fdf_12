@@ -1,0 +1,10 @@
+<tr>
+  <td><%= domain.name %></td>
+  <td><%= load_tag_status domain %></td>
+  <td><%= domain.users.size %></td>
+  <td><%= domain.shops.size %></td>
+  <td><%= owner_name domain %></td>
+  <td><%= link_to t("common.view_button"), "#modal-view-domain",
+    class: "btn btn-success btn-view-detail-domain",
+    data: {toggle: "modal", id: domain.id} %></td>
+</tr>

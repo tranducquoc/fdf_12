@@ -30,3 +30,11 @@
     line-height: 34px;
   }
 }
+
+.admin-form-search {
+  display: inline-block;
+  padding-left: 140px;
+  .admin-search-user {
+    width: 300px;
+  }
+}

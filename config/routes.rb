@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :admins, controllers: {sessions: "admin/sessions"}
-  mount RailsAdmin::Engine => "/admin", as: :rails_admin
-
   namespace :domain do
     get "user_domains/new"
   end
@@ -17,6 +14,8 @@ Rails.application.routes.draw do
 
   get "set_language/update"
   post "/rate" => "rater#create", :as => "rate"
+  devise_for :admins, path: "admin",
+    controllers: {sessions: "admin/sessions"}
 
   devise_for :users,
     controllers: {
@@ -30,6 +29,19 @@ Rails.application.routes.draw do
   get "mobile-page" => "static_pages#new"
   root "static_pages#home"
   mount ActionCable.server => "/cable"
+  namespace :admin do
+    root "home#index", path: "/"
+    resources :orders, only: [:index, :show, :destroy]
+    resources :shop_requests, only: [:index, :update]
+    resources :categories
+    resources :users
+    resources :products, only: :index
+    resources :set_user, only: :create
+    resources :update_group_user, only: :create
+    resources :shops, except: [:new, :create, :show]
+    resources :request_shop_domains
+    resources :domains, only: [:index, :show]
+  end
 
   namespace :dashboard do
     root "statistics#index", path: "/"

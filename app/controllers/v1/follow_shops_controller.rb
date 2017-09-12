@@ -1,6 +1,6 @@
 class V1::FollowShopsController < V1::BaseController
   skip_before_filter :verify_authenticity_token, only: :update
-  before_action :load_shop, only: :update
+  before_action :load_shop, only: [:update, :index]
 
   def update
     case
@@ -15,10 +15,18 @@ class V1::FollowShopsController < V1::BaseController
     end
   end
 
+  def index
+    response_success t("api.success"), current_user.following?(@shop)
+  end
+
   private
 
   def load_shop
-    @shop = Shop.find_by id: params[:id]
+    if params[:shop_id].present?
+      @shop = Shop.find_by id: params[:shop_id]
+    else
+      @shop = Shop.find_by id: params[:id]
+    end
     return if @shop.present?
     response_not_found t "api.not_found"
   end

@@ -1,8 +1,8 @@
 class ShopsController < ApplicationController
-  before_action :load_shop, only: [:show, :update]
+  before_action :load_shop, only: [:show, :update, :edit]
   before_action :authenticate_user!
   before_action :check_domain_present
-  before_action :check_show_shop, only: :show
+  before_action :check_show_shop, only: [:show, :edit]
 
   def index
     @shops = if @domain.present?
@@ -12,11 +12,20 @@ class ShopsController < ApplicationController
     end.active.page(params[:page]).per(Settings.common.shops_per_page)
   end
 
+  def edit
+    @orders = Order.by_domain(@domain.id).orders_of_shop_pending(@shop.id)
+      .search(order_products_notes_or_order_products_product_name_or_user_name_cont:
+      params[:key_search]).result distinct: true
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def show
     @orders = Order.by_domain(@domain.id).orders_of_shop_pending(@shop.id)
     if @domain.present?
       @products = @shop.products.active.page(params[:page])
-        .per Settings.common.products_per_page
+      .per Settings.common.products_per_page
       @shop = @shop.decorate
     else
       flash[:success] = t "you_should_choosen_domain_first"

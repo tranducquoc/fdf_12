@@ -130,5 +130,6 @@ Rails.application.routes.draw do
     resources :searches, only: :index, defaults: {format: :json}
     resources :reset_passwords, only: [:index, :update], defaults: {format: :json}
     resources :rates, only: :create, defaults: {format: :json}
+    resources :follow_shops, only: :update, defaults: {format: :json}
   end
 end

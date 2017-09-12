@@ -174,3 +174,5 @@ mobile_app_download_link: "https://github.com/framgia/android_forder_01/blob/dev
 status_product:
   active: "active"
   inactive: "inactive"
+max_rate_point: 5
+min_rate_point: 0

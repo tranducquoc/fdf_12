@@ -2,9 +2,17 @@ class V1::Dashboard::OrdersController < V1::BaseController
   skip_before_filter :verify_authenticity_token, only: :update
   before_action :check_owner_or_manager, only: :index
   before_action :load_order, only: :update
+  before_action :load_shop, only: :index
 
   def index
-    orders = Order.orders_of_shop_pending params[:shop_id]
+    user_ids = User.search(name_or_email_cont: params[:user_search]).result.pluck :id
+    if params[:domain_id].present?
+      orders = Order.by_domain(params[:domain_id]).orders_of_shop_pending(params[:shop_id])
+        .of_user_ids user_ids
+    else
+      orders = Order.by_domain_ids(load_list_manage_domain).orders_of_shop_pending(params[:shop_id])
+        .of_user_ids user_ids
+    end
     result = ActiveModel::Serializer::CollectionSerializer.new(orders,
       each_serializer: OrderSerializer)
     response_success t("api.success"), result
@@ -39,6 +47,24 @@ class V1::Dashboard::OrdersController < V1::BaseController
     @order = Order.find_by id: params[:id]
     unless @order.present?
       response_not_found t "api.not_found"
+    end
+  end
+
+  def load_shop
+    @shop = Shop.find_by id: params[:shop_id]
+    unless @shop.present?
+      response_not_found t "api.not_found"
+    end
+  end
+
+  def load_list_manage_domain
+    shop_manager = ShopManager.find_by user_id: current_user.id, shop_id: @shop.id
+    if shop_manager.present?
+      if shop_manager.owner?
+        return @shop.shop_domains.select{|s| s.approved?}.map &:domain_id
+      else
+        return shop_manager.shop_manager_domains.map &:domain_id
+      end
     end
   end
 end

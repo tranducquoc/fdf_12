@@ -76,6 +76,8 @@ $(document).ready(function() {
   $('input[name=search-status]').change(function(){
     search_products();
   });
+
+  search_order_pending();
 });
 
 function search_products() {
@@ -89,5 +91,21 @@ function search_products() {
       key_word: key_word,
       search_satus: status
     }
+  });
+}
+
+function search_order_pending() {
+  $('.search-order').keyup(function(){
+    var key = $(this).val();
+    var domain_id = $(this).data('domain');
+    var shop_id = $(this).data('shop')
+    $.ajax({
+      url: '/domains/' + domain_id + '/shops/' + shop_id + '/edit',
+      type: 'GET',
+      data: {
+        key_search: key,
+        search: true
+      }
+    });
   });
 }

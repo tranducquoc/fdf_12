@@ -119,6 +119,11 @@
         <h4 class="modal-title modal_text_header"><%= t "list_ordering.title" %></h4>
       </div>
       <div class="modal-body">
+        <div class="text-center">
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <%= text_field_tag "search-order", "",placeholder: t("search_products"),
+            class: "search-order", data: {domain: @domain.id, shop: @shop.slug} %>
+        </div>
         <div class="row modal_item">
           <%= render partial: "view_order_item", collection: @orders, as: :order %>
         </div>

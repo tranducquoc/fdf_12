@@ -73,7 +73,7 @@ Rails.application.routes.draw do
   resources :shop_domains
   resources :order_fasts
   resources :user_settings, only: [:edit, :update]
-  resources :shops, only: [:index, :show, :update]
+  resources :shops, except: [:new, :create, :destroy]
   resources :products, only: [:index, :show, :new] do
     resources :comments, only: :create
   end

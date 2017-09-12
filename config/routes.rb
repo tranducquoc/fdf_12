@@ -104,7 +104,7 @@ Rails.application.routes.draw do
       resources :shops, except: [:destroy, :new], defaults: {format: :json}
       resources :order_managers, only: :index, defaults: {format: :json}
       resources :products, defaults: {format: :json}
-      resources :orders, defaults: {format: :json}
+      resources :orders, only: [:index, :update], defaults: {format: :json}
       resources :order_products, only: [:update, :index], defaults: {format: :json}
       resources :shop_managers, only: :index, defaults: {format: :json}
       resources :shop_domains, only: :index, defaults: {format: :json}

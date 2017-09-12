@@ -6,10 +6,10 @@ class V1::FollowShopsController < V1::BaseController
     case
     when params[:type] == Settings.type_follow
       current_user.follow @shop
-      response_success "api.success"
+      response_success t "api.success"
     when params[:type] == Settings.type_unfollow
       current_user.stop_following @shop
-      response_success "api.success"
+      response_success t "api.success"
     else
       response_error t "api.error"
     end

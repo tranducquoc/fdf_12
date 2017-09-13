@@ -1,6 +1,6 @@
 class OrderSerializer < ActiveModel::Serializer
   attributes :id, :status, :end_at, :notes, :user_id, :user_name, :shop_id, :coupon_id,
-    :deleted_at, :created_at, :updated_at, :total_pay, :domain_id
+    :deleted_at, :created_at, :updated_at, :total_pay, :domain_id, :is_paid
   has_many :order_products
 
   class OrderProductSerializer < ActiveModel::Serializer

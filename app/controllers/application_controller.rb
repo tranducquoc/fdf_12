@@ -127,6 +127,9 @@ class ApplicationController < ActionController::Base
     @domain = nil
     if domain_id.present?
       @domain = Domain.find_by id: domain_id
+    elsif current_user.present?
+      @domain = current_user.domains.first
+      session[:domain_id] = @domain.id if @domain.present?
     end
   end
 

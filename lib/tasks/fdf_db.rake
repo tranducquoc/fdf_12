@@ -12,12 +12,155 @@ namespace :fdf_db do
       authentication_token: Devise.friendly_token
     )
 
+    User.create!(
+      name: "Nguyen Thi A",
+      email: "nguyen.thi.a@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
+      name: "Pham Thi b",
+      email: "pham.thi.b@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
+      name: "Pham Van c",
+      email: "pham.van.c@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
+      name: "Le Van d",
+      email: "le.van.d@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
 
     User.create!(
       name: "Hoang Nhac Trung",
       email: "hoang.nhac.trung@framgia.com",
       password: "Aa@123",
       password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
+      name: "Join",
+      email: "join@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
+      name: "Taylor",
+      email: "taylor@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
+      name: "Nguyen Van S",
+      email: "nguyen.van.s@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+     User.create!(
+      name: "Nguyen Van V",
+      email: "nguyen.van.v@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
+      name: "Nguyen Thi F",
+      email: "nguyen.thi.f@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
+      name: "Tran Van Q",
+      email: "tran.van.q@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
+      name: "Dao Tam T",
+      email: "dao.tam.t@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
+      name: "Ta Thi Lang",
+      email: "ta.thi.lang@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
+      name: "Ha Van H",
+      email: "ha.van.h@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
+      name: "Nguyen Huu N",
+      email: "nguyen.huu.n@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
+      name: "Hiroaki",
+      email: "hiroaki.@framgia.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
+
+    User.create!(
+      name: "Tran Thi M",
+      email: "tran.thi.m@framgia.com",
+      password: "123456",
+      password_confirmation: "123456",
       status: 1,
       authentication_token: Devise.friendly_token
     )
@@ -1991,45 +2134,6 @@ namespace :fdf_db do
       status: 0,
       shop_id: 11,
       user_id: 18,
-      name: "Trà xanh nho Lớn",
-      price: 35000,
-      description: "Trà xanh nho Lớn",
-      start_hour: "14:00:00",
-      end_hour: "15:00:00",
-      image: File.open(Rails.root + "public/images/tra-xanh-nho.jpg")
-    )
-
-    Product.create!(
-      category_id: 11,
-      status: 0,
-      shop_id: 11,
-      user_id: 18,
-      name: "Trà xanh nho Vừa",
-      price: 32000,
-      description: "Trà xanh nho Vừa",
-      start_hour: "14:00:00",
-      end_hour: "15:00:00",
-      image: File.open(Rails.root + "public/images/tra-xanh-nho.jpg")
-    )
-
-    Product.create!(
-      category_id: 11,
-      status: 0,
-      shop_id: 11,
-      user_id: 18,
-      name: "Trà xanh nho Lớn",
-      price: 35000,
-      description: "Trà xanh nho Lớn",
-      start_hour: "14:00:00",
-      end_hour: "15:00:00",
-      image: File.open(Rails.root + "public/images/tra-xanh-nho.jpg")
-    )
-
-    Product.create!(
-      category_id: 11,
-      status: 0,
-      shop_id: 11,
-      user_id: 18,
       name: "Hồng trà việt quất Lớn",
       price: 38000,
       description: "Hồng trà việt quất Lớn",
@@ -2244,19 +2348,6 @@ namespace :fdf_db do
       start_hour: "14:00:00",
       end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/traxanh_matongsoi.jpg")
-    )
-
-    Product.create!(
-      category_id: 11,
-      status: 0,
-      shop_id: 11,
-      user_id: 18,
-      name: "Macchiato Hoàng gia Vừa",
-      price: 49000,
-      description: "Macchiato Hoàng gia Vừa",
-      start_hour: "14:00:00",
-      end_hour: "15:00:00",
-      image: File.open(Rails.root + "public/images/macchiato-hoang-gia.jpg")
     )
 
     Product.create!(
@@ -3179,17 +3270,6 @@ namespace :fdf_db do
       end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/traxanhyakultdam.jpg")
     )
-    Product.create!(
-      category_id: 11,
-      status: 0,
-      shop_id: 14,
-      user_id: 1,
-      name: "Trà xanh nhật bản",
-      price: 38000,
-      description: "Trà xanh nhật bản",
-      start_hour: "14:00:00",
-      end_hour: "15:00:00",
-      image: File.open(Rails.root + "public/images/traxanhnhatban.jpg")
-    )
+
   end
 end

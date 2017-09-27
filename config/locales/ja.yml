@@ -1079,12 +1079,12 @@ ja:
   chatwork_shop_message:
     open: "%{owner}の%{shop}ストアは、%{time} %{date}まで、%{url}にてお気に入りのを早くご注文を！"
     close: "%{owner}の%{shop}ストアは 閉じました。ありがとうございました。また会いしましょう！"
-    open_forever: "%{owner}の%{shop}ストアは %{url}に彼のお気に入りのアイテムを置く急ぎ"
+    open_forever: "%{owner}の%{shop}ストアは %{url}にてお気に入りのを早くご注文を！"
   follow: "フォローする"
   unfollow: "アンフォロー"
   follow_shop: "%{shop}に従ってください!"
   unfollow_shop: "%{shop}をフォローを解除しました!"
-  chatwork_order_message: "%{shop}でのご注文は、お支払いするために満たす店長を来てください!"
+  chatwork_order_message: "ご注文は承りました。お支払は店長の所までお願い致します。"
   import_add_user_success: "%{num}ユーザーが追加されました "
   import_update_user_success: "%{num}ユーザーが更新されました "
   import_user_faild:  "%{num}アカウントを追加できません"
@@ -1111,7 +1111,7 @@ ja:
     price_asc: "Giá tăng dần"
   search_products: "検索するキーワードを入力"
   shop_open_forever: "％{time_open}から％{time_close}まで毎日自動開閉を設定しています。 手動で開閉することはできません"
-  chatwork_new_products: "あなたがフォローしている％{shop}ショップでは、新商品％{product_name}（price：％{price} vnd）を追加しました。 ショップ％{shop}にお越しいただきありがとうございます。"
+  chatwork_new_products: "あなたがフォローしている %{shop} ショップでは、新商品 %{product_name}（price：%{price} vnd）を追加しました。 ショップ %{shop} にお越しいただきありがとうございます。"
   list_ordering:
     button: "リストの順序付け"
     title: "注文リストが保留中です"

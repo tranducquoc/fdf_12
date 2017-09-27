@@ -38,7 +38,7 @@ class SendShopStatusToChatworkService
             url: Settings.root_path + Rails.application.routes.url_helpers.shop_path(@shop),
             time: I18n.l(time, format: :short_time), date: date)
         end
-      body += "\n" + message + Settings.diliver_dot
+      body += message + Settings.diliver_dot + "\n"
       end
     to_users(room, domain)+ "\n" + "[info]" + Settings.forder_chatwork_title + body + "[/info]"
   end

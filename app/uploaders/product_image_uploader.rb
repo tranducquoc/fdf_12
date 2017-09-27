@@ -7,7 +7,7 @@ class ProductImageUploader < CarrierWave::Uploader::Base
     process tags: ["post_picture"]
   end
 
-  process resize_to_limit: [400, 400]
+  process resize_to_limit: [1200, 1200]
 
   process convert: "png"
 

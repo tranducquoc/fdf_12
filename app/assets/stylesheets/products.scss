@@ -254,6 +254,7 @@ img {
 .set-image {
   width: 100%;
   height: 400px;
+  object-fit: cover;
 }
 
 .pd_top_10px{
@@ -267,6 +268,7 @@ img {
 .product-show {
   width: 80px;
   height: 50px;
+  object-fit: cover;
 }
 
 .padd-left-products {

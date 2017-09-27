@@ -35,8 +35,8 @@ class SendMessageNewProductToChatworkService
     Settings.languages.each do |key, value|
       message = I18n.t("chatwork_new_products", locale: value[:type],
         shop: @product.shop.name, product_name: @product.name, price: @product.price)
-      body += "\n" + message + Settings.diliver_dot
+      body += message + Settings.diliver_dot + "\n"
     end
-    to_users(room) + "\n" + "[info]" + Settings.forder_chatwork_title + body + "[/info]"
+    to_users(room) + "[info]" + Settings.forder_chatwork_title + body + "[/info]"
   end
 end

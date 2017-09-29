@@ -16,6 +16,7 @@
             <tr>
               <th><%= t "order_statistics.id" %></th>
               <th><%= t "order_statistics.user_name" %></th>
+              <th><%= t "order_statistics.office" %></th>
               <th class="text-center"><%= t "order_statistics.details" %></th>
             </tr>
           </thead>
@@ -28,10 +29,10 @@
                     user_path(id: order_products.first) %>
                   </div>
                 </td>
-                <td class="text-center">
-                  <%= render "user_order_details", 
-                    order_products: order_products.last %>
-                </td> 
+                <td><%= user_office_for_id order_products %></td>
+                <td class="text-center"> <%= render "user_order_details",
+                  order_products: order_products.last %>
+                </td>
               </tr>
             <% end %>
           </tbody>

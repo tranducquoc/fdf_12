@@ -1,0 +1,17 @@
+<tr>
+  <td><%= label_tag "", t("view_order_new.total_items") %>:</td>
+  <td><%= label_tag "", total_items(bill),
+    class: "info_packing  info_total_packing_product" %></td>
+</tr>
+<tr>
+  <td><%= label_tag "", t("view_order_new.total_categorie") %>:</td>
+  <td><%= label_tag "", bill.size,
+    class: "info_packing info_total_packing_categorie" %></td>
+</tr>
+<tr>
+  <td><%= label_tag "", t("view_order_new.total_money") %>:</td>
+  <td><%= label_tag "", total_money(bill),
+    class: "info_packing info_total_packing_money" %>
+    <%= t "cart.vnd"%>
+  </td>
+</tr>

@@ -13,7 +13,11 @@ class Dashboard::OrdersController < BaseDashboardController
         .of_user_ids user_ids
     end
     load_order_product orders, params[:type]
-    load_list_toal_orders
+    if params[:domain_id].present?
+      load_list_total_orders_by_domain params[:domain_id].to_i
+    else
+      load_list_toal_orders
+    end
     if params[:check_orders].present?
       respond_to do |format|
         format.json do
@@ -153,6 +157,11 @@ class Dashboard::OrdersController < BaseDashboardController
   def load_list_toal_orders
     list_orders_id = Order.orders_of_shop_pending(@shop.id).select{|s|
       s.order_products.detect{|o| o.pending?} == nil}.pluck(:id)
+    @list_products_packing = OrderProduct.all_order_product_of_list_orders(list_orders_id).order_products_accepted
+  end
+
+  def load_list_total_orders_by_domain domain_id
+    list_orders_id = Order.list_order_by_domain(@shop.id, domain_id).list_orders_id_by_domain
     @list_products_packing = OrderProduct.all_order_product_of_list_orders(list_orders_id).order_products_accepted
   end
 

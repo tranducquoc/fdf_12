@@ -757,6 +757,7 @@ en:
     user_name: "User Name"
     details: "Details"
     group: "Group"
+    office: "Office"
   order_day: "Order day"
   language: "Language: "
   english: "English"
@@ -926,6 +927,7 @@ en:
     join_domain_now: "Join now"
   search_user: "Filter by users: "
   name_or_email: "Enter name or email"
+  user_order_no_office: "Undefined"
   order_manage_filter:
     product: "Product"
     user: "User"

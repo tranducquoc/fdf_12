@@ -82,24 +82,9 @@
       <div class="border_order_list">
         <div class="body-3">
           <table class="info_total_packing">
-            <tbody>
-              <tr>
-                <td><%= label_tag "", t("view_order_new.total_items") %>:</td>
-                <td><%= label_tag "", total_items(@list_products_packing),
-                  class: "info_packing  info_total_packing_product" %></td>
-              </tr>
-              <tr>
-                <td><%= label_tag "", t("view_order_new.total_categorie") %>:</td>
-                <td><%= label_tag "", @list_products_packing.size,
-                  class: "info_packing info_total_packing_categorie" %></td>
-              </tr>
-              <tr>
-                <td><%= label_tag "", t("view_order_new.total_money") %>:</td>
-                <td><%= label_tag "", total_money(@list_products_packing),
-                  class: "info_packing info_total_packing_money" %>
-                  <%= t "cart.vnd"%>
-                </td>
-              </tr>
+            <tbody id="bill-packing">
+              <%= render partial: "dashboard/orders/product_packing_bill",
+                locals: {bill: @list_products_packing} %>
             </tbody>
           </table>
         </div>

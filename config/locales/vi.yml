@@ -798,6 +798,7 @@ vi:
     user_name: "Người đặt hàng"
     details: "Chi tiết"
     group: "Nhóm"
+    office: "Văn phòng"
   order_day: "Ngày đặt hàng"
   language: "Ngôn ngữ: "
   english: "English"
@@ -983,6 +984,7 @@ vi:
     join_domain_now: "Tham gia ngay"
   search_user: "Lọc theo người dùng: "
   name_or_email: "Nhập tên hoặc email"
+  user_order_no_office: "Chưa xác định"
   order_manage_filter:
     product: "Sản phẩm"
     user: "Người dùng"

@@ -751,6 +751,7 @@ ja:
     details: "詳細"
     total_price_date: "合計 "
     group: "グループ"
+    office: "事務所"
   order_day: "デイ注文"
   language: "語: "
   english: "English"
@@ -934,6 +935,7 @@ ja:
     join_domain_now: "サイト管理に入ります"
   search_user: "ユーザーによるフィルタリング "
   name_or_email: "名前または電子メールを入力"
+  user_order_no_office: "未確定"
   order_manage_filter:
     product: "プロダクト"
     user: "ユーザー"

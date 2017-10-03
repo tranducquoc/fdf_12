@@ -62,7 +62,12 @@ class Order < ApplicationRecord
   scope :orders_of_shop_pending, -> shop_id do where shop_id: shop_id,
     status: Settings.filter_status_order.pending
   end
-
+  scope :list_order_by_domain, -> (shop_id,domain_id) do where shop_id: shop_id,
+    status: Settings.filter_status_order.pending, domain_id: domain_id
+  end
+  scope :list_orders_id_by_domain, -> do select{|s|
+    s.order_products.detect{|o| o.pending?} == nil}.pluck(:id)
+  end
   scope :orders_by_list_id, -> list {where id: list}
 
   scope :in_date, ->start_date, end_date do

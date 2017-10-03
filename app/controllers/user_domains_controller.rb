@@ -42,6 +42,11 @@ class UserDomainsController < ApplicationController
 
   def destroy
     if @user_domain.destroy
+      if @user_domain.domain.id == current_user.domain_default
+        domain_default = current_user.domains.first.id
+        current_user.update_attributes domain_default: domain_default
+        session[:domain_id] = domain_default
+      end
       domain = Domain.find_by id: @user_domain.domain_id
       delete_cart_domain domain
       if current_user.domains.include? @choosen_domain

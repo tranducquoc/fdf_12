@@ -17,6 +17,18 @@ module OrdersHelper
     user.name if user
   end
 
+  def user_office_for_id order_products
+    id = order_products.first
+    user = User.find_by id: id
+    if user
+      user_domain = Domain.find_by id: user.domain_default
+      if user_domain.present?
+        user_domain.name
+      else
+        I18n.t("user_order_no_office")
+      end
+    end
+  end
   def order_manage_filter
     {
       I18n.t("order_manage_filter.product") => "product",
@@ -70,7 +82,7 @@ module OrdersHelper
 
   def paid_in_order_history_btn order
     unless order.is_paid?
-      content_tag(:i, "", class: "glyphicon glyphicon-check btn_done") +       
+      content_tag(:i, "", class: "glyphicon glyphicon-check btn_done") +
       (link_to t("pay_order"), "#",
         class: "paid-history-btn",
         data: {order_id: order.id, shop_id: order.shop.id})

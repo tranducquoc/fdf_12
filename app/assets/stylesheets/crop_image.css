@@ -1,0 +1,17 @@
+.crop-image-modal{
+  display: none;
+  padding-left: 10%;
+  width: 80%;
+  height: 80%;
+}
+.crop-image-modal img{
+  width: 60%;
+  height: 60%;
+}
+.crop-image-modal h2{
+  color: white;
+}
+.crop-modal {
+  max-width: 100%
+  background-color: white;
+}

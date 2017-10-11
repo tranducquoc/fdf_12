@@ -96,6 +96,11 @@ vi:
   into_domain: " vào miền: "
   not_accept: " không được chấp nhận"
   back_to_top: "Quay về đầu trang"
+  crop: "Cắt"
+  crop_product_image: "Cắt hình ảnh sản phẩm"
+  crop_shop_cover: "Cắt ảnh nền cho shop"
+  crop_shop_avatar: "Cắt ảnh đại diện cho shop"
+  crop_user_avatar: "Cắt ảnh đại diện cá nhân"
   api:
     error_list_shop_by_domain_not_found: "Không tìm thấy danh sách cửa hàng!"
     error_orders_list_not_found: " Không tìm thấy danh sách đặt hàng!"

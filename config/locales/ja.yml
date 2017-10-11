@@ -59,6 +59,11 @@ ja:
   back_to_top: "トップに戻ります"
   forder_index_intro: "これはウェブサイトのプロフェッショナルな料理の注文です詳細については、
     ユーザーマニュアルをお読みください"
+  crop: "切り取り"
+  crop_product_image: "商品画像を切り取る。"
+  crop_shop_cover: "ショップタイムラインを切り取る。"
+  crop_shop_avatar: "ショップアバターを切り取る"
+  crop_user_avatar: "アバターを切り取る"
   api:
     error_list_shop_by_domain_not_found: "店のリストを見つけることができません!"
     error_orders_list_not_found: "オーダーのリストを見つけることができません!"

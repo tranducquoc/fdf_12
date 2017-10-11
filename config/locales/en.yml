@@ -56,6 +56,11 @@ en:
   into_domain: " to domain: "
   not_accept: " not accept"
   back_to_top: "Scroll to Top"
+  crop: "Crop"
+  crop_product_image: "Crop Product Image"
+  crop_shop_avatar: "Crop shop avatar"
+  crop_shop_cover: "Crop shop cover"
+  crop_user_avatar: "Crop user avatar"
   api:
     error_list_shop_by_domain_not_found: "Shops listing not found!"
     error_orders_list_not_found: "Orders list not found!"

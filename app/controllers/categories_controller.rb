@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :check_domain_present
   def show
     if Category.exists? params[:id]

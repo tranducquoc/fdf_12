@@ -107,10 +107,10 @@ class OrdersController < ApplicationController
       redirect_to :back
     elsif cart_shop.items.size > order.products.size
       flash[:warning] = t "oder.something_deleted"
-      redirect_to domain_order_path @domain, @order, shop_id: shop.id
+      redirect_to orders_path
     else
       flash[:success] = t "oder.success"
-      redirect_to domain_order_path @domain, order, shop_id: shop.id
+      redirect_to orders_path
     end
   end
 

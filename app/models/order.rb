@@ -14,7 +14,7 @@ class Order < ApplicationRecord
 
   enum status: {pending: 0, accepted: 1, rejected: 2, done: 3}
   delegate :name, to: :shop, prefix: :shop
-  delegate :name, to: :user, prefix: :user, allow_nil: true
+  delegate :name, :chatwork_id, to: :user, prefix: :user, allow_nil: true
   delegate :name, to: :domain, prefix: :domain, allow_nil: true
   delegate :name, to: :coupon, prefix: :coupon, allow_nil: true
 

@@ -840,6 +840,7 @@ ja:
     update_settings_success: "成功する"
     update_settings_fail: "故障"
     group: "グループ"
+    chatwork_id: "Chatwork ID"
   all_status:
     pending: "待っています"
     accepted: "一般に認められました"
@@ -1125,3 +1126,4 @@ ja:
   login_wsm_account: "WSMによるログイン"
   mail_after_create: "あなたはWSMアカウントで初めてログインしました。 WSMでサインインするか、電子メールで直接サインインすることができます：%{email}とパスワード：%{pass}"
   subject_mail_after_create: "F-Orderアカウントのパスワード"
+  chatwork_id_help: "You must enter exactly your chatwork account id."

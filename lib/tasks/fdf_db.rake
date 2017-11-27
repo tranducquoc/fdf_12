@@ -11,6 +11,14 @@ namespace :fdf_db do
       status: 1,
       authentication_token: Devise.friendly_token
     )
+    User.create!(
+      name: "Nguyen Phan Hoang Linh",
+      email: "nguyen.phan.hoang.linh@framgia.com",
+      password: "123123",
+      password_confirmation: "123123",
+      status: 1,
+      authentication_token: Devise.friendly_token
+    )
 
     User.create!(
       name: "Nguyen Thi A",

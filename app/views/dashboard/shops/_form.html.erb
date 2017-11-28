@@ -53,6 +53,14 @@
                 class: "form-control" %>
             </div>
             <div class="form-group">
+              <%= f.label :phone do %>
+                <%= t "request_shop.phone" %>
+                <span class="color-red">*</span>
+              <% end %>
+              <%= f.text_field :phone, placeholder: t("request_shop.phone"),
+                class: "form-control" %>
+            </div>
+            <div class="form-group">
               <%= f.label :description do %>
                 <%= t "description" %>
                 <span class="color-red">*</span>

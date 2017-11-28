@@ -1,5 +1,6 @@
 <div class="packing_view">
-  <h2 class="text-center"><%= t "dashboard.order.title" %></h2>
+  <h2 class="text-center"><%= t "dashboard.order.title" %>.<%= @shop.name %>
+    <% if @shop.phone.present? %>: <%= @shop.phone%><% end %></h2>
   <div class="row pt15">
     <div class="col-md-8 col-sm-8 col-xs-8 border_order_list col-md-8-resize">
       <div class="title modal-header header_title_order">

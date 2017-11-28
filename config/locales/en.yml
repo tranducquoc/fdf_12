@@ -849,6 +849,7 @@ en:
     update_settings_success: "Update settings successful"
     update_settings_fail: "Update settings failed"
     group: "Group"
+    chatwork_id: "Chatwork ID"
   all_status:
     pending: "Pending"
     accepted: "Accepted"
@@ -1115,3 +1116,4 @@ en:
   login_wsm_account: "Login with WSM account"
   mail_after_create: "You just logged in for the first time with a WSM account. You can sign in with WSM or sign in directly with email: %{email} and password: %{pass}."
   subject_mail_after_create: "Password of the F-Order account"
+  chatwork_id_help: "You must enter exactly your chatwork account id."

@@ -23,7 +23,7 @@ class SendOrdersInfoToChatworkService
           (!order.user.chatwork_settings.present? ||
           order.user.chatwork_settings[:chatwork_processed] == Settings.serialize_true)
           to_account_id = members
-            .find {|member| member["name"] == I18n.transliterate(order.user_name)}
+            .find {|member| member["account_id"] == order.user_chatwork_id.to_i}
           to = to_account_id.present? ? "[To:#{to_account_id["account_id"]}]" : ""
           to_all += to unless to_all.include? to
         end

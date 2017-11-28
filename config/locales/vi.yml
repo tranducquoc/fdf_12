@@ -854,6 +854,7 @@ vi:
     domain: "Yêu cầu thêm cửa hàng vào miền"
     domain_name: "Tên miền"
     cancel: "Hủy"
+    phone: "Số điện thoại"
   manage_domain:
     view_all_domains: "Tất cả miền"
     leave: "Rời miền"
@@ -1175,3 +1176,4 @@ vi:
   mail_after_create: "Bạn vừa đăng nhập lần đầu bằng tài khoản WSM. Bạn có thể đăng nhập bằng WSM hoặc đăng nhập trực tiếp với tài khoản %{email} và mật khẩu %{pass}."
   subject_mail_after_create: "Mật khẩu tài khoản F-Order"
   chatwork_id_help: "Bạn phải nhập chính xác ID của tài khoản chatwork."
+  shop: "Cửa hàng"

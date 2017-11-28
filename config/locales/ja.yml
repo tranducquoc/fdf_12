@@ -806,6 +806,7 @@ ja:
     domain: "ドメインで店舗をリクエスト"
     domain_name: "ドメインの名前"
     cancel: "キャンセル"
+    phone: "Phone Number"
   manage_domain:
     view_all_domains: "すべてのドメイン"
     leave: "リーブ"
@@ -1127,3 +1128,4 @@ ja:
   mail_after_create: "あなたはWSMアカウントで初めてログインしました。 WSMでサインインするか、電子メールで直接サインインすることができます：%{email}とパスワード：%{pass}"
   subject_mail_after_create: "F-Orderアカウントのパスワード"
   chatwork_id_help: "You must enter exactly your chatwork account id."
+  shop: "Shop"

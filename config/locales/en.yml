@@ -814,6 +814,7 @@ en:
     domain: "Request Shop to Domain"
     domain_name: "Domain name"
     cancel: "Cancel"
+    phone: "Phone"
   manage_domain:
     view_all_domains: "view all domains"
     leave: "Leave domain"
@@ -1117,3 +1118,4 @@ en:
   mail_after_create: "You just logged in for the first time with a WSM account. You can sign in with WSM or sign in directly with email: %{email} and password: %{pass}."
   subject_mail_after_create: "Password of the F-Order account"
   chatwork_id_help: "You must enter exactly your chatwork account id."
+  shop: "Shop"

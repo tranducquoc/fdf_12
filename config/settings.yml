@@ -116,6 +116,7 @@ max_content_of_comment: 300
 shop:
   max_name: 50
   max_description: 250
+  max_number_phone: 11
 api_type_success: 0
 api_type_error: 1
 api_type_not_found: 2

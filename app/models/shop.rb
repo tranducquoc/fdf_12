@@ -57,7 +57,7 @@ class Shop < ApplicationRecord
   validates :description, presence: true, length: {maximum: Settings.shop.max_description}
   validates :time_auto_reject, presence: true, allow_nil: true
   validates :phone, presence: true, numericality: {only_integer: true},
-    length: {maximum: Settings.shop.max_number_phone}
+    length: {maximum: Settings.shop.max_number_phone}, allow_nil: true
 
   mount_uploader :cover_image, ShopCoverUploader
   mount_uploader :avatar, ShopAvatarUploader

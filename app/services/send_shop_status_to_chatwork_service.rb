@@ -35,7 +35,7 @@ class SendShopStatusToChatworkService
           end
           I18n.t("chatwork_shop_message.open",
             locale: value[:type], owner: @shop.owner_name, shop: @shop.name,
-            url: Settings.root_path + Rails.application.routes.url_helpers.shop_path(@shop),
+            url: Settings.root_path + Rails.application.routes.url_helpers.domain_shop_path(domain, @shop),
             time: I18n.l(time, format: :short_time), date: date)
         end
       body += message + Settings.diliver_dot + "\n"

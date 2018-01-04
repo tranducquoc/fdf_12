@@ -27,7 +27,7 @@
         <% end %>
         <%= image_tag @shop.avatar.url, class: "avatar img_shop_avatar", id: "img-avatar" %>
         <div class="change_image_hover">
-          <%= f.file_field :avatar, onchange: "this.form.submit();", class: "hide" %>
+          <%= f.file_field :avatar, onchange: "javascript:", class: "hide" %>
           <%= link_to "javascript:void(0)", class: "change_image" do %>
             <i class="material-icons change_icon">camera_enhance</i>
             <div class="change_item"><%= t "change_picture" %></div>

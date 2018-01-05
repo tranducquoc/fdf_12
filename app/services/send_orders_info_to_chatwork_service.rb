@@ -5,9 +5,13 @@ class SendOrdersInfoToChatworkService
 
   def send
     @orders.group_by{|o| o.domain}.each do |domain, orders|
-      room = domain.room_chatwork
-      if room.present? && to_users(room, orders).present?
-        ChatWork::Message.create room_id: room, body: message_body(room, orders)
+      rooms = domain.room_chatwork.split(',')
+      @all_members = []
+      rooms.each do |r|
+        if r.present? && to_users(r, orders).present?
+          ChatWork::Message.create room_id: r, body: message_body(r, orders)
+          @all_members.concat ChatWork::Member.get(room_id: r)
+        end
       end
     end
   end
@@ -18,6 +22,7 @@ class SendOrdersInfoToChatworkService
     to_all = ""
     begin
       members = ChatWork::Member.get room_id: room
+      members = members - @all_members
       orders.each do |order|
         if !order.is_paid && order.order_products.done.present?  &&
           (!order.user.chatwork_settings.present? ||
@@ -43,4 +48,5 @@ class SendOrdersInfoToChatworkService
     end
     to_users(room, orders) + "[info]" + Settings.forder_chatwork_title + body + "[/info]"
   end
+
 end

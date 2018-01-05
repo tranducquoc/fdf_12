@@ -58,8 +58,7 @@ $(document).ready(function() {
           maxlength: 50
         },
         'product[description]': {
-          required: true,
-          maxlength: 250
+          maxlength: 500
         },
         'product[price]': {
           required: true,
@@ -73,7 +72,6 @@ $(document).ready(function() {
           maxlength: I18n.t('activerecord.errors.models.product.attributes.name.too_long')
         },
         'product[description]': {
-          required: I18n.t('activerecord.errors.models.product.attributes.description.blank'),
           maxlength: I18n.t('activerecord.errors.models.product.attributes.description.too_long')
         },
         'product[price]': {

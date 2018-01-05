@@ -118,8 +118,10 @@
           <h2><%= t "crop_shop_cover" %></h2>
           <div class="crop_image">
             <img src="" id="shop_cover_crop" class= "crop-modal">
-            <%= submit_tag t("crop"), class: "btn btn_add_to_cart btn-add form-button", id: "submit_crop" %>
           </div>
+          <span class="col-md-12 pull right btn-crop">
+            <%= submit_tag t("crop"), class: "btn btn_add_to_cart btn-add form-button", id: "submit_crop" %>
+          </span>
         </div>
       </div>
       <div id="crop_avatar_shop" class="mfp-hide crop-image-modal"">
@@ -127,9 +129,11 @@
           <h2><%= t "crop_shop_avatar" %></h2>
           <div class="crop_image">
             <img src="" id="shop_avatar_crop" class= "crop-modal" >
+          </div>
+          <span class="col-md-12 pull right btn-crop">
             <%= submit_tag t("crop"),class: "btn btn_add_to_cart btn-add form-button",
               id: "submit_crop" %>
-          </div>
+          </span>
         </div>
       </div>
     </div>

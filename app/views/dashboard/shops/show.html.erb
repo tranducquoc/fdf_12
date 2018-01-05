@@ -17,8 +17,10 @@
           <h2><%= t "crop_shop_cover" %></h2>
           <div class="crop_image">
             <img src="" id="shop_cover_crop" class ="crop-modal" >
-            <%= f.submit t("crop"), class: "btn btn_add_to_cart btn-add form-button", id: "submit_crop" %>
           </div>
+          <span class="col-md-12 pull right btn-crop">
+            <%= f.submit t("crop"), class: "btn btn_add_to_cart btn-add form-button", id: "submit_crop" %>
+          </span>
         </div>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-3">
@@ -38,8 +40,10 @@
             <h2><%= t "crop_shop_avatar" %></h2>
             <div class="crop_image">
               <img src="" id="shop_avatar_crop" class ="crop-modal" >
-              <%= f.submit t("crop"), class: "btn btn_add_to_cart btn-add form-button", id: "submit_crop" %>
             </div>
+            <span class="col-md-12 pull right btn-crop">
+              <%= f.submit t("crop"), class: "btn btn_add_to_cart btn-add form-button", id: "submit_crop" %>
+            </span>
           </div>
         </div>
       </div>

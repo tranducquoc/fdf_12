@@ -109,7 +109,7 @@ user:
   max_description: 250
 product:
   max_name: 50
-  max_description: 250
+  max_description: 500
   max_price: 1000000000
 min_content_of_comment: 1
 max_content_of_comment: 300

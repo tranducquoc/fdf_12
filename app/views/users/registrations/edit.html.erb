@@ -73,8 +73,10 @@
               <h2 class= "crop-title" ><%= t "crop_user_avatar" %></h2>
               <div class="crop_image">
                 <img src="" id="user_avatar_crop" class="crop-modal">
-                <%= submit_tag t("crop"), class: "btn btn_add_to_cart btn-add form-button", id: "submit_crop" %>
               </div>
+              <span class="col-md-12 pull right btn-crop">
+                <%= submit_tag t("crop"), class: "btn btn_add_to_cart btn-add form-button", id: "submit_crop" %>
+              </span>
             </div>
           </div>
         </div>

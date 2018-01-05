@@ -43,7 +43,7 @@ class Product < ApplicationRecord
   mount_base64_uploader :image, ProductImageUploader
   validates :name, presence: true, length: {maximum: Settings.product.max_name},
     format: {with: VALID_NAME_REGEX}
-  validates :description, presence: true, length: {maximum: Settings.product.max_description}
+  validates :description, length: {maximum: Settings.product.max_description}
   validate :image_size
   validates_time :end_hour, on_or_after: :start_hour,
     on_or_after_message: I18n.t("invalid_hour")

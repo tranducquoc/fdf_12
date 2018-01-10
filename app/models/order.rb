@@ -202,11 +202,10 @@ class Order < ApplicationRecord
   end
 
   def check_status_order
-    delay(run_at: time_auto_reject_order.minutes.from_now)
-      .update_new_status_order
+    delay(run_at: time_auto_reject_order).update_new_status_order
   end
 
   def time_auto_reject_order
-    self.shop.time_auto_reject.hour * Settings.minute_constant + self.shop.time_auto_reject.min
+    Time.new().change hour: self.shop.time_auto_reject.hour, min: self.shop.time_auto_reject.min
   end
 end

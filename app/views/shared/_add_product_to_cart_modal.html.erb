@@ -26,9 +26,6 @@
                 </div>
                 <div class="handle-product-cart">
                   <%= t "cart.quantity" %>:
-                  <span class="quantity-product-cart">
-                    <%= @cart.find_item(product.id.to_s).quantity %>
-                  </span>
                   <span class="item-right">
                     <%= link_to cart_path(product.id), method: :delete,
                       remote: true, class: "pull-right" do %>
@@ -36,17 +33,11 @@
                       </span>
                     <% end %>
                   </span>
-                  <%= link_to edit_cart_path(id: product.id),
-                    method: :get, remote: true, class: "pull-right" do %>
-                    <span class="glyphicon glyphicon-minus-sign
-                      text-primary action-padding"></span>
+                  <%= link_to "javascript:", data:{id: product.id}, class: "submit-quantity-product pull-right" do %>
+                    <span class="fa quantity-products text-success  action-padding"></span>
                   <% end %>
-                  <%= link_to cart_path(id: product.id, edit: true), remote: true,
-                    method: :put, class: "pull-right" do %>
-                    <span class="glyphicon glyphicon-plus-sign text-success
-                      action-padding">
-                    </span>
-                  <% end %>
+                  <%= text_field_tag :quantity_product, @cart.find_item(product.id.to_s).quantity,
+                    class: "quantity-product-cart form-control quantity-product pull-right" %>
                 </div>
               </div>
             </div>
@@ -63,7 +54,7 @@
                 <b><%= t "all" %></b>
                 <span class="cart-price-in-modal">
                   <%= format_price @cart.total_price %>
-                </span>  
+                </span>
               </div>
             </div>
           </div>

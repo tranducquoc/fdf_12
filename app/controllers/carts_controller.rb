@@ -17,12 +17,14 @@ class CartsController < ApplicationController
       if item
         @cart.update_note item, params[:notes]
         update_session
-        render json: {}
-      else
-        render json: {}
       end
+      render json: {}
     else
-      @cart.add_item params[:id], @product.shop.id
+      if params[:quantity_product].present?
+        @cart.add_item params[:id], @product.shop.id, check_quantity_product(params[:quantity_product])
+      else
+        @cart.add_item params[:id], @product.shop.id
+      end
       update_session
     end
     @is_edit = params[:edit]
@@ -83,6 +85,11 @@ class CartsController < ApplicationController
   end
 
   private
+
+  def check_quantity_product quantity_product
+    Integer(quantity_product) rescue @cart.find_item(@product.id.to_s).quantity
+  end
+
   def load_product
     @product = Product.find_by id: params[:id]
     unless @product

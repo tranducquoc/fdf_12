@@ -18,10 +18,10 @@ class Cart
     item.update_note notes
   end
 
-  def add_item product_id, shop_id
+  def add_item product_id, shop_id, quantity_product = nil
     item = @items.find{|item| item.product_id == product_id}
     if item
-      item.increment
+      item.increment quantity_product
     else
       @items << CartItem.new(product_id, shop_id)
     end
@@ -57,7 +57,7 @@ class Cart
   end
 
   def is_first_added?
-    count == Settings.min_cart_item_show_caret && 
+    count == Settings.min_cart_item_show_caret &&
       items.first.quantity == Settings.min_cart_item_show_caret
   end
 end

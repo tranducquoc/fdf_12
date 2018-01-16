@@ -1,4 +1,20 @@
 $(document).ready(function() {
+  $(document).on('keyup', '#quantity_product', function() {
+    $('.quantity-products').addClass('fa-floppy-o');
+  });
+  $(document).on('click', '.submit-quantity-product', function() {
+    var id = $(this).data('id');
+    var quantity_product = $('#quantity_product').val();
+    $.ajax({
+      type: 'PUT',
+      url : '/carts/' + id,
+      dataType: 'script',
+      data: {
+        edit: true,
+        quantity_product: quantity_product
+      }
+    });
+  });
   $('.id_btn_active').on('click', function() {
     statusNow = $(this).val();
     btn = $(this);

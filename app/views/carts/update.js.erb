@@ -9,7 +9,7 @@ $('.items-count').text('<%= @cart.count %>');
     + '</li></ul>');
 <% end %>
 $('.render_js_after_ajax_rails').html('<%= javascript_include_tag "modal" %>');
-$('.quantity-product-cart').text('<%= @cart.find_item(@product.id.to_s).quantity %>');
+$('.quantity-product-cart').val('<%= @cart.find_item(@product.id.to_s).quantity %>');
 $('.cart-price-in-modal').text('<%= format_price @cart.total_price %>');
 $.growl.notice({title: '<%= t "common.notifications" %>',
   message: '<%= t "add_cart_succes" %>'});

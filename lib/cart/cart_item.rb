@@ -12,8 +12,8 @@ class CartItem
     @notes = notes
   end
 
-  def increment
-    @quantity += 1
+  def increment quantity_product
+    @quantity = quantity_product.present? ? quantity_product : (@quantity + 1)
   end
 
   def decrement

@@ -1,0 +1,6 @@
+<% if @success %>
+  $.growl.notice({title: '<%= t "common.notifications" %>', message: '<%= t "flash.success.dashboard.update_setting" %>'});
+  $('.modal-shop-settings').modal('hide');
+<% else %>
+  $.growl.error({title: '<%= t "common.notifications" %>', message: '<%= t "flash.danger.dashboard.update_setting" %>'});
+<% end %>

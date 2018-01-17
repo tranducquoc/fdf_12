@@ -1,0 +1,6 @@
+<% if @shop %>
+  $('.shop-settings').html('<%= j render "dashboard/shop_settings/form_shop_settings", shop: @shop %>');
+$('.modal-shop-settings').modal('show');
+<% else %>
+  $.growl.error({title: '<%= t "common.notifications" %>', message: '<%= t "flash.danger.dashboard.not_found" %>'});
+<% end %>

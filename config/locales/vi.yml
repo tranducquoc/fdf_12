@@ -386,6 +386,7 @@ vi:
         updated_shop: "Lưu cửa hàng thành công"
         delete_product: "Sản phẩm đã được xóa!"
         create_request: "Yêu cầu đã được thêm!"
+        update_setting: "Thiệt lập đưọc cập nhật thành công!"
     danger:
       load_order: "Không thể tìm thấy đơn hàng. Vui lòng chọn lại! "
       load_items: "Không tìm thấy sản phẩm"
@@ -408,6 +409,8 @@ vi:
         order_product: "Sản phẩm đã được đặt hàng"
         add_product_failed: "Không thể thêm sản phẩm vào miền này"
         create_request: "Yêu cầu thất bại!"
+        update_setting: "Cập nhật thất bại!"
+        not_found: "Cửa hàng không tồn tại"
     warning:
       admin:
         deleted_category: "Có sản phẩm bên trong. Không thể xóa!"
@@ -1012,6 +1015,7 @@ vi:
     close_shop_now: "Đóng cửa ngay"
     edit_shop: "Chỉnh sửa cửa hàng"
     add_new_product: "Thêm sản phẩm mới"
+    shop_settings: "Thiết lập"
   time_auto_close_shop: "Đóng cửa tự động lúc: "
   time_open_forever: "Thời gian tự động mở cửa:"
   time_close_forever: "Thời gian tự đống đóng cửa:"
@@ -1177,3 +1181,12 @@ vi:
   subject_mail_after_create: "Mật khẩu tài khoản F-Order"
   chatwork_id_help: "Bạn phải nhập chính xác ID của tài khoản chatwork."
   shop: "Cửa hàng"
+  shop_settings:
+    title: "Cài đặt cửa hàng"
+    noti_chatwork: "Thông báo chatwork"
+    submit: "Cập nhật"
+    send_all_noti: "Gửi tất cả thông báo"
+    send_turn_on_shop_noti: "Gửi thông báo khi bạn mở cửa hàng"
+    send_turn_off_shop_noti: "Gửi thông báo khi bạn đóng cửa hàng"
+    send_new_product_noti: "Gửi thông báo khi bạn tạo sản phẩm mới"
+    send_order_status_noti: "Gửi thông báo khi bạn đóng đơn hàng"

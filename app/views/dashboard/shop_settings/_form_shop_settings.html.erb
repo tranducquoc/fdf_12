@@ -1,0 +1,102 @@
+<%= form_for shop, url: dashboard_shop_setting_path, remote: true do |f| %>
+  <div class="panel-group noti-chatwork">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <i class="fa fa-bell"></i> <%= t "shop_settings.noti_chatwork" %>
+        </h5>
+      </div>
+      <div class="panel-body">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><strong><%= t "shop_settings.send_all_noti" %></strong></td>
+              <td>
+                <div class="onoffswitch">
+                  <input type="checkbox" name="turn-all-email" id="send_all_noti"
+                    class="onoffswitch-checkbox"
+                    <%= checked_all_shop_setting? shop %>>
+                  <label class="onoffswitch-label" for="send_all_noti">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                  </label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong><%= t "shop_settings.send_turn_on_shop_noti" %></strong></td>
+              <td>
+                <div class="onoffswitch">
+                  <%= f.fields_for :shop_settings do |setting| %>
+                    <%= setting.check_box :turn_on_shop,
+                      id: "send_turn_on_shop_noti", class: "onoffswitch-checkbox",
+                      checked: checked_shop_setting?(Settings.turn_on_shop, shop) %>
+                  <% end %>
+                  <label class="onoffswitch-label" for="send_turn_on_shop_noti">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                  </label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong><%= t "shop_settings.send_turn_off_shop_noti" %></strong></td>
+              <td>
+                <div class="onoffswitch">
+                  <%= f.fields_for :shop_settings do |setting| %>
+                    <%= setting.check_box :turn_off_shop,
+                      id: "send_turn_off_shop_noti", class: "onoffswitch-checkbox",
+                      checked: checked_shop_setting?(Settings.turn_off_shop, shop) %>
+                  <% end %>
+                  <label class="onoffswitch-label" for="send_turn_off_shop_noti">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                  </label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong><%= t "shop_settings.send_order_status_noti" %></strong></td>
+              <td>
+                <div class="onoffswitch">
+                  <%= f.fields_for :shop_settings do |setting| %>
+                    <%= setting.check_box :order_status,
+                      id: "send_order_status_noti", class: "onoffswitch-checkbox",
+                      checked: checked_shop_setting?(Settings.order_status, shop) %>
+                  <% end %>
+                  <label class="onoffswitch-label" for="send_order_status_noti">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                  </label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong><%= t "shop_settings.send_new_product_noti" %></strong></td>
+              <td>
+                <div class="onoffswitch">
+                  <%= f.fields_for :shop_settings do |setting| %>
+                    <%= setting.check_box :new_product,
+                      id: "send_new_product_noti", class: "onoffswitch-checkbox",
+                      checked: checked_shop_setting?(Settings.new_product, shop) %>
+                  <% end %>
+                  <label class="onoffswitch-label" for="send_new_product_noti">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                  </label>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default form-button" data-dismiss="modal">
+        <%= t "cancel" %>
+      </button>
+      <%= f.submit t("shop_settings.submit"),
+        class: "btn btn_add_to_cart btn-add padding-left-right-10 form-button" %>
+    </div>
+<% end %>

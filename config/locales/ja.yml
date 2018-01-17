@@ -339,6 +339,7 @@ ja:
         updated_shop: "変更が保存された。"
         delete_product: "製品は削除されました。"
         create_request: "成功"
+        update_setting: "Settings was successfully updated!"
     danger:
       load_order: "ラインを見つけることができません。選択しなおしてください。"
       load_items: "製品が見つけることができません。"
@@ -360,6 +361,8 @@ ja:
         order_product: "製品が発注されている。"
         add_product_failed: "失敗"
         create_request: "失敗"
+        update_setting: Update settings failed!
+        not_found: "Shop not exist"
     warning:
       admin:
         deleted_category: "削除できません。"
@@ -963,6 +966,7 @@ ja:
     close_shop_now: "今すぐ店を閉める"
     edit_shop: "ストアの編集情報"
     add_new_product: "新しい商品を追加"
+    shop_settings: "Settings"
   time_auto_close_shop: "時間自動クローズ "
   time_open_forever: "時間自動開:"
   time_close_forever: "時間は自動的に閉:"
@@ -1129,3 +1133,12 @@ ja:
   subject_mail_after_create: "F-Orderアカウントのパスワード"
   chatwork_id_help: "You must enter exactly your chatwork account id."
   shop: "Shop"
+  shop_settings:
+    title: "Shop settings"
+    noti_chatwork: "Notify chatwork"
+    submit: "Update"
+    send_all_noti: "Send all notification"
+    send_turn_on_shop_noti: "Send a notification when you open the shop"
+    send_turn_off_shop_noti: "Send a notification when you close the shop"
+    send_new_product_noti: "Send a notification when creating a new product"
+    send_order_status_noti: "Send a notification when you close the orders"

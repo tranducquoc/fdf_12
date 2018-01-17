@@ -38,6 +38,8 @@ class Shop < ApplicationRecord
   has_many :domains, through: :shop_domains
   has_many :request_shop_domains
 
+  serialize :shop_settings, Hash
+
   enum status: {pending: 0, active: 1, closed: 2, rejected: 3, blocked: 4}
 
   enum status_on_off: {off: 0, on: 1}

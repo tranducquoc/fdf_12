@@ -342,6 +342,7 @@ en:
         updated_shop: "Update shop successfully!"
         delete_product: "Delete product successfully!"
         create_request: "Created request successfully!"
+        update_setting: "Settings was successfully updated!"
     danger:
       load_order: "Cannot find order. plz choose order! "
       load_items: "Cannot find order items"
@@ -364,6 +365,8 @@ en:
         order_product: "Product was ordered"
         add_product_failed: "Can not add this product into domain"
         create_request: "Created request failed!"
+        update_setting: Update settings failed!
+        not_found: "Shop not exist"
     warning:
       admin:
         deleted_category: "Cannot delete because this category has products!"
@@ -955,6 +958,7 @@ en:
     close_shop_now: "Close shop now"
     edit_shop: "Edit info of shop"
     add_new_product: "Add new product"
+    shop_settings: "Settings"
   time_auto_close_shop: "Auto close at: "
   time_open_forever: "Time auto open:"
   time_close_forever: "Time auto close:"
@@ -1119,3 +1123,12 @@ en:
   subject_mail_after_create: "Password of the F-Order account"
   chatwork_id_help: "You must enter exactly your chatwork account id."
   shop: "Shop"
+  shop_settings:
+    title: "Shop settings"
+    noti_chatwork: "Notify chatwork"
+    submit: "Update"
+    send_all_noti: "Send all notification"
+    send_turn_on_shop_noti: "Send a notification when you open the shop"
+    send_turn_off_shop_noti: "Send a notification when you close the shop"
+    send_new_product_noti: "Send a notification when creating a new product"
+    send_order_status_noti: "Send a notification when you close the orders"

@@ -69,4 +69,20 @@ module Dashboard::ShopsHelper
       s.shop_manager_domains.find_by(domain_id: session[:domain_id]) || s.owner?}.map &:user_id
     return User.of_ids user_ids
   end
+
+  def checked_shop_setting? type, shop
+    return true if shop.shop_settings.blank? && default_shop_settings_true?(type)
+    shop.shop_settings[type] == Settings.serialize_true
+  end
+
+  def checked_all_shop_setting? shop
+    return false if shop.shop_settings.blank?
+    (shop.shop_settings.values.all? {|value| value == Settings.serialize_true}) ? "checked" : ""
+  end
+
+  private
+
+  def default_shop_settings_true? type
+    [Settings.turn_on_shop, Settings.order_status].include? type
+  end
 end

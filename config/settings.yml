@@ -127,6 +127,7 @@ type_update_all_orders: 3
 index_zero_in_array: 0
 index_one_in_array: 1
 index_two_in_array: 2
+index_three_in_array: 3
 serialize_true: "1"
 serialize_false: "0"
 filter_order:
@@ -180,3 +181,7 @@ min_rate_point: 0
 type_follow: "follow"
 type_unfollow: "unfollow"
 weekend: [6,0]
+turn_on_shop: "turn_on_shop"
+turn_off_shop: "turn_off_shop"
+order_status: "order_status"
+new_product: "new_product"

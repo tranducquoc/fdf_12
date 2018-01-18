@@ -872,10 +872,10 @@ $orange_main: #ff5722;
 .function_manage {
   display: inline-flex;
   .btn_function {
-    width: 90px;
+    width: 85px;
     height: 80px;
     background-color: #ffffff;
-    margin: 5px 15px;
+    margin: 5px 10px;
     border-radius: 10px;
     border: solid 1px #fd680e;
     box-shadow: 1px 1px 1px 1px grey;
@@ -890,10 +890,10 @@ $orange_main: #ff5722;
     }
   }
   .btn_function:hover {
-    width: 90px;
+    width: 85px;
     height: 80px;
     background-color: #fd680e;
-    margin: 5px 15px;
+    margin: 5px 10px;
     border-radius: 10px;
     border: solid 1px #ffffff;
     box-shadow: 1px 1px 1px 1px grey;
@@ -905,12 +905,12 @@ $orange_main: #ff5722;
   @media (max-width: 1192px) {
     .btn_function {
       margin: 5px;
-      width: 70px;
+      width: 60px;
       height: auto;
     }
     .btn_function:hover {
       margin: 5px;
-      width: 70px;
+      width: 60px;
       height: auto;
     }
   }

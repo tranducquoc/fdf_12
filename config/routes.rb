@@ -56,6 +56,7 @@ Rails.application.routes.draw do
       resources :group_orders, only: [:index, :show]
       resources :time_approve_orders, only: [:index, :show]
     end
+    resources :shop_settings, only: [:edit, :update]
     resources :statistics
     resources :new_manager_searches, only: :index
     resources :shop_manager_domains

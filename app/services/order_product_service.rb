@@ -15,6 +15,12 @@ class OrderProductService
   end
 
   def send_message_to_chatwork
-    SendOrdersInfoToChatworkJob.perform_later @updated_orders.to_a
+    SendOrdersInfoToChatworkJob.perform_later @updated_orders.to_a if check_shop_settings(@shop)
+  end
+
+  private
+
+  def check_shop_settings shop
+    shop.shop_settings[:order_status] != Settings.serialize_false
   end
 end

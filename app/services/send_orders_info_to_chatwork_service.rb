@@ -44,7 +44,7 @@ class SendOrdersInfoToChatworkService
     Settings.languages.each do |key, value|
       message = I18n.t("chatwork_order_message", locale: value[:type],
         shop: @orders.first.shop_name)
-      body += message + Settings.diliver_dot + "\n"
+      body += message + "\n"
     end
     to_users(room, orders) + "[info]" + Settings.forder_chatwork_title + body + "[/info]"
   end

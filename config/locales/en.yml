@@ -1081,9 +1081,9 @@ en:
   import_user: "Import account (excel)"
   import_group_user: "Import group (excel)"
   chatwork_shop_message:
-    open: "Shop %{shop} of %{owner} open until %{time} %{date}, quickly order your favorite items at %{url}"
-    close: "Shop %{shop} of %{owner} has just closed. Thank you for using our service. See you again later!"
-    open_forever: "Shop %{shop} of %{owner} has just opened, quickly order your favorite items at %{url}"
+    open: "Shop %{shop} of %{owner} open until %{time} %{date}"
+    close: "Shop %{shop} of %{owner} has just closed."
+    open_forever: "Shop %{shop} of %{owner} has just opened"
   follow: "Follow"
   unfollow: "Unfollow"
   follow_shop: "You have followed shop %{shop}!"

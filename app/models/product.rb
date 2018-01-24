@@ -85,6 +85,10 @@ class Product < ApplicationRecord
   end
 
   def send_chatwork_message
-    SendMessageNewProductToChatworkJob.perform_later self
+    SendMessageNewProductToChatworkJob.perform_later self if check_shop_settings(self.shop)
+  end
+
+  def check_shop_settings shop
+    shop.shop_settings[:new_product] == Settings.serialize_true
   end
 end

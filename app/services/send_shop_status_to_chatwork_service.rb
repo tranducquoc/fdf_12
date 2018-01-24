@@ -7,7 +7,7 @@ class SendShopStatusToChatworkService
     @shop.domains.each do |domain|
       rooms = domain.room_chatwork.split(',')
       rooms.each do |room|
-        if room.present? && to_users(room, domain).present?
+        if room.present?
           ChatWork::Message.create room_id: room, body: message_body(room, domain)
         end
       end
@@ -40,9 +40,9 @@ class SendShopStatusToChatworkService
             url: Settings.root_path + Rails.application.routes.url_helpers.domain_shop_path(domain, @shop),
             time: I18n.l(time, format: :short_time), date: date)
         end
-      body += message + Settings.diliver_dot + "\n"
+      body += message + "\n"
       end
-    to_users(room, domain)+ "\n" + "[info]" + Settings.forder_chatwork_title + body + "[/info]"
+    "[info]" + Settings.forder_chatwork_title + Settings.root_path + Rails.application.routes.url_helpers.domain_shop_path(domain, @shop) + "\n"+ body + "[/info]"
   end
 
   def to_users room, domain

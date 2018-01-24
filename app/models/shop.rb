@@ -240,6 +240,16 @@ class Shop < ApplicationRecord
   end
 
   def send_chatwork_message
-    SendShopStatusToChatworkJob.perform_later self
+    SendShopStatusToChatworkJob.perform_later self if check_shop_settings(self)
+  end
+
+  private
+
+  def check_shop_settings shop
+    if shop.status_on_off == Settings.shop_status_off
+      shop.shop_settings[:turn_off_shop] == Settings.serialize_true
+    else
+      shop.shop_settings[:turn_on_shop] != Settings.serialize_false
+    end
   end
 end

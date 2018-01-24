@@ -1139,9 +1139,9 @@ vi:
   import_user: "Thêm tài khoản (excel)"
   import_group_user: "Thêm nhóm (excel)"
   chatwork_shop_message:
-    open: "Cửa hàng %{shop} của %{owner} được mở cửa đến lúc %{time} ngày %{date}, hãy nhanh tay đặt ngay cho mình những món hàng yêu thích tại %{url}"
-    close: "Cửa hàng %{shop} của %{owner} vừa đóng cửa, cám ơn bạn đã sử dụng dịch vụ của chúng tôi, hẹn gặp lại sau!"
-    open_forever: "Cửa hàng %{shop} của %{owner} vừa mở cửa, hãy nhanh tay đặt ngay cho mình những món hàng yêu thích tại %{url}"
+    open: "Cửa hàng %{shop} của %{owner} được mở cửa đến lúc %{time} ngày %{date}"
+    close: "Cửa hàng %{shop} của %{owner} vừa đóng cửa"
+    open_forever: "Cửa hàng %{shop} của %{owner} vừa mở cửa"
   follow: "Theo dõi"
   unfollow: "Hủy theo dõi"
   follow_shop: "Bạn vừa theo dõi cửa hàng %{shop}!"

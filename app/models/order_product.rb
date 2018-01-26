@@ -59,7 +59,7 @@ class OrderProduct < ApplicationRecord
   scope :history_orders, ->(shop_id) do
     joins(:order)
       .select("order_products.*, orders.end_at as end_at")
-      .where("orders.status = ? and orders.shop_id = ?", Order.statuses[:done], shop_id) 
+      .where("orders.status = ? and orders.shop_id = ?", Order.statuses[:done], shop_id)
       .order("order_products.created_at desc")
   end
 

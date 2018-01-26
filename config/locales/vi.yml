@@ -166,7 +166,7 @@ vi:
   owners_shop_cover_image: "Ảnh bìa của shop:"
   owners_shop_avatar: "Ảnh đại diện:"
   shop_name_error : "Tên shop lỗi!"
-  time_auto_reject_order: "Thời gian tự động từ chối order: "
+  time_auto_reject_order: "Tự động từ chối đơn hàng sau: "
   deleted_user_order_shop: "Một đơn hàng đã bị tự động xóa vì quá thời gian"
   to_domain: "vào miền: "
   errors_shop_order_products: "Đơn hàng phê duyệt lỗi!"

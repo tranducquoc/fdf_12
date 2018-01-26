@@ -126,7 +126,7 @@ en:
   shop_order_products: "have been accepted"
   owners_shop_cover_image: "Cover image of the shop:"
   owners_shop_avatar: "Avatar:"
-  time_auto_reject_order: "Time automatically refused order:"
+  time_auto_reject_order: "Automatically reject the order later: "
   deleted_user_order_shop: "Your order have been auto deleted"
   to_domain: "into domain: "
   user_order_products: "You have successfully submitted orders"

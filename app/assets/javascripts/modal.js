@@ -9,6 +9,7 @@ $(document).ready(function(){
     $('#modal_price').html(price.toLocaleString() + I18n.t("cart.vnd"));
     var quantity = $('#modal_quantity').html('1');
     $('#modal_total').html(price.toLocaleString() + I18n.t("cart.vnd"));
+    $('#modal_note').val('');
   });
 
   $('.modal_quantity_up').click(function(){

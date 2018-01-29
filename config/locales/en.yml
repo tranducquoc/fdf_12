@@ -979,6 +979,7 @@ en:
               blank: "Price can't empty"
               greater_than: "Price must be greater than 0"
               less_than_or_equal_to: "Price must be less than or equal to 1000000000"
+              number_valid: "Please enter a valid number"
         shop:
           attributes:
             name:

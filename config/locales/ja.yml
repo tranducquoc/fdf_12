@@ -987,6 +987,7 @@ ja:
               blank: "価格は空ではありません"
               greater_than: "価格は0より大きくなければなりません"
               less_than_or_equal_to: "価格は1000000000以下でなければなりません"
+              number_valid: "Please enter a valid number"
         shop:
           attributes:
             name:

@@ -1037,6 +1037,7 @@ vi:
               greater_than: "Giá sản phẩm phải lớn hơn 0"
               less_than_or_equal_to: "Giá sản phẩm phải nhỏ hơn hoặc bằng 1000000000"
               not_a_number: "Giá sản phẩm phải là số"
+              number_valid: "Vui lòng nhập đúng giá tiền"
         shop:
           attributes:
             name:

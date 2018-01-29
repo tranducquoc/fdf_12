@@ -49,7 +49,9 @@ class Dashboard::ProductsController < BaseDashboardController
   end
 
   def create
-    @product = @shop.products.new product_params
+    params = product_params
+    params[:price] = params[:price].gsub(/,/,"").to_f
+    @product = @shop.products.new params
     @success = @product.save ? true : false
     load_products_by_size if @success
     respond_to do |format|

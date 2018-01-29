@@ -78,8 +78,7 @@ $(document).ready(function() {
         },
         'product[price]': {
           required: true,
-          min: 1,
-          max: 1000000000
+          Regex: "[0-9,]+"
         }
       },
       messages: {
@@ -92,11 +91,12 @@ $(document).ready(function() {
         },
         'product[price]': {
           required: I18n.t('activerecord.errors.models.product.attributes.price.blank'),
-          min: I18n.t('activerecord.errors.models.product.attributes.price.greater_than'),
-          max: I18n.t('activerecord.errors.models.product.attributes.price.less_than_or_equal_to')
         }
       }
     });
+    jQuery.validator.addMethod("Regex", function(value, element, param) {
+      return value.match(new RegExp("." + param + "$"));
+    }, I18n.t('activerecord.errors.models.product.attributes.price.number_valid'));
   }
 
   function isValidHour() {
@@ -164,3 +164,20 @@ $(document).ready(function() {
     });
   });
 });
+$(document).on('keyup','.money',function(){
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+   event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    value = value.replace(/,/g,'');
+    return numberWithCommas(value);
+  });
+});
+
+function numberWithCommas(x) {
+  var parts = x.toString().split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return parts.join('.');
+}

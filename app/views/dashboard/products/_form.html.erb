@@ -43,8 +43,8 @@
           <%= t "new_product.price" %>
           <span class="color-red">*</span>
         <% end %>
-        <%= f.number_field :price, placeholder: t(".product_price"),
-          class: "form-control" %>
+        <%= f.text_field :price, placeholder: t(".product_price"),
+          class: "form-control money" %>
       </div>
       <label class="time-error"></label>
       <div class="form-group">

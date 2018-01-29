@@ -4,7 +4,7 @@ class SendShopStatusToChatworkService
   end
 
   def send
-    @shop.domains.each do |domain|
+    @shop.domains.uniq.each do |domain|
       rooms = domain.room_chatwork.split(',')
       rooms.each do |room|
         if room.present?

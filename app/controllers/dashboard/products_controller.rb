@@ -60,7 +60,9 @@ class Dashboard::ProductsController < BaseDashboardController
   end
 
   def update
-    @success = @product.update_attributes(product_params) ? true : false
+    params = product_params
+    params[:price] = params[:price].gsub(/,/,"").to_f
+    @success = @product.update_attributes(params) ? true : false
     @products = @shop.products.by_date_newest.limit params[:hidden_products_size] if @success
     respond_to do |format|
       format.json do

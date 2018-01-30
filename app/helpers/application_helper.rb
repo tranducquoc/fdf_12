@@ -50,6 +50,10 @@ module ApplicationHelper
     number_with_delimiter(price.to_i).to_s + t("cart.vnd")
   end
 
+  def format_input_price price
+    number_with_delimiter(price.to_i, delimiter: ",") if price.present?
+  end
+
   def bg_unread event
     if event.read == false
       "unread"

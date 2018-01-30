@@ -20,7 +20,7 @@
       <%= product.description %>
     </div>
   </td>
-  <td><%= product.price %></td>
+  <td><%= format_price product.price %></td>
   <td><%= t "all_status.#{product.status}" %></td>
   <td>
     <%= link_to t("common.edit_button"),

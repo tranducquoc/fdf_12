@@ -7,9 +7,9 @@ class OrdersController < ApplicationController
   before_action :check_user_status_for_action
 
   def index
-    tmp_orders = current_user.orders.in_date(params[:start_date], params[:end_date])
+    tmp_orders = current_user.orders.by_date_newest.in_date(params[:start_date], params[:end_date])
     params[:status] ||= Settings.filter_status_order.all
-    @order_days = tmp_orders.send(params[:status]).group_by{|t| t.created_at.beginning_of_day}
+    @order_days = tmp_orders.by_date_newest.send(params[:status]).group_by{|t| t.created_at.beginning_of_day}
     if request.xhr?
       respond_to do |format|
         format.js

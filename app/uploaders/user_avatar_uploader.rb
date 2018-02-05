@@ -3,10 +3,10 @@
 class UserAvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   process :crop_image
-  if Rails.env.production?
-    include Cloudinary::CarrierWave
-    process tags: ["post_picture"]
-  end
+  # if Rails.env.production?
+  #   include Cloudinary::CarrierWave
+  #   process tags: ["post_picture"]
+  # end
 
   process resize_to_limit: [300, 300]
 
@@ -29,9 +29,7 @@ class UserAvatarUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  unless Rails.env.production?
-    storage :file
-  end
+  storage :file
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

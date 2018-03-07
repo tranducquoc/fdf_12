@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117082849) do
+ActiveRecord::Schema.define(version: 20180307063514) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20180117082849) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "slug"
+    t.integer  "parent_id"
     t.index ["deleted_at"], name: "index_categories_on_deleted_at", using: :btree
     t.index ["name"], name: "index_categories_on_name", using: :btree
   end
@@ -146,37 +147,6 @@ ActiveRecord::Schema.define(version: 20180117082849) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
-  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "menu_id"
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "deleted_at"
-    t.integer  "status"
-    t.index ["deleted_at"], name: "index_items_on_deleted_at", using: :btree
-    t.index ["menu_id"], name: "index_items_on_menu_id", using: :btree
-  end
-
-  create_table "menu_settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.float    "price",      limit: 24
-    t.integer  "maximum"
-    t.integer  "coeficient"
-    t.integer  "menu_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.index ["menu_id"], name: "index_menu_settings_on_menu_id", using: :btree
-  end
-
-  create_table "menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "kind"
-    t.integer  "user_id"
-    t.integer  "shop_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shop_id"], name: "index_menus_on_shop_id", using: :btree
-    t.index ["user_id"], name: "index_menus_on_user_id", using: :btree
-  end
-
   create_table "order_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "quantity"
     t.float    "price",      limit: 24
@@ -224,6 +194,18 @@ ActiveRecord::Schema.define(version: 20180117082849) do
     t.float    "overall_avg",   limit: 24, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.string   "tilte"
+    t.text     "content",     limit: 65535
+    t.string   "image"
+    t.string   "link_shop"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "type"
   end
 
   create_table "product_domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -279,6 +261,14 @@ ActiveRecord::Schema.define(version: 20180117082849) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
+  end
+
+  create_table "reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "request_shop_domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -359,7 +349,6 @@ ActiveRecord::Schema.define(version: 20180117082849) do
     t.time     "time_open",                      default: '2000-01-01 00:00:00'
     t.time     "time_close",                     default: '2000-01-01 00:00:00'
     t.string   "phone"
-    t.integer  "kind",                           default: 0
     t.text     "shop_settings",    limit: 65535
     t.index ["deleted_at"], name: "index_shops_on_deleted_at", using: :btree
     t.index ["owner_id"], name: "index_shops_on_owner_id", using: :btree
@@ -438,6 +427,7 @@ ActiveRecord::Schema.define(version: 20180117082849) do
     t.text     "chatwork_settings",      limit: 65535
     t.boolean  "is_create_by_wsm",                     default: false
     t.integer  "domain_default"
+    t.string   "phone"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
     t.index ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -448,10 +438,6 @@ ActiveRecord::Schema.define(version: 20180117082849) do
   add_foreign_key "coupons", "shops"
   add_foreign_key "coupons", "users"
   add_foreign_key "events", "users"
-  add_foreign_key "items", "menus"
-  add_foreign_key "menu_settings", "menus"
-  add_foreign_key "menus", "shops"
-  add_foreign_key "menus", "users"
   add_foreign_key "order_products", "coupons"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"

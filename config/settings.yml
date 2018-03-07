@@ -184,3 +184,6 @@ turn_on_shop: "turn_on_shop"
 turn_off_shop: "turn_off_shop"
 order_status: "order_status"
 new_product: "new_product"
+post:
+  max_title: 150
+  min_title: 30

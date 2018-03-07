@@ -15,6 +15,7 @@ class Category < ApplicationRecord
   end
 
   has_many :products
+  has_many :posts
 
   scope :asc_by_name, ->{order :name}
 

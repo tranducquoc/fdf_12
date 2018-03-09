@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307063514) do
+ActiveRecord::Schema.define(version: 20180307041127) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -41,10 +41,10 @@ ActiveRecord::Schema.define(version: 20180307063514) do
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "slug"
-    t.integer  "parent_id"
+    t.integer  "parent_id",  default: 0
     t.index ["deleted_at"], name: "index_categories_on_deleted_at", using: :btree
     t.index ["name"], name: "index_categories_on_name", using: :btree
   end
@@ -203,9 +203,10 @@ ActiveRecord::Schema.define(version: 20180307063514) do
     t.text     "content",     limit: 65535
     t.string   "image"
     t.string   "link_shop"
+    t.integer  "type"
+    t.integer  "mode"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.integer  "type"
   end
 
   create_table "product_domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

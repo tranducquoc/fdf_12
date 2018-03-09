@@ -7,7 +7,8 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :category, optional: true
 
-  enum type: {sale: 0, buy: 1}
+  enum mode: {sale: 0, buy: 1}
+  enum type: {professed: 1, secret: 2}
 
   validates :title, presence: true,
     length: {maximum: Settings.post.max_title, minimum: Settings.post.min_title}

@@ -1,0 +1,106 @@
+.page-title{
+  border-bottom: 1px dotted black;
+  font-weight: bold;
+}
+.list-office a{
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+.icon-am-thuc, .icon-xe-co, .icon-do-dien-tu, .icon-do-handmade{
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+  color: red;
+}
+.icon-am-thuc{
+  background: image-url("cuisine") no-repeat center center;
+  background-size: cover;
+}
+.icon-xe-co{
+  background: image-url("car") no-repeat center center;
+  background-size: cover;
+}
+.icon-do-dien-tu{
+  background: image-url("elec") no-repeat center center;
+  background-size: cover;
+}
+.icon-do-handmade{
+  background: image-url("handmade") no-repeat center center;
+  background-size: cover;
+}
+.category-btn p{
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}
+.btn-post-ads a{
+  padding: 8px;
+  font-size: 20px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 40%;
+  margin: auto;
+}
+.list-ads-items{
+  border: 1px solid #ccc;
+  overflow: hidden;
+  margin-bottom: 5px;
+  box-shadow: 5px 5px 5px #ccc;
+}
+.item-content{
+  padding: 10px;
+}
+.item-image{
+  width: 120px;
+  height: 120px;
+  box-shadow: 5px 5px 5px #ccc;
+  padding: 5px;
+}
+.post-title{
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.price-item{
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.meta-tag span{
+  margin-right: 5px;
+}
+.fa-foursquare{
+  color: red!important;
+}
+.filter-post{
+  margin-bottom: 10px;
+}
+.office-filter, .status-filter, .time-filter, .categories-filter{
+  display: inline-block;
+}
+.side-item{
+  padding: 5px;
+  list-style: none;
+}
+.side-item li{
+  font-weight: bold;
+}
+.sidebar-tag{
+  display: inherit;
+}
+.sidebar-tag i {
+  margin-right: 5px;
+}
+.shop-image{
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+.shop-image img{
+  width: 80px;
+  height: 80px;
+}

@@ -7,6 +7,8 @@ class CreatePosts < ActiveRecord::Migration[5.0]
       t.text :content
       t.string :image
       t.string :link_shop
+      t.integer :type
+      t.integer :mode
 
       t.timestamps
     end

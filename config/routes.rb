@@ -69,6 +69,9 @@ Rails.application.routes.draw do
     resources :carts
     resources :shop_domains
     resources :categories
+    namespace :ads do
+      resources :posts
+    end
   end
   resources :user_domains
   resources :shop_domains

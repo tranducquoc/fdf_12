@@ -185,19 +185,19 @@ namespace :fdf_db do
 
   task create_domain: :environment do
     Domain.create!(
-      name: "FramgiaDN",
+      name: "Da Nang Office",
       status: 2,
       owner: 6
     )
 
     Domain.create!(
-      name: "FramgiaHN",
+      name: "Ha Noi Office",
       status: 2,
       owner: 15
     )
 
     Domain.create!(
-      name: "FramgiaHCM",
+      name: "HCMC Office",
       status: 2,
       owner: 15
     )

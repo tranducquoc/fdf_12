@@ -20,7 +20,9 @@
         <p>Category</p>
       </a>
       <div class="row btn-post-ads">
-        <a href="#" class="btn-add"><i class="fa fa-pencil"></i>  Post your ads</a>
+        <%= link_to new_domain_ads_post_path, class: "btn-add" do %>
+          <i class="fa fa-pencil"></i>  Post your ads</a>
+        <% end %>
       </div>
   </div>
   <div class="col-md-4 list-office">

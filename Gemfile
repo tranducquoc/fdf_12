@@ -53,6 +53,7 @@ gem "sweet-alert-confirm"
 gem "axlsx_styler"
 gem "chatwork"
 gem "acts_as_follower", github: "tcocca/acts_as_follower"
+gem "cocoon"
 
 source "https://rails-assets.org" do
   gem "rails-assets-datetimepicker"

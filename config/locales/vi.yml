@@ -1191,3 +1191,33 @@ vi:
     send_turn_off_shop_noti: "Gửi thông báo khi bạn đóng cửa hàng"
     send_new_product_noti: "Gửi thông báo khi bạn tạo sản phẩm mới"
     send_order_status_noti: "Gửi thông báo khi bạn đóng đơn hàng"
+  ads:
+    post:
+      create_title: "Tạo tin rao vặt miễn phí"
+      category: "Danh mục"
+      children_category: "Danh mục con"
+      mode: "Hình thức"
+      image:
+        image: "Hình ảnh"
+        detail: "Chọn hình ảnh cho tin rao của bạn, tối đa 3 ảnh nhé"
+      content:
+        content: "Nội dung"
+        detail: "Chỉ đưa vào tin rao nội dung ngắn gọn để đạt hiệu quả tối ưu"
+        placeholder: "Nhập nội dung tin rao"
+      choose_category:
+        choose_category: "Chọn danh mục tin"
+        detail: "Lựa chọn danh mục và thể loại của tin rao "
+      next_step: "Kế tiếp"
+      prev_step: "Quay lại"
+      title:
+        title: "tiêu đề"
+        placeholder: "Nhập tiêu đề tin rao"
+      shop_url:
+        shop_url: "Đường dẫn cửa hàng"
+        placeholder: "Nhập đường dẫn cửa hàng của bạn nếu có"
+      arena: "Phạm vi"
+      submit: "Đăng tin"
+      flash:
+        success: "Tin rao của bạn đã được tạo thành công"
+        danger: "Tin rao của bạn tạo không thành công, vui lòng thử lại"
+      remove_image: "Xóa ảnh"

@@ -1143,3 +1143,33 @@ ja:
     send_turn_off_shop_noti: "Send a notification when you close the shop"
     send_new_product_noti: "Send a notification when creating a new product"
     send_order_status_noti: "Send a notification when you close the orders"
+  ads:
+    post:
+      create_title: "Create new Ads free"
+      category: "Category"
+      children_category: "Children category"
+      mode: "Mode"
+      image:
+        image: "Image"
+        detail: "Choose image of your ads. Maximum 3 image."
+      content:
+        content: "Content"
+        detail: "Please just give brief content for maximum effective"
+        placeholder: "Type content of your ads"
+      choose_category:
+        choose_category: "Choose category of your ads"
+        detail: "Please choose category and kind of ads"
+      next_step: "Next step"
+      prev_step: "Previous step"
+      title:
+        title: "Title"
+        placeholder: "Type your title of your ads"
+      shop_url:
+        shop_url: "Shop URL"
+        placeholder: "Type your shop url if yes"
+      arena: "Arena"
+      submit: "Submit"
+      flash:
+        success: "Your post successfully created"
+        danger: "Your post did not created, please try again!"
+      remove_image: "Remove image"

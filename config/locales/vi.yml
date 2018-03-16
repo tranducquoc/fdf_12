@@ -1221,3 +1221,9 @@ vi:
         success: "Tin rao của bạn đã được tạo thành công"
         danger: "Tin rao của bạn tạo không thành công, vui lòng thử lại"
       remove_image: "Xóa ảnh"
+      arenas:
+        professed: "Công khai"
+        secret: "Bí mật"
+      modes:
+        sale: "Cần bán"
+        buy: "Cần mua"

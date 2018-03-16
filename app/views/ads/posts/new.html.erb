@@ -47,9 +47,18 @@
             </div>
             <div class="form-group row">
               <div class="col-md-2"></div>
-              <%= f.label :mode, t("ads.post.mode"), class: "col-md-2 col-form-label" %>
-              <div class="col-md-4 post-radio-btn">
-                <%= f.collection_radio_buttons :mode, Post.modes, :second, :first, class: "form-control" %>
+              <%= f.label :mode, t("ads.post.mode"), class: "col-md-2" %>
+              <div class="col-md-4">
+                <div class="radio-order">
+                  <% Settings.modes.each do |key, value| %>
+                    <%= label_tag "status_#{value}", class: "radio-inline",
+                      for: "history_order_status_#{value}" do %>
+                      <%= f.radio_button :mode, value %>
+                      <%= t "ads.post.modes.#{value}" %>
+                      <span class="span-radio-order"></span>
+                    <% end %>
+                  <% end %>
+                </div>
               </div>
             </div>
             <ul class="list-unstyled list-inline pull-right">
@@ -85,9 +94,18 @@
               </div>
             </div>
             <div class="form-group row">
-              <%= f.label :arena, t("ads.post.arena"), class: "col-md-2 col-form-label" %>
-              <div class="col-md-8 post-radio-btn">
-                <%= f.collection_radio_buttons :arena, Post.arenas, :second, :first %>
+              <%= f.label :arena, t("ads.post.arena"), class: "col-md-2" %>
+              <div class="col-md-8">
+                <div class="radio-order">
+                  <% Settings.arenas.each do |key, value| %>
+                    <%= label_tag "status_#{value}", class: "radio-inline",
+                      for: "history_order_status_#{value}" do %>
+                      <%= f.radio_button :arena, value %>
+                      <%= t "ads.post.arenas.#{value}" %>
+                      <span class="span-radio-order"></span>
+                    <% end %>
+                  <% end %>
+                </div>
               </div>
             </div>
             <ul class="list-unstyled list-inline pull-right">

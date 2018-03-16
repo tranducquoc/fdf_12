@@ -1,0 +1,176 @@
+<div class="post-container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#"><%= @post.category.name %></a></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @post.title %></li>
+    </ol>
+  </nav>
+  <div class="col-md-8 post-content">
+    <div class="row">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <% @post.post_images.each do |img| %>
+            <div class="image-slide item <%= img.id == @post.post_images.first.id ? 'active' : '' %>">
+              <%= image_tag img.image.url %>
+            </div>
+          <% end %>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-md-4 right-sidebar post-onwer-info">
+    <h3 class="contact-info">Thong tin lien he</h3>
+    <div class="card">
+      <%= image_tag "default_shop_avatar", class: "card-img-top" %>
+      <div class="card-body">
+        <h4 class="card-title">
+          <%= link_to "Cua Hang ABCD"%></br>
+          <i class="fa fa-clock-o"> 09:00 AM - 15:00 PM</i>
+        </h4>
+        <p class="card-text">
+          <i class="fa fa-user"> Nguoi Dang:</i> <%= @post.user.name %><br>
+          <i class="fa fa-pencil"> Bai Dang:</i> <%= @post_support.post_of_user %><br>
+          <i class="fa fa-star"> Danh gia: </i>
+          <i class="fa fa-star-o"></i>
+          <i class="fa fa-star-o"></i>
+          <i class="fa fa-star-o"></i>
+          <i class="fa fa-star-o"></i>
+          <i class="fa fa-star-o"></i>
+        </p>
+        <div class="row shop-btn-func">
+          <%= link_to "Mua Ngay","", class: "btn btn-add pull-left" %>
+          <%= link_to "Lien He","", class: "btn btn-add pull-right" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 ads-content">
+    <p class="ads-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+    <p class="ads-price">Gia tu: 5.000.000 - 10.000.000 vnd</p>
+      <p class="ads-post">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+      <i class="fa fa-facebook-f fb-icon social-icon"></i>
+      <i class="fa fa-google-plus social-icon g-icon"></i>
+      <i class="fa fa-twitter social-icon tw-icon"></i>
+      <i class="social-icon cw-icon"></i>
+    <span class="dash"></span>
+    <div class="ads-extend">
+      <i class="fa fa-foursquare"> Da Nang Office</i>
+      <i class="fa fa-tags"> Xe co</i>
+      <i class="fa fa-bullseye"> Private</i>
+      <i class="fa fa-calendar-o"> 2018-03-20 09:00:00 AM</i>
+    </div>
+    <span class="dash"></span>
+    <div class="ads-report">
+      <i class="fa fa-shield">*</i>
+      This Ads had been approved by Administrator, if detected phishing, please report immediately
+    </div>
+    <div class="btn-reports">
+      <a href="#" class="btn btn-default"><i class="fa fa-warning"></i>Reports this Ads</a>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3>Tin dang cua Nguyen Van A</h3>
+  </div>
+  <div class="col-md-8 ads-review">
+    <div class="review-ads-input">
+      <div class="media">
+        <div class="media-left ads-review-avatar">
+          <%= image_tag "default_user_avatar", class: "media-object"%>
+        </div>
+        <div class="media-body">
+          <form class="form-group">
+            <h4 class="media-heading">John Doe <small><i>Your rating: </i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></small></h4>
+            <textarea class="form-control" rows="3" id="comment"></textarea>
+            <button class="btn btn-review btn-add">review</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="people-review">
+      <h3>Someone reviewing</h3>
+      <div class="media">
+        <div class="media-left ads-review-avatar">
+          <%= image_tag "default_user_avatar", class: "media-object"%>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">John Doe <small><i>Posted on February 19, 2016 </i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></small></h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <div class="media">
+            <div class="media-left ads-review-avatar">
+              <%= image_tag "default_user_avatar", class: "media-object"%>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">John Doe <small><i>Posted on February 19, 2016</i></small></h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="media">
+        <div class="media-left ads-review-avatar">
+          <%= image_tag "default_user_avatar", class: "media-object"%>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">John Doe <small><i>Posted on February 19, 2016 </i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></small></h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="media">
+        <div class="media-left ads-review-avatar">
+          <%= image_tag "default_user_avatar", class: "media-object"%>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">John Doe <small><i>Posted on February 19, 2016 </i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></small></h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <div class="media">
+            <div class="media-left ads-review-avatar">
+              <%= image_tag "default_user_avatar", class: "media-object"%>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">John Doe <small><i>Posted on February 19, 2016</i></small></h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+          <div class="media">
+            <div class="media-left ads-review-avatar">
+              <%= image_tag "default_user_avatar", class: "media-object"%>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">John Doe <small><i>Posted on February 19, 2016</i></small></h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div >
+  </div>
+</div>

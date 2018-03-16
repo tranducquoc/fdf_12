@@ -1173,3 +1173,9 @@ ja:
         success: "Your post successfully created"
         danger: "Your post did not created, please try again!"
       remove_image: "Remove image"
+      arenas:
+        professed: "Professed"
+        secret: "Secret"
+      modes:
+        sale: "Sale"
+        buy: "Buy"

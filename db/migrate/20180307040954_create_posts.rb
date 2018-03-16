@@ -3,11 +3,10 @@ class CreatePosts < ActiveRecord::Migration[5.0]
     create_table :posts do |t|
       t.integer :user_id
       t.integer :category_id
-      t.string :tilte
+      t.string :title
       t.text :content
-      t.string :image
       t.string :link_shop
-      t.integer :type
+      t.integer :arena
       t.integer :mode
 
       t.timestamps

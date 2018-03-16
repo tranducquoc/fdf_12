@@ -36,6 +36,8 @@
 //= require jquery.validate
 //= require cropper
 //= require magnific-popup
+//= require dropzone
+//= require cocoon
 
 $(document).ready(function () {
   $('.alert').fadeOut(5000);

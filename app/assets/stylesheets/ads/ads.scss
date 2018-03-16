@@ -104,3 +104,42 @@
   width: 80px;
   height: 80px;
 }
+.image_view{
+  width: 150px;
+  height: 150px;
+  border: 1px solid;
+  border-radius: 10px;
+  &:hover{
+    box-shadow: 5px 5px 5px 5px#ccc;
+  };
+}
+.upload-image{
+  display: none !important;
+}
+.btn-upload-image{
+  display: inline-block;
+  border:2px solid black;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+.hide-div{
+  display: none;
+}
+.upload-post-image{
+  border-radius: 15px;
+  border: 1px dotted #ccc;
+  padding: 20px;
+  margin: 0;
+}
+.list-gallery{
+  margin-right: 90px;
+}
+.btn-remove{
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+}
+.post-radio-btn label{
+  margin-right: 30px;
+}

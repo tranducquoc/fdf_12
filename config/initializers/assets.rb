@@ -13,3 +13,4 @@ Rails.application.config.assets.precompile += %w(dashboard/statistics.js)
 Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
 Rails.application.config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 Rails.application.config.assets.precompile += %w(modal.js jquery.remotipart.js jquery.iframe-transport.js)
+Rails.application.config.assets.precompile += %w(cocoon.js)

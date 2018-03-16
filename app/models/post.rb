@@ -3,12 +3,14 @@ class Post < ApplicationRecord
   has_many :reports
   has_many :reviews, as: :reviewable
   has_many :comments, as: :commentable
+  has_many :post_images
+  accepts_nested_attributes_for :post_images, reject_if: :all_blank, allow_destroy: true
 
   belongs_to :user
   belongs_to :category, optional: true
 
   enum mode: {sale: 0, buy: 1}
-  enum type: {professed: 1, secret: 2}
+  enum arena: {professed: 0, secret: 1}
 
   validates :title, presence: true,
     length: {maximum: Settings.post.max_title, minimum: Settings.post.min_title}

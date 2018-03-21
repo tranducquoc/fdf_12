@@ -143,3 +143,126 @@
 .post-radio-btn label{
   margin-right: 30px;
 }
+.post-cucumber{
+  height: 70px;
+  background-color: whitesmoke;
+}
+.image-slide{
+  height: 500px;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+.contact-info{
+  margin-top: 5px;
+  text-align: center;
+  font-weight: bold;
+  background: image-url("header_bg") #ff5722;
+  padding: 15px;
+  color: white;
+}
+.card-img-top{
+  width: 150px;
+  align-content: center;
+  justify-content: center;
+  margin: auto;
+}
+.card-title{
+  text-align: center;
+}
+.shop-btn-func{
+  margin-left: 10%!important;
+}
+.shop-btn-func a{
+  margin-right: 25px;
+}
+.ads-content{
+  margin-top: 20px;
+}
+.ads-title{
+  font-size: 20px;
+  font-weight: bold;
+}
+.ads-price{
+  font-size: 20px;
+  color: red;
+  font-style: italic;
+}
+.dash{
+  display: inline-block;
+  border: 2px dotted #ccc;
+  width: 100%
+}
+.ads-extend{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.ads-extend i{
+  margin-right: 30px;
+  font-size: 17px;
+  color: red;
+}
+.ads-share i{
+  margin-right: 30px;
+  font-size: 20px;
+  &:hover{
+    color: red;
+  };
+}
+.ads-report i{
+  font-size: 30px;
+  color: green;
+}
+.btn-reports{
+  display: flex;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  margin: center;
+}
+.social-icon{
+  font-size: 25px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+  margin-right: 20px;
+  float: left;
+}
+.fb-icon{
+  background-color: #3b5994;
+
+}
+.g-icon{
+  background-color: #e2514a;
+}
+.tw-icon{
+  background-color: #009eee;
+}
+.cw-icon{
+  display: inline-block;
+  background: image-url("chatwork-icon") center center;
+  background-size: cover;
+}
+.ads-review{
+  margin-top: 10px;
+}
+.ads-review .media{
+}
+.ads-review-avatar img{
+  width: 45px;
+}
+.people-review{
+  box-shadow: 0 0 5px 2px #ccc;
+  padding: 20px;
+  h3{
+    margin: 0;
+  }
+}
+.review-ads-input{
+  margin-bottom: 30px;
+}
+.btn-review{
+  margin-top: 10px;
+}

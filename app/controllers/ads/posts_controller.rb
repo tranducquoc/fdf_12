@@ -7,6 +7,7 @@ class Ads::PostsController < ApplicationController
 
   def show
     @post_support = Supports::Ads::PostSupport.new @post, current_user
+    @review = @post.reviews.build
   end
 
   def new
@@ -40,5 +41,8 @@ class Ads::PostsController < ApplicationController
   end
   def load_post
     @post = Post.find_by id: params[:id]
+    return if @post.present?
+    flash[:danger] = t "ads.post.error.not_found"
+    redirect_to domain_ads_posts_path
   end
 end

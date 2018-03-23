@@ -1169,3 +1169,26 @@ en:
       modes:
         sale: "Sale"
         buy: "Buy"
+      error:
+        not_found: "This post not found"
+      report:
+        success: "Success"
+        fail: "Fail, please try again"
+        btn_report: "Report this Ads"
+        info: "This Ads had been approved by Administrator, if detected phishing, please report immediately"
+        btn_review: "Send review"
+        btn_send_report: "Send report"
+        report_modal_title: "Tell me why?"
+        btn_close: "Close"
+      review:
+        your_rating: "Your rating"
+        fail: "You must put all info"
+      post_on: "Post on"
+      price_from: "Price from"
+      post_owner: "Post owner"
+      ads_of_owner: "Ads"
+      shop_rating: "Shop rating"
+      btn_contact: "Contact"
+      btn_buy_now: "Buy now"
+      contact_info: "Contact info"
+      home: "Home"

@@ -1,0 +1,7 @@
+$('#reportModal').fadeOut();
+$('#ads-report').val('');
+<% if @status %>
+  swal(I18n.t("ads.post.report.success"), "", "success");
+<% else %>
+  swal(I18n.t("ads.post.report.fail"), "", "warning");
+<% end %>

@@ -71,6 +71,7 @@ Rails.application.routes.draw do
     resources :categories
     namespace :ads do
       resources :posts
+      resources :reviews
     end
   end
   resources :user_domains
@@ -82,6 +83,8 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
   resources :comments, only: :destroy
+  resources :reviews
+  resources :reports
   resources :carts
   resources :orders
   resource :orders
@@ -102,6 +105,7 @@ Rails.application.routes.draw do
   resources :user_searchs
   resources :user_domain_searches, only: :index
   resources :follow_shops, only: [:create, :destroy]
+  resources :rates
 
   api_version(module: "V1", path: {value: "v1"}, default: true) do
     namespace :dashboard do

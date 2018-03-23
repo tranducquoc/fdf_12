@@ -1227,3 +1227,26 @@ vi:
       modes:
         sale: "Cần bán"
         buy: "Cần mua"
+      error:
+        not_found: "Không tìm thấy bài viết"
+      report:
+        success: "Thành công"
+        fail: "Không thành công, vui lòng thử lại"
+        btn_report: "Báo cáo tin rao này"
+        info: "Tin rao này đã được duyệt bởi ban quản trị, nếu phát hiện có hành động lừa đảo, hãy báo cáo ngay !"
+        btn_review: "Gửi nhận xét"
+        btn_send_report: "Gửi báo cáo"
+        report_modal_title: "Nói với chúng tôi lý do bạn báo cáo?"
+        btn_close: "Đóng"
+      review:
+        your_rating: "Đánh giá của bạn"
+        fail: "Bạn phải nhập đầy đủ thông tin"
+      post_on: "Đăng lúc"
+      price_from: "Giá từ"
+      post_owner: "Người đăng tin "
+      ads_of_owner: "Tin rao"
+      shop_rating: "Đánh giá cửa hàng"
+      btn_contact: "Liên hệ"
+      btn_buy_now: "Mua ngay"
+      contact_info: "Thông tin liên hệ"
+      home: "Trang chủ"

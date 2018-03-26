@@ -1,0 +1,13 @@
+<div class="media">
+  <div class="media-left ads-review-avatar">
+    <%= image_tag review.user_avatar.url, class: "media-object"%>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><%= review.user_name %><small><i> <%= t "ads.post.post_on" %>
+      <%= review.created_at.strftime("%d-%m-%Y") %> </i><i class="fa fa-star-o"></i>
+      <i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
+      <i class="fa fa-star-o"></i></small>
+    </h4>
+    <p><%= raw review.review %></p>
+  </div>
+</div>

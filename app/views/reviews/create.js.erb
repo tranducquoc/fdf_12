@@ -1,0 +1,5 @@
+$('.reviews-of-post').html("<%= j render partial: 'ads/posts/review', collection: @reviews_of_post.to_a, as: :review %>");
+$('#ads-review').val('');
+<% if @status == false %>
+  swal(I18n.t("ads.post.review.fail"),"","warning");
+<% end %>

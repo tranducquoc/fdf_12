@@ -1141,7 +1141,7 @@ en:
       mode: "Mode"
       image:
         image: "Image"
-        detail: "Choose image of your ads. Maximum 3 image."
+        detail: "Choose image of your ads."
       content:
         content: "Content"
         detail: "Please just give brief content for maximum effective"
@@ -1153,6 +1153,7 @@ en:
       prev_step: "Previous step"
       title:
         title: "Title"
+        descript: "(From %{minimum} to %{maximum} characters)"
         placeholder: "Type your title of your ads"
       shop_url:
         shop_url: "Shop URL"

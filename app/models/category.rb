@@ -16,6 +16,7 @@ class Category < ApplicationRecord
 
   has_many :products
   has_many :posts
+  has_many :subcategories, class_name: Category.name, foreign_key: :parent_id
 
   scope :asc_by_name, ->{order :name}
   scope :is_parent, ->{where parent_id: 0}

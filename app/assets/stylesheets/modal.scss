@@ -1275,6 +1275,12 @@ $orange_main: #ff5722;
   transition: 0.5s ease-in-out;
 }
 
+.field-compulsory::after {
+  content: " *";
+  color: red;
+  font-weight: bold;
+}
+
 //mobile page
 .mobile-page {
   padding-top: 15px;

@@ -1059,6 +1059,7 @@ en:
   confirm_leave_shop_domain: "Do you really want to remove %{shop_name} shop from %{domain_name} domain"
   delete_shop_domain_success: "Shop removed from domain"
   view_more_shops: "View more shops"
+  view_more_posts: "View more posts"
   manager_domain: "Domain owner"
   edit_infomation: "Edit information"
   change_password: "Change password"
@@ -1135,6 +1136,8 @@ en:
     send_order_status_noti: "Send a notification when you close the orders"
   ads:
     post:
+      post:
+        review: Review
       create_title: "Create new Ads free"
       category: "Category"
       children_category: "Children category"
@@ -1169,6 +1172,9 @@ en:
       modes:
         sale: "Sale"
         buy: "Buy"
+      order_by:
+        asc: "Oldest"
+        desc: "Newest"
       error:
         max_images: "You can only upload maximum %{number} picture(s)"
         not_found: "This post not found"
@@ -1194,3 +1200,4 @@ en:
       btn_buy_now: "Buy now"
       contact_info: "Contact info"
       home: "Home"
+      created_at: "<b>Posted at:</b> %{time} ago"

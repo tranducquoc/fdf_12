@@ -1117,6 +1117,7 @@ vi:
   confirm_leave_shop_domain: "Bạn thật sự muốn xóa cửa hàng %{shop_name} khỏi miền %{domain_name}"
   delete_shop_domain_success: "Đã xóa cửa hàng khỏi miền"
   view_more_shops: "Xem thêm cửa hàng"
+  view_more_posts: "Xem thêm tin rao"
   manager_domain: "Chủ miền"
   edit_infomation: "Sửa thông tin"
   change_password: "Đổi mật khẩu"
@@ -1193,6 +1194,8 @@ vi:
     send_order_status_noti: "Gửi thông báo khi bạn đóng đơn hàng"
   ads:
     post:
+      post:
+        review: Nhận xét
       create_title: "Tạo tin rao vặt miễn phí"
       category: "Danh mục"
       children_category: "Danh mục con"
@@ -1227,6 +1230,9 @@ vi:
       modes:
         sale: "Cần bán"
         buy: "Cần mua"
+      order_by:
+        asc: "Cũ nhất"
+        desc: "Mới nhất"
       error:
         max_images: "Bạn chỉ được phép đăng tối đa %{number} ảnh"
         not_found: "Không tìm thấy bài viết"
@@ -1252,3 +1258,4 @@ vi:
       btn_buy_now: "Mua ngay"
       contact_info: "Thông tin liên hệ"
       home: "Trang chủ"
+      created_at: "<b>Đăng từ:</b> %{time} trước"

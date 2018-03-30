@@ -1,6 +1,7 @@
 common:
   per_page: 6
   products_per_page: 12
+  posts_per_page: 7
   shops_per_page: 9
 orders:
   status: {open: "open", deliver: "deliver", close: "close"}
@@ -185,6 +186,9 @@ turn_off_shop: "turn_off_shop"
 order_status: "order_status"
 new_product: "new_product"
 post:
+  asc: "asc"
+  desc: "desc"
+  max_content: 37
   max_title: 150
   min_title: 5
 row_of_text: 10

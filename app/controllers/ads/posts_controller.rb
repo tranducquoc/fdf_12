@@ -4,6 +4,7 @@ class Ads::PostsController < ApplicationController
   before_action :load_post, only: :show
 
   def index
+    @post_support = Supports::Ads::PostSupport.new nil, nil, params
   end
 
   def show

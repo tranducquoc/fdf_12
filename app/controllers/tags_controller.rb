@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def show
     if ActsAsTaggableOn::Tag.friendly.exists? params[:id]
       @tag = ActsAsTaggableOn::Tag.friendly.find params[:id]

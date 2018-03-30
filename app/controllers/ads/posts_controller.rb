@@ -28,7 +28,7 @@ class Ads::PostsController < ApplicationController
       flash[:success] = t "ads.post.flash.success"
     else
       flash[:danger] = t "ads.post.flash.danger"
-      render :new
+      redirect_to new_domain_ads_post_path
     end
   end
 

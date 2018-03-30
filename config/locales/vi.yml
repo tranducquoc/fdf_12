@@ -1199,7 +1199,7 @@ vi:
       mode: "Hình thức"
       image:
         image: "Hình ảnh"
-        detail: "Chọn hình ảnh cho tin rao của bạn, tối đa 3 ảnh nhé"
+        detail: "Chọn hình ảnh cho tin rao của bạn."
       content:
         content: "Nội dung"
         detail: "Chỉ đưa vào tin rao nội dung ngắn gọn để đạt hiệu quả tối ưu"
@@ -1210,7 +1210,8 @@ vi:
       next_step: "Kế tiếp"
       prev_step: "Quay lại"
       title:
-        title: "tiêu đề"
+        title: "Tiêu đề"
+        descript: "(Độ dài từ %{minimum} đến %{maximum} chữ cái)"
         placeholder: "Nhập tiêu đề tin rao"
       shop_url:
         shop_url: "Đường dẫn cửa hàng"

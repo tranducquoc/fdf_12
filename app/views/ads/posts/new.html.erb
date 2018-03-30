@@ -53,7 +53,8 @@
                   <% Settings.modes.each do |key, value| %>
                     <%= label_tag "status_#{value}", class: "radio-inline",
                       for: "history_order_status_#{value}" do %>
-                      <%= f.radio_button :mode, value %>
+                      <%= f.radio_button :mode, value,
+                        checked: (key == Settings.modes.keys[0]) ? "checked" : "" %>
                       <%= t "ads.post.modes.#{value}" %>
                       <span class="span-radio-order"></span>
                     <% end %>
@@ -71,26 +72,30 @@
             <h3 class="txt-ali-cen h3-help"><%= t "ads.post.content.content" %></h3>
             <p class="txt-ali-cen p-font"><%= t "ads.post.content.detail" %></p>
             <div class="form-group row">
-              <%= f.label :title, t("ads.post.title"), class: "col-md-2 col-form-label"%>
+              <%= f.label :title, class: "col-md-2 col-form-label" do %>
+                <span class="field-compulsory"><%= t "ads.post.title.title" %></span><br />
+                <i><%= t "ads.post.title.descript", maximum: Settings.post.max_title,
+                  minimum: Settings.post.min_title %></i>
+              <% end %>
               <div class="col-md-8">
                  <%= f.text_field :title, placeholder: t("ads.post.title.placeholder"),
-                class: "form-control" %>
+                class: "form-control input-compulsory" %>
               </div>
             </div>
             <div class="form-group row">
               <%= f.label :content, t("ads.post.content.content"), class:
-                "col-md-2 col-form-label" %>
+                "col-md-2 col-form-label field-compulsory" %>
               <div class="col-md-8">
                  <%= f.text_area :content, placeholder: t("ads.post.content.placeholder"),
-                 rows: Settings.row_of_text, class: "form-control" %>
+                 rows: Settings.row_of_text, class: "form-control input-compulsory" %>
               </div>
             </div>
             <div class="form-group row">
               <%= f.label :link_shop, t("ads.post.shop_url.shop_url"),
-                class: "col-md-2 col-form-label"%>
+                class: "col-md-2 col-form-label field-compulsory"%>
               <div class="col-md-8">
                  <%= f.text_field :link_shop, placeholder: t("ads.post.shop_url.placeholder"),
-                class: "form-control" %>
+                class: "form-control input-compulsory" %>
               </div>
             </div>
             <div class="form-group row">
@@ -100,7 +105,8 @@
                   <% Settings.arenas.each do |key, value| %>
                     <%= label_tag "status_#{value}", class: "radio-inline",
                       for: "history_order_status_#{value}" do %>
-                      <%= f.radio_button :arena, value %>
+                      <%= f.radio_button :arena, value,
+                        checked: (key == Settings.arenas.keys[0]) ? "checked" : "" %>
                       <%= t "ads.post.arenas.#{value}" %>
                       <span class="span-radio-order"></span>
                     <% end %>

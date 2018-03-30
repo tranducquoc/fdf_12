@@ -17,7 +17,7 @@ $(document).ready(function(){
         check = true;
       }
     });
-    if (check === false && ($('.image_view').length <=2)){
+    if (check === false) {
       $('#add-new-image').click();
       $('#image-list-preview .list-gallery:nth-last-child(2)').find('.btn-remove').hide();
     }

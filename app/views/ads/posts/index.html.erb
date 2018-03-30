@@ -39,12 +39,14 @@
     <div class="filter-post">
       <div class="dropdown status-filter">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-        <%= t "ads.post.modes.#{@post_support.filtered_param[:mode]}" %>
-        <span class="caret"></span></button>
+          <%= t "ads.post.modes.#{@post_support.filtered_param[:mode]}" %>
+          <span class="caret"></span>
+        </button>
+
         <ul class="dropdown-menu">
           <% Post.modes.each do |key, _| %>
             <li><%= link_to t("ads.post.modes.#{key}"), domain_ads_posts_path(@domain,
-              category_id: @post_support.filtered_param[:category].id,
+              category_slug: @post_support.filtered_param[:category].slug,
               time: @post_support.filtered_param[:time],
               mode: key) %></li>
           <% end %>
@@ -53,26 +55,32 @@
 
       <div class="dropdown time-filter">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-        <% if @post_support.filtered_param[:time] == Settings.post.asc %>
-          <%= t "ads.post.order_by.asc" %>
-        <% elsif @post_support.filtered_param[:time] == Settings.post.desc %>
-          <%= t "ads.post.order_by.desc" %>
-        <% end %>
-        <span class="caret"></span></button>
+          <% if @post_support.filtered_param[:time] == Settings.post.asc %>
+            <%= t "ads.post.order_by.asc" %>
+          <% elsif @post_support.filtered_param[:time] == Settings.post.desc %>
+            <%= t "ads.post.order_by.desc" %>
+          <% end %>
+          <span class="caret"></span>
+        </button>
+
         <ul class="dropdown-menu">
           <li><%= link_to t("ads.post.order_by.desc"), domain_ads_posts_path(@domain,
-            category_id: @post_support.filtered_param[:category].id, time: :desc,
+            category_slug: @post_support.filtered_param[:category].slug,
+            time: Settings.post.desc,
             mode: @post_support.filtered_param[:mode]) %></li>
           <li><%= link_to t("ads.post.order_by.asc"), domain_ads_posts_path(@domain,
-            category_id: @post_support.filtered_param[:category].id, time: :asc,
+            category_slug: @post_support.filtered_param[:category].slug,
+            time: Settings.post.asc,
             mode: @post_support.filtered_param[:mode]) %></li>
         </ul>
       </div>
 
       <div class="dropdown categories-filter">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-        <%= @post_support.filtered_param[:category].name %>
-        <span class="caret"></span></button>
+          <%= @post_support.filtered_param[:category].name %>
+          <span class="caret"></span>
+        </button>
+
         <ul class="dropdown-menu">
           <%= render partial: "category", collection: @post_support.all_parent_categories,
             as: :category %>

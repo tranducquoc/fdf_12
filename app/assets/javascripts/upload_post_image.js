@@ -1,33 +1,48 @@
 $(document).ready(function(){
+  var idx;
+  $('.image-preview').on('click', '.image_view', function() {
+    idx = $('.image_view').index(this);
+  })
+
   $(document).on('change', '.img-file-input', function(event){
-    var input = $(event.currentTarget);
-    var file = input[0].files[0];
-    var reader = new FileReader();
-    input = this;
-    reader.onload = function (e) {
-      $(input).parents('.nested-fields').find('.image_view').attr('src', e.target.result);
-    }
-    reader.readAsDataURL(file);
+    var files = event.target.files;
+    var lengthOfImageView = $('.has-picture').length;
 
-    self = $(this).parents('.list-gallery').find('.image_view');
-    $(this).parents('.list-gallery').find('.btn-remove').show();
-    var check = false;
-    $('.image_view').each(function(){
-      if ($(this).attr('src').split('/')[1].toString() === 'assets' && this != self[0]){
-        check = true;
+    if (isMaxPictures(3)) {
+      swal(I18n.t('ads.post.error.max_images', {number: (3 - lengthOfImageView)}), '', 'error');
+    } else {
+      for (var i = 0, file; file = files[i]; i++) {
+        $('#add-new-image').click();
+        changePicture($('.image_view').eq(i + idx), file);
       }
-    });
-    if (check === false) {
-      $('#add-new-image').click();
-      $('#image-list-preview .list-gallery:nth-last-child(2)').find('.btn-remove').hide();
     }
 
+    if ($('.image_view').length > 3) {
+      $('.image_view:last').parent().remove();
+    }
+
+    function changePicture(element, file) {
+      var reader = new FileReader();
+      reader.onload = function (event) {
+        $(element).attr('src', event.target.result);
+      }
+      reader.readAsDataURL(file);
+
+      $(element).addClass('has-picture');
+      $(element).siblings('.btn-remove').show()
+    }
+
+    function isMaxPictures(max) {
+      return (files.length + lengthOfImageView) > max
+    }
   });
+
   $(document).on('click', '.btn-remove', function(){
-    if ($('.image_view').length == 3){
+    if ($('.has-picture').length == 3){
       $('#add-new-image').click();
     }
   });
+
   $(document).on('click', '.image_view', function(){
     $(this).parents('.list-gallery').find('.img-file-input').trigger('click');
   });

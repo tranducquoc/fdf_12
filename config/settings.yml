@@ -186,7 +186,7 @@ order_status: "order_status"
 new_product: "new_product"
 post:
   max_title: 150
-  min_title: 30
+  min_title: 5
 row_of_text: 10
 arenas:
   professed: "professed"

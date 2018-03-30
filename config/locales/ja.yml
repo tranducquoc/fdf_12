@@ -1151,7 +1151,7 @@ ja:
       mode: "Mode"
       image:
         image: "Image"
-        detail: "Choose image of your ads. Maximum 3 image."
+        detail: "Choose image of your ads."
       content:
         content: "Content"
         detail: "Please just give brief content for maximum effective"
@@ -1180,7 +1180,9 @@ ja:
         sale: "Sale"
         buy: "Buy"
       error:
+        max_images: "You can only upload maximum %{number} picture(s)"
         not_found: "This post not found"
+        empty_field: "%{field} not filled in"
       report:
         success: "Success"
         fail: "Fail, please try again"

@@ -1,10 +1,17 @@
 FactoryGirl.define do
   factory :post do
-    user_id 1
-    category_id 1
-    tilte "MyString"
-    content "MyText"
-    image "MyString"
-    link_shop "MyString"
+    user_id Faker::Number.between(1, 18)
+    category_id Faker::Number.between(1, 14)
+    title ""
+    content ""
+    link_shop ""
+    arena Faker::Number.between(0, 1)
+    mode Faker::Number.between(0, 1)
+    post_images_attributes {{
+      "0" => {
+        :_destroy => false,
+        :image => []
+      }
+    }}
   end
 end

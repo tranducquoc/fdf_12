@@ -74,8 +74,6 @@
             <div class="form-group row">
               <%= f.label :title, class: "col-md-2 col-form-label" do %>
                 <span class="field-compulsory"><%= t "ads.post.title.title" %></span><br />
-                <i><%= t "ads.post.title.descript", maximum: Settings.post.max_title,
-                  minimum: Settings.post.min_title %></i>
               <% end %>
               <div class="col-md-8">
                  <%= f.text_field :title, placeholder: t("ads.post.title.placeholder"),
@@ -92,10 +90,10 @@
             </div>
             <div class="form-group row">
               <%= f.label :link_shop, t("ads.post.shop_url.shop_url"),
-                class: "col-md-2 col-form-label field-compulsory"%>
+                class: "col-md-2 col-form-label"%>
               <div class="col-md-8">
                  <%= f.text_field :link_shop, placeholder: t("ads.post.shop_url.placeholder"),
-                class: "form-control input-compulsory" %>
+                class: "form-control" %>
               </div>
             </div>
             <div class="form-group row">

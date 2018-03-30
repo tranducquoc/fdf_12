@@ -1211,7 +1211,6 @@ vi:
       prev_step: "Quay lại"
       title:
         title: "Tiêu đề"
-        descript: "(Độ dài từ %{minimum} đến %{maximum} chữ cái)"
         placeholder: "Nhập tiêu đề tin rao"
       shop_url:
         shop_url: "Đường dẫn cửa hàng"
@@ -1229,7 +1228,9 @@ vi:
         sale: "Cần bán"
         buy: "Cần mua"
       error:
+        max_images: "Bạn chỉ được phép đăng tối đa %{number} ảnh"
         not_found: "Không tìm thấy bài viết"
+        empty_field: "%{field} chưa nhập"
       report:
         success: "Thành công"
         fail: "Không thành công, vui lòng thử lại"

@@ -1153,7 +1153,6 @@ en:
       prev_step: "Previous step"
       title:
         title: "Title"
-        descript: "(From %{minimum} to %{maximum} characters)"
         placeholder: "Type your title of your ads"
       shop_url:
         shop_url: "Shop URL"
@@ -1171,7 +1170,9 @@ en:
         sale: "Sale"
         buy: "Buy"
       error:
+        max_images: "You can only upload maximum %{number} picture(s)"
         not_found: "This post not found"
+        empty_field: "%{field} not filled in"
       report:
         success: "Success"
         fail: "Fail, please try again"

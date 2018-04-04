@@ -1,4 +1,5 @@
 class Ads::PostsController < ApplicationController
+  include Ads::PostsHelper
   before_action :authenticate_user!
   before_action :load_post, only: :show
 
@@ -36,6 +37,8 @@ class Ads::PostsController < ApplicationController
   def post_params
     params[:post][:mode] = params[:post][:mode].to_i
     params[:post][:arena] = params[:post][:arena].to_i
+    params[:post][:post_images_attributes] =
+      rebuild_param params[:post][:post_images_attributes], :image
     params.require(:post).permit :title, :content, :category_id, :mode, :arena,
       :link_shop, post_images_attributes: [:id, :post_id, :image, :_destroy]
   end

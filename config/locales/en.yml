@@ -1172,7 +1172,7 @@ en:
       error:
         max_images: "You can only upload maximum %{number} picture(s)"
         not_found: "This post not found"
-        empty_field: "%{field} not filled in"
+        empty_field: "The filled in information is not enough"
       report:
         success: "Success"
         fail: "Fail, please try again"

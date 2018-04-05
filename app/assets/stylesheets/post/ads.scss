@@ -275,3 +275,13 @@
 .review-ads-input .media-heading .star {
   display: inline-flex;
 }
+
+.red-field {
+  box-shadow: 0 0 4px #811 !important;
+  border: 1px solid #600 !important;
+}
+
+.green-field {
+  box-shadow: 0 0 4px #181 !important;
+  border: 1px solid #060 !important;
+}

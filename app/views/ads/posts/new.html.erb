@@ -8,18 +8,18 @@
         <div class="process">
           <div class="process-row nav nav-tabs">
             <div class="process-step">
-              <button type="button" class="btn btn-circle btn-info" data-toggle="tab"
-                href="#menu1"><i class="fa fa-list fa-3x"></i></button>
+              <button type="button" class="btn btn-circle btn-info" href="#menu1">
+                <i class="fa fa-list fa-3x"></i></button>
               <p><%= t "ads.post.category" %></p>
             </div>
             <div class="process-step">
-              <button type="button" class="btn btn-circle btn-default" data-toggle="tab"
-                href="#menu2"><i class="fa fa-file-text-o fa-3x"></i></button>
+              <button type="button" class="btn btn-circle btn-default" href="#menu2">
+                <i class="fa fa-file-text-o fa-3x"></i></button>
               <p><%= t "ads.post.content.content" %></p>
             </div>
             <div class="process-step">
-              <button type="button" class="btn btn-default btn-circle" data-toggle="tab"
-                href="#menu3"><i class="fa fa-image fa-3x"></i></button>
+              <button type="button" class="btn btn-circle btn-default" href="#menu3">
+                <i class="fa fa-image fa-3x"></i></button>
               <p><%= t "ads.post.image.image" %></p>
             </div>
           </div>
@@ -76,16 +76,16 @@
                 <span class="field-compulsory"><%= t "ads.post.title.title" %></span><br />
               <% end %>
               <div class="col-md-8">
-                 <%= f.text_field :title, placeholder: t("ads.post.title.placeholder"),
-                class: "form-control input-compulsory" %>
+                <%= f.text_field :title, placeholder: t("ads.post.title.placeholder"),
+                  class: "form-control input-compulsory", id: "post-title" %>
               </div>
             </div>
             <div class="form-group row">
               <%= f.label :content, t("ads.post.content.content"), class:
                 "col-md-2 col-form-label field-compulsory" %>
               <div class="col-md-8">
-                 <%= f.text_area :content, placeholder: t("ads.post.content.placeholder"),
-                 rows: Settings.row_of_text, class: "form-control input-compulsory" %>
+                <%= f.text_area :content, placeholder: t("ads.post.content.placeholder"),
+                  rows: Settings.row_of_text, class: "form-control input-compulsory" %>
               </div>
             </div>
             <div class="form-group row">
@@ -146,7 +146,7 @@
                 <i class="fa fa-chevron-left"></i>
                 <%= t "ads.post.prev_step" %></button></li>
               <li>
-                <%= f.submit t("ads.post.submit"), class: "btn btn-info next-step"%>
+                <%= f.submit t("ads.post.submit"), class: "btn btn-info next-step", id: "submit-post" %>
               </li>
             </ul>
           </div>

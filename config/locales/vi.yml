@@ -1230,7 +1230,7 @@ vi:
       error:
         max_images: "Bạn chỉ được phép đăng tối đa %{number} ảnh"
         not_found: "Không tìm thấy bài viết"
-        empty_field: "%{field} chưa nhập"
+        empty_field: "Thông tin bạn nhập còn thiếu"
       report:
         success: "Thành công"
         fail: "Không thành công, vui lòng thử lại"

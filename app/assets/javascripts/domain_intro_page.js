@@ -1,56 +1,72 @@
 $(function(){
-  $('.btn-circle').on('click',function(){
-    var empty_fields = '';
-    $('.field-compulsory').each(function (index) {
-      empty_fields += ((index + 1) == $('.field-compulsory').length) ? $(this).text() : $(this).text() + ',  ';
-    });
+  $('.btn-circle').on('click', function(){
+    var clickedButtonIdx = $('.btn-circle').index(this);
+    var buttonInfoIdx = $('.btn-circle').index($('.btn-info'));
+    var submitButtonIdx = $('.next-step').index($('#submit-post'));
 
-    if(is_valid('.input-compulsory')) {
-      $('.btn-circle.btn-info').removeClass('btn-info').addClass('btn-default');
-      $(this).addClass('btn-info').removeClass('btn-default').blur();
-    } else
-      swal(I18n.t('ads.post.error.empty_field', {field: empty_fields}), '', 'error');
+    if(buttonInfoIdx < clickedButtonIdx) {
+      $('.next-step').eq(buttonInfoIdx).trigger('click');
+    } else if (buttonInfoIdx > clickedButtonIdx) {
+      $('.prev-step').trigger('click');
+    } else {
+      $(this).tab('show');
+    }
   });
 
   $('.next-step').on('click', function (e){
-    var empty_fields = '';
-    $('.field-compulsory').each(function (index) {
-      empty_fields += ((index + 1) == $('.field-compulsory').length) ? $(this).text() : $(this).text() + ',  ';
-    });
-
     var $activeTab = $('.tab-pane.active');
-
-    if(is_valid('.input-compulsory')) {
-      $('.btn-circle.btn-info').removeClass('btn-info').addClass('btn-default');
-
-      if ($(e.target).hasClass('next-step'))
-      {
-        var nextTab = $activeTab.next('.tab-pane').attr('id');
-        $('[href="#'+ nextTab +'"]').addClass('btn-info').removeClass('btn-default');
-        $('[href="#'+ nextTab +'"]').tab('show');
+    if ($activeTab.is($('#menu2'))) {
+      var isValidTab = true;
+      $('.input-compulsory').each(function () {
+        if (!isValidField($(this))) {
+          changeClass(this, 'green-field', 'red-field');
+          isValidTab = false;
+        }
+      });
+      if (!isValidTab) {
+        swal(I18n.t('ads.post.error.empty_field'), '', 'error');
+        return;
       }
-    } else
-      swal(I18n.t('ads.post.error.empty_field', {field: empty_fields}), '', 'error');
+    }
+    var nextTab = $('.tab-pane.active').next('.tab-pane').attr('id');
+    changeActiveToTab(nextTab);
   });
 
   $('.prev-step').on('click', function (e){
-    var $activeTab = $('.tab-pane.active');
-
-    $('.btn-circle.btn-info').removeClass('btn-info').addClass('btn-default');
-
-    var prevTab = $activeTab.prev('.tab-pane').attr('id');
-    $('[href="#'+ prevTab +'"]').addClass('btn-info').removeClass('btn-default');
-    $('[href="#'+ prevTab +'"]').tab('show');
+    var prevTab = $('.tab-pane.active').prev('.tab-pane').attr('id');
+    changeActiveToTab(prevTab);
   });
 
-  function is_valid(field) {
-    var isValid = true;
-
-    $(field).each(function() {
-      if(($('#menu2').html() == $('.tab-pane.active').html()) && ($(this).val() === '')) {
-        isValid = false;
-      }
+  $('.input-compulsory').each(function () {
+    $(this).on('blur', function () {
+      if (isValidField($(this)))
+        changeClass(this, 'red-field', 'green-field');
+      else
+        changeClass(this, 'green-field', 'red-field');
     });
-    return isValid;
+  });
+
+  function isValidField(field) {
+    if($(field).is($('#post-title'))) {
+      var postTitleLength = $(field).val().length;
+      var minTitle = 5;
+      var maxTitle = 150;
+      return !((postTitleLength < minTitle) || (postTitleLength > maxTitle));
+    } else
+      return !($(field).val() === '');
+  }
+
+  function changeActiveToTab(tab) {
+    $('.btn-circle.btn-info').removeClass('btn-info').addClass('btn-default');
+    $('[href="#'+ tab +'"]').addClass('btn-info').removeClass('btn-default');
+    $('[href="#'+ tab +'"]').tab('show');
+  }
+
+  function changeClass(element, oldClass, newClass) {
+    if ($(element).hasClass(oldClass)) {
+      $(element).removeClass(oldClass);
+      $(element).addClass(newClass);
+    } else
+      $(element).addClass(newClass);
   }
 });

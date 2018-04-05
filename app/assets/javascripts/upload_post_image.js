@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  var max = 3;
   var idx;
   $('.image-preview').on('click', '.image_view', function() {
     idx = $('.image_view').index(this);
@@ -8,8 +9,8 @@ $(document).ready(function(){
     var files = event.target.files;
     var lengthOfImageView = $('.has-picture').length;
 
-    if (isMaxPictures(3)) {
-      swal(I18n.t('ads.post.error.max_images', {number: (3 - lengthOfImageView)}), '', 'error');
+    if (isMaxPictures(max)) {
+      swal(I18n.t('ads.post.error.max_images', {number: max}), '', 'error');
     } else {
       for (var i = 0, file; file = files[i]; i++) {
         $('#add-new-image').click();

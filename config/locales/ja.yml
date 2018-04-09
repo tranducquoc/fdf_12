@@ -1068,6 +1068,7 @@ ja:
   confirm_leave_shop_domain: "%{shop_name}店の%{domain_name}ドメインからドを削除したいですか"
   delete_shop_domain_success: "削除された"
   view_more_shops: "もっと見る"
+  view_more_posts: "View more posts"
   manager_domain: "このドメインの所有者"
   edit_infomation: "情報を編集"
   change_password: "パスワードを変更します"
@@ -1145,6 +1146,8 @@ ja:
     send_order_status_noti: "Send a notification when you close the orders"
   ads:
     post:
+      post:
+        review: Review
       create_title: "Create new Ads free"
       category: "Category"
       children_category: "Children category"
@@ -1179,6 +1182,9 @@ ja:
       modes:
         sale: "Sale"
         buy: "Buy"
+      order_by:
+        asc: "Oldest"
+        desc: "Newest"
       error:
         max_images: "You can only upload maximum %{number} picture(s)"
         not_found: "This post not found"
@@ -1204,3 +1210,4 @@ ja:
       btn_buy_now: "Buy now"
       contact_info: "Contact info"
       home: "Home"
+      created_at: "<b>Posted at:</b> %{time} ago"

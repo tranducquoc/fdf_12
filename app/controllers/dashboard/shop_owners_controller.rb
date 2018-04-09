@@ -17,7 +17,7 @@ class Dashboard::ShopOwnersController < BaseDashboardController
       shop_domain.destroy unless @new_owner.domains.include? shop_domain.domain
     end
     flash[:success] = t "change_shop"
-    redirect_to root_path  
+    redirect_to root_path
   end
 
   private

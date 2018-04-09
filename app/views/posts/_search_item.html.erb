@@ -1,0 +1,50 @@
+<div class="well">
+  <div class="media">
+    <% if post.post_images.any? %>
+      <%= link_to domain_ads_post_path(domain_id: @domain, id: post),
+        class: "pull-left item-thumbnail" do %>
+        <%= image_tag post.post_images.first.image.url, class: "media-object" %>
+      <% end %>
+    <% end %>
+    <div class="media-body">
+      <h3 class="media-heading">
+        <i class="fa fa-wpforms"></i>
+        <%= link_to (post.title[0..Settings.post.max_content] <<
+          (post.content[0..Settings.post.max_content].length > Settings.post.max_content ? "..." : "")),
+          domain_ads_post_path(domain_id: @domain, id: post) %>
+      </h3>
+      <p>
+        <%= post.content[0..Settings.post.max_content] %>
+        <%= post.content[0..Settings.post.max_content].length > Settings.post.max_content ? "..." : "" %>
+      </p>
+      <span><i class="fa fa-flag-checkered">
+        <%= t "ads.post.modes.#{post.mode}" %> | <%= t "ads.post.category" %>:
+        <%= post.category.blank? ? "" : post.category_name %>
+      </i></span>
+      <ul class="list-inline list-unstyled">
+        <li>
+          <span>
+            <i class="fa fa-user"></i>
+            <%= link_to post.user_name, post.user %>
+          </span>
+        </li>
+        <li>|</li>
+        <span><i class="fa fa-comment">
+          <%= pluralize post.reviews.count, t("ads.post.post.review") %>
+        </i></span>
+        <li>|</li>
+        <li>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star-empty"></span>
+        </li>
+        <li>|</li>
+        <li>
+          <%= social_share_button_tag post.title %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -38,122 +38,55 @@
     <h3 class="page-title">Tin dang moi nhat</h3>
     <div class="filter-post">
       <div class="dropdown status-filter">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Trang thai
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        <%= t "ads.post.modes.#{@post_support.filtered_param[:mode]}" %>
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li><a href="#">Can Ban</a></li>
-          <li><a href="#">Can Mua</a></li>
+          <% Post.modes.each do |key, _| %>
+            <li><%= link_to t("ads.post.modes.#{key}"), domain_ads_posts_path(@domain,
+              category_id: @post_support.filtered_param[:category].id,
+              time: @post_support.filtered_param[:time],
+              mode: key) %></li>
+          <% end %>
         </ul>
       </div>
+
       <div class="dropdown time-filter">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Thoi gian
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        <% if @post_support.filtered_param[:time] == Settings.post.asc %>
+          <%= t "ads.post.order_by.asc" %>
+        <% elsif @post_support.filtered_param[:time] == Settings.post.desc %>
+          <%= t "ads.post.order_by.desc" %>
+        <% end %>
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li><a href="#">Moi nhat</a></li>
-          <li><a href="#">Cu Nhat</a></li>
+          <li><%= link_to t("ads.post.order_by.desc"), domain_ads_posts_path(@domain,
+            category_id: @post_support.filtered_param[:category].id, time: :desc,
+            mode: @post_support.filtered_param[:mode]) %></li>
+          <li><%= link_to t("ads.post.order_by.asc"), domain_ads_posts_path(@domain,
+            category_id: @post_support.filtered_param[:category].id, time: :asc,
+            mode: @post_support.filtered_param[:mode]) %></li>
         </ul>
       </div>
+
       <div class="dropdown categories-filter">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">The loai
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        <%= @post_support.filtered_param[:category].name %>
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li><a href="#">Am thuc</a></li>
-          <li><a href="#">Xe co</a></li>
-          <li><a href="#">Nha Dat</a></li>
-          <li><a href="#">Do dien tu</a></li>
-          <li><a href="#">Do handmade</a></li>
+          <%= render partial: "category", collection: @post_support.all_parent_categories,
+            as: :category %>
         </ul>
       </div>
     </div>
-    <div class="list-ads-items">
-      <div class="col-md-3 item-content">
-        <%= image_tag "sale.jpg", class: "item-image"%>
-      </div>
-      <div class="col-md-9">
-        <span class="post-title">Lorem ipsum dolor sit amet, consectetur adipisicing!</span>
-        <p class="price-item">150.000 vnd </p>
-        <span><i class="fa fa-flag-checkered"> Can Ban | Category</i></span>
-        <div class="meta-tag">
-          <span><i class="fa fa-calendar"> <%= Date.today %></i></span>
-          <span><i class="fa fa-comment"> 20 Review </i></span>
-          <span class="pull right"><i class="fa fa-user"> Owner</i></span>
-          <span><i class="fa fa-foursquare"> Da Nang Office </i></span>
-        </div>
-      </div>
+
+    <div id="filtered-posts">
+      <%= render @post_support.filtered_posts %>
     </div>
-    <div class="list-ads-items">
-      <div class="col-md-3 item-content">
-        <%= image_tag "sale.jpg", class: "item-image"%>
-      </div>
-      <div class="col-md-9">
-        <span class="post-title">Lorem ipsum dolor sit amet, consectetur adipisicing!</span>
-        <p class="price-item">150.000 vnd </p>
-        <span><i class="fa fa-flag-checkered"> Can Ban | Category</i></span>
-        <div class="meta-tag">
-          <span><i class="fa fa-calendar"> <%= Date.today %></i></span>
-          <span><i class="fa fa-comment"> 20 Review </i></span>
-          <span class="pull right"><i class="fa fa-user"> Owner</i></span>
-          <span><i class="fa fa-foursquare"> Da Nang Office </i></span>
-        </div>
-      </div>
-    </div>
-    <div class="list-ads-items">
-      <div class="col-md-3 item-content">
-        <%= image_tag "sale.jpg", class: "item-image"%>
-      </div>
-      <div class="col-md-9">
-        <span class="post-title">Lorem ipsum dolor sit amet, consectetur adipisicing!</span>
-        <p class="price-item">150.000 vnd </p>
-        <span><i class="fa fa-flag-checkered"> Can Ban | Category</i></span>
-        <div class="meta-tag">
-          <span><i class="fa fa-calendar"> <%= Date.today %></i></span>
-          <span><i class="fa fa-comment"> 20 Review </i></span>
-          <span class="pull right"><i class="fa fa-user"> Owner</i></span>
-          <span><i class="fa fa-foursquare"> Da Nang Office </i></span>
-        </div>
-      </div>
-    </div>
-    <div class="list-ads-items">
-      <div class="col-md-3 item-content">
-        <%= image_tag "sale.jpg", class: "item-image"%>
-      </div>
-      <div class="col-md-9">
-        <span class="post-title">Lorem ipsum dolor sit amet, consectetur adipisicing!</span>
-        <p class="price-item">150.000 vnd </p>
-        <span><i class="fa fa-flag-checkered"> Can Ban | Category</i></span>
-        <div class="meta-tag">
-          <span><i class="fa fa-calendar"> <%= Date.today %></i></span>
-          <span><i class="fa fa-comment"> 20 Review </i></span>
-          <span class="pull right"><i class="fa fa-user"> Owner</i></span>
-          <span><i class="fa fa-foursquare"> Da Nang Office </i></span>
-        </div>
-      </div>
-    </div>
-    <div class="list-ads-items">
-      <div class="col-md-3 item-content">
-        <%= image_tag "sale.jpg", class: "item-image"%>
-      </div>
-      <div class="col-md-9">
-        <span class="post-title">Lorem ipsum dolor sit amet, consectetur adipisicing!</span>
-        <p class="price-item">150.000 vnd </p>
-        <span><i class="fa fa-flag-checkered"> Can Ban | Category</i></span>
-        <div class="meta-tag">
-          <span><i class="fa fa-calendar"> <%= Date.today %></i></span>
-          <span><i class="fa fa-comment"> 20 Review </i></span>
-          <span class="pull right"><i class="fa fa-user"> Owner</i></span>
-          <span><i class="fa fa-foursquare"> Da Nang Office </i></span>
-        </div>
-      </div>
-    </div>
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-      </ul>
-    </nav>
+
+    <% unless check_length_perpage_posts @post_support.filtered_posts %>
+      <%= link_to_next_page @post_support.filtered_posts, t("view_more_posts") %>
+    <% end %>
   </div>
   <div class="right-sidebar col-md-4">
     <div class="most-review">

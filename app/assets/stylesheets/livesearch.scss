@@ -13,6 +13,18 @@ li.search-item {
   }
 }
 
+li.post-search-item {
+  height: 125px;
+  &:hover {
+    background-color: #ecf0f1;
+    cursor:pointer;
+  }
+}
+
+.pt-10p {
+  padding-top: 10%;
+}
+
 #livesearch {
   a {
     color: #66757f;

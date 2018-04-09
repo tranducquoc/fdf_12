@@ -223,6 +223,10 @@ module ApplicationHelper
     shops.size > Settings.common.shops_per_page
   end
 
+  def check_length_perpage_posts posts
+    posts.size > Settings.common.posts_per_page
+  end
+
   def category_statistic
     [
       [I18n.t("current_week"), :current_week],

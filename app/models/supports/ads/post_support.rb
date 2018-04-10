@@ -10,11 +10,11 @@ class Supports::Ads::PostSupport
   end
 
   def filtered_param
-    category_id = @params[:category_id] ? @params[:category_id] : Category.is_parent.first.id
-    category = Category.find_by(id: category_id)
-    mode = @params[:mode].to_i.zero? ? Post.modes.keys[0] : Post.modes.keys[1]
+    category_slug = @params[:category_slug] ? @params[:category_slug] : Category.is_parent.first.slug
+    category = Category.find_by slug: category_slug
+    mode = (@params[:mode] == Post.modes.keys[1]) ? Post.modes.keys[1] : Post.modes.keys[0]
     time = (@params[:time] == Settings.post.asc) ? Settings.post.asc : Settings.post.desc
-    return Hash[category: category, mode: mode, time: time]
+    return {category: category, mode: mode, time: time}
   end
 
   def filtered_posts

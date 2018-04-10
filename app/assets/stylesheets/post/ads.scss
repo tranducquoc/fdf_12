@@ -1,3 +1,5 @@
+$share-post-buttons-size: 40px;
+
 .page-title{
   border-bottom: 1px dotted black;
   font-weight: bold;
@@ -288,4 +290,12 @@
 
 #like {
   cursor: pointer;
+}
+
+.share-post-buttons {
+  .ssb-icon {
+    background-size: $share-post-buttons-size !important;
+    height: $share-post-buttons-size !important;
+    width: $share-post-buttons-size !important;
+  }
 }

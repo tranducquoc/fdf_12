@@ -65,16 +65,17 @@
       <p class="ads-post">
         <%= raw @post.content %>
       </p>
-      <i class="fa fa-facebook-f fb-icon social-icon"></i>
-      <i class="fa fa-google-plus social-icon g-icon"></i>
-      <i class="fa fa-twitter social-icon tw-icon"></i>
-      <i class="social-icon cw-icon"></i>
+      <div class="share-post-buttons">
+        <%= social_share_button_tag @post.title %>
+      </div>
     <span class="dash"></span>
     <div class="ads-extend">
       <i class="fa fa-foursquare"> <%= @post_support.branch_of_post %></i>
       <i class="fa fa-tags"> <%= @post.category_name %></i>
-      <i class="fa fa-bullseye"> <%= @post.arena %></i>
-      <i class="fa fa-calendar-o"> <%= @post.created_at %></i>
+      <i class="fa fa-bullseye"> <%= t "ads.post.arenas.#{@post.arena}" %></i>
+      <i class="fa fa-calendar-o">
+        <%= @post.created_at.strftime Settings.review.date_format %>
+      </i>
     </div>
     <span class="dash"></span>
     <div class="ads-report">

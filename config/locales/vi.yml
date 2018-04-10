@@ -1247,8 +1247,10 @@ vi:
         report_modal_title: "Nói với chúng tôi lý do bạn báo cáo?"
         btn_close: "Đóng"
       review:
+        too_long: "Nhận xét chỉ được nhập tối đa %{number} kí tự"
         your_rating: "Đánh giá của bạn"
         fail: "Bạn phải nhập đầy đủ thông tin"
+        not_found: "Không tìm thấy nhận xét!"
       post_on: "Đăng lúc"
       price_from: "Giá từ"
       post_owner: "Người đăng tin "

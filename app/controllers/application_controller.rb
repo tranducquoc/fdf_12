@@ -129,12 +129,8 @@ class ApplicationController < ActionController::Base
       @domain = Domain.find_by id: domain_id
     elsif current_user.present?
       @domain = current_user.domains.first
-      if @domain.present?
-        session[:domain_id] = @domain.id
-      else
-        flash[:danger] = t "can_not_load_domain"
-        redirect_to root_path
-      end
+      return unless @domain.present?
+      session[:domain_id] = @domain.id
     end
   end
 

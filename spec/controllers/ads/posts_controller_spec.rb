@@ -14,6 +14,9 @@ RSpec.describe Ads::PostsController, type: :controller do
   end
 
   describe "POST #create" do
+    before {invalid_post_params[:title] = ""}
+    before {invalid_post_params[:content] = ""}
+
     it "failed to create post" do
       sign_in user
 

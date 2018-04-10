@@ -13,5 +13,16 @@ $(document).ready(function(){
         });
       }
     });
-  })
+  });
+
+  $(document).on('click', '#like', function() {
+    $(this).parents('form').submit();
+  });
+
+  $(document).on('click', '#submit-review', function(event) {
+    if ($('#ads-review').val().length > 255) {
+      event.preventDefault();
+      swal(I18n.t("ads.post.review.too_long", {number: 255}), "", "error");
+    }
+  });
 })

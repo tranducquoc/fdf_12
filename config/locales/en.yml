@@ -1189,8 +1189,10 @@ en:
         report_modal_title: "Tell me why?"
         btn_close: "Close"
       review:
+        too_long: "Review can only have maximum %{number} of characters"
         your_rating: "Your rating"
         fail: "You must put all info"
+        not_found: "Review not found"
       post_on: "Post on"
       price_from: "Price from"
       post_owner: "Post owner"

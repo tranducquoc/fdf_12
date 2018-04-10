@@ -1,13 +1,40 @@
 <div class="media">
-  <div class="media-left ads-review-avatar">
-    <%= image_tag review.user_avatar.url, class: "media-object"%>
-  </div>
-  <div class="media-body">
-    <h4 class="media-heading"><%= review.user_name %><small><i> <%= t "ads.post.post_on" %>
-      <%= review.created_at.strftime("%d-%m-%Y") %> </i><i class="fa fa-star-o"></i>
-      <i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-      <i class="fa fa-star-o"></i></small>
-    </h4>
-    <p><%= raw review.review %></p>
-  </div>
+  <%= form_for review, url: review_path(domain_id: @domain.slug,
+    post_id: @post.id, id: review.id), method: :patch, remote: true do |f| %>
+
+    <div class="media-left ads-review-avatar">
+      <%= image_tag review.user_avatar.url, class: "media-object"%>
+    </div>
+
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= review.user_name %>
+        <small>
+          <i><%= t "ads.post.post_on" %>
+          <%= review.created_at.strftime Settings.review.date_format %></i>
+
+          <% review.rating.to_i.times do %>
+            <i class="fa fa-star"></i>
+          <% end %>
+
+          <% (Settings.max_rate_point - review.rating.to_i).times do %>
+            <i class="fa fa-star-o"></i>
+          <% end %>
+        </small>
+      </h4>
+
+      <p name="review[review]"><%= raw review.review %></p>
+
+      <% if review.like_by? current_user %>
+        <i id="like" class="fa fa-heart"></i>
+      <% else %>
+        <i id="like" class="fa fa-heart-o"></i>
+      <% end %>
+
+      +<%= review.likes.size %>
+    </div>
+
+    <%= f.hidden_field :like, value: !review.like_by?(current_user) %>
+    <%= hidden_field_tag :score, review.rating.to_i %>
+  <% end %>
 </div>

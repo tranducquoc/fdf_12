@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180315021903) do
+ActiveRecord::Schema.define(version: 20180410034629) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -270,6 +270,18 @@ ActiveRecord::Schema.define(version: 20180315021903) do
     t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
   end
 
+  create_table "reactions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "amount"
+    t.integer  "user_id"
+    t.string   "reactionable_type"
+    t.integer  "reactionable_id"
+    t.string   "type"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["reactionable_type", "reactionable_id"], name: "index_reactions_on_reactionable_type_and_reactionable_id", using: :btree
+    t.index ["user_id"], name: "index_reactions_on_user_id", using: :btree
+  end
+
   create_table "reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "post_id"
     t.integer  "user_id"
@@ -458,6 +470,7 @@ ActiveRecord::Schema.define(version: 20180315021903) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "shops"
   add_foreign_key "products", "users"
+  add_foreign_key "reactions", "users"
   add_foreign_key "request_shop_domains", "domains"
   add_foreign_key "request_shop_domains", "shops"
   add_foreign_key "reviews", "users"

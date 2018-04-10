@@ -1,10 +1,10 @@
 $.fn.raty.defaults.half = false;
 $.fn.raty.defaults.halfShow = true;
-$.fn.raty.defaults.path = "/assets";
+$.fn.raty.defaults.path = '/assets';
 $.fn.raty.defaults.cancel = false;
 
 $(function(){
-  $(".star").each(function() {
+  $('.star').each(function() {
     var $readonly = ($(this).attr('data-readonly') == 'true');
     var $half     = ($(this).attr('data-enable-half') == 'true');
     var $halfShow = ($(this).attr('data-half-show') == 'true');
@@ -36,27 +36,6 @@ $(function(){
       targetType:  $(this).attr('data-target-type'),
       targetFormat: $(this).attr('data-target-format'),
       targetScoret: $(this).attr('data-target-score'),
-      readOnly: $readonly,
-      click: function(score, evt) {
-        var _this = this;
-        if (score == null) { score = 0; }
-        $.post('<%= Rails.application.class.routes.url_helpers.rate_path %>',
-        {
-          score: score,
-          dimension: $(this).attr('data-dimension'),
-          id: $(this).attr('data-id'),
-          klass: $(this).attr('data-classname')
-        },
-        function(data) {
-          if(data) {
-            // success code goes here ...
-
-            if ($(_this).attr('data-disable-after-rate') == 'true') {
-              $(_this).raty('set', { readOnly: true, score: score });
-            }
-          }
-        });
-      }
     });
   });
 });

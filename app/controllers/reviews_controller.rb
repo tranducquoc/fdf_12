@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params[:score] = params[:score].empty? ? Settings.min_rate_point : params[:score]
+    params[:score] ||= Settings.min_rate_point
     params.require(:review).permit(:review).merge rating: params[:score]
   end
 

@@ -23,6 +23,9 @@ $(document).ready(function(){
     if ($('#ads-review').val().length > 255) {
       event.preventDefault();
       swal(I18n.t("ads.post.review.too_long", {number: 255}), "", "error");
+    } else if ($('#ads-review').val().length <= 0) {
+      event.preventDefault();
+      swal(I18n.t("ads.post.review.fail"), "", "error");
     }
   });
 })

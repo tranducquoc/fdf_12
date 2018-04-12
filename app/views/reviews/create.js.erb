@@ -1,8 +1,9 @@
-$('.reviews-of-post').prepend(
-  '<%= j render "ads/posts/review", review: @review %>'
-);
-
 $('#ads-review').val('');
-<% if @status == false %>
+
+<% if @status == true %>
+  $('.reviews-of-post').prepend(
+    '<%= j render "ads/posts/review", review: @review %>'
+  );
+<% else %>
   swal(I18n.t("ads.post.review.fail"), '', 'warning');
 <% end %>

@@ -94,18 +94,27 @@
           <%= image_tag "default_user_avatar", class: "media-object"%>
         </div>
         <div class="media-body">
-          <form class="form-group">
-            <h4 class="media-heading"><%= current_user.name %><small><i> <%= t "ads.post.review.your_rating" %>:
-              <%= rating_for @review, "rating", stars: 5 %>
-            </small></h4>
-            <textarea class="form-control" rows="3" id="ads-review" data-post-id="<%= @post.id %>"></textarea>
-            <a class="btn btn-review btn-add"><%= t "ads.post.report.btn_review" %></a>
-          </form>
+          <%= form_for @review, url: reviews_path(domain_id: @domain.slug, post_id: @post.id),
+            remote: true, class: "form-group" do |f| %>
+            <h4 class="media-heading">
+              <%= current_user.name %>
+              <small>
+                <i>
+                  <%= t "ads.post.review.your_rating" %>:
+                  <%= rating_for @review, "rating", stars: Settings.max_rate_point %>
+                </i>
+              </small>
+            </h4>
+
+            <%= f.text_area :review, rows: Settings.review.text_area_rows, id: "ads-review",
+              class: "form-control", data: {post_id: @post.id} %>
+            <%= f.submit t("ads.post.report.btn_review"), id: "submit-review",
+              class: "btn btn-review btn-add" %>
+          <% end %>
         </div>
       </div>
     </div>
     <div class="people-review">
-      <h3>Someone reviewing</h3>
       <div class="reviews-of-post">
         <%= render partial: "review", collection: @post_support.reviews_of_post.to_a, as: :review %>
       </div>

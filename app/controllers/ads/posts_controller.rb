@@ -78,7 +78,11 @@ class Ads::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit :title, :content, :category_id, :mode, :arena,
+    if params[:post][:arena] == Domain.statuses.keys[1]
+      params[:post].merge! domain_id: current_user.domain_default
+    end
+
+    params.require(:post).permit :title, :content, :category_id, :mode, :arena, :domain_id,
       :link_shop, :min_price, :max_price, images_attributes: [:id, :image, :_destroy]
   end
 

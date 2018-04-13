@@ -1,8 +1,14 @@
 <div class="post-container">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item"><a href="#"><%= @post.category_name %></a></li>
+      <li class="breadcrumb-item">
+        <%= link_to t("ads.post.home"), domain_ads_posts_path %>
+      </li>
+      <li class="breadcrumb-item">
+        <%= link_to @post.category_name,
+          domain_ads_posts_path(category_slug: @post.category.parent_category,
+          mode: @post.mode) %>
+      </li>
       <li class="breadcrumb-item active" aria-current="page"><%= @post.title %></li>
     </ol>
   </nav>
@@ -37,16 +43,34 @@
   <div class="col-md-4 right-sidebar post-onwer-info">
     <h3 class="contact-info"><%= t "ads.post.contact_info" %></h3>
     <div class="card">
-      <%= image_tag "default_shop_avatar", class: "card-img-top" %>
+      <% if @post_support.shop %>
+        <%= image_tag @post_support.shop.avatar_url, class: "card-img-top" %>
+      <% end %>
+
       <div class="card-body">
-        <h4 class="card-title">
-          <%= link_to "Cua Hang ABCD"%></br>
-          <i class="fa fa-clock-o"> 09:00 AM - 15:00 PM</i>
-        </h4>
+        <% if @post_support.shop %>
+          <h4 class="card-title">
+            <%= link_to @post_support.shop.name, @post.link_shop %></br>
+
+            <i class="fa fa-clock-o">
+              <% if @post_support.shop.openforever %>
+                <%= @post_support.working_time Settings.shop.working_time_format %>
+              <% else %>
+                <%= t "ads.post.close_time" %>:</br>
+                <%= @post_support.shop.time_auto_close.strftime Settings.shop.working_time_format %>
+              <% end %>
+            </i>
+          </h4>
+        <% end %>
+
         <p class="card-text">
-          <i class="fa fa-user"> <%= t "ads.post.post_owner" %>:</i> <%= @post.user.name %><br>
-          <i class="fa fa-pencil"> <%= t "ads.post.ads_of_owner" %>:</i> <%= @post_support.post_of_user %><br>
-          <i class="fa fa-star"> <%= t "ads.post.shop_rating" %>: </i>
+          <i class="fa fa-user"></i> <%= t "ads.post.post_owner" %>:
+          <%= link_to @post.user_name, user_path(@post.user) %></br>
+
+          <i class="fa fa-pencil"></i> <%= t "ads.post.ads_of_owner" %>:
+          <%= @post_support.post_of_user %></br>
+
+          <i class="fa fa-star"></i> <%= t "ads.post.shop_rating" %>:
           <i class="fa fa-star-o"></i>
           <i class="fa fa-star-o"></i>
           <i class="fa fa-star-o"></i>
@@ -62,16 +86,20 @@
   </div>
   <div class="col-md-8 ads-content">
     <p class="ads-title"><%= @post.title %></p>
-    <p class="ads-price"><%= t "ads.post.price_from" %>: 5.000.000 - 10.000.000 vnd</p>
-      <p class="ads-post">
-        <%= raw @post.content %>
-      </p>
-      <div class="share-post-buttons">
-        <%= social_share_button_tag @post.title %>
-      </div>
+    <p class="ads-price">
+      <%= t "ads.post.price", price: format_post_price(@post) %>
+    </p>
+    <p class="ads-post">
+      <%= raw @post.content %>
+    </p>
+    <div class="share-post-buttons">
+      <%= social_share_button_tag @post.title %>
+    </div>
     <span class="dash"></span>
     <div class="ads-extend">
-      <i class="fa fa-foursquare"> <%= @post_support.branch_of_post %></i>
+      <% if @post.domain %>
+        <i class="fa fa-foursquare"> <%= @post.domain_name %></i>
+      <% end %>
       <i class="fa fa-tags"> <%= @post.category_name %></i>
       <i class="fa fa-bullseye"> <%= t "ads.post.arenas.#{@post.arena}" %></i>
       <i class="fa fa-calendar-o">
@@ -135,7 +163,9 @@
       </div>
       <div class="modal-footer">
         <a href="javascript:" class="btn btn-report btn-add"><%= t "ads.post.report.btn_send_report" %></a>
-        <a href="javascript:" type="button" class="btn btn-add" data-dismiss="modal"><%= t "ads.post.report.btn_close" %></a>
+        <a href="javascript:" type="button" class="btn btn-add" id="close-report"
+          data-dismiss="modal"><%= t "ads.post.report.btn_close" %>
+        </a>
       </div>
     </div>
   </div>

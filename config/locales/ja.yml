@@ -1229,7 +1229,7 @@ ja:
         fail: "You must put all info"
         not_found: "Review not found"
       post_on: "Post on"
-      price_from: "Price from"
+      price: "Price: %{price}"
       post_owner: "Post owner"
       ads_of_owner: "Ads"
       shop_rating: "Shop rating"
@@ -1240,3 +1240,4 @@ ja:
       created_at: "<b>Posted at:</b> %{time} ago"
       delete:
         success: "Post has successfully deleted!"
+      close_time: "Close time"

@@ -4,11 +4,16 @@ module Ads::PostsHelper
   end
 
   def child_category_id_of post
-    post.category ? post.category.id : ""
+    post.category ? post.category_id : ""
   end
 
-  def format_price post_price
-    return unless post_price
-    post_price.to_i == post_price ? post_price.to_i : post_price
+  def format_post_price post
+    return format_price post.min_price if post.min_price == post.max_price
+    "#{format_price post.min_price} - #{format_price post.max_price}"
+  end
+
+  def format_post_domain post
+    return post.domain_name if post.domain
+    t "ads.post.arenas.professed"
   end
 end

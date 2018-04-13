@@ -1,4 +1,7 @@
 $share-post-buttons-size: 40px;
+$star: #f7b400;
+$heart: #fe9299;
+$light-gray: #666;
 
 .page-title{
   border-bottom: 1px dotted black;
@@ -307,4 +310,21 @@ $share-post-buttons-size: 40px;
     height: $share-post-buttons-size !important;
     width: $share-post-buttons-size !important;
   }
+}
+
+.yellow {
+  color: $star;
+}
+
+.heart {
+  color: $heart;
+}
+
+.bg-heart {
+  background-color: $heart;
+}
+
+.like-label {
+  color: $light-gray;
+  font-weight: bold;
 }

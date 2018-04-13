@@ -43,4 +43,12 @@ class Supports::Ads::PostSupport
   def children_categories= value
     @children_categories = value
   end
+
+  def find_shop
+    Shop.find_by slug: @post.link_shop
+  end
+
+  def working_time format
+    "#{shop.time_open.strftime format} - #{shop.time_close.strftime format}"
+  end
 end

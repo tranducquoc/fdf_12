@@ -452,6 +452,14 @@ ja:
         all_products: "すべての製品を見ます"
         updating: "更新..."
         tags_text: "カード"
+    reports:
+      index:
+        page_title: "Manage reports"
+        title: "Reports list"
+        content: "Content"
+        post: "Post"
+        user: "User"
+        created_at: "Report at"
   draft:
     description: "The atmosphere in Chania has a touch of Florence and Venice."
     shop_desc: "NEM CHUA RÁN, BÁNH MỲ, MỲ TÔM , NÂU ĐÁ LẮC (MỖI ĐƠN TRÊN
@@ -491,6 +499,7 @@ ja:
       shops: "店"
       users: "ユーザー"
       all_users: "皆"
+      reports: "Reports"
     admin_lte_2_header:
       logo_mini: "F"
       logo_medium: "Framgia"

@@ -500,6 +500,14 @@ vi:
         all_products: "Xem tất cả sản phẩm"
         updating: "Đang cập  nhật..."
         tags_text: "Tags"
+    reports:
+      index:
+        page_title: "Quản lý báo cáo"
+        title: "Danh sách báo cáo"
+        content: "Nội dung"
+        post: "Tin rao"
+        user: "Người báo cáo"
+        created_at: "Báo cáo lúc"
   draft:
     description: "The atmosphere in Chania has a touch of Florence and Venice."
     shop_desc: "NEM CHUA RÁN, BÁNH MỲ, MỲ TÔM , NÂU ĐÁ LẮC (MỖI ĐƠN TRÊN
@@ -539,6 +547,7 @@ vi:
       shops: "Cửa hàng"
       users: "Người dùng"
       all_users: "Tất cả"
+      reports: "Báo cáo"
     admin_lte_2_header:
       logo_mini: "F"
       logo_medium: "Framgia"

@@ -202,3 +202,5 @@ review:
   text_area_rows: 3
   max_length: 255
   date_format: "%d-%m-%Y"
+reports:
+  date_format: "%H:%M %d-%m-%Y"

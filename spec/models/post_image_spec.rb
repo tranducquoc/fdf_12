@@ -1,5 +1,12 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe PostImage, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:image) {FactoryGirl.create :image}
+  let(:post) {FactoryGirl.create :post}
+  let(:post_image) {FactoryGirl.create :post_image}
+
+  describe "associations" do
+    it {is_expected.to belong_to :image}
+    it {is_expected.to belong_to :post}
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410034629) do
+ActiveRecord::Schema.define(version: 20180424062838) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -147,6 +147,12 @@ ActiveRecord::Schema.define(version: 20180410034629) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "order_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "quantity"
     t.float    "price",      limit: 24
@@ -198,9 +204,9 @@ ActiveRecord::Schema.define(version: 20180410034629) do
 
   create_table "post_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "post_id"
-    t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "image_id"
   end
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -213,6 +219,8 @@ ActiveRecord::Schema.define(version: 20180410034629) do
     t.integer  "mode"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.float    "min_price",   limit: 24
+    t.float    "max_price",   limit: 24
   end
 
   create_table "product_domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

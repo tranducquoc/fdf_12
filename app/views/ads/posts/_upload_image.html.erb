@@ -1,18 +1,11 @@
 <div class="col-md-2 list-gallery nested-fields">
-  <%= image_tag "upload", class: "image_view", title: "choose image" %>
+  <%= image_tag "upload", class: "image_view input-image", title: "choose image" %>
+
   <div class="btn-remove hide-div">
     <div class="delete-img">
       <%= link_to_remove_association f do %>
         <i class="fa fa-window-close"><%= t "ads.post.remove_image" %></i>
       <% end %>
-    </div>
-  </div>
-  <div class="btn-add-data">
-    <div class="delete-img hide-div">
-      <span class="btn btn-info btn-file img-select-btn">
-        <span><i class="fa fa-plus"></i></span>
-        <%= f.file_field :image, multiple: true, class: "img-file-input" %>
-      </span>
     </div>
   </div>
 </div>

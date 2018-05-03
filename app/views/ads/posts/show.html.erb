@@ -15,9 +15,9 @@
           <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-          <% @post.post_images.each do |img| %>
-            <div class="image-slide item <%= img.id == @post.post_images.first.id ? 'active' : '' %>">
-              <%= image_tag img.image.url %>
+          <% @post.images.each_with_index do |image, index| %>
+            <div class="image-slide item <%= index.zero? ? "active" : "" %>">
+              <%= image_tag image.image_url %>
             </div>
           <% end %>
         </div>

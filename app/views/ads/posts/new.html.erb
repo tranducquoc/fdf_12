@@ -28,7 +28,7 @@
           <div id="menu1" class="tab-pane fade active in">
             <h3 class="txt-ali-cen h3-help"><%= t "ads.post.choose_category.choose_category" %></h3>
             <p class="txt-ali-cen p-font"><%= t "ads.post.choose_category.detail" %></p>
-            <div class="form-group row">
+            <div class="form-group row display-baseline">
               <div class="col-md-2"></div>
               <%= f.label :category_id, t("ads.post.category"), class: "col-md-2 col-form-label"%>
               <div class="col-md-4 select-category-parent" data-domain-id="<%= @domain.id %>">
@@ -36,7 +36,8 @@
                   class: "form-control", id: "parent_id")%>
               </div>
             </div>
-            <div class="form-group row">
+
+            <div class="form-group row display-baseline">
               <div class="col-md-2"></div>
               <%= f.label :category_id, t("ads.post.children_category"),
                 class: "col-md-2 col-form-label" %>
@@ -45,7 +46,8 @@
                   {},  class: "form-control")%>
               </div>
             </div>
-            <div class="form-group row">
+
+            <div class="form-group row display-baseline">
               <div class="col-md-2"></div>
               <%= f.label :mode, t("ads.post.mode"), class: "col-md-2" %>
               <div class="col-md-4">
@@ -71,7 +73,7 @@
           <div id="menu2" class="tab-pane fade">
             <h3 class="txt-ali-cen h3-help"><%= t "ads.post.content.content" %></h3>
             <p class="txt-ali-cen p-font"><%= t "ads.post.content.detail" %></p>
-            <div class="form-group row">
+            <div class="form-group row display-baseline">
               <%= f.label :title, class: "col-md-2 col-form-label" do %>
                 <span class="field-compulsory"><%= t "ads.post.title.title" %></span><br />
               <% end %>
@@ -80,7 +82,7 @@
                   class: "form-control input-compulsory", id: "post-title" %>
               </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row display-baseline">
               <%= f.label :content, t("ads.post.content.content"), class:
                 "col-md-2 col-form-label field-compulsory" %>
               <div class="col-md-8">
@@ -88,7 +90,28 @@
                   rows: Settings.row_of_text, class: "form-control input-compulsory" %>
               </div>
             </div>
-            <div class="form-group row">
+
+            <div class="form-group row display-baseline">
+              <%= f.label :min_price, t("ads.post.content.min_price_html",
+                unit: Settings.post.price.vnd),
+                class: "col-md-2 col-form-label field-compulsory" %>
+              <div class="col-md-3">
+                <%= f.number_field :min_price, min: Settings.post.price.min_vnd,
+                  max: Settings.post.price.max_vnd, class: "form-control input-compulsory",
+                  step: Settings.post.price.step_vnd %>
+              </div>
+
+              <%= f.label :max_price, t("ads.post.content.max_price_html",
+                unit: Settings.post.price.vnd),
+                class: "col-md-2 col-form-label field-compulsory" %>
+              <div class="col-md-3">
+                <%= f.number_field :max_price, min: Settings.post.price.min_vnd,
+                  max: Settings.post.price.max_vnd, class: "form-control input-compulsory",
+                  step: Settings.post.price.step_vnd %>
+              </div>
+            </div>
+
+            <div class="form-group row display-baseline">
               <%= f.label :link_shop, t("ads.post.shop_url.shop_url"),
                 class: "col-md-2 col-form-label"%>
               <div class="col-md-8">
@@ -96,7 +119,8 @@
                 class: "form-control" %>
               </div>
             </div>
-            <div class="form-group row">
+
+            <div class="form-group row display-baseline">
               <%= f.label :arena, t("ads.post.arena"), class: "col-md-2" %>
               <div class="col-md-8">
                 <div class="radio-order">
@@ -128,9 +152,19 @@
               <div class="col-md-3"></div>
               <div class="col-md-6 form-group upload-post-image">
                 <div class="image-preview row" id="image-list-preview">
-                  <%= f.fields_for :post_images do |post_image| %>
-                    <%= render partial: "upload_image",locals: {f: post_image} %>
+                  <div class="btn-add-data">
+                    <div class="delete-img hide-div">
+                      <span class="btn btn-info btn-file img-select-btn">
+                        <span><i class="fa fa-plus"></i></span>
+                        <%= file_field_tag :image, multiple: true, class: "img-file-input" %>
+                      </span>
+                    </div>
+                  </div>
+
+                  <%= f.fields_for :images do |image| %>
+                    <%= render partial: "upload_image", locals: {f: image} %>
                   <% end %>
+
                   <div class="col-md-2 list-gallery nested-fields hide-div">
                     <%= link_to_add_association f, :post_images, partial: "upload_image",
                       class: "btn btn-breez btn-sm", id: "add-new-image" do %>
@@ -146,7 +180,8 @@
                 <i class="fa fa-chevron-left"></i>
                 <%= t "ads.post.prev_step" %></button></li>
               <li>
-                <%= f.submit t("ads.post.submit"), class: "btn btn-info next-step", id: "submit-post" %>
+                <%= button_tag t("ads.post.submit"), class: "btn btn-info",
+                  id: "submit-post", type: "button" %>
               </li>
             </ul>
           </div>

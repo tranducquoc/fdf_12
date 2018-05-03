@@ -1158,6 +1158,8 @@ en:
         content: "Content"
         detail: "Please just give brief content for maximum effective"
         placeholder: "Type content of your ads"
+        min_price_html: "Min price <i>(Unit: %{unit})</i>"
+        max_price_html: "Max price <i>(Unit: %{unit})</i>"
       choose_category:
         choose_category: "Choose category of your ads"
         detail: "Please choose category and kind of ads"
@@ -1187,7 +1189,7 @@ en:
       error:
         max_images: "You can only upload maximum %{number} picture(s)"
         not_found: "This post not found"
-        empty_field: "The filled in information is not enough"
+        invalid_fields: "The filled in information is not enough or wrong"
       report:
         success: "Success"
         fail: "Fail, please try again"

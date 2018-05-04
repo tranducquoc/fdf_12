@@ -1216,6 +1216,8 @@ vi:
         content: "Nội dung"
         detail: "Chỉ đưa vào tin rao nội dung ngắn gọn để đạt hiệu quả tối ưu"
         placeholder: "Nhập nội dung tin rao"
+        min_price_html: "Giá thấp nhất <i>(Đơn vị: %{unit})</i>"
+        max_price_html: "Giá cao nhất <i>(Đơn vị: %{unit})</i>"
       choose_category:
         choose_category: "Chọn danh mục tin"
         detail: "Lựa chọn danh mục và thể loại của tin rao "
@@ -1245,7 +1247,7 @@ vi:
       error:
         max_images: "Bạn chỉ được phép đăng tối đa %{number} ảnh"
         not_found: "Không tìm thấy bài viết"
-        empty_field: "Thông tin bạn nhập còn thiếu"
+        invalid_fields: "Thông tin bạn nhập còn thiếu hoặc bị sai"
       report:
         success: "Thành công"
         fail: "Không thành công, vui lòng thử lại"

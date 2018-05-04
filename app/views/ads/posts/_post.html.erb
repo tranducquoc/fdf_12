@@ -1,8 +1,8 @@
 <div class="list-ads-items">
   <div class="col-md-3 item-content">
-    <% if post.post_images.any? %>
+    <% if post.images.any? %>
       <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
-        <%= image_tag post.post_images.first.image.url, class: "item-image"%>
+        <%= image_tag post.images.first.image.url, class: "item-image" %>
       <% end %>
     <% end %>
   </div>

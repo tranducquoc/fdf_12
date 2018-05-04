@@ -19,12 +19,12 @@ $(function(){
       var isValidTab = true;
       $('.input-compulsory').each(function () {
         if (!isValidField($(this))) {
-          changeClass(this, 'green-field', 'red-field');
+          changeClasses(this, 'green-field', 'red-field');
           isValidTab = false;
         }
       });
       if (!isValidTab) {
-        swal(I18n.t('ads.post.error.empty_field'), '', 'error');
+        swal(I18n.t('ads.post.error.invalid_fields'), '', 'error');
         return;
       }
     }
@@ -40,9 +40,9 @@ $(function(){
   $('.input-compulsory').each(function () {
     $(this).on('blur', function () {
       if (isValidField($(this)))
-        changeClass(this, 'red-field', 'green-field');
+        changeClasses(this, 'red-field', 'green-field');
       else
-        changeClass(this, 'green-field', 'red-field');
+        changeClasses(this, 'green-field', 'red-field');
     });
   });
 
@@ -52,6 +52,14 @@ $(function(){
       var minTitle = 5;
       var maxTitle = 150;
       return !((postTitleLength < minTitle) || (postTitleLength > maxTitle));
+    } else if($(field).is($('#post_min_price')) || $(field).is($('#post_max_price'))) {
+      var minPrice = parseInt($('#post_min_price').val());
+      var maxPrice = parseInt($('#post_max_price').val());
+
+      if (isValidPriceRange(minPrice, maxPrice, 1000, 100000000))
+        return true;
+      else
+        return false;
     } else
       return !($(field).val() === '');
   }
@@ -62,11 +70,27 @@ $(function(){
     $('[href="#'+ tab +'"]').tab('show');
   }
 
+  function changeClasses(element, oldClass, newClass) {
+    if ($(element).is($('#post_min_price')) || $(element).is($('#post_max_price'))) {
+      changeClass('#post_min_price', oldClass, newClass);
+      changeClass('#post_max_price', oldClass, newClass);
+    } else {
+      changeClass(element, oldClass, newClass);
+    }
+  }
+
   function changeClass(element, oldClass, newClass) {
     if ($(element).hasClass(oldClass)) {
       $(element).removeClass(oldClass);
       $(element).addClass(newClass);
     } else
       $(element).addClass(newClass);
+  }
+
+  function isValidPriceRange(min, max, minValue, maxValue) {
+    if ((min <= max) && (minValue <= min && min <= maxValue) && (minValue <= max && max <= maxValue)) {
+      return true;
+    }
+    return false;
   }
 });

@@ -56,6 +56,10 @@ $(document).ready(function(){
       postData.append('post[images_attributes][' + i + '][_destroy]', false);
     }
 
+    if (modifiableFiles.length == 0) {
+      postData.append('post[images_attributes][0][image]', '');
+    }
+
     $.ajax({
       url: url,
       type: 'POST',

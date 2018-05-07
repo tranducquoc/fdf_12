@@ -16,7 +16,8 @@
         </ol>
         <div class="carousel-inner">
           <% @post.images.each_with_index do |image, index| %>
-            <div class="image-slide item <%= index.zero? ? "active" : "" %>">
+            <div class="image-slide item <%= index.zero? ? "active" : "" %>
+              <%= @post.images.size == Settings.post.min_images ? "align-justify-center" : "" %>">
               <%= image_tag image.image_url %>
             </div>
           <% end %>

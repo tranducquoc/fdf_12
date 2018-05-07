@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180424062838) do
+ActiveRecord::Schema.define(version: 20180507114117) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -217,10 +217,11 @@ ActiveRecord::Schema.define(version: 20180424062838) do
     t.string   "link_shop"
     t.integer  "arena"
     t.integer  "mode"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.float    "min_price",   limit: 24
     t.float    "max_price",   limit: 24
+    t.integer  "status",                    default: 0
   end
 
   create_table "product_domains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

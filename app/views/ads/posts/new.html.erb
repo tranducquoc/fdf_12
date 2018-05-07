@@ -115,8 +115,8 @@
               <%= f.label :link_shop, t("ads.post.shop_url.shop_url"),
                 class: "col-md-2 col-form-label"%>
               <div class="col-md-8">
-                 <%= f.text_field :link_shop, placeholder: t("ads.post.shop_url.placeholder"),
-                class: "form-control" %>
+                <%= f.select :link_shop, current_user.shops.collect {|shop| [shop.name, shop.slug]},
+                  {prompt: t("ads.post.shop_url.no_shop")}, class: "form-control" %>
               </div>
             </div>
 

@@ -1167,9 +1167,10 @@ en:
       prev_step: "Previous step"
       title:
         title: "Title"
-        placeholder: "Type your title of your ads"
+        placeholder: "Type your title of your advertising"
       shop_url:
-        shop_url: "Shop URL"
+        no_shop: "No shop"
+        shop_url: "Shop"
         placeholder: "Type your shop url if yes"
       arena: "Arena"
       submit: "Submit"

@@ -1227,7 +1227,8 @@ vi:
         title: "Tiêu đề"
         placeholder: "Nhập tiêu đề tin rao"
       shop_url:
-        shop_url: "Đường dẫn cửa hàng"
+        no_shop: "Không có cửa hàng"
+        shop_url: "Cửa hàng"
         placeholder: "Nhập đường dẫn cửa hàng của bạn nếu có"
       arena: "Phạm vi"
       submit: "Đăng tin"

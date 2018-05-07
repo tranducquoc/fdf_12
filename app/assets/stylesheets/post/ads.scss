@@ -154,6 +154,13 @@ $share-post-buttons-size: 40px;
   padding: 5px;
   margin-bottom: 20px;
 }
+
+.align-justify-center {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
 .contact-info{
   margin-top: 5px;
   text-align: center;

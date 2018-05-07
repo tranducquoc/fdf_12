@@ -197,6 +197,7 @@ post:
     step_vnd: 500
     vnd: "VND"
   min_images: 1
+  max_images: 3
 row_of_text: 10
 arenas:
   professed: "professed"

@@ -2,7 +2,6 @@ $(function(){
   $('.btn-circle').on('click', function(){
     var clickedButtonIdx = $('.btn-circle').index(this);
     var buttonInfoIdx = $('.btn-circle').index($('.btn-info'));
-    var submitButtonIdx = $('.next-step').index($('#submit-post'));
 
     if(buttonInfoIdx < clickedButtonIdx) {
       $('.next-step').eq(buttonInfoIdx).trigger('click');

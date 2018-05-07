@@ -1,5 +1,7 @@
-<div class="col-md-2 list-gallery nested-fields">
-  <%= image_tag "upload", class: "image_view input-image", title: "choose image" %>
+<div class="col-md-2 list-gallery nested-fields
+  <%= image.new_record? ? "" : "existing_images" %>">
+  <%= image_tag (image.new_record? ? "upload" : image.image_url), class: "image_view
+    #{image.new_record? ? "input-image" : ""}", title: "choose image" %>
 
   <div class="btn-remove hide-div">
     <div class="delete-img">

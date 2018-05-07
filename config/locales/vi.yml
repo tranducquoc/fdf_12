@@ -352,6 +352,7 @@ vi:
     sign_in: "Đăng nhập"
     sign_in_fb: "Đăng nhập với Facebook"
     sign_up: "Đăng ký"
+    reports_manager: "Quản lý tin rao"
   devise:
     user:
       sign_in: "Đăng nhập"
@@ -558,6 +559,15 @@ vi:
     admin_lte_2_login:
       login_box_message: "Đăng nhập để tạo phiên làm việc"
   dashboard:
+    ads:
+      posts:
+        index:
+          yours: "Tin rao của bạn"
+          new: "Tạo tin rao mới"
+        post:
+          show: "Xem"
+          edit: "Sửa"
+          destroy: "Xóa"
     statistics:
       index:
         tittle: "Thống kê đơn hàng"
@@ -1203,6 +1213,9 @@ vi:
     send_order_status_noti: "Gửi thông báo khi bạn đóng đơn hàng"
   ads:
     post:
+      update:
+        success: "Cập nhật tin rao thành công!"
+        error: "Cập nhật tin rao thất bại!"
       post:
         review: Nhận xét
       create_title: "Tạo tin rao vặt miễn phí"
@@ -1273,3 +1286,5 @@ vi:
       contact_info: "Thông tin liên hệ"
       home: "Trang chủ"
       created_at: "<b>Đăng từ:</b> %{time} trước"
+      delete:
+        success: "Bài viết đã được xóa thành công!"

@@ -46,10 +46,12 @@ $share-post-buttons-size: 40px;
   margin: auto;
 }
 .list-ads-items{
+  align-items: center;
   border: 1px solid #ccc;
-  overflow: hidden;
-  margin-bottom: 5px;
   box-shadow: 5px 5px 5px #ccc;
+  display: flex;
+  margin-bottom: 5px;
+  overflow: hidden;
 }
 .item-content{
   padding: 10px;

@@ -341,6 +341,7 @@ vi:
     view_button: "Xem"
     tags: "Thẻ"
     shop_managers: "Quản lý (%{num})"
+    all_posts: "Tất cả bài đăng rao vặt"
   header:
     account: "Tài khoản"
     shop_manager: "Quản lý cửa hàng"
@@ -518,6 +519,27 @@ vi:
       update:
         success: "Cập nhật tin rao thành công!"
         failed: "Cập nhật tin rao thất bại!"
+    posts:
+      index:
+        user_name: "Chủ cửa hàng"
+        mode: "Bán/Mua"
+        sale: "Bán"
+        buy: "Mua"
+        arena: "Phạm vi"
+        professed: "Công khai"
+        secret: "Bí mật"
+        category_name : "Tên danh mục"
+        title: "Tiêu đề"
+        min_price: "Giá thấp nhất"
+        max_price: "Giá cao nhất"
+        created_at: "Thời gian tạo"
+        status: "Trạng thái"
+        action: "Hành động"
+        pending: "Đang chờ"
+        approved: "Đã chấp nhận"
+        rejected: "Đã từ chối"
+        approve: "Chấp nhận"
+        rejecte: "Từ chối"
   draft:
     description: "The atmosphere in Chania has a touch of Florence and Venice."
     shop_desc: "NEM CHUA RÁN, BÁNH MỲ, MỲ TÔM , NÂU ĐÁ LẮC (MỖI ĐƠN TRÊN

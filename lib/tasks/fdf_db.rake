@@ -3282,6 +3282,6 @@ namespace :fdf_db do
       end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/traxanhyakultdam.jpg")
     )
-
   end
+  
 end

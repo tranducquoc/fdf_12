@@ -25,6 +25,9 @@ search:
 admin:
   dashboard:
     max_items: 10
+  post:
+    posts_per_page: 15
+    full_time_date: "%H:%M %d/%m/%Y"
 rate: "rate"
 notification:
   number_unread_not_display: 0

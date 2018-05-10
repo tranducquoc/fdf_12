@@ -503,12 +503,21 @@ vi:
         tags_text: "Tags"
     reports:
       index:
+        status: "Trạng thái"
+        number_of_reports: "Số lượng báo cáo"
+        action: "Thao tác"
         page_title: "Quản lý báo cáo"
         title: "Danh sách báo cáo"
         content: "Nội dung"
         post: "Tin rao"
         user: "Người báo cáo"
         created_at: "Báo cáo lúc"
+      report:
+        approved: "Chấp nhận"
+        blocked: "Chặn"
+      update:
+        success: "Cập nhật tin rao thành công!"
+        failed: "Cập nhật tin rao thất bại!"
   draft:
     description: "The atmosphere in Chania has a touch of Florence and Venice."
     shop_desc: "NEM CHUA RÁN, BÁNH MỲ, MỲ TÔM , NÂU ĐÁ LẮC (MỖI ĐƠN TRÊN

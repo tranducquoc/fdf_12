@@ -6,6 +6,11 @@ class ReportsController < ApplicationController
     @report = @post.reports.build load_params
     @report.user_id = current_user.id
     @status = @report.save
+
+    if @report.post.reports.size > Settings.post.max_reports
+      @post.update_attributes status: Post.statuses.keys[3]
+    end
+
     respond_to do |format|
       format.html { redirect_to post_path @object }
       format.js

@@ -462,12 +462,21 @@ en:
         tags_text: "Tags"
     reports:
       index:
+        status: "Status"
+        number_of_reports: "Number of reports"
+        action: "Action"
         page_title: "Manage reports"
         title: "Reports list"
         content: "Content"
         post: "Post"
         user: "User"
         created_at: "Report at"
+      report:
+        approved: "Approved"
+        blocked: "Blocked"
+      update:
+        success: "Post successfully updated!"
+        failed: "Update post failed!"
   draft:
     description: "The atmosphere in Chania has a touch of Florence and Venice."
     shop_desc: "NEM CHUA RÁN, BÁNH MỲ, MỲ TÔM , NÂU ĐÁ LẮC (MỖI ĐƠN TRÊN

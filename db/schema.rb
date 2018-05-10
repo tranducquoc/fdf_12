@@ -221,6 +221,7 @@ ActiveRecord::Schema.define(version: 20180507114117) do
     t.datetime "updated_at",                            null: false
     t.float    "min_price",   limit: 24
     t.float    "max_price",   limit: 24
+    t.integer  "domain_id"
     t.integer  "status",                    default: 0
   end
 

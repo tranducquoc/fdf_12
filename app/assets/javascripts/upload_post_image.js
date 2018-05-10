@@ -1,6 +1,8 @@
-var modifiableFiles = [];
+var dynamicFiles = [];
+var existing_images_length = 0;
 
 $(document).ready(function(){
+  existing_images_length = $('.existing_images input').length;
   var max = 3;
   var idx;
   $('.image-preview').on('click', '.image_view', function() {
@@ -14,14 +16,13 @@ $(document).ready(function(){
       swal(I18n.t('ads.post.error.max_images', {number: max}), '', 'error');
     } else {
       for (var i = 0, file; file = files[i]; i++) {
-        $('#add-new-image').click();
+        $('.image_view').eq(i + idx).addClass('dynamic_images');
         changePicture($('.image_view').eq(i + idx), file);
-        modifiableFiles.push(file);
+        dynamicFiles.push(file);
+        if ($('.dynamic_images').length + existing_images_length < max) {
+          $('#add-new-image').click();
+        }
       }
-    }
-
-    if ($('.image_view').length > 3) {
-      $('.image_view:last').parent().remove();
     }
 
     $('.img-file-input')[0].value = "";
@@ -38,20 +39,25 @@ $(document).ready(function(){
     }
 
     function isMaxPictures(max) {
-      return (files.length + modifiableFiles.length) > max
+      return (files.length + dynamicFiles.length + existing_images_length) > max
     }
   });
 
   $(document).on('click', '.btn-remove', function(){
-    idx = $('.btn-remove').index(this);
-    modifiableFiles.splice(idx, 1);
+    var deleted_images = $('.deleted_images').length;
+    var idx = $('.btn-remove').index(this) - deleted_images - existing_images_length;
+    dynamicFiles.splice(idx, 1);
 
     if ($('.input-image').length == 0){
       $('#add-new-image').click();
     }
+    $(this).parent('.existing_images').removeClass('existing_images').addClass('deleted_images');
+    existing_images_length = $('.existing_images input').length;
   });
 
   $(document).on('click', '.input-image', function(){
     $('.img-file-input').trigger('click');
   });
+
+  $('.existing').parents('.btn-remove').show();
 })

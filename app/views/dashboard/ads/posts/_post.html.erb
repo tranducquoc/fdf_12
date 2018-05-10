@@ -1,11 +1,12 @@
-<div class="list-ads-items">
-  <div class="col-md-3 item-content">
+<div class="list-ads-items" id="post_<%= post.id %>">
+  <div class="col-md-2 item-content">
     <% if post.images.any? %>
       <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
         <%= image_tag post.images.first.image_url, class: "item-image" %>
       <% end %>
     <% end %>
   </div>
+
   <div class="col-md-9">
     <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
       <span class="post-title">
@@ -13,33 +14,43 @@
         <%= post.title[0..Settings.post.max_content].length > Settings.post.max_content ? "..." : "" %>
       </span>
     <% end %>
+
     <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
       <p class="price-item">
         <%= post.content[0..Settings.post.max_content] %>
         <%= post.content[0..Settings.post.max_content].length > Settings.post.max_content ? "..." : "" %>
       </p>
     <% end %>
+
     <span><i class="fa fa-flag-checkered">
       <%= t "ads.post.modes.#{post.mode}" %> | <%= t "ads.post.category" %>:
       <%= post.category.blank? ? "" : post.category_name %>
     </i></span>
+
     <div class="meta-tag">
       <span><i class="fa fa-calendar">
         <%= t("ads.post.created_at", time: time_ago_in_words(post.created_at)).html_safe %>
       </i></span><br />
+
       <span><i class="fa fa-comment">
         <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
           <%= pluralize post.reviews.count, t("ads.post.post.review") %>
         <% end %>
       </i></span>
-      <span class="pull right">
-        <i class="fa fa-user">
-          <%= link_to post.user_name, user_path(post.user) %>
-        </i>
-      </span>
+
       <span><i class="fa fa-foursquare">
         <%= link_to @domain.name, domain_path(@domain) %>
       </i></span>
     </div>
+  </div>
+
+  <div class="col-md-1">
+    <%= link_to t(".show"), domain_ads_post_path(@domain, post.id),
+      class: "btn btn-default btn-same", id: "show_post_path" %>
+    <%= link_to t(".edit"), edit_domain_ads_post_path(@domain, post.id),
+      class: "btn btn-primary btn-same" %>
+    <button class="btn btn-danger btn-same" id="destroy_post">
+      <%= t ".destroy" %>
+    </button>
   </div>
 </div>

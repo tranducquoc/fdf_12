@@ -160,17 +160,26 @@
                 <li role="separator" class="divider"></li>
                 <li role="presentation">
                   <%= link_to dashboard_shops_path do %>
-                    <i class="glyphicon glyphicon-pencil icon-menu"></i>
+                    <i class="fa fa-shopping-bag icon-menu"></i>
                     <span><%= t "header.shop_manager" %></span>
                   <% end %>
                 </li>
                 <li role="separator" class="divider"></li>
                 <li role="presentation">
                   <%= link_to domains_path do %>
-                    <i class="fa fa-flag-o icon-menu"></i>
+                    <i class="fa fa-globe icon-menu"></i>
                     <span><%= t "domain_manager_header" %></span>
                   <% end %>
                 </li>
+
+                <li role="separator" class="divider"></li>
+                <li role="presentation">
+                  <%= link_to dashboard_ads_posts_path do %>
+                    <i class="fa fa-clipboard icon-menu"></i>
+                    <span><%= t "header.reports_manager" %></span>
+                  <% end %>
+                </li>
+
                 <li role="separator" class="divider"></li>
                 <% if current_user.shops.any? %>
                   <li role="separator" class="divider"></li>

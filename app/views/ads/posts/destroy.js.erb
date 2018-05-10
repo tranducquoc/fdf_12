@@ -1,0 +1,4 @@
+if (<%= @is_destroyed %>) {
+  $('#post_<%= @post_id %>').remove();
+  swal('<%= t "ads.post.delete.success" %>', '', 'success');
+}

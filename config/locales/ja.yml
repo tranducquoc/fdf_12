@@ -306,6 +306,7 @@ ja:
     sign_in: "ログイン"
     sign_in_fb: "ログイン と Facebook"
     sign_up: "登録された"
+    reports_manager: "Posts manager"
   devise:
     user:
       sign_in: "ログイン"
@@ -510,6 +511,15 @@ ja:
     admin_lte_2_login:
       login_box_message: "セッションを作成するにはログインしてください"
   dashboard:
+    ads:
+      posts:
+        index:
+          yours: "Your posts"
+          new: "Create new post"
+        post:
+          show: "View"
+          edit: "Edit"
+          destroy: "Delete"
     statistics:
       index:
         tittle: "統計注文"
@@ -1155,6 +1165,9 @@ ja:
     send_order_status_noti: "Send a notification when you close the orders"
   ads:
     post:
+      update:
+        success: "Your post has successfully updated!"
+        error: "Update post failed, please try again!"
       post:
         review: Review
       create_title: "Create new Ads free"
@@ -1225,3 +1238,5 @@ ja:
       contact_info: "Contact info"
       home: "Home"
       created_at: "<b>Posted at:</b> %{time} ago"
+      delete:
+        success: "Post has successfully deleted!"

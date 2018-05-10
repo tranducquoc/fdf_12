@@ -299,7 +299,7 @@ en:
     shop_managers: "Managers (%{num})"
   header:
     account: "Account"
-    shop_manager: "Shop management"
+    shop_manager: "Shop manager"
     order_manager: "Orders manager"
     shop_statistic: "Shop statistics"
     report_abuse: "Report (comming soon)"
@@ -308,6 +308,7 @@ en:
     sign_in: "Sign in"
     sign_in_fb: "Sign in with Facebook"
     sign_up: "Sign up"
+    reports_manager: "Posts manager"
   devise:
     user:
       sign_in: "Sign in"
@@ -517,6 +518,15 @@ en:
     admin_lte_2_login:
       login_box_message: "Sign in to start your session"
   dashboard:
+    ads:
+      posts:
+        index:
+          yours: "Your posts"
+          new: "Create new post"
+        post:
+          show: "View"
+          edit: "Edit"
+          destroy: "Delete"
     statistics:
       index:
         tittle: "Statistics order"
@@ -1145,6 +1155,9 @@ en:
     send_order_status_noti: "Send a notification when you close the orders"
   ads:
     post:
+      update:
+        success: "Your post has successfully updated!"
+        error: "Update post failed, please try again!"
       post:
         review: Review
       create_title: "Create new Ads free"
@@ -1215,3 +1228,5 @@ en:
       contact_info: "Contact info"
       home: "Home"
       created_at: "<b>Posted at:</b> %{time} ago"
+      delete:
+        success: "Post has successfully deleted!"

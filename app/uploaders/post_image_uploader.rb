@@ -21,6 +21,12 @@ class PostImageUploader < CarrierWave::Uploader::Base
     ActionController::Base.helpers.asset_path([version_name, "cuisine.png"].compact.join("_"))
   end
 
+  class << self
+    def default_url
+      ActionController::Base.helpers.asset_path "cuisine.png"
+    end
+  end
+
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   #

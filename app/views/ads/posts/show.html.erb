@@ -43,21 +43,21 @@
   <div class="col-md-4 right-sidebar post-onwer-info">
     <h3 class="contact-info"><%= t "ads.post.contact_info" %></h3>
     <div class="card">
-      <% if @post_support.shop %>
-        <%= image_tag @post_support.shop.avatar_url, class: "card-img-top" %>
+      <% if @post_support.find_shop %>
+        <%= image_tag @post_support.find_shop.avatar_url, class: "card-img-top" %>
       <% end %>
 
       <div class="card-body">
-        <% if @post_support.shop %>
+        <% if @post_support.find_shop %>
           <h4 class="card-title">
-            <%= link_to @post_support.shop.name, @post.link_shop %></br>
+            <%= link_to @post_support.find_shop.name, @post.link_shop %></br>
 
             <i class="fa fa-clock-o">
-              <% if @post_support.shop.openforever %>
+              <% if @post_support.find_shop.openforever %>
                 <%= @post_support.working_time Settings.shop.working_time_format %>
               <% else %>
                 <%= t "ads.post.close_time" %>:</br>
-                <%= @post_support.shop.time_auto_close.strftime Settings.shop.working_time_format %>
+                <%= @post_support.find_shop.time_auto_close.strftime Settings.shop.working_time_format %>
               <% end %>
             </i>
           </h4>

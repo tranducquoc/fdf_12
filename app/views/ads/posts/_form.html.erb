@@ -97,7 +97,7 @@
                 unit: Settings.post.price.vnd),
                 class: "col-md-2 col-form-label field-compulsory" %>
               <div class="col-md-3">
-                <%= f.number_field :min_price, value: format_price(post.min_price),
+                <%= f.number_field :min_price, value: round_post_price(post.min_price),
                   min: Settings.post.price.min_vnd, max: Settings.post.price.max_vnd,
                   class: "form-control input-compulsory", step: Settings.post.price.step_vnd %>
               </div>
@@ -106,7 +106,7 @@
                 unit: Settings.post.price.vnd),
                 class: "col-md-2 col-form-label field-compulsory" %>
               <div class="col-md-3">
-                <%= f.number_field :max_price, value: format_price(post.min_price),
+                <%= f.number_field :max_price, value: round_post_price(post.min_price),
                   min: Settings.post.price.min_vnd, max: Settings.post.price.max_vnd,
                   class: "form-control input-compulsory", step: Settings.post.price.step_vnd %>
               </div>

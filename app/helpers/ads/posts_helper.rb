@@ -12,6 +12,11 @@ module Ads::PostsHelper
     "#{format_price post.min_price} - #{format_price post.max_price}"
   end
 
+  def round_post_price price
+    return price.to_i if price == price.to_i
+    price
+  end
+
   def format_post_domain post
     return post.domain_name if post.domain
     t "ads.post.arenas.professed"

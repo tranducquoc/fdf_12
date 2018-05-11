@@ -12,7 +12,7 @@ class Post < ApplicationRecord
 
   enum mode: {sale: 0, buy: 1}
   enum arena: {professed: 0, secret: 1}
-  enum status: {pending: 0, approved: 1, rejected: 2}
+  enum status: {pending: 0, approved: 1, rejected: 2, blocked: 3}
 
   validates :title, presence: true,
     length: {maximum: Settings.post.max_title, minimum: Settings.post.min_title}

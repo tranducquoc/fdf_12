@@ -14,4 +14,26 @@ $(document).ready(function(){
       dataType: 'script'
     });
   });
+
+  $(document).on('click', '#approve_post, #block_post', function() {
+    var url = $(this).attr('data-url');
+    var status = $(this).attr('data-value');
+
+    $.ajax({
+      url: url,
+      data: {
+        post: {
+          status: status
+        }
+      },
+      type: 'PATCH',
+      dataType: 'script',
+      success: function() {
+        swal(I18n.t("admin.reports.update.success"), "", "success");
+      },
+      error: function() {
+        swal(I18n.t("admin.reports.update.failed"), "", "error");
+      }
+    });
+  });
 })

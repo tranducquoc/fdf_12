@@ -16,11 +16,14 @@
             <th><%= t ".content" %></th>
             <th><%= t ".post" %></th>
             <th><%= t ".user" %></th>
+            <th><%= t ".number_of_reports" %></th>
+            <th><%= t ".status" %></th>
+            <th><%= t ".action" %></th>
             <th><%= t ".created_at" %></th>
           </tr>
         </thead>
 
-        <tbody>
+        <tbody id="admin-reports">
           <%= render @reports %>
         </tbody>
       </table>

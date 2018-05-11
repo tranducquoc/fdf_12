@@ -1286,8 +1286,8 @@ vi:
         fail: "Bạn phải nhập đầy đủ thông tin"
         not_found: "Không tìm thấy nhận xét!"
       post_on: "Đăng lúc"
-      price_from: "Giá từ"
-      post_owner: "Người đăng tin "
+      price: "Giá: %{price}"
+      post_owner: "Người đăng tin"
       ads_of_owner: "Tin rao"
       shop_rating: "Đánh giá cửa hàng"
       btn_contact: "Liên hệ"
@@ -1297,3 +1297,4 @@ vi:
       created_at: "<b>Đăng từ:</b> %{time} trước"
       delete:
         success: "Bài viết đã được xóa thành công!"
+      close_time: "Thời gian đóng cửa"

@@ -8,6 +8,7 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
 
   belongs_to :user
+  belongs_to :domain
   belongs_to :category, optional: true
 
   enum mode: {sale: 0, buy: 1}
@@ -30,9 +31,15 @@ class Post < ApplicationRecord
     less_than_or_equal_to: Settings.post.price.max_vnd
   }
 
-  scope :filtered_by_mode_time_category, ->(mode, time, id){joins(:category)
-    .where("categories.parent_id": id, mode: mode).order created_at: time}
+  scope :filtered_by_mode_time_category, (lambda do |mode, time, id|
+    joins(:category).where("categories.parent_id": id, mode: mode)
+      .order created_at: time
+  end)
+  scope :by_domain, (lambda do |domain_id|
+    where(domain_id: domain_id).or(where domain_id: nil)
+  end)
 
   delegate :name, :position, :avatar, to: :user, prefix: true
   delegate :name, to: :category, prefix: true, allow_nil: true
+  delegate :name, to: :domain, prefix: true
 end

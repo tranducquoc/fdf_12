@@ -96,22 +96,22 @@ $(document).ready(function(){
     postData.append('post[min_price]', minPrice);
     postData.append('post[max_price]', maxPrice);
     for (var i = 0, file; file = dynamicFiles[i]; i++) {
-      postData.append('post[images_attributes][' + (existing_images_length + i) + '][image]', file);
+      postData.append('post[images_attributes][' + (deleted_images + existing_images + i) + '][image]', file);
     }
 
-    if (existing_images_length == 0) {
+    if (existing_images == 0 && deleted_images == 0) {
       if (dynamicFiles.length == 0) {
         postData.append('post[images_attributes][0][image]', '');
       }
-    } else {
-      $('.deleted_images input').each(function(key, value) {
-        postData.append(value.name, value.value);
-      });
-
-      $('.deleted_images + input').each(function(key, value) {
-        postData.append(value.name, value.value);
-      });
     }
+
+    $('.deleted_images input').each(function(key, value) {
+      postData.append(value.name, value.value);
+    });
+
+    $('.deleted_images + input').each(function(key, value) {
+      postData.append(value.name, value.value);
+    });
     return postData;
   }
 });

@@ -3,6 +3,6 @@ class Dashboard::Ads::PostsController < ApplicationController
 
   def index
     @posts = current_user.posts.page(params[:page])
-      .per Settings.common.posts_per_page
+      .desc.per Settings.common.posts_per_page
   end
 end

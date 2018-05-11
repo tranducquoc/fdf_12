@@ -38,6 +38,7 @@ class Post < ApplicationRecord
   scope :by_domain, (lambda do |domain_id|
     where(domain_id: domain_id).or(where domain_id: nil)
   end)
+  scope :desc, ->{order created_at: :desc}
 
   delegate :name, :position, :avatar, to: :user, prefix: true
   delegate :name, to: :category, prefix: true, allow_nil: true

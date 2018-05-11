@@ -24,23 +24,25 @@
 
     <span><i class="fa fa-flag-checkered">
       <%= t "ads.post.modes.#{post.mode}" %> | <%= t "ads.post.category" %>:
-      <%= post.category.blank? ? "" : post.category_name %>
-    </i></span>
+      <%= post.category.blank? ? "" : post.category_name %></i>
+    </span>
 
     <div class="meta-tag">
       <span><i class="fa fa-calendar">
-        <%= t("ads.post.created_at", time: time_ago_in_words(post.created_at)).html_safe %>
-      </i></span><br />
+        <%= t("ads.post.created_at", time: time_ago_in_words(post.created_at)).html_safe %></i>
+      </span><br />
 
       <span><i class="fa fa-comment">
         <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
           <%= pluralize post.reviews.count, t("ads.post.post.review") %>
-        <% end %>
-      </i></span>
+        <% end %></i>
+      </span>
 
-      <span><i class="fa fa-foursquare">
-        <%= link_to @domain.name, domain_path(@domain) %>
-      </i></span>
+      <% if post.domain %>
+        <span><i class="fa fa-foursquare">
+          <%= link_to post.domain_name, domain_path(post.domain) %></i>
+        </span>
+      <% end %>
     </div>
   </div>
 

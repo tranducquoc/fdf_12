@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resources :request_shop_domains
     resources :domains, only: [:index, :show]
     resources :reports, only: %i(index update)
+    resources :posts, only: :index
   end
 
   namespace :dashboard do

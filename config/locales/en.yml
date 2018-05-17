@@ -297,6 +297,7 @@ en:
     view_button: "View"
     tags: "Tags"
     shop_managers: "Managers (%{num})"
+    all_posts: "All posts"
   header:
     account: "Account"
     shop_manager: "Shop manager"
@@ -477,6 +478,27 @@ en:
       update:
         success: "Post successfully updated!"
         failed: "Update post failed!"
+    posts:
+      index:
+        user_name: "Shop owner"
+        mode: "Sale/Buy"
+        sale: "Sale"
+        buy: "Buy"
+        arena: "Arena"
+        professed: "Professed"
+        secret: "Secret"
+        category_name : "Category name"
+        title: "Title"
+        min_price: "Min price"
+        max_price: "Max price"
+        created_at: "Created at"
+        status: "Status"
+        action: "Action"
+        pending: "Pending"
+        approved: "Approved"
+        rejected: "Rejected"
+        approve: "Approve"
+        rejecte: "Reject"
   draft:
     description: "The atmosphere in Chania has a touch of Florence and Venice."
     shop_desc: "NEM CHUA RÁN, BÁNH MỲ, MỲ TÔM , NÂU ĐÁ LẮC (MỖI ĐƠN TRÊN

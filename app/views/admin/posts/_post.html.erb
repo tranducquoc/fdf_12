@@ -10,7 +10,9 @@
   <td><%= post.created_at.strftime Settings.admin.post.full_time_date %></td>
   <td><%= t "admin.posts.index.#{post.status}" %></td>
   <td>
-    <%= link_to t("admin.posts.index.approve"), "#", class: "btn btn-success form-button", disabled: post.approved? %>
-    <%= link_to t("admin.posts.index.reject"), "#", class: "btn btn-danger form-button", disabled: post.rejected? %>
-   </td>
+    <%= link_to t("admin.posts.index.approve"), admin_post_path(post, approve_flag: true), method: :patch, 
+      class: "btn btn-success form-button approve-reject-post", disabled: post.approved?, remote: true %>
+    <%= link_to t("admin.posts.index.reject"), admin_post_path(post, reject_flag: true), method: :patch,
+      class: "btn btn-danger form-button approve-reject-post", disabled: post.rejected?, remote: true %>
+  </td>
 </tr>

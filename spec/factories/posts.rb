@@ -1,17 +1,15 @@
 FactoryGirl.define do
   factory :post do
-    user_id Faker::Number.between(1, 18)
-    category_id Faker::Number.between(1, 14)
+    association :user
+    association :category
     title Faker::Lorem.sentence
     content Faker::Lorem.sentence
     link_shop ""
     arena Faker::Number.between(0, 1)
     mode Faker::Number.between(0, 1)
-    post_images_attributes {{
-      "0" => {
-        :_destroy => false,
-        :image => []
-      }
-    }}
+    min_price Faker::Number.between(1, 1000000)
+    max_price Faker::Number.between(1000000, 10000000)
+    status Faker::Number.between(0, 3)
+    domain_id Faker::Number.between(1,5)
   end
 end

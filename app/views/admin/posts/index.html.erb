@@ -20,24 +20,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @posts.each_with_index do |post, index| %>
-          <tr>
-            <td><%= increase_one index %></td>
-            <td><%= post.user_name %></td>
-            <td><%= t ".#{post.mode}" %></td>
-            <td><%= t ".#{post.arena}" %></td>
-            <td><%= post.category_name %></td>
-            <td><%= link_to post.title, "#" %></td>
-            <td><%= format_price post.min_price %></td>
-            <td><%= format_price post.max_price %></td>
-            <td><%= post.created_at.strftime Settings.admin.post.full_time_date %></td>
-            <td><%= t ".#{post.status}" %></td>
-            <td>
-              <%= link_to t(".approve"), "#", class: "btn btn-success form-button", disabled: post.approved? %>
-              <%= link_to t(".rejecte"), "#", class: "btn btn-danger form-button", disabled: post.rejected? %>
-            </td>
-          </tr>
-        <% end %>
+          <%= render @posts %>
         </tbody>
       </table>
     </div>

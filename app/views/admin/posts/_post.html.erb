@@ -1,0 +1,16 @@
+<tr>
+  <td><%= increase_one post_counter %></td>
+  <td><%= post.user_name %></td>
+  <td><%= t "admin.posts.index.#{post.mode}" %></td>
+  <td><%= t "admin.posts.index.#{post.arena}" %></td>
+  <td><%= post.category_name %></td>
+  <td><%= link_to post.title, "#" %></td>
+  <td><%= format_price post.min_price %></td>
+  <td><%= format_price post.max_price %></td>
+  <td><%= post.created_at.strftime Settings.admin.post.full_time_date %></td>
+  <td><%= t "admin.posts.index.#{post.status}" %></td>
+  <td>
+    <%= link_to t("admin.posts.index.approve"), "#", class: "btn btn-success form-button", disabled: post.approved? %>
+    <%= link_to t("admin.posts.index.reject"), "#", class: "btn btn-danger form-button", disabled: post.rejected? %>
+   </td>
+</tr>

@@ -539,7 +539,7 @@ vi:
         approved: "Đã chấp nhận"
         rejected: "Đã từ chối"
         approve: "Chấp nhận"
-        rejecte: "Từ chối"
+        reject: "Từ chối"
   draft:
     description: "The atmosphere in Chania has a touch of Florence and Venice."
     shop_desc: "NEM CHUA RÁN, BÁNH MỲ, MỲ TÔM , NÂU ĐÁ LẮC (MỖI ĐƠN TRÊN

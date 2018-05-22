@@ -145,4 +145,5 @@ Rails.application.routes.draw do
     resources :rates, only: :create, defaults: {format: :json}
     resources :follow_shops, only: [:index, :update], defaults: {format: :json}
   end
+  resources :intro_features, only: :index
 end

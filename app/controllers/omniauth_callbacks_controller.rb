@@ -6,7 +6,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       set_flash_message(:notice, :success, kind: auth.provider) if is_navigational_format?
-      sign_in_and_redirect @user
+      sign_in @user
+      redirect_to intro_features_path
     else
       flash[:notice] = t "auth_fail"
       redirect_to root_path
@@ -15,7 +16,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
     @user = User.from_omniauth(request.env["omniauth.auth"])
-    sign_in_and_redirect @user
+    sign_in @user
+    redirect_to intro_features_path
   end
 
   alias_method :framgia, :create

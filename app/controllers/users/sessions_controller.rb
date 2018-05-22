@@ -8,9 +8,11 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    self.resource = resource_class.new(sign_in_params)
+    store_location_for(resource, intro_features_path)
+    super
+  end
 
   # DELETE /resource/sign_out
   # def destroy

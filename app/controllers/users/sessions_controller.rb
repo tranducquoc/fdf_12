@@ -10,7 +10,13 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     self.resource = resource_class.new(sign_in_params)
-    store_location_for(resource, intro_features_path)
+    redirect_path =
+      if self.resource.domains.present?
+        intro_features_path
+      else
+        root_path
+      end
+    store_location_for(resource, redirect_path)
     super
   end
 

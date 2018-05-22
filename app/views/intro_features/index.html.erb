@@ -12,7 +12,7 @@
           <div class="choose-wrapper">
             <%= image_tag "draft/search-page.png", class: "img-responsive" %>
             <div class="overlay">
-              <%= link_to t(".go_to_page"), @domain %>
+              <%= link_to t(".go_to_page"), @domain || root_path %>
             </div>
           </div>
           <div class="choose-des">
@@ -23,7 +23,11 @@
           <div class="choose-wrapper">
             <%= image_tag "ads-posts", class: "img-responsive" %>
             <div class="overlay">
-              <%= link_to t(".go_to_page"), domain_ads_posts_path(@domain || current_user.domains.first) %>
+              <% if current_user.domains.present? %>
+                <%= link_to t(".go_to_page"), domain_ads_posts_path(@domain || current_user.domains.first) %>
+              <% else %>
+                <%= link_to t(".go_to_page"), root_path %>
+              <% end %>
             </div>
           </div>
           <div class="choose-des">

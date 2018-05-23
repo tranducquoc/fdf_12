@@ -541,6 +541,7 @@ vi:
         approve: "Chấp nhận"
         reject: "Từ chối"
         search_title: "Tìm kiếm theo tiêu đề"
+        approve_reject_error: "Có lỗĩ xảy ra. Vui lòng thử lại"
   draft:
     description: "The atmosphere in Chania has a touch of Florence and Venice."
     shop_desc: "NEM CHUA RÁN, BÁNH MỲ, MỲ TÔM , NÂU ĐÁ LẮC (MỖI ĐƠN TRÊN

@@ -32,7 +32,7 @@ class Post < ApplicationRecord
   }
 
   scope :filtered_by_mode_time_category, (lambda do |mode, time, id|
-    joins(:category).where("categories.parent_id": id, mode: mode)
+    joins(:category).where("categories.parent_id": id, mode: mode).approved
       .order created_at: time
   end)
   scope :by_domain, (lambda do |domain_id|

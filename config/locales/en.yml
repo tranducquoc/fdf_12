@@ -1221,7 +1221,7 @@ en:
       arena: "Arena"
       submit: "Submit"
       flash:
-        success: "Your post successfully created"
+        success: "Your post successfully created, please wait until admin approve your post!"
         danger: "Your post did not created, please try again!"
       remove_image: "Remove image"
       arenas:

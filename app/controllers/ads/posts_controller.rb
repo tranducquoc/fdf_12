@@ -23,7 +23,7 @@ class Ads::PostsController < ApplicationController
     if @post.save
       flash[:success] = t "ads.post.flash.success"
       respond_to do |format|
-        format.js {render locals: {redirect_url: domain_ads_post_path(params[:domain_id], @post)}}
+        format.js {render locals: {redirect_url: domain_ads_posts_path(params[:domain_id])}}
       end
     else
       flash[:danger] = t "ads.post.flash.danger"
@@ -88,7 +88,7 @@ class Ads::PostsController < ApplicationController
 
   def load_post
     @post = Post.find_by id: params[:id]
-    return if @post.present?
+    return if @post.present? && @post.approved?
     flash[:danger] = t "ads.post.error.not_found"
     redirect_to domain_ads_posts_path
   end

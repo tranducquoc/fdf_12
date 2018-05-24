@@ -9,9 +9,9 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    self.resource = resource_class.new(sign_in_params)
+    self.resource = warden.authenticate!(auth_options)
     redirect_path =
-      if self.resource.domains.present?
+      if resource.domains.present?
         intro_features_path
       else
         root_path

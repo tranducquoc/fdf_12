@@ -1279,7 +1279,7 @@ vi:
       arena: "Phạm vi"
       submit: "Đăng tin"
       flash:
-        success: "Tin rao của bạn đã được tạo thành công"
+        success: "Tin rao của bạn đã được tạo thành công. Vui lòng đợi đến khi quản trị viên duyệt tin của bạn."
         danger: "Tin rao của bạn tạo không thành công, vui lòng thử lại"
       remove_image: "Xóa ảnh"
       arenas:

@@ -5,8 +5,8 @@ FactoryGirl.define do
     title Faker::Lorem.sentence
     content Faker::Lorem.sentence
     link_shop ""
-    arena Faker::Number.between(0, 1)
-    mode Faker::Number.between(0, 1)
+    arena Post.arenas.keys.sample
+    mode Post.modes.keys.sample
     min_price Faker::Number.between(1, 1000000)
     max_price Faker::Number.between(1000000, 10000000)
     status Faker::Number.between(0, 3)

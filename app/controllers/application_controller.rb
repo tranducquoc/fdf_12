@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   before_action :check_current_domain
   before_action :load_domain_in_session
   before_action :set_cache_back
+  before_action :check_choose_feature
 
   protected
   def configure_permitted_parameters
@@ -185,5 +186,9 @@ class ApplicationController < ActionController::Base
       flash[:danger] = t "not_have_permission"
       redirect_to root_path
     end
+  end
+
+  def check_choose_feature
+    redirect_to intro_features_path if current_user && request.path == root_path
   end
 end

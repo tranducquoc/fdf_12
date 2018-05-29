@@ -43,6 +43,9 @@ Rails.application.routes.draw do
     resources :domains, only: [:index, :show]
     resources :reports, only: %i(index update)
     resources :posts, only: %i(index update)
+    resources :events, only: :update do
+      post :read_all, on: :collection
+    end
   end
 
   namespace :dashboard do

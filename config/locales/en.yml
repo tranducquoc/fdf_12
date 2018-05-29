@@ -45,6 +45,8 @@ en:
   shop_request_to_domain_owner_shop: "Your shop "
   shop_request_to_domain_owner: " has just been accepted into the domain: "
   admin_need_accept_shop: "Need to wait for the admin to activate"
+  request_post_had_been_approved: "Your post %{name} had been approved"
+  request_post_had_been_rejected: "Your post %{name} had been rejected"
   request_status:
     pending: " was expected for activate"
     rejected: " has been rejected"
@@ -560,6 +562,8 @@ en:
           show: "View"
           edit: "Edit"
           destroy: "Delete"
+        create:
+          new_post: "Hello Admin! Have a new post to approve"
     statistics:
       index:
         tittle: "Statistics order"

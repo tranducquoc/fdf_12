@@ -19,5 +19,4 @@ class Admin::PostsController < AdminController
     @posts = Post.page(params[:page])
     respond_to :js
   end
-
 end

@@ -23,12 +23,12 @@ class Ads::PostsController < ApplicationController
     if @post.save
       flash[:success] = t "ads.post.flash.success"
       respond_to do |format|
-        format.js {render locals: {redirect_url: domain_ads_posts_path(params[:domain_id])}}
+        format.js{render locals: {redirect_url: domain_ads_posts_path(params[:domain_id])}}
       end
     else
       flash[:danger] = t "ads.post.flash.danger"
       respond_to do |format|
-        format.js {render locals: {redirect_url: new_domain_ads_post_path}}
+        format.js{render locals: {redirect_url: new_domain_ads_post_path}}
       end
     end
   end
@@ -77,11 +77,11 @@ class Ads::PostsController < ApplicationController
   end
 
   private
+
   def post_params
     if params[:post][:arena] == Domain.statuses.keys[1]
       params[:post].merge! domain_id: current_user.domain_default
     end
-
     params.require(:post).permit :title, :content, :category_id, :mode, :arena, :domain_id,
       :link_shop, :min_price, :max_price, images_attributes: [:id, :image, :_destroy]
   end

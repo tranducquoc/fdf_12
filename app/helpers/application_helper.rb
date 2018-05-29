@@ -42,6 +42,17 @@ module ApplicationHelper
     end
   end
 
+  def admin_count_notification_unread
+    if admin_signed_in?
+      number_noti = Event.events_of_admin.by_date.unread.select(&:check_admin_item_exist?).size
+      if number_noti == Settings.notification.number_unread_not_display
+        number_noti = ""
+      else
+        number_noti
+      end
+    end
+  end
+
   def total_price price, quantity
     price * quantity
   end

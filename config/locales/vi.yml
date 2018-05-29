@@ -85,6 +85,8 @@ vi:
   shop_request_to_domain_owner_shop: "Cửa hàng "
   shop_request_to_domain_owner: " của bạn vừa được đồng ý vào miền: "
   admin_need_accept_shop: "cần chờ người quản trị kích hoạt để sử dụng"
+  request_post_had_been_approved: "Bài rao %{name} của bạn đã được chấp nhận"
+  request_post_had_been_rejected: "Bài rao %{name} của bạn đã bị từ chối"
   request_status:
     pending: " của bạn đang đợi kích hoạt"
     rejected: " của bạn đã bị từ chối"
@@ -601,6 +603,8 @@ vi:
           show: "Xem"
           edit: "Sửa"
           destroy: "Xóa"
+        create:
+          new_post: "Chào Admin! Có bài đăng mới cần duyệt"
     statistics:
       index:
         tittle: "Thống kê đơn hàng"

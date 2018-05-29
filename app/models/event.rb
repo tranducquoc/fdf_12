@@ -12,6 +12,8 @@ class Event < ApplicationRecord
     eventable_id: id
   end
 
+  scope :events_of_admin, ->{Event.where("eventable_type LIKE '%#{Admin.name}%'")}
+
   def of_user? user
     self.user == user
   end
@@ -39,6 +41,8 @@ class Event < ApplicationRecord
       check_message_user_domain
     when Domain.name
       check_message_domain
+    when Post.name
+      check_message_post
     end
   end
 
@@ -64,6 +68,8 @@ class Event < ApplicationRecord
       user = User.find_by id: eventitem_id
       user.avatar.url
     when Domain.name
+      self.user.avatar.url
+    when Post.name
       self.user.avatar.url
     end
   end
@@ -92,6 +98,13 @@ class Event < ApplicationRecord
       check_link_user_domain
     when Domain.name
       "/domains?domain_id=#{eventable_id}"
+    when Post.name
+      post = Post.find_by id: eventable_id
+      if post.domain.present?
+        "/domains/#{post.domain_slug}/ads/posts/#{eventable_id}"
+      else
+        "/domains/#{post.user.domains.first.slug}/ads/posts/#{eventable_id}"
+      end
     end
   end
 
@@ -117,11 +130,24 @@ class Event < ApplicationRecord
       return true if Domain.find_by(id: eventable_id) && User.find_by(id: eventitem_id)
     when Domain.name
       return true if Domain.find_by(id: eventable_id)
+    when Post.name
+      return true if Post.find_by(id: eventable_id)
+    end
+  end
+
+  def check_admin_item_exist?
+    case eventable_type
+    when Post.name + "." + Admin.name
+      return true if Post.find_by(id: eventable_id)
     end
   end
 
   def send_notification
-    EventBroadcastJob.perform_now self.user.events.unread.count, self
+    if self.eventable_type.include? Admin.name
+      Admin::EventBroadcastJob.perform_now Event.events_of_admin.unread.count, self
+    else
+      EventBroadcastJob.perform_now self.user.events.unread.count, self
+    end
     send_fcm_message self.load_message, self.user.device_id if self.user.device_id.present?
   end
 
@@ -288,5 +314,10 @@ class Event < ApplicationRecord
     when self.message == Settings.shop_off
       "#{I18n.t "shop"} #{eventable.name} #{I18n.t "notifi_shop_auto_closed"}"
     end
+  end
+
+  def check_message_post
+    post = Post.find_by id: eventable_id
+    I18n.t "request_post_had_been_#{message}", name: post.title
   end
 end

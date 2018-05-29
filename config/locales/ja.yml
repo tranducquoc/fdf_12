@@ -46,6 +46,8 @@ ja:
   shop_request_to_domain_owner_shop: "店 "
   shop_request_to_domain_owner: " ドメインに合意されています: "
   admin_need_accept_shop: "管理者を待って活性化する必要があります"
+  request_post_had_been_approved: "あなたの投稿％{name}は承認されました"
+  request_post_had_been_rejected: "あなたの投稿％{name}は拒否されました"
   request_status:
     pending: "店は、活性化を待ちます"
     rejected: "店 が拒否されました"
@@ -553,6 +555,8 @@ ja:
           show: "View"
           edit: "Edit"
           destroy: "Delete"
+        create:
+          new_post: "Hello Admin! Have a new post to browse"
     statistics:
       index:
         tittle: "統計注文"

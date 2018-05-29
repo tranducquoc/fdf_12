@@ -1,0 +1,7 @@
+<script>
+  var messages = $('.flash-messages').find('li');
+  if(messages.length > 0 && (<%= request.referer.present? && (URI(request.referer).path == new_domain_ads_post_path) %>)){
+    $('.flash-messages').empty();
+    sweetAlert(I18n.t('api.success'), messages.text(), 'success');
+  }
+</script>

@@ -1,0 +1,11 @@
+<% if event.check_admin_item_exist? %>
+  <li class="notification-body mark-read-admin <%= bg_unread event %>"
+    data-id="<%= event.id %>"
+    data-link="<%= admin_posts_path %>"
+    data-no-turbolink="true">
+    <%= link_to admin_posts_path do %>
+      <i class="fa fa-tag text-aqua"></i> <%= I18n.t("dashboard.ads.posts.create.new_post") %>
+      <small><%= event.load_message_time %></small>
+    <% end %>
+  </li>
+<% end %>

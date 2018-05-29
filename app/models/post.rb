@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  before_save :send_notification
+  after_create :send_notification_to_admin
+
   has_many :reports
   has_many :reviews, as: :reviewable
   has_many :comments, as: :commentable
@@ -40,7 +43,21 @@ class Post < ApplicationRecord
   end)
   scope :desc, ->{order created_at: :desc}
 
-  delegate :name, :position, :avatar, to: :user, prefix: true
+  delegate :name, :position, :avatar, :id, to: :user, prefix: true
   delegate :name, to: :category, prefix: true, allow_nil: true
-  delegate :name, to: :domain, prefix: true
+  delegate :name, :slug, to: :domain, prefix: true, allow_nil: true
+
+  private
+
+  def send_notification
+    if self.status_changed?
+      Event.create message: self.status, user_id: user_id,
+        eventable_id: self.id, eventable_type: Post.name
+    end
+  end
+
+  def send_notification_to_admin
+    Event.create message: :new_post, user_id: Admin.first.id,
+      eventable_id: self.id, eventable_type: Post.name + "." + Admin.name
+  end
 end

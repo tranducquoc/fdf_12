@@ -10,7 +10,7 @@ class EventBroadcastJob < ApplicationJob
   private
 
   def render_counter counter
-   ApplicationController.renderer.render partial: "events/counter", locals: {counter: counter}
+    ApplicationController.renderer.render partial: "events/counter", locals: {counter: counter}
   end
 
   def render_event event

@@ -22,3 +22,8 @@
 .unread {
   background-color: #E1E3E9;
 }
+
+li.mark-read-admin small {
+  float: right;
+  color: gray;
+}

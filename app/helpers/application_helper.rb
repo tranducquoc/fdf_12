@@ -250,7 +250,19 @@ module ApplicationHelper
   def filter_price_select
     {
       I18n.t("product_filter.price_desc") => "desc",
-      I18n.t("product_filter.price_asc") => "asc",
+      I18n.t("product_filter.price_asc") => "asc"
     }
+  end
+
+  def current_feature
+    session["current_feature"] ||= domains_path
+  end
+
+  def check_link_domain domain
+    if current_feature.include?("/ads/posts")
+      domain_ads_posts_path domain
+    else
+      domain
+    end
   end
 end

@@ -57,7 +57,7 @@
                 <% current_user.domains.each do |domain| %>
                   <% unless domain == @domain %>
                     <li>
-                      <%= link_to domain_path(domain) do %>
+                      <%= link_to check_link_domain(domain) do %>
                         <i class="<%= domain_icon domain %>"></i>
                         <span class="user-title" title="<%= domain.name %>">
                           <%= truncate(domain.name,

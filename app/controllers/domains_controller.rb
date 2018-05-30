@@ -4,6 +4,7 @@ class DomainsController < ApplicationController
   before_action :redirect_to_root_domain, only: :show
   before_action :check_user_status_for_action, only: :index
   before_action :active_account, only: :create
+  before_action :change_current_feature
 
   def index
     @own_domains = current_user.domains.by_creator current_user.id
@@ -117,5 +118,9 @@ class DomainsController < ApplicationController
   def check_owner_domain
     user_domain =  UserDomain.find_by domain_id: params[:id],user_id: current_user.id
     return user_domain.present? && user_domain.owner?
+  end
+
+  def change_current_feature
+    session["current_feature"] = domain_path  if session["current_feature"] != domain_path
   end
 end

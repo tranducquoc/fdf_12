@@ -1,6 +1,8 @@
 class Ads::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_post, except: %i(index new create)
+  before_action :change_current_feature
+
 
   after_action :set_default_image!, only: :update
 
@@ -102,5 +104,9 @@ class Ads::PostsController < ApplicationController
   def is_images_addable post
     post.images.size < Settings.post.max_images &&
       post.images.first.image_url != PostImageUploader.default_url
+  end
+
+  def change_current_feature
+    session["current_feature"] = domain_ads_posts_path if session["current_feature"] != domain_ads_posts_path
   end
 end

@@ -90,7 +90,7 @@ class Ads::PostsController < ApplicationController
 
   def load_post
     @post = Post.find_by id: params[:id]
-    return if @post.present? && @post.approved?
+    return if @post.present? && (@post.approved? || current_user.posts.include?(@post))
     flash[:danger] = t "ads.post.error.not_found"
     redirect_to domain_ads_posts_path
   end

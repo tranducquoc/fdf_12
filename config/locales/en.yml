@@ -554,6 +554,7 @@ en:
       login_box_message: "Sign in to start your session"
   dashboard:
     ads:
+      post_price: "%{min} - %{max} vnd"
       posts:
         index:
           yours: "Your posts"
@@ -1264,7 +1265,7 @@ en:
       btn_buy_now: "Buy now"
       contact_info: "Contact info"
       home: "Home"
-      created_at: "<b>Posted at:</b> %{time} ago"
+      created_at: "%{time} ago"
       delete:
         success: "Post has successfully deleted!"
       close_time: "Close time"

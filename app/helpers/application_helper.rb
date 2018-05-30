@@ -273,4 +273,13 @@ module ApplicationHelper
   def in_url? url
     request.url.split("?").first.include? url
   end
+
+  def select_option field
+    html = ""
+    field.each do |key, value|
+      key_i18n = t "admin.posts.index.#{key}"
+      html += "<option value='#{value}'>#{key_i18n}</option>"
+    end
+    html.html_safe
+  end
 end

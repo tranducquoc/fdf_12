@@ -518,6 +518,8 @@ vi:
       report:
         approved: "Chấp nhận"
         blocked: "Chặn"
+        pending: "Đang chờ"
+        na: "N/A"
       update:
         success: "Cập nhật tin rao thành công!"
         failed: "Cập nhật tin rao thất bại!"
@@ -1251,6 +1253,13 @@ vi:
     send_order_status_noti: "Gửi thông báo khi bạn đóng đơn hàng"
   ads:
     post:
+      index:
+        categories: "Danh mục"
+        newest: "Mới nhất"
+        featured: "Tin rao nổi bật"
+        highest_rated: "Đánh giá cao"
+        most_reviewed: "Bình luận nhiều"
+        post_your_ads: "Đăng tin rao của bạn"
       update:
         success: "Cập nhật tin rao thành công!"
         error: "Cập nhật tin rao thất bại!"

@@ -21,4 +21,9 @@ module Ads::PostsHelper
     return post.domain_name if post.domain
     t "ads.post.arenas.professed"
   end
+
+  def format_post_title title, max_size
+    return title if title.size < max_size
+    title[0..max_size] << "..."
+  end
 end

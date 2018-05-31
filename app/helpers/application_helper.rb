@@ -235,7 +235,11 @@ module ApplicationHelper
   end
 
   def check_length_perpage_posts posts
-    posts.size > Settings.common.posts_per_page
+    begin
+      posts.size > Settings.common.posts_per_page
+    rescue
+      false
+    end
   end
 
   def category_statistic
@@ -264,5 +268,9 @@ module ApplicationHelper
     else
       domain
     end
+  end
+
+  def in_url? url
+    request.url.split('?').first == url
   end
 end

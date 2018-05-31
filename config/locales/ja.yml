@@ -470,6 +470,8 @@ ja:
       report:
         approved: "Approved"
         blocked: "Blocked"
+        pending: "Pending"
+        na: "N/A"
       update:
         success: "Post successfully updated!"
         failed: "Update post failed!"
@@ -1203,6 +1205,13 @@ ja:
     send_order_status_noti: "Send a notification when you close the orders"
   ads:
     post:
+      index:
+        categories: "Categories"
+        newest: "New post"
+        featured: "Featured shops posts"
+        highest_rated: "Best rated posts"
+        most_reviewed: "Most reviewed posts"
+        post_your_ads: "Post your ads"
       update:
         success: "Your post has successfully updated!"
         error: "Update post failed, please try again!"

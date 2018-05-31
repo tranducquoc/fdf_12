@@ -1,41 +1,111 @@
-<div class="content-ads">
-  <div class="col-md-8">
-    <h3 class="page-title"><span class="main-title">Chuyen muc rao vat</span></h3>
-      <a class="btn category-btn"><span class="icon-am-thuc"></span></br>
-        <p>Category</p>
-      </a>
-      <a class="btn category-btn"><span class="icon-xe-co"></span></br>
-        <p>Category</p>
-      </a>
-      <a class="btn category-btn"><span class="icon-do-handmade"></span></br>
-        <p>Category</p>
-      </a>
-      <a class="btn category-btn"><span class="icon-do-dien-tu"></span></br>
-        <p>Category</p>
-      </a>
-      <a class="btn category-btn"><span class="icon-am-thuc"></span></br>
-        <p>Category</p>
-      </a>
-      <a class="btn category-btn"><span class="icon-do-dien-tu"></span></br>
-        <p>Category</p>
-      </a>
-      <div class="row btn-post-ads">
-        <%= link_to new_domain_ads_post_path, class: "btn-add" do %>
-          <i class="fa fa-pencil"></i>  Post your ads</a>
-        <% end %>
-      </div>
+<%= link_to new_domain_ads_post_path(@domain) do %>
+  <div class="new-post-button">
+    <button>
+      <span class="new-post-tooltip">
+        <%= t "ads.post.index.post_your_ads" %>
+      </span>
+      <i class="fa fa-plus new-post-icon"></i>
+    </button>
   </div>
-  <div class="col-md-4 list-office">
-    <div class="row">
-      <h3 class="page-title">Cua Hang Noi Bat</h3>
-        <span class="shop-image"><%= image_tag "shop.png"%></span>
-        <span class="shop-image"><%= image_tag "shop.png"%></span>
-        <span class="shop-image"><%= image_tag "shop.png"%></span>
-        <span class="shop-image"><%= image_tag "shop.png"%></span>
+<% end %>
+
+<div class="content-ads">
+  <div class="row">
+    <div class="col-md-3 col-sm-12 col-xs-12">
+      <div class="block-item-list block padding-0 col-md-12 col-sm-6
+        col-xs-18 boder-radius-0">
+        <h3 class="title padding-left-10 margin-left_domain form-header">
+          <span class="text-header"><%= t "ads.post.index.categories" %></span>
+        </h3>
+
+        <div class="clearfix body margin-left_domain">
+          <div class="category-list padding-top-0">
+            <% @post_support.parent_categories.each do |category| %>
+              <div class="col-lg-6 col-md-12 col-xs-6
+                padding-left-right-5 padding_0">
+                <%= link_to domain_ads_posts_path(@domain, category_slug: category.slug,
+                  type: @post_support.filtered_param[:type],
+                  mode: @post_support.filtered_param[:mode]),
+                  class: "categorie bd-radius-category" do %>
+                  <span class="domain-name"><%= category.name %></span>
+                  <span class="categorie-count"><%= category.subcategories_posts %></span>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-9">
+      <div class="margin-bottom-20 border-top-shop">
+        <span class="top-shop-product"><%= t "ads.post.index.featured" %></span>
+      </div>
+
+      <div id="id_top_posts" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <% @post_support.featured_posts.each_with_index do |post, index| %>
+            <div class="<%= index.zero? ? "active" : "" %> item"
+              data-top-post="<%= domain_ads_post_path(domain_id: @domain, id: post) %>">
+              <%= image_tag post.images.first.image_url, alt: post.title,
+                class: "top-posts-img" %>
+
+              <div class="carousel-caption slide_bottom">
+                <div class="top-post-screen-shots">
+                  <% post.images.each do |image| %>
+                    <%= image_tag image.image_url, alt: post.title %>
+                  <% end %>
+                </div>
+
+                <div class="top-post-info">
+                  <div class="top-post-title">
+                    <%= format_post_title post.title, Settings.post.top_content %>
+                  </div>
+
+                  <%= format_post_price post %>
+
+                  <div class="top-post-mode">
+                    <span><i class="fa fa-flag-checkered">
+                      <%= t "ads.post.modes.#{post.mode}" %></i>
+                    </span>
+                  </div>
+
+                  <div class="top-post-domain">
+                    <% if post.domain %>
+                      <span><i class="fa fa-foursquare white">
+                        <%= post.domain_name %></i>
+                      </span>
+                    <% else %>
+                      <span><i class="fa fa-globe">
+                        <%= t "ads.post.arenas.professed" %></i>
+                      </span>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <a class="left carousel-control" href="#id_top_posts" role="button"
+          data-slide="prev">
+          <span class="fa fa-angle-left" aria-hidden="true"></span>
+          <span class="sr-only"><%= t "common.previous" %></span>
+        </a>
+        <a class="right carousel-control" href="#id_top_posts" role="button"
+          data-slide="next">
+          <span class="fa fa-angle-right left-55" aria-hidden="true"></span>
+          <span class="sr-only"><%= t "common.next" %></span>
+        </a>
+      </div>
     </div>
   </div>
+
+  <div class="margin-bottom-20 margin-top-50 border-top-post">
+    <%= render "categorize_post", type: @post_support.filtered_param[:type] %>
+  </div>
+
   <div class="col-md-8 ads-list">
-    <h3 class="page-title">Tin dang moi nhat</h3>
     <div class="filter-post">
       <div class="dropdown status-filter">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
@@ -47,31 +117,9 @@
           <% Post.modes.each do |key, _| %>
             <li><%= link_to t("ads.post.modes.#{key}"), domain_ads_posts_path(@domain,
               category_slug: @post_support.filtered_param[:category].slug,
-              time: @post_support.filtered_param[:time],
+              type: @post_support.filtered_param[:type],
               mode: key) %></li>
           <% end %>
-        </ul>
-      </div>
-
-      <div class="dropdown time-filter">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-          <% if @post_support.filtered_param[:time] == Settings.post.asc %>
-            <%= t "ads.post.order_by.asc" %>
-          <% elsif @post_support.filtered_param[:time] == Settings.post.desc %>
-            <%= t "ads.post.order_by.desc" %>
-          <% end %>
-          <span class="caret"></span>
-        </button>
-
-        <ul class="dropdown-menu">
-          <li><%= link_to t("ads.post.order_by.desc"), domain_ads_posts_path(@domain,
-            category_slug: @post_support.filtered_param[:category].slug,
-            time: Settings.post.desc,
-            mode: @post_support.filtered_param[:mode]) %></li>
-          <li><%= link_to t("ads.post.order_by.asc"), domain_ads_posts_path(@domain,
-            category_slug: @post_support.filtered_param[:category].slug,
-            time: Settings.post.asc,
-            mode: @post_support.filtered_param[:mode]) %></li>
         </ul>
       </div>
 
@@ -82,7 +130,7 @@
         </button>
 
         <ul class="dropdown-menu">
-          <%= render partial: "category", collection: @post_support.all_parent_categories,
+          <%= render partial: "category", collection: @post_support.parent_categories,
             as: :category %>
         </ul>
       </div>
@@ -96,87 +144,17 @@
       <%= link_to_next_page @post_support.filtered_posts, t("view_more_posts") %>
     <% end %>
   </div>
-  <div class="right-sidebar col-md-4">
-    <div class="most-review">
-      <h3 class="page-title">Most Reviewed</h3>
-      <ul class="side-item">
-        <li>
-          <a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit!</a>
-          <span class="sidebar-tag">
-            <i class="fa fa-comment"> 50 reivews</i>
-            <i class="fa fa-foursquare"> Da Nang Office </i>
-          </span>
-        </li>
-        <li>
-          <a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit!</a>
-          <span class="sidebar-tag">
-            <i class="fa fa-comment"> 50 reivews</i>
-            <i class="fa fa-foursquare"> Da Nang Office </i>
-          </span>
-        </li>
-        <li>
-          <a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit!</a>
-          <span class="sidebar-tag">
-            <i class="fa fa-comment"> 50 reivews</i>
-            <i class="fa fa-foursquare"> Da Nang Office </i>
-          </span>
-        </li>
-        <li>
-          <a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit!</a>
-          <span class="sidebar-tag">
-            <i class="fa fa-comment"> 50 reivews</i>
-            <i class="fa fa-foursquare"> Da Nang Office </i>
-          </span>
-        </li>
-        <li>
-          <a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit!</a>
-          <span class="sidebar-tag">
-            <i class="fa fa-comment"> 50 reivews</i>
-            <i class="fa fa-foursquare"> Da Nang Office </i>
-          </span>
-        </li>
-      </ul>
-    </div>
-    <div class="most-interested">
-      <h3 class="page-title">Most Interested</h3>
-      <ul class="side-item">
-        <li>
-          <a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit!</a>
-          <span class="sidebar-tag">
-            <i class="fa fa-eye"> 50 reivews</i>
-            <i class="fa fa-foursquare"> Da Nang Office </i>
-          </span>
-        </li>
-        <li>
-          <a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit!</a>
-          <span class="sidebar-tag">
-            <i class="fa fa-eye"> 50 reivews</i>
-            <i class="fa fa-foursquare"> Da Nang Office </i>
-          </span>
-        </li>
-        <li>
-          <a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit!</a>
-          <span class="sidebar-tag">
-            <i class="fa fa-eye"> 50 reivews</i>
-            <i class="fa fa-foursquare"> Da Nang Office </i>
-          </span>
-        </li>
-        <li>
-          <a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit!</a>
-          <span class="sidebar-tag">
-            <i class="fa fa-eye"> 50 reivews</i>
-            <i class="fa fa-foursquare"> Da Nang Office </i>
-          </span>
-        </li>
-        <li>
-          <a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit!</a>
-          <span class="sidebar-tag">
-            <i class="fa fa-eye"> 50 reivews</i>
-            <i class="fa fa-foursquare"> Da Nang Office </i>
-          </span>
-        </li>
-      </ul>
-    </div>
+
+  <div class="index-right-sidebar col-md-4">
+    <% @post_support.filtered_posts.each_with_index do |post, index| %>
+      <% if index.zero? %>
+        <% post.images.each do |image| %>
+          <div class="index-right-images">
+            <%= image_tag image.image_url %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 <%= render partial: "show_sweet.js.erb" %>

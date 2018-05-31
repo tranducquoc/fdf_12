@@ -1,0 +1,12 @@
+<% Post.filters.keys.each do |filter| %>
+  <% if type == filter %>
+    <span class="categorize-post-active"><%= t "ads.post.index.#{filter}" %></span>
+  <% else %>
+    <span class="categorize-post">
+      <%= link_to t("ads.post.index.#{filter}"), domain_ads_posts_path(@domain,
+        category_slug: @post_support.filtered_param[:category].slug,
+        mode: @post_support.filtered_param[:mode],
+        type: filter) %>
+    </span>
+  <% end %>
+<% end %>

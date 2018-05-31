@@ -548,6 +548,7 @@ ja:
   dashboard:
     ads:
       posts:
+        post_price: "%{min} - %{max} vnd"
         index:
           yours: "Your posts"
           new: "Create new post"
@@ -1274,7 +1275,7 @@ ja:
       btn_buy_now: "Buy now"
       contact_info: "Contact info"
       home: "Home"
-      created_at: "<b>Posted at:</b> %{time} ago"
+      created_at: "%{time} ago"
       delete:
         success: "Post has successfully deleted!"
       close_time: "Close time"

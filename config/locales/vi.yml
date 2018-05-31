@@ -596,6 +596,7 @@ vi:
   dashboard:
     ads:
       posts:
+        post_price: "%{min} - %{max} vnd"
         index:
           yours: "Tin rao của bạn"
           new: "Tạo tin rao mới"
@@ -1322,7 +1323,7 @@ vi:
       btn_buy_now: "Mua ngay"
       contact_info: "Thông tin liên hệ"
       home: "Trang chủ"
-      created_at: "<b>Đăng từ:</b> %{time} trước"
+      created_at: "%{time} trước"
       delete:
         success: "Bài viết đã được xóa thành công!"
       close_time: "Thời gian đóng cửa"

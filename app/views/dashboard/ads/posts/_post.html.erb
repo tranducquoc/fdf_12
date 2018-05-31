@@ -8,41 +8,50 @@
   </div>
 
   <div class="col-md-9">
-    <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
-      <span class="post-title">
-        <%= post.title[0..Settings.post.max_content] %>
-        <%= post.title[0..Settings.post.max_content].length > Settings.post.max_content ? "..." : "" %>
-      </span>
-    <% end %>
+    <div class="row">
+      <div class="col-md-9">
+        <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
+          <span class="post-title">
+            <%= post.title %>
+          </span>
+        <% end %>
+      </div>
+      <div class="col-md-3">
+        <div class="label label-<%= post.status %> pull-right"><%= t "all_status.#{post.status}" %></div>
+      </div>
+    </div>
 
     <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
       <p class="price-item">
-        <%= post.content[0..Settings.post.max_content] %>
-        <%= post.content[0..Settings.post.max_content].length > Settings.post.max_content ? "..." : "" %>
+        <%= t "dashboard.ads.posts.post_price", min: post.min_price, max: post.max_price %>
       </p>
     <% end %>
 
-    <span><i class="fa fa-flag-checkered">
-      <%= t "ads.post.modes.#{post.mode}" %> | <%= t "ads.post.category" %>:
-      <%= post.category.blank? ? "" : post.category_name %></i>
-    </span>
-
-    <div class="meta-tag">
-      <span><i class="fa fa-calendar">
-        <%= t("ads.post.created_at", time: time_ago_in_words(post.created_at)).html_safe %></i>
-      </span><br />
-
-      <span><i class="fa fa-comment">
-        <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
-          <%= pluralize post.reviews.count, t("ads.post.post.review") %>
-        <% end %></i>
-      </span>
-
-      <% if post.domain %>
-        <span><i class="fa fa-foursquare">
-          <%= link_to post.domain_name, domain_path(post.domain) %></i>
+    <div class="row">
+      <div class="col-md-8">
+        <span><i class="fa fa-flag-checkered">
+          <%= t "ads.post.modes.#{post.mode}" %> | <%= t "ads.post.category" %>:
+          <%= post.category.blank? ? "" : post.category_name %></i>
         </span>
-      <% end %>
+        &nbsp|&nbsp
+        <span><i class="fa fa-comment">
+          <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
+            <%= pluralize post.reviews.count, t("ads.post.post.review") %>
+          <% end %></i>
+        </span>
+        <% if post.domain %>
+          &nbsp|&nbsp <span><i class="fa fa-foursquare">
+            <%= link_to post.domain_name, domain_path(post.domain) %></i>
+          </span>
+        <% end %>
+      </div>
+      <div class="col-md-4">
+        <div class="meta-tag">
+          <span class="pull-right"><i class="fa fa-clock-o">
+            <%= t("ads.post.created_at", time: time_ago_in_words(post.created_at)).capitalize %></i>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 

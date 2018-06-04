@@ -1,7 +1,7 @@
 class Ads::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_post, except: %i(index new create)
-  before_action :change_current_feature
+  before_action :change_current_feature, only: :index
 
 
   after_action :set_default_image!, only: :update

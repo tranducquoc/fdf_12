@@ -102,7 +102,7 @@ class Event < ApplicationRecord
       post = Post.find_by id: eventable_id
       if post.domain.present?
         "/domains/#{post.domain_slug}/ads/posts/#{eventable_id}"
-      else
+      elsif user.domains.present?
         "/domains/#{post.user.domains.first.slug}/ads/posts/#{eventable_id}"
       end
     end

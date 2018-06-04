@@ -189,6 +189,6 @@ class ApplicationController < ActionController::Base
   end
 
   def check_choose_feature
-    redirect_to intro_features_path if current_user && request.path == root_path
+    redirect_to intro_features_path if current_user && current_user.domains.present? && request.path == root_path
   end
 end

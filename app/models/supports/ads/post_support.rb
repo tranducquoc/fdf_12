@@ -10,8 +10,18 @@ class Supports::Ads::PostSupport
     @children_categories = Category.by_parent @parent_categories.first.id
   end
 
-  def all_parent_categories
-    Category.is_parent
+  def parent_categories number=nil
+    return Category.is_parent unless number
+    Category.is_parent.last number
+  end
+
+  def all_categories
+    Category.all
+  end
+
+  def featured_posts number=nil
+    return Post.all.approved unless number
+    Post.approved.last number
   end
 
   def filtered_param
@@ -19,13 +29,20 @@ class Supports::Ads::PostSupport
     category = Category.find_by slug: category_slug
     mode = (params[:mode] == Post.modes.keys[1]) ? Post.modes.keys[1] : Post.modes.keys[0]
     time = (params[:time] == Settings.post.asc) ? Settings.post.asc : Settings.post.desc
-    return {category: category, mode: mode, time: time}
+    type = params[:type] == Post.filters.keys[1] ? Post.filters.keys[1] : Post.filters.keys[0]
+    {category: category, mode: mode, time: time, type: type}
   end
 
   def filtered_posts
-    Post.filtered_by_mode_time_category(filtered_param[:mode],
-      filtered_param[:time], filtered_param[:category].id)
-      .page(params[:page]).per Settings.common.posts_per_page
+    if filtered_param[:type] == Post.filters.keys[0]
+      Post.filtered_by_mode_time_category(filtered_param[:mode],
+        filtered_param[:time], filtered_param[:category].id)
+        .page(params[:page]).per Settings.common.posts_per_page
+    elsif filtered_param[:type] == Post.filters.keys[1]
+      Post.most_reviewed(filtered_param[:mode], filtered_param[:time],
+        filtered_param[:category].id).page(params[:page])
+        .per Settings.common.posts_per_page
+    end
   end
 
   def post_of_user

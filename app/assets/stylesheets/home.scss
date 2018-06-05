@@ -1,43 +1,5 @@
 $orange_main: #ff5722;
 
-#id_top_products {
-  height: 300px;
-
-  .carousel-inner {
-    height: 300px;
-
-    .item {
-      height: 300px;
-    }
-
-    .carousel-caption {
-      padding-bottom: 0;
-      bottom: 0;
-      padding-top: 0;
-      background: rgba(0, 0, 0, 0.5);
-      float: left;
-      width: 100%;
-      left: 0;
-    }
-
-    img {
-      position: relative;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-
-  .fa {
-    font-size: 40px;
-    position: absolute;
-    top: 50%;
-    z-index: 5;
-    display: inline-block;
-    margin-top: -10px;
-  }
-}
-
 .block {
   background: #fff;
   padding: 10px;

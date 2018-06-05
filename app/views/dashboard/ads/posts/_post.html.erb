@@ -12,7 +12,7 @@
       <div class="col-md-9">
         <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
           <span class="post-title">
-            <%= post.title %>
+            <%= format_post_title post.title, Settings.post.dashboard.max_content %>
           </span>
         <% end %>
       </div>
@@ -40,8 +40,12 @@
           <% end %></i>
         </span>
         <% if post.domain %>
-          &nbsp|&nbsp <span><i class="fa fa-foursquare">
+          &nbsp|&nbsp <span><i class="fa fa-foursquare red">
             <%= link_to post.domain_name, domain_path(post.domain) %></i>
+          </span>
+        <% else %>
+          &nbsp|&nbsp <span><i class="fa fa-globe">
+            <%= t "ads.post.arenas.professed" %></i>
           </span>
         <% end %>
       </div>

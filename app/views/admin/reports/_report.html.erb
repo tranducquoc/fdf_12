@@ -22,6 +22,14 @@
       data-url="<%= admin_report_path(report) %>" data-value="<%= Post.statuses.keys[3] %>">
       <%= t ".blocked" %>
     </button></td>
+  <% elsif report.post.pending? %>
+    <td><span class="label label-warning">
+      <%= t ".pending" %>
+    </span></td>
+
+    <td><span class="label label-default">
+      <%= t ".pending" %>
+    </span></td>
   <% end %>
   <td><%= report.created_at.strftime Settings.reports.date_format %></td>
 </tr>

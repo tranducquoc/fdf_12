@@ -1,6 +1,6 @@
 <li>
   <%= link_to category.name, domain_ads_posts_path(@domain,
     category_slug: category.slug,
-    mode: @post_support.filtered_param[:mode],
-    time: @post_support.filtered_param[:time]) %>
+    type: @post_support.filtered_param[:type],
+    mode: @post_support.filtered_param[:mode]) %>
 </li>

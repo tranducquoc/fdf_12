@@ -1260,6 +1260,7 @@ vi:
         highest_rated: "Đánh giá cao"
         most_reviewed: "Bình luận nhiều"
         post_your_ads: "Đăng tin rao của bạn"
+        no_reviewed_post: "Chưa có bài rao được đánh giá"
       update:
         success: "Cập nhật tin rao thành công!"
         error: "Cập nhật tin rao thất bại!"

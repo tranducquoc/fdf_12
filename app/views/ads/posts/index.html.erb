@@ -19,7 +19,7 @@
         </h3>
 
         <div class="clearfix body margin-left_domain">
-          <div class="category-list padding-top-0">
+          <div class="category-list padding-top-0 scroll-categories">
             <% @post_support.parent_categories.each do |category| %>
               <div class="col-lg-6 col-md-12 col-xs-6
                 padding-left-right-5 padding_0">
@@ -101,11 +101,10 @@
     </div>
   </div>
 
-  <div class="margin-bottom-20 margin-top-50 border-top-post">
-    <%= render "categorize_post", type: @post_support.filtered_param[:type] %>
-  </div>
-
   <div class="col-md-8 ads-list">
+    <div class="margin-bottom-20 margin-top-20 border-top-post">
+      <span class="categorize-post-active"><%= t "ads.post.index.newest" %></span>
+    </div>
     <div class="filter-post">
       <div class="dropdown status-filter">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
@@ -145,16 +144,27 @@
     <% end %>
   </div>
 
-  <div class="index-right-sidebar col-md-4">
-    <% @post_support.filtered_posts.each_with_index do |post, index| %>
-      <% if index.zero? %>
-        <% post.images.each do |image| %>
-          <div class="index-right-images">
-            <%= image_tag image.image_url %>
-          </div>
+  <div class="right-sidebar col-md-4">
+    <div class="most-review">
+      <h3 class="page-title"><%= t "ads.post.index.most_reviewed" %></h3>
+      <ul class="side-item scroll-most-reviewed-posts">
+        <% if @post_support.most_reviewed_post.length > 0 %>
+          <% @post_support.most_reviewed_post.each do |post| %>
+            <li>
+              <%= link_to post.title, domain_ads_post_path(@domain, post) %>
+              <span class="sidebar-tag">
+                <i class="fa fa-comment"> <%= pluralize post.reviews.count, t("ads.post.post.review") %></i>
+                <% if post.domain.present? %>
+                  <i class="fa fa-foursquare red"> <%= post.domain_name %> </i>
+                <% end %>
+              </span>
+            </li>
+          <% end %>
+        <% else %>
+          <li><%= t "ads.post.index.no_reviewed_post" %></li>
         <% end %>
-      <% end %>
-    <% end %>
+      </ul>
+    </div>
   </div>
 </div>
 <%= render partial: "show_sweet.js.erb" %>

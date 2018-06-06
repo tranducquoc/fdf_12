@@ -39,9 +39,7 @@ class Supports::Ads::PostSupport
         filtered_param[:time], filtered_param[:category].id)
         .page(params[:page]).per Settings.common.posts_per_page
     elsif filtered_param[:type] == Post.filters.keys[1]
-      Post.most_reviewed(filtered_param[:mode], filtered_param[:time],
-        filtered_param[:category].id).page(params[:page])
-        .per Settings.common.posts_per_page
+      most_reviewed_post
     end
   end
 
@@ -67,5 +65,10 @@ class Supports::Ads::PostSupport
 
   def working_time format
     "#{shop.time_open.strftime format} - #{shop.time_close.strftime format}"
+  end
+
+  def most_reviewed_post
+    Post.most_reviewed(filtered_param[:mode], filtered_param[:time],
+      filtered_param[:category].id).page(params[:page]).per Settings.common.posts_per_page
   end
 end

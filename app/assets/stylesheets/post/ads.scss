@@ -516,3 +516,18 @@ $light-gray: #666;
     top: -5px;
   }
 }
+
+.btn-create-post {
+  margin-top: 7px;
+  padding: 5px !important;
+}
+
+.scroll-categories {
+  height: 422px;
+  overflow-y: auto;
+}
+
+.scroll-most-reviewed-posts {
+  height: 350px;
+  overflow-y: auto;
+}

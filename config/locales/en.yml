@@ -1202,6 +1202,7 @@ en:
         highest_rated: "Best rated posts"
         most_reviewed: "Most reviewed posts"
         post_your_ads: "Post your ads"
+        no_reviewed_post: "No posts have been rated yet"
       update:
         success: "Your post has successfully updated!"
         error: "Update post failed, please try again!"

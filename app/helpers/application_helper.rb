@@ -271,6 +271,6 @@ module ApplicationHelper
   end
 
   def in_url? url
-    request.url.split('?').first == url
+    request.url.split("?").first.include? url
   end
 end

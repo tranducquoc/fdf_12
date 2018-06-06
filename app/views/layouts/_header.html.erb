@@ -73,8 +73,8 @@
           <% end %>
           <% if in_url? domain_ads_posts_url(@domain) %>
             <li class="navbar-orders">
-              <%= link_to new_domain_ads_post_path do %>
-                <i class="fa fa-pencil"></i> <%= t "ads.post.index.post_your_ads" %>
+              <%= link_to new_domain_ads_post_path, class: "label-fire btn-create-post" do %>
+                <i class="fa fa-pencil"></i><%= t "ads.post.index.post_your_ads" %>
               <% end %>
             </li>
           <% elsif current_user.domains.present? %>

@@ -71,25 +71,27 @@
               </ul>
             </li>
           <% end %>
-          <% if in_url? domain_ads_posts_url(@domain) %>
-            <li class="navbar-orders">
-              <%= link_to new_domain_ads_post_path, class: "label-fire btn-create-post" do %>
-                <i class="fa fa-pencil"></i><%= t "ads.post.index.post_your_ads" %>
-              <% end %>
-            </li>
-          <% elsif current_user.domains.present? %>
-            <li class="navbar-orders">
-              <%= link_to domain_carts_path(@domain) do %>
-                <span class="glyphicon glyphicon-shopping-cart"></span>
-                <span class="items-count"><%= @cart.count %></span>
-              <% end %>
-            </li>
+          <% if current_user.domains.present? %>
+            <% if in_url? domain_ads_posts_url(@domain) %>
+              <li class="navbar-orders">
+                <%= link_to new_domain_ads_post_path, class: "label-fire btn-create-post" do %>
+                  <i class="fa fa-pencil"></i><%= t "ads.post.index.post_your_ads" %>
+                <% end %>
+              </li>
+            <% else %>
+              <li class="navbar-orders">
+                <%= link_to domain_carts_path(@domain) do %>
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
+                  <span class="items-count"><%= @cart.count %></span>
+                <% end %>
+              </li>
             <li class="navbar-orders">
               <%= link_to orders_path do %>
                 <i class="fa fa-list-ol"></i>
                 <span><%= t "common.your_orders" %></span>
               <% end %>
             </li>
+            <% end %>
           <% end %>
           <li class="block-notification-dropdown dropdown event ">
             <a href="#" id="notifications-dropdown" class="dropdown-toggle"

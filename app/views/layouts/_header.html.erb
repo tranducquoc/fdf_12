@@ -3,7 +3,7 @@
     <div class="container media-margin-header-bar">
       <div class="navbar-header">
         <% if @domain.present? %>
-          <%= link_to domain_path(@domain), class: "navbar-brand" do %>
+          <%= link_to intro_features_path, class: "navbar-brand" do %>
             <%= image_tag "logo.png" %>
           <% end %>
         <% else %>

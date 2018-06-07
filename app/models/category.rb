@@ -15,6 +15,7 @@ class Category < ApplicationRecord
 
   scope :asc_by_name, ->{order :name}
   scope :is_parent, ->{where parent_id: 0}
+  scope :isnot_parent, ->{where "parent_id !=0"}
   scope :by_parent, -> parent_id{where parent_id: parent_id}
   scope :parent_category, -> id{where id: id}
 

@@ -545,6 +545,8 @@ en:
       users: "Users"
       all_users: "All"
       reports: "Reports"
+      posts: "Posts"
+      all_posts: "All posts"
     admin_lte_2_header:
       logo_mini: "F"
       logo_medium: "Framgia"

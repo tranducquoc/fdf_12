@@ -53,9 +53,9 @@ class Post < ApplicationRecord
   delegate :name, :position, :avatar, :id, to: :user, prefix: true
   delegate :name, to: :category, prefix: true, allow_nil: true
   delegate :name, :slug, to: :domain, prefix: true, allow_nil: true
+  delegate :name, to: :domain, prefix: true
 
   private
-
   def send_notification
     if self.status_changed?
       Event.create message: self.status, user_id: user_id,
@@ -66,5 +66,19 @@ class Post < ApplicationRecord
   def send_notification_to_admin
     Event.create message: :new_post, user_id: Admin.first.id,
       eventable_id: self.id, eventable_type: Post.name + "." + Admin.name
+  end
+  class << self
+    def filter params
+      fil = ""
+      fil += "title LIKE '%#{params[:key_search]}%' and" if params[:key_search].present?
+      fil += " mode = #{params[:mode_filter]} and" if params[:mode_filter].present?
+      fil += " arena = #{params[:arena_filter]} and" if params[:arena_filter].present?
+      if params[:category_id_filter].present?
+        fil += " category_id = #{params[:category_id_filter]}"
+      else
+        fil = fil[0..(fil.length - 4)]
+      end
+      where(fil)
+    end
   end
 end

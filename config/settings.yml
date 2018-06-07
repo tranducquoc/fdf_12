@@ -26,7 +26,7 @@ admin:
   dashboard:
     max_items: 10
   post:
-    posts_per_page: 15
+    posts_per_page: 10
     full_time_date: "%H:%M %d/%m/%Y"
 rate: "rate"
 notification:

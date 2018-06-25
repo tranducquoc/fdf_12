@@ -2,10 +2,13 @@ $share-post-buttons-size: 40px;
 $star: #f7b400;
 $heart: #fe9299;
 $light-gray: #666;
+$dark-orange: #A53B03;
+$orange: #ff5722;
 
 #id_top_posts {
   cursor: pointer;
   height: 400px;
+  margin-bottom: 30px;
 
   .carousel-inner {
     height: 400px;
@@ -138,6 +141,7 @@ $light-gray: #666;
     position: fixed;
     right: 25px;
     width: 50px;
+    z-index: 99;
   }
 
   &:hover .new-post-tooltip {
@@ -182,7 +186,11 @@ $light-gray: #666;
 
 .page-title{
   border-bottom: 1px dotted black;
-  font-weight: bold;
+  text-align: center;
+  padding-bottom: 5px;
+  margin-top: 40px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
 }
 .list-office a{
   margin-bottom: 5px;
@@ -265,6 +273,43 @@ $light-gray: #666;
 }
 .filter-post{
   margin-bottom: 10px;
+  min-height: 50px;
+  .col-md-2, .col-md-4 {
+    padding: 0;
+  }
+  .full-with{
+    width: 100%;
+    background: none;
+    border-radius: 0;
+    border-color: $light-gray;
+    color: $light-gray;
+    &:hover {
+      background-color: none !important;
+    }
+    .caret {
+      position: absolute;
+      left: 85%;
+      top: 45%;
+    }
+  }
+  .no-right-border {
+    border-right: none;
+  }
+  .key-filter {
+    .btn-orange {
+      background-color: $orange;
+      color: white;
+    }
+  }
+  .grid-option{
+    .list-format{
+      margin-right: 5px;
+    }
+    .active{
+      background-color: $orange;
+      color: white;
+    }
+  }
 }
 .office-filter, .status-filter, .time-filter, .categories-filter{
   display: inline-block;
@@ -530,4 +575,23 @@ $light-gray: #666;
 .scroll-most-reviewed-posts {
   height: 350px;
   overflow-y: auto;
+}
+
+.ads-post-categories {
+  .list-group-title {
+    background: $dark-orange;
+    border-color: $dark-orange;
+    h4 {
+      margin: 0;
+      color: white;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+  }
+  li a {
+    color: $light-gray;
+  }
+  .badge {
+    background-color: $dark-orange;
+  }
 }

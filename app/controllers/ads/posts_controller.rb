@@ -8,6 +8,7 @@ class Ads::PostsController < ApplicationController
 
   def index
     @post_support = Supports::Ads::PostSupport.new nil, nil, params
+    @domains = Domain.all
   end
 
   def new

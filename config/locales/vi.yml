@@ -1339,3 +1339,7 @@ vi:
       delete:
         success: "Bài viết đã được xóa thành công!"
       close_time: "Thời gian đóng cửa"
+    posts:
+      index:
+        domain: "Vị trí"
+        search: "Tìm kiếm sản phẩm"

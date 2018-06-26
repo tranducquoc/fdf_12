@@ -1281,3 +1281,7 @@ en:
       delete:
         success: "Post has successfully deleted!"
       close_time: "Close time"
+    posts:
+      index:
+        domain: "Domain"
+        search: "Looking for products"

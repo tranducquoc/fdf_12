@@ -1341,5 +1341,7 @@ vi:
       close_time: "Thời gian đóng cửa"
     posts:
       index:
-        domain: "Vị trí"
+        office: "Văn phòng"
         search: "Tìm kiếm sản phẩm"
+        see_more: "Xem thêm"
+        choose_category: "Chọn danh mục"

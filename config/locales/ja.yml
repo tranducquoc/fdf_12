@@ -1293,5 +1293,7 @@ ja:
       close_time: "Close time"
     posts:
       index:
-        domain: "Domain"
+        office: "Office"
         search: "Looking for products"
+        see_more: "See more"
+        choose_category: "Choose a category"

@@ -1,6 +1,23 @@
-<li>
-  <%= link_to category.name, domain_ads_posts_path(@domain,
-    category_slug: category.slug,
-    type: @post_support.filtered_param[:type],
-    mode: @post_support.filtered_param[:mode]) %>
+<li class="list-group-item">
+  <% if category.subcategories.any? %>
+    <%= link_to category.name, domain_ads_posts_path(@domain,
+        category_slug: category.slug,
+        type: @post_support.filtered_param[:type],
+        mode: @post_support.filtered_param[:mode]) %>
+    <button class="badge btn" type="button" data-toggle="collapse"
+      data-target="#cate-<%= category.id %>-<%= local_assigns[:div] %>"
+      aria-expanded="false" aria-controls="xample">
+      <%= category.subcategories_posts %>
+    </button>
+    <ul class="list-group collapse sub-list"
+      id="cate-<%= category.id %>-<%= local_assigns[:div] %>">
+      <%= render partial: "category", collection: category.subcategories, as: :category %>
+    </ul>
+  <% else %>
+    <%= link_to category.name, domain_ads_posts_path(@domain,
+      category_slug: category.slug,
+      type: @post_support.filtered_param[:type],
+      mode: @post_support.filtered_param[:mode]) %>
+    <span class="badge"><%= category.posts.count %></span>
+  <% end %>
 </li>

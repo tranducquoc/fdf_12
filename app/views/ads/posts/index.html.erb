@@ -17,20 +17,13 @@
           <li class="list-group-item list-group-title">
             <h4><%= t "ads.post.index.categories" %></h4>
           </li>
-          <% @post_support.parent_categories.each do |category| %>
-            <li class="list-group-item">
-              <%= link_to category.name,
-                domain_ads_posts_path(@domain, category_slug: category.slug,
-                  type: @post_support.filtered_param[:type],
-                  mode: @post_support.filtered_param[:mode]) %>
-                <span class="badge"><%= category.subcategories_posts %></span>
-            </li>
-          <% end %>
+          <%= render partial: "category", collection: @post_support.parent_categories,
+            as: :category, locals: {div: "aside"} %>
         </ul>
       </div>
       <div class="most-review">
         <h3 class="page-title"><%= t "ads.post.index.most_reviewed" %></h3>
-        <ul class="side-item scroll-most-reviewed-posts">
+        <ul class="side-item">
           <% if @post_support.most_reviewed_post.present? %>
             <% @post_support.most_reviewed_post.each do |post| %>
               <li class="thumbnail">
@@ -45,6 +38,9 @@
                 </span>
               </li>
             <% end %>
+            <span class="label">
+              <%= link_to t(".see_more"), "#" %>
+            </span>
           <% else %>
             <li><%= t "ads.post.index.no_reviewed_post" %></li>
           <% end %>
@@ -146,21 +142,39 @@
           </div>
 
           <div class="dropdown col-md-2 categories-filter">
-            <button class="btn btn-default dropdown-toggle full-with no-right-border"
-              type="button" data-toggle="dropdown">
+            <button class="btn btn-default full-with no-right-border"
+              type="button" data-toggle="modal" data-target="#categories">
               <%= @post_support.filtered_param[:category].name %>
               <span class="caret"></span>
             </button>
 
-            <ul class="dropdown-menu">
-              <%= render partial: "category", collection: @post_support.parent_categories,
-                as: :category %>
-            </ul>
+            <div class="modal fade" id="categories" tabindex="-1" role="dialog"
+              aria-labelledby="cate_modal_label">
+              <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="cate_modal_label">
+                      <%= t ".choose_category" %>
+                    </h4>
+                  </div>
+                  <div class="modal-body">
+                    <ul class="list-group">
+                      <%= render partial: "category",
+                        collection: @post_support.parent_categories,
+                        as: :category, locals: {div: "modal"} %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="dropdown col-md-2 domain-filter">
             <button class="btn btn-default dropdown-toggle full-with" type="button" data-toggle="dropdown">
-              <%= t ".domain" %>
+              <%= t ".office" %>
               <span class="caret"></span>
             </button>
 

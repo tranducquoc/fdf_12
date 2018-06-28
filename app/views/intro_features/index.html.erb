@@ -21,7 +21,7 @@
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 fade-in-animate-right">
           <div class="choose-wrapper">
-            <%= image_tag "ads-posts", class: "img-responsive" %>
+            <%= image_tag "draft/posts-page.png", class: "img-responsive" %>
             <div class="overlay">
               <% if current_user.domains.present? %>
                 <%= link_to t(".go_to_page"), domain_ads_posts_path(@domain || current_user.domains.first) %>

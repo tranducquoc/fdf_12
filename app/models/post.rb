@@ -36,8 +36,9 @@ class Post < ApplicationRecord
   }
 
   scope :filtered_by_mode_time_category, (lambda do |mode, time, id|
-    joins(:category).where("categories.parent_id": id, mode: mode).approved
-      .order created_at: time
+    joins(:category)
+      .where("categories.parent_id=? OR category_id=? AND mode=?", id, id, mode)
+      .approved.order created_at: time
   end)
   scope :by_domain, (lambda do |domain_id|
     where(domain_id: domain_id).or(where domain_id: nil)

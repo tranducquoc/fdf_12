@@ -1,16 +1,21 @@
-<li class="list-group-item">
+<li class="list-group-item panel">
   <% if category.subcategories.any? %>
-    <%= link_to category.name, domain_ads_posts_path(@domain,
+    <div id="<%= category.id %>-<%= local_assigns[:div] %>"
+      class="panel-heading">
+      <%= link_to category.name, domain_ads_posts_path(@domain,
         category_slug: category.slug,
         type: @post_support.filtered_param[:type],
         mode: @post_support.filtered_param[:mode]) %>
-    <button class="badge btn" type="button" data-toggle="collapse"
-      data-target="#cate-<%= category.id %>-<%= local_assigns[:div] %>"
-      aria-expanded="false" aria-controls="xample">
-      <%= category.subcategories_posts %>
-    </button>
-    <ul class="list-group collapse sub-list"
-      id="cate-<%= category.id %>-<%= local_assigns[:div] %>">
+      <button class="badge btn" type="button" data-toggle="collapse"
+        data-parent="#accordion-<%= local_assigns[:div] %>"
+        href="#cate-<%= category.id %>-<%= local_assigns[:div] %>">
+        <%= category.subcategories_posts %>
+        <span class="caret"></span>
+      </button>
+    </div>
+    <ul class="list-group panel-collapse collapse sub-list"
+      id="cate-<%= category.id %>-<%= local_assigns[:div] %>"
+      aria-labelledby="<%= category.id %>-<%= local_assigns[:div] %>">
       <%= render partial: "category", collection: category.subcategories, as: :category %>
     </ul>
   <% else %>

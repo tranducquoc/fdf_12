@@ -13,7 +13,7 @@
   <div class="row">
     <div class="col-md-3 col-sm-12 col-xs-12">
       <div class="ads-post-categories">
-        <ul class="list-group">
+        <ul class="list-group accordion" id="accordion-aside">
           <li class="list-group-item list-group-title">
             <h4><%= t "ads.post.index.categories" %></h4>
           </li>
@@ -161,7 +161,7 @@
                     </h4>
                   </div>
                   <div class="modal-body">
-                    <ul class="list-group">
+                    <ul class="list-group accordion" id="accordion-modal">
                       <%= render partial: "category",
                         collection: @post_support.parent_categories,
                         as: :category, locals: {div: "modal"} %>
@@ -172,18 +172,26 @@
             </div>
           </div>
 
-          <div class="dropdown col-md-2 domain-filter">
-            <button class="btn btn-default dropdown-toggle full-with" type="button" data-toggle="dropdown">
-              <%= t ".office" %>
-              <span class="caret"></span>
-            </button>
+          <% if @domains.present? %>
+            <div class="dropdown col-md-2 domain-filter">
+              <button class="btn btn-default dropdown-toggle full-with" type="button" data-toggle="dropdown">
+                <%= @post_support.filtered_param[:domain].name %>
+                <span class="caret"></span>
+              </button>
 
-            <ul class="dropdown-menu">
-              <% @domains.each do |domain| %>
-                <li><%= link_to domain.name, "#" %></li>
-              <% end %>
-            </ul>
-          </div>
+              <ul class="dropdown-menu">
+                <% @domains.each do |domain| %>
+                  <li>
+                    <%= link_to domain.name, domain_ads_posts_path(
+                      domain,
+                      category_slug: @post_support.filtered_param[:category].slug,
+                      type: @post_support.filtered_param[:type],
+                      mode: @post_support.filtered_param[:mode]) %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
 
           <div class="grid-option col-md-2">
             <button class="btn float-right grid-format" type="submit">

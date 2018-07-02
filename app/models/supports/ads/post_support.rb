@@ -27,16 +27,18 @@ class Supports::Ads::PostSupport
   def filtered_param
     category_slug = params[:category_slug] ? params[:category_slug] : Category.is_parent.first.slug
     category = Category.find_by slug: category_slug
+    current_domain = Domain.friendly_id.find_by slug: params[:domain_id]
     mode = (params[:mode] == Post.modes.keys[1]) ? Post.modes.keys[1] : Post.modes.keys[0]
     time = (params[:time] == Settings.post.asc) ? Settings.post.asc : Settings.post.desc
     type = params[:type] == Post.filters.keys[1] ? Post.filters.keys[1] : Post.filters.keys[0]
-    {category: category, mode: mode, time: time, type: type}
+    {category: category, mode: mode, time: time, type: type, domain: current_domain}
   end
 
   def filtered_posts
     if filtered_param[:type] == Post.filters.keys[0]
       Post.filtered_by_mode_time_category(filtered_param[:mode],
         filtered_param[:time], filtered_param[:category].id)
+        .by_domain(filtered_param[:domain].id)
         .page(params[:page]).per Settings.common.posts_per_page
     elsif filtered_param[:type] == Post.filters.keys[1]
       most_reviewed_post

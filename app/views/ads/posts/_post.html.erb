@@ -10,6 +10,21 @@
           <%= hidden_field_tag "post_images", image.image_url %>
         <% end %>
       <% end %>
+      <div class="ribbon">
+        <span class="created-at">
+          <i class="fa fa-clock-o">
+            <%= t("ads.post.created_at",
+              time: time_ago_in_words(post.created_at)).capitalize %>
+          </i>
+        </span> |
+        <span class="commented">
+          <i class="fa fa-comment">
+            <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
+              <%= pluralize post.reviews.size, t("ads.post.post.review") %>
+            <% end %>
+          </i>
+        </span>
+      </div>
     </div>
 
     <div class="col-md-10 item-info">
@@ -43,7 +58,7 @@
       </span>
 
       <div class="meta-tag row">
-        <div class="col-md-6">
+        <div class="col-md-6 comment">
           <span><i class="fa fa-comment">
             <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
               <%= pluralize post.reviews.size, t("ads.post.post.review") %>

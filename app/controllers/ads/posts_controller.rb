@@ -8,7 +8,7 @@ class Ads::PostsController < ApplicationController
 
   def index
     @post_support = Supports::Ads::PostSupport.new nil, nil, params
-    @domains = Domain.all
+    @domains = current_user.domains.except_id @domain.id
   end
 
   def new

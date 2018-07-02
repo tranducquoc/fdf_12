@@ -1,79 +1,81 @@
-<div class="list-ads-items ads-posts">
-  <div class="col-md-3 item-content">
-    <% if post.images.any? %>
-      <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
-        <%= image_tag post.images.first.image_url, class: "item-image" %>
-      <% end %>
-
-      <% post.images.each do |image| %>
-        <%= hidden_field_tag "post_images", image.image_url %>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="col-md-10">
-    <div class="row">
-      <div class="col-md-7">
+<div class="ads-item-wrap">
+  <div class="list-ads-items ads-posts">
+    <div class="col-md-3 item-content">
+      <% if post.images.any? %>
         <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
-          <span class="post-title" title="<%= post.title %>">
-            <%= format_post_title post.title, Settings.post.max_content %>
-          </span>
+          <%= image_tag post.images.first.image_url, class: "item-image" %>
         <% end %>
-      </div>
 
-      <div class="col-md-5">
-        <span class="pull-right"><i class="fa fa-clock-o">
-          <%= t("ads.post.created_at", time: time_ago_in_words(post.created_at)).capitalize %></i>
-        </span>
-      </div>
+        <% post.images.each do |image| %>
+          <%= hidden_field_tag "post_images", image.image_url %>
+        <% end %>
+      <% end %>
     </div>
 
-    <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
-      <p class="price-item">
-        <%= t "dashboard.ads.posts.post_price", min: post.min_price, max: post.max_price %>
-      </p>
-    <% end %>
-
-    <span>
-      <i class="fa fa-flag-checkered">
-        <%= t "ads.post.modes.#{post.mode}" %> | <%= t "ads.post.category" %>:
-        <%= post.category_name %>
-      </i>
-    </span>
-
-    <div class="meta-tag row">
-      <div class="col-md-6">
-        <span><i class="fa fa-comment">
+    <div class="col-md-10 item-info">
+      <div class="row">
+        <div class="col-md-7 item-title">
           <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
-            <%= pluralize post.reviews.count, t("ads.post.post.review") %>
-          <% end %></i>
-        </span>
-      </div>
-      <div class="col-md-6">
-        <div >
-          <% if post.link_shop.present? %>
-            <span>
-              <%= link_to domain_shop_path(@domain, post.link_shop) do %>
-                <%= image_tag "default_shop_avatar.png", class: "pull-right" %>
-              <% end %>
+            <span class="post-title" title="<%= post.title %>">
+              <%= format_post_title post.title, Settings.post.max_content %>
             </span>
           <% end %>
+        </div>
 
-          <% if post.domain %>
-            <span class="pull-right"><i class="fa fa-foursquare red">
-              <%= link_to post.domain_name, domain_path(post.domain) %></i>
-            </span>
-          <% else %>
-            <span><i class="fa fa-globe">
-              <%= t "ads.post.arenas.professed" %></i>
-            </span>
-          <% end %>
-
-          <span class="pull-right">
-            <i class="fa fa-user">
-              <%= link_to post.user_name, user_path(post.user) %>
-            </i>
+        <div class="col-md-5 item-created-at">
+          <span class="pull-right"><i class="fa fa-clock-o">
+            <%= t("ads.post.created_at", time: time_ago_in_words(post.created_at)).capitalize %></i>
           </span>
+        </div>
+      </div>
+
+      <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
+        <p class="price-item">
+          <%= t "dashboard.ads.posts.post_price", min: post.min_price, max: post.max_price %>
+        </p>
+      <% end %>
+
+      <span class="item-mode">
+        <i class="fa fa-flag-checkered">
+          <%= t "ads.post.modes.#{post.mode}" %> | <%= t "ads.post.category" %>:
+          <%= post.category_name %>
+        </i>
+      </span>
+
+      <div class="meta-tag row">
+        <div class="col-md-6">
+          <span><i class="fa fa-comment">
+            <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
+              <%= pluralize post.reviews.size, t("ads.post.post.review") %>
+            <% end %></i>
+          </span>
+        </div>
+        <div class="col-md-6">
+          <div >
+            <% if post.link_shop.present? %>
+              <span>
+                <%= link_to domain_shop_path(@domain, post.link_shop) do %>
+                  <%= image_tag "default_shop_avatar.png", class: "pull-right" %>
+                <% end %>
+              </span>
+            <% end %>
+
+            <% if post.domain %>
+              <span class="pull-right"><i class="fa fa-foursquare red">
+                <%= link_to post.domain_name, domain_path(post.domain) %></i>
+              </span>
+            <% else %>
+              <span><i class="fa fa-globe">
+                <%= t "ads.post.arenas.professed" %></i>
+              </span>
+            <% end %>
+
+            <span class="pull-right">
+              <i class="fa fa-user">
+                <%= link_to post.user_name, user_path(post.user) %>
+              </i>
+            </span>
+          </div>
         </div>
       </div>
     </div>

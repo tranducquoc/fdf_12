@@ -116,13 +116,19 @@
           <span class="top-shop-product"><%= t "ads.post.index.newest" %></span>
         </div>
         <div class="filter-post">
-          <form class="form-inline col-md-4 key-filter">
-            <input type="text" class="form-control mb-2 mr-sm-2"
-              placeholder='<%= t ".search" %>'>
-            <button type="submit" class="btn btn-orange mb-2 mr-sm-2">
+          <%= form_tag domain_ads_posts_path, method: :get,
+            class: "form-inline col-md-4 key-filter" do %>
+            <%= text_field_tag :search_posts, params[:search_posts],
+              class: "form-control mb-2 mr-sm-2",
+              placeholder: t(".search") %>
+            <%= hidden_field_tag "domain_id", @domain %>
+            <%= hidden_field_tag "category_slug", @post_support.filtered_param[:category].slug %>
+            <%= hidden_field_tag "mode", @post_support.filtered_param[:mode] %>
+            <%= hidden_field_tag "type", @post_support.filtered_param[:type] %>
+            <%= button_tag type: :submit, class: "btn btn-orange mb-2 mr-sm-2" do %>
               <i class="fa fa-search"></i>
-            </button>
-          </form>
+            <% end %>
+          <% end %>
 
           <div class="dropdown col-md-2 status-filter">
             <button class="btn btn-default dropdown-toggle full-with no-right-border"
@@ -210,11 +216,11 @@
         </div>
 
         <div id="filtered-posts">
-          <%= render @post_support.filtered_posts %>
+          <%= render @posts %>
         </div>
 
-        <% unless check_length_perpage_posts @post_support.filtered_posts %>
-          <%= link_to_next_page @post_support.filtered_posts, t("view_more_posts") %>
+        <% unless check_length_perpage_posts @posts %>
+          <%= link_to_next_page @posts, t("view_more_posts") %>
         <% end %>
       </div>
     </div>

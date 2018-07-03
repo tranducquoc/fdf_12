@@ -9,6 +9,10 @@ class Ads::PostsController < ApplicationController
   def index
     @post_support = Supports::Ads::PostSupport.new nil, nil, params
     @domains = current_user.domains.except_id @domain.id
+    @posts = @post_support.filtered_posts
+    if params[:search_posts]
+      @posts = @posts.search(title_or_content_cont: params[:search_posts]).result
+    end
   end
 
   def new

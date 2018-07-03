@@ -36,8 +36,8 @@ class Supports::Ads::PostSupport
 
   def filtered_posts
     if filtered_param[:type] == Post.filters.keys[0]
-      Post.filtered_by_mode_time_category(filtered_param[:mode],
-        filtered_param[:time], filtered_param[:category].id)
+      Post.filtered_by_time_category(filtered_param[:time], filtered_param[:category].id)
+        .filtered_by_mode(filtered_param[:mode])
         .by_domain(filtered_param[:domain].id)
         .page(params[:page]).per Settings.common.posts_per_page
     elsif filtered_param[:type] == Post.filters.keys[1]

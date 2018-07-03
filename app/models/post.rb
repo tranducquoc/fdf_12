@@ -35,11 +35,12 @@ class Post < ApplicationRecord
     less_than_or_equal_to: Settings.post.price.max_vnd
   }
 
-  scope :filtered_by_mode_time_category, (lambda do |mode, time, id|
+  scope :filtered_by_time_category, (lambda do |time, id|
     joins(:category)
-      .where("categories.parent_id=? OR category_id=? AND mode=?", id, id, mode)
+      .where("categories.parent_id=? OR category_id=?", id, id)
       .approved.order created_at: time
   end)
+  scope :filtered_by_mode, ->(mode){where mode: mode}
   scope :by_domain, (lambda do |domain_id|
     where(domain_id: domain_id).or(where domain_id: nil)
   end)

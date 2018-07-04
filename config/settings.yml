@@ -2,6 +2,7 @@ common:
   per_page: 6
   products_per_page: 12
   posts_per_page: 4
+  most_review_posts_per_page: 8
   shops_per_page: 9
 orders:
   status: {open: "open", deliver: "deliver", close: "close"}
@@ -221,3 +222,5 @@ review:
   date_format: "%d-%m-%Y"
 reports:
   date_format: "%H:%M %d-%m-%Y"
+filter:
+  most_review: "most_review"

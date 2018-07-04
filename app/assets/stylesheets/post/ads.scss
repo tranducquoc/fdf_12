@@ -5,6 +5,10 @@ $light-gray: #666;
 $dark-orange: #A53B03;
 $orange: #ff5722;
 
+* {
+  box-sizing: border-box;
+}
+
 #id_top_posts {
   cursor: pointer;
   height: 400px;
@@ -235,9 +239,11 @@ $orange: #ff5722;
 }
 
 .grid-view {
-  width: 33%;
-  display: inline-block;
+  width: 33.33%;
+  height: 350px;
+  float: left;
   padding-right: 15px;
+  margin-bottom: 15px;
   .list-ads-items {
     box-shadow: 2px 5px 5px #ccc;
     display: inherit;
@@ -295,6 +301,9 @@ $orange: #ff5722;
         margin-top: 15px;
         .comment {
           display: none;
+        }
+        .shop {
+          height: 25px;
         }
         span {
           display: block;
@@ -737,5 +746,11 @@ $orange: #ff5722;
       border-bottom: none;
       padding-bottom: 0;
     }
+  }
+}
+
+.most-review-posts {
+  .grid-view {
+    width: 25%;
   }
 }

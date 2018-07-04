@@ -1,0 +1,13 @@
+$(document).ready(function(){
+  $('.most-review-posts').append('<%= j render partial: "post",\
+    collection: @posts, as: :post,\
+    locals: {display: "grid-view"} %>');
+
+  <% if @posts.last_page? %>
+    $('.load-more-products').hide();
+  <% else %>
+    $('.load-more-products').show();
+    $('.load-more-products')
+      .html('<%= j link_to_next_page(@posts, t("view_more_posts")) %>');
+  <% end %>
+});

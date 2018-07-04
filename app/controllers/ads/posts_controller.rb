@@ -13,6 +13,10 @@ class Ads::PostsController < ApplicationController
     if params[:search_posts]
       @posts = @posts.search(title_or_content_cont: params[:search_posts]).result
     end
+    if params[:filter] == Settings.filter.most_review
+      @posts = @post_support.most_reviewed_post Settings.common.most_review_posts_per_page
+      request.xhr? ? respond_to(:js) : render("most_review")
+    end
   end
 
   def new

@@ -69,8 +69,8 @@ class Supports::Ads::PostSupport
     "#{shop.time_open.strftime format} - #{shop.time_close.strftime format}"
   end
 
-  def most_reviewed_post
+  def most_reviewed_post per_page = Settings.common.posts_per_page
     Post.most_reviewed(filtered_param[:mode], filtered_param[:time],
-      filtered_param[:category].id).page(params[:page]).per Settings.common.posts_per_page
+      filtered_param[:category].id).page(params[:page]).per per_page
   end
 end

@@ -1,4 +1,4 @@
-<div class="ads-item-wrap">
+<div class="ads-item-wrap animated fadeInUp <%= local_assigns[:display] %>">
   <div class="list-ads-items ads-posts">
     <div class="col-md-3 item-content">
       <% if post.images.any? %>
@@ -66,14 +66,14 @@
           </span>
         </div>
         <div class="col-md-6">
-          <div >
-            <% if post.link_shop.present? %>
-              <span>
+          <div>
+            <span class="shop">
+              <% if post.link_shop.present? %>
                 <%= link_to domain_shop_path(@domain, post.link_shop) do %>
                   <%= image_tag "default_shop_avatar.png", class: "pull-right" %>
                 <% end %>
-              </span>
-            <% end %>
+              <% end %>
+            </span>
 
             <% if post.domain %>
               <span class="pull-right"><i class="fa fa-foursquare red">

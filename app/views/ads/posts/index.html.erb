@@ -39,7 +39,11 @@
               </li>
             <% end %>
             <span class="label">
-              <%= link_to t(".see_more"), "#" %>
+              <%= link_to t(".see_more"), domain_ads_posts_path(@domain,
+                category_slug: @post_support.filtered_param[:category].slug,
+                type: @post_support.filtered_param[:type],
+                mode: @post_support.filtered_param[:mode],
+                filter: Settings.filter.most_review) %>
             </span>
           <% else %>
             <li><%= t "ads.post.index.no_reviewed_post" %></li>
@@ -218,9 +222,12 @@
         <div id="filtered-posts">
           <%= render @posts %>
         </div>
+        <div class="clearfix"></div>
 
         <% unless check_length_perpage_posts @posts %>
-          <%= link_to_next_page @posts, t("view_more_posts") %>
+          <div class="col-md-12 col-xs-12 margin-top-30">
+            <%= link_to_next_page @posts, t("view_more_posts") %>
+          </div>
         <% end %>
       </div>
     </div>

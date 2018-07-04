@@ -1287,3 +1287,5 @@ en:
         search: "Looking for products"
         see_more: "See more"
         choose_category: "Choose a category"
+      most_review:
+        most_review_posts: "Most reviewed Posts"

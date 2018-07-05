@@ -1,0 +1,41 @@
+<li class="list-group-item panel">
+  <% if category.subcategories.any? %>
+    <div class="row">
+      <div class="col-md-6">
+        <div id="<%= category.id %>"
+          class="panel-heading">
+          <span class="category-name"><%= category.name %></span>
+          <button class="badge btn" type="button" data-toggle="collapse"
+            data-parent="#accordion-cate-<%= local_assigns[:level] %>"
+            href="#accordion-cate-<%= category.id %>">
+            <%= category.subcategories.size %>
+            <span class="caret"></span>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6 text-right">
+        <%= render "action_links", category: category %>
+      </div>
+    </div>
+    <ul class="list-group panel-collapse collapse sub-list"
+      id="accordion-cate-<%= category.id %>"
+      aria-labelledby="<%= category.id %>">
+      <%= render partial: "category", collection: category.subcategories, as: :category,
+          locals: {level: category.id} %>
+    </ul>
+  <% else %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel-heading">
+          <span class="category-name"><%= category.name %></span>
+          <button class="badge btn btn-zero" type="button">
+            <%= category.subcategories.size %>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6 text-right">
+        <%= render "action_links", category: category %>
+      </div>
+    </div>
+  <% end %>
+</li>

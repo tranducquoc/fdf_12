@@ -7,16 +7,17 @@
         type: @post_support.filtered_param[:type],
         mode: @post_support.filtered_param[:mode]) %>
       <button class="badge btn" type="button" data-toggle="collapse"
-        data-parent="#accordion-<%= local_assigns[:div] %>"
-        href="#cate-<%= category.id %>-<%= local_assigns[:div] %>">
+        data-parent="#accordion-<%= local_assigns[:div] %>-cate-<%= local_assigns[:level] %>"
+        href="#accordion-<%= local_assigns[:div] %>-cate-<%= category.id %>">
         <%= category.subcategories_posts %>
         <span class="caret"></span>
       </button>
     </div>
     <ul class="list-group panel-collapse collapse sub-list"
-      id="cate-<%= category.id %>-<%= local_assigns[:div] %>"
+      id="accordion-<%= local_assigns[:div] %>-cate-<%= category.id %>"
       aria-labelledby="<%= category.id %>-<%= local_assigns[:div] %>">
-      <%= render partial: "category", collection: category.subcategories, as: :category %>
+      <%= render partial: "category", collection: category.subcategories, as: :category,
+        locals: {div: local_assigns[:div], level: category.id} %>
     </ul>
   <% else %>
     <%= link_to category.name, domain_ads_posts_path(@domain,

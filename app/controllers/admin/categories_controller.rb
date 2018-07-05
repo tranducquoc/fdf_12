@@ -1,12 +1,13 @@
 class Admin::CategoriesController < AdminController
   load_and_authorize_resource
+  before_action :load_categories, except: [:index, :destroy]
 
   def index
-    @categories = @categories.asc_by_name.page(params[:page])
-      .per Settings.common.per_page
+    @categories = Category.is_parent
   end
 
   def new
+    @default_category_id = params[:cate_id]
   end
 
   def create
@@ -20,6 +21,7 @@ class Admin::CategoriesController < AdminController
   end
 
   def edit
+    @default_category_id = @category.parent_id
   end
 
   def update
@@ -47,6 +49,10 @@ class Admin::CategoriesController < AdminController
 
   private
   def category_params
-    params.require(:category).permit :name
+    params.require(:category).permit :name, :parent_id
+  end
+
+  def load_categories
+    @categories = Category.all
   end
 end

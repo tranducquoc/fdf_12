@@ -53,4 +53,6 @@ $(document).ready(function () {
     $('.list-format').addClass('active');
     $('.ads-item-wrap').removeClass('grid-view');
   });
+
+  $('#category_parent_id option:first-child').val('0');
 });

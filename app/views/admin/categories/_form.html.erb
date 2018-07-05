@@ -1,8 +1,17 @@
 <%= form_for [:admin, @category] do |f| %>
   <div class="form-group">
-    <%= f.label :name %>
+    <%= f.label :name, t(".name") %>
+    <span class="require">*</span>
     <%= f.text_field :name, class: "form-control" %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :parent, t(".parent") %>
+    <%= f.collection_select :parent_id, @categories, :id, :name,
+      {include_blank: t("common.select"), selected: @default_category_id},
+      {class: "form-control"} %>
+  </div>
+
   <div class="row">
     <div class="col-md-6 text-center">
       <%= link_to t("common.back_button"), :back,

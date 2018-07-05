@@ -344,6 +344,9 @@ vi:
     tags: "Thẻ"
     shop_managers: "Quản lý (%{num})"
     all_posts: "Tất cả bài đăng rao vặt"
+    create: "Tạo mới"
+    create_sub: "Tạo danh mục con"
+    select: "Chọn danh mục"
   header:
     account: "Tài khoản"
     shop_manager: "Quản lý cửa hàng"
@@ -463,6 +466,9 @@ vi:
       edit:
         title: "Chỉnh sửa"
         category: "Thể loại"
+      form:
+        name: "Tên thể loại"
+        parent: "Thể loại cha"
     users:
       index:
         title: "Tất cả người dùng"

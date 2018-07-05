@@ -27,6 +27,19 @@ $(function(){
         return;
       }
     }
+    if ($activeTab.is($('#menu1'))) {
+      var isValidTab = true;
+      $('.input-compulsory.menu1').each(function () {
+        if (!isValidField($(this))) {
+          changeClasses(this, 'green-field', 'red-field');
+          isValidTab = false;
+        }
+      });
+      if (!isValidTab) {
+        swal(I18n.t('ads.post.error.invalid_fields'), '', 'error');
+        return;
+      }
+    }
     var nextTab = $('.tab-pane.active').next('.tab-pane').attr('id');
     changeActiveToTab(nextTab);
   });
@@ -59,7 +72,9 @@ $(function(){
         return true;
       else
         return false;
-    } else
+    } else if($(field).is($('#parent_id'))) {
+      return (field.val() > 0);
+    }else
       return !($(field).val() === '');
   }
 

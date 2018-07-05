@@ -303,6 +303,7 @@ en:
     create: "Create new"
     create_sub: "Create sub-category"
     select: "Select"
+    select_sub_category: "Select subcategory (optional)"
   header:
     account: "Account"
     shop_manager: "Shop manager"

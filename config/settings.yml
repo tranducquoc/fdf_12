@@ -212,8 +212,8 @@ category:
   parent: "0"
 row_of_text: 10
 arenas:
-  professed: "professed"
   secret: "secret"
+  professed: "professed"
 modes:
   sale: "sale"
   buy: "buy"

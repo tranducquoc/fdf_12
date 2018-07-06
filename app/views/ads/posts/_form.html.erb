@@ -30,20 +30,19 @@
             <p class="txt-ali-cen p-font"><%= t "ads.post.choose_category.detail" %></p>
             <div class="form-group row display-baseline">
               <div class="col-md-2"></div>
-              <%= f.label :category_id, t("ads.post.category"), class: "col-md-2 col-form-label" %>
-              <div class="col-md-4 select-category-parent" data-domain-id="<%= domain.id %>">
+              <%= f.label :category_id, class: "col-md-2 col-form-label" do %>
+                <span class="field-compulsory"><%= t("ads.post.category") %></span><br>
+              <% end %>
+              <div class="col-md-4 select-category" data-domain-id="<%= domain.id %>"
+                data-category-level="0">
                 <%= f.select(:category_id, parent_categories.collect {|c| [c.name, c.id]},
-                  {selected: parent_category_id_of(post)}, class: "form-control", id: "parent_id") %>
+                  {include_blank: t("common.select")},
+                  class: "form-control input-compulsory menu1 parent-id-0", id: "parent_id") %>
               </div>
             </div>
 
-            <div class="form-group row display-baseline">
-              <div class="col-md-2"></div>
-              <%= f.label :category_id, t("ads.post.children_category"),
-                class: "col-md-2 col-form-label" %>
-              <div class="col-md-4 select-category-children">
-                <%= f.select(:category_id, children_categories.collect{|c| [c.name, c.id]},
-                  {selected: child_category_id_of(post)}, class: "form-control")%>
+            <div id="extend">
+              <div id="cate-extend-0" class="form-group row display-baseline">
               </div>
             </div>
 

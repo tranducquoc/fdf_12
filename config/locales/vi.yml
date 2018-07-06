@@ -347,6 +347,7 @@ vi:
     create: "Tạo mới"
     create_sub: "Tạo danh mục con"
     select: "Chọn danh mục"
+    select_sub_category: "Chọn danh mục con (không bắt buộc)"
   header:
     account: "Tài khoản"
     shop_manager: "Quản lý cửa hàng"

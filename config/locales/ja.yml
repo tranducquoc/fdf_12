@@ -301,6 +301,7 @@ ja:
     create: "Create new"
     create_sub: "Create sub-category"
     select: "Select"
+    select_sub_category: "Select subcategory (optional)"
   header:
     account: "アカウント"
     shop_manager: "店長"

@@ -1,65 +1,14 @@
-<div class="list-ads-items" id="post_<%= post.id %>">
-  <div class="col-md-2 item-content">
-    <% if post.images.any? %>
-      <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
-        <%= image_tag post.images.first.image_url, class: "item-image" %>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="col-md-9">
-    <div class="row">
-      <div class="col-md-9">
-        <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
-          <span class="post-title">
-            <%= format_post_title post.title, Settings.post.dashboard.max_content %>
-          </span>
-        <% end %>
-      </div>
-      <div class="col-md-3">
-        <div class="label label-<%= post.status %> pull-right"><%= t "all_status.#{post.status}" %></div>
-      </div>
-    </div>
-
-    <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
-      <p class="price-item">
-        <%= t "dashboard.ads.posts.post_price", min: post.min_price, max: post.max_price %>
-      </p>
-    <% end %>
-
-    <div class="row">
-      <div class="col-md-8">
-        <span><i class="fa fa-flag-checkered">
-          <%= t "ads.post.modes.#{post.mode}" %> | <%= t "ads.post.category" %>:
-          <%= post.category.blank? ? "" : post.category_name %></i>
-        </span>
-        &nbsp|&nbsp
-        <span><i class="fa fa-comment">
-          <%= link_to domain_ads_post_path(domain_id: @domain, id: post) do %>
-            <%= pluralize post.reviews.count, t("ads.post.post.review") %>
-          <% end %></i>
-        </span>
-        <% if post.domain %>
-          &nbsp|&nbsp <span><i class="fa fa-foursquare red">
-            <%= link_to post.domain_name, domain_path(post.domain) %></i>
-          </span>
-        <% else %>
-          &nbsp|&nbsp <span><i class="fa fa-globe">
-            <%= t "ads.post.arenas.professed" %></i>
-          </span>
-        <% end %>
-      </div>
-      <div class="col-md-4">
-        <div class="meta-tag">
-          <span class="pull-right"><i class="fa fa-clock-o">
-            <%= t("ads.post.created_at", time: time_ago_in_words(post.created_at)).capitalize %></i>
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-1">
+<tr>
+  <td><%= increase_one post_counter %></td>
+  <td><%= t "admin.posts.index.#{post.mode}" %></td>
+  <td><%= t "admin.posts.index.#{post.arena}" %></td>
+  <td><%= post.category_name %></td>
+  <td><%= link_to post.title, "#" %></td>
+  <td><%= format_price post.min_price %></td>
+  <td><%= format_price post.max_price %></td>
+  <td><%= post.created_at.strftime Settings.admin.post.full_time_date %></td>
+  <td><%= t "admin.posts.index.#{post.status}" %></td>
+  <td>
     <%= link_to t(".show"), domain_ads_post_path(@domain, post.id),
       class: "btn btn-default btn-same", id: "show_post_path" %>
     <%= link_to t(".edit"), edit_domain_ads_post_path(@domain, post.id),
@@ -67,5 +16,5 @@
     <button class="btn btn-danger btn-same" id="destroy_post">
       <%= t ".destroy" %>
     </button>
-  </div>
-</div>
+  </td>
+</tr>

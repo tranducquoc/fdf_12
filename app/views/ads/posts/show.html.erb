@@ -50,17 +50,17 @@
       <div class="card-body">
         <% if @post_support.find_shop %>
           <h4 class="card-title">
-            <%= link_to @post_support.find_shop.name, @post.link_shop %></br>
-
-            <i class="fa fa-clock-o">
-              <% if @post_support.find_shop.openforever %>
-                <%= @post_support.working_time Settings.shop.working_time_format %>
-              <% else %>
-                <%= t "ads.post.close_time" %>:</br>
-                <%= @post_support.find_shop.time_auto_close.strftime Settings.shop.working_time_format %>
-              <% end %>
-            </i>
+            <%= link_to @post_support.find_shop.name,
+              domain_shop_path(@domain, @post.link_shop) %>
           </h4>
+          <i class="fa fa-clock-o">
+            <% if @post_support.find_shop.openforever %>
+              <%= @post_support.working_time Settings.shop.working_time_format %>
+            <% else %>
+              <%= t "ads.post.close_time" %>:
+              <%= @post_support.find_shop.time_auto_close.strftime Settings.shop.working_time_format %>
+            <% end %>
+          </i>
         <% end %>
 
         <p class="card-text">
@@ -70,16 +70,21 @@
           <i class="fa fa-pencil"></i> <%= t "ads.post.ads_of_owner" %>:
           <%= @post_support.post_of_user %></br>
 
-          <i class="fa fa-star"></i> <%= t "ads.post.shop_rating" %>:
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star-o"></i>
+          <% if @post_support.find_shop %>
+            <div class="rate">
+              <i class="fa fa-star"></i> <%= t "ads.post.shop_rating" %>:
+              <%= rating_for @post_support.find_shop,
+                Settings.rate, enable_half: true, disable_after_rate: false %>
+            </div>
+          <% end %>
         </p>
-        <div class="row shop-btn-func">
-          <%= link_to t("ads.post.btn_buy_now"),"", class: "btn btn-add pull-left" %>
-          <%= link_to t("ads.post.btn_contact"),"", class: "btn btn-add pull-right" %>
+        <div class="row">
+          <% if @post_support.find_shop %>
+            <%= link_to t("ads.post.go_to_shop"), domain_shop_path(@domain, @post.link_shop),
+            class: "btn btn-success btn-full" %>
+          <% end %>
+          <%= link_to t("ads.post.btn_contact"), user_path(@post.user),
+            class: "btn btn-add btn-full" %>
         </div>
       </div>
     </div>
@@ -95,7 +100,6 @@
     <div class="share-post-buttons">
       <%= social_share_button_tag @post.title %>
     </div>
-    <span class="dash"></span>
     <div class="ads-extend">
       <% if @post.domain %>
         <i class="fa fa-foursquare red"> <%= @post.domain_name %></i>
@@ -106,13 +110,14 @@
         <%= @post.created_at.strftime Settings.review.date_format %>
       </i>
     </div>
-    <span class="dash"></span>
-    <div class="ads-report">
-      <i class="fa fa-shield">*</i>
-      <%= t "ads.post.report.info" %>
-    </div>
-    <div class="btn-reports">
-      <a href="javascript:" class="btn btn-default" data-toggle="modal" data-target="#reportModal"><i class="fa fa-warning"></i><%= t "ads.post.report.btn_report" %></a>
+    <div class="ads-report media">
+      <div class="media-left"><i class="fa fa-shield media-object">*</i></div>
+      <div class="media-body">
+        <p><%= t "ads.post.report.info" %></p>
+        <div class="btn-reports">
+          <a href="javascript:" class="btn btn-default" data-toggle="modal" data-target="#reportModal"><i class="fa fa-warning"></i><%= t "ads.post.report.btn_report" %></a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="col-md-4">
@@ -121,7 +126,7 @@
     <div class="review-ads-input">
       <div class="media">
         <div class="media-left ads-review-avatar">
-          <%= image_tag "default_user_avatar", class: "media-object"%>
+          <%= image_tag current_user.avatar.url, class: "media-object"%>
         </div>
         <div class="media-body">
           <%= form_for @review, url: reviews_path(domain_id: @domain.slug, post_id: @post.id),

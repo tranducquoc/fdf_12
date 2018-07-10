@@ -35,11 +35,12 @@ class Post < ApplicationRecord
     less_than_or_equal_to: Settings.post.price.max_vnd
   }
 
-  scope :filtered_by_time_category, (lambda do |time, id|
+  scope :filtered_by_category, (lambda do |id|
     joins(:category)
       .where("categories.parent_id=? OR category_id=?", id, id)
-      .approved.order created_at: time
+      .approved
   end)
+  scope :filtered_by_time, ->(time){order created_at: time}
   scope :filtered_by_mode, ->(mode){where mode: mode}
   scope :by_domain, (lambda do |domain_id|
     where(domain_id: domain_id).or(where domain_id: nil)
@@ -48,6 +49,23 @@ class Post < ApplicationRecord
   scope :most_reviewed, (lambda do |mode, time, id|
     select("posts.*, count(*) as reviews_num").joins(:reviews, :category)
     .where("categories.parent_id = #{id} AND mode = '#{modes[mode]}'")
+    .group(:reviewable_id).order("reviews_num DESC, created_at #{time}")
+    .approved
+  end)
+  scope :most_reviewed_order_by_time, (lambda do |time|
+    select("posts.*, count(*) as reviews_num").joins(:reviews, :category)
+    .group(:reviewable_id).order("reviews_num DESC, created_at #{time}")
+    .approved
+  end)
+  scope :most_reviewed_by_category, (lambda do |id, time|
+    select("posts.*, count(*) as reviews_num").joins(:reviews, :category)
+    .where("categories.parent_id = #{id}")
+    .group(:reviewable_id).order("reviews_num DESC, created_at #{time}")
+    .approved
+  end)
+  scope :most_reviewed_by_mode, (lambda do |mode, time|
+    select("posts.*, count(*) as reviews_num").joins(:reviews, :category)
+    .where("mode = '#{modes[mode]}'")
     .group(:reviewable_id).order("reviews_num DESC, created_at #{time}")
     .approved
   end)

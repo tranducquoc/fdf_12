@@ -41,6 +41,7 @@ en:
   leave_domain_success: "You left the domain successfully"
   order_success: " success"
   of: " of "
+  review_message: "%{sender} has reviewed your %{title} post."
   not_accept_to_domain: " not accepted into domain: "
   shop_request_to_domain_owner_shop: "Your shop "
   shop_request_to_domain_owner: " has just been accepted into the domain: "

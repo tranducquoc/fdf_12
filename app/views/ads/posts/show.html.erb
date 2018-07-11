@@ -91,21 +91,22 @@
   </div>
   <div class="col-md-8 ads-content">
     <p class="ads-title"><%= @post.title %></p>
+    <div class="share-post-buttons">
+      <%= social_share_button_tag @post.title %>
+    </div>
     <p class="ads-price">
       <%= t "ads.post.price", price: format_post_price(@post) %>
     </p>
     <p class="ads-post">
       <%= raw @post.content %>
     </p>
-    <div class="share-post-buttons">
-      <%= social_share_button_tag @post.title %>
-    </div>
     <div class="ads-extend">
       <% if @post.domain %>
         <i class="fa fa-foursquare red"> <%= @post.domain_name %></i>
+      <% else %>
+        <i class="fa fa-bullseye"> <%= t "ads.post.arenas.#{@post.arena}" %></i>
       <% end %>
       <i class="fa fa-tags"> <%= @post.category_name %></i>
-      <i class="fa fa-bullseye"> <%= t "ads.post.arenas.#{@post.arena}" %></i>
       <i class="fa fa-calendar-o">
         <%= @post.created_at.strftime Settings.review.date_format %>
       </i>
@@ -175,3 +176,4 @@
     </div>
   </div>
 </div>
+<%= render "sticky_box.js.erb" %>

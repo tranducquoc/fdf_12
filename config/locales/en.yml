@@ -26,7 +26,7 @@ en:
     note: "Note"
     save_fail: "Save note error"
   com-add-hcm: "8F Nice building, 467 Dien Bien Phu Str., Ward 25, Binh Thanh, HCMC,  Viet Nam "
-  com-add-dn: "6F Vinh Trung Plaza, 255~257 Hung Vuong Str., Vinh Trung ward, Thanh Khe, Da Nang"
+  com-add-dn: "4F, F-Home, 16 Ly Thuong Kiet street,Thach Thang ward, Hai Chau district, Danang"
   comment_short_or_long: "Your comment is too short or too long (%{min}-%{max} characters). Please check again."
   notifi_shop_auto_closed: " has been closed"
   open_shop_forever: "Open daily"
@@ -1289,6 +1289,7 @@ en:
       delete:
         success: "Post has successfully deleted!"
       close_time: "Close time"
+      go_to_shop: "Go to shop page"
     posts:
       index:
         office: "Office"

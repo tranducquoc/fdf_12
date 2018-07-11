@@ -37,8 +37,8 @@
             <i class="fa fa-search"></i>
           <% end %>
         <% end %>
-        <ul class="nav navbar-nav">
-          <% if user_signed_in? && current_user.domains.present? %>
+        <ul class="nav nav-list navbar-nav navbar-right">
+          <% if user_signed_in? && current_user.domains.present? && params[:controller] != "intro_features" %>
             <li class="dropdown">
               <a href="#" data-toggle="dropdown"
                 class="dropdown-toggle">
@@ -78,7 +78,7 @@
                   <i class="fa fa-pencil"></i><%= t "ads.post.index.post_your_ads" %>
                 <% end %>
               </li>
-            <% else %>
+            <% elsif params[:controller] != "intro_features" %>
               <li class="navbar-orders">
                 <%= link_to domain_carts_path(@domain) do %>
                   <span class="glyphicon glyphicon-shopping-cart"></span>

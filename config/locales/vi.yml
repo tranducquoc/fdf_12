@@ -81,6 +81,7 @@ vi:
   leave_domain_success: "Bạn đã rời khỏi miền thành công"
   order_success: " thành công"
   of: " của "
+  review_message: "%{sender} đã bình luận bài viết %{title} của bạn."
   not_accept_to_domain: " của bạn không được chấp nhận vào miền: "
   shop_request_to_domain_owner_shop: "Cửa hàng "
   shop_request_to_domain_owner: " của bạn vừa được đồng ý vào miền: "

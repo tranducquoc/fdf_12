@@ -43,6 +43,8 @@ class Event < ApplicationRecord
       check_message_domain
     when Post.name
       check_message_post
+    when Review.name
+      message
     end
   end
 
@@ -71,6 +73,9 @@ class Event < ApplicationRecord
       self.user.avatar.url
     when Post.name
       self.user.avatar.url
+    when Review.name
+      review = Review.find_by id: eventable_id
+      review.user.avatar.url
     end
   end
 
@@ -105,6 +110,13 @@ class Event < ApplicationRecord
       elsif user.domains.present?
         "/domains/#{post.user.domains.first.slug}/ads/posts/#{eventable_id}"
       end
+    when Review.name
+      post = Review.find_by(id: eventable_id).reviewable
+      if post.domain.present?
+        "/domains/#{post.domain_slug}/ads/posts/#{post.id}"
+      elsif user.domains.present?
+        "/domains/#{post.user.domains.first.slug}/ads/posts/#{post.id}"
+      end
     end
   end
 
@@ -132,6 +144,8 @@ class Event < ApplicationRecord
       return true if Domain.find_by(id: eventable_id)
     when Post.name
       return true if Post.find_by(id: eventable_id)
+    when Review.name
+      return true if Review.find_by(id: eventable_id)
     end
   end
 

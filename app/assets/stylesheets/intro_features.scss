@@ -174,3 +174,8 @@ $main_project_color: #fd680e;
     @include side('right', '2s', '-70px');
   }
 }
+
+.scroll-horizontal {
+  background-size: cover;
+  background-repeat: no-repeat;
+}

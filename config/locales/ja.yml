@@ -27,7 +27,7 @@ ja:
     note: "注意"
     save_fail: "故障"
   com-add-hcm: "8フロアの Nice building, 467 Dien Bien Phu 砂糖., 25区, Binh Thanh, Ho Chi Minh, Viet Nam"
-  com-add-dn: "6フロアの Vinh Trung Plaza, 255~257 Hung Vuong 砂糖., Vinh Trung, Thanh Khe, Da Nang"
+  com-add-dn: "4フロアの F-Home building, 16 Ly Thuong Kiet 砂糖., Thach Thang, Hai Chau, Da Nang"
   comment_short_or_long: "(%{min}-%{max} 文字)コメントが短すぎたり長すぎます。 もう一度確認してください。"
   notifi_shop_auto_closed: " シャットダウン"
   open_shop_forever: "毎日開きます "
@@ -1299,6 +1299,7 @@ ja:
       delete:
         success: "Post has successfully deleted!"
       close_time: "Close time"
+      go_to_shop: "Go to shop page"
     posts:
       index:
         office: "Office"

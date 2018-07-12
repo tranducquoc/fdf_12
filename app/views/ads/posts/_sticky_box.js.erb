@@ -1,0 +1,21 @@
+<script>
+  var lastScrollTop = 0;
+  $(window).scroll(function(){
+    var st = $(this).scrollTop();
+    if (st > lastScrollTop) {
+      if (window.pageYOffset >= $('.post-onwer-info').offset().top) {
+        $('.post-onwer-info').addClass('sticky');
+        var widthRightBox = ($('.post-container').width())*0.3333;
+        var widthLeftBox = ($('.post-container').width())*0.6667+15;
+        widthLeftBox += parseInt($('.container').css('margin-left'));
+        $('.post-onwer-info').css({'width':widthRightBox, 'left':widthLeftBox});
+      }
+    } else {
+      if ($('.post-onwer-info').offset().top <= 60) {
+        $('.post-onwer-info').removeClass('sticky');
+        $('.post-onwer-info').removeAttr('style');
+      }
+    }
+    lastScrollTop = st;
+  });
+</script>

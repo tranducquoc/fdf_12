@@ -27,7 +27,7 @@ ja:
     note: "注意"
     save_fail: "故障"
   com-add-hcm: "8フロアの Nice building, 467 Dien Bien Phu 砂糖., 25区, Binh Thanh, Ho Chi Minh, Viet Nam"
-  com-add-dn: "6フロアの Vinh Trung Plaza, 255~257 Hung Vuong 砂糖., Vinh Trung, Thanh Khe, Da Nang"
+  com-add-dn: "4フロアの F-Home building, 16 Ly Thuong Kiet 砂糖., Thach Thang, Hai Chau, Da Nang"
   comment_short_or_long: "(%{min}-%{max} 文字)コメントが短すぎたり長すぎます。 もう一度確認してください。"
   notifi_shop_auto_closed: " シャットダウン"
   open_shop_forever: "毎日開きます "
@@ -42,10 +42,13 @@ ja:
   leave_domain_success: "成功したドメインを残します"
   order_success: " 成功します"
   of: " の "
+  review_message: "%{sender} has reviewed your %{title} post."
   not_accept_to_domain: " ドメインに受け入れられません: "
   shop_request_to_domain_owner_shop: "店 "
   shop_request_to_domain_owner: " ドメインに合意されています: "
   admin_need_accept_shop: "管理者を待って活性化する必要があります"
+  request_post_had_been_approved: "あなたの投稿％{name}は承認されました"
+  request_post_had_been_rejected: "あなたの投稿％{name}は拒否されました"
   request_status:
     pending: "店は、活性化を待ちます"
     rejected: "店 が拒否されました"
@@ -295,6 +298,11 @@ ja:
     view_button: "見る"
     tags: "カード"
     shop_managers: "管理 (%{num})"
+    all_posts: "All posts"
+    create: "Create new"
+    create_sub: "Create sub-category"
+    select: "Select"
+    select_sub_category: "Select subcategory (optional)"
   header:
     account: "アカウント"
     shop_manager: "店長"
@@ -306,6 +314,7 @@ ja:
     sign_in: "ログイン"
     sign_in_fb: "ログイン と Facebook"
     sign_up: "登録された"
+    reports_manager: "Posts manager"
   devise:
     user:
       sign_in: "ログイン"
@@ -411,6 +420,9 @@ ja:
       edit:
         title: "編集"
         category: "カテゴリー"
+      form:
+        name: "Category's name"
+        parent: "Parent category"
     users:
       index:
         title: "すべてのユーザー"
@@ -452,6 +464,48 @@ ja:
         all_products: "すべての製品を見ます"
         updating: "更新..."
         tags_text: "カード"
+    reports:
+      index:
+        status: "Status"
+        number_of_reports: "Number of reports"
+        action: "Action"
+        page_title: "Manage reports"
+        title: "Reports list"
+        content: "Content"
+        post: "Post"
+        user: "User"
+        created_at: "Report at"
+      report:
+        approved: "Approved"
+        blocked: "Blocked"
+        pending: "Pending"
+        na: "N/A"
+      update:
+        success: "Post successfully updated!"
+        failed: "Update post failed!"
+    posts:
+      index:
+        user_name: "Shop owner"
+        mode: "Sale/Buy"
+        sale: "Sale"
+        buy: "Buy"
+        arena: "Arena"
+        professed: "Professed"
+        secret: "Secret"
+        category_name : "Category name"
+        title: "Title"
+        min_price: "Min price"
+        max_price: "Max price"
+        created_at: "Created at"
+        status: "Status"
+        action: "Action"
+        pending: "Pending"
+        approved: "Approved"
+        rejected: "Rejected"
+        approve: "Approve"
+        reject: "Reject"
+        search_title: "Search by title"
+        approve_reject_error: "An error occurred!. Try again, please"
   draft:
     description: "The atmosphere in Chania has a touch of Florence and Venice."
     shop_desc: "NEM CHUA RÁN, BÁNH MỲ, MỲ TÔM , NÂU ĐÁ LẮC (MỖI ĐƠN TRÊN
@@ -491,6 +545,9 @@ ja:
       shops: "店"
       users: "ユーザー"
       all_users: "皆"
+      reports: "Reports"
+      posts: "Posts"
+      all_posts: "All posts"
     admin_lte_2_header:
       logo_mini: "F"
       logo_medium: "Framgia"
@@ -501,6 +558,18 @@ ja:
     admin_lte_2_login:
       login_box_message: "セッションを作成するにはログインしてください"
   dashboard:
+    ads:
+      posts:
+        post_price: "%{min} - %{max} vnd"
+        index:
+          yours: "Your posts"
+          new: "Create new post"
+        post:
+          show: "View"
+          edit: "Edit"
+          destroy: "Delete"
+        create:
+          new_post: "Hello Admin! Have a new post to browse"
     statistics:
       index:
         tittle: "統計注文"
@@ -1068,6 +1137,7 @@ ja:
   confirm_leave_shop_domain: "%{shop_name}店の%{domain_name}ドメインからドを削除したいですか"
   delete_shop_domain_success: "削除された"
   view_more_shops: "もっと見る"
+  view_more_posts: "View more posts"
   manager_domain: "このドメインの所有者"
   edit_infomation: "情報を編集"
   change_password: "パスワードを変更します"
@@ -1143,3 +1213,99 @@ ja:
     send_turn_off_shop_noti: "Send a notification when you close the shop"
     send_new_product_noti: "Send a notification when creating a new product"
     send_order_status_noti: "Send a notification when you close the orders"
+  ads:
+    post:
+      index:
+        categories: "Categories"
+        newest: "New post"
+        featured: "Featured shops posts"
+        highest_rated: "Best rated posts"
+        most_reviewed: "Most reviewed posts"
+        post_your_ads: "Post your ads"
+        no_reviewed_post: "No posts have been rated yet"
+      update:
+        success: "Your post has successfully updated!"
+        error: "Update post failed, please try again!"
+      post:
+        review: Review
+      create_title: "Create new Ads free"
+      category: "Category"
+      children_category: "Children category"
+      mode: "Mode"
+      image:
+        image: "Image"
+        detail: "Choose image of your ads."
+      content:
+        content: "Content"
+        detail: "Please just give brief content for maximum effective"
+        placeholder: "Type content of your ads"
+        min_price_html: "Min price <i>(Unit: %{unit})</i>"
+        max_price_html: "Max price <i>(Unit: %{unit})</i>"
+      choose_category:
+        choose_category: "Choose category of your ads"
+        detail: "Please choose category and kind of ads"
+      next_step: "Next step"
+      prev_step: "Previous step"
+      title:
+        title: "Title"
+        placeholder: "Type your title of your ads"
+      shop_url:
+        no_shop: "No shop"
+        shop_url: "Shop"
+        placeholder: "Type your shop url if yes"
+      arena: "Arena"
+      submit: "Submit"
+      flash:
+        success: "Your post successfully created, please wait until admin approve your post!"
+        danger: "Your post did not created, please try again!"
+      remove_image: "Remove image"
+      arenas:
+        professed: "Professed"
+        secret: "Secret"
+      modes:
+        sale: "Sale"
+        buy: "Buy"
+      order_by:
+        asc: "Oldest"
+        desc: "Newest"
+      error:
+        max_images: "You can only upload maximum %{number} picture(s)"
+        not_found: "This post not found"
+        invalid_fields: "The filled in information is not enough or wrong"
+      report:
+        success: "Success"
+        fail: "Fail, please try again"
+        btn_report: "Report this Ads"
+        info: "This Ads had been approved by Administrator, if detected phishing, please report immediately"
+        btn_review: "Send review"
+        btn_send_report: "Send report"
+        report_modal_title: "Tell me why?"
+        btn_close: "Close"
+      review:
+        too_long: "Review can only have maximum %{number} of characters"
+        your_rating: "Your rating"
+        fail: "You must put all info"
+        not_found: "Review not found"
+      post_on: "Post on"
+      price: "Price: %{price}"
+      post_owner: "Post owner"
+      ads_of_owner: "Ads"
+      shop_rating: "Shop rating"
+      btn_contact: "Contact"
+      btn_buy_now: "Buy now"
+      contact_info: "Contact info"
+      home: "Home"
+      created_at: "%{time} ago"
+      delete:
+        success: "Post has successfully deleted!"
+      close_time: "Close time"
+      go_to_shop: "Go to shop page"
+    posts:
+      index:
+        office: "Office"
+        search: "Looking for products"
+        see_more: "See more"
+        choose_category: "Choose a category"
+        choose_mode: "Choose a mode"
+      most_review:
+        most_review_posts: "Most reviewed Posts"

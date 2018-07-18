@@ -169,3 +169,22 @@
     font-size: 17px;
   }
 }
+
+.label{
+  font-size: 90% !important;
+  &-approved {
+    background-color: #008d4c;
+  }
+  &-pending {
+    background-color: #b9ae29;
+  }
+  &-rejected {
+    background-color: #d73925;
+  }
+  &-blocked {
+    background-color: #555;
+  }
+  &-fire {
+    background-color: #A53B03;
+  }
+}

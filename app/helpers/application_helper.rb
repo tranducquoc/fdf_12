@@ -42,6 +42,17 @@ module ApplicationHelper
     end
   end
 
+  def admin_count_notification_unread
+    if admin_signed_in?
+      number_noti = Event.events_of_admin.by_date.unread.select(&:check_admin_item_exist?).size
+      if number_noti == Settings.notification.number_unread_not_display
+        number_noti = ""
+      else
+        number_noti
+      end
+    end
+  end
+
   def total_price price, quantity
     price * quantity
   end
@@ -223,6 +234,14 @@ module ApplicationHelper
     shops.size > Settings.common.shops_per_page
   end
 
+  def check_length_perpage_posts posts
+    begin
+      posts.size > Settings.common.posts_per_page
+    rescue
+      false
+    end
+  end
+
   def category_statistic
     [
       [I18n.t("current_week"), :current_week],
@@ -235,7 +254,32 @@ module ApplicationHelper
   def filter_price_select
     {
       I18n.t("product_filter.price_desc") => "desc",
-      I18n.t("product_filter.price_asc") => "asc",
+      I18n.t("product_filter.price_asc") => "asc"
     }
+  end
+
+  def current_feature
+    session["current_feature"] ||= domains_path
+  end
+
+  def check_link_domain domain
+    if current_feature.include?("/ads/posts")
+      domain_ads_posts_path domain
+    else
+      domain
+    end
+  end
+
+  def in_url? url
+    request.url.split("?").first.include? url
+  end
+
+  def select_option field
+    html = ""
+    field.each do |key, value|
+      key_i18n = t "admin.posts.index.#{key}"
+      html += "<option value='#{value}'>#{key_i18n}</option>"
+    end
+    html.html_safe
   end
 end

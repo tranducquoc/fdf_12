@@ -37,6 +37,20 @@
         <% end %>
       </li>
       <!-- End One level link -->
+      <!-- Posts link -->
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-book"></i>
+          <span><%= t ".posts" %></span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <%= link_to t(".all_posts"), admin_posts_path %>
+          </li>
+        </ul>
+      </li>
+      <!--Ends Posts link -->
       <!-- Category link -->
       <li class="treeview">
         <a href="#">
@@ -85,6 +99,20 @@
         </ul>
       </li>
       <!-- End Orders link -->
+
+      <li class="treeview">
+        <a href="#">
+          <i class='fa fa-flag'></i>
+          <span><%= t ".reports" %></span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <%= link_to t(".all"), admin_reports_path %>
+          </li>
+        </ul>
+      </li>
+
       <!-- Users link -->
       <li class="treeview">
         <a href="#">

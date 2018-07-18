@@ -1,0 +1,61 @@
+//= require ./cropper.min
+
+.b9bf30-upload-image {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #ddd, 0 0 0 0 rgba(0,0,0,.2);
+  -moz-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #ddd, 0 0 0 0 rgba(0,0,0,.2);
+  box-shadow: 0 0 0 3px #fff, 0 0 0 4px #ddd, 0 0 0 0 rgba(0,0,0,.2);
+
+  img {
+    border-radius: 6px;
+    position: absolute;
+  }
+
+  img.b9bf30-blank-image {
+    background-color: gray;
+    opacity: 0.5;
+  }
+
+  .b9bf30-change-shade {
+    border-radius: 6px;
+    position: relative;
+    display: none;
+    background-color: gray;
+    opacity: 0.5;
+    color: white;
+
+    .b9bf30-container {
+      text-align: center;
+      height: inherit;
+    }
+
+    .b9bf30-container:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+      margin-right: -0.25em;
+    }
+
+    .b9bf30-center {
+      text-align: center;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+
+.b9bf30-hide {
+  display: none !important;
+}
+
+.input-image {
+  cursor: pointer;
+}
+
+.display-baseline {
+  display: flex;
+  align-items: baseline;
+}

@@ -63,7 +63,7 @@ vi:
     save_fail: "Lưu ghi chú thất bại."
   set_manager_shop: "Thiết lập quyền"
   com-add-hcm: "Tầng 8 tòa nhà Nice, số 467 đường Điện Biên Phủ, Bình Thạnh, HCM, Việt Nam"
-  com-add-dn: "Tầng 6 tòa nhà Vĩnh Trung Plaza, số 255-257 đường Hùng Vương, Vĩnh Trung, Thanh Khê, Đà Nẵng, Việt Nam"
+  com-add-dn: "Tầng 4 tòa nhà F-Home, 16 đường Lý Thường Kiệt, Thạch Thang, Hải Châu, Đà Nẵng, Việt Nam"
   comment_short_or_long: "Comment của bạn quá ngắn hoặc quá dài(%{min}-%{max} ký tự). Vui lòng kiểm tra lại."
   confirm_set_owner_shop: "Xác nhận"
   set_manager_shop: "Thiết lập quản lý cửa hàng"
@@ -81,10 +81,13 @@ vi:
   leave_domain_success: "Bạn đã rời khỏi miền thành công"
   order_success: " thành công"
   of: " của "
+  review_message: "%{sender} đã bình luận bài viết %{title} của bạn."
   not_accept_to_domain: " của bạn không được chấp nhận vào miền: "
   shop_request_to_domain_owner_shop: "Cửa hàng "
   shop_request_to_domain_owner: " của bạn vừa được đồng ý vào miền: "
   admin_need_accept_shop: "cần chờ người quản trị kích hoạt để sử dụng"
+  request_post_had_been_approved: "Bài rao %{name} của bạn đã được chấp nhận"
+  request_post_had_been_rejected: "Bài rao %{name} của bạn đã bị từ chối"
   request_status:
     pending: " của bạn đang đợi kích hoạt"
     rejected: " của bạn đã bị từ chối"
@@ -190,8 +193,8 @@ vi:
   can_not_load_shop: "Không tìm thấy cửa hàng"
   continue: "Tiếp tục"
   add_product_failed: "Không thể thêm sản phẩm vào miền này"
-  professed: "Công khai"
-  secret: "Bảo mật"
+  professed: "Toàn bộ công ty"
+  secret: "Văn phòng hiện tại"
   can_not_load_domain: "Không tìm thấy miền tương ứng"
   something_failed: "Gặp vấn đề khi thêm cửa hàng và sản phẩm"
   can_not_find_user: "Không tìm thấy người dùng"
@@ -296,7 +299,7 @@ vi:
   create_order: "Gửi đi"
   common:
     your_shops: "Cửa hàng của bạn"
-    base_title: "Framgia Food And Drink Order"
+    base_title: "Framgia Order and Advertiserment"
     admin_title: "Quản trị"
     home: "Trang chủ"
     number: "STT"
@@ -341,6 +344,11 @@ vi:
     view_button: "Xem"
     tags: "Thẻ"
     shop_managers: "Quản lý (%{num})"
+    all_posts: "Tất cả bài đăng rao vặt"
+    create: "Tạo mới"
+    create_sub: "Tạo danh mục con"
+    select: "Chọn danh mục"
+    select_sub_category: "Chọn danh mục con (không bắt buộc)"
   header:
     account: "Tài khoản"
     shop_manager: "Quản lý cửa hàng"
@@ -352,6 +360,7 @@ vi:
     sign_in: "Đăng nhập"
     sign_in_fb: "Đăng nhập với Facebook"
     sign_up: "Đăng ký"
+    reports_manager: "Quản lý tin rao"
   devise:
     user:
       sign_in: "Đăng nhập"
@@ -459,6 +468,9 @@ vi:
       edit:
         title: "Chỉnh sửa"
         category: "Thể loại"
+      form:
+        name: "Tên thể loại"
+        parent: "Thể loại cha"
     users:
       index:
         title: "Tất cả người dùng"
@@ -500,6 +512,48 @@ vi:
         all_products: "Xem tất cả sản phẩm"
         updating: "Đang cập  nhật..."
         tags_text: "Tags"
+    reports:
+      index:
+        status: "Trạng thái"
+        number_of_reports: "Số lượng báo cáo"
+        action: "Thao tác"
+        page_title: "Quản lý báo cáo"
+        title: "Danh sách báo cáo"
+        content: "Nội dung"
+        post: "Tin rao"
+        user: "Người báo cáo"
+        created_at: "Báo cáo lúc"
+      report:
+        approved: "Chấp nhận"
+        blocked: "Chặn"
+        pending: "Đang chờ"
+        na: "N/A"
+      update:
+        success: "Cập nhật tin rao thành công!"
+        failed: "Cập nhật tin rao thất bại!"
+    posts:
+      index:
+        user_name: "Chủ cửa hàng"
+        mode: "Bán/Mua"
+        sale: "Bán"
+        buy: "Mua"
+        arena: "Phạm vi"
+        professed: "Toàn bộ công ty"
+        secret: "Văn phòng hiện tại"
+        category_name : "Tên danh mục"
+        title: "Tiêu đề"
+        min_price: "Giá thấp nhất"
+        max_price: "Giá cao nhất"
+        created_at: "Thời gian tạo"
+        status: "Trạng thái"
+        action: "Hành động"
+        pending: "Đang chờ"
+        approved: "Đã chấp nhận"
+        rejected: "Đã từ chối"
+        approve: "Chấp nhận"
+        reject: "Từ chối"
+        search_title: "Tìm kiếm theo tiêu đề"
+        approve_reject_error: "Có lỗĩ xảy ra. Vui lòng thử lại"
   draft:
     description: "The atmosphere in Chania has a touch of Florence and Venice."
     shop_desc: "NEM CHUA RÁN, BÁNH MỲ, MỲ TÔM , NÂU ĐÁ LẮC (MỖI ĐƠN TRÊN
@@ -539,6 +593,9 @@ vi:
       shops: "Cửa hàng"
       users: "Người dùng"
       all_users: "Tất cả"
+      reports: "Báo cáo"
+      posts: "Bài đăng"
+      all_posts: "Tất cả"
     admin_lte_2_header:
       logo_mini: "F"
       logo_medium: "Framgia"
@@ -549,6 +606,18 @@ vi:
     admin_lte_2_login:
       login_box_message: "Đăng nhập để tạo phiên làm việc"
   dashboard:
+    ads:
+      posts:
+        post_price: "%{min} - %{max} vnd"
+        index:
+          yours: "Tin rao của bạn"
+          new: "Tạo tin rao mới"
+        post:
+          show: "Xem"
+          edit: "Sửa"
+          destroy: "Xóa"
+        create:
+          new_post: "Chào Admin! Có bài đăng mới cần duyệt"
     statistics:
       index:
         tittle: "Thống kê đơn hàng"
@@ -905,8 +974,8 @@ vi:
     closed: "Đã đóng"
     blocked: "Đã khóa"
     approved: "Đã chấp nhận"
-    professed: "Công khai"
-    secret: "Bí mật"
+    professed: "Toàn bộ công ty"
+    secret: "Văn phòng hiện tại"
   new_domain:
     name: "Tên"
     status: "Trạng thái"
@@ -1117,6 +1186,7 @@ vi:
   confirm_leave_shop_domain: "Bạn thật sự muốn xóa cửa hàng %{shop_name} khỏi miền %{domain_name}"
   delete_shop_domain_success: "Đã xóa cửa hàng khỏi miền"
   view_more_shops: "Xem thêm cửa hàng"
+  view_more_posts: "Xem thêm tin rao"
   manager_domain: "Chủ miền"
   edit_infomation: "Sửa thông tin"
   change_password: "Đổi mật khẩu"
@@ -1191,3 +1261,99 @@ vi:
     send_turn_off_shop_noti: "Gửi thông báo khi bạn đóng cửa hàng"
     send_new_product_noti: "Gửi thông báo khi bạn tạo sản phẩm mới"
     send_order_status_noti: "Gửi thông báo khi bạn đóng đơn hàng"
+  ads:
+    post:
+      index:
+        categories: "Danh mục"
+        newest: "Mới nhất"
+        featured: "Tin rao nổi bật"
+        highest_rated: "Đánh giá cao"
+        most_reviewed: "Bình luận nhiều"
+        post_your_ads: "Đăng tin rao của bạn"
+        no_reviewed_post: "Chưa có bài rao được đánh giá"
+      update:
+        success: "Cập nhật tin rao thành công!"
+        error: "Cập nhật tin rao thất bại!"
+      post:
+        review: Nhận xét
+      create_title: "Tạo tin rao vặt miễn phí"
+      category: "Danh mục"
+      children_category: "Danh mục con"
+      mode: "Hình thức"
+      image:
+        image: "Hình ảnh"
+        detail: "Chọn hình ảnh cho tin rao của bạn."
+      content:
+        content: "Nội dung"
+        detail: "Chỉ đưa vào tin rao nội dung ngắn gọn để đạt hiệu quả tối ưu"
+        placeholder: "Nhập nội dung tin rao"
+        min_price_html: "Giá thấp nhất <i>(Đơn vị: %{unit})</i>"
+        max_price_html: "Giá cao nhất <i>(Đơn vị: %{unit})</i>"
+      choose_category:
+        choose_category: "Chọn danh mục tin"
+        detail: "Lựa chọn danh mục và thể loại của tin rao "
+      next_step: "Kế tiếp"
+      prev_step: "Quay lại"
+      title:
+        title: "Tiêu đề"
+        placeholder: "Nhập tiêu đề tin rao"
+      shop_url:
+        no_shop: "Không có cửa hàng"
+        shop_url: "Cửa hàng"
+        placeholder: "Nhập đường dẫn cửa hàng của bạn nếu có"
+      arena: "Phạm vi"
+      submit: "Đăng tin"
+      flash:
+        success: "Tin rao của bạn đã được tạo thành công. Vui lòng đợi đến khi quản trị viên duyệt tin của bạn."
+        danger: "Tin rao của bạn tạo không thành công, vui lòng thử lại"
+      remove_image: "Xóa ảnh"
+      arenas:
+        professed: "Toàn bộ công ty"
+        secret: "Văn phòng hiện tại"
+      modes:
+        sale: "Cần bán"
+        buy: "Cần mua"
+      order_by:
+        asc: "Cũ nhất"
+        desc: "Mới nhất"
+      error:
+        max_images: "Bạn chỉ được phép đăng tối đa %{number} ảnh"
+        not_found: "Không tìm thấy bài viết"
+        invalid_fields: "Thông tin bạn nhập còn thiếu hoặc bị sai"
+      report:
+        success: "Thành công"
+        fail: "Không thành công, vui lòng thử lại"
+        btn_report: "Báo cáo tin rao này"
+        info: "Tin rao này đã được duyệt bởi ban quản trị, nếu phát hiện có hành động lừa đảo, hãy báo cáo ngay !"
+        btn_review: "Gửi nhận xét"
+        btn_send_report: "Gửi báo cáo"
+        report_modal_title: "Nói với chúng tôi lý do bạn báo cáo?"
+        btn_close: "Đóng"
+      review:
+        too_long: "Nhận xét chỉ được nhập tối đa %{number} kí tự"
+        your_rating: "Đánh giá của bạn"
+        fail: "Bạn phải nhập đầy đủ thông tin"
+        not_found: "Không tìm thấy nhận xét!"
+      post_on: "Đăng lúc"
+      price: "Giá: %{price}"
+      post_owner: "Người đăng tin"
+      ads_of_owner: "Tin rao"
+      shop_rating: "Đánh giá cửa hàng"
+      btn_contact: "Liên hệ"
+      btn_buy_now: "Mua ngay"
+      contact_info: "Thông tin liên hệ"
+      home: "Trang chủ"
+      created_at: "%{time} trước"
+      delete:
+        success: "Bài viết đã được xóa thành công!"
+      close_time: "Thời gian đóng cửa"
+      go_to_shop: "Vào trang cửa hàng"
+    posts:
+      index:
+        office: "Văn phòng"
+        search: "Tìm kiếm"
+        see_more: "Xem thêm"
+        choose_category: "Chọn danh mục"
+        choose_mode: "Chọn hình thức"
+      most_review:
+        most_review_posts: "Tin rao được bình luận nhiều"

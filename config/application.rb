@@ -26,10 +26,12 @@ module Fdf12
     config.autoload_paths << Rails.root.join("services")
     config.autoload_paths << Rails.root.join("lib/cart")
     config.autoload_paths << Rails.root.join("lib/statistics")
+    config.autoload_paths += %W(#{config.root}/app/models/reactions)
     config.active_job.queue_adapter = :delayed_job
     config.i18n.default_locale = :vi
     config.i18n.available_locales = [:vi, :en, :ja]
     config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/deploy"
+    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}")]
     config.time_zone = 'Hanoi'
   end
 end

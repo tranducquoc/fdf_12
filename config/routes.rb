@@ -41,6 +41,11 @@ Rails.application.routes.draw do
     resources :shops, except: [:new, :create, :show]
     resources :request_shop_domains
     resources :domains, only: [:index, :show]
+    resources :reports, only: %i(index update)
+    resources :posts, only: %i(index update)
+    resources :events, only: :update do
+      post :read_all, on: :collection
+    end
   end
 
   namespace :dashboard do
@@ -61,6 +66,9 @@ Rails.application.routes.draw do
     resources :new_manager_searches, only: :index
     resources :shop_manager_domains
     resources :shop_owners, only: :update
+    namespace :ads do
+      resources :posts
+    end
   end
   resources :domains do
     resources :products
@@ -69,6 +77,10 @@ Rails.application.routes.draw do
     resources :carts
     resources :shop_domains
     resources :categories
+    namespace :ads do
+      resources :posts
+      resources :reviews
+    end
   end
   resources :user_domains
   resources :shop_domains
@@ -79,6 +91,8 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
   resources :comments, only: :destroy
+  resources :reviews
+  resources :reports
   resources :carts
   resources :orders
   resource :orders
@@ -99,6 +113,7 @@ Rails.application.routes.draw do
   resources :user_searchs
   resources :user_domain_searches, only: :index
   resources :follow_shops, only: [:create, :destroy]
+  resources :rates
 
   api_version(module: "V1", path: {value: "v1"}, default: true) do
     namespace :dashboard do
@@ -133,4 +148,5 @@ Rails.application.routes.draw do
     resources :rates, only: :create, defaults: {format: :json}
     resources :follow_shops, only: [:index, :update], defaults: {format: :json}
   end
+  resources :intro_features, only: :index
 end

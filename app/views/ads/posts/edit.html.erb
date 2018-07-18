@@ -1,0 +1,3 @@
+<%= render "form", domain: @domain, post: @post_support.post,
+  parent_categories: @post_support.parent_categories,
+  children_categories: @post_support.post.category.parent_category.subcategories %>

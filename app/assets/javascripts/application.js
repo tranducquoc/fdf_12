@@ -36,7 +36,23 @@
 //= require jquery.validate
 //= require cropper
 //= require magnific-popup
+//= require dropzone
+//= require cocoon
 
 $(document).ready(function () {
   $('.alert').fadeOut(5000);
+
+  $('.grid-format').click(function(){
+    $('.grid-format').addClass('active');
+    $('.list-format').removeClass('active');
+    $('.ads-item-wrap').addClass('grid-view');
+  });
+
+  $('.list-format').click(function(){
+    $('.grid-format').removeClass('active');
+    $('.list-format').addClass('active');
+    $('.ads-item-wrap').removeClass('grid-view');
+  });
+
+  $('#category_parent_id option:first-child').val('0');
 });

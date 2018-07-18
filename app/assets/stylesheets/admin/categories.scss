@@ -1,0 +1,25 @@
+$gray: #ccc;
+
+.common {
+  .accordion {
+    .badge {
+      float: left;
+      margin-right: 15px;
+      background-color: $gray;
+      color: black;
+      padding: 10px;
+    }
+    .category-name {
+      line-height: 2.5;
+    }
+    .panel {
+      border-bottom: none;
+    }
+    li:last-child {
+      border-bottom: 1px solid #ddd;
+    }
+    .btn-zero {
+      padding: 10px 15px;
+    }
+  }
+}

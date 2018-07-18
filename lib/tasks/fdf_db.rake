@@ -11,14 +11,6 @@ namespace :fdf_db do
       status: 1,
       authentication_token: Devise.friendly_token
     )
-    User.create!(
-      name: "Nguyen Phan Hoang Linh",
-      email: "nguyen.phan.hoang.linh@framgia.com",
-      password: "123123",
-      password_confirmation: "123123",
-      status: 1,
-      authentication_token: Devise.friendly_token
-    )
 
     User.create!(
       name: "Nguyen Thi A",
@@ -185,19 +177,19 @@ namespace :fdf_db do
 
   task create_domain: :environment do
     Domain.create!(
-      name: "FramgiaDN",
+      name: "Da Nang Office",
       status: 2,
       owner: 6
     )
 
     Domain.create!(
-      name: "FramgiaHN",
+      name: "Ha Noi Office",
       status: 2,
       owner: 15
     )
 
     Domain.create!(
-      name: "FramgiaHCM",
+      name: "HCMC Office",
       status: 2,
       owner: 15
     )
@@ -550,51 +542,63 @@ namespace :fdf_db do
   end
 
   task create_category: :environment do
-    Category.create!(
-      name: "Cơm"
+    # create parent category "thuc_an"
+    thuc_an = Category.create!(
+      name: "Thức ăn",
     )
 
-    Category.create!(
-      name: "Chè"
+    # create subcategories for "thuc_an"
+    thuc_an.subcategories.create!(
+      name: "Cơm",
     )
 
-    Category.create!(
-      name: "Sinh Tố"
-    )
-
-    Category.create!(
+    thuc_an.subcategories.create!(
       name: "Mì Quảng"
     )
 
-    Category.create!(
-      name: "Dừa"
-    )
-
-    Category.create!(
+    thuc_an.subcategories.create!(
       name: "Nếp Cẩm"
     )
 
-    Category.create!(
-      name: "Highland"
-    )
-
-    Category.create!(
+    thuc_an.subcategories.create!(
       name: "Mì que"
     )
 
-    Category.create!(
+    thuc_an.subcategories.create!(
       name: "Tàu hủ"
     )
 
-    Category.create!(
+    thuc_an.subcategories.create!(
       name: "Bún thịt nướng"
     )
 
-    Category.create!( #11
+    # create category "nuoc_uong"
+    nuoc_uong = Category.create!(
+      name: "Nước uống",
+    )
+
+    # create subcategories for "nuoc_uong"
+    nuoc_uong.subcategories.create!(
+      name: "Chè"
+    )
+
+    nuoc_uong.subcategories.create!(
+      name: "Sinh Tố"
+    )
+
+    nuoc_uong.subcategories.create!(
+      name: "Dừa"
+    )
+
+    nuoc_uong.subcategories.create!(
+      name: "Highland"
+    )
+
+    nuoc_uong.subcategories.create!( #11
       name: "Trà sữa"
     )
 
-    Category.create!(
+    nuoc_uong.subcategories.create!(
       name: "Nước trái cây"
     )
   end
@@ -3278,6 +3282,6 @@ namespace :fdf_db do
       end_hour: "15:00:00",
       image: File.open(Rails.root + "public/images/traxanhyakultdam.jpg")
     )
-
   end
+  
 end

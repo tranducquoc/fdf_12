@@ -1,0 +1,42 @@
+<h2 class="row_h2">
+  <%= t ".yours" %>
+  <div class="btn_view_all_wrapper pull-right">
+    <%= link_to t(".new"), new_domain_ads_post_path(@domain),
+      class: "btn btn_view_all btn-warning" %>
+  </div>
+</h2>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="admin-form-search-post">
+      <%= t "admin.posts.index.search_title" %>
+      <i class="fa fa-search search-post-icon" aria-hidden="true"></i>
+      <%= text_field_tag "search-post", "", class: "admin-search-post" %>
+    </div>
+
+    <div class="panel panel-success">
+      <table class="table table-striped table-hover table-bordered">
+        <thead class="">
+          <tr>
+            <th><%= t "common.number" %></th>
+            <th><%= t "admin.posts.index.mode" %></th>
+            <th><%= t "admin.posts.index.arena" %></th>
+            <th><%= t "admin.posts.index.category_name" %></th>
+            <th><%= t "admin.posts.index.title" %></th>
+            <th><%= t "admin.posts.index.max_price" %></th>
+            <th><%= t "admin.posts.index.min_price" %></th>
+            <th><%= t "admin.posts.index.created_at" %></th>
+            <th><%= t "admin.posts.index.status" %></th>
+            <th class="action"><%= t "admin.posts.index.action" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @posts %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-12 text-center" id="paginate">
+      <%= paginate @posts, theme: "twitter-bootstrap-3" %>
+    </div>
+  </div>
+</div>

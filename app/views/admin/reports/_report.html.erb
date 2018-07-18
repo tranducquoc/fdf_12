@@ -1,0 +1,35 @@
+<tr>
+  <td><%= report_counter + 1 %></td>
+  <td><%= report.content %></td>
+  <td><%= report.post_title %></td>
+  <td><%= link_to report.user_name, edit_admin_user_path(report.user_id) %></td>
+  <td><%= report.post.reports.size %></td>
+  <% if report.post.blocked? %>
+    <td><span class="label label-danger">
+      <%= t ".blocked" %>
+    </span></td>
+
+    <td><button class="btn btn-success" id="approve_post"
+      data-url="<%= admin_report_path(report) %>" data-value="<%= Post.statuses.keys[1] %>">
+      <%= t ".approved" %>
+    </button></td>
+  <% elsif report.post.approved? %>
+    <td><span class="label label-success">
+      <%= t ".approved" %>
+    </span></td>
+
+    <td><button class="btn btn-danger" id="block_post"
+      data-url="<%= admin_report_path(report) %>" data-value="<%= Post.statuses.keys[3] %>">
+      <%= t ".blocked" %>
+    </button></td>
+  <% elsif report.post.pending? %>
+    <td><span class="label label-warning">
+      <%= t ".pending" %>
+    </span></td>
+
+    <td><span class="label label-default">
+      <%= t ".pending" %>
+    </span></td>
+  <% end %>
+  <td><%= report.created_at.strftime Settings.reports.date_format %></td>
+</tr>

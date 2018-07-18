@@ -1,0 +1,9 @@
+<%= link_to t("common.create_sub"), new_admin_category_path(cate_id: category.id),
+  class: "btn btn-default" %>
+<%= link_to t("common.edit_button"),
+  edit_admin_category_path(category),
+  class: "btn btn-primary" %>
+<%= link_to t("common.delete_button"),
+  admin_category_path(category), method: :delete,
+  data: {confirm: t(".delete_confirm")},
+  class: "btn btn-danger" %>

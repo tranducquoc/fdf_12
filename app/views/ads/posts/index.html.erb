@@ -1,0 +1,248 @@
+<%= link_to new_domain_ads_post_path(@domain) do %>
+  <div class="new-post-button">
+    <button>
+      <span class="new-post-tooltip">
+        <%= t "ads.post.index.post_your_ads" %>
+      </span>
+      <i class="fa fa-plus new-post-icon"></i>
+    </button>
+  </div>
+<% end %>
+
+<div class="content-ads">
+  <div class="row">
+    <div class="col-md-3 col-sm-12 col-xs-12">
+      <div class="ads-post-categories">
+        <ul class="list-group accordion" id="accordion-aside-cate-0">
+          <li class="list-group-item list-group-title">
+            <h4><%= t "ads.post.index.categories" %></h4>
+          </li>
+          <%= render partial: "category", collection: @post_support.parent_categories,
+            as: :category, locals: {div: "aside", level: Settings.category.parent} %>
+        </ul>
+      </div>
+      <div class="most-review">
+        <h3 class="page-title"><%= t "ads.post.index.most_reviewed" %></h3>
+        <ul class="side-item">
+          <% if @post_support.most_reviewed_post.present? %>
+            <% @post_support.most_reviewed_post.each do |post| %>
+              <li class="thumbnail">
+                <%= image_tag post.images.first.image_url, alt: post.title,
+                  class: "img-responsive" %>
+                <%= link_to post.title, domain_ads_post_path(@domain, post) %>
+                <span class="sidebar-tag">
+                  <i class="fa fa-comment"> <%= pluralize post.reviews.count, t("ads.post.post.review") %></i>
+                  <% if post.domain.present? %>
+                    <i class="fa fa-foursquare red"> <%= post.domain_name %> </i>
+                  <% end %>
+                </span>
+              </li>
+            <% end %>
+            <span class="label">
+              <%= link_to t(".see_more"), domain_ads_posts_path(@domain,
+                category_slug: @post_support.filtered_param[:category_slug],
+                type: @post_support.filtered_param[:type],
+                mode: @post_support.filtered_param[:mode],
+                filter: Settings.filter.most_review) %>
+            </span>
+          <% else %>
+            <li><%= t "ads.post.index.no_reviewed_post" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-9">
+      <div class="top-post">
+        <div class="margin-bottom-20 border-top-shop">
+          <span class="top-shop-product"><%= t "ads.post.index.featured" %></span>
+        </div>
+
+        <div id="id_top_posts" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+            <% @post_support.featured_posts.each_with_index do |post, index| %>
+              <div class="<%= index.zero? ? "active" : "" %> item"
+                data-top-post="<%= domain_ads_post_path(domain_id: @domain, id: post) %>">
+                <%= image_tag post.images.first.image_url, alt: post.title,
+                  class: "top-posts-img" %>
+
+                <div class="carousel-caption slide_bottom">
+                  <div class="top-post-screen-shots">
+                    <% post.images.each do |image| %>
+                      <%= image_tag image.image_url, alt: post.title %>
+                    <% end %>
+                  </div>
+
+                  <div class="top-post-info">
+                    <div class="top-post-title">
+                      <%= format_post_title post.title, Settings.post.top_content %>
+                    </div>
+
+                    <%= format_post_price post %>
+
+                    <div class="top-post-mode">
+                      <span><i class="fa fa-flag-checkered">
+                        <%= t "ads.post.modes.#{post.mode}" %></i>
+                      </span>
+                    </div>
+
+                    <div class="top-post-domain">
+                      <% if post.domain %>
+                        <span><i class="fa fa-foursquare white">
+                          <%= post.domain_name %></i>
+                        </span>
+                      <% else %>
+                        <span><i class="fa fa-globe">
+                          <%= t "ads.post.arenas.professed" %></i>
+                        </span>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+          <a class="left carousel-control" href="#id_top_posts" role="button"
+            data-slide="prev">
+            <span class="fa fa-angle-left" aria-hidden="true"></span>
+            <span class="sr-only"><%= t "common.previous" %></span>
+          </a>
+          <a class="right carousel-control" href="#id_top_posts" role="button"
+            data-slide="next">
+            <span class="fa fa-angle-right left-55" aria-hidden="true"></span>
+            <span class="sr-only"><%= t "common.next" %></span>
+          </a>
+        </div>
+      </div>
+      <div class="ads-list">
+        <div class="margin-bottom-20 border-top-shop">
+          <span class="top-shop-product"><%= t "ads.post.index.newest" %></span>
+        </div>
+        <div class="filter-post">
+          <%= form_tag domain_ads_posts_path, method: :get,
+            class: "form-inline col-md-4 key-filter" do %>
+            <%= text_field_tag :search_posts, params[:search_posts],
+              class: "form-control mb-2 mr-sm-2",
+              placeholder: t(".search") %>
+            <%= hidden_field_tag "domain_id", @domain %>
+            <%= hidden_field_tag "category_slug", @post_support.filtered_param[:category_slug] %>
+            <%= hidden_field_tag "mode", @post_support.filtered_param[:mode] %>
+            <%= hidden_field_tag "type", @post_support.filtered_param[:type] %>
+            <%= button_tag type: :submit, class: "btn btn-orange mb-2 mr-sm-2" do %>
+              <i class="fa fa-search"></i>
+            <% end %>
+          <% end %>
+
+          <div class="dropdown col-md-2 status-filter">
+            <button class="btn btn-default dropdown-toggle full-with no-right-border"
+              type="button" data-toggle="dropdown">
+              <% if @post_support.filtered_param[:mode].present? %>
+                <%= t "ads.post.modes.#{@post_support.filtered_param[:mode]}" %>
+              <% else %>
+                <%= t ".choose_mode" %>
+              <% end %>
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu">
+              <li><%= link_to t(".choose_mode"), domain_ads_posts_path(@domain,
+                  category_slug: @post_support.filtered_param[:category_slug],
+                  type: @post_support.filtered_param[:type],
+                  mode: nil) %></li>
+              <% Post.modes.each do |key, _| %>
+                <li><%= link_to t("ads.post.modes.#{key}"), domain_ads_posts_path(@domain,
+                  category_slug: @post_support.filtered_param[:category_slug],
+                  type: @post_support.filtered_param[:type],
+                  mode: key) %></li>
+              <% end %>
+            </ul>
+          </div>
+
+          <div class="dropdown col-md-2 categories-filter">
+            <button class="btn btn-default full-with no-right-border"
+              type="button" data-toggle="modal" data-target="#categories">
+              <% if @post_support.filtered_param[:category].present? %>
+                <%= @post_support.filtered_param[:category].name %>
+              <% else %>
+                <%= t ".choose_category" %>
+              <% end %>
+              <span class="caret"></span>
+            </button>
+
+            <div class="modal fade" id="categories" tabindex="-1" role="dialog"
+              aria-labelledby="cate_modal_label">
+              <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="cate_modal_label">
+                      <%= t ".choose_category" %>
+                    </h4>
+                  </div>
+                  <div class="modal-body">
+                    <ul class="list-group accordion" id="accordion-modal-cate-0">
+                      <%= render partial: "category",
+                        collection: @post_support.parent_categories, as: :category,
+                        locals: {div: "modal", level: Settings.category.parent} %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <% if @domains.present? %>
+            <div class="dropdown col-md-2 domain-filter">
+              <button class="btn btn-default dropdown-toggle full-with" type="button" data-toggle="dropdown">
+                <%= @post_support.filtered_param[:domain].name %>
+                <span class="caret"></span>
+              </button>
+
+              <ul class="dropdown-menu">
+                <% @domains.each do |domain| %>
+                  <li>
+                    <%= link_to domain.name, domain_ads_posts_path(
+                      domain,
+                      category_slug: @post_support.filtered_param[:category_slug],
+                      type: @post_support.filtered_param[:type],
+                      mode: @post_support.filtered_param[:mode]) %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% else %>
+            <div class="col-md-2 domain-filter">
+              <button class="btn btn-default full-with" type="button">
+                <%= @domain.name %>
+              </button>
+            </div>
+          <% end %>
+
+          <div class="grid-option col-md-2">
+            <button class="btn float-right grid-format" type="submit">
+              <i class="fa fa-th-large"></i>
+            </button>
+            <button class="btn float-right list-format active" type="submit">
+              <i class="fa fa-th-list"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="filtered-posts">
+          <%= render @posts %>
+        </div>
+        <div class="clearfix"></div>
+
+        <% unless check_length_perpage_posts @posts %>
+          <div class="col-md-12 col-xs-12 margin-top-30">
+            <%= link_to_next_page @posts, t("view_more_posts") %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render partial: "show_sweet.js.erb" %>

@@ -7,9 +7,11 @@ class SearchesController < ApplicationController
     q = params[:search]
     products = Product.by_shop_ids(@domain.shops.map(&:id))
       .active.search(name_or_description_cont: q).result.includes :shop
-    shops = Shop.shop_in_domain(@domain.id).search(name_or_description_or_owner_name_cont: q).result
-      .includes(:owner).decorate
-    @items = products + shops
+    posts = Post.all.approved.search(title_or_content_cont: q).result.includes :user, :category
+    shops = Shop.shop_in_domain(@domain.id)
+      .search(name_or_description_or_owner_name_cont: q)
+      .result.includes(:owner).decorate
+    @items = products + posts + shops
     respond_to do |format|
       format.js
       format.html

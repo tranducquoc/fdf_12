@@ -8,9 +8,17 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    self.resource = warden.authenticate!(auth_options)
+    redirect_path =
+      if resource.domains.present?
+        intro_features_path
+      else
+        root_path
+      end
+    store_location_for(resource, redirect_path)
+    super
+  end
 
   # DELETE /resource/sign_out
   # def destroy

@@ -1,0 +1,20 @@
+<tr>
+  <td><%= increase_one post_counter %></td>
+  <td><%= t "admin.posts.index.#{post.mode}" %></td>
+  <td><%= t "admin.posts.index.#{post.arena}" %></td>
+  <td><%= post.category_name %></td>
+  <td><%= link_to post.title, "#" %></td>
+  <td><%= format_price post.min_price %></td>
+  <td><%= format_price post.max_price %></td>
+  <td><%= post.created_at.strftime Settings.admin.post.full_time_date %></td>
+  <td><%= t "admin.posts.index.#{post.status}" %></td>
+  <td>
+    <%= link_to t(".show"), domain_ads_post_path(@domain, post.id),
+      class: "btn btn-default btn-same", id: "show_post_path" %>
+    <%= link_to t(".edit"), edit_domain_ads_post_path(@domain, post.id),
+      class: "btn btn-primary btn-same" %>
+    <button class="btn btn-danger btn-same" id="destroy_post">
+      <%= t ".destroy" %>
+    </button>
+  </td>
+</tr>

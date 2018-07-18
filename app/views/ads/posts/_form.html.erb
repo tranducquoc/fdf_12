@@ -1,0 +1,195 @@
+<%= form_for([domain, :ads, post], html: {multipart: true}) do |f| %>
+  <div>
+    <br>
+    <h3 class="title"><%= t "ads.post.create_title" %></h3>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="process">
+          <div class="process-row nav nav-tabs">
+            <div class="process-step">
+              <button type="button" class="btn btn-circle btn-info" href="#menu1">
+                <i class="fa fa-list fa-3x"></i></button>
+              <p><%= t "ads.post.category" %></p>
+            </div>
+            <div class="process-step">
+              <button type="button" class="btn btn-circle btn-default" href="#menu2">
+                <i class="fa fa-file-text-o fa-3x"></i></button>
+              <p><%= t "ads.post.content.content" %></p>
+            </div>
+            <div class="process-step">
+              <button type="button" class="btn btn-circle btn-default" href="#menu3">
+                <i class="fa fa-image fa-3x"></i></button>
+              <p><%= t "ads.post.image.image" %></p>
+            </div>
+          </div>
+        </div>
+        <div class="tab-content">
+          <div id="menu1" class="tab-pane fade active in">
+            <h3 class="txt-ali-cen h3-help"><%= t "ads.post.choose_category.choose_category" %></h3>
+            <p class="txt-ali-cen p-font"><%= t "ads.post.choose_category.detail" %></p>
+            <div class="form-group row display-baseline">
+              <div class="col-md-2"></div>
+              <%= f.label :category_id, class: "col-md-2 col-form-label" do %>
+                <span class="field-compulsory"><%= t("ads.post.category") %></span><br>
+              <% end %>
+              <div class="col-md-4 select-category" data-domain-id="<%= domain.id %>"
+                data-category-level="0">
+                <%= f.select(:category_id, parent_categories.collect {|c| [c.name, c.id]},
+                  {include_blank: t("common.select")},
+                  class: "form-control input-compulsory menu1 parent-id-0", id: "parent_id") %>
+              </div>
+            </div>
+
+            <div id="extend">
+              <div id="cate-extend-0" class="form-group row display-baseline">
+              </div>
+            </div>
+
+            <div class="form-group row display-baseline">
+              <div class="col-md-2"></div>
+              <%= f.label :mode, t("ads.post.mode"), class: "col-md-2" %>
+              <div class="col-md-4">
+                <div class="radio-order">
+                  <% Settings.modes.each_with_index do |mode, index| %>
+                    <%= label_tag "status_#{mode.last}", class: "radio-inline",
+                      for: "history_order_status_#{mode.last}" do %>
+                      <%= f.radio_button :mode, mode.last,
+                        checked: (post.mode == mode.last) ? "checked" :
+                        (index.zero? ? "checked" : "") %>
+                      <%= t "ads.post.modes.#{mode.last}" %>
+                      <span class="span-radio-order"></span>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <ul class="list-unstyled list-inline pull-right">
+              <li><button type="button" class="btn btn-info next-step">
+                <%= t "ads.post.next_step" %>
+                <i class="fa fa-chevron-right"></i></button></li>
+            </ul>
+          </div>
+          <div id="menu2" class="tab-pane fade">
+            <h3 class="txt-ali-cen h3-help"><%= t "ads.post.content.content" %></h3>
+            <p class="txt-ali-cen p-font"><%= t "ads.post.content.detail" %></p>
+            <div class="form-group row display-baseline">
+              <%= f.label :title, class: "col-md-2 col-form-label" do %>
+                <span class="field-compulsory"><%= t "ads.post.title.title" %></span><br />
+              <% end %>
+              <div class="col-md-8">
+                <%= f.text_field :title, placeholder: t("ads.post.title.placeholder"),
+                  class: "form-control input-compulsory", id: "post-title" %>
+              </div>
+            </div>
+            <div class="form-group row display-baseline">
+              <%= f.label :content, t("ads.post.content.content"), class:
+                "col-md-2 col-form-label field-compulsory" %>
+              <div class="col-md-8">
+                <%= f.text_area :content, placeholder: t("ads.post.content.placeholder"),
+                  rows: Settings.row_of_text, class: "form-control input-compulsory" %>
+              </div>
+            </div>
+
+            <div class="form-group row display-baseline">
+              <%= f.label :min_price, t("ads.post.content.min_price_html",
+                unit: Settings.post.price.vnd),
+                class: "col-md-2 col-form-label field-compulsory" %>
+              <div class="col-md-3">
+                <%= f.number_field :min_price, value: round_post_price(post.min_price),
+                  min: Settings.post.price.min_vnd, max: Settings.post.price.max_vnd,
+                  class: "form-control input-compulsory", step: Settings.post.price.step_vnd %>
+              </div>
+
+              <%= f.label :max_price, t("ads.post.content.max_price_html",
+                unit: Settings.post.price.vnd),
+                class: "col-md-2 col-form-label field-compulsory" %>
+              <div class="col-md-3">
+                <%= f.number_field :max_price, value: round_post_price(post.max_price),
+                  min: Settings.post.price.min_vnd, max: Settings.post.price.max_vnd,
+                  class: "form-control input-compulsory", step: Settings.post.price.step_vnd %>
+              </div>
+            </div>
+
+            <div class="form-group row display-baseline">
+              <%= f.label :link_shop, t("ads.post.shop_url.shop_url"),
+                class: "col-md-2 col-form-label"%>
+              <div class="col-md-8">
+                <%= f.select :link_shop, current_user.shops.collect {|shop| [shop.name, shop.slug]},
+                  {prompt: t("ads.post.shop_url.no_shop")}, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group row display-baseline">
+              <%= f.label :arena, t("ads.post.arena"), class: "col-md-2" %>
+              <div class="col-md-8">
+                <div class="radio-order">
+                  <% Settings.arenas.each_with_index do |mode, index| %>
+                    <%= label_tag "status_#{mode.last}", class: "radio-inline",
+                      for: "history_order_status_#{mode.last}" do %>
+                      <%= f.radio_button :arena, mode.last,
+                        checked: (post.arena == mode.last) ? "checked" :
+                        (index.zero? ? "checked" : "") %>
+                      <%= t "ads.post.arenas.#{mode.last}" %>
+                      <span class="span-radio-order"></span>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <ul class="list-unstyled list-inline pull-right">
+              <li><button type="button" class="btn btn-default prev-step">
+                <i class="fa fa-chevron-left"></i>
+                <%= t "ads.post.prev_step" %></button></li>
+              <li><button type="button" class="btn btn-info next-step">
+                <%= t "ads.post.next_step" %>
+                <i class="fa fa-chevron-right"></i></button></li>
+            </ul>
+          </div>
+          <div id="menu3" class="tab-pane fade">
+            <h3 class="txt-ali-cen h3-help"><%= t "ads.post.image.image" %></h3>
+            <p class="txt-ali-cen p-font"><%= t "ads.post.image.detail" %></p>
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-6 form-group upload-post-image">
+                <div class="image-preview row" id="image-list-preview">
+                  <div class="btn-add-data">
+                    <div class="delete-img hide-div">
+                      <span class="btn btn-info btn-file img-select-btn">
+                        <span><i class="fa fa-plus"></i></span>
+                        <%= file_field_tag :image, multiple: true, class: "img-file-input" %>
+                      </span>
+                    </div>
+                  </div>
+
+                  <%= f.fields_for :images do |image| %>
+                    <%= render partial: "upload_image",
+                      locals: {f: image, image: post.images[image.index]} %>
+                  <% end %>
+
+                  <div class="col-md-2 list-gallery nested-fields hide-div">
+                    <%= link_to_add_association f, :images, partial: "upload_image",
+                      render_options: {locals: {image: post.images.build}},
+                      class: "btn btn-breez btn-sm", id: "add-new-image" do %>
+                      <i class="fa fa-plus"></i>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+            <ul class="list-unstyled list-inline pull-right">
+              <li><button type="button" class="btn btn-default prev-step">
+                <i class="fa fa-chevron-left"></i>
+                <%= t "ads.post.prev_step" %></button></li>
+              <li>
+                <%= button_tag t("ads.post.submit"), class: "btn btn-info",
+                  id: post.new_record? ? "create_post" : "update_post", type: "button" %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

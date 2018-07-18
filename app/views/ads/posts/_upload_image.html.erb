@@ -1,0 +1,13 @@
+<div class="col-md-2 list-gallery nested-fields
+  <%= image.new_record? ? "" : "existing_images" %>">
+  <%= image_tag (image.new_record? ? "upload" : image.image_url), class: "image_view
+    #{image.new_record? ? "input-image" : ""}", title: "choose image" %>
+
+  <div class="btn-remove hide-div">
+    <div class="delete-img">
+      <%= link_to_remove_association f do %>
+        <i class="fa fa-window-close"><%= t "ads.post.remove_image" %></i>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -55,4 +55,6 @@ $(document).ready(function () {
   });
 
   $('#category_parent_id option:first-child').val('0');
+
+  $('.parent-id-edit option:first-child').val($('.parent-id-0').val());
 });

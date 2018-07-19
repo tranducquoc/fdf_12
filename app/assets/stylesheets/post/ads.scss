@@ -688,15 +688,17 @@ $lighten-gray: #ddd;
   .list-group-title {
     background: $dark-orange;
     border-color: $dark-orange;
-    h4 {
-      margin: 0;
-      color: white;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
+    margin: 0;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
   }
   li a {
     color: $light-gray;
+  }
+  .parent-list {
+    max-height: 265px;
+    overflow-y: auto;
   }
 }
 

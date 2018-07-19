@@ -30,7 +30,7 @@ class Ads::PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build post_params
-
+    @default_category_id = nil
     if @post.save
       flash[:success] = t "ads.post.flash.success"
       respond_to do |format|
@@ -51,6 +51,13 @@ class Ads::PostsController < ApplicationController
 
   def edit
     @post_support = Supports::Ads::PostSupport.new @post
+    @default_category_id = @post.category.parent_id
+    if @default_category_id == 0
+      @default_category = Category.find_by id: @post.category_id
+      @default_category_id = @default_category.id
+    else
+      @default_category = Category.find_by id: @default_category_id
+    end
     @post_support.post.images.build if is_images_addable @post_support.post
     if request.xhr?
       @post_support.children_categories = Category.by_parent params[:category_id]
@@ -90,8 +97,9 @@ class Ads::PostsController < ApplicationController
   private
 
   def post_params
+    current_domain = Domain.friendly_id.find_by slug: params[:domain_id]
     if params[:post][:arena] == Domain.statuses.keys[1]
-      params[:post].merge! domain_id: current_user.domain_default
+      params[:post].merge! domain_id: current_domain.id
     end
     params.require(:post).permit :title, :content, :category_id, :mode, :arena, :domain_id,
       :link_shop, :min_price, :max_price, images_attributes: [:id, :image, :_destroy]

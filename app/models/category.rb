@@ -34,6 +34,7 @@ class Category < ApplicationRecord
     subcategories.includes(:posts).each do |category|
       posts += category.posts.size
     end
+    posts += self.posts.approved.size
     return posts unless posts > Settings.category.max_posts
     "#{Settings.category.max_posts}+"
   end

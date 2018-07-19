@@ -73,6 +73,7 @@ class Supports::Ads::PostSupport
   end
 
   def working_time format
+    shop = find_shop
     "#{shop.time_open.strftime format} - #{shop.time_close.strftime format}"
   end
 

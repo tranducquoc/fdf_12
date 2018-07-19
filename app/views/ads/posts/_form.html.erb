@@ -36,13 +36,20 @@
               <div class="col-md-4 select-category" data-domain-id="<%= domain.id %>"
                 data-category-level="0">
                 <%= f.select(:category_id, parent_categories.collect {|c| [c.name, c.id]},
-                  {include_blank: t("common.select")},
+                  {include_blank: t("common.select"), selected: @default_category_id},
                   class: "form-control input-compulsory menu1 parent-id-0", id: "parent_id") %>
               </div>
             </div>
 
             <div id="extend">
               <div id="cate-extend-0" class="form-group row display-baseline">
+                <% if @default_category.present? && @default_category.subcategories.any? %>
+                  <div class="col-md-4 col-md-offset-4 select-category-children">
+                    <%= f.select(:category_id, @default_category.subcategories.collect {|c| [c.name, c.id]},
+                      {include_blank: t("common.select_sub_category")},
+                      class: "form-control parent-id-edit") %>
+                  </div>
+                <% end %>
               </div>
             </div>
 

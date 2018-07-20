@@ -60,7 +60,7 @@ $main_project_color: #fd680e;
       padding-bottom: 10px;
       position: relative;
       margin: 0 auto;
-      margin-top: 70px;
+      margin-bottom: 70px;
       img{
         opacity: 1;
         margin: 0px auto;
@@ -94,7 +94,6 @@ $main_project_color: #fd680e;
       }
       &:hover {
         cursor: pointer;
-        margin-top: 70px;
         img{
           -webkit-transition: all 0.3s ease-in-out;
           transition: all 0.3s ease-in-out;

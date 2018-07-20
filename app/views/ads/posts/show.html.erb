@@ -1,177 +1,179 @@
-<div class="post-container">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <%= link_to t("ads.post.home"), domain_ads_posts_path %>
-      </li>
-      <li class="breadcrumb-item">
-        <%= link_to @post.category_name,
-          domain_ads_posts_path(category_slug: @post.category.parent_category,
-          mode: @post.mode) %>
-      </li>
-      <li class="breadcrumb-item active" aria-current="page"><%= @post.title %></li>
-    </ol>
-  </nav>
-  <div class="col-md-8 post-content">
-    <div class="row">
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <% @post.images.each_with_index do |image, index| %>
-            <div class="image-slide item <%= index.zero? ? "active" : "" %>
-              <%= @post.images.size == Settings.post.min_images ? "align-justify-center" : "" %>">
-              <%= image_tag image.image_url %>
-            </div>
-          <% end %>
-        </div>
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-          <span class="sr-only"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-          <span class="sr-only"></span>
-        </a>
-      </div>
-
-    </div>
-  </div>
-  <div class="col-md-4 right-sidebar post-onwer-info">
-    <h3 class="contact-info"><%= t "ads.post.contact_info" %></h3>
-    <div class="card">
-      <% if @post_support.find_shop %>
-        <%= image_tag @post_support.find_shop.avatar_url, class: "card-img-top" %>
-      <% end %>
-
-      <div class="card-body">
-        <% if @post_support.find_shop %>
-          <h4 class="card-title">
-            <%= link_to @post_support.find_shop.name,
-              domain_shop_path(@domain, @post.link_shop) %>
-          </h4>
-          <i class="fa fa-clock-o">
-            <% if @post_support.find_shop.openforever %>
-              <%= @post_support.working_time Settings.shop.working_time_format %>
-            <% else %>
-              <%= t "ads.post.close_time" %>:
-              <%= @post_support.find_shop.time_auto_close.strftime Settings.shop.working_time_format %>
+<div class="content-ads">
+  <div class="post-container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <%= link_to t("ads.post.home"), domain_ads_posts_path %>
+        </li>
+        <li class="breadcrumb-item">
+          <%= link_to @post.category_name,
+            domain_ads_posts_path(category_slug: @post.category.parent_category,
+            mode: @post.mode) %>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page"><%= @post.title %></li>
+      </ol>
+    </nav>
+    <div class="col-md-8 post-content">
+      <div class="row">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <% @post.images.each_with_index do |image, index| %>
+              <div class="image-slide item <%= index.zero? ? "active" : "" %>
+                <%= @post.images.size == Settings.post.min_images ? "align-justify-center" : "" %>">
+                <%= image_tag image.image_url %>
+              </div>
             <% end %>
-          </i>
+          </div>
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only"></span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only"></span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-4 right-sidebar post-onwer-info">
+      <h3 class="contact-info"><%= t "ads.post.contact_info" %></h3>
+      <div class="card">
+        <% if @post_support.find_shop %>
+          <%= image_tag @post_support.find_shop.avatar_url, class: "card-img-top" %>
         <% end %>
 
-        <p class="card-text">
-          <i class="fa fa-user"></i> <%= t "ads.post.post_owner" %>:
-          <%= link_to @post.user_name, user_path(@post.user) %></br>
-
-          <i class="fa fa-pencil"></i> <%= t "ads.post.ads_of_owner" %>:
-          <%= @post_support.post_of_user %></br>
-
+        <div class="card-body">
           <% if @post_support.find_shop %>
-            <div class="rate">
-              <i class="fa fa-star"></i> <%= t "ads.post.shop_rating" %>:
-              <%= rating_for @post_support.find_shop,
-                Settings.rate, enable_half: true, disable_after_rate: false %>
-            </div>
-          <% end %>
-        </p>
-        <div class="row">
-          <% if @post_support.find_shop %>
-            <%= link_to t("ads.post.go_to_shop"), domain_shop_path(@domain, @post.link_shop),
-            class: "btn btn-success btn-full" %>
-          <% end %>
-          <%= link_to t("ads.post.btn_contact"), user_path(@post.user),
-            class: "btn btn-add btn-full" %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-8 ads-content">
-    <p class="ads-title"><%= @post.title %></p>
-    <div class="share-post-buttons">
-      <%= social_share_button_tag @post.title %>
-    </div>
-    <p class="ads-price">
-      <%= t "ads.post.price", price: format_post_price(@post) %>
-    </p>
-    <p class="ads-post">
-      <%= raw @post.content %>
-    </p>
-    <div class="ads-extend">
-      <% if @post.domain %>
-        <i class="fa fa-foursquare red"> <%= @post.domain_name %></i>
-      <% else %>
-        <i class="fa fa-bullseye"> <%= t "ads.post.arenas.#{@post.arena}" %></i>
-      <% end %>
-      <i class="fa fa-tags"> <%= @post.category_name %></i>
-      <i class="fa fa-calendar-o">
-        <%= @post.created_at.strftime Settings.review.date_format %>
-      </i>
-    </div>
-    <div class="ads-report media">
-      <div class="media-left"><i class="fa fa-shield media-object">*</i></div>
-      <div class="media-body">
-        <p><%= t "ads.post.report.info" %></p>
-        <div class="btn-reports">
-          <a href="javascript:" class="btn btn-default" data-toggle="modal" data-target="#reportModal"><i class="fa fa-warning"></i><%= t "ads.post.report.btn_report" %></a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-  </div>
-  <div class="col-md-8 ads-review">
-    <div class="review-ads-input">
-      <div class="media">
-        <div class="media-left ads-review-avatar">
-          <%= image_tag current_user.avatar.url, class: "media-object"%>
-        </div>
-        <div class="media-body">
-          <%= form_for @review, url: reviews_path(domain_id: @domain.slug, post_id: @post.id),
-            remote: true, class: "form-group" do |f| %>
-            <h4 class="media-heading">
-              <%= current_user.name %>
-              <small>
-                <i>
-                  <%= t "ads.post.review.your_rating" %>:
-                  <%= rating_for @review, "rating", stars: Settings.max_rate_point %>
-                </i>
-              </small>
+            <h4 class="card-title">
+              <%= link_to @post_support.find_shop.name,
+                domain_shop_path(@domain, @post.link_shop) %>
             </h4>
-
-            <%= f.text_area :review, rows: Settings.review.text_area_rows, id: "ads-review",
-              class: "form-control", data: {post_id: @post.id} %>
-            <%= f.submit t("ads.post.report.btn_review"), id: "submit-review",
-              class: "btn btn-review btn-add" %>
+            <i class="fa fa-clock-o">
+              <% if @post_support.find_shop.openforever %>
+                <%= @post_support.working_time Settings.shop.working_time_format %>
+              <% else %>
+                <%= t "ads.post.close_time" %>:
+                <%= @post_support.find_shop.time_auto_close.strftime Settings.shop.working_time_format %>
+              <% end %>
+            </i>
           <% end %>
+
+          <p class="card-text">
+            <i class="fa fa-user"></i> <%= t "ads.post.post_owner" %>:
+            <%= link_to @post.user_name, user_path(@post.user) %></br>
+
+            <i class="fa fa-pencil"></i> <%= t "ads.post.ads_of_owner" %>:
+            <%= @post_support.post_of_user %></br>
+
+            <% if @post_support.find_shop %>
+              <div class="rate">
+                <i class="fa fa-star"></i> <%= t "ads.post.shop_rating" %>:
+                <%= rating_for @post_support.find_shop,
+                  Settings.rate, enable_half: true, disable_after_rate: false %>
+              </div>
+            <% end %>
+          </p>
+          <div class="row">
+            <% if @post_support.find_shop %>
+              <%= link_to t("ads.post.go_to_shop"), domain_shop_path(@domain, @post.link_shop),
+              class: "btn btn-clean btn-full" %>
+            <% end %>
+            <%= link_to t("ads.post.btn_contact"), user_path(@post.user),
+              class: "btn btn-orange btn-full" %>
+          </div>
         </div>
       </div>
     </div>
-    <div class="people-review">
-      <div class="reviews-of-post">
-        <%= render partial: "review", collection: @post_support.reviews_of_post.to_a, as: :review %>
+    <div class="col-md-8 ads-content">
+      <p class="ads-title"><%= @post.title %></p>
+      <div class="share-post-buttons">
+        <%= social_share_button_tag @post.title %>
       </div>
-    </div >
+      <p class="ads-price">
+        <%= t "ads.post.price", price: format_post_price(@post) %>
+      </p>
+      <p class="ads-post">
+        <%= raw @post.content %>
+      </p>
+      <div class="ads-extend">
+        <% if @post.domain %>
+          <i class="fa fa-foursquare red"> <%= @post.domain_name %></i>
+        <% else %>
+          <i class="fa fa-bullseye"> <%= t "ads.post.arenas.#{@post.arena}" %></i>
+        <% end %>
+        <i class="fa fa-tags"> <%= @post.category_name %></i>
+        <i class="fa fa-calendar-o">
+          <%= @post.created_at.strftime Settings.review.date_format %>
+        </i>
+      </div>
+      <div class="ads-report media">
+        <div class="media-left"><i class="fa fa-shield media-object">*</i></div>
+        <div class="media-body">
+          <p><%= t "ads.post.report.info" %></p>
+          <div class="btn-reports">
+            <a href="javascript:" class="btn btn-default" data-toggle="modal" data-target="#reportModal"><i class="fa fa-warning"></i><%= t "ads.post.report.btn_report" %></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-8 ads-review">
+      <div class="review-ads-input">
+        <div class="media">
+          <div class="media-left ads-review-avatar">
+            <%= image_tag current_user.avatar.url, class: "media-object"%>
+          </div>
+          <div class="media-body">
+            <%= form_for @review, url: reviews_path(domain_id: @domain.slug, post_id: @post.id),
+              remote: true, class: "form-group" do |f| %>
+              <h4 class="media-heading">
+                <%= current_user.name %>
+                <small>
+                  <i>
+                    <%= t "ads.post.review.your_rating" %>:
+                    <%= rating_for @review, "rating", stars: Settings.max_rate_point %>
+                  </i>
+                </small>
+              </h4>
+
+              <%= f.text_area :review, rows: Settings.review.text_area_rows, id: "ads-review",
+                class: "form-control", data: {post_id: @post.id} %>
+              <%= f.submit t("ads.post.report.btn_review"), id: "submit-review",
+                class: "btn btn-review btn-add" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="people-review">
+        <div class="reviews-of-post">
+          <%= render partial: "review", collection: @post_support.reviews_of_post.to_a, as: :review %>
+        </div>
+      </div >
+    </div>
   </div>
-</div>
-<div class="modal fade" id="reportModal" role="dialog">
-  <div class="modal-dialog modal-report">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><%= t "ads.post.report.report_modal_title" %></h4>
-      </div>
-      <div class="modal-body">
-        <textarea class="form-control" rows="3" id="ads-report" data-post-id="<%= @post.id %>"></textarea>
-      </div>
-      <div class="modal-footer">
-        <a href="javascript:" class="btn btn-report btn-add"><%= t "ads.post.report.btn_send_report" %></a>
-        <a href="javascript:" type="button" class="btn btn-add" id="close-report"
-          data-dismiss="modal"><%= t "ads.post.report.btn_close" %>
-        </a>
+  <div class="modal fade" id="reportModal" role="dialog">
+    <div class="modal-dialog modal-report">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><%= t "ads.post.report.report_modal_title" %></h4>
+        </div>
+        <div class="modal-body">
+          <textarea class="form-control" rows="3" id="ads-report" data-post-id="<%= @post.id %>"></textarea>
+        </div>
+        <div class="modal-footer">
+          <a href="javascript:" class="btn btn-report btn-add"><%= t "ads.post.report.btn_send_report" %></a>
+          <a href="javascript:" type="button" class="btn btn-add" id="close-report"
+            data-dismiss="modal"><%= t "ads.post.report.btn_close" %>
+          </a>
+        </div>
       </div>
     </div>
   </div>

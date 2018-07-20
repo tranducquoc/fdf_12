@@ -1269,7 +1269,7 @@ vi:
         featured: "Tin rao nổi bật"
         highest_rated: "Đánh giá cao"
         most_reviewed: "Bình luận nhiều"
-        post_your_ads: "Đăng tin rao của bạn"
+        post_your_ads: "Đăng tin rao vặt"
         no_reviewed_post: "Chưa có bài rao được đánh giá"
       update:
         success: "Cập nhật tin rao thành công!"
@@ -1355,5 +1355,6 @@ vi:
         see_more: "Xem thêm"
         choose_category: "Chọn danh mục"
         choose_mode: "Chọn hình thức"
+        go_to_order: "Chuyển sang trang Order"
       most_review:
         most_review_posts: "Tin rao được bình luận nhiều"

@@ -1,27 +1,28 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <%= link_to t("ads.post.home"), domain_ads_posts_path %>
-    </li>
-    <li class="breadcrumb-item active" aria-current="page"><%= t ".most_review_posts" %></li>
-  </ol>
-</nav>
+<div class="content-ads">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <%= link_to t("ads.post.home"), domain_ads_posts_path %>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page"><%= t ".most_review_posts" %></li>
+    </ol>
+  </nav>
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="margin-bottom-20 border-top-shop">
-      <span class="top-shop-product"><%= t ".most_review_posts" %></span>
-      <span><span class="border-top-shop-product"></span></span>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="margin-bottom-20 border-top-shop">
+        <span class="top-shop-product"><%= t ".most_review_posts" %></span>
+      </div>
     </div>
-  </div>
 
-  <div class="col-md-12 magin_top_10px most-review-posts">
-    <%= render partial: "post", collection: @posts,
-      as: :post, locals: {display: "grid-view"} %>
-  </div>
-  <% unless check_length_perpage_posts @posts %>
-    <div class="load-more-products col-md-12 col-xs-12 margin-top-30">
-      <%= link_to_next_page @posts, t("view_more_posts") %>
+    <div class="col-md-12 magin_top_10px most-review-posts">
+      <%= render partial: "post", collection: @posts,
+        as: :post, locals: {display: "grid-view"} %>
     </div>
-  <% end %>
+    <% unless check_length_perpage_posts @posts %>
+      <div class="load-more-products col-md-12 col-xs-12 margin-top-30">
+        <%= link_to_next_page @posts, t("view_more_posts") %>
+      </div>
+    <% end %>
+</div>
 </div>

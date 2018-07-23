@@ -9,9 +9,10 @@
   </div>
 <% end %>
 
-<div class="go-to-order">
-  <i class="fa fa-arrow-left"></i>
-  <%= link_to t(".go_to_order"), @domain || root_path %>
+<div class="go-to">
+  <div class="fa fa-arrow-left">
+    <%= link_to t(".go_to_order"), @domain || root_path %>
+  </div>
 </div>
 <div class="content-ads">
   <div class="row">

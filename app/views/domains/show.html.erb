@@ -1,3 +1,10 @@
+<% if current_user.domains.present? %>
+  <div class="go-to">
+    <div class="fa fa-arrow-left">
+      <%= link_to t(".go_to_post"), domain_ads_posts_path(@domain || current_user.domain_default) %>
+    </div>
+  </div>
+<% end %>
 <div class="row">
   <div class="col-md-3 col-sm-12 col-xs-12">
     <div class="block-item-list block padding-0 col-md-12 col-sm-6

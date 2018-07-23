@@ -1,5 +1,19 @@
 <div class="home-header">
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar navbar-inverse navbar-fixed-top main-nav">
+    <% if params[:controller] != "intro_features" %>
+      <div class="branches">
+        <div class="container">
+          <span class="branch">
+            <i class="fa fa-star"></i>
+            <%= link_to t(".order"), @domain || root_path %>
+          </span>
+          <span class="branch">
+            <i class="fa fa-clipboard"></i>
+            <%= link_to t(".posts"), domain_ads_posts_path(@domain || current_user.domain_default) %>
+          </span>
+        </div>
+      </div>
+    <% end %>
     <div class="container media-margin-header-bar">
       <div class="navbar-header">
         <% if @domain.present? %>

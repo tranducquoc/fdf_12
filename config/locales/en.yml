@@ -564,6 +564,9 @@ en:
       member_since: "Joined %{time}"
     admin_lte_2_login:
       login_box_message: "Sign in to start your session"
+    header:
+      order: "Order"
+      posts: "ADS post"
   dashboard:
     ads:
       post_price: "%{min} - %{max} vnd"
@@ -1300,3 +1303,6 @@ en:
         go_to_order: "Move to Order page"
       most_review:
         most_review_posts: "Most reviewed Posts"
+  domains:
+    show:
+      go_to_post: "Move to Post page"

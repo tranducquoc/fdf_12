@@ -605,6 +605,9 @@ vi:
       member_since: "Tham gia %{time}"
     admin_lte_2_login:
       login_box_message: "Đăng nhập để tạo phiên làm việc"
+    header:
+      order: "Đặt hàng"
+      posts: "Rao vặt"
   dashboard:
     ads:
       posts:
@@ -1355,6 +1358,9 @@ vi:
         see_more: "Xem thêm"
         choose_category: "Chọn danh mục"
         choose_mode: "Chọn hình thức"
-        go_to_order: "Chuyển sang trang Order"
+        go_to_order: "Chuyển sang trang Đặt Hàng"
       most_review:
         most_review_posts: "Tin rao được bình luận nhiều"
+  domains:
+    show:
+      go_to_post: "Chuyển sang trang Rao Vặt"

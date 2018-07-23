@@ -557,6 +557,9 @@ ja:
       member_since: "%{time} 参加しました"
     admin_lte_2_login:
       login_box_message: "セッションを作成するにはログインしてください"
+    header:
+      order: "Order"
+      posts: "ADS post"
   dashboard:
     ads:
       posts:
@@ -1310,3 +1313,6 @@ ja:
         go_to_order: "Move to Order page"
       most_review:
         most_review_posts: "Most reviewed Posts"
+  domains:
+    show:
+      go_to_post: "Move to Post page"

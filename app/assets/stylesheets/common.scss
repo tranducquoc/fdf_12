@@ -3,7 +3,7 @@
 .home-body {
   min-height: 100vh;
   min-width: 750px;
-  padding-top: 60px;
+  padding-top: 95px;
   padding-bottom: 50px;
   margin-top: 20px
 }
@@ -187,4 +187,24 @@
   &-fire {
     background-color: #A53B03;
   }
+}
+
+.branches {
+  background-color: rgba(95, 95, 95, 0.25);
+  color: white;
+  padding: 7px 0;
+  font-size: 15px;
+  .branch {
+    margin-right: 15px;
+    .fa {
+      margin-right: 3px;
+    }
+    a {
+      color: white;
+    }
+  }
+}
+
+.main-nav {
+  transition: top 0.3s;
 }

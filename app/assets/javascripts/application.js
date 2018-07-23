@@ -57,4 +57,18 @@ $(document).ready(function () {
   $('#category_parent_id option:first-child').val('0');
 
   $('.parent-id-edit option:first-child').val($('.parent-id-0').val());
+
+  var prevScrollpos = window.pageYOffset;
+  window.onscroll = function() {
+    var currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      $('.main-nav').css('top', '0');
+      $('.go-to').css('top', '80px');
+
+    } else {
+      $('.main-nav').css('top', '-35px')
+      $('.go-to').css('top', '45px');
+    }
+    prevScrollpos = currentScrollPos;
+  }
 });

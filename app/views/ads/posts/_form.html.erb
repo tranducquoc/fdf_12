@@ -122,7 +122,7 @@
               <%= f.label :link_shop, t("ads.post.shop_url.shop_url"),
                 class: "col-md-2 col-form-label"%>
               <div class="col-md-8">
-                <%= f.select :link_shop, current_user.shops.collect {|shop| [shop.name, shop.slug]},
+                <%= f.select :link_shop, get_shops_active_by(current_user).collect {|shop| [shop.name, shop.slug]},
                   {prompt: t("ads.post.shop_url.no_shop")}, class: "form-control" %>
               </div>
             </div>

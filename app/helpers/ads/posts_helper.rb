@@ -26,4 +26,8 @@ module Ads::PostsHelper
     return title if title.size < max_size
     title[0..max_size] << "..."
   end
+
+  def get_shops_active_by user
+    user.shops.active
+  end
 end

@@ -91,7 +91,7 @@ ja:
     not_owner_shop:   "あなたはお店のオーナーではありません!"
     error_already_manager: "ユーザーは既に管理者です!"
     error_add_yourself: "あなた自身を追加することはできません!"
-  framgia_label: "Framgia"
+  framgia_label: "Sun*"
   image_index: "画像"
   feature_index: "特長"
   more_tools: "他のツール"
@@ -200,9 +200,9 @@ ja:
   sent_order: "成功する"
   price_message: "合計: "
   all: "皆: "
-  com-infor: "© 2018 By Framgia - Human Development Division - Education Section - All rights reserved."
-  com-email: "hr_team@framgia.com"
-  company: "Framgia Vietnam"
+  com-infor: "© 2018 By Sun* - Human Development Division - Education Section - All rights reserved."
+  com-email: "hr_team@sun-asterisk.com"
+  company: "Sun*"
   phone-num: "84-4-3795-5417"
   home: "ホームページ"
   blog: "ブログ"
@@ -210,7 +210,7 @@ ja:
   faq: "Faq"
   contact: "通信"
   com-add: "13フロアのKeangnam, E6の小包, Pham Hung 砂糖,Tu Liem Nam, Ha Noi, Viet Nam"
-  com-detail: "ベトナムのFramgiaは日本では100％を投資されています. 電話アプリケーション、
+  com-detail: "ベトナムのSun*は日本では100％を投資されています. 電話アプリケーション、
     ゲーム、ソーシャルアプリケーションやWebベースのアプリケーションを構築に特化."
   about_label: "会社情報"
   home: "ホーム"
@@ -246,14 +246,14 @@ ja:
   year: "年"
   facebook: "Facebook"
   google_oauth2: "Google"
-  hr_system: "Framgiaのアカウント"
+  hr_system: "Sun*のアカウント"
   auth_fail: "故障"
   add_order: "受注を追加"
   accept_all: "すべての確認"
   create_order: "注文を作成する"
   common:
     your_shops: "あなたの店"
-    base_title: "Framgia Food And Drink Order"
+    base_title: "Sun* Food And Drink Order"
     admin_title: "行政"
     home: "ホームページ"
     number: "数"
@@ -530,7 +530,7 @@ ja:
   error_message_time: "スタートし、不合理な仕上がり!"
   layouts:
     admin_lte_2:
-      footer: "Framgia Orders. @2016@"
+      footer: "Sun* Orders. @2016@"
     admin_lte_2_sidebar:
       all: "皆"
       online: "オンライン"
@@ -550,7 +550,7 @@ ja:
       all_posts: "All posts"
     admin_lte_2_header:
       logo_mini: "F"
-      logo_medium: "Framgia"
+      logo_medium: "Sun*"
       logo_order: "Orders"
       profile: "パーソナルページ"
       log_out: "サインアウト"

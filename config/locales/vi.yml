@@ -128,7 +128,7 @@ vi:
     not_owner_shop: "Bạn không phải là chủ cửa hàng!"
     error_already_manager: "Người dùng đã là quản lý"
     error_add_yourself: "Không thể thêm chính bạn"
-  framgia_label: "Framgia"
+  framgia_label: "Sun*"
   image_index: "Hình ảnh"
   feature_index: "Tính năng"
   more_tools: "Các công cụ khác"
@@ -233,7 +233,7 @@ vi:
     đợi admin kích hoạt để sử dụng"
   account_info: "Thông tin tài khoản"
   hello: "Xin chào,"
-  account_created: "Tài khoản của bạn ở ứng dụng Framgia order vừa được tạo"
+  account_created: "Tài khoản của bạn ở ứng dụng Sun* order vừa được tạo"
   you_can: "Bạn có thể sử dụng email và mật khẩu dưới đâu để đăng nhập"
   email: "email: "
   password: "mật khẩu: "
@@ -244,9 +244,9 @@ vi:
   sent_order: "Gửi đơn hàng thành công"
   price_message: "Tổng giá đơn hàng của bạn: "
   all: "Tất cả: "
-  com-infor: "© 2018 Bởi Framgia - Human Development Division - Education Section - All rights reserved."
-  com-email: "hr_team@framgia.com"
-  company: "Framgia Vietnam"
+  com-infor: "© 2018 Bởi Sun* - Human Development Division - Education Section - All rights reserved."
+  com-email: "hr_team@sun-asterisk.com"
+  company: "Sun*"
   phone-num: "84-4-3795-5417"
   home: "Trang chủ"
   blog: "Blog"
@@ -254,10 +254,10 @@ vi:
   faq: "Faq"
   contact: "Liên lạc"
   com-add: "Tầng 13 tòa nhà Keangnam Landmark, Lô E6, Đường Phạm Hùng, Từ Liêm Nam, Hà Nội, Việt Nam"
-  com-detail: "Framgia Việt Nam là công ty 100% vốn đầu tư Nhật Bản, chuyên xây
+  com-detail: "Sun* là công ty 100% vốn đầu tư Nhật Bản, chuyên xây
     dựng những ứng dụng trên điện thoại, game, các ứng dụng xã hội và các ứng
     dụng trên nền Web."
-  about_label: "Về công ty Framgia Việt Nam"
+  about_label: "Về công ty Sun*"
   home: "Trang chủ"
   start: "Từ ngày"
   end: "Đến ngày"
@@ -292,14 +292,14 @@ vi:
   year: "Năm"
   facebook: "Facebook"
   google_oauth2: "Google"
-  hr_system: "Tài khoản Framgia"
+  hr_system: "Tài khoản Sun*"
   auth_fail: "thất bại"
   add_order: "Thêm đơn hàng"
   accept_all: "Xác nhận tất cả"
   create_order: "Gửi đi"
   common:
     your_shops: "Cửa hàng của bạn"
-    base_title: "Framgia Order and Advertiserment"
+    base_title: "Sun* Order and Advertiserment"
     admin_title: "Quản trị"
     home: "Trang chủ"
     number: "STT"
@@ -578,7 +578,7 @@ vi:
   error_message_time: "Ngày bắt đầu và kết thúc không hợp lý!"
   layouts:
     admin_lte_2:
-      footer: "Framgia Orders. @2016@"
+      footer: "Sun* Orders. @2016@"
     admin_lte_2_sidebar:
       all: "Tất cả"
       online: "Trực tuyến"
@@ -598,7 +598,7 @@ vi:
       all_posts: "Tất cả"
     admin_lte_2_header:
       logo_mini: "F"
-      logo_medium: "Framgia"
+      logo_medium: "Sun*"
       logo_order: "Orders"
       profile: "Trang cá nhân"
       log_out: "Đăng xuất"

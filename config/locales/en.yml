@@ -88,7 +88,7 @@ en:
     not_owner_shop: "You are not owner!"
     error_already_manager: "The user is already manager"
     error_add_yourself: "Can not add yourself"
-  framgia_label: "Framgia"
+  framgia_label: "Sun*"
   image_index: "Picture"
   feature_index: "Features"
   more_tools: "More tools"
@@ -189,7 +189,7 @@ en:
   you should wait admin to confirm it to use"
   account_info: "Account information"
   hello: "Hello,"
-  account_created: "Your account in the Framgia order website has been created"
+  account_created: "Your account in the Sun* order website has been created"
   you_can: "You can use the email and password bellow to sign in"
   email: "email: "
   password: "password: "
@@ -200,16 +200,16 @@ en:
   sent_order: "sent order successfully"
   all: "All: "
   price_message: "The total of your order: "
-  com-infor: "© 2018 By Framgia - Human Development Division - Education Section - All rights reserved."
+  com-infor: "© 2018 By Sun* - Human Development Division - Education Section - All rights reserved."
   com-email: "hr_team@framgia.com"
   phone-num: "84-4-3795-5417"
-  company: "Framgia Vietnam"
+  company: "Sun*"
   com-add: "13F Keangnam Landmark 72 Tower, Plot E6, Pham Hung Road, Nam Tu Liem,
     Ha Noi, Viet Nam"
-  com-detail: "Framgia Vietnam is a company 100% Japan funded specializing
+  com-detail: "Sun* is a company 100% Japan funded specializing
     in design, development applications such as mobile phone software, games,
     social and website applications."
-  about_label: "About Framgia Viet Nam"
+  about_label: "About Sun*"
   home: "Home"
   blog: "Blog"
   about: "About"
@@ -248,15 +248,15 @@ en:
   year: "Year"
   facebook: "Facebook"
   google_oauth2: "Google"
-  hr_system: "Framgia Account"
+  hr_system: "Sun* Account"
   auth_fail: "Auth failure"
   add_order: "Add order"
   accept_all: "Accept All"
   create_order: "Create new order"
   common:
     your_shops: "Your Shops"
-    base_title: "Framgia Food and Drink Order"
-    admin_title: "Admin Framgia Orders"
+    base_title: "Sun* Food and Drink Order"
+    admin_title: "Admin Sun* Orders"
     home: "Home"
     number: "Numbers"
     delete_confirm: "Are you sure want to delete it?"
@@ -537,7 +537,7 @@ en:
   error_message_time: "Start date should be before end date"
   layouts:
     admin_lte_2:
-      footer: "Framgia Orders. @2016@"
+      footer: "Sun* Orders. @2016@"
     admin_lte_2_sidebar:
       all: "All"
       online: "Online"
